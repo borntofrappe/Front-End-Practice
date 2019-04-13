@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>SVG - Process</title>
+</head>
+<body>
+    <!-- svg replicating the design
+https://dribbble.com/shots/5260798-Process
+-->
+<svg viewBox="0 0 400 200" width="400" height="200">
+        <!-- line connecting the dots
+
+          -->
+        <g transform="translate(66.67 100)">
+          <line x1="0" y1="0" y2="0" x2="266.67" stroke="currentColor" stroke-width="1.5" />
+          <line x1="66.67" y1="0" y2="0" x2="133.33" stroke="var(--accent)" stroke-width="1.5" />
+          <line x1="133.33" y1="0" y2="0" x2="266.67" stroke="var(--subdued)" stroke-dasharray="133.67"
+            stroke-dashoffset="0" stroke-width="1.5" />
+        </g>
+
+
+        <!-- circle and text elements
+            each pair is grouped in a g element used to position the elements where needed, at a fraction of the SVG width
+            each pair is preface by a group describing the respective icon
+          -->
+        <g>
+          <!-- add a tick to the steps already achieved in the process -->
+          <g transform="translate(66.67 100)">
+            <circle cx="0" cy="0" r="10" fill="currentColor" />
+            <path d="M -4.5 0 l 4 4 l 5 -7" fill="none" stroke="var(--background)" stroke-width="2" />
+            <text x="0" y="40" text-anchor="middle" fill="currentColor" font-size="0.7rem">Prospect</text>
+          </g>
+
+          <g transform="translate(133.33 100)">
+            <g transform="translate(-12 -40)">
+              <path d="M 0 0 l 8 3 l 8 -3 l 8 3 v 18 l -8 -3 l -8 3 l -8 -3 v -18" fill="none" stroke-width="1.5"
+                stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" />
+              <path d="M 8 3 v 18 z M 16 0 v 18" fill="none" stroke-width="1.5" stroke="currentColor"
+                stroke-linejoin="round" stroke-linecap="round" />
+              <path d="M 11 15 q 5 0 10 -9" fill="none" stroke-width="1" stroke="currentColor" stroke-dasharray="2" />
+
+              <path d="M 8 10 a 3 3 0 0 1 3 3 q 0 2 -3 4 q -3 -2 -3 -4 a 3 3 0 0 1 3 -3" fill="var(--background)"
+                stroke-width="1.2" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" />
+              <circle cx="8" cy="13" r="0.8" fill="currentColor" />
+            </g>
+            <circle cx="0" cy="0" r="10" fill="currentColor" />
+            <path d="M -4.5 0 l 4 4 l 5 -7" fill="none" stroke="var(--background)" stroke-width="2" />
+            <text x="0" y="40" text-anchor="middle" fill="currentColor" font-size="0.7rem">Tour</text>
+          </g>
+
+          <!-- highlight the group representing the current step with the accent color -->
+          <g transform="translate(200 100)">
+            <circle cx="0" cy="0" r="10" fill="var(--accent)" />
+            <path d="M 0 -5 a 5 5 0 0 1 0 10 a 5 5 0 0 1 0 -10" fill="none" stroke="var(--background)" stroke-width="2" />
+
+            <text x="0" y="40" text-anchor="middle" fill="var(--accent)" font-size="0.7rem">Offer</text>
+          </g>
+
+          <!-- style the steps not yet reached in the process to show a smaller circle, and only its stroke -->
+          <g transform="translate(266.67 100)">
+            <circle cx="0" cy="0" r="4" fill="var(--background)" stroke="var(--subdued)" stroke-width="2.5" />
+            <text x="0" y="40" text-anchor="middle" fill="var(--subdued)" font-size="0.7rem">Contract</text>
+          </g>
+
+          <g transform="translate(333.33 100)">
+            <circle cx="0" cy="0" r="4" fill="var(--background)" stroke="var(--subdued)" stroke-width="2.5" />
+            <text x="0" y="40" text-anchor="middle" fill="var(--subdued)" font-size="0.7rem">Settled</text>
+          </g>
+        </g>
+
+
+        </g>
+      </svg>
+
+      <!-- button to toggle between light and dark mode -->
+      <button class="theme">Light Mode</button>
+
+      <script src="script.js"></script>
+
+</body>
+</html>

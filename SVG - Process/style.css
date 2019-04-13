@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:600');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* custom properties describing the palette of the application */
+  --color: hsl(0, 0%, 100%);
+  --background: hsl(230, 11%, 31%);
+  --accent: hsl(163, 56%, 60%);
+  --subdued: hsl(96, 5%, 60%);
+
+  font-family: 'Work Sans', sans-serif;
+  color: var(--color);
+  background: var(--background);
+  /* center the SVG in the viewport */
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+}
+
+svg {
+  width: 80vw;
+  height: auto;
+  max-width: 800px;
+}
+
+/* button allowing to toggle the theme, positioned on the bottom right of the viewport */
+button.theme {
+  position: fixed;
+  bottom: 1rem;
+  right: 1.5rem;
+  border: 2px dashed var(--accent);
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  text-shadow: 0 1px 5px var(--background);
+  /* transition for the slight change on hover and when active */
+  transition: all 0.25s ease-out;
+}
+/* on hover change the background to match the color of the border and include a small solid border through a box shadow */
+button.theme:hover {
+  background: var(--accent);
+  box-shadow: 0 3px var(--color);
+}
+/* when active move the button down ever so slightly */
+button.theme:active {
+  transform: translateY(2px);
+}
