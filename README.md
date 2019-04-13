@@ -15,3 +15,13 @@ Currently, I set out to focus on the following topics:
 - testing.
 
 This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. It just means that starting on the 4th of April 2019 and for the possibly few months which follow this data I plan to discover, practice and learn to the best of my abilities the specified technologies. There might be projects not connected to the short list, but I believe them to be a catalyst toward becoming a better developer; most prominently and in some cases, I believe them to be a gateway toward a more solid understanding of the described tech (think of SVG syntax, and how projects detailing the vector-based graphic will undoubtedly help with the data visualization library D3).
+
+## Project(s)
+
+> split by purpose
+
+### SVG
+
+|Title|Goal|Date|
+|---|---|---|
+|[SVG Process](https://codepen.io/borntofrappe/full/EJvrqL)|Recreate [this design](https://dribbble.com/shots/5260798-Process) as closely as possible.|13th-14th April 2019
