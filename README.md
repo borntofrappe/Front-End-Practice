@@ -4,7 +4,7 @@
 
 ## Goal(s)
 
-The brief description behind the repository does justice to the purpose behind this repository. As I begin a new round of the #100daysofcode challenge, as I decide to retire my [previous repository]() collecting front-end projects, I set out to use this repository as a new hub for anything front-end related. Be it an SVG drawing, a D3 radial tree, a React proof-of-concept, you'll find here a few, and possibly more, projects allowing me to learn by doing.
+The brief description behind the repository does justice to the purpose behind this repository. As I begin a new round of the #100daysofcode challenge, as I decide to retire my [previous repository](https://github.com/borntofrappe/Practice-Front-End-Web-Development) collecting front-end projects, I set out to use this repository as a new hub for anything front-end related. Be it an SVG drawing, a D3 radial tree, a React proof-of-concept, you'll find here a few, and possibly more, projects allowing me to learn by doing.
 
 Currently, I set out to focus on the following topics:
 
