@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,16 @@
     <link rel="stylesheet" href="style.css">
     <title>SVG - Process</title>
 </head>
-<body>
-    <!-- svg replicating the design
-https://dribbble.com/shots/5260798-Process
--->
-<svg viewBox="0 0 400 200" width="400" height="200">
-        <!-- line connecting the dots
 
-          -->
+<body>
+
+    <!-- svg replicating the design
+      https://dribbble.com/shots/5260798-Process
+    -->
+    <svg viewBox="0 0 400 200" width="400" height="200">
+
+      <g transform="translate(5 5) scale(0.975 0.95)">
+        <!-- line connecting the dots -->
         <g transform="translate(66.67 100)">
           <line x1="0" y1="0" y2="0" x2="266.67" stroke="currentColor" stroke-width="1.5" />
           <line x1="66.67" y1="0" y2="0" x2="133.33" stroke="var(--accent)" stroke-width="1.5" />
@@ -24,12 +27,25 @@ https://dribbble.com/shots/5260798-Process
 
 
         <!-- circle and text elements
-            each pair is grouped in a g element used to position the elements where needed, at a fraction of the SVG width
-            each pair is preface by a group describing the respective icon
-          -->
+          each pair is grouped in a g element used to position the elements where needed, at a fraction of the SVG width
+          each pair is prefaced by a group describing the respective icon
+        -->
         <g>
-          <!-- add a tick to the steps already achieved in the process -->
           <g transform="translate(66.67 100)">
+            <g transform="translate(-12 -40)">
+              <path d="M 0 7 l 7 -7 l 2 2 h 6 l 2 -2 l 7 7 l -4 4 l -4 -4 h -4 l -2 2 a 1 1 0 0 1 -3 -3 l 3 -3" fill="none"
+              stroke-width="1.5" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" />
+
+              <path
+              d="M 0 7 l 12 12 a 1 1 0 0 0 2 -2 l -0.75 -0.75 l 0.75 0.75 a 1 1 0 0 0 2 -2 l -0.75 -0.75 l 0.75 0.75 a 1 1 0 0 0 2 -2 l -0.75 -0.75 l 0.75 0.75 a 1 1 0 0 0 2 -2"
+              fill="none" stroke-width="1.5" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" />
+
+              <circle cx="5" cy="12" r="1.5" fill="var(--background)" stroke="currentColor" stroke-width="1" />
+              <circle cx="7" cy="14" r="1.5" fill="var(--background)" stroke="currentColor" stroke-width="1" />
+              <circle cx="9" cy="16" r="1.5" fill="var(--background)" stroke="currentColor" stroke-width="1" />
+            </g>
+
+            <!-- add a tick to the steps already achieved in the process -->
             <circle cx="0" cy="0" r="10" fill="currentColor" />
             <path d="M -4.5 0 l 4 4 l 5 -7" fill="none" stroke="var(--background)" stroke-width="2" />
             <text x="0" y="40" text-anchor="middle" fill="currentColor" font-size="0.7rem">Prospect</text>
@@ -41,7 +57,7 @@ https://dribbble.com/shots/5260798-Process
                 stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" />
               <path d="M 8 3 v 18 z M 16 0 v 18" fill="none" stroke-width="1.5" stroke="currentColor"
                 stroke-linejoin="round" stroke-linecap="round" />
-              <path d="M 11 15 q 5 0 10 -9" fill="none" stroke-width="1" stroke="currentColor" stroke-dasharray="2" />
+              <path d="M 11 15 q 5 0 10 -9" fill="none" stroke-width="1.5" stroke="currentColor" stroke-dasharray="2" />
 
               <path d="M 8 10 a 3 3 0 0 1 3 3 q 0 2 -3 4 q -3 -2 -3 -4 a 3 3 0 0 1 3 -3" fill="var(--background)"
                 stroke-width="1.2" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" />
@@ -54,6 +70,19 @@ https://dribbble.com/shots/5260798-Process
 
           <!-- highlight the group representing the current step with the accent color -->
           <g transform="translate(200 100)">
+            <g transform="translate(-12 -40)">
+              <path
+                d="M 0 16 l 5 5 l 2 -2 h 4 l 9.25 -9.25 a 1 1 0 0 0 -2 -2 l 2 -2 a 1 1 0 0 0 -2 -2 l 2 -2 a 1 1 0 0 0 -2 -2 l -9 9 h -3 v -2 q 0 -4 -3 -4 v 10 l -3 3"
+                fill="none" stroke-width="1.5" stroke="var(--accent)" stroke-linejoin="round" stroke-linecap="round" />
+
+              <path d="M 6 0 h 12 v 16 h -12 z" fill="var(--background)" stroke-width="1.5" stroke="var(--accent)"
+                stroke-linejoin="round" stroke-linecap="round" />
+
+              <circle cx="9" cy="3" r="1" fill="var(--accent)" />
+              <circle cx="15" cy="13" r="1" fill="var(--accent)" />
+              <circle cx="12" cy="8" r="2.25" fill="none" stroke="var(--accent)" stroke-width="1.25" />
+            </g>
+
             <circle cx="0" cy="0" r="10" fill="var(--accent)" />
             <path d="M 0 -5 a 5 5 0 0 1 0 10 a 5 5 0 0 1 0 -10" fill="none" stroke="var(--background)" stroke-width="2" />
 
@@ -62,24 +91,50 @@ https://dribbble.com/shots/5260798-Process
 
           <!-- style the steps not yet reached in the process to show a smaller circle, and only its stroke -->
           <g transform="translate(266.67 100)">
+            <g transform="translate(-12 -40)">
+              <path d="M 8 0 h 12 v 21 h -18 v -15 l 6 -6" fill="none" stroke-width="1.5" stroke="var(--subdued)"
+                stroke-linejoin="round" stroke-linecap="round" />
+              <path d="M 8 0 v 6 h -6" fill="none" stroke-width="1.5" stroke="var(--subdued)" stroke-linejoin="round"
+                stroke-linecap="round" />
+
+              <path d="M 11 6 h 6 z M 5 9.75 h 12 z M 5 13.5 h 12 z" fill="none" stroke-width="1.5"
+                stroke="var(--subdued)" />
+              <path d="M 5 17.25 h 12" fill="none" stroke-width="1.5" stroke="var(--subdued)" stroke-dasharray="2.5" />
+
+              <path d="M 13 17.25 v -4 l 6 -6 l 2 -2 l 4 4 l -2 2 l -6 6 h -4 z M 19 7.25 l 4 4 z M 21 9.25 l -3 3"
+                fill="var(--background)" stroke-width="1.5" stroke="var(--subdued)" stroke-linejoin="round"
+                stroke-linecap="round" />
+            </g>
             <circle cx="0" cy="0" r="4" fill="var(--background)" stroke="var(--subdued)" stroke-width="2.5" />
             <text x="0" y="40" text-anchor="middle" fill="var(--subdued)" font-size="0.7rem">Contract</text>
           </g>
 
           <g transform="translate(333.33 100)">
+            <g transform="translate(-12 -40)">
+              <path d="M 0 9 l 12 -9 l 12 9" fill="none" stroke-width="1.5" stroke="var(--subdued)" stroke-linejoin="round"
+                stroke-linecap="round" />
+              <path d="M 4 6 v 15 h 16 v -15" fill="none" stroke-width="1.5" stroke="var(--subdued)" stroke-linejoin="round"
+                stroke-linecap="round" />
+              <path d="M 9.5 21 v -9 h 5 v 9" fill="none" stroke-width="1.5" stroke="var(--subdued)" stroke-linejoin="round"
+                stroke-linecap="round" />
+              <path d="M 16 3 v -3 h 3 v 5" fill="none" stroke-width="1.5" stroke="var(--subdued)" stroke-linejoin="round"
+                stroke-linecap="round" />
+              <circle cx="17" cy="17" r="4" fill="var(--background)" stroke="var(--subdued)" stroke-width="1" />
+              <path d="M 15 17 l 1.5 1.5 l 2.5 -3" fill="none" stroke="var(--subdued)" stroke-width="1" />
+
+            </g>
             <circle cx="0" cy="0" r="4" fill="var(--background)" stroke="var(--subdued)" stroke-width="2.5" />
             <text x="0" y="40" text-anchor="middle" fill="var(--subdued)" font-size="0.7rem">Settled</text>
           </g>
         </g>
 
+      </g>
+    </svg>
 
-        </g>
-      </svg>
+    <!-- button to toggle between light and dark mode -->
+    <button class="theme">Light Mode</button>
 
-      <!-- button to toggle between light and dark mode -->
-      <button class="theme">Light Mode</button>
-
-      <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
