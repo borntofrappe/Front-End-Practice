@@ -23,9 +23,9 @@ body {
 }
 
 svg {
-  width: 80vw;
+  width: 90vw;
   height: auto;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 /* button allowing to toggle the theme, positioned on the bottom right of the viewport */
