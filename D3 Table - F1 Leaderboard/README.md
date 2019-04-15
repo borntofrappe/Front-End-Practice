@@ -1,6 +1,6 @@
 # D3 Table - F1 Leaderboard
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/ZZaaOe)
 
 ## Goal
 
