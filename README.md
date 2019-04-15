@@ -24,4 +24,11 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 
 |Title|Goal|Date|
 |---|---|---|
-|[SVG Process](https://codepen.io/borntofrappe/full/EJvrqL)|Recreate [this design](https://dribbble.com/shots/5260798-Process) as closely as possible.|13th-14th April 2019
+|[SVG Process](https://codepen.io/borntofrappe/full/EJvrqL)|Recreate [this design](https://dribbble.com/shots/5260798-Process) as closely as possible.|13th-14th April 2019|
+
+
+### D3
+
+|Title|Goal|Date|
+|---|---|---|
+|[D3 Table](https://codepen.io/borntofrappe/full/ZZaaOe)|Practice with D3 and a table layout to replicate the leaderboard from the F1 Chinese grand prix.|15th April 2019|
