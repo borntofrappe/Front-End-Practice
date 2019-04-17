@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>P5.js Drawing App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <!-- markup structure
+        include a custom cursor through the SVG shape of a pencil
+
+        in a wrapping container include a div describing the sidebar and the canvas element in which the application actually materializes itself
+    -->
+
+    <!-- cursor imposed when hovering on the canvas element -->
+    <svg id="cursor" width="36" height="36" viewBox="0 0 12 12">
+        <g transform="translate(1.2 1.2) scale(0.8 0.8)">
+            <path
+                d="M 0 12 v -4 l 6 -6 l 2 -2 l 4 4 l -2 2 l -6 6 h -4 z M 6 2 l 4 4 z M 8 4 l -3 3"
+                fill="none"
+                stroke-width="1.5"
+                stroke="#333"
+                stroke-linejoin="round"
+                stroke-linecap="round" />
+        </g>
+    </svg>
+
+    <main class="app">
+        <div class="app__sidebar shown">
+            <!-- button to toggle the sidebar into and out of sight -->
+            <button class="toggle">
+                <svg viewBox="0 0 100 100" width="32" height="32">
+                    <path d="M 10 30 h 40" stroke-width="8" stroke="currentColor" fill="none"/>
+                    <path d="M 10 50 h 32" stroke-width="8" stroke="currentColor" fill="none"/>
+                    <path d="M 10 70 h 45" stroke-width="8" stroke="currentColor" fill="none"/>
+                    <g id="toggle--icon" transform="translate(85 50)" stroke-linecap="round">
+                        <path d="M 0 0 l 18 -18" stroke-width="10" stroke="currentColor" fill="none"/>
+                        <path d="M 0 0 l 18 18" stroke-width="10" stroke="currentColor" fill="none"/>
+                    </g>
+                </svg>
+            </button>
+
+            <!-- input elements to modify the color and stroke-width of the drawing application -->
+            <div class="inputs">
+                <label for="color">
+                    Color
+                    <input type="color" id="color" >
+                </label>
+
+                <label for="stroke">
+                    Stroke
+                    <input type="number" id="stroke" min="1" max="10" value="1" >
+                </label>
+            </div>
+
+            <!-- button to clear the canvas of any content -->
+            <button class="clear">
+                <svg viewBox="0 0 100 100" width="28" height="28">
+                    <rect x="30" y="0" width="40" height="12" rx="5" fill="currentColor"/>
+                    <rect x="10" y="10" width="80" height="10" fill="currentColor"/>
+                    <path d="M 15 28 l 10 72 h 50 l 10 -72 z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- canvas element -->
+        <canvas class="app__canvas"></canvas>
+    </main>
+
+
+    <!-- eventually impor the p5.js library -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script> -->
+    <script src="script.js"></script>
+</body>
+</html>
