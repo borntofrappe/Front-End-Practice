@@ -4,37 +4,34 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  color: #ff6347;
 }
-/* avoid any scroll outside of the viewport */
 body {
-  overflow: hidden;
   font-family: "Open Sans", sans-serif;
+  overflow-y: hidden;
 }
-/* absolute position the sidebar in left section of the application */
+/* display the sidebar and canvas side by side */
+.app {
+  display: flex;
+  height: 100vh;
+}
+/* display the content in a single column layout */
 .app__sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 72px;
-  height: 100%;
-  background: #333;
-  /* display the content in a single column layout */
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #333;
   /* add noticeable padding to make sure the content is below the toggle (absolute positioned in the top right of the sidebar) */
-  padding: 3rem 0 1rem;
+  padding: 3rem 0.75rem 1.5rem;
   /* by default translated to the left of the viewport */
-  transform: translateX(-100%);
-  transition: transform 0.25s ease-out;
+  z-index: 10;
+  position: relative;
 }
-/* with a class of .shown translate the sidebar into view */
-.app__sidebar.shown {
-  transform: translateX(0);
-  /* different timing function to make the transition into view feel snappier */
-  transition-timing-function: cubic-bezier(0.15, 0.54, 0.38, 1);
+/* transition for the translation of the sidebar and the canvas element */
+.app__sidebar,
+canvas {
+  transition: transform 0.25s cubic-bezier(0.15, 0.54, 0.38, 1);
 }
+
 /* absolute position the toggle to the right of the sidebar */
 .app__sidebar .toggle {
   position: absolute;
@@ -94,6 +91,9 @@ svg#cursor {
   right: 100%;
   /* pointer events to avoid messy overlap on hover */
   pointer-events: none;
+  color: #ff6347;
+  width: 36px;
+  height: 36px;
 }
 
 /* push the last button to the bottom of the flex container using auto margin */

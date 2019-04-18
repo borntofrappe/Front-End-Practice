@@ -11,23 +11,11 @@
 
 
     <!-- markup structure
-        include a custom cursor through the SVG shape of a pencil
-
         in a wrapping container include a div describing the sidebar and the canvas element in which the application actually materializes itself
+        include a custom cursor through the SVG shape of a pencil
+        (including it afterwards allows the cursor to lay _on top_ of the canvas)
     -->
 
-    <!-- cursor imposed when hovering on the canvas element -->
-    <svg id="cursor" width="36" height="36" viewBox="0 0 12 12">
-        <g transform="translate(1.2 1.2) scale(0.8 0.8)">
-            <path
-                d="M 0 12 v -4 l 6 -6 l 2 -2 l 4 4 l -2 2 l -6 6 h -4 z M 6 2 l 4 4 z M 8 4 l -3 3"
-                fill="none"
-                stroke-width="1.5"
-                stroke="#333"
-                stroke-linejoin="round"
-                stroke-linecap="round" />
-        </g>
-    </svg>
 
     <main class="app">
         <div class="app__sidebar shown">
@@ -44,17 +32,22 @@
                 </svg>
             </button>
 
-            <!-- input elements to modify the color and stroke-width of the drawing application -->
+            <!-- input elements to modify the color and stroke-width of the drawing application
+            ! in the id for the input elements use the matching properties of the canvas's drawingContext
+            strokeStyle to change the color of the stroke
+            lineWidth for its width
+            -->
             <div class="inputs">
-                <label for="color">
+                <label for="strokeStyle">
                     Color
-                    <input type="color" id="color" >
+                    <input type="color" id="strokeStyle" value="#ff6347" >
                 </label>
 
-                <label for="stroke">
+                <label for="lineWidth">
                     Stroke
-                    <input type="number" id="stroke" min="1" max="10" value="1" >
+                    <input type="number" id="lineWidth" min="1" max="10" value="4" >
                 </label>
+
             </div>
 
             <!-- button to clear the canvas of any content -->
@@ -67,13 +60,29 @@
             </button>
         </div>
 
-        <!-- canvas element -->
-        <canvas class="app__canvas"></canvas>
+        <!-- canvas element
+        included through p5.js
+        -->
+        <!-- <canvas class="app__canvas"></canvas> -->
     </main>
 
 
-    <!-- eventually impor the p5.js library -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script> -->
+    <!-- cursor imposed when hovering on the canvas element -->
+    <svg id="cursor" width="36" height="36" viewBox="0 0 12 12">
+        <g transform="translate(1.2 1.2) scale(0.8 0.8)">
+            <path
+                d="M 0 12 v -4 l 6 -6 l 2 -2 l 4 4 l -2 2 l -6 6 h -4 z M 6 2 l 4 4 z M 8 4 l -3 3"
+                fill="#fff"
+                stroke-width="1.5"
+                stroke="currentColor"
+                stroke-linejoin="round"
+                stroke-linecap="round" />
+        </g>
+    </svg>
+
+
+    <!-- import the p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
