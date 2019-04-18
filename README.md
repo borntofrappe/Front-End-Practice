@@ -38,4 +38,4 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |Title|Goal|Date|
 |---|---|---|
 |[JS Loading Animation](https://codepen.io/borntofrappe/pen/yrpRmy)|Practice with anime.js to create a loading animation.|16th April 2019|
-|[JS P5 Drawing Application](https://codepen.io/borntofrappe/pen/QPQPrv)|Practice with P5.js to create a drawing application with the canvas API.|17th April 2019|
+|[JS P5 Drawing Application](https://codepen.io/borntofrappe/pen/QPQPrv)|Practice with P5.js to create a drawing application with the canvas API.|17th-18th April 2019|
