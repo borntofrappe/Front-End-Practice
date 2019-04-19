@@ -1,6 +1,6 @@
 # JS Animate SVG
 
-<!-- ## Live Demo -->
+## [Live Demo](https://codepen.io/borntofrappe/full/xejMWe).
 
 ## Goal
 
