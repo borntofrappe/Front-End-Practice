@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS Animate SVG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <!-- HTML structure
+  include a heading describing the year,
+  the SVG describing the vehicle
+  a progress bar to animate to and from different years
+  -->
+
+  <main>
+    <h2>1950</h2>
+    <!-- SVG for the 1950 model -->
+      <svg viewBox="0 0 400 150">
+      <g transform="translate(5 5) scale(0.975 0.933)">
+          <g class="wheels">
+            <circle cx="80" cy="105" r="25" opacity="0.65" fill="none" stroke="currentColor" stroke-width="5" />
+            <circle cx="65" cy="115" r="35" fill="none" stroke="currentColor" stroke-width="5" />
+
+            <circle cx="330" cy="110" r="22" opacity="0.65" fill="none" stroke="currentColor" stroke-width="5" />
+            <circle cx="370" cy="120" r="30" fill="none" stroke="currentColor" stroke-width="5" />
+          </g>
+
+          <path id="frame" d="M 0 110 q 0 30 380 25 a 10 30 0 0 0 10 -30 q -80 -40 -190 -50 q -10 0 -15 -15 t -15 10 t -50 20 q -8 -15 -10 -35 q -110 50 -110 75" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+      </g>
+
+    </svg>
+
+    <!-- SVG for the 1951 model
+      slightly shorter, curvier and with the wheels pushed inwards
+    -->
+    <!-- <svg viewBox="0 0 400 150">
+        <g transform="translate(5 5) scale(0.975 0.933)">
+            <g class="wheels">
+              <circle cx="100" cy="105" r="25" opacity="0.65" fill="none" stroke="currentColor" stroke-width="5" />
+              <circle cx="85" cy="115" r="35" fill="none" stroke="currentColor" stroke-width="5" />
+
+              <circle cx="325" cy="110" r="22" opacity="0.65" fill="none" stroke="currentColor" stroke-width="5" />
+              <circle cx="345" cy="120" r="30" fill="none" stroke="currentColor" stroke-width="5" />
+            </g>
+
+            <path id="frame" d="M 30 100 q 0 50 330 35 a 15 15 0 0 0 0 -40 q -80 -30 -170 -35 q -3 0 -4 -10 t -5 8 t -50 20 q -5 -12 -25 -20 q -80 10 -76 42" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+        </g>
+
+      </svg> -->
+
+      <input type="range" min="0" max="100" step="0.001" value="0">
+  </main>
+
+
+  <!-- import anime.js -->
+  <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

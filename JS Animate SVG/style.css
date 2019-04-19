@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:300");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #00232d, #00212a);
+  --accent: #e22500;
+  --primary: #afffff;
+  --progress: 0%;
+  --default: #fff;
+  padding: 1rem;
+  font-family: "Rubik", sans-serif;
+}
+
+main {
+  max-width: 1000px;
+  width: 90vw;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+main h2 {
+  color: var(--accent);
+  font-weight: 300;
+  font-size: 2.5rem;
+  align-self: flex-start;
+}
+main svg {
+  margin: 2rem 1rem 3rem;
+  color: var(--primary);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 1rem;
+  background: transparent;
+  color: var(--accent);
+  position: relative;
+  cursor: e-resize;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+input[type="range"]:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--accent) var(--progress),
+    var(--default) var(--progress)
+  );
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: -5;
+}
+input[type="range"]:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-left: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  z-index: -5;
+}
