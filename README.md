@@ -40,3 +40,9 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[JS Loading Animation](https://codepen.io/borntofrappe/pen/yrpRmy)|Practice with anime.js to create a loading animation.|16th April 2019|
 |[JS P5 Drawing Application](https://codepen.io/borntofrappe/pen/QPQPrv)|Practice with P5.js to create a drawing application with the canvas API.|17th-18th April 2019|
 |[JS Animate SVG](https://codepen.io/borntofrappe/pen/xejMWe)|Practice with anime.js to re-create the first frame in the F1 evolution video, morphing and translating SVG elements.|19th April 2019|
+
+## Miscellaneous
+
+|Title|Goal|Date|
+|---|---|---|
+|[CPC Primed Cicada](https://codepen.io/borntofrappe/pen/QPxvBM)|Create an entry for the weekly codepenchallenge, themed around cicadas and prime numbers.|20th April 2019|
