@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* center in the viewport */
+body {
+  background: hsl(0, 0%, 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* animation to have the circle elements rotate to 360degrees */
+.satellite {
+  animation: rotate 5s linear infinite;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+/* animation to have the group describing the rectangle elements translate right and left */
+.dust {
+  animation: translate 2s ease-in-out infinite alternate;
+}
+@keyframes translate {
+  to {
+    transform: translateX(20px);
+  }
+}
+
+/* animation to show and then immediately hide the stroke for the .shooting-star path */
+.shooting-star {
+  animation: offset 10s 2s linear infinite;
+}
+@keyframes offset {
+  3% {
+    stroke-dashoffset: 0;
+  }
+  5%,
+  100% {
+    stroke-dashoffset: -130;
+  }
+}
