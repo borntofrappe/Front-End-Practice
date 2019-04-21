@@ -24,7 +24,8 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 
 |Title|Goal|Date|
 |---|---|---|
-|[SVG Process](https://codepen.io/borntofrappe/pen/EJvrqL)|Recreate [this design](https://dribbble.com/shots/5260798-Process) as closely as possible.|13th-14th April 2019|
+|[SVG Process](https://codepen.io/borntofrappe/pen/EJvrqL)|Re-create [this design](https://dribbble.com/shots/5260798-Process) as closely as possible.|13th-14th April 2019|
+|[SVG Planets](https://codepen.io/borntofrappe/pen/qwKwoV)|Practice with SVG syntax trying to re-create a few of the icons showcased on [this inspiring set](https://dribbble.com/shots/4193533-Best-Icons-Of-The-Month).|21st April 2019|
 
 
 ### D3
