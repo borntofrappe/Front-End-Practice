@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Button button, who's got the button?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <!-- silly svg icon making up Tweedledum
+    or Tweedledee
+    forgot which
+    -->
+    <svg viewBox="0 0 300 300">
+        <!-- hair and ear -->
+        <g>
+            <path d="M 50 145 q -25 -20 -25 -40 q -5 45 10 50  q -20 0 -30 -10 q 10 5 20 20 q -15 10 -25 10 q 25 20 50 10" fill="#FE5F01" stroke="#333" stroke-width="3"/>
+            <ellipse cx="40" cy="180" rx="10" ry="15" fill="#FEAC84" stroke="#333" stroke-width="3"/>
+            <path d="M 45 190 q -3 -8 -7 -15" fill="none" stroke="#333" stroke-width="3"/>
+        </g>
+        <!-- hair and ear on the right side -->
+        <g transform="translate(300 0) scale(-1 1)">
+            <path d="M 50 145 q -25 -20 -25 -40 q -5 45 10 50 q -20 0 -30 -10 q 10 5 20 20 q -15 10 -25 10 q 25 20 50 10" fill="#FE5F01" stroke="#333" stroke-width="3"/>
+            <ellipse cx="40" cy="180" rx="10" ry="15" fill="#FEAC84" stroke="#333" stroke-width="3"/>
+            <path d="M 45 190 q -3 -8 -7 -15" fill="none" stroke="#333" stroke-width="3"/>
+        </g>
+
+        <!-- face -->
+        <path d="M 50 145 q 0 15 -10 45 t 0 45 a 150 180 0 0 0 220 0 q 10 -15 0 -45 t -10 -45" fill="#FEAC84" stroke="#333" stroke-width="3"/>
+
+        <!-- eyes -->
+        <g transform="translate(110 170)">
+            <ellipse transform="rotate(12) skewX(10)" cx="0" cy="0" rx="25" ry="20" fill="#fff" stroke="#333" stroke-width="3"/>
+            <circle cx="-18" cy="-5" r="7.5" fill="#333"/>
+        </g>
+        <g transform="translate(190 170) scale(-1 1)">
+            <ellipse transform="rotate(12) skewX(10)" cx="0" cy="0" rx="25" ry="20" fill="#fff" stroke="#333" stroke-width="3"/>
+            <circle cx="18" cy="5" r="7.5" fill="#333"/>
+        </g>
+
+        <!-- mouth -->
+        <g>
+            <path d="M 125 225 q -20 10 -20 35 a 135 120 0 0 1 95 5" fill="none" stroke="#333" stroke-width="3"/>
+            <path d="M 203 255 q 5 5 -2 20" fill="none" stroke="#333" stroke-width="2"/>
+            <path d="M 115 263 q 20 0 20 10 t 30 10" fill="none" stroke="#333" stroke-width="2.5"/>
+        </g>
+
+        <!-- nose -->
+        <g transform="translate(150 216)">
+            <ellipse transform="skewX(5)" cx="0" cy="0" rx="15" ry="12" fill="#F7796A" stroke="#333" stroke-width="3"/>
+            <path d="M -5 1 q 0 5 3 8" fill="none" stroke="#333" stroke-width="2"/>
+            <path d="M 3 2 q 0 5 3 8" fill="none" stroke="#333" stroke-width="2"/>
+        </g>
+
+        <!-- hat -->
+        <g>
+            <!-- bottom section -->
+            <path d="M 60 140 a 150 180 0 0 0 180 0 a 160 180 0 0 0 -180 0" fill="#F6372D" stroke="#333" stroke-width="3"/>
+            <!-- top section -->
+            <path d="M 150 85 q -90 20 -100 60 a 200 120 0 0 1 200 0 q -10 -40 -100 -60" fill="#F6372D" stroke="#333" stroke-width="3"/>
+            <!-- stripes -->
+            <path d="M 150 85 q -50 20 -70 50" fill="none" stroke="#333" stroke-width="3"/>
+            <path d="M 150 85 q 50 20 70 50" fill="none" stroke="#333" stroke-width="3"/>
+            <path d="M 150 85 v 42" fill="none" stroke="#333" stroke-width="3"/>
+        </g>
+
+        <!-- flag -->
+        <g>
+            <path d="M 150 25 q 25 20 50 5 q -7.5 18 -15 18 q 5 10 15 15 q -40 5 -50 -10" fill="#B9DF3E" stroke="#333" stroke-width="3"/>
+            <path d="M 150 10 q 0 50 -10 75 h 20 q -10 -25 -10 -75" fill="#ABC2D4" stroke="#333" stroke-width="3"/>
+            <circle cx="150" cy="10" r="7.5" fill="#ABC2D4" stroke="#333" stroke-width="3"/>
+        </g>
+
+        <!-- top of the hat, overlaid on the flag -->
+        <circle cx="150" cy="80" r="11" fill="#F6372D" stroke="#333" stroke-width="3"/>
+    </svg>
+
+    <script src="script.js"></script>
+</body>
+</html>
