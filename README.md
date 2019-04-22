@@ -20,21 +20,13 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 
 > split by purpose
 
-### SVG
-
-|Title|Goal|Date|
-|---|---|---|
-|[SVG Process](https://codepen.io/borntofrappe/pen/EJvrqL)|Re-create [this design](https://dribbble.com/shots/5260798-Process) as closely as possible.|13th-14th April 2019|
-|[SVG Planets](https://codepen.io/borntofrappe/pen/qwKwoV)|Practice with SVG syntax trying to re-create a few of the icons showcased on [this inspiring set](https://dribbble.com/shots/4193533-Best-Icons-Of-The-Month).|21st April 2019|
-
-
 ### D3
 
 |Title|Goal|Date|
 |---|---|---|
 |[D3 Table](https://codepen.io/borntofrappe/pen/ZZaaOe)|Practice with D3 and a table layout to replicate the leaderboard from the F1 Chinese grand prix.|15th April 2019|
 
-## JS
+### JS
 
 |Title|Goal|Date|
 |---|---|---|
@@ -42,13 +34,20 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[JS P5 Drawing Application](https://codepen.io/borntofrappe/pen/QPQPrv)|Practice with P5.js to create a drawing application with the canvas API.|17th-18th April 2019|
 |[JS Animate SVG](https://codepen.io/borntofrappe/pen/xejMWe)|Practice with anime.js to re-create the first frame in the F1 evolution video, morphing and translating SVG elements.|19th April 2019|
 
-## UI
+### SVG
+
+|Title|Goal|Date|
+|---|---|---|
+|[SVG Process](https://codepen.io/borntofrappe/pen/EJvrqL)|Re-create [this design](https://dribbble.com/shots/5260798-Process) as closely as possible.|13th-14th April 2019|
+|[SVG Planets](https://codepen.io/borntofrappe/pen/qwKwoV)|Practice with SVG syntax trying to re-create a few of the icons showcased on [this inspiring set](https://dribbble.com/shots/4193533-Best-Icons-Of-The-Month).|21st April 2019|
+
+### UI
 
 |Title|Goal|Date|
 |---|---|---|
 |[UI Button Kit](https://codepen.io/borntofrappe/pen/VNBRwo)|Create a kit for a variety of buttons. Primary, secondary, tertiary buttons, of a variable color.|22nd April 2019|
 
-## Miscellaneous
+### Miscellaneous
 
 |Title|Goal|Date|
 |---|---|---|
