@@ -1,6 +1,6 @@
 # Button UI Kit
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/VNBRwo)
 
 ## Goal
 
@@ -23,3 +23,27 @@ It would be additionally neat to:
 - make it so that any time a button is clicked a new set of buttons is included with a different color;
 
 - use HSL and CSS custom properties.
+
+## Notes
+
+Turned out to be quite the teaching project. As I mentioned whilst sharing it online, it seems firefox trips up when using the `transform-origin` attribute in an SVG element. The fix? Use the `translate()` value to have the wrapping element literally move the center of the transform property.
+
+Moving from this:
+
+```html
+<svg>
+  <circle transform-origin="80 20" cx="50" cy="50" r="20" />
+</svg>
+```
+
+To this:
+
+```html
+<svg>
+  <g transform="translate(80 20)">
+    <circle cx="-30" cy="30" r="20" />
+  </g>
+</svg>
+```
+
+It is a trivial example, but the point is you need to adjust your coordinates in light of the translation.
