@@ -1,3 +1,6 @@
+// create a template to be included in the shadow DOM
+// making up the header with the h1, h2 elements describing the online/offline status
+// ! add an icon to match the connection
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -24,6 +27,7 @@ template.innerHTML = `
   }
 
   h2 {
+    font-family: 'Lato', sans-serif;
     margin-top: 1.25rem;
     text-transform: uppercase;
     font-weight: 300;
@@ -59,43 +63,55 @@ template.innerHTML = `
   </header>
 `;
 
+// define the status component
 class StatusComponent extends HTMLElement {
   // template.innerHTML = '';
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    // include a property to specify and later update a date instance
+    // this to show when the online/offline status was marked
     this.lastOnline = new Date();
   }
 
+  // function called when the component is instantiated
+  // function called also when registering an online/offline event on the window
   updateStatus() {
-    const status = this.shadowRoot.querySelector('h1');
-    const notice = this.shadowRoot.querySelector('h2');
-    const signal = this.shadowRoot.querySelector('svg .signal');
-    const bar = this.shadowRoot.querySelector('svg .bar');
-
+    // based on the online property of on the window's object alter the text and change the opacity of the icons elements
     const isOnline = window.navigator.onLine;
 
+    const status = this.shadowRoot.querySelector('h1');
+    const notice = this.shadowRoot.querySelector('h2');
     status.textContent = isOnline ? 'Online' : 'Offline';
     notice.textContent = isOnline ? `Since ${this.lastOnline.toUTCString()}` : `Last seen ${this.lastOnline.toUTCString()}`;
+
+    const signal = this.shadowRoot.querySelector('svg .signal');
+    const bar = this.shadowRoot.querySelector('svg .bar');
     signal.setAttribute('opacity', isOnline ? 1 : 0.7);
     bar.setAttribute('opacity', isOnline ? 0 : 1);
   }
 
+  // when instantiated
   connectedCallback() {
+    // create a deep copy of the template element
     this.shadowRoot
       .appendChild(template.content.cloneNode(true));
 
+    // call the function to specify the necessary text/opacity
     this.updateStatus();
 
+    // register the online and offline events, at which point update the date instance and the elements of the component
     window.addEventListener('online', () => {
       this.lastOnline = new Date();
       this.updateStatus();
     });
 
     window.addEventListener('offline', () => {
+      this.lastOnline = new Date();
       this.updateStatus();
     });
   }
 }
 
+// create the element ultimately used in the DOM, leveraging the class
 customElements.define('status-component', StatusComponent);
