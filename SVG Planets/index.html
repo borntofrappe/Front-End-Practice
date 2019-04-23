@@ -14,7 +14,7 @@
 
         <!-- first visual translated to allow for space around a 100 wide and 100 tall graphic
         to accommodate for a bit of animation
-         -->
+            -->
         <g class="planet" transform="translate(25 10)">
             <!-- moon behind the planet -->
             <circle cx="30" cy="20" r="10" fill="#FFDA7A" stroke="#322E63" stroke-width="4"/>
@@ -34,10 +34,12 @@
             </g>
 
             <!-- special moon equipped with a trail and made to rotate with respect to the center of the planet -->
-            <g class="satellite" transform="rotate(0)" transform-origin="50 50">
-                <!-- path before the circle to have the circle overlap and hide the end of the line -->
-                <path d="M 50 100 a 50 50 0 0 0 50 -50" fill="none" stroke="#322E63" stroke-width="4" stroke-linecap="round" />
-                <circle cx="100" cy="50" r="8" fill="#EBF3FF" stroke="#322E63" stroke-width="4"/>
+            <g transform="translate(50 50)">
+                <g class="satellite">
+                    <!-- path before the circle to have the circle overlap and hide the end of the line -->
+                    <path d="M 0 50 a 50 50 0 0 0 50 -50" fill="none" stroke="#322E63" stroke-width="4" stroke-linecap="round" />
+                    <circle cx="50" cy="0" r="8" fill="#EBF3FF" stroke="#322E63" stroke-width="4"/>
+                </g>
             </g>
         </g>
 
@@ -67,9 +69,15 @@
             <g class="moons">
                 <!-- include the class of satellite as the peculiar moon in the first visual to have the two circle rotate as well
                 rotated with respect to each other coordinate
-                 -->
-                <circle class="satellite" transform-origin="70 30" cx="65" cy="40" r="10" fill="#B9D5EA" stroke="#322E63" stroke-width="4"/>
-                <circle class="satellite" transform-origin="65 40" cx="70" cy="30" r="6" fill="#EBF3FF" stroke="#322E63" stroke-width="4"/>
+                    -->
+                    <g transform="translate(70 30)">
+                        <circle class="satellite" cx="-5" cy="10" r="10" fill="#B9D5EA" stroke="#322E63" stroke-width="4"/>
+                    </g>
+                    <g transform="translate(65 40)">
+                        <circle class="satellite" cx="5" cy="-10" r="6" fill="#EBF3FF" stroke="#322E63" stroke-width="4"/>
+
+                    </g>
+
                 <circle cx="20" cy="75" r="8" fill="#2ABBDD" stroke="#322E63" stroke-width="4"/>
             </g>
         </g>
