@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Brain.js - XOR Net</title>
+</head>
+
+<body>
+  <h1>
+    Output in the console
+  </h1>
+  <!-- import the neural network library -->
+  <script src="https://unpkg.com/brain.js@1.6.0/browser.js"></script>
+
+  <script>
+    // XOR net
+
+    // training data
+    const trainingData = [
+      { input: [0, 0], output: [0] },
+      { input: [0, 1], output: [1] },
+      { input: [1, 0], output: [1] },
+      { input: [1, 1], output: [0] }
+    ];
+
+    // create a net
+    const options = {
+      hiddenLayers: [3]
+    }
+    const net = new brain.NeuralNetwork(options);
+
+    // train the net
+    net.train(trainingData);
+
+    // run the net with specific values
+    const firstInput = [0, 0];
+    const firstOutput = net.run(firstInput);
+    console.log(`First input: ${firstInput}\nFirst output: ${firstOutput}`);
+
+    const secondInput = [1, 0];
+    const secondOutput = net.run(secondInput);
+    console.log(`Second input: ${secondInput}\nSecond output: ${secondOutput}`);
+  </script>
+</body>
+
+</html>
