@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Brain.js - Restaurant Net</title>
+</head>
+
+<body>
+  <h1>
+    Output in the console
+  </h1>
+  <!-- import the neural network library -->
+  <script src="https://unpkg.com/brain.js@1.6.0/browser.js"></script>
+
+  <script>
+    // include the JavaScript logic making use of brain.js
+
+    // restaurant net
+    // startting from an object specifying open days for a series of restaurants
+    const restaurants = {
+        "Brilliant Yellow Corral": "Monday",
+        "Penny’s": "Tuesday",
+        "Right Coast Wings": "Wednesday",
+        "The Delusion Last Railway Car": "Thursday",
+        "Fun Day Inn": "Friday",
+        "JHOP": "Saturday",
+        "Owls": "Sunday"
+    };
+
+    // massage the data structure as to have input and output values consisting of objects
+    // objects in which the string value is signalled with a boolean of 1, to signal its existence
+    /*
+    {
+      "Monday": 1
+    }
+    */
+    const trainingData = [];
+    for(let name in restaurants) {
+      const day = restaurants[name];
+      trainingData.push({
+        input: { [day]: 1 },
+        output: { [name]: 1 },
+      });
+    }
+
+    // create a net and train it with the training data
+    const options = {
+      hiddenLayers: [3]
+    }
+    const net = new brain.NeuralNetwork(options);
+    net.train(trainingData);
+
+    // create a function allowing to use the neural net with string values
+    function restaurantForDay(day) {
+      // day: string value
+      // input for the net: object value
+      const input = {
+        [day]: 1,
+      }
+      // output of the net: giant object describing values in the [0-1] range for the restaurants' names
+      const output = net.run(input);
+
+      // result of the function: string value describing the restaurant with the greater measurement
+      const result = Object
+        .entries(output)
+        .sort(([nameA, errorA], [nameB, errorB]) => errorA >= errorB ? -1 : 1)[0][0];
+
+      return result;
+    }
+
+    // run the net with arbitrary values
+    const day = 'Tuesday';
+    const restaurant = restaurantForDay(day);
+    console.log(`Day: ${day}\nRestaurant: ${restaurant}`);
+    /*
+      Day: Tuesday
+      Restaurant: Penny’s
+    */
+
+
+    // reverse the net
+    // modify the training data so that input and output values are reversed
+    const reverseTrainingData = trainingData
+      .map(({input, output}) => ({
+        input: output,
+        output: input,
+      }));
+
+    // create and train a reverse net
+    const reverseNet = new brain.NeuralNetwork(options);
+    reverseNet.train(reverseTrainingData);
+
+    // function allowing to return a day given an input restaurant's name
+    function dayForRestaurant(restaurant) {
+      const input = {
+        [restaurant]: 1,
+      }
+      const output = reverseNet.run(input);
+      const result = Object
+        .entries(output)
+        .sort(([,errorA], [,errorB]) => errorA >= errorB ? -1 : 1)[0][0];
+
+      return result;
+    }
+
+    const reverseRestaurant = 'JHOP';
+    const reverseDay = dayForRestaurant(reverseRestaurant);
+    console.log(`Restaurant: ${reverseRestaurant}\nDay: ${reverseDay}`);
+    /*
+      Restaurant: JHOP
+      Day: Saturday
+    */
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Brain.js - Color Net</title>
+</head>
+
+<body>
+  <h1>
+    Output in the console
+  </h1>
+  <!-- import the neural network library -->
+  <script src="https://unpkg.com/brain.js@1.6.0/browser.js"></script>
+
+  <script>
+    // include the JavaScript logic making use of brain.js
+
+    // Color Net
+    // starting from a set of values describing the input and output fields
+    const colors = [
+        { green: 0.2, blue: 0.4 },
+        { green: 0.4, blue: 0.6 },
+        { red: 0.2, green: 0.8, blue: 0.8 },
+        { green: 1, blue: 1 },
+        { red: 0.8, green: 1, blue: 1 },
+        { red: 1, green: 1, blue: 1 },
+        { red: 1, green: 0.8, blue: 0.8 },
+        { red: 1, green: 0.6, blue: 0.6 },
+        { red: 1, green: 0.4, blue: 0.4 },
+        { red: 1, green: 0.31, blue: 0.31 },
+        { red: 0.8 },
+        { red: 0.6, green: 0.2, blue: 0.2 },
+    ];
+
+    const brightnesses = [
+        { dark: 0.8 },
+        { neutral: 0.8 },
+        { light: 0.7 },
+        { light: 0.8 },
+        { light: 0.9 },
+        { light: 1 },
+        { light: 0.8 },
+        { neutral: 0.7, light: 0.5 },
+        { dark: 0.5, neutral: 0.5 },
+        { dark: 0.6, neutral: 0.3 },
+        { dark: 0.85 },
+        { dark: 0.9 },
+    ];
+
+    // massage the arrays of objects to create a data structure fitting the train function
+    /*
+      [
+        {input, output},
+        {input, output},
+        {input, output},
+      ]
+    */
+   const trainingData = Array(colors.length)
+    .fill('')
+    .map((item, index) => ({
+      input: colors[index],
+      output: brightnesses[index],
+    }));
+
+
+    // create a net
+    const options = {
+      hiddenLayers: [3],
+    }
+    const net = new brain.NeuralNetwork(options);
+
+    // train the net
+    const stats = net.train(trainingData);
+    console.log(`Stats: ${JSON.stringify(stats)}`);
+
+    // run the net with an arbitrary input value
+    const color = { red: 0.7, blue: 0.2 };
+    const brightness = net.run(color);
+    console.log(`Color: ${JSON.stringify(color)}\nBrightness: ${JSON.stringify(brightness)}`);
+
+
+    // reverse net
+    // reverse the training data
+    const reverseTrainingData = trainingData.map(({input, output}) => ({
+      input: output,
+      output: input
+    }));
+    // create a new net leveraging the new data structrue
+    const reverseNet = new brain.NeuralNetwork(options);
+    reverseNet.train(reverseTrainingData);
+
+    const reverseBrightness = { neutral: 0.2 };
+    const reverseColor = reverseNet.run(reverseBrightness);
+    console.log(`Brigthness: ${JSON.stringify(reverseBrightness)}\nColor: ${JSON.stringify(reverseColor)}`);
+
+  </script>
+</body>
+
+</html>

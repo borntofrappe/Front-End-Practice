@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Brain.js - Recurrence Net</title>
+</head>
+
+<body>
+  <h1>
+    Output in the console
+  </h1>
+  <!-- import the neural network library -->
+  <script src="https://unpkg.com/brain.js@1.6.0/browser.js"></script>
+
+  <script>
+    // Recurrence Net
+    // given training data expressing a trend, a long short term memory net is task to fill in the gap
+    const trainingData = [
+      [0, 1, 2, 3, 4, 5],
+      [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+    ];
+
+    // create the appropriate net and train it
+    const net = new brain.recurrent.LSTMTimeStep();
+
+    const stats = net.train(trainingData);
+    console.log(`Stats: ${JSON.stringify(stats)}`);
+
+    // run the net with a partial input
+    const firstInput = [0, 1, 2, 3, 4];
+    const firstOutput = net.run(firstInput);
+
+    console.log(`Input: ${JSON.stringify(firstInput)}\nOutput: ${JSON.stringify(firstOutput)}`);
+
+    const secondInput = [0, 1, 2, 3];
+    const secondOutput = net.run(secondInput);
+
+    console.log(`Input: ${JSON.stringify(secondInput)}\nOutput: ${JSON.stringify(secondOutput)}`);
+
+    const thirdInput = [5, 4, 3, 2, 1];
+    const thirdOutput = net.run(thirdInput);
+
+    console.log(`Input: ${JSON.stringify(thirdInput)}\nOutput: ${JSON.stringify(thirdOutput)}`);
+
+  </script>
+</body>
+
+</html>
