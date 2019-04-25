@@ -34,6 +34,8 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[JS P5 Drawing Application](https://codepen.io/borntofrappe/pen/QPQPrv)|Practice with P5.js to create a drawing application with the canvas API.|17th-18th April 2019|
 |[JS Animate SVG](https://codepen.io/borntofrappe/pen/xejMWe)|Practice with anime.js to re-create the first frame in the F1 evolution video, morphing and translating SVG elements.|19th April 2019|
 |[JS Status Component](https://codepen.io/borntofrappe/pen/ROYvBd)|Practice with the Web Components API while tinkering with the `window.ononline` and `window.onoffline` events.|23rd April 2019|
+|JS Brain.js|Create a series of neural networks while going through a course on the JavaScript library Brain.js.|24th-25th April 2019|
+
 
 ### SVG
 

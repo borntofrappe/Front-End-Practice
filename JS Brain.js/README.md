@@ -2,7 +2,7 @@
 
 Neural networks with JavaScript. Prompted by [this Scrimba Course](https://scrimba.com/g/gneuralnetworks), this folder includes the notes I made through the playlist and the different neural nets each in its own file.
 
-## Getting started
+## Getting Started
 
 A neural network essentially works on the basis of _training data_. You include properly formatted data in the net, train it and later run the net with a distinct input to have it produce a result, an output based on the training accumulated in the previous stages.
 
@@ -24,7 +24,7 @@ In a first example, the lecturer introduces a neural net for the XOR function; t
 
 The goal of the first example is to show how a net can be trained to implement such logic, on the basis of training data. The net is not told the XOR logic, but it learns it by assessing the value of the input and output specified in the training data.
 
-### Training data
+### Training Data
 
 The training data is an _array_ of _objects_, each describing the input and output values as follows:
 
@@ -48,7 +48,7 @@ const trainingData = [
 
 The idea is to ultimately run the net with a set of input values: `[1, 0]`, and have it produce a fitting result.
 
-### Creating the net
+### Creating the Net
 
 Brain.js provides a few neural networks in its code. A first net is created through the `NeuralNetwork()` function available on the `brain` object.
 
@@ -61,7 +61,7 @@ const options = {
 const net = new brain.NeuralNetwork(options);
 ```
 
-### Training the net
+### Training the Net
 
 Once created, the net can be trained with the training data and through the `train()` function. This function is made available on every instance of a neural network.
 
@@ -69,7 +69,7 @@ Once created, the net can be trained with the training data and through the `tra
 net.train(trainingData);
 ```
 
-### Running the net
+### Running the Net
 
 Once created and trained, the net is able to produce a result by passing a fitting input in the `.run()` function.
 
@@ -103,7 +103,7 @@ Producing a value close to `1`
 // Second output: 0.9341405034065247
 ```
 
-## How does a net learn
+## How Does a Net Learn
 
 ### Forward, Backward Propagation
 
@@ -289,13 +289,13 @@ const stats = netColor.train(trainingColorData);
 
 With this net is it already possible to highlight a rather important feature of neural networks and Brain.js specifically: the net is trained and run with input values of variable lengths. If an input field is missing, the net assumes its value to be `0` and acts accordingly.
 
-### Reversing the net
+### Reversing the Net
 
 As added practice, the lecturer highlights how the net can run the reverse logic to the mentioned color net, detailing a net which accepts as input a brightness value and produces as output a color value.
 
 To achieve this result it is necessary to train a net with the opposite training data.
 
-## Restaurant net - String
+## Restaurant Net - String
 
 Instead of leveraging just numbers, a net can be modeled to reason with other data types, like string values. The idea is to assign a neuron to a particular value, signalling its existence with a boolean: on and off.
 
@@ -770,7 +770,7 @@ Limiting the number of iterations so that the net is not able to perfectly fill 
 net.run('Jane'); // ?
 ```
 
-## Detecting sentiment
+## Detecting Sentiment
 
 With a recurrent long short term memory network it is possible to detect a sentiment of a sentence based on an appropriate set of training data.
 
@@ -801,6 +801,26 @@ console.log(net.run('I am happy!'));
 This example highlights once more how the net is able to dynamically map out input values, even if they don't match the input described in the training data word by word.
 
 Again, by tinkering with the error threshold and the number of iterations, the net is able to reach a more stable solution and at different speeds. A net is however only as good as the training data pouring in.
+
+## Recurrent Neural Network - Input & Output
+
+To understand how a recurrent neural network learns, consider an input map, like earlier. This input map describes the input and output values specified in the training data. In addition to these values however, it includes another value, which can belabeled as 'new idea'.
+
+With this additional neuron, the recurrent net tries to find a relation between input and ouput.
+
+```js
+const trainingData = [
+  { input: '1', output: '2'}
+]
+/* under the hood, brain.js works with the following input map
+  const inputMap = ['1', 'new idea', '2'];
+  attributing one neuron for each unique value
+
+  [1, 0, 0]
+  [0, 1, 0]
+  [0, 0, 1]
+*/
+```
 
 ## Reinforcement learning
 
