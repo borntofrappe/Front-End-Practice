@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Brain.js - Sentiment Detection</title>
+</head>
+
+<body>
+  <h1>
+    Output in the console
+  </h1>
+  <!-- import the neural network library -->
+  <script src="https://unpkg.com/brain.js@1.6.0/browser.js"></script>
+
+  <script>
+    // Sentiment Detection
+
+    // starting from training data associating a few string values with certain moods
+    const trainingData = [
+        { input: 'I am super happy!', output: 'happy' },
+        { input: 'What a pill!', output: 'sarcastic' },
+        { input: 'I am super unhappy!', output: 'sad' },
+        { input: 'Are we there yet?', output: 'excited' }
+    ];
+
+    // train a recurrent net
+    const net = new brain.recurrent.LSTM();
+    const options = {
+      iterations: 500,
+      errorThresh: 0.01
+    }
+    net.train(trainingData, options);
+
+    // run the net with partial, even different string values
+    const input = 'I am happy!';
+    const output = net.run(input);
+
+    console.log(`Input: ${input}\nOutput: ${output}`); // happy
+    </script>
+</body>
+
+</html>

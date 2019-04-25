@@ -741,6 +741,67 @@ brain.likely(toArray(), net)
 
 Once more, the net is able to show the flexibility of a neural network. Even by modifying the `#` structure ever so slightly, forgoing a pound sign here and there, the net is able to pick up the correct digit.
 
+## Children Books
+
+This neural net sets out to display text depending on the input string, filling, almost auto-completing the sentence to the best of its ability.
+
+```js
+const trainingData = [
+  'Jane saw Doug.',
+  'Doug saw Jane.',
+  'Spot saw Doug and Jane looking at each other.',
+  'It was love at first sight, and Spot had a frontrow seat. It was a very special moment for all.'
+];
+```
+
+With the training data made of string values, a _recurrent_ neural network is set up.
+
+```js
+const net = new brain.recurrent.LSTM();
+net.train(trainingData, {
+  iterations: 1500,
+  errorThresh: 0.011
+});
+```
+
+Limiting the number of iterations so that the net is not able to perfectly fill in the blanks, and run reasonably in a browser.
+
+```js
+net.run('Jane'); // ?
+```
+
+## Detecting sentiment
+
+With a recurrent long short term memory network it is possible to detect a sentiment of a sentence based on an appropriate set of training data.
+
+```js
+const trainingData = [
+    { input: 'I am super happy!', output: 'happy' },
+    { input: 'What a pill!', output: 'sarcastic' },
+    { input: 'I am super unhappy!', output: 'sad' },
+    { input: 'Are we there yet?', output: 'excited' }
+];
+```
+
+The net will try its best to take the input output relation to create an intelligent match.
+
+```js
+const net = new brain.recurrent.LSTM();
+net.train(trainingData, {
+    iterations: 100,
+    erroThresh: 0.011,
+});
+
+console.log(net.run('I am unhappy!'));
+console.log(net.run('I am happy!'));
+```
+
+### Dynamism
+
+This example highlights once more how the net is able to dynamically map out input values, even if they don't match the input described in the training data word by word.
+
+Again, by tinkering with the error threshold and the number of iterations, the net is able to reach a more stable solution and at different speeds. A net is however only as good as the training data pouring in.
+
 ## Resources
 
 - [Scrimba Course](https://scrimba.com/g/gneuralnetworks)

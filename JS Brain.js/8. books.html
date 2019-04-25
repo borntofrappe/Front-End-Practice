@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Brain.js - Children Books</title>
+</head>
+
+<body>
+  <h1>
+    Output in the console
+  </h1>
+  <!-- import the neural network library -->
+  <script src="https://unpkg.com/brain.js@1.6.0/browser.js"></script>
+
+  <script>
+    // Children Books
+
+    // starting from training data describing the beginning of a few sentences
+    const trainingData = [
+      'Jane saw Doug.',
+      'Doug saw Jane seeing Timothy.',
+      'Spot saw Doug and Jane looking at each other.',
+      'It was love at first sight, and Doug had a frontrow seat.'
+    ]
+
+    // create and train a net with a limited number of iterations
+    const net = new brain.recurrent.LSTM();
+    const options = {
+      iterations: 1500,
+      errorThresh: 0.012
+    }
+    net.train(trainingData, options);
+
+    const input = 'Jane';
+    const output = net.run(input);
+
+    console.log(`Input: ${input}\nOutput: ${output}`); // saw Doug had a frontrow seat
+  </script>
+</body>
+
+</html>
