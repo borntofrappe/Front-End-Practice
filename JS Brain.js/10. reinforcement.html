@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Brain.js - Reinforcement Learning</title>
+</head>
+
+<body>
+  <h1>
+    Output in the console
+  </h1>
+  <!-- import the neural network library -->
+  <script src="https://unpkg.com/brain.js@1.6.0/browser.js"></script>
+
+  <script>
+    // Reinforcement Learning
+
+    // starting from a set of training data estimating color preference
+    const trainingData = [
+        { input: { gold: 1 }, output: [0] },
+        { input: { silver: 1 }, output: [1] },
+        { input: { bronze: 1 }, output: [0] },
+        { input: { red: 1 }, output: [0] },
+        { input: { blue: 1 }, output: [1] },
+        { input: { green: 1 }, output: [1] },
+    ];
+
+    // create a neural net which returns the preference toward a specific color
+    const net = new brain.NeuralNetwork();
+    net.train(trainingData);
+
+    const input = 'gold';
+    const output = net.run({ [input]: 1 });
+
+    // run the net for a specific value
+    console.log(`Input: ${input}\nOutput: ${Array.from(output)}`);
+
+    // update the training data to include new values
+    trainingData.push({
+      input: { yellow: 1 },
+      output: [1]
+    });
+
+    trainingData.push({
+      input: { gold: 1 },
+      output: [1]
+    });
+
+    // ! the net needs to be re-trained
+    net.train(trainingData);
+
+    // the previous input is updated on the basis of the new value
+    const updatedOutput = net.run({ [input]: 1 });
+    console.log(`Input: ${input}\nUpdated Output: ${Array.from(updatedOutput)}`);
+    // the new input of yello is highlighted thanks to the new addition
+    console.log(`Input: yellow\nUpdated Output: ${Array.from(net.run({ 'yellow': 1 }))}`);
+
+    </script>
+</body>
+
+</html>

@@ -802,6 +802,96 @@ This example highlights once more how the net is able to dynamically map out inp
 
 Again, by tinkering with the error threshold and the number of iterations, the net is able to reach a more stable solution and at different speeds. A net is however only as good as the training data pouring in.
 
+## Reinforcement learning
+
+Starting with the XOR example and partial training data
+
+```js
+const trainingData = [
+    { input: [0, 0], output: [0] },
+    { input: [0, 1], output: [1] },
+    // { input: [1, 0], output: [1] },
+    // { input: [1, 1], output: [0] }
+];
+```
+
+```js
+const net = new brain.NeuralNetwork({hiddenLayers: [3]});
+net.train(trainingData);
+
+console.log(Array.from(net.run([0, 0]))); // 0.075
+console.log(Array.from(net.run([1, 0]))); //  0.075
+```
+
+Without training, the neural net is not able to map out the desired relation.
+
+With reinforcement learnig, the net is able to adjust.
+
+Reinforcement occurs in the inclusion of additional data through the `push()` function, made available on any array.
+
+```js
+trainingData.push({
+  input: [1, 0],
+  output: [1]
+})
+console.log(Array.from(net.run([1, 0]))); //  0.9
+```
+
+The net is able to digest the new data point and act accordingly.
+
+## Recommendation Engine - Reinforcement Learning / 2
+
+Using training data with color preference. Highlighted with 0-1 boolean values.
+
+```js
+// color preference
+const trainingData = [
+    { input: { blue: 1 }, output: [1] },
+    { input: { red: 1 }, output: [1] },
+    { input: { black: 1 }, output: [0] },
+    { input: { green: 1 }, output: [0] },
+    { input: { brown: 1 }, output: [0] },
+];
+```
+
+It is possible to have the net relate the preference toward a specific value.
+
+```js
+const net = new brain.NeuralNetwork();
+net.train(trainingData);
+
+console.log(Array.from(net.run({blue: 1}))); // 0.9
+```
+
+If preferences were to change, say to have brown output 1, you can update the net with the mentioned reinforced learning
+
+```js
+trainingData.push(
+  { input: { brown: 1 }, output: [1] },
+)
+```
+
+To have the net understand you need to train the training data.
+
+```js
+net.train(trainingData);
+console.log(Array.from(net.run({brown: 1}))); // 0.5
+```
+
+Notice how the value maps to `0.5` instead of `0.9`. This because the net weighs the two existing values. The training data has a reference to both values.
+
+To avoid this you can remove the last training data before including its new value.
+
+```js
+trainingData.pop();
+
+trainingData.push(
+  { input: { brown: 1 }, output: [1] },
+)
+```
+
+Both approaches are valid though, but just have different implications. The first net considers that the color had two diverging values, while the second one disregards the first input.
+
 ## Resources
 
 - [Scrimba Course](https://scrimba.com/g/gneuralnetworks)
