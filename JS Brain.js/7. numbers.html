@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Brain.js - Detecting Numbers</title>
+</head>
+
+<body>
+  <h1>
+    Output in the console
+  </h1>
+  <!-- import the neural network library -->
+  <script src="https://unpkg.com/brain.js@1.6.0/browser.js"></script>
+
+  <script>
+    // Detecting Numbers
+
+    // starting from raw data depicting single digits through # pound signs
+    const zero =
+      '#######' +
+      '#     #' +
+      '#     #' +
+      '#     #' +
+      '#     #' +
+      '#     #' +
+      '#######';
+
+    const one =
+      '   #   ' +
+      '   #   ' +
+      '   #   ' +
+      '   #   ' +
+      '   #   ' +
+      '   #   ' +
+      '   #   ';
+
+    const two =
+      '#######' +
+      '#     #' +
+      '      #' +
+      '     # ' +
+      '   #   ' +
+      ' #     ' +
+      '#######';
+
+    const three =
+      '#######' +
+      '      #' +
+      '      #' +
+      ' ######' +
+      '      #' +
+      '      #' +
+      '#######';
+
+    const four =
+      '#     #' +
+      '#     #' +
+      '#     #' +
+      '#######' +
+      '      #' +
+      '      #' +
+      '      #';
+
+    const five =
+      '#######' +
+      '#      ' +
+      '#      ' +
+      '#######' +
+      '      #' +
+      '      #' +
+      '#######';
+
+    const six =
+      '      #' +
+      '    #  ' +
+      '  #    ' +
+      ' ######' +
+      '#     #' +
+      '#     #' +
+      '#######';
+
+    const seven =
+      '#######' +
+      '     # ' +
+      '    #  ' +
+      '   #   ' +
+      '  #    ' +
+      ' #     ' +
+      '#      ';
+
+    const eight =
+      '#######' +
+      '#     #' +
+      '#     #' +
+      '#######' +
+      '#     #' +
+      '#     #' +
+      '#######';
+
+    const nine =
+      '#######' +
+      '#     #' +
+      '#     #' +
+      '###### ' +
+      '    #  ' +
+      '   #   ' +
+      ' #     ';
+
+    const toNumber = (character) => character === '#' ? 1 : 0;
+
+    // create a function taking as input a string of 7*7 characters and returing an array of values converted with the toNumber function
+    const toArray = (string) => {
+      // preemptively terminate the function if the string fails the precise length
+      if(string.length !== 7 * 7) throw new Error('Wrong size');
+
+      return string.split('').map(toNumber);
+    };
+
+
+    // training data associating the string of 1s and 0s to an object highlighting the matching number with a boolean
+    const trainingData = [
+      { input: toArray(zero), output: { zero: 1 } },
+      { input: toArray(one), output: { one: 1 } },
+      { input: toArray(two), output: { two: 1 } },
+      { input: toArray(three), output: { three: 1 } },
+      { input: toArray(four), output: { four: 1 } },
+      { input: toArray(five), output: { five: 1 } },
+      { input: toArray(six), output: { six: 1 } },
+      { input: toArray(seven), output: { seven: 1 } },
+      { input: toArray(eight), output: { eight: 1 } },
+      { input: toArray(nine), output: { nine: 1 } },
+    ]
+
+    // create neural net
+    const net = new brain.NeuralNetwork();
+    net.train(trainingData);
+
+    // run the net trying to detect a few digits
+    const input =
+      '#######' +
+      '#     #' +
+      '#     #' +
+      '###### ' +
+      '    #  ' +
+      '   #   ' +
+      ' #     ';
+
+    const output = brain.likely(toArray(input), net);
+
+    console.log(`Input: ${input}\nOutput: ${output}`);
+
+
+    console.log(`Input: ${
+      '      #' +
+      '    #  ' +
+      '  #    ' +
+      ' ### # ' +
+      '      #' +
+      '#     #' +
+      '  #####'
+    }\nOutput: ${brain.likely(toArray(
+      '      #' +
+      '    #  ' +
+      '  #    ' +
+      ' ### # ' +
+      '      #' +
+      '#     #' +
+      '  #####'
+    ), net)}`);
+
+  </script>
+</body>
+
+</html>

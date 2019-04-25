@@ -633,7 +633,113 @@ A rather relevant note: in order to promptly run the net in the browser, the lec
 
 - a error threshold of `0.025` for the `train()` function.
 
+Additionally, the recurrent net being used leverages a different function from the previous `LSTMTimeStep()` method.
+
+```js
+const net = new brain.recurrent.LSTM();
+```
+
+
 More research on these founding principles is required.
+
+## Counting Numbers
+
+In order to train a net to understand numbers, the previous concepts are merged into a new set of training data.
+
+Considering an input value such as:
+
+```text
+#######
+#     #
+#     #
+#     #
+#     #
+#     #
+#######
+```
+
+The idea is to have the net digest the series of string and produce the desired integer, 0.
+
+In order to achieve this we first create a function which translates `#` pound symbols to `1`. This to normalize the training data into `0`s and `1`s.
+
+```js
+const toNumber = (character) => character === '#' ? 1 : 0;
+```
+
+The idea is to specify the training data in a format close to the following representation:
+
+```text
+1111111
+1000001
+1000001
+1000001
+1000001
+1000001
+1111111
+```
+
+Given the input data:
+
+```js
+const zero = toArray(
+    '#######' +
+    '#     #' +
+    '#     #' +
+    '#     #' +
+    '#     #' +
+    '#     #' +
+    '#######'
+);
+```
+
+The lecturer makes use of an additional function in `toArray()`, to precisely convert the series of characters into a single array of `1`s and `0`s. This leveraging the `toNumber()` method.
+
+```js
+const toArray = (string) => {
+  if(string.length !== 7 * 7) throw new Error('Wrong size');
+
+  return string.split('').map(toNumber);
+};
+```
+
+As a precaution, an error is thrown if the input sttring is not a frame `7` characters wide and `7` characters tall.
+
+This is enough to set up a net. The input will be the numbers as specified through the pound `#` symbols.
+
+The output will be a property for each number, with a flag of 1. The idea is to have the net reason much alike with the restaurant example, and returning a string based on this boolean value.
+
+```js
+const trainingData = [
+  { input: zero, output: { zero: 1 } },
+  // where zero is the array of 1s and 0s making up the first digit
+
+  // repeat for every single digit
+]
+```
+
+A small note: unlike the previous examples, the net used in the project doesn't specify a particular value for the `hiddenLayer` property. More research on what this entails is required, but it is likely that brain.js specifies its own default value, just like for the learning rate and the error threshold.
+
+When trained, the net is then able to return a giant object in which the most likely digit is highlighted with the greatest measurement.
+
+```js
+net.run(toArray(
+  // input # structure
+))
+```
+
+To have the net return just 1 value, in the likeliest response, you can use the `brain.likely` function, passing as argument:
+
+1. the input data;
+
+1. the net in which the data is included.
+
+```js
+brain.likely(toArray(), net)
+```
+
+### Dynamism
+
+Once more, the net is able to show the flexibility of a neural network. Even by modifying the `#` structure ever so slightly, forgoing a pound sign here and there, the net is able to pick up the correct digit.
 
 ## Resources
 
