@@ -580,6 +580,61 @@ net.forecast([
 
 This will return 3 values based on the two data points. Just be careful to have the values scaled back up to the magnitude expected by the stock value, as the training data represents the scaled down version.
 
+## Mathematical Operations - Recurrence / 2
+
+With the appropriate training data it is possible to rapidly train a long short term memory network to actually understand and compute mathematical operations.
+
+```js
+const trainingData = [
+    '0+0=0',
+    '0+1=1',
+    '0+2=2',
+    '0+3=3',
+    '0+4=4',
+    '0+5=5',
+
+    // ...
+];
+```
+
+When passing this dataset in a net, brain.js goes behind the scenes through the same process described with string values: it assigns `1`s and `0`s on input values to create a map and then based on the connections given by the input tries to produce a fitting output.
+
+It does so not on every character, but on every _unique_ character, so that the mapping data, behind the scenes, might look as follows
+
+```code
+['0', '+', '=', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+```
+
+And a mathematical operation, behind the scenes and as understood by the net, might look as follows:
+
+```code
+[1,0,0,0,0,0,0,0,0,0,0,0]; // 0
+[0,1,0,0,0,0,0,0,0,0,0,0]; // +
+[1,0,0,0,0,0,0,0,0,0,0,0]; // 0
+[0,0,1,0,0,0,0,0,0,0,0,0]; // =
+[1,0,0,0,0,0,0,0,0,0,0,0]; // 0
+```
+
+With enough training data and computational power, the net is able to then produce appropriate results.
+
+```js
+net.run('0+2='); // 2
+```
+
+Issues occur when you extend your reasoning past the values specified in the training data. An input such as `5+7=` is indeed alien to the net, and it is not able to prompt a correct answer.
+
+```js
+net.run('5+7='); // ?
+```
+
+A rather relevant note: in order to promptly run the net in the browser, the lecturer advises the following options:
+
+- a hidden layer with 20 neurons for the net;
+
+- a error threshold of `0.025` for the `train()` function.
+
+More research on these founding principles is required.
+
 ## Resources
 
 - [Scrimba Course](https://scrimba.com/g/gneuralnetworks)
