@@ -55,3 +55,4 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |Title|Goal|Date|
 |---|---|---|
 |[CPC Primed Cicada](https://codepen.io/borntofrappe/pen/QPxvBM)|Create an entry for the weekly codepenchallenge, themed around cicadas and prime numbers.|20th April 2019|
+|[CPC Bubble Sort](https://codepen.io/borntofrappe/pen/WWLXGN)|Create an entry for the weekly codepenchallenge, themed around the bubble sort algorithm.|25th April 2019|
