@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Quantico:700i|Montserrat:500");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  /* display flex to have the footer pushed at the bottom by modifying its margin value */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif;
+  /* include two staggered rectangles making up the pattern of a flag */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" opacity="0.1" viewBox="0 0 100 80" width="50" height="40"><g transform="scale(0.5 0.5)"><rect x="0" y="0" width="100" height="80" fill="%23343434"></rect></g><g transform="translate(50 40) scale(0.5 0.5)"><rect x="0" y="0" width="100" height="80" fill="%23343434"></rect></g></svg>'),
+    #fff;
+}
+
+/* horizontally center the main container */
+main {
+  margin: 2rem auto 5rem;
+  max-width: 500px;
+  width: 90vw;
+  border: 4px solid #e60012;
+  /* include stripes atop a dark background */
+  background: repeating-linear-gradient(
+      -42deg,
+      hsla(0, 0%, 0%, 0.3) 0,
+      hsla(0, 0%, 0%, 0.3) 4px,
+      transparent 0,
+      transparent 8px
+    ),
+    #111;
+  color: #fff;
+  border-radius: 5px;
+  /* position the header and visualization in a flex column */
+  display: flex;
+  flex-direction: column;
+}
+
+/* style the header with similar stripes, atop a red background */
+main header {
+  padding: 1rem;
+  text-align: center;
+  background: repeating-linear-gradient(
+      -42deg,
+      hsla(0, 0%, 0%, 0.1) 0,
+      hsla(0, 0%, 0%, 0.1) 2px,
+      transparent 0,
+      transparent 8px
+    ),
+    #e60012;
+}
+/* specify a noticeable shadow for the heading */
+main header h1 {
+  font-family: "Quantico", sans-serif;
+  font-size: 2.5rem;
+  text-shadow: 3px 2px hsla(0, 0%, 0%, 1);
+}
+
+/* position the footer at the very bottom of the page */
+footer {
+  margin-top: auto;
+  min-height: 125px;
+  color: #fff;
+  /* include a dotted pattern atop a dark background  */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="50" height="50"><g transform="translate(25 25) scale(0.5 0.5)"><circle cx="50" cy="50" r="40" fill="%23000000" stroke-width="10" stroke="%2300000044"></circle></g></svg>'),
+    #343434;
+  background-size: 12px, 100%;
+  background-position: -6px 0, 0;
+  /* center the content of the footer horizontally and vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* position relative for the pseudo element making up the dark bar atop the footer */
+  position: relative;
+}
+/* with a pseudo element include a bar at the very top of the footer */
+footer:before {
+  position: absolute;
+  content: "";
+  bottom: 100%;
+  left: 0;
+  height: 18px;
+  width: 100%;
+  /* add a slight gradient to give depth to the bar */
+  background: linear-gradient(
+      to bottom,
+      hsla(0, 0%, 100%, 0.2),
+      transparent 50%,
+      hsla(0, 0%, 100%, 0.2)
+    ),
+    #000;
+}
+
+footer h2 {
+  font-family: "Quantico", sans-serif;
+  font-size: 1.75rem;
+  letter-spacing: 0.05;
+  text-shadow: 3px 3px hsla(0, 0%, 0%, 1);
+}
+
+/* VISUALIZATION */
+/* container describing a few information regarding the driver
+display the content in a grid with specific positions for the name, last lap and other relevant information
+*/
+.overview {
+  margin: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "lastName lastLap" "team tyre";
+}
+.overview h2 {
+  grid-area: lastName;
+  /* include a border and padding to the left of the heading
+  ! this needs to match the sub-heading to give the impression of a continuous border
+   */
+  border-left: 4px solid #1e41ff;
+  padding: 0.5rem;
+  padding-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.overview span {
+  grid-area: lastLap;
+  /* include a semi transparent background to highlight the last lap */
+  padding: 0.1rem 0.75rem;
+  background: #34343477;
+  color: #059801;
+  font-weight: bold;
+  border-radius: 30px;
+  /* vertically centered, to avoid mishaps given the different size with respect to the previous heading */
+  align-self: center;
+  text-align: right;
+}
+.overview h3 {
+  grid-area: team;
+  border-left: 4px solid #1e41ff;
+  padding-left: 0.5rem;
+  font-weight: 300;
+  padding-left: 0.5rem;
+}
+/* position the character identifying the tyre type at the very right of the grid */
+.overview strong {
+  grid-area: tyre;
+  justify-self: end;
+  align-self: center;
+  margin-right: 0.3rem;
+  font-size: 0.9rem;
+  border-radius: 50%;
+}
+
+/* have the svg horizontally centered and occupying a fraction of the available width */
+svg {
+  width: 80%;
+  height: auto;
+  align-self: center;
+  margin: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
