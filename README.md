@@ -57,3 +57,4 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |---|---|---|
 |[CPC Primed Cicada](https://codepen.io/borntofrappe/pen/QPxvBM)|Create an entry for the weekly codepenchallenge, themed around cicadas and prime numbers.|20th April 2019|
 |[CPC Bubble Sort](https://codepen.io/borntofrappe/pen/WWLXGN)|Create an entry for the weekly codepenchallenge, themed around the bubble sort algorithm.|25th April 2019|
+|[Rhythm Test](https://codepen.io/borntofrappe/pen/rbRaxG)|Create a basic rhythm test through a button and a pseudo element.|27th April 2019|
