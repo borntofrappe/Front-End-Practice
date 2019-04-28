@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* center the button, and the subsequent div in the viewport */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(240, 40%, 10%);
+  color: hsl(200, 34%, 5%);
+  font-family: "Noto Sans JP", sans-serif;
+}
+/* have the button leverage the current color for its background
+color added in the script picking randomly between three selections
+*/
+button {
+  /* color: #fd364e; */
+  /* color: #fc36e9; */
+  /* color: #36dcfd; */
+  background: currentColor;
+  /* rounded button */
+  width: 72px;
+  height: 72px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none;
+  /* with a slight glow */
+  box-shadow: 0 0 15px hsla(0, 0%, 100%, 0.15);
+  /* transition for the hover, focus and active states */
+  transition: all 0.2s ease-out;
+  /* position relative for the pseudo element describing the beat */
+  position: relative;
+  /* outline consciously removed to avoid messy outlines */
+  outline: none;
+  /* overflow hidden by default hiding the content outside of the 72x72 circle
+  ! this would include the pseudo element as well
+   */
+  overflow: hidden;
+}
+/* re-scale the button when hovered/focused and slightly more when active */
+button:hover,
+button:focus {
+  transform: scaleX(1.1) scaleY(1.08);
+}
+button:active {
+  transform: scaleX(1.15) scaleY(1.14);
+}
+
+/* for the svg include a transition for a vertical translation
+coupled with the overflow:hidden this is included to have the svg disappear when a class is added
+*/
+button svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.25s ease-out;
+}
+/* translate the SVG below the button cutting it from view */
+button.transition svg {
+  transform: translateY(120%);
+}
+
+/* when the button is given a class of .beat reset the overflow and animate the pseudo element to show a pulsating circle */
+button.beat {
+  overflow: initial;
+}
+/* the animation occurs indefinitely, but it is cut short when the script removes the matching class
+*/
+button.beat:before {
+  animation: beatRhythm 1s infinite ease-out forwards;
+}
+
+/* pseudo element describing a circle absolutely centered behind the button and animated to have the circle expand and disappear */
+button:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  background: currentColor;
+  z-index: -5;
+  border-radius: 50%;
+}
+/* animation expanding the pseudo element before removing it from sight */
+@keyframes beatRhythm {
+  0% {
+    transform: translate(-49%, -50%) scale(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  70%,
+  100% {
+    transform: translate(-49%, -50%) scale(3);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* div describing the result in a document, almos in a spreadsheet */
+.sheet {
+  box-shadow: 0 2px 25px hsla(0, 0%, 0%, 0.5);
+  background: #fff;
+  padding: 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* animated to slide up into view */
+  animation: slideUp 0.7s cubic-bezier(0.35, 0.24, 0.33, 1.75) both;
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(3rem);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  30% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.counter__heading {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.25rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.sheet__heading {
+  font-size: 1.25rem;
+}
+
+/* table with collapsed border making up the sheet */
+.sheet__table {
+  border-collapse: collapse;
+  position: relative;
+  padding: 0;
+  display: block;
+  border: 3px solid currentColor;
+}
+.sheet__table:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  transform: translate(-50%, 0);
+  background: currentColor;
+}
+.sheet__table .cell {
+  width: 25px;
+  height: 25px;
+  border: 1px solid hsla(191, 34%, 5%, 0.5);
+}
+/* instructions detailing how to read the sheet and its values */
+.sheet__marks {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+.sheet__marks:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  transform: translate(-50%, 0);
+  border-top: 15px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 15px solid #1d2a33;
+  border-left: 8px solid transparent;
+}
