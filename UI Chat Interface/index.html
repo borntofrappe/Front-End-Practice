@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- markup
+        div, wrapping the content
+            div, wrapping the text messages
+                p, one for each text message
+
+            form, describing the input element
+                input, of type text
+                button, made up of an SVG icon
+    -->
+    <div class="phone">
+
+        <div class="phone__chat">
+            <p class="chat--message">How are you?</p>
+        </div>
+
+
+        <form class="phone__form">
+            <input type="text" placeholder="Message" />
+
+            <button>
+                <!-- include a linear gradient for the icon of a paper plane -->
+                <svg viewBox="0 0 100 100" width="40" height="40">
+                    <defs>
+                        <linearGradient id="gradient" x1="0" x2="100">
+                            <stop offset="0%" stop-color="#52A530"></stop>
+                            <stop offset="100%" stop-color="#3DA55B"></stop>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 20 10 l 70 40 l -70 40 l 7 -36 h 28 a 4 4 0 0 0 0 -8 h -28 z" stroke-linejoin="round" fill="url(#gradient)"></path>
+                </svg>
+            </button>
+        </form>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

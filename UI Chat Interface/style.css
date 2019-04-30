@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css?family=Megrim");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  /* center the phone in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+  color: #fff;
+  background: #2d2e40;
+  /* perspective for the 3D transform properties */
+  perspective: 500px;
+}
+
+/* fix the width of the wrapping container,
+ the height is fixed for the section devoted to the chat, to crop out additional text messages
+*/
+.phone {
+  width: 250px;
+  font-size: 1.2rem;
+  font-family: "Megrim", sans-serif;
+  background: hsla(231, 12%, 86%, 0.1);
+  padding: 0.5rem 0.75rem;
+  /* initial 3D transform properties to give the sense of a rotated device */
+  transform: translateZ(-40px) rotateX(4deg) rotateY(15deg);
+  transform-style: preserve-3d;
+}
+/* cap the height and remove text messages as they reach the height */
+.phone__chat {
+  height: 350px;
+  overflow-y: hidden;
+  /* display the text messages atop one another, starting from the end of the column */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1;
+  /* second 3D transform to have the chat noticeably elevated from the screen */
+  transform: translateZ(50px);
+}
+
+/* align the text messages alternatively to the left and to the right */
+.phone__chat .chat--message {
+  padding: 0.5rem 0.75rem;
+  margin: 1rem 0;
+  background: hsla(231, 12%, 86%, 0.2);
+  align-self: flex-start;
+  /* include an animation showing the text message pop up from the bottom of the container
+  as per overflow hidden, the message appears as if sliding upwards
+  */
+  animation: intro 0.3s ease-out both;
+}
+.phone__chat .chat--message:nth-child(even) {
+  align-self: flex-end;
+  text-align: right;
+}
+.phone__chat .chat--message:first-of-type {
+  animation-delay: 0.2s;
+}
+@keyframes intro {
+  from {
+    transform: translateY(150%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+/* for the form, include the input and button elements side by side, vertically aligned */
+.phone__form {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  background: hsla(231, 12%, 86%, 0.1);
+  border-radius: inherit;
+  padding: 0.5rem 0.75rem;
+  /* with a 3D transform to elevate the section, but less than the chat */
+  transform: translateZ(10px);
+}
+
+/* have the input occupy the available space, without squishing the svg icon */
+.phone__form input {
+  flex-grow: 1;
+  width: 0;
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  padding-left: 0rem;
+}
+.phone__form input::placeholder {
+  color: inherit;
+  opacity: 0.6;
+}
+
+/* style the button with a rounded, gradient border
+gradient added though a pseudo element
+*/
+.phone__form button {
+  margin-left: 1rem;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  width: 38px;
+  height: 38px;
+  padding: 0.25rem;
+  /* background to avoid showing the underlying pseudo element
+  matching the color of the form's own background
+  */
+  background: linear-gradient(
+      hsla(231, 12%, 86%, 0.2),
+      hsla(231, 12%, 86%, 0.2)
+    ),
+    #2d2e40;
+  position: relative;
+}
+.phone__form button svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* pseudo element making up the rounded gradient border */
+.phone__form button:before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: linear-gradient(to right, #52a530, #3da55b);
+  border-radius: 50%;
+  z-index: -5;
+}
