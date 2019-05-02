@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css?family=Heebo:700");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Heebo", sans-serif;
+  /* centered in the viewport */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /* with perspective for the flip animation */
+  perspective: 600px;
+}
+
+/* as to overlap the cards include a grid with columns thinner than the width of the cards */
+.deck {
+  /* horizontally center the grid and its items */
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 140px);
+}
+
+/* style each card to have a fixed widht and height */
+.card {
+  height: 350px;
+  width: 270px;
+  border-radius: 20px;
+  /* position relative to absolute position the containers making up the front and back of each card */
+  position: relative;
+  /* preserve 3d to maintain the perspective for the child elements */
+  transform-style: preserve-3d;
+  /* transition for the vertical translation, on hover */
+  transition: transform 0.18s cubic-bezier(0.17, 0.67, 0.61, 1.38);
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-1.75rem);
+}
+/* when a class of flip is applied, rotate the cards 180degrees */
+.card.flip {
+  transform: rotateY(-180deg);
+}
+
+/* absolute position the front and back div containers to cover the entire space of the card */
+.card__front,
+.card__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+/* front of the card
+white background with greyish border
+*/
+.card__front {
+  background: #fff;
+  box-shadow: 0 0 0 4px #dddddd;
+  padding: 1rem;
+  /* centering the content in a column layout */
+  display: flex;
+  flex-direction: column;
+}
+/* text displayed at either end of the card */
+.front--text {
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.02rem;
+  color: #fff;
+  /* background modified inline and differentiated for passing/failing tests */
+  background: #15c213;
+  align-self: flex-start;
+}
+.front--text:last-of-type {
+  align-self: flex-end;
+}
+
+/* center the svg in the front of the card, making up the icon */
+.card__front svg {
+  align-self: center;
+  margin: auto 0;
+  width: 130px;
+  height: 130px;
+}
+
+/* back of the card
+brownish background overlaid by white stripes
+*/
+.card__back {
+  box-shadow: 0 0 0 4px #c2a813;
+  /* stripes included through repeating backgrounds, staggered vertically */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 12" ><path d="M 0 6 l 7.5 -5 l 7.5 5" fill="none" stroke="%23fff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"></path></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 12" ><path d="M 0 6 l 7.5 -5 l 7.5 5" fill="none" stroke="%23fff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"></path></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 12" ><path d="M 0 6 l 7.5 -5 l 7.5 5" fill="none" stroke="%23fff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"></path></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 12" ><path d="M 0 6 l 7.5 -5 l 7.5 5" fill="none" stroke="%23fff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"></path></svg>'),
+    #c2a813;
+  transform: rotateY(-180deg);
+  background-size: 30px, 30px, 30px, 30px, 100%;
+  background-position-y: 18px, 12px, 6px, 0;
+  /* backface to hide the side when flipped */
+  backface-visibility: hidden;
+  /* centering the content in the card */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__back svg {
+  width: 130px;
+  height: 130px;
+}
+/* animate the svg to rotate at a reasonable pace */
+.card.flip .card__back svg {
+  animation: rotate 7.5s infinite linear;
+}
+/* expand and contract the circle elements with a class of .pulse */
+.card.flip .card__back svg .pulse {
+  animation: pulse 5s ease-in-out infinite alternate;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  67% {
+    transform: scale(1.1);
+  }
+}
