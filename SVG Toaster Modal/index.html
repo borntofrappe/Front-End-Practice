@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Toaster Modal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- modal, made up of a couple of paragraphs and a button to remove the modal from view -->
+  <div class="modal">
+      <p>
+        Modal, dialog, call it what you will.
+        <br/>
+        I'd call it toasty. A tasty toasty message.
+      </p>
+
+      <button class="close--modal">
+        Toast Again!
+      </button>
+  </div>
+
+  <!-- button allowing to show the modal, and describing the toaster icon -->
+  <button class="open--modal">
+
+    <svg viewBox="0 0 200 150" width="200" height="150">
+      <g class="toaster">
+        <g class="pegs">
+          <g
+            class="peg"
+            transform="translate(25 140)">
+            <rect
+              rx="1"
+              x="0"
+              y="0"
+              width="22"
+              height="10"
+              fill="#B7CFFF"
+              stroke="#0054FF"
+              stroke-width="2">
+            </rect>
+
+            <line
+              x1="16"
+              x2="16"
+              y1="0"
+              y2="10"
+              stroke="#0054FF"
+              stroke-width="2">
+            </line>
+          </g>
+
+          <g
+            class="peg"
+            transform="translate(75 140)">
+            <rect
+              rx="1"
+              x="0"
+              y="0"
+              width="22"
+              height="10"
+              fill="#B7CFFF"
+              stroke="#0054FF"
+              stroke-width="2">
+            </rect>
+
+            <line
+              x1="16"
+              x2="16"
+              y1="0"
+              y2="10"
+              stroke="#0054FF"
+              stroke-width="2">
+            </line>
+          </g>
+
+          <g
+            class="peg"
+            transform="translate(125 140)">
+            <rect
+              rx="1"
+              x="0"
+              y="0"
+              width="22"
+              height="10"
+              fill="#B7CFFF"
+              stroke="#0054FF"
+              stroke-width="2">
+            </rect>
+
+            <line
+              x1="16"
+              x2="16"
+              y1="0"
+              y2="10"
+              stroke="#0054FF"
+              stroke-width="2">
+            </line>
+          </g>
+
+          <g
+            class="peg"
+            transform="translate(155 140)">
+            <rect
+              rx="1"
+              x="0"
+              y="0"
+              width="22"
+              height="10"
+              fill="#B7CFFF"
+              stroke="#0054FF"
+              stroke-width="2">
+            </rect>
+
+            <line
+              x1="16"
+              x2="16"
+              y1="0"
+              y2="10"
+              stroke="#0054FF"
+              stroke-width="2">
+            </line>
+          </g>
+        </g>
+
+        <g class="body">
+          <path
+            d="M 15 140 h 170 a 5 5 0 0 0 5 -5 v -70 a 30 30 0 0 0 -30 -30 h -120 a 30 30 0 0 0 -30 30 v 70 a 5 5 0 0 0 5 5"
+            fill="#fff"
+            stroke="#0054FF"
+            stroke-width="2">
+          </path>
+
+          <g class="reflections">
+            <path
+              d="M 80 60 a 10 10 0 0 1 10 -10 l 30 80 h -15 l -25 -70"
+              fill="#B5F1FF">
+            </path>
+
+            <path
+              d="M 100 50 h 40 l 30 80 h -45 l -25 -75 a 5 5 0 0 1 5 -5"
+              fill="#B5F1FF">
+            </path>
+          </g>
+
+          <g class="buttons">
+            <rect
+              rx="2"
+              x="140"
+              y="117.5"
+              width="13"
+              height="4.5"
+              fill="#fff"
+              stroke="#0054FF"
+              stroke-width="2">
+            </rect>
+
+            <rect
+              rx="2"
+              x="159"
+              y="117.5"
+              width="13"
+              height="4.5"
+              fill="#fff"
+              stroke="#0054FF"
+              stroke-width="2">
+            </rect>
+          </g>
+
+          <g class="side">
+            <path
+              d="M 65 140 v -75 a 30 30 0 0 1 30 -30 h -55 a 30 30 0 0 0 -30 30 v 70 a 5 5 0 0 0 5 5 h 50"
+              fill="#B7CFFF"
+              stroke="#0054FF"
+              stroke-width="2">
+            </path>
+
+            <line
+              x1="37.5"
+              x2="37.5"
+              y1="65"
+              y2="115"
+              stroke="#0054FF"
+              stroke-width="7"
+              stroke-linecap="round">
+            </line>
+
+            <g class="lever">
+              <rect
+                rx="1"
+                x="26.5"
+                y="70"
+                width="22"
+                height="10"
+                fill="#F7FAFF"
+                stroke="#0054FF"
+                stroke-width="2">
+              </rect>
+
+              <line
+                x1="42.2"
+                x2="42.2"
+                y1="70"
+                y2="80"
+                stroke="#0054FF"
+                stroke-width="2">
+              </line>
+            </g>
+          </g>
+        </g>
+      </g>
+
+      <line
+        x1="0"
+        x2="200"
+        y1="149"
+        y2="149"
+        stroke="#0054FF"
+        stroke-width="2">
+      </line>
+    </svg>
+
+  </button>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

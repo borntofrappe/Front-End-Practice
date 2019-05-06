@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Alegreya+Sans+SC:700");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* center the elements in the viewport, on top of one another */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+/* distance the container making up the modal from the button which follows */
+.modal {
+  margin-bottom: 3rem;
+  /* darker color than the one used for the SVG icon */
+  color: hsl(221, 90%, 27%);
+  font-family: "Open Sans", sans-serif;
+  padding: 2rem 1.75rem 1.5rem;
+  /* display the paragraphs and button element in a single column */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 2;
+  border-top: 4px solid currentColor;
+  box-shadow: 0 2px 7px -5px currentColor;
+  /* by default hidden and translated downwards */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(3rem);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* show the modal when a class of active is added */
+.modal.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+/* style the button without a background and a basic rounded border */
+.modal button.close--modal {
+  font-family: "Alegreya Sans SC", sans-serif;
+  font-weight: bold;
+  color: inherit;
+  background: none;
+  border: 2px solid currentColor;
+  border-radius: 30px;
+  padding: 0.5rem 0.75rem;
+  margin: 2rem 0 1rem;
+  transition: transform 0.1s ease-out;
+}
+/* on hover and when focused slightly elevate the button */
+.modal button.close--modal:hover,
+.modal button.close--modal:focus {
+  transform: translateY(-2px);
+}
+
+/* size the button maintaining the aspect ratio of the nested SVG icon */
+button.open--modal {
+  width: 200px;
+  height: 150px;
+  background: none;
+  border: none;
+}
+button.open--modal svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* when a class of .active is added **to the button** animate the toaster to
+1. move the lever down and then up
+1. scale down the toaster (once the lever in down) and then up (as the levers returns to its previous value)
+1. have the toaster jump (as the toaster and the lever are animated back to their initial location)
+
+*/
+button.open--modal.active svg {
+  animation: scaleDown 0.5s 1.7s cubic-bezier(0.5, -0.42, 0.07, 1.57);
+  transform-origin: 50% 100%;
+}
+button.open--modal.active svg g.toaster {
+  animation: translateUp 0.5s 2s cubic-bezier(0.5, -0.42, 0.37, 1.82);
+}
+button.open--modal.active svg g.lever {
+  animation: translateDown 4s cubic-bezier(0.72, 0.07, 0.38, 1.82) forwards;
+}
+
+/* animations for the different elements of the SVG canvas */
+/* entire svg, scaled down with the `transform-origin` set to the bottom center */
+@keyframes scaleDown {
+  50% {
+    transform: scaleY(0.85);
+  }
+}
+/* toaster group, moved upwards */
+@keyframes translateUp {
+  50% {
+    transform: translateY(-20px);
+  }
+}
+/* lever group, translated downwards */
+@keyframes translateDown {
+  10%,
+  53% {
+    transform: translate(0, 30px);
+  }
+  57%,
+  100% {
+    transform: initial;
+  }
+}
