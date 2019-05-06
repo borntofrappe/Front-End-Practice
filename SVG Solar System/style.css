@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Biryani:900");
+
+/* default styles to center the svg in the viewport */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  /* font used for the text */
+  font-family: "Biryani", sans-serif;
+}
+/* with and height to higlight the scalable nature of the graphic */
+svg {
+  width: 600px;
+  max-width: 90vw;
+  height: auto;
+}
+/* animation to highlight the <svg> element */
+svg.highlight {
+  animation: highlightSVG 2s ease-in-out infinite alternate;
+  background: #ff634777;
+}
+
+@keyframes highlightSVG {
+  to {
+    background: #ff6347;
+  }
+}
