@@ -46,6 +46,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[SVG Planets](https://codepen.io/borntofrappe/pen/qwKwoV)|Practice with SVG syntax trying to re-create a few of the icons showcased on [this inspiring set](https://dribbble.com/shots/4193533-Best-Icons-Of-The-Month).|21st April 2019|
 |[SVG Speech Bubbles](https://codepen.io/borntofrappe/pen/BEeqXR)|Create speech baloons inspired by comic books and with SVG syntax.|30th April 2019|
 |[SVG Space Vector Graphics](https://codepen.io/borntofrappe/pen/WBNmYo)|Practice with SVG syntax to create a few planets, constellations and other space-inspired icons.|5th-6th May April 2019|
+|[SVG Toaster Modal](https://codepen.io/borntofrappe/pen/dEPJwY)|Create a modal inspired by [this delightful animation](https://dribbble.com/shots/5832018-Your-data-is-ready).|6th May April 2019|
 
 ### UI UX
 
