@@ -1,0 +1,17 @@
+/* font for the text */
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #0e0e0e;
+  font-family: "Ubuntu", sans-serif;
+}
+/* svg encompassing the entirety of the viewport's height */
+svg {
+  height: 100vh;
+  width: auto;
+}

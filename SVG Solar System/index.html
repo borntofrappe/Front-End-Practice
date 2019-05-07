@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Solar System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <svg viewBox="0 0 1000 700" width="1000" height="700">
+        <!-- first graphic highlighting the size of the planets
+        translate the circle elements to have them centered in the svg canvas
+        -->
+        <g transform="translate(0 350)">
+            <!-- translate the sun to the left of the canvas, effectively cropping the figure
+            without this translation its size would have eclipsed a good portion of the canvas, pun intended
+            -->
+            <circle
+                id="sun"
+                transform="translate(-600 0)"
+                cx="0"
+                cy="0"
+                r="700"
+                fill="#F8C975"
+                stroke="#DB5A03">
+            </circle>
+
+            <!-- translate the planets horizontally by an arbitrary amount
+            ! the size of the circle elements is weighed with respect to the size of the sun
+            ! the planets include a label describing the celestial body, alternated below and above the circle elements
+            -->
+            <g id="mercury" transform="translate(150 0)">
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="2.45"
+                    fill="#8D8E89">
+                </circle>
+
+                <text
+                    x="0"
+                    y="20"
+                    alignment-baseline="hanging"
+                    text-anchor="middle"
+                    fill="#fff">
+                    Mercury
+                </text>
+            </g>
+
+            <g id="venus" transform="translate(220 0)">
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="6.02"
+                    fill="#E3D1B2">
+                </circle>
+
+                <text
+                    x="0"
+                    y="-20"
+                    text-anchor="middle"
+                    fill="#fff">
+                    Venus
+                </text>
+            </g>
+
+            <g id="earth" transform="translate(300 0)">
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="6.37"
+                    fill="#9FC5D6">
+                </circle>
+
+                <text
+                    x="0"
+                    y="20"
+                    alignment-baseline="hanging"
+                    text-anchor="middle"
+                    fill="#fff">
+                    Earth
+                </text>
+            </g>
+
+            <g id="mars" transform="translate(350 0)">
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="3.36"
+                    fill="#845F55">
+                </circle>
+
+                <text
+                    x="0"
+                    y="-20"
+                    text-anchor="middle"
+                    fill="#fff">
+                    Mars
+                </text>
+            </g>
+
+            <!-- the larger planets are positioned further to maintain a sense of scale
+            ! the actual relative distance is considered with the second graphic -->
+            <g id="jupiter" transform="translate(550 0)">
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="71.82"
+                    fill="#9B9590">
+                </circle>
+
+                <text
+                    x="0"
+                    y="90"
+                    alignment-baseline="hanging"
+                    text-anchor="middle"
+                    fill="#fff">
+                    Jupiter
+                </text>
+            </g>
+
+            <g id="saturn" transform="translate(720 0)">
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="60.55"
+                    fill="#D0B99C">
+                </circle>
+
+                <text
+                    x="0"
+                    y="-70"
+                    text-anchor="middle"
+                    fill="#fff">
+                    Saturn
+                </text>
+            </g>
+
+            <g id="uranus" transform="translate(850 0)">
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="25.69"
+                    fill="#94B5BC">
+                </circle>
+
+                <text
+                    x="0"
+                    y="40"
+                    alignment-baseline="hanging"
+                    text-anchor="middle"
+                    fill="#fff">
+                    Uranus
+                </text>
+            </g>
+
+            <g id="neptune" transform="translate(950 0)">
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="24.85"
+                    fill="#4176AD">
+                </circle>
+
+                <text
+                    x="0"
+                    y="-40"
+                    text-anchor="middle"
+                    fill="#fff">
+                    Neptune
+                </text>
+            </g>
+        </g>
+
+
+        <!-- second graphic, highlighting the distance of the planets from the sun
+        translate the graphic in the bottom section of the SVG canvas
+        -->
+        <g transform="translate(345 600)">
+            <text
+                x="0"
+                y="0"
+                fill="#fff">
+                Relative distance
+            </text>
+
+            <!-- translate the line and ticks below the text
+            ! the ticks are included with a path element, but a line element would have worked just as well
+            -->
+            <g transform="translate(0 40)">
+                <line
+                    x1="0"
+                    x2="650"
+                    y1="0"
+                    y2="0"
+                    stroke-width="1"
+                    stroke="#fff">
+                </line>
+
+                <!-- sun -->
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="5"
+                    fill="#F8C975">
+                </circle>
+
+                <!-- ticks representing the planets, and distanced according to the astronomical unit and the widht of the line -->
+                <g transform="translate(8.63 0)">
+                    <path
+                        d="M 0 -10 v 20"
+                        fill="none"
+                        stroke-width="2"
+                        stroke="#8D8E89">
+                    </path>
+                </g>
+
+                <g transform="translate(15.11 0)">
+                    <path
+                        d="M 0 -10 v 20"
+                        fill="none"
+                        stroke-width="2"
+                        stroke="#E3D1B2">
+                    </path>
+                </g>
+
+
+                <g transform="translate(21.59 0)">
+                    <path
+                        d="M 0 -10 v 20"
+                        fill="none"
+                        stroke-width="2"
+                        stroke="#9FC5D6">
+                    </path>
+                </g>
+
+                <g transform="translate(32.39 0)">
+                    <path
+                        d="M 0 -10 v 20"
+                        fill="none"
+                        stroke-width="2"
+                        stroke="#845F55">
+                    </path>
+                </g>
+
+                <g transform="translate(112.29 0)">
+                    <path
+                        d="M 0 -10 v 20"
+                        fill="none"
+                        stroke-width="2"
+                        stroke="#9B9590">
+                    </path>
+                </g>
+
+                <g transform="translate(205.14 0)">
+                    <path
+                        d="M 0 -10 v 20"
+                        fill="none"
+                        stroke-width="2"
+                        stroke="#D0B99C">
+                    </path>
+                </g>
+
+                <g transform="translate(414.17 0)">
+                    <path
+                        d="M 0 -10 v 20"
+                        fill="none"
+                        stroke-width="2"
+                        stroke="#94B5BC">
+                    </path>
+                </g>
+
+                <g transform="translate(650 0)">
+                    <path
+                        d="M 0 -10 v 20"
+                        fill="none"
+                        stroke-width="2"
+                        stroke="#4176AD">
+                    </path>
+                </g>
+            </g>
+        </g>
+    </svg>
+
+</body>
+</html>
