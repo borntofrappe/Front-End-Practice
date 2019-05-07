@@ -45,8 +45,9 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[SVG Process](https://codepen.io/borntofrappe/pen/EJvrqL)|Re-create [this design](https://dribbble.com/shots/5260798-Process) as closely as possible.|13th-14th April 2019|
 |[SVG Planets](https://codepen.io/borntofrappe/pen/qwKwoV)|Practice with SVG syntax trying to re-create a few of the icons showcased on [this inspiring set](https://dribbble.com/shots/4193533-Best-Icons-Of-The-Month).|21st April 2019|
 |[SVG Speech Bubbles](https://codepen.io/borntofrappe/pen/BEeqXR)|Create speech baloons inspired by comic books and with SVG syntax.|30th April 2019|
-|[SVG Space Vector Graphics](https://codepen.io/borntofrappe/pen/WBNmYo)|Practice with SVG syntax to create a few planets, constellations and other space-inspired icons.|5th-6th May April 2019|
-|[SVG Toaster Modal](https://codepen.io/borntofrappe/pen/dEPJwY)|Create a modal inspired by [this delightful animation](https://dribbble.com/shots/5832018-Your-data-is-ready).|6th May April 2019|
+|[SVG Space Vector Graphics](https://codepen.io/borntofrappe/pen/WBNmYo)|Practice with SVG syntax to create a few planets, constellations and other space-inspired icons.|5th-6th May 2019|
+|[SVG Toaster Modal](https://codepen.io/borntofrappe/pen/dEPJwY)|Create a modal inspired by [this delightful animation](https://dribbble.com/shots/5832018-Your-data-is-ready).|6th May 2019|
+|[SVG Solar System](https://codepen.io/borntofrappe/pen/gJpKxx)|Through SVG syntax represent our solar system, detailing the scale of the planets _and_ their relative distance with respect to the central star.|7th May 2019|
 
 ### UI UX
 
