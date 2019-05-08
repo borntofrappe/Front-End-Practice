@@ -48,6 +48,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[SVG Space Vector Graphics](https://codepen.io/borntofrappe/pen/WBNmYo)|Practice with SVG syntax to create a few planets, constellations and other space-inspired icons.|5th-6th May 2019|
 |[SVG Toaster Modal](https://codepen.io/borntofrappe/pen/dEPJwY)|Create a modal inspired by [this delightful animation](https://dribbble.com/shots/5832018-Your-data-is-ready).|6th May 2019|
 |[SVG Solar System](https://codepen.io/borntofrappe/pen/gJpKxx)|Through SVG syntax represent our solar system, detailing the scale of the planets _and_ their relative distance with respect to the central star.|7th May 2019|
+|[SVG Planet Symbols](https://codepen.io/borntofrappe/pen/joPexQ)|Practice with the `viewBox` attribute and a horizontal translation to show only one graphic at a time and hide the rest from sight.|8th May 2019|
 
 ### UI UX
 
