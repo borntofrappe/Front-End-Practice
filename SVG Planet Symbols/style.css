@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css?family=Arvo");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #38216b;
+  font-family: "Arvo", serif;
+}
+/* display the svg element and div wrapping the button atop one another */
+.chart {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* color cascading to the svg through the currentColor property */
+svg {
+  color: #23ccd1;
+  width: 200px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* buttons laid side by side in a wrapping row */
+.chart div {
+  max-width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.chart div button {
+  background: none;
+  border: none;
+  margin: 0.5rem;
+  text-transform: capitalize;
+  font-family: inherit;
+  color: #9fc0ff;
+  font-size: 1.25rem;
+}
+/* class of active highlighting the button matching the current celestial body */
+.chart div button.active {
+  color: #23ccd1;
+}
