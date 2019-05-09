@@ -67,3 +67,4 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[Rhythm Test](https://codepen.io/borntofrappe/pen/rbRaxG)|Create a basic rhythm test through a button and a pseudo element.|27th April 2019|
 |[Jest Cards](https://codepen.io/borntofrappe/pen/BEgYwN)|Recreate the animation on [Jest.io](https://jestjs.io), documenting the testing library through a series of card showcasing passing and or failing tests.|1st May 2019|
 |[Holographic Modal](https://codepen.io/borntofrappe/pen/WBeXjR)|Create an entry for the #weeklycoding challenge, with a modal toggled through a button.|3rd May 2019|
+|[Pacman Home Screen](https://codepen.io/borntofrappe/pen/OYyrwy)|Practice with the library [splitting.js](https://splitting.js.org) to animate the characters of a word sequentially.|8th May 2019|
