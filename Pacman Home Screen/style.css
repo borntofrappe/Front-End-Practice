@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css?family=Rammetto+One");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* center the content horizontally and spread it evenly in the viewport height */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: space-evenly;
+  background: hsl(260, 100%, 1%);
+  color: #ffe349;
+  font-family: "Rammetto One", sans-serif;
+}
+/* have the svg occupy a large portion of the viewport's width */
+svg {
+  width: 90vw;
+  max-width: 750px;
+  height: auto;
+}
+/* uppercase the text and increase the space around the letters */
+svg text {
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+}
+/* display the buttons in a grid
+|   | button |         | button   |   |
+|   |        | button  |          |   |
+
+*/
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(max-content, 1fr));
+  grid-auto-rows: 100px;
+}
+.buttons .start {
+  grid-column: 2/3;
+}
+
+.buttons .load {
+  grid-column: 4/5;
+}
+
+.buttons .options {
+  grid-column: 3/4;
+}
+
+/* color the button with the selected class */
+.buttons button.selection {
+  color: #c91412;
+}
+/* animate the span elements of the buttons with the selected class */
+.buttons button.selection span.char {
+  animation: waveLetters 0.4s alternate ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+@keyframes waveLetters {
+  to {
+    transform: scaleX(1.2) scaleY(1.3);
+  }
+}
+
+/* style the button to increase their size */
+.buttons button {
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  font-size: 2.2rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  /* position relative for the pseudo element */
+  position: relative;
+  /* overflow hidden to hide the pseudo element out of the bounding box making up the button */
+  overflow: hidden;
+}
+/* with a pseudo element add a shadow
+use the color of the background to have the rectangle merge with the underlying color */
+.buttons button:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: linear-gradient(
+    to bottom,
+    hsla(260, 100%, 1%, 0),
+    hsla(260, 100%, 1%, 0.75)
+  );
+  z-index: 5;
+}
+/* with another pseudo element include a shadow animated to cross the word */
+.buttons button:after {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: linear-gradient(
+    to right,
+    hsla(260, 100%, 1%, 0.2),
+    hsla(260, 100%, 1%, 0.4),
+    hsla(260, 100%, 1%, 0.2)
+  );
+  z-index: 5;
+}
+/* reduce the shadow on the button with the selected class */
+.buttons button.selection:before {
+  background: linear-gradient(
+    to bottom,
+    hsla(260, 100%, 1%, 0),
+    hsla(260, 100%, 1%, 0.25)
+  );
+}
+/* animate the shadow for the button with the selected class */
+.buttons button.selection:after {
+  animation: highlightSelection 2s ease-in-out infinite;
+}
+/* animation for the selected button's pseudo element */
+@keyframes highlightSelection {
+  50%,
+  100% {
+    left: 100%;
+  }
+}
