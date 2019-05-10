@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI Recipe App - Homepage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- in a wrapping main container and for each route add the following markup
+        a, eventually leading to another page of the application
+            svg, icon for the anchor link
+            h2, heading explaining the anchor link
+    -->
+    <main class="app">
+        <a href="#" class="app__write">
+            <!-- pencil icon -->
+            <svg
+                class="icon--pencil"
+                viewBox="0 0 100 100"
+                width="200"
+                height="200">
+                <defs>
+                    <!-- linear gradient adding a solid and darkening shade to the fill -->
+                    <linearGradient id="gradient-shades">
+                        <stop
+                            stop-color="#00000017"
+                            offset="0%">
+                        </stop>
+                        <stop
+                            stop-color="#00000017"
+                            offset="33%">
+                        </stop>
+                        <stop
+                            stop-color="#00000025"
+                            offset="33%">
+                        </stop>
+                        <stop
+                            stop-color="#00000025"
+                            offset="67%">
+                        </stop>
+                        <stop
+                            stop-color="#00000032"
+                            offset="67%">
+                        </stop>
+                        <stop
+                            stop-color="#00000032"
+                            offset="100%">
+                        </stop>
+                    </linearGradient>
+                </defs>
+
+                <!-- group element to slightly rescale the the graphic and still center it
+                this to avoid minor annoyances with the stroke of shapes exceeding the canvas
+                -->
+                <g transform="translate(5 5) scale(0.9 0.9)">
+                    <!-- + 1 icon drawn behind the pencil and shown as the pencil is translated -->
+                    <g
+                        class="pencil--plus"
+                        transform="translate(30 55) rotate(-12)">
+                        <!-- for each element add a darker variant to have a shade of the chosen color -->
+                        <g>
+                            <path
+                                d="M -5 5 h 10 h -5 v -5 v 10"
+                                fill="none"
+                                stroke="#27B7C1"
+                                stroke-width="4.5"
+                                stroke-linejoin="round"
+                                stroke-linecap="round">
+                            </path>
+                            <path
+                                d="M -5 5 h 10 h -5 v -5 v 10"
+                                fill="none"
+                                stroke="#000"
+                                opacity="0.1"
+                                stroke-width="4.5"
+                                stroke-linejoin="round"
+                                stroke-linecap="round">
+                            </path>
+                        </g>
+
+                        <g>
+                            <path
+                                d="M 12 0 v 10"
+                                fill="none"
+                                stroke="#27B7C1"
+                                stroke-width="4.5"
+                                stroke-linecap="round">
+                            </path>
+                            <path
+                                d="M 12 0 v 10"
+                                fill="none"
+                                stroke="#000"
+                                opacity="0.2"
+                                stroke-width="4.5"
+                                stroke-linecap="round">
+                            </path>
+                        </g>
+                    </g>
+
+                    <!-- group element considering the entire pencil
+                        ! animate the pencil to translate it to the right -->
+                    <g class="pencil--shape">
+                        <!-- as for the plus + icon, add a darker variant
+                            this time using the linear gradient
+                        -->
+                        <g>
+                            <path
+                                fill="#1B2F8A"
+                                d="M 25 12.5 h 30 a 5 5 0 0 1 5 5 v 7.5 h -40 v -7.5 a 5 5 0 0 1 5 -5 z">
+                            </path>
+                            <path
+                                fill="url(#gradient-shades)"
+                                d="M 25 12.5 h 30 a 5 5 0 0 1 5 5 v 7.5 h -40 v -7.5 a 5 5 0 0 1 5 -5 z">
+                            </path>
+                        </g>
+                        <g>
+                            <path
+                                fill="#27B7C1"
+                                d="M 20 25 h 40 v 40 h -40 z">
+                            </path>
+                            <path
+                                fill="url(#gradient-shades)"
+                                d="M 20 25 h 40 v 40 h -40 z">
+                            </path>
+                        </g>
+                        <g>
+                            <path
+                                fill="#FEEBD6"
+                                d="M 20 65 v 2.5 l 16 16 h 8 l 16 -16 v -2.5 z">
+                            </path>
+                            <path
+                                fill="url(#gradient-shades)"
+                                d="M 20 65 v 2.5 l 16 16 h 8 l 16 -16 v -2.5 z">
+                            </path>
+                        </g>
+                        <g>
+                            <path
+                                fill="#615E6F"
+                                d="M 36 83.5 l 4 4 l 4 -4 z">
+                            </path>
+                            <path
+                                fill="url(#gradient-shades)"
+                                d="M 36 83.5 l 4 4 l 4 -4 z">
+                            </path>
+                        </g>
+                        <!-- SMIL animation, superseded by a CSS animation -->
+                        <!-- <animateTransform
+                            attributeType="XML"
+                            attributeName="transform"
+                            type="translate"
+                            from="0 0"
+                            to="30 0"
+                            dur="0.5s"
+                            begin="1s"
+                            fill="freeze">
+                        </animateTransform> -->
+                    </g>
+
+                    <!-- path element marking the pencil as it moves
+                    ! animate the stroke-dashoffset property to 0 -->
+                    <path
+                        class="pencil--stroke"
+                        d="M 40 87.5 h 30"
+                        fill="none"
+                        stroke="#615E6F"
+                        stroke-width="2"
+                        stroke-dasharray="32"
+                        stroke-dashoffset="32">
+                        <!-- SMIL animation, superseded by a CSS animation -->
+                        <!-- <animate
+                            attributeType="XML"
+                            attributeName="stroke-dashoffset"
+                            from="32"
+                            to="0"
+                            dur="0.5s"
+                            begin="1s"
+                            fill="freeze">
+                        </animate> -->
+                    </path>
+                </g>
+
+            </svg>
+
+            <h2>
+                Add new recipe
+            </h2>
+        </a>
+
+
+        <a href="#" class="app__look">
+            <!-- magnifying glass icon -->
+            <svg
+                class="icon--lens"
+                viewBox="0 0 100 100"
+                width="200"
+                height="200">
+                <!-- mask allowing to hide the mockup icons from view -->
+                <defs>
+                    <mask id="mask-mockup">
+                        <!-- ! animate the circle to translate it in unison with the lens -->
+                        <circle
+                            r="20"
+                            cx="30"
+                            cy="49"
+                            fill="#fff">
+                            <!-- SMIL animation, superseded by CSS -->
+                            <!-- <animateTransform
+                                attributeType="XML"
+                                attributeName="transform"
+                                type="translate"
+                                from="0 0"
+                                to="20 0"
+                                dur="0.5s"
+                                begin="1s"
+                                fill="freeze">
+                            </animateTransform> -->
+                        </circle>
+
+                    </mask>
+                </defs>
+
+                <g transform="translate(5 5) scale(0.9 0.9)">
+                    <!-- rectangle elements mocking up the appearance of a card -->
+                    <g
+                        class="lens--mockup"
+                        mask="url(#mask-mockup)">
+                        <!-- as with the first icon add for each shape a darker semi transparent copy to darken the chosen hue -->
+                        <g>
+                            <rect
+                                x="50"
+                                y="39"
+                                width="30"
+                                height="10"
+                                rx="3"
+                                fill="#27B7C1">
+                            </rect>
+                            <rect
+                                x="50"
+                                y="39"
+                                width="30"
+                                height="10"
+                                rx="3"
+                                fill="#000"
+                                opacity="0.2">
+                            </rect>
+                        </g>
+                        <g>
+                            <rect
+                                x="50"
+                                y="51"
+                                width="18"
+                                height="8"
+                                rx="3"
+                                fill="#27B7C1">
+                            </rect>
+                            <rect
+                                x="50"
+                                y="51"
+                                width="18"
+                                height="8"
+                                rx="2"
+                                fill="#000"
+                                opacity="0.2">
+                            </rect>
+                        </g>
+                        <g>
+                            <rect
+                                x="70"
+                                y="51"
+                                width="10"
+                                height="8"
+                                rx="3"
+                                fill="#27B7C1">
+                            </rect>
+                            <rect
+                                x="70"
+                                y="51"
+                                width="10"
+                                height="8"
+                                rx="2"
+                                fill="#000"
+                                opacity="0.2">
+                            </rect>
+                        </g>
+                    </g>
+                    <!-- group element describing the lens icon -->
+                    <g
+                        class="lens--shape">
+                        <!-- handle of the magnifing glass, slightly darkened -->
+                        <g>
+                            <path
+                                d="M 48 67 l 15 15"
+                                fill="none"
+                                stroke="#1B2F8A"
+                                stroke-width="5"
+                                stroke-linecap="round">
+                            </path>
+                            <path
+                                d="M 48 67 l 15 15"
+                                fill="none"
+                                stroke="#000"
+                                opacity="0.2"
+                                stroke-width="5"
+                                stroke-linecap="round">
+                            </path>
+                        </g>
+                        <!-- circle making up the lens -->
+                        <g>
+                            <!-- with a semi transparent filled circle -->
+                            <circle
+                                r="22"
+                                cx="30"
+                                cy="49"
+                                fill="#1B2F8A33"
+                                stroke="#1B2F8A"
+                                stroke-width="5">
+                            </circle>
+                            <!-- with a small arc highlighting the presence of a reflecting surface -->
+                            <path
+                                d="M 30 34 a 12.5 12.5 0 0 0 -12.5 12.5"
+                                fill="none"
+                                stroke="#1B2F8A"
+                                stroke-width="3">
+                            </path>
+                        </g>
+                        <!-- SMIL animation, superseded by CSS -->
+                        <!-- <animateTransform
+                            attributeType="XML"
+                            attributeName="transform"
+                            type="translate"
+                            from="0 0"
+                            to="20 0"
+                            dur="0.5s"
+                            begin="1s"
+                            fill="freeze">
+                        </animateTransform> -->
+                    </g>
+                </g>
+            </svg>
+
+            <h2>
+                Browse recipes
+            </h2>
+        </a>
+    </main>
+
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>
