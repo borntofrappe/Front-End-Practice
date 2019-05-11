@@ -57,7 +57,8 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[UI Button Kit](https://codepen.io/borntofrappe/pen/VNBRwo)|Create a kit for a variety of buttons. Primary, secondary, tertiary buttons, of a variable color.|22nd April 2019|
 |[UX News board](https://codepen.io/borntofrappe/pen/XQOVpE)|Create a bulletin board inspired by the design showcased on the website of a popular mobile game.|26th April 2019|
 |[UI Chat Interface](https://codepen.io/borntofrappe/pen/XQOVpE)|Create a chat interface with messages spawning from a phone made up of semi transparent screens.|29th April 2019|
-|[UI Recipe App - Homepage](https://codepen.io/borntofrappe/pen/LoGvjd)|Create the UI for the homepage ultimately used for a larger application planned to practice with the React framework.|10th May 2019|
+|[UI Recipe App - Homepage](https://codepen.io/borntofrappe/pen/LoGvjd)|Create the UI for the homepage ultimately used for a larger application planned to practice with the React framework.|9th May 2019|
+|[UI Recipe App - Writing Page](https://codepen.io/borntofrappe/pen/eaZoez)|Create the UI for the page ultimately merged in the recipe app planned to practice with the React framework.|10th May 2019|
 
 ### Miscellaneous
 
