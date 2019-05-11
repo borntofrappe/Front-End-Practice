@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI Recipe App - Writing Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- in a wrapping container include
+        - a button to toggle between light and dark theme
+        - the input element for the recipe's title
+        - a textarea element for the recipe's description
+        - a container for additional buttons
+            - button to preview the recipe's UI
+            - button to save the recipe in the recipes' book
+    -->
+    <main>
+        <button class="toggle">
+            <!-- icons for the light / dark theme
+                ideally the correct icon is rendered conditionally to the current theme
+                here we set "display:none" on the group element of the opposing theme
+            -->
+            <svg
+                viewBox="0 0 100 100"
+                width="200"
+                height="200">
+                <defs>
+                    <!-- symbol element to repeat the shape of the star with the <use> tags -->
+                    <symbol id="star">
+                        <path
+                            d="M 55 25 a 8 8 0 0 0 8 -8 a 8 8 0 0 0 8 8 a 8 8 0 0 0 -8 8 a 8 8 0 0 0 -8 -8">
+                        </path>
+                    </symbol>
+                </defs>
+
+                <g transform="translate(5 5) scale(0.9 0.9)">
+                    <!-- light icon, with a circle making up the sun and a dashed stroke to make up a few rays of light -->
+                    <g class="theme--light">
+                        <circle
+                            cx="50"
+                            cy="50"
+                            r="20"
+                            fill="#27B7C1">
+                        </circle>
+                        <circle
+                            cx="50"
+                            cy="50"
+                            r="30"
+                            fill="none"
+                            stroke="#27B7C1"
+                            stroke-width="5"
+                            stroke-dasharray="4 12">
+                        </circle>
+                    </g>
+
+                    <!-- dark icon, with a sliver of the moon accompanied by a few stars -->
+                    <g class="theme--dark" style="display: none;">
+                        <path
+                            d="M 45 20 a 30 30 0 0 0 20 60 a 50 50 0 0 1 -20 -60"
+                            fill="#27B7C1">
+                        </path>
+                        <g fill="#27B7C1">
+                            <use href="#star"></use>
+                            <use transform="translate(20 20)" href="#star"></use>
+                            <use transform="translate(-3 26)" href="#star"></use>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </button>
+
+        <input type="text" placeholder="Brie en Croute">
+        <textarea placeholder="1. Heat the oven to 400°F. Beat the egg and water in a small bowl with a fork."></textarea>
+
+
+        <div>
+            <!-- button to preview the recipes' UI -->
+            <button class="preview">
+                <!-- icon of a magnifying glass
+                a mask is included to hide and then show the letter M, hinting at markdown syntax
+                -->
+                <svg
+                    class="icon--lens"
+                    viewBox="0 0 100 100"
+                    width="200"
+                    height="200">
+                    <defs>
+                        <mask id="mask-markdown">
+                            <!-- ! animate the circle to translate it in unison with the lens -->
+                                <circle
+                                    r="20"
+                                    cx="65"
+                                    cy="49"
+                                    fill="#fff">
+                                </circle>
+                        </mask>
+                    </defs>
+
+                    <g transform="translate(5 5) scale(0.9 0.9)">
+                        <!-- path making up the letter M for markdown -->
+                        <g
+                            mask="url(#mask-markdown)">
+                            <g>
+                                <path
+                                    fill="#27B7C1"
+                                    d="M 24 40 h 5 l 5 5 l 5 -5 h 5 v 18 h -5 v -8 l -5 5 l -5 -5 v 8 h -5 z">
+                                </path>
+                            </g>
+                        </g>
+                        <!-- actual lens icon -->
+                        <g
+                            class="lens--shape">
+                            <!-- handle of the magnifing glass, slightly darkened -->
+                            <g>
+                                <path
+                                    d="M 42 67 l -15 15"
+                                    fill="none"
+                                    stroke="#1B2F8A"
+                                    stroke-width="5"
+                                    stroke-linecap="round">
+                                </path>
+                                <path
+                                    d="M 42 67 l -15 15"
+                                    fill="none"
+                                    stroke="#000"
+                                    opacity="0.2"
+                                    stroke-width="5"
+                                    stroke-linecap="round">
+                                </path>
+                            </g>
+                            <!-- circle making up the lens -->
+                            <g>
+                                <circle
+                                    r="24"
+                                    cx="60"
+                                    cy="49"
+                                    fill="none"
+                                    stroke="#1B2F8A"
+                                    stroke-width="5">
+                                </circle>
+                                <!-- with a small arc highlighting the presence of a reflecting surface -->
+                                <path
+                                    d="M 60 34 a 12.5 12.5 0 0 1 12.5 12.5"
+                                    fill="none"
+                                    stroke="#1B2F8A"
+                                    stroke-width="3">
+                                </path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+
+                <!-- span element shown on hover -->
+                <span>Preview</span>
+            </button>
+
+
+            <!-- button to eventually save the recipe -->
+            <button class="save">
+                <!-- icon of a file -->
+                <svg
+                    class="icon--file"
+                    viewBox="0 0 100 100"
+                    width="200"
+                    height="200">
+                    <defs>
+                        <!-- mask to cut out the bottom portion of the rectangle -->
+                        <mask id="mask-file">
+                            <rect
+                                x="0"
+                                y="0"
+                                width="100"
+                                height="100"
+                                fill="#fff">
+                            </rect>
+                            <rect
+                                x="25"
+                                y="46"
+                                width="50"
+                                height="32"
+                                rx="3"
+                                fill="#000">
+                            </rect>
+                        </mask>
+                    </defs>
+
+                    <g transform="translate(5 5) scale(0.9 0.9)">
+                        <!-- shape of a floppy disk -->
+                        <g mask="url(#mask-file)">
+                            <path
+                                fill="#1b2f8a"
+                                d="M 18 18 h 52 q 2 0 4 2 l 8 8 q 2 2 2 4 v 44 a 10 10 0 0 1 -10 10 h -48 a 10 10 0 0 1 -10 -10 v -48 a 10 10 0 0 1 10 -10">
+                            </path>
+                            <path
+                                fill="#000"
+                                opacity="0.2"
+                                d="M 18 18 h 52 q 2 0 4 2 l 8 8 q 2 2 2 4 v 44 a 10 10 0 0 1 -10 10 h -48 a 10 10 0 0 1 -10 -10 v -48 a 10 10 0 0 1 10 -10">
+                            </path>
+                        </g>
+
+                        <!-- smaller rectangle making up the upper section of the floppy disk -->
+                        <g>
+                            <path
+                                fill="#000"
+                                opacity="0.3"
+                                d="M 25 18 v 15 a 5 5 0 0 0 5 5 h 30 a 5 5 0 0 0 5 -5 v -15">
+                            </path>
+                            <!-- slightly lighter section, transitioned on hover -->
+                            <g class="lock--file">
+                                <path
+                                    fill="#1b2f8a"
+                                    d="M 40 18 v 15 a 5 5 0 0 0 5 5 h 15 a 5 5 0 0 0 5 -5 v -15">
+                                </path>
+                                <path
+                                    fill="#fff"
+                                    opacity="0.1"
+                                    d="M 40 18 v 15 a 5 5 0 0 0 5 5 h 15 a 5 5 0 0 0 5 -5 v -15">
+                                </path>
+                            </g>
+                        </g>
+
+                        <!-- lines included in the masked section of the icon, animated on hover -->
+                        <g class="save--confirm">
+                            <path
+                                fill="none"
+                                stroke="#27B7C1"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-dasharray="25"
+                                stroke-dashoffset="25"
+                                d="M 38 54 h 24">
+                            </path>
+                            <path
+                                fill="none"
+                                stroke="#27B7C1"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-dasharray="25"
+                                stroke-dashoffset="25"
+                                d="M 38 62 h 24">
+                            </path>
+                            <path
+                                fill="none"
+                                stroke="#27B7C1"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-dasharray="25"
+                                stroke-dashoffset="25"
+                                d="M 38 70 h 24">
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+
+                <span>Save</span>
+            </button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  color: #030822;
+  background: #fff;
+  border-top: 5px solid #27b7c1;
+  font-family: "Lato", sans-serif;
+}
+/* cap the width of the main container and center it horizontally */
+main {
+  max-width: 550px;
+  width: 90vw;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-top: 1.75rem;
+  /* display the input and textarea element atop one another */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+/* absolute position the toggle button in the top right corner */
+button.toggle {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 62px;
+  height: 62px;
+  background: none;
+  border: none;
+}
+/* size every svg nested in a button to stretch the parents dimensions */
+button svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* expand the width of the input and textarea elements */
+input,
+textarea {
+  width: 100%;
+  /* remove defaults */
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+}
+input::placeholder,
+textarea::placeholder {
+  color: inherit;
+  opacity: 0.8;
+}
+input {
+  font-size: 3.25rem;
+  margin-bottom: 1rem;
+}
+textarea {
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  flex-grow: 1;
+  resize: none;
+}
+/* minor style changes for the automatic scrollbar */
+textarea::-webkit-scrollbar {
+  width: 0.25rem;
+}
+textarea::-webkit-scrollbar-track {
+  background: currentColor;
+}
+textarea::-webkit-scrollbar-thumb {
+  background: #27b7c1;
+}
+
+/* container of the button elements
+fixed in the bottom right of the page
+*/
+div {
+  position: fixed;
+  bottom: 0rem;
+  right: 0rem;
+  padding: 0.5rem;
+}
+/* button nested in the fixed container */
+div button {
+  /* display block to have the buttons one atop the other */
+  display: block;
+  color: inherit;
+  font-family: inherit;
+  border: none;
+  /* background to effectively hide the span elements behind */
+  background: #fff;
+  width: 82px;
+  height: 82px;
+  margin: 0.5rem 0;
+  /* position relative to absolute position the span */
+  position: relative;
+}
+/* absolute position the span elements, vertically centered behind the button */
+div button span {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(0%, -50%);
+  font-weight: 700;
+  font-size: 1.15rem;
+  opacity: 0;
+  z-index: -5;
+  /* no delay to have the span immediately rever back to their default values */
+  transition: all 0.25s 0s ease-out;
+}
+/* on hover and when focused, show the span on the left side of the buttons */
+div button:hover span,
+div button:focus span {
+  opacity: 1;
+  right: 100%;
+  /* delay to wait for the transition of the icons */
+  transition-delay: 0.4s;
+}
+
+/* transitions for the icons */
+/* lens icon, translated to the left */
+div button.preview svg g.lens--shape {
+  transition: transform 0.32s 0.2s ease-in-out;
+}
+div button.preview:hover svg g.lens--shape,
+div button.preview:focus svg g.lens--shape {
+  transform: translateX(-20px);
+  transition-delay: 0s;
+}
+/* translate the mask to highlight the underlying letter M */
+div button.preview svg #mask-markdown circle {
+  transition: transform 0.32s 0.2s ease-in-out;
+}
+div button.preview:hover svg #mask-markdown circle,
+div button.preview:focus svg #mask-markdown circle {
+  transform: translateX(-20px);
+  transition-delay: 0s;
+}
+
+/* file icon, translating the small rectangle in the top section */
+div button.save svg g.lock--file {
+  transition: transform 0.2s 0.2s ease-in-out;
+}
+div button.save:hover svg g.lock--file,
+div button.save:focus svg g.lock--file {
+  transform: translateX(-15px);
+  transition-delay: 0s;
+}
+/* including the lines one after the other */
+div button.save svg g.save--confirm path {
+  transition: stroke-dashoffset 0.2s ease-in-out;
+}
+div button.save svg g.save--confirm path:nth-child(1) {
+  transition-delay: 0.15s;
+}
+div button.save svg g.save--confirm path:nth-child(2) {
+  transition-delay: 0.25s;
+}
+div button.save svg g.save--confirm path:nth-child(3) {
+  transition-delay: 0.35s;
+}
+div button.save:hover svg g.save--confirm path,
+div button.save:focus svg g.save--confirm path {
+  stroke-dashoffset: 0;
+}
