@@ -26,6 +26,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |---|---|---|
 |[D3 Table](https://codepen.io/borntofrappe/pen/ZZaaOe)|Practice with D3 and a table layout to replicate the leaderboard from the F1 Chinese grand prix.|15th April 2019|
 |[D3 Telemetry](https://codepen.io/borntofrappe/pen/JVzZBo)|Visualize key metrics for an F1 driver in a dashboard, through text elements and partial dounut charts.|29th April 2019|
+|[D3 Colorful Donut](https://codepen.io/borntofrappe/pen/yWJWVV)|Practice with a donut visualization inspired by [this design](https://dribbble.com/shots/5902025-Shopin-Marketing-Website-Design-Part-2).|12th May 2019|
 
 ### JS
 
