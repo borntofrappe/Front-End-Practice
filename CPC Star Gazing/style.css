@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* center the main svg in the viewport */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* have the main svg stretch 75% of the smaller viewport height/width */
+svg.starry-sky {
+  width: 75vmin;
+  height: auto;
+  border-radius: 50%;
+  background: #0b0a2f;
+  border: 3px solid #2a2879;
+  box-shadow: 0 0 0 1rem #08021b;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 45px;
+  height: 45px;
+  /* background matching the border of the svg */
+  background: #0b0422;
+  border-radius: 50%;
+  border: none;
+  /* border to connect the button with the svg element */
+  border-bottom: 3px solid #2a2879;
+  transition: border 0.15s ease-out;
+}
+button svg {
+  width: 100%;
+  height: 100%;
+  /* pointer events to avoid having the event listener identify the svg instead of the button */
+  pointer-events: none;
+}
+/* absolute position the four buttons at the top/right/bottom/left of the svg */
+button.up {
+  transform: translate(-50%, calc(-38vmin - 50%));
+}
+button.right {
+  transform: translate(calc(38vmin - 50%), -50%) rotate(90deg);
+}
+button.down {
+  transform: translate(-50%, calc(38vmin - 50%)) rotate(180deg);
+}
+button.left {
+  transform: translate(calc(-38vmin - 50%), -50%) rotate(-90deg);
+}
+button:hover,
+button:focus {
+  border-bottom-width: 0px;
+}
+
+/* absolute position the telescope icon in the bottom left corner of the page */
+svg.telescope {
+  width: 150px;
+  height: auto;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+}
+/* animate the lens to rotate up and down, using the stand as a hinge */
+svg.telescope g.lens {
+  animation: starGaze 8s ease-in-out infinite alternate;
+}
+/* pause in between animations by holding a value for a longer period of time */
+@keyframes starGaze {
+  0%,
+  30% {
+    transform: rotate(-10deg);
+  }
+  60%,
+  100% {
+    transform: rotate(-30deg);
+  }
+}

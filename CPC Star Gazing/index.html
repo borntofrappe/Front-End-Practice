@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Star Gazing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- svg making up the arrow included in each button -->
+    <svg viewBox="0 0 100 100" width="32" height="32" style="display:none;">
+        <defs>
+            <symbol viewBox="0 0 100 100" width="32" height="32" id="arrow">
+                <path
+                    fill="#FEFFFF"
+                    d="M 24 68 a 4 4 0 0 1 -4 -4 l 26 -42 a 4 4 0 0 1 4 0 l 26 42 a 4 4 0 0 1 -4 4 z"
+                    stroke-linejoin="round">
+                </path>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- include four buttons spread across the page to show up/right/down/left arrows
+    data-direction used to identify the matching arrow in the keyboard -->
+    <button class="up" data-direction="38">
+        <svg>
+            <use href="#arrow"></use>
+        </svg>
+    </button>
+    <button class="right" data-direction="39">
+        <svg>
+            <use href="#arrow"></use>
+        </svg>
+    </button>
+    <button class="down" data-direction="40">
+        <svg>
+            <use href="#arrow"></use>
+        </svg>
+    </button>
+    <button class="left" data-direction="37">
+        <svg>
+            <use href="#arrow"></use>
+        </svg>
+    </button>
+
+
+    <!-- svg making up the starry's starry-sky
+    showing stars and constellations in an area exceeding the viewBox
+    the idea is to then animate the viewBox as to show the rest of the SVG content -->
+    <svg
+        class="starry-sky"
+        viewBox="0 0 100 100"
+        width="200"
+        height="200">
+        <!-- define a symbol for the stars
+            added programmatically with different scales/opacity
+        -->
+        <defs>
+            <symbol id="star">
+                <g transform="translate(5 5)">
+                    <path
+                        d="M -5 0 a 5 5 0 0 0 5 -5 a 5 5 0 0 0 5 5 a 5 5 0 0 0 -5 5 a 5 5 0 0 0 -5 -5"
+                        fill="#fff">
+                    </path>
+                </g>
+            </symbol>
+        </defs>
+
+        <!-- include stars and constellations in a [-200, 200] range
+        both for the x and y dimensions
+        -->
+
+        <!-- default stars -->
+        <!-- cassiopeia -->
+        <g transform="translate(100 50)">
+            <circle
+                cx="120"
+                cy="25"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <circle
+                cx="125"
+                cy="45"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <circle
+                cx="105"
+                cy="52"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <circle
+                cx="110"
+                cy="70"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <circle
+                cx="90"
+                cy="80"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <path
+                d="M 120 25 L 125 45 L 105 52 L 110 70 L 90 80"
+                fill="none"
+                stroke="#FFE66A"
+                stroke-width="0.7">
+            </path>
+        </g>
+
+        <!-- chepheus -->
+        <g transform="translate(-80 -100)">
+            <circle
+                cx="40"
+                cy="25"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <circle
+                cx="62"
+                cy="28"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <circle
+                cx="56"
+                cy="54"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <circle
+                cx="38"
+                cy="65"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <circle
+                cx="32"
+                cy="45"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <polygon
+                points="40 25 62 28 56 54 38 65 32 45"
+                fill="none"
+                stroke="#FFE66A"
+                stroke-width="0.7">
+            </polygon>
+        </g>
+
+        <!-- ares -->
+        <g transform="translate(-70 150)">
+            <circle
+                cx="0"
+                cy="30"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <circle
+                cx="15"
+                cy="20"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <circle
+                cx="30"
+                cy="30"
+                r="1.5"
+                fill="#FFE66A">
+            </circle>
+
+            <path
+                d="M 0 30 l 15 -10 l 15 10"
+                fill="none"
+                stroke="#FFE66A"
+                stroke-width="0.7">
+            </path>
+        </g>
+
+        <!-- stars added programmatically -->
+        <g id="stars">
+            <!--
+                <use opacity="0.2" transform="translate(-20 -20) scale(0.5)" href="#star">
+                </use>
+            -->
+        </g>
+    </svg>
+
+    <!-- icon of the telescope
+    inspired by a design by Alex Kunchevsky
+    https://dribbble.com/shots/3818928-Telescope
+    -->
+    <svg
+        class="telescope"
+        viewBox="0 0 100 100"
+        width="180"
+        height="180">
+        <g transform="translate(5 5) scale(0.9 0.9)">
+            <g class="stand">
+                <path
+                    d="M 47 78 l -15 21 a 2 2 0 0 1 -4 -4 l 22 -30 l 22 30 a 2 2 0 0 1 -4 4 l -15 -21"
+                    fill="#F4B06A"
+                    stroke="#2B477B"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                </path>
+
+                <path
+                    d="M 47 75 v 22 a 3 3 0 0 0 3 3 a 3 3 0 0 0 3 -3 v -22"
+                    fill="#F4B06A"
+                    stroke="#2B477B"
+                    stroke-width="2.5"
+                    stroke-linecap="round">
+                </path>
+
+                <g class="hinge">
+                    <path
+                        d="M 50 65 v -15"
+                        fill="none"
+                        stroke="#2B477B"
+                        stroke-width="3"
+                        stroke-linecap="round">
+                    </path>
+
+                    <circle
+                        r="6"
+                        cx="50"
+                        cy="50"
+                        fill="#42B3FD"
+                        stroke="#2B477B"
+                        stroke-width="2">
+                    </circle>
+                    <circle
+                        r="2.5"
+                        cx="50"
+                        cy="50"
+                        fill="#2B477B">
+                    </circle>
+                </g>
+            </g>
+
+            <!-- actual telescope
+            wrapped in a group centered on the hinge's circle to have the telescope rotate from that point -->
+            <g transform=" translate(50 50)">
+                <g class="lens" transform="rotate(-10)">
+                    <!-- four sections stacking up to make the elongated telescope -->
+                    <g class="stack">
+                        <path
+                            d="M -28 -14 l -5 1 a 1 1 0 0 0 -1 1 v 4 a 1 1 0 0 0 1 1 l 5 1 z"
+                            fill="#03afda"
+                            stroke="#2B477B"
+                            stroke-width="2"
+                            stroke-linecap="round">
+                        </path>
+                        <!-- lines included atop the shape
+                        added for each section of the telescope
+                        -->
+                        <g class="lines">
+                            <path
+                                d="M -28 -12 l -5 1"
+                                fill="none"
+                                stroke="#2B477B"
+                                stroke-width="0.8"
+                                stroke-linecap="round">
+                            </path>
+                            <path
+                                d="M -28 -8 l -5 -1"
+                                fill="none"
+                                stroke="#2B477B"
+                                stroke-width="0.8"
+                                stroke-linecap="round">
+                            </path>
+                        </g>
+                    </g>
+                    <g class="stack">
+                        <path
+                            d="M -14 -18 l -14 2 a 2 2 0 0 0 -2 2 v 8 a 2 2 0 0 0 2 2 l 14 2 z"
+                            fill="#02CDFF"
+                            stroke="#2B477B"
+                            stroke-width="2"
+                            stroke-linecap="round">
+                        </path>
+
+                        <g class="lines">
+                            <path
+                                d="M -14 -15 l -3.5 0.5"
+                                fill="none"
+                                stroke="#2B477B"
+                                stroke-width="0.8"
+                                stroke-linecap="round">
+                            </path>
+
+                            <path
+                                d="M -27 -16 v 12"
+                                fill="none"
+                                stroke="#2B477B"
+                                stroke-dasharray="5 3 0.2 1.2 2.6"
+                                stroke-width="0.8"
+                                stroke-linecap="round">
+                            </path>
+                        </g>
+
+                        <!-- shadow on the right end of the shape -->
+                        <path
+                            d="M -14 -17 l -2 0.285 v 13.43 l 2 0.285 z"
+                            fill="#000"
+                            opacity="0.2"
+                            stroke-linejoin="round">
+                        </path>
+                    </g>
+                    <g class="stack">
+                        <path
+                            d="M 4 -21 l -16 2 a 2 2 0 0 0 -2 2 v 14 a 2 2 0 0 0 2 2 l 16 2 z"
+                            fill="#02CDFF"
+                            stroke="#2B477B"
+                            stroke-width="2"
+                            stroke-linecap="round">
+                        </path>
+
+                        <g class="lines">
+                            <path
+                                d="M 4 -4 l -4 -0.5"
+                                fill="none"
+                                stroke="#2B477B"
+                                stroke-width="0.8"
+                                stroke-linecap="round">
+                            </path>
+
+                            <path
+                                d="M 4 -2 l -12 -1.5"
+                                fill="none"
+                                stroke-dasharray="9 2 0.2"
+                                stroke="#2B477B"
+                                stroke-width="0.8"
+                                stroke-linecap="round">
+                            </path>
+                        </g>
+
+                        <path
+                            d="M 4 -20 l -3 0.375 v 19.25 l 3 0.375 z"
+                            fill="#000"
+                            opacity="0.2"
+                            stroke-linejoin="round">
+                        </path>
+                    </g>
+
+                    <g class="stack">
+                        <path
+                            d="M 26 -24 l -20 2 a 2 2 0 0 0 -2 2 v 20 a 2 2 0 0 0 2 2 l 20 2 z"
+                            fill="#02CDFF"
+                            stroke="#2B477B"
+                            stroke-width="2"
+                            stroke-linecap="round">
+                        </path>
+
+                        <g class="lines">
+                            <path
+                                d="M 26 -20.5 l -10 1"
+                                fill="none"
+                                stroke="#2B477B"
+                                stroke-width="0.8"
+                                stroke-linecap="round">
+                            </path>
+
+                            <path
+                                d="M 26 -18.5 l -5 0.5"
+                                fill="none"
+                                stroke="#2B477B"
+                                stroke-width="0.8"
+                                stroke-linecap="round">
+                            </path>
+
+                            <path
+                                d="M 26 1.5 l -20 -2"
+                                fill="none"
+                                stroke-dasharray="0 4 4 3 7 0"
+                                stroke="#2B477B"
+                                stroke-width="0.8"
+                                stroke-linecap="round">
+                            </path>
+                        </g>
+
+                        <path
+                            d="M 26 -23 l -4 0.4 v 25.2 l 4 0.4 z"
+                            fill="#000"
+                            opacity="0.2"
+                            stroke-linejoin="round">
+                        </path>
+
+                    </g>
+
+                    <!-- actual lens -->
+                    <path
+                        d="M 33 -25 q 1 0 2 1 a 18 18 0 0 1 0 28 q -1 2 -2 1"
+                        fill="#8BF5FD"
+                        stroke="#2B477B"
+                        stroke-width="2"
+                        stroke-linejoin="round">
+                    </path>
+
+                    <!-- piece connecting the stacks with the lens -->
+                    <rect
+                        x="26"
+                        y="-27"
+                        width="7"
+                        height="34"
+                        rx="2"
+                        fill="#FFE66A"
+                        stroke="#2B477B"
+                        stroke-width="2">
+                    </rect>
+                </g>
+            </g>
+
+            <g class="horizon">
+                <path
+                    d="M 0 100 h 12"
+                    fill="none"
+                    stroke="#2B477B"
+                    stroke-width="3"
+                    stroke-linecap="round">
+                </path>
+                <circle
+                    fill="#2B477B"
+                    r="1.5"
+                    cx="18"
+                    cy="100">
+                </circle>
+                <path
+                    d="M 24 100 h 52"
+                    fill="none"
+                    stroke="#2B477B"
+                    stroke-width="3"
+                    stroke-linecap="round">
+                </path>
+
+                <path
+                    d="M 82 100 h 10"
+                    fill="none"
+                    stroke="#2B477B"
+                    stroke-width="3"
+                    stroke-linecap="round">
+                </path>
+                <circle
+                    fill="#2B477B"
+                    r="1.5"
+                    cx="98"
+                    cy="100">
+                </circle>
+            </g>
+        </g>
+    </svg>
+
+
+    <!-- import anime.js to animate the viewBox -->
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
