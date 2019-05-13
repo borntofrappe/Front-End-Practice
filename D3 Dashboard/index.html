@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- placeholder icon -->
+    <svg style="display: none;">
+        <symbol
+            id="placeholder"
+            width="100"
+            height="100">
+            <circle
+                cx="50"
+                cy="50"
+                r="50"
+                fill="#3D3D3D">
+            </circle>
+        </symbol>
+    </svg>
+
+    <!-- html structure
+        main, wrapping container
+            nav, displaying the icons in a single column
+            section, with the actual dashboard
+    -->
+    <main>
+        <!-- wrap the first icon in a heading -->
+        <nav>
+            <h1>
+                <svg viewBox="0 0 100 100" width="32" height="32">
+                    <use href="#placeholder"></use>
+                </svg>
+            </h1>
+
+            <svg viewBox="0 0 100 100" width="25" height="25">
+                <g transform="translate(5 5) scale(0.9 0.9)">
+                    <rect
+                        x="0"
+                        y="40"
+                        width="20"
+                        height="60"
+                        fill="#3D3D3D">
+                    </rect>
+                    <rect
+                        transform="translate(25 0)"
+                        x="0"
+                        y="80"
+                        width="20"
+                        height="20"
+                        fill="#3D3D3D">
+                    </rect>
+                    <rect
+                        transform="translate(50 0)"
+                        x="0"
+                        y="40"
+                        width="20"
+                        height="60"
+                        fill="#3D3D3D">
+                    </rect>
+                    <rect
+                        transform="translate(75 0)"
+                        x="0"
+                        y="55"
+                        width="20"
+                        height="45"
+                        fill="#3D3D3D">
+                    </rect>
+                </g>
+            </svg>
+
+            <svg viewBox="0 0 100 100" width="32" height="32">
+                <defs>
+                    <clipPath
+                        id="clip-semicircle">
+                        <rect x="0" y="50" width="100" height="50"></rect>
+                    </clipPath>
+                </defs>
+                <g transform="translate(5 5) scale(0.9 0.9)">
+                    <path
+                        d="M 30 17.5 h 40 l 10 32.5 h -60 z"
+                        stroke-linejoin="round"
+                        fill="none"
+                        stroke="#d3d3d3"
+                        stroke-width="6">
+                    </path>
+                    <path
+                        d="M 20 50 v 30 h 60 v -30"
+                        stroke-linejoin="round"
+                        fill="none"
+                        stroke="#d3d3d3"
+                        stroke-width="6">
+                    </path>
+
+                    <circle
+                        cx="50"
+                        cy="50"
+                        r="12"
+                        fill="#d3d3d3"
+                        clip-path="url(#clip-semicircle)">
+                    </circle>
+                </g>
+            </svg>
+
+            <svg viewBox="0 0 100 100" width="32" height="32">
+                <g transform="translate(5 5) scale(0.9 0.9)">
+                    <g>
+                        <path
+                            d="M 35 66 q -30 15 -20 30 h 44 q 10 -15 -20 -30"
+                            stroke-linejoin="round"
+                            fill="none"
+                            stroke="#d3d3d3"
+                            stroke-width="6">
+                        </path>
+                        <ellipse
+                            cx="38"
+                            cy="50"
+                            rx="18"
+                            ry="20"
+                            fill="none"
+                            stroke="#d3d3d3"
+                            stroke-width="6">
+                        </ellipse>
+                    </g>
+                    <g transform="translate(50 90) scale(0.7 0.7)">
+                        <path
+                            d="M 35 -24 q -30 15 -20 30 h 44 q 10 -15 -20 -30"
+                            stroke-linejoin="round"
+                            fill="none"
+                            stroke="#d3d3d3"
+                            stroke-width="7">
+                        </path>
+                        <ellipse
+                            cx="38"
+                            cy="-40"
+                            rx="18"
+                            ry="20"
+                            fill="none"
+                            stroke="#d3d3d3"
+                            stroke-width="7">
+                        </ellipse>
+                    </g>
+
+                </g>
+            </svg>
+
+            <svg viewBox="0 0 100 100" width="32" height="32">
+                <g transform="translate(5 5) scale(0.9 0.9)">
+                    <g>
+                        <path
+                            d="M 30 15 v 70"
+                            fill="none"
+                            stroke="#d3d3d3"
+                            stroke-width="6">
+                        </path>
+                        <circle
+                            cx="30"
+                            cy="40"
+                            r="10"
+                            fill="#d3d3d3">
+                        </circle>
+                    </g>
+
+                    <g
+                        transform="translate(20 0)">
+                        <path
+                            d="M 30 15 v 70"
+                            fill="none"
+                            stroke="#d3d3d3"
+                            stroke-width="6">
+                        </path>
+                        <circle
+                            cx="30"
+                            cy="70"
+                            r="10"
+                            fill="#d3d3d3">
+                        </circle>
+                    </g>
+
+                    <g
+                        transform="translate(40 0)">
+                        <path
+                            d="M 30 15 v 70"
+                            fill="none"
+                            stroke="#d3d3d3"
+                            stroke-width="6">
+                        </path>
+                        <circle
+                            cx="30"
+                            cy="50"
+                            r="10"
+                            fill="#d3d3d3">
+                        </circle>
+                    </g>
+                </g>
+            </svg>
+        </nav>
+
+        <section>
+            <!-- data viz here -->
+        </section>
+    </main>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

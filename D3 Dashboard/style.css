@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  color: #3d3d3d;
+  background: #e5e5e5;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+/* horizontally center the main container */
+main {
+  max-width: 900px;
+  width: 90vw;
+  margin: 2rem auto;
+  background: #f2f2f2;
+  box-shadow: 0 2px 5px -3px hsla(0, 0%, 0%, 0.4);
+  /* display the nav and section side by side */
+  display: flex;
+}
+/* display the icons in a column */
+main nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fefefe;
+  padding: 1rem 1.25rem;
+}
+/* separate the icons */
+main nav svg {
+  margin: 1rem 0;
+}
+/* include a thin dashed border between the first icon and the rest */
+main nav h1 {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+main nav h1:after {
+  position: absolute;
+  content: "";
+  left: -1rem;
+  top: 100%;
+  width: calc(100% + 2rem);
+  border-bottom: 1px dashed #d3d3d3;
+}
+/* have the section take as much space as made available in the container */
+main section {
+  flex-grow: 1;
+  padding: 2rem 1.25rem;
+}
+main section div {
+  line-height: 1.5;
+}
+main section div h3 {
+  text-transform: uppercase;
+  color: #aaaaaa;
+  letter-spacing: 0.15rem;
+  font-size: 1.1rem;
+}
+main section div h2 {
+  font-size: 1.75rem;
+}
+/* vertically align the svg icon */
+main section div h4 {
+  display: flex;
+  align-items: center;
+}
+main section div h4 svg {
+  margin-right: 0rem;
+  width: 1em;
+  height: auto;
+}
+/* expand the table to cover the entirety of the section's width*/
+main section table {
+  width: 100%;
+  line-height: 2;
+  margin: 2rem 0 1rem;
+  border-collapse: collapse;
+}
+/* on hover lighten the background of the row */
+main section table tr {
+  transition: all 0.2s ease-out;
+}
+main section table tr:hover {
+  background: #fefefe;
+  box-shadow: 0 2px 15px -12px hsla(0, 0%, 0%, 0.4);
+}
+main section table tr td {
+  padding: 0.75rem 2rem;
+}
+main section table tr td h4 {
+  font-size: 1rem;
+  letter-spacing: 0.03rem;
+  word-spacing: 0.1rem;
+}
+main section table tr td p {
+  text-transform: uppercase;
+  color: #aaaaaa;
+  letter-spacing: 0.08rem;
+  font-size: 0.9rem;
+}
+/* vertically align the svg icon */
+main section table tr td strong {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+}
+main section table tr td strong svg {
+  width: 1em;
+  height: auto;
+}
+
+/* with smaller viewports remove the less informative columns */
+@media (max-width: 800px) {
+  main section table tr td:nth-child(2) {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  main section table tr td:nth-child(3) {
+    display: none;
+  }
+}
