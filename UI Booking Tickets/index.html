@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI - Booking Tickets for a Movie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- icons for the available, reserved, selected buttons (and legend items) -->
+    <svg display="none">
+        <symbol id="available" viewBox="0 0 100 100" width="32" height="32">
+            <g
+                fill="currentColor">
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="50">
+                </circle>
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="4"
+                    fill="#fff">
+                </circle>
+            </g>
+        </symbol>
+        <symbol id="reserved" viewBox="0 0 100 100" width="32" height="32">
+            <defs>
+                <clipPath
+                    id="clip">
+                    <circle
+                        cx="50"
+                        cy="50"
+                        r="50">
+                    </circle>
+                </clipPath>
+            </defs>
+            <g
+                fill="currentColor">
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="50">
+                </circle>
+                <g clip-path="url(#clip)"
+                    fill="#000"
+                    opacity="0.2">
+                    <circle
+                        cx="50"
+                        cy="42"
+                        r="15">
+                    </circle>
+                    <circle
+                        cx="50"
+                        cy="110"
+                        r="40">
+                    </circle>
+                </g>
+            </g>
+        </symbol>
+        <symbol id="selected" viewBox="0 0 100 100" width="32" height="32">
+            <g
+                fill="currentColor">
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="50">
+                </circle>
+                <text
+                    x="50"
+                    y="50"
+                    dy="1rem"
+                    font-size="2.7rem"
+                    text-anchor="middle"
+                    fill="#fff">
+                    1
+                </text>
+            </g>
+        </symbol>
+    </svg>
+
+    <!-- html structure, for each screen
+    main, wrapping container
+        div, displaying the heading and the + / - buttons
+        div, displaying the legend
+        div, displaying the grid of seats
+        div, displaying the details of the seats to-be-booked
+        button, for the checkout action
+    -->
+    <main>
+        <div class="header">
+            <h1>Choose seats</h1>
+            <button>
+                <svg viewBox="0 0 100 100" width="32" height="32">
+                    <g
+                        stroke="currentColor"
+                        stroke-width="10"
+                        fill="none">
+                        <path
+                            d="M 20 50 h 60">
+                        </path>
+                        <path
+                            d="M 50 20 v 60">
+                        </path>
+                    </g>
+                </svg>
+            </button>
+            <button>
+                <svg viewBox="0 0 100 100" width="32" height="32">
+                    <g
+                        stroke="currentColor"
+                        stroke-width="10"
+                        fill="none">
+                        <path
+                            d="M 20 50 h 60">
+                        </path>
+                    </g>
+                </svg>
+            </button>
+        </div>
+
+        <!-- show the legend items side by side, prefaced by the icon symbolizing them -->
+        <div class="legend">
+            <p>
+                <svg class="available" viewBox="0 0 100 100" width="32" height="32">
+                    <use href="#available"></use>
+                </svg>
+                <span>
+                    Available
+                </span>
+            </p>
+            <p>
+                <svg class="reserved" viewBox="0 0 100 100" width="32" height="32">
+                    <use href="#reserved"></use>
+                </svg>
+                <span>
+                    Reserved
+                </span>
+            </p>
+            <p>
+                <svg class="selected" viewBox="0 0 100 100" width="32" height="32">
+                    <use href="#selected"></use>
+                </svg>
+                <span>
+                    Selected
+                </span>
+            </p>
+        </div>
+
+        <!-- after a paragraph detailing the screen include a grid for the seats -->
+        <div class="theater">
+            <p>Screen</p>
+            <!-- seats included through the script with different identifiers -->
+            <div class="seats"></div>
+        </div>
+
+
+        <div class="details">
+            <h4>Details</h4>
+            <button>
+                Row: 7 Seat: 4 Price: $16
+            </button>
+        </div>
+
+        <button class="checkout">
+            <strong>$48</strong>
+            <span>Checkout</span>
+        </button>
+
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
