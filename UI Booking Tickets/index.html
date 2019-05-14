@@ -46,7 +46,7 @@
                 </circle>
                 <g clip-path="url(#clip)"
                     fill="#000"
-                    opacity="0.2">
+                    opacity="0.12">
                     <circle
                         cx="50"
                         cy="42"
@@ -153,14 +153,40 @@
         <div class="theater">
             <p>Screen</p>
             <!-- seats included through the script with different identifiers -->
-            <div class="seats"></div>
+            <div class="seats">
+                <!-- filler elements used to add empty spaces in the grid -->
+                <div class="filler"></div>
+                <div class="filler"></div>
+                <div class="filler"></div>
+                <div class="filler"></div>
+            </div>
         </div>
 
 
         <div class="details">
             <h4>Details</h4>
             <button>
-                Row: 7 Seat: 4 Price: $16
+                <span>Row: 7 Seat: 4 Price: $16</span>
+                <svg viewBox="0 0 100 100" width="32" height="32">
+                    <g
+                        stroke="currentColor"
+                        stroke-width="10"
+                        fill="none">
+                        <g transform="translate(50 50) rotate(45)">
+                            <path
+                                d="M -40 0 h 80">
+                            </path>
+                        </g>
+                        <g transform="translate(50 50) rotate(-45)">
+                            <path
+                                d="M -40 0 h 80">
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+            </button>
+            <button>
+                Row: 8 Seat: 3 Price: $12
             </button>
         </div>
 

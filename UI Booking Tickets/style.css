@@ -6,11 +6,6 @@
   margin: 0;
 }
 body {
-  background: #fff;
-  background: #575cba;
-  background: #2dcff8;
-  background: #f9b73a;
-  background: #fd6d8e;
   min-height: 100vh;
   background: linear-gradient(#fae6e1, #f3dfd8);
   font-family: "Lato", sans-serif;
@@ -25,7 +20,7 @@ main {
   min-height: 500px;
   background: #fff;
   color: #2c2f62;
-  padding: 2rem;
+  padding: 2rem 2rem 1.25rem;
   box-shadow: 0 2px 10px -8px hsla(0, 0%, 0%, 0.4);
 }
 
@@ -156,6 +151,20 @@ div.theater div.seats {
   /* for the last row include an implicit grid of 5 columns instead */
   grid-auto-columns: repeat(5, 32px);
   grid-gap: 0.5rem 0.2rem;
+  grid-auto-flow: dense;
+}
+/* stretch the filler divs to display the seats in the remaining grid */
+div.theater div.seats div.filler:nth-child(2) {
+  grid-column: 10/11;
+  grid-row: 1/2;
+}
+div.theater div.seats div.filler:nth-child(3) {
+  grid-row: 6/11;
+  grid-column: 1/2;
+}
+div.theater div.seats div.filler:nth-child(4) {
+  grid-column: 10/11;
+  grid-row: 6/11;
 }
 /* size the buttons similarly to the legend items */
 div.theater div.seats button {
@@ -171,3 +180,53 @@ div.theater div.seats button svg {
   border-radius: 50%;
 }
 
+/* display the details in a non-wrapping row */
+div.details {
+  display: flex;
+  margin: 1rem 0.25rem;
+  width: 100%;
+  overflow: hidden;
+}
+div.details h4 {
+  font-weight: 700;
+  font-size: 1rem;
+}
+div.details button {
+  background: none;
+  font-family: inherit;
+  font-size: 0.7rem;
+  color: hsl(0, 0%, 70%);
+  border: 1px solid currentColor;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  flex-shrink: 0;
+  margin: 0 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+div.details button svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+button.checkout {
+  background: #fd6d8e;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 15px;
+  font-family: inherit;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 5px -4px currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+button.checkout strong {
+  font-size: 1rem;
+}
+button.checkout span {
+  font-size: 0.8rem;
+}
