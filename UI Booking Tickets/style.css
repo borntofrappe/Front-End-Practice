@@ -9,6 +9,7 @@ body {
   min-height: 100vh;
   background: linear-gradient(#fae6e1, #f3dfd8);
   font-family: "Lato", sans-serif;
+  /* center in the viewport */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,7 +45,6 @@ div.header:before {
   border-radius: 15px;
   background: hsl(0, 0%, 90%);
 }
-
 /* have the heading expand to occupy the available space */
 div.header h1 {
   font-size: 1.5rem;
@@ -78,6 +78,7 @@ div.legend p {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* more whitespae around the legend items than between the items and the respective icon */
   margin: 0 0.35rem;
 }
 div.legend span {
@@ -93,6 +94,7 @@ div.legend p svg {
   margin-right: 0.2rem;
   border-radius: 50%;
 }
+/* colors applied to the svg icons through the currentColor property */
 .available {
   color: #2dcff8;
 }
@@ -110,7 +112,7 @@ div.theater {
   align-items: center;
   margin: 1.75rem 0;
 }
-
+/* style the _screen_ paragraph to have a rounded border and two lines protruding from each side */
 div.theater p {
   text-align: center;
   text-transform: uppercase;
@@ -121,7 +123,7 @@ div.theater p {
   font-size: 0.5rem;
   letter-spacing: 0.1rem;
   background: #fff;
-  /* include a line around the paragraph with pseudo elements */
+  /* include lines outside of the rounded border with pseudo elements */
   position: relative;
 }
 div.theater p:before,
@@ -142,15 +144,14 @@ div.theater p:after {
 }
 /* create a grid of 10 columns and 10 rows */
 div.theater div.seats {
+  margin-top: 1.5rem;
   width: 100%;
-  justify-content: center;
-  margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(10, 16px);
-  grid-template-rows: repeat(10, 16px);
-  /* for the last row include an implicit grid of 5 columns instead */
-  grid-auto-columns: repeat(5, 32px);
-  grid-gap: 0.5rem 0.2rem;
+  justify-content: center;
+  grid-template-columns: repeat(10, 18px);
+  grid-template-rows: repeat(10, 18px);
+  grid-gap: 0.75rem 0.3rem;
+  /* dense flow to have the seats populate the grid in the space made available after the filler divs */
   grid-auto-flow: dense;
 }
 /* stretch the filler divs to display the seats in the remaining grid */
@@ -168,8 +169,8 @@ div.theater div.seats div.filler:nth-child(4) {
 }
 /* size the buttons similarly to the legend items */
 div.theater div.seats button {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: none;
   border: none;
@@ -183,15 +184,22 @@ div.theater div.seats button svg {
 /* display the details in a non-wrapping row */
 div.details {
   display: flex;
+  align-items: center;
   margin: 1rem 0.25rem;
   width: 100%;
-  overflow: hidden;
+  /* overflow auto to show how buttons are added one after the other in the row */
+  overflow: auto;
+}
+div.details::-webkit-scrollbar {
+  display: none;
 }
 div.details h4 {
   font-weight: 700;
   font-size: 1rem;
 }
+/* prevent the button from shrinking, allowing for horizontal scroll */
 div.details button {
+  flex-shrink: 0;
   background: none;
   font-family: inherit;
   font-size: 0.7rem;
@@ -199,27 +207,30 @@ div.details button {
   border: 1px solid currentColor;
   padding: 0.25rem 0.5rem;
   border-radius: 20px;
-  flex-shrink: 0;
   margin: 0 0.5rem;
+  /* display the text and the x icon side by side */
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 
 div.details button svg {
-  width: 0.8rem;
-  height: 0.8rem;
-  margin-left: 0.5rem;
+  width: 12px;
+  height: 12px;
+  margin-left: 0.35rem;
 }
 
+/* style the checkout button to cover the width of the parent container */
 button.checkout {
-  background: #fd6d8e;
+  margin-top: 1.75rem;
   width: 100%;
+  background: #fd6d8e;
+  box-shadow: 0 2px 5px -4px currentColor;
   padding: 0.75rem 1rem;
   border-radius: 15px;
   font-family: inherit;
   color: #fff;
   border: none;
-  box-shadow: 0 2px 5px -4px currentColor;
+  /* display the strong and span elements in a row, at either side of the button */
   display: flex;
   align-items: center;
   justify-content: space-between;

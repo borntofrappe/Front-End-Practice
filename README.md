@@ -61,7 +61,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[UI Chat Interface](https://codepen.io/borntofrappe/pen/XQOVpE)|Create a chat interface with messages spawning from a phone made up of semi transparent screens.|29th April 2019|
 |[UI Recipe App - Homepage](https://codepen.io/borntofrappe/pen/LoGvjd)|Create the UI for the homepage ultimately used for a larger application planned to practice with the React framework.|9th May 2019|
 |[UI Recipe App - Writing Page](https://codepen.io/borntofrappe/pen/eaZoez)|Create the UI for the page ultimately merged in the recipe app planned to practice with the React framework.|10th May 2019|
-|[UI Tickets Booking](https://codepen.io/borntofrappe/pen/dENMNV)|Create the UI for a mobile application allowing to book seats for a hypothetical movie. Inspired by [this particular design](https://dribbble.com/shots/6418198-Tickets-booking).|14th May 2019|
+|[UI Tickets Booking](https://codepen.io/borntofrappe/pen/dENMNV)|Create the UI for a mobile application allowing to book seats for a hypothetical movie. Inspired by [this particular design](https://dribbble.com/shots/6418198-Tickets-booking).|14th-15th May 2019|
 
 ### Miscellaneous
 

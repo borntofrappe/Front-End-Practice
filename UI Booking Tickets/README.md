@@ -1,4 +1,4 @@
-# UI - Tickets Booking
+# UI Tickets Booking
 
 ## [Live Demo](https://codepen.io/borntofrappe/full/dENMNV)
 

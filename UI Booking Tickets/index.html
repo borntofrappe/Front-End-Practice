@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>UI - Booking Tickets for a Movie</title>
+    <title>UI Tickets Booking</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- icons for the available, reserved, selected buttons (and legend items) -->
-    <svg display="none">
-        <symbol id="available" viewBox="0 0 100 100" width="32" height="32">
+    <!--
+        icons for the available, reserved, selected buttons,
+        for the legend items
+    -->
+    <svg display="none" viewBox="0 0 100 100">
+        <symbol id="available" viewBox="0 0 100 100" >
             <g
                 fill="currentColor">
                 <circle
@@ -26,7 +29,7 @@
                 </circle>
             </g>
         </symbol>
-        <symbol id="reserved" viewBox="0 0 100 100" width="32" height="32">
+        <symbol id="reserved" viewBox="0 0 100 100">
             <defs>
                 <clipPath
                     id="clip">
@@ -60,7 +63,7 @@
                 </g>
             </g>
         </symbol>
-        <symbol id="selected" viewBox="0 0 100 100" width="32" height="32">
+        <symbol id="selected" viewBox="0 0 100 100">
             <g
                 fill="currentColor">
                 <circle
@@ -70,8 +73,7 @@
                 </circle>
                 <text
                     x="50"
-                    y="50"
-                    dy="1rem"
+                    y="65"
                     font-size="2.7rem"
                     text-anchor="middle"
                     fill="#fff">
@@ -81,17 +83,25 @@
         </symbol>
     </svg>
 
-    <!-- html structure, for each screen
+    <!-- html structure
     main, wrapping container
-        div, displaying the heading and the + / - buttons
-        div, displaying the legend
-        div, displaying the grid of seats
-        div, displaying the details of the seats to-be-booked
-        button, for the checkout action
+        div,
+            heading
+            + / - buttons
+        div,
+            legend items
+        div,
+            screen
+            grid of seats
+        div,
+            heading
+            overflowing row of buttons
+        button
     -->
     <main>
         <div class="header">
             <h1>Choose seats</h1>
+            <!-- + icon -->
             <button>
                 <svg viewBox="0 0 100 100" width="32" height="32">
                     <g
@@ -108,6 +118,7 @@
                 </svg>
             </button>
             <button>
+                <!-- - icon -->
                 <svg viewBox="0 0 100 100" width="32" height="32">
                     <g
                         stroke="currentColor"
@@ -124,7 +135,7 @@
         <!-- show the legend items side by side, prefaced by the icon symbolizing them -->
         <div class="legend">
             <p>
-                <svg class="available" viewBox="0 0 100 100" width="32" height="32">
+                <svg class="available" width="20" height="20">
                     <use href="#available"></use>
                 </svg>
                 <span>
@@ -132,7 +143,7 @@
                 </span>
             </p>
             <p>
-                <svg class="reserved" viewBox="0 0 100 100" width="32" height="32">
+                <svg class="reserved" width="20" height="20">
                     <use href="#reserved"></use>
                 </svg>
                 <span>
@@ -140,7 +151,7 @@
                 </span>
             </p>
             <p>
-                <svg class="selected" viewBox="0 0 100 100" width="32" height="32">
+                <svg class="selected" width="20" height="20">
                     <use href="#selected"></use>
                 </svg>
                 <span>
@@ -152,7 +163,7 @@
         <!-- after a paragraph detailing the screen include a grid for the seats -->
         <div class="theater">
             <p>Screen</p>
-            <!-- seats included through the script with different identifiers -->
+            <!-- seats included in the script as buttons nesting the svg icons for available/reserved/selected seats -->
             <div class="seats">
                 <!-- filler elements used to add empty spaces in the grid -->
                 <div class="filler"></div>
@@ -162,24 +173,25 @@
             </div>
         </div>
 
-
+        <!-- display the details in an overflowing row -->
         <div class="details">
             <h4>Details</h4>
+            <!-- the idea is to have multiple buttons, one for each selected seat -->
             <button>
                 <span>Row: 7 Seat: 4 Price: $16</span>
-                <svg viewBox="0 0 100 100" width="32" height="32">
+                <!-- x icon (rotated + icon) -->
+                <svg viewBox="0 0 100 100" width="18" height="18">
                     <g
                         stroke="currentColor"
                         stroke-width="10"
-                        fill="none">
-                        <g transform="translate(50 50) rotate(45)">
+                        fill="none"
+                        transform="translate(50 50) rotate(45)">
+                        <g transform="translate(-50 -50)">
                             <path
-                                d="M -40 0 h 80">
+                                d="M 10 50 h 80">
                             </path>
-                        </g>
-                        <g transform="translate(50 50) rotate(-45)">
                             <path
-                                d="M -40 0 h 80">
+                                d="M 50 10 v 80">
                             </path>
                         </g>
                     </g>
