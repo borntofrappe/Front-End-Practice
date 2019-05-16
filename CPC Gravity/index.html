@@ -9,6 +9,7 @@
 </head>
 <body>
 
+    <!-- svg icons making up the symbols for the different planets (and moon) -->
     <svg
         viewBox="0 0 100 100" style="display: none;">
         <symbol
@@ -323,13 +324,24 @@
     </svg>
 
 
+    <!-- html structure
+        app, wrapping the application
+
+            app__selection for the screen shown immediately
+            app__game for the actual game powered with matter.js // COMING SOON
+    -->
     <div class="app">
-            <div class="app__selection">
+            <!-- selection screen
+            -->
+        <div class="app__selection">
             <h2 class="selection--heading">Location</h2>
             <h1 class="selection--location">Earth</h1>
-            <div class="selection--planets">
+
+            <!-- buttons included in the node through the script -->
+            <div class="selection--bodies">
             </div>
 
+            <!-- gravity value in meters per squared seconds -->
             <div class="selection--game">
                 <p class="game--gravity">
                     <strong>
@@ -344,6 +356,7 @@
                         </sub>
                     </span>
                 </p>
+                <!-- button to move from the selection screen to the actual game -->
                 <button class="game--play">
                     Play
                 </button>

@@ -10,15 +10,18 @@ body {
   color: #000000;
   font-family: "Lato", sans-serif;
   min-height: 100vh;
+  /* center the screen(s) in the viewport */
   display: flex;
   justify-content: center;
   align-items: center;
 }
+/* style the app container to be a rounded box with noticeable shadow */
 div.app {
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 2px 10px -5px hsla(0, 0%, 0%, 0.2);
   line-height: 2;
+  /* limit the width to re-create the ui of a phone (at least for the selection screen) */
   width: 300px;
 }
 div.app__selection {
@@ -34,14 +37,16 @@ h1.selection--location {
   font-weight: 700;
   text-transform: capitalize;
 }
-div.selection--planets {
+/* display the planets in a wrapping row */
+div.selection--bodies {
   flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 1rem 0 4rem 0;
 }
-button.planets--planet {
+/* have each button occupy a fraction of the available width */
+button.bodies--body {
   flex-grow: 1;
   width: 50px;
   height: 50px;
@@ -49,15 +54,15 @@ button.planets--planet {
   background: none;
   border: none;
   border-radius: 5px;
-  color: inherit;
-  font-family: inherit;
-  text-transform: capitalize;
   padding: 0.15rem;
 }
-button.planets--planet.active {
+/* include the icon of a flag to the button with a class of .active
+by default earth, changed on click
+*/
+button.bodies--body.active {
   position: relative;
 }
-button.planets--planet.active:after {
+button.bodies--body.active:after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -68,34 +73,39 @@ button.planets--planet.active:after {
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g transform="translate(5 5) scale(0.9 0.9)"><ellipse cx="50" cy="88" rx="25" ry="12" fill="%23fed73e"></ellipse><path d="M 47.5 88 q 7 -44 -5 -88 a 3.5 3.5 0 0 1 7 0 q 25 0 50 25 q -22.5 15 -43 20 q 2 15 -3 43 a 4 4 0 0 1 -6 0" fill="%23fed73e" stroke-linecap="round"></path></g></svg>');
   /* background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="50" height="50"><ellipse cx="50" cy="88" rx="25" ry="12" fill="%23fed73e"></ellipse></svg>'); */
 }
-button.planets--planet svg {
+/* style the svg elements with the accent color */
+button.bodies--body svg {
   display: block;
   width: 100%;
   height: 100%;
   color: #fed73e;
 }
+/* display the gravity and play button side by side */
 div.selection--game {
   display: flex;
 }
+/* display the strong and span element side by side, vertically aligned */
 p.game--gravity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   box-shadow: 0 2px 6px #f5f3fb;
   flex-grow: 1;
   background: #fed73e;
   padding: 0.5rem 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 p.game--gravity strong {
   font-size: 1.5rem;
 }
+/* reduce the spacing between sup, sub elements */
 p.game--gravity span {
   letter-spacing: -0.1rem;
   font-size: 0.9rem;
   margin-left: 0.5rem;
   font-weight: 700;
 }
+/* style the button to have no background and a rounded border */
 button.game--play {
   margin-left: 0.75rem;
   padding: 0 1rem;
@@ -107,6 +117,7 @@ button.game--play {
   text-transform: uppercase;
   transition: all 0.12s ease-out;
 }
+/* on hover/focus use the accent color for the text and the dark hue for the background */
 button.game--play:hover,
 button.game--play:focus {
   color: #fed73e;
