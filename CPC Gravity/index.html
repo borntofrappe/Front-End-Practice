@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Gravity Golf</title>
+</head>
+<body>
+
+    <!-- svg icons making up the symbols for the celestial bodies -->
+    <svg
+        viewBox="0 0 100 100" style="display: none;">
+        <symbol
+            viewBox="0 0 100 100"
+            id="mercury">
+            <circle
+                cx="50"
+                cy="50"
+                r="50">
+            </circle>
+            <g transform="translate(25 25) scale(0.5 0.5)">
+                <circle
+                    cx="50"
+                    cy="40"
+                    r="25"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </circle>
+                <path
+                    d="M 32 24 q -10 -10 0 -24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    transform="translate(100) scale(-1 1)"
+                    d="M 32 24 q -10 -10 0 -24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 25 82.5 h 50"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 50 60 v 40"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+            </g>
+        </symbol>
+
+        <symbol
+            viewBox="0 0 100 100"
+            id="venus">
+            <circle
+                cx="50"
+                cy="50"
+                r="50">
+            </circle>
+            <g transform="translate(25 25) scale(0.5 0.5)">
+                <circle
+                    cx="50"
+                    cy="30"
+                    r="25"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </circle>
+                <path
+                    d="M 25 75 h 50"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+
+                <path
+                    d="M 50 55 v 38"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+            </g>
+        </symbol>
+
+        <symbol
+            viewBox="0 0 100 100"
+            id="earth">
+            <circle
+                cx="50"
+                cy="50"
+                r="50">
+            </circle>
+            <g transform="translate(25 25) scale(0.5 0.5)">
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="47.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </circle>
+                <path
+                    d="M 50 0 v 100"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 0 50 h 100"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+            </g>
+        </symbol>
+
+        <symbol
+            viewBox="0 0 100 100"
+            id="moon">
+            <circle
+                cx="50"
+                cy="50"
+                r="50">
+            </circle>
+            <g transform="translate(25 25) scale(0.5 0.5)">
+                <path
+                    d="M 62.5 10 a 40 40 0 0 0 0 80 a 75 75 0 0 1 0 -80"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10"
+                    stroke-linecap="round">
+                </path>
+            </g>
+        </symbol>
+
+        <symbol
+            viewBox="0 0 100 100"
+            id="mars">
+            <circle
+                cx="50"
+                cy="50"
+                r="50">
+            </circle>
+            <g transform="translate(25 25) scale(0.5 0.5)">
+                <circle
+                    cx="45"
+                    cy="60"
+                    r="30"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </circle>
+                <path
+                    d="M 65 40 l 20 -20"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <g transform="translate(85 20)">
+                    <path
+                        transform="rotate(45)"
+                        d="M 0 0 h 5 l -5 -10 l -5 10 h 5"
+                        fill="currentColor"
+                        stroke="currentColor"
+                        stroke-width="10">
+                    </path>
+                </g>
+            </g>
+        </symbol>
+
+        <symbol
+            viewBox="0 0 100 100"
+            id="jupiter">
+            <circle
+                cx="50"
+                cy="50"
+                r="50">
+            </circle>
+            <g transform="translate(25 25) scale(0.5 0.5)">
+                <path
+                    d="M 75 15 v 80"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 20 35 a 20 20 0 0 1 40 0 a 40 40 0 0 1 -30 40 h 60"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+            </g>
+        </symbol>
+
+        <symbol
+            viewBox="0 0 100 100"
+            id="saturn">
+            <circle
+                cx="50"
+                cy="50"
+                r="50">
+            </circle>
+            <g transform="translate(25 25) scale(0.5 0.5)">
+                <path
+                    d="M 25 5 h 20"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 35 5 v 80"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 35 50 q 10 -15 20 -15 q 20 0 20 15 t -10 30 t 5 20"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+            </g>
+        </symbol>
+
+        <symbol
+            viewBox="0 0 100 100"
+            id="uranus">
+            <circle
+                cx="50"
+                cy="50"
+                r="50">
+            </circle>
+            <g transform="translate(25 25) scale(0.5 0.5)">
+                <circle
+                    cx="50"
+                    cy="70"
+                    r="25"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </circle>
+                <circle
+                    cx="50"
+                    cy="70"
+                    r="5"
+                    fill="currentColor">
+                </circle>
+                <path
+                    d="M 50 20 h 5 l -5 -10 l -5 10 h 5"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 50 20 v 25"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+            </g>
+        </symbol>
+
+        <symbol
+            viewBox="0 0 100 100"
+            id="neptune">
+            <circle
+                cx="50"
+                cy="50"
+                r="50">
+            </circle>
+            <g transform="translate(25 25) scale(0.5 0.5)">
+                <path
+                    d="M 25 20 v 25 a 25 25 0 0 0 25 25"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 50 20 v 80"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 75 20 v 25 a 25 25 0 0 1 -25 25"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 25 20 h 5 l -5 -10 l -5 10 h 5"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 50 20 h 5 l -5 -10 l -5 10 h 5"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 75 20 h 5 l -5 -10 l -5 10 h 5"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+                <path
+                    d="M 30 85 h 40"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="10">
+                </path>
+            </g>
+        </symbol>
+    </svg>
+
+    <!-- html structure
+    .app, wrapping container
+    .app__select, container for the selection screen
+    .app__play, container for the play screen
+
+    the idea is to show the screens one after the other
+    -->
+    <div class="app">
+    <!-- select screen
+        following two headings introducing the application, include a container in which to add button elements
+        button added through the script
+    -->
+        <div class="app__select">
+            <h2>Location</h2>
+            <h1>Earth</h1> <!-- updated when selecting a different celestial body -->
+            <div class="select--bodies"></div> <!-- populated through the script -->
+
+            <!-- following the button show the gravity of the selected body in a panel -->
+            <div class="select--game">
+            <p>
+                <strong>9.8</strong>
+                <span>
+                <sup>m</sup>
+                /
+                <sub>
+                    s
+                    <sup>2</sup>
+                </sub>
+                </span>
+            </p>
+
+            <!-- button allowing to move to the playing screen -->
+            <button>Play</button>
+            </div>
+        </div>
+
+
+        <!-- play screen
+            following div containers with general information (on the game and how to go back to the selection screen)
+            include the canvas element
+        -->
+        <div class="app__play hidden none">
+            <!-- heading used to introduce the game and highlight a victory -->
+            <h1>Play Ball</h1>
+            <div class="play--info">
+                <!-- display regarding the location and its gravity -->
+                <div class="info--game">
+                    <h2>
+                        Earth
+                        <svg width="36" height="36">
+                            <use href="#earth"></use>
+                        </svg>
+                    </h2>
+                    <p>
+                        <strong>9.8</strong>
+                        <span>
+                            <sup>m</sup>
+                            /
+                            <sub>
+                            s
+                            <sup>2</sup>
+                            </sub>
+                        </span>
+                    </p>
+                </div>
+                <!-- button allowing to go back to the selection screen -->
+                <button class="info--back">
+                    Go back
+                </button>
+            </div>
+
+            <canvas></canvas>
+        </div>
+    </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
