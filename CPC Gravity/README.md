@@ -1,6 +1,6 @@
 # CPC Gravity Golf
 
-<!-- ## Live Demo -->
+## [Live Demo](https://codepen.io/borntofrappe/full/KLqbag)
 
 ## Goal
 
