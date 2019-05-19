@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* display the div container and the button in a column, centered in the viewport */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Cabin", sans-serif;
+}
+
+/* show the icons side by side in a wrapping row */
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+/* have the icons occupy a sizeable portion of the viewport */
+svg {
+  width: 15vw;
+  height: 15vw;
+  margin: 1rem;
+  /* hide the icons by default
+  show them one at a time, alongside the JavaScript powered animation
+  */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-out;
+}
+
+/* style the button with a default accent color */
+button {
+  margin-top: 2rem;
+  background: #90bee9;
+  color: #000;
+  font-size: 1.1rem;
+  padding: 0.7rem 1.75rem;
+  border: none;
+  border-bottom: 4px solid currentColor;
+  border-radius: 5px;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  transition: all 0.25s ease;
+}
+/* on hover, focus and when active progressively reduce the width of the bottom border
+offset the change in width with an equal margin-top value to have the button effectively pushed downwards
+ */
+button:hover,
+button:focus {
+  margin-top: calc(2rem + 2px);
+  border-bottom-width: 2px;
+}
+button:active {
+  margin-top: calc(2rem + 4px);
+  border-bottom-width: 0;
+}
+
+/* cap the dimension of the svg after an arbitrary viewport width */
+@media (min-width: 1000px) {
+  svg {
+    width: 150px;
+    height: 150px;
+  }
+}

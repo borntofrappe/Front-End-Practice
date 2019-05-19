@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Feedback Icons</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- html structure
+        div, wrapping the icons
+        button allowing to highlight the svg icons one at a time
+    -->
+    <div class="icons">
+        <!-- correct icon
+        include a path element on top of a circle allowing for the checkmark animation
+        -->
+        <svg class="correct" viewBox="0 0 100 100" width="200" height="200">
+            <circle
+                fill="none"
+                stroke="#E4F4DA"
+                stroke-width="5"
+                r="45"
+                cx="50"
+                cy="50">
+            </circle>
+
+            <!-- path describing a circle and two line segments falling within the circle -->
+            <g transform="translate(50 50) rotate(-70)">
+                <path
+                    fill="none"
+                    stroke="#A5DC86"
+                    stroke-width="5"
+                    d="M 0 -45 a 40 40 0 0 0 0 90 a 40 40 0 0 0 0 -90 l -18 50 l 35 15">
+                </path>
+            </g>
+        </svg>
+
+        <!-- warning icon
+        in a wrapping circle include a path element atop a smaller circle element
+        -->
+        <svg class="warning" viewBox="0 0 100 100" width="200" height="200">
+            <defs>
+                <!-- path inlcluded on the path element to slightly narrow the path element as it reaches its end -->
+                <clipPath id="warning-clip">
+                    <path
+                        d="M 47.5 22 l 0.5 42 h 4 l 0.5 -42">
+                    </path>
+                </clipPath>
+            </defs>
+            <circle
+                fill="none"
+                stroke="#FACEA8"
+                stroke-width="5"
+                r="45"
+                cx="50"
+                cy="50">
+            </circle>
+
+            <g>
+                <circle
+                    fill="#F8BB86"
+                    r="3.5"
+                    cx="50"
+                    cy="72">
+                </circle>
+
+                <path
+                    clip-path="url(#warning-clip)"
+                    fill="none"
+                    stroke="#F8BB86"
+                    stroke-width="5"
+                    d="M 50 22 v 42">
+                </path>
+            </g>
+        </svg>
+
+        <!-- wrong icon
+        in a wrapping circle include two lines making up a bold x sign
+        -->
+        <svg class="wrong" viewBox="0 0 100 100" width="200" height="200">
+            <!-- clip to crop the two lines and only show a smaller x within the circle element -->
+            <defs>
+                <clipPath id="wrong-clip">
+                    <circle
+                        fill="none"
+                        stroke="#F69C9C"
+                        stroke-width="5"
+                        r="22"
+                        cx="50"
+                        cy="50">
+                    </circle>
+                </clipPath>
+            </defs>
+            <circle
+                fill="none"
+                stroke="#F69C9C"
+                stroke-width="5"
+                r="45"
+                cx="50"
+                cy="50">
+            </circle>
+
+            <g clip-path="url(#wrong-clip)">
+                <path
+                    fill="none"
+                    stroke="#F27474"
+                    stroke-width="5"
+                    d="M 0 0 l 100 100">
+                </path>
+                <path
+                    fill="none"
+                    stroke="#F27474"
+                    stroke-width="5"
+                    d="M 0 100 l 100 -100">
+                </path>
+            </g>
+        </svg>
+    </div>
+
+
+    <!-- button allowing to highlight the icons one at a time -->
+    <button>Guess</button>
+    <script src="script.js"></script>
+</body>
+</html>
