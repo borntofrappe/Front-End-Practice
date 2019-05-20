@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title SVG Star Ratings
+    style(rel="stylesheet" href="style.css")
+  body
+
+  //- variable describing the number of stars added in the .stars row
+  - var stars = 10;
+
+  //- svg symbol making up the star
+  //- ! using currentColor for the fill
+  svg(style="display: none" viewBox="0 0 100 100")
+    symbol(id="star" viewBox="0 0 100 100")
+      path(
+        fill="currentColor"
+        stroke="#e1e04b"
+        stroke-width="8"
+        stroke-linejoin="round"
+        d="M 45 10 a 6 6 0 0 1 10 0 l 10 25 h 25 a 6 6 0 0 1 0 10 l -20 15 l 10 25 a 6 6 0 0 1 -10 5 l -20 -15 l -20 15 a 6 6 0 0 1 -10 -5 l 10 -25 l -20 -15 a 6 6 0 0 1 0 -10 h 25 z"
+        )
+
+  //- in a wrapping row, and for many times as dictacted by the variable
+  //- add a button with the defined icon
+  div(class="stars")
+    while stars--
+      button
+        svg(width="75" height="75")
+          use(href="#star")
