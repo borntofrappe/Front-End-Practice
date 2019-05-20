@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* center the row in the viewport */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #242538;
+}
+/* display the icons in a wrapping row */
+.stars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/* style the buttons with the same color of the background */
+button {
+  width: 70px;
+  height: 70px;
+  color: #242538;
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin: 0.5rem;
+  /* apply a more elastic easing function for the transform property */
+  transition: color 0.3s ease-out,
+    transform 0.25s cubic-bezier(0.24, 1.09, 0.72, 1.73);
+  /* position relative for the pseudo elements */
+  position: relative;
+  filter: drop-shadow(0 0 4px #000);
+  /* glowing shadow */
+  /* filter: drop-shadow(0 0 2px currentColor); */
+}
+
+/* with pseudo elements include two lines shaping an x behind the star */
+button:before,
+button:after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  /* by default scale the pseudo elements to hide them from view */
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  background: currentColor;
+  z-index: -5;
+}
+button:before {
+  width: 100%;
+  height: 4px;
+}
+button:after {
+  width: 4px;
+  height: 100%;
+}
+
+/* when the button has a class of active apply the accent color and slightly scale the element up */
+button.active {
+  color: #e1e04b;
+  transform: scale(1.1);
+}
+/* when the button has a class of active animate the pseudo element to momentarily show the segments */
+button.active:before,
+button.active:after {
+  /* animation to show the elements expanding from the center */
+  animation: starButton 0.2s ease-out;
+  /* inherit the delay from the button */
+  animation-delay: inherit;
+}
+@keyframes starButton {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* have the svg inherit the color from the button */
+svg {
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
