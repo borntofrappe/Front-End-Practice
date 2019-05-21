@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Review Page Interaction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg icons used in the phone nav element -->
+    <svg style="display: none;" viewBox="0 0 100 100" width="50" height="50">
+        <!-- signal icon with four rectangles of increasing height -->
+        <symbol id="signal" viewBox="0 0 100 100">
+            <g transform="translate(2.5 0)">
+                <rect
+                    x="0"
+                    y="80"
+                    width="20"
+                    height="20"
+                    fill="currentColor">
+                </rect>
+                <g transform="translate(25 0)">
+                    <rect
+                        x="0"
+                        y="60"
+                        width="20"
+                        height="40"
+                        fill="currentColor">
+                    </rect>
+                </g>
+                <g transform="translate(50 0)">
+                    <rect
+                        x="0"
+                        y="40"
+                        width="20"
+                        height="60"
+                        fill="currentColor">
+                    </rect>
+                </g>
+                <g transform="translate(75 0)">
+                    <rect
+                        x="0"
+                        y="20"
+                        width="20"
+                        height="80"
+                        fill="currentColor">
+                    </rect>
+                    <rect
+                        x="0"
+                        y="20"
+                        width="20"
+                        height="80"
+                        opacity="0.7"
+                        fill="#fff">
+                    </rect>
+                </g>
+            </g>
+        </symbol>
+
+        <!-- wifi icon with two curves atop a small circle -->
+        <symbol id="wifi" viewBox="0 0 100 100">
+            <circle
+                cx="50"
+                cy="90"
+                r="10"
+                fill="currentColor">
+            </circle>
+
+            <path
+                d="M 30 60 a 40 40 0 0 1 40 0"
+                stroke="currentColor"
+                stroke-width="15"
+                stroke-linecap="round"
+                fill="none">
+            </path>
+
+            <path
+                d="M 15 30 a 70 70 0 0 1 70 0"
+                stroke="currentColor"
+                stroke-width="15"
+                stroke-linecap="round"
+                fill="none">
+            </path>
+        </symbol>
+
+        <!-- battery icon with an irregular rectangle -->
+        <symbol id="battery" viewBox="0 0 100 100">
+            <rect
+                x="5"
+                y="35"
+                width="85"
+                height="50"
+                fill="currentColor">
+            </rect>
+            <rect
+                x="90"
+                y="45"
+                width="10"
+                height="30"
+                fill="currentColor">
+            </rect>
+        </symbol>
+    </svg>
+
+    <!-- HTML structure
+        div, wrapping container
+            nav with the phone status bar
+            heading introducing the page
+            svg making up the face of varying color/shapes
+            heading indicating the current option
+            svg making up the wheel
+            button
+    -->
+    <div class="phone">
+        <!-- beside a span indicating the time include the icons defined above -->
+        <nav>
+            <span>9:42</span>
+            <svg width="20" height="20">
+                <use href="#signal"></use>
+            </svg>
+            <svg width="20" height="20">
+                <use href="#wifi"></use>
+            </svg>
+            <svg width="20" height="20">
+                <use href="#battery"></use>
+            </svg>
+        </nav>
+
+        <h2>How was your experience with us?</h2>
+
+        <!-- for the face, define the gradients used for the different options -->
+        <svg id="feedback-face" viewBox="0 0 100 100" width="150" height="150">
+            <defs>
+                <linearGradient x1="0%" x2="0%" y1="100%" y2="0%" id="gradient-good">
+                    <stop
+                        stop-color="#42F7CE"
+                        offset="0%">
+                    </stop>
+                    <stop
+                        stop-color="#38EE95"
+                        offset="100%">
+                    </stop>
+                </linearGradient>
+                <linearGradient x1="0%" x2="0%" y1="100%" y2="0%" id="gradient-okay">
+                    <stop
+                        stop-color="#11E7FF"
+                        offset="0%">
+                    </stop>
+                    <stop
+                        stop-color="#39BDFF"
+                        offset="100%">
+                    </stop>
+                </linearGradient>
+                <linearGradient x1="0%" x2="0%" y1="100%" y2="0%" id="gradient-ugh">
+                    <stop
+                        stop-color="#FFD67B"
+                        offset="0%">
+                    </stop>
+                    <stop
+                        stop-color="#F39380"
+                        offset="100%">
+                    </stop>
+                </linearGradient>
+                <linearGradient x1="0%" x2="0%" y1="100%" y2="0%" id="gradient-bad">
+                    <stop
+                        stop-color="#F98087"
+                        offset="0%">
+                    </stop>
+                    <stop
+                        stop-color="#FF1248"
+                        offset="100%">
+                    </stop>
+                </linearGradient>
+            </defs>
+
+            <!-- include the face with the outline of a circle, two smaller shapes for the eyes and most importantly a path for the mouth -->
+            <!-- ! it seems the stroke of a path element cannot be styled with a gradient, so change the syntax to include a fill -->
+            <g
+                class="face"
+                stroke="url(#gradient-good)"
+                fill="url(#gradient-good)">
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    stroke-width="5"
+                    fill="none">
+                </circle>
+
+                <g class="eyes">
+                    <circle
+                        cx="34"
+                        cy="38"
+                        r="7">
+                    </circle>
+
+                    <circle
+                        cx="66"
+                        cy="38"
+                        r="7">
+                    </circle>
+                </g>
+
+                <!-- good -->
+                <path class="mouth"
+                    d="M 30 67 q 20 15 40 0 a 2 2 0 0 0 -2 -4 q -20 15 -36 0 a 2 2 0 0 0 -2 4"
+                    stroke-linecap="round">
+                </path>
+
+                <!-- okay -->
+                <!-- <path class="mouth"
+                    d="M 30 72 q 20 0 40 0 a 2 2 0 0 0 0 -4 q -20 0 -40 0 a 2 2 0 0 0 0 4"
+                    stroke-linecap="round">
+                </path> -->
+
+                <!-- ugh -->
+                <!-- <path class="mouth"
+                    d="M 30 74 q 10 -10 40 -10 a 2 2 0 0 0 0 -4 q -30 -0 -42 10 a 2 2 0 0 0 2 4"
+                    stroke-linecap="round">
+                </path> -->
+
+                <!-- bad -->
+                <!-- <path class="mouth"
+                    d="M 30 73 q 20 -15 40 0 a 2 2 0 0 0 2 -4 q -20 -15 -44 0 a 2 2 0 0 0 2 4"
+                    stroke-linecap="round">
+                </path> -->
+            </g>
+
+        </svg>
+
+        <!-- include the heading with the starting color and value -->
+        <h1 style="color: #38EE95;">Good</h1>
+
+
+        <!-- include the wheel with a white circle below the quadrants describing the possible colors -->
+        <svg id="feedback-wheel" viewBox="0 0 100 100" width="100" height="100">
+            <defs>
+                <!-- clip used for the quadrants, to show only the outline of the circle -->
+                <clipPath id="wheel-clip">
+                    <circle
+                        cx="50"
+                        cy="50"
+                        r="50">
+                    </circle>
+                </clipPath>
+
+                <!-- path used for the textPath elements
+                looping twice around the circle to have round numbers and avoid cropping when using text-anchor="center"
+                -->
+                <path
+                    id="wheel-path"
+                    d="M 50 85 a 35 35 0 0 1 0 -70 a 35 35 0 0 1 0 70 a 35 35 0 0 1 0 -70 a 35 35 0 0 1 0 70">
+                </path>
+
+            </defs>
+            <!-- include the four gradients with squares around the 100x100 container
+            clipped with the larger circle
+            -->
+            <g clip-path="url(#wheel-clip)"  >
+                <!-- translated to the center to have the rotation applied from the center of the canvas
+                ! modify the rotation in increments/decrements of 90 degrees to show different quadrants, starting from 45 degrees -->
+                <g transform="translate(50 50) rotate(45)" id="quadrants">
+                    <path
+                        d="M -50 -50 h 50 v 50 h -50"
+                        fill="url(#gradient-good)">
+                    </path>
+                    <path
+                        d="M 0 -50 h 50 v 50 h -50"
+                        fill="url(#gradient-okay)">
+                    </path>
+                    <path
+                        d="M 0 0 h 50 v 50 h -50"
+                        fill="url(#gradient-ugh)">
+                    </path>
+                    <path
+                        d="M -50 0 h 50 v 50 h -50"
+                        fill="url(#gradient-bad)">
+                    </path>
+                </g>
+            </g>
+
+            <!-- white circle to create the illusion of a donut -->
+            <circle
+                cx="50"
+                cy="50"
+                r="28"
+                fill="#fff">
+            </circle>
+
+            <!-- text labels added all around the circle through the defined path
+            modify the rotation (from the center) in ranges of 90 starting from 0
+            -->
+            <g transform="translate(50 50) rotate(0)" id="text">
+                <g transform="translate(-50 -50)" text-anchor="middle">
+                    <text
+                        font-size="6">
+                        <textPath
+                            startOffset="25%"
+                            href="#wheel-path">
+                            Good
+                        </textPath>
+                    </text>
+                    <text
+                        font-size="6">
+                        <textPath
+                            startOffset="37.5%"
+                            href="#wheel-path">
+                            Okay
+                        </textPath>
+                    </text>
+                    <text
+                        font-size="6">
+                        <textPath
+                            startOffset="50%"
+                            href="#wheel-path">
+                            Ugh
+                        </textPath>
+                    </text>
+                    <text
+                        font-size="6">
+                        <textPath
+                            startOffset="62.5%"
+                            href="#wheel-path">
+                            Bad
+                        </textPath>
+                    </text>
+                </g>
+            </g>
+        </svg>
+
+        <!-- button using the starting linear gradient -->
+        <button style="background: linear-gradient(to right, #42F7CE, #38EE95)">Submit</button>
+
+    </div>
+
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

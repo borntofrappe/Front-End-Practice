@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:300,400,600,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  /* center in the viewport */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e7ebed;
+  font-family: "Muli", sans-serif;
+  /* add four colored dots through svg syntax */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="%2342F7CE"></circle></g></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="%2311E7FF"></circle></g></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="%23F98087"></circle></g></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="%23FFD67B"></circle></g></svg>');
+  background-size: 30%, 18%, 10%, 14%;
+  background-repeat: no-repeat;
+  background-position: -10% -20%, 85% 30%, 20% 60%, 70% 110%;
+}
+
+/* display the contents of the .phone container in a single column */
+.phone {
+  display: flex;
+  flex-direction: column;
+  color: #555657;
+  background: #f9fafa;
+  border-radius: 10px;
+  /* add multiple shadows to make a solid rounded border with a small dark overlay and a softer shadow */
+  box-shadow: 0 0 0 0.1rem #ddd, 0 0 1rem 0.1rem #f6f6f6, 0 0 0 1rem #fff,
+    0 0 2rem 0.5rem #bbb;
+  width: 270px;
+  overflow: hidden;
+  position: relative;
+}
+/* with a pseudo element add a small almost white rectangle at the bottom of the phone */
+.phone:after {
+  content: "";
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 4px;
+  background: #ccc;
+  border-radius: 5px;
+}
+
+/* include the contents of the nav in a row, vertically aligned */
+.phone nav {
+  color: #242424;
+  padding: 0.25rem 0.75rem;
+  display: flex;
+  align-items: center;
+}
+/* have the current time expand to take the available space in the nav, effectively pushing the icon to the right */
+.phone nav span {
+  flex-grow: 1;
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+/* reduce the size of the icons */
+.phone nav svg {
+  width: 12px;
+  height: 12px;
+  margin: 0 0.2rem;
+}
+
+.phone h2 {
+  margin: 2rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  align-self: center;
+}
+
+.phone svg#feedback-face {
+  align-self: center;
+}
+
+/* add noticeable whitespace below the heading to make space for the svg */
+.phone h1 {
+  margin-bottom: 8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  align-self: center;
+}
+
+/* absolute position the wheel at the bottom of the .phone container */
+.phone svg#feedback-wheel {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  width: 150%;
+  height: auto;
+  transform: translate(-50%, 50%);
+}
+.phone svg#feedback-wheel text {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: -0.02rem;
+  fill: #fff;
+}
+
+/* position the button atop the svg */
+.phone button {
+  z-index: 5;
+  margin: 1.5rem;
+  text-align: center;
+  align-self: center;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(to right, #11e7ff, #39bdff);
+  box-shadow: 0 4px 10px hsla(0, 0%, 0%, 0.2);
+  padding: 0.75rem 1.5rem;
+  font-family: inherit;
+  font-size: 1.05rem;
+  color: #fff;
+  text-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
