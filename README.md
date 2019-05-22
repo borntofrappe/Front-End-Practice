@@ -78,3 +78,4 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[Pacman Home Screen](https://codepen.io/borntofrappe/pen/OYyrwy)|Practice with the library [splitting.js](https://splitting.js.org) to animate the characters of a word sequentially.|8th May 2019|
 |[CPC Star Gazing](https://codepen.io/borntofrappe/pen/LoZjxy)|Practice with SVG and the viewBox attribute to selectively highlight and crop parts of a vector based graphic.|11th May 2019|
 |[CPC Gravity Golf](https://codepen.io/borntofrappe/pen/KLqbag)|Create a basic game of golf with the matter.js library.|16th-17th-18th May 2019|
+|[Crosshair Hover State](https://codepen.io/borntofrappe/pen/JqMxpL)|Create a hover state in which a cross hair icon is transitioned to highlight a hovered/focused anchor link.|22nd May 2019|
