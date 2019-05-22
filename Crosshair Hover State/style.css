@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500,600,800&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  color: #0e0c1b;
+}
+/* horizontally center the main element in the viewport */
+main {
+  width: 90vw;
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+  line-height: 2.5;
+  font-family: "Montserrat", sans-serif;
+  /* position relative for the dotted svg elements */
+  position: relative;
+}
+main h1 {
+  font-weight: 800;
+  margin-bottom: 1.75rem;
+}
+/* distance the paragraphs from one another */
+main p + p {
+  margin-top: 1rem;
+}
+main p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1d1933;
+  font-weight: 500;
+}
+/* style the anchor link elements to retain the color of the paragraph */
+main p a {
+  color: inherit;
+  text-decoration: none;
+  /* slightly thicker font */
+  font-weight: 600;
+  padding: 0rem 0.4rem;
+  /* position relative and display inline block to have the nested svg wrap around the element */
+  display: inline-block;
+  position: relative;
+}
+
+/* with a pseudo element add a plus sign in the top left corner of the anchor link elements */
+main p a:before {
+  position: absolute;
+  content: "+";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  width: 10px;
+  height: 10px;
+  top: -5px;
+  left: -5px;
+  /* transition for the change in top and left properties */
+  transition: all 0.3s ease-in-out;
+}
+
+/* absolute position the nested svg element to have the width and height of the parent anchor link */
+main p a svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* hidden by default */
+  transform: scaleX(0) scaleY(0);
+  transform-origin: 0 0;
+  transition: transform 0.25s 0.05s ease-in-out;
+  /* pushed behind the anchor link */
+  z-index: -5;
+}
+
+/* on hover/focus move the plus sign on the bottom right corner of the anchor link elements */
+main p a:hover:before,
+main p a:focus:before {
+  top: calc(100% - 10px);
+  left: calc(100% - 10px);
+}
+/* on hover/focus expand the nested svg to cover the size of the parent container */
+main p a:hover svg,
+main p a:focus svg {
+  transform: scaleX(1) scaleY(1);
+}
+
+/* absolute position the SVG dotted elements on either side of the wrapping container */
+main svg.dots {
+  position: absolute;
+}
+
+main svg.dots:nth-of-type(1) {
+  width: 90px;
+  height: 90px;
+  top: 20%;
+  left: 100%;
+}
+
+main svg.dots:nth-of-type(2) {
+  width: 75px;
+  height: 75px;
+  bottom: 0%;
+  right: 100%;
+}
