@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tick-Tock-ing Pendulum</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg element responsible for the animation -->
+    <svg viewBox="0 0 300 150" width="300" height="150">
+        <defs>
+            <!-- create a blur for the shadow of the pendulum -->
+            <filter id="filter-blur">
+                <feGaussianBlur stdDeviation="5"/>
+            </filter>
+
+            <!-- create a gradient for the text
+            ! userSpaceOnUse to have the gradient consider the SVG coordinates, and apply the variation continuously on the text elements
+            -->
+            <linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="30" x2="265" y1="124" y2="30">
+                <stop
+                    stop-color="#5139DD"
+                    offset="0%">
+                </stop>
+                <stop
+                    stop-color="#AD63F7"
+                    offset="100%">
+                </stop>
+            </linearGradient>
+        </defs>
+
+        <!-- before the pendulum include the letters that are supposed to sit behind the rotating object -->
+        <path fill="url(#gradient)" class="letter-tick letter-c" d="m87.139 47.727q0-3.12 1.152-6.144 1.2-3.024 3.456-5.424t5.472-3.888q3.216-1.488 7.344-1.488 4.944 0 8.544 2.064 3.648 2.016 5.424 5.376l-7.152 5.088q-0.48-1.248-1.296-2.064-0.768-0.816-1.728-1.296t-2.016-0.672q-1.008-0.192-1.968-0.192-2.016 0-3.504 0.816-1.44 0.768-2.4 2.064-0.912 1.248-1.392 2.88-0.432 1.584-0.432 3.168 0 1.776 0.528 3.408t1.536 2.88 2.448 2.016q1.488 0.72 3.312 0.72 0.96 0 1.968-0.192 1.008-0.24 1.92-0.72 0.96-0.528 1.68-1.296 0.768-0.816 1.2-1.968l7.632 4.56q-0.768 1.872-2.352 3.36-1.536 1.488-3.552 2.496-1.968 1.008-4.272 1.536-2.256 0.528-4.416 0.528-3.792 0-6.96-1.488-3.12-1.536-5.424-4.032-2.256-2.496-3.504-5.664t-1.248-6.432z"/>
+        <path fill="url(#gradient)" class="letter-tock letter-t" d="m143.03 98.2h-9.792v25.92h-9.36v-25.92h-9.84v-8.16h28.992z"/>
+
+        <!-- position the pendulum slightly above the SVG canvas -->
+        <g
+            transform="translate(100 -10)"
+            fill="none"
+
+            stroke-width="9">
+            <!-- before the actual pendulum include a copy with a #000 stroke and the blur filter -->
+            <g
+                opacity="0.3"
+                stroke="#000"
+                filter="url(#filter-blur)">
+                <g
+                    transform="rotate(30)"
+                    id="pendulum-shadow">
+                    <path
+                        d="M 0 0 v 120">
+                    </path>
+                    <circle
+                        cx="0"
+                        cy="135"
+                        r="15">
+                    </circle>
+                </g>
+            </g>
+
+            <!-- above the group used as a shadow, include the pendulum with the chosen accent color -->
+            <g
+                stroke="#FFE75A">
+                <g
+                    transform="rotate(30)"
+                    id="pendulum">
+                    <path
+                        d="M 0 0 v 120">
+                    </path>
+                    <circle
+                        cx="0"
+                        cy="135"
+                        r="15">
+                    </circle>
+                </g>
+            </g>
+        </g>
+
+
+        <!-- letters supposedly atop the pendulum -->
+        <path fill="url(#gradient)" class="letter-tick letter-t" d="m58.201 39.135h-9.792v25.92h-9.36v-25.92h-9.84v-8.16h28.992z"/>
+        <path fill="url(#gradient)" class="letter-tick letter-k" d="m128.33 65.055v-34.08h9.36v12.96l10.368-12.96h10.56l-12.384 15.264 13.248 18.816h-10.752l-8.448-12.528-2.592 2.688v9.84z"/>
+
+        <path fill="url(#gradient)" class="letter-tock letter-c" d="m192.97 106.79q0-3.12 1.152-6.144 1.2-3.024 3.456-5.424t5.472-3.888 7.344-1.488q4.944 0 8.544 2.064 3.648 2.016 5.424 5.376l-7.152 5.088q-0.48-1.248-1.296-2.064-0.768-0.816-1.728-1.296t-2.016-0.672q-1.008-0.192-1.968-0.192-2.016 0-3.504 0.816-1.44 0.768-2.4 2.064-0.912 1.248-1.392 2.88-0.432 1.584-0.432 3.168 0 1.776 0.528 3.408t1.536 2.88 2.448 2.016q1.488 0.72 3.312 0.72 0.96 0 1.968-0.192 1.008-0.24 1.92-0.72 0.96-0.528 1.68-1.296 0.768-0.816 1.2-1.968l7.632 4.56q-0.768 1.872-2.352 3.36-1.536 1.488-3.552 2.496-1.968 1.008-4.272 1.536-2.256 0.528-4.416 0.528-3.792 0-6.96-1.488-3.12-1.536-5.424-4.032-2.256-2.496-3.504-5.664t-1.248-6.432z"/>
+        <path fill="url(#gradient)" class="letter-tock letter-k" d="m234.16 124.12v-34.08h9.36v12.96l10.368-12.96h10.56l-12.384 15.264 13.248 18.816h-10.752l-8.448-12.528-2.592 2.688v9.84z"/>
+    </svg>
+
+    <!-- button to pause/resume the animation -->
+    <button><span role="img">🙏</span> Please stop it <span role="img">🙏</span></button>
+
+    <script src="script.js"></script>
+</body>
+</html>
