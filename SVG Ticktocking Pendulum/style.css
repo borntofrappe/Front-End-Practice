@@ -12,11 +12,28 @@ body {
   flex-direction: column;
   align-items: center;
 }
+/* have the svg occupy a sizeable portion of the viewport */
 svg {
   margin: 0 0 5rem;
   width: 60vw;
   height: auto;
 }
+/* animate the pendulum to indefinitely rotate to the right */
+svg g#pendulum {
+  animation: oscillate infinite alternate 1.5s cubic-bezier(0.6, 0, 0.5, 1);
+}
+/* animate the shadow with a small delay */
+svg g#pendulum-shadow {
+  animation: oscillate infinite alternate 1.5s 0.02s
+    cubic-bezier(0.6, 0, 0.5, 1);
+}
+@keyframes oscillate {
+  to {
+    transform: rotate(-30deg);
+  }
+}
+
+/* style the button with a small shadow and a translation on hover/focus */
 button {
   background: #fff;
   border: none;
@@ -31,19 +48,4 @@ button:hover,
 button:focus {
   transform: translateY(1px);
   box-shadow: 0 1px 5px -3px currentColor;
-}
-svg g#pendulum {
-  animation: oscillate infinite alternate 1.5s cubic-bezier(0.6, 0, 0.5, 1);
-}
-svg g#pendulum-shadow {
-  animation: oscillate infinite alternate 1.5s 0.02s
-    cubic-bezier(0.6, 0, 0.5, 1);
-}
-@keyframes oscillate {
-  from {
-    transform: rotate(30deg);
-  }
-  to {
-    transform: rotate(-30deg);
-  }
 }
