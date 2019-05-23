@@ -53,6 +53,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[SVG Planet Symbols](https://codepen.io/borntofrappe/pen/joPexQ)|Practice with the `viewBox` attribute and a horizontal translation to show only one graphic at a time and hide the rest from sight.|8th May 2019|
 |[SVG Feedback Icons](https://codepen.io/borntofrappe/pen/ZNJvLL)|Create three SVG icons to give feedback in a pleasing, animated way.|19th May 2019|
 |[SVG Star Ratings](https://codepen.io/borntofrappe/pen/joGOKJ)|Inspired by the matching section on the topics page @codepen, create a series of star icons animated progressively through JavaScript.|20th May 2019|
+|[SVG Ticktocking Pendulum](https://codepen.io/borntofrappe/pen/xNYoaM)|Highlight how SVG makes it possible to rapidly overlap element by replicating [this design](https://dribbble.com/shots/3252209-TickTock#shot-description).|23rd May 2019|
 
 ### UI UX
 
