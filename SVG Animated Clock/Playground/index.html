@@ -10,24 +10,23 @@
 </head>
 <body>
 
-    <!-- svg structure
-        circle making up the face
-        group gathering the hands
-    -->
+    <!-- svg making up the clock -->
     <svg viewBox="0 0 100 100" width="100" height="100">
         <defs>
+            <!-- filters describing the shadows, applied on the larger and smaller shapes -->
             <filter id="shadow-large">
                 <feDropShadow dx="0" dy="0" stdDeviation="4"/>
             </filter>
             <filter id="shadow-small">
                     <feDropShadow dx="0" dy="0" stdDeviation="0.2"/>
             </filter>
+
+            <!-- mask used to cut out a sliver of the overlaid circle -->
             <mask
                 id="mask">
                 <g transform="translate(50 50)">
                     <!-- starting at -15, incrementing by 30 for each hour -->
                     <g
-
                         class="hours" transform="rotate(-15)">
                         <circle
                             cx="0"
@@ -42,12 +41,10 @@
                     </g>
                 </g>
             </mask>
-
         </defs>
 
         <!-- circle making up the bottom of the clock -->
         <circle
-            class="face"
             cx="50"
             cy="50"
             r="46"
@@ -56,7 +53,6 @@
 
         <!-- circle with the accent color, overlaid before the text elements -->
         <circle
-            class="face"
             cx="50"
             cy="50"
             r="42"
@@ -66,7 +62,7 @@
 
         <!-- text elements, positioned from the center around the clock -->
         <g
-            class="clock-face"
+            class="clock--face"
             font-size="8px"
             transform="translate(50 50)"
             text-anchor="middle"
@@ -85,17 +81,16 @@
             -->
         </g>
 
-        <!-- circle overlaid on the accent circle and text elements to show only a sliver of the clock -->
+        <!-- circle overlaid on the accent circle and text elements -->
         <circle
             mask="url(#mask)"
-            class="face"
             cx="50"
             cy="50"
             r="50"
             fill="#303335">
         </circle>
 
-
+        <!-- smaller circle on which the hands sit -->
         <circle
             cx="50"
             cy="50"
@@ -114,7 +109,6 @@
                 class="minutes"
                 transform="rotate(240)"> <!-- change rotation of this group to affect both clock's hand -->
                 <path
-                filter="url(#shadow-large)"
                     fill="#fff"
                     d="M -0.4 8 h 0.8 v -33 h -0.8 z">
                 </path>
@@ -130,7 +124,6 @@
                 class="seconds"
                 transform="rotate(80)"> <!-- change rotation of this group to affect both clock's hand -->
                 <path
-                filter="url(#shadow-large)"
                     fill="#EA3F3F"
                     d="M -0.4 10 h 0.8 v -45 h -0.8 z">
                 </path>
@@ -146,6 +139,7 @@
         </g>
     </svg>
 
+    <!-- div wrapping the controls to change the number of hours/minutes/seconds -->
     <div class="controls">
         <div class="controls__control" data-control="hours">
             <button>+</button>

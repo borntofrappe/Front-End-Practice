@@ -20,7 +20,7 @@ const twelveClock = (twentyFourClock) => {
 };
 
 // 1. SVG clock face
-const clockFace = document.querySelector('svg g.clock-face');
+const clockFace = document.querySelector('svg g.clock--face');
 // add the twelve numbers by rotating, translating and then rotating back text elements
 // ! add a zero to the numbers smaller than 10 through the utility function
 for (let i = 0; i < 12; i += 1) {
@@ -35,7 +35,6 @@ for (let i = 0; i < 12; i += 1) {
 
 // SVG & BUTTONS current time
 // retrieve the current number of hours, minutes and seconds
-
 const now = new Date();
 const hours = now.getHours();
 const minutes = now.getMinutes();
@@ -48,6 +47,8 @@ const time = {
   seconds, // 0-59
 };
 
+// create another object describing the time's value, for the rotation of the hands
+// this to avoid the glitch occurring when the time goes back to 0 (or back to 1 for the hours)
 const rotation = {
   hours: twelveClock(hours),
   minutes,
@@ -56,7 +57,6 @@ const rotation = {
 
 // use the values to update the svg and the text of the span elements
 const entries = Object.entries(time);
-
 entries.forEach(([key, value]) => {
   anime({
     targets: `g.${key}`,
@@ -72,40 +72,53 @@ entries.forEach(([key, value]) => {
 // BUTTONS click event
 const buttons = document.querySelectorAll('button');
 
+// function returning new values for the time and rotation object, according to the input instructions
+function updateValues(instructions) {
+  /* destructure the necessary information
+  key: hours, minutes or seconds
+  operation: + or -
+  timeValue: number in the [1-12] or [0-59] range
+  rotationValue: number
+  */
+  const { key, operation } = instructions;
+  const { timeValue, rotationValue } = instructions;
 
-function updateTime(currentTime) {
-  const { key, operation } = currentTime;
-  const { timeValue, rotationValue } = currentTime;
-
+  // create a number of degrees based on the previous value and the current operation
   const degrees = operation === '+' ? rotationValue + 1 : rotationValue - 1;
+  // create a number of hours/minutes/seconds on the basis of the operation
   let value = operation === '+' ? timeValue + 1 : timeValue - 1;
 
+  // format the value to fall in the prescribed range
   if (key === 'hours') {
     value = value > 12 ? 1 : value === 0 ? 12 : value;
   } else {
     value = value > 59 ? 0 : value < 0 ? 59 : value;
   }
 
+  // return the updated time and rotation value
   return { value, degrees };
 }
 
 
+// function called when a click is registered on the button elements
 function handleClick() {
+  // retrieve the necessary information from the wrapping container and the current element
   const key = this.parentElement.getAttribute('data-control');
   const operation = this.textContent;
+  // retrieve the previous values
   const timeValue = time[key];
   const rotationValue = rotation[key];
 
-  const currentTime = {
+  // based on the set instruction call the function updating the time and rotation values
+  const instructions = {
     key,
     operation,
     timeValue,
     rotationValue,
   };
-  console.log(rotationValue);
-  const { value, degrees } = updateTime(currentTime);
+  const { value, degrees } = updateValues(instructions);
 
-  // update the object
+  // update the objects
   time[key] = value;
   rotation[key] = degrees;
 
@@ -113,9 +126,13 @@ function handleClick() {
   anime({
     targets: `g.${key}`,
     transform: (key === 'hours') ? `rotate(${-15 + degrees * 30})` : `rotate(${degrees * 6})`,
-    duration: 800,
+    duration: 500,
+    // remove the event listeners from the input buttons until the animation is complete
+    begin: () => buttons.forEach(button => button.removeEventListener('click', handleClick)),
+    complete: () => buttons.forEach(button => button.addEventListener('click', handleClick))
   });
 
+  // update the text of the matching span
   const span = document.querySelector(`span.control--${key}`);
   span.textContent = zeroPadded(value);
 }
