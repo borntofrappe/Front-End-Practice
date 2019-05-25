@@ -18,25 +18,8 @@ main {
   text-align: center;
   padding: 1rem;
 }
-main .input {
-  margin: 1rem 0;
-}
-main .input select {
-  padding: 0.5rem 5rem;
-  padding-left: 0.25rem;
-  text-align: left;
-  background: none;
-  color: inherit;
-  border: 2px solid currentColor;
-  text-transform: uppercase;
-  line-height: 2;
-  font-family: inherit;
-}
-main .input select option {
-  background: #1a1a1a;
-  color: inherit;
-}
 
+/* cap the width of the wrapping container and horizontally center the element */
 main .output {
   max-width: 800px;
   width: 90vw;
@@ -47,6 +30,7 @@ main .output svg {
   height: auto;
 }
 
+/* absolute position the tooltip */
 #tooltip {
   position: absolute;
   visibility: hidden;
@@ -59,6 +43,9 @@ main .output svg {
   pointer-events: none;
   max-width: 350px;
   display: grid;
+  /* display the information in a grid
+    three columns, the first of which stretches to occupy the available space
+  */
   grid-template-columns: 1fr auto auto;
   grid-gap: 0.25rem;
   align-items: center;
@@ -66,7 +53,6 @@ main .output svg {
 #tooltip .planet {
   font-size: 1.25rem;
 }
-
 #tooltip .year,
 #tooltip .medium {
   font-size: 0.9rem;
@@ -74,7 +60,7 @@ main .output svg {
 #tooltip .medium:before {
   content: "|";
 }
-
+/* have the source spread to cover the entirety of the second row */
 #tooltip .source {
   grid-column: span 3;
 }

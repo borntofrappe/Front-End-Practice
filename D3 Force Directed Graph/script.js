@@ -1,5 +1,5 @@
 /* globals d3 */
-// data array describing for each planet its name and connected information
+// array describing the name and general information of fictional planets
 const data = [
   {
     planet: 'Abydos',
@@ -333,69 +333,15 @@ const data = [
   },
 ];
 
-// SETUP
-// list the categories for the different properties
-
-// planet categories describing ranges of letters in the alphabeh
-const planet = [];
-const letterA = 'A'.charCodeAt(0);
-const letterZ = 'Z'.charCodeAt(0);
-
-for (let i = letterA; i < letterZ; i += 5) {
-  planet.push([String.fromCharCode(i), String.fromCharCode(i + 5)]);
-}
-
-// medium categories using unique values from the medium property
-const medium = new Set(data.map(item => item.medium));
-
-// year categories describing decades ending in the current year
-const oldest = data.reduce((acc, curr) => {
-  const current = curr.year.match(/\d{4}/);
-  if (current) {
-    return current[0] < acc ? current[0] : acc;
-  }
-  return acc;
-}, 2000);
-const now = new Date();
-const currentYear = now.getFullYear();
-
-const year = [];
-for (let i = currentYear; i > parseInt(oldest, 10); i -= 10) {
-  year.push([i - 10, i]);
-}
-
-// object describing each category
-const categories = {
-  planet,
-  medium: [...medium],
-  year: year.reverse(),
-};
-
-
-// SELECT & OPTION ELEMENTS
-// target the .input div and add a select element with one option for each category
-const options = Object.keys(categories);
-const input = document.querySelector('.input');
-const select = document.createElement('select');
-
-options.forEach((option) => {
-  const optionElement = document.createElement('option');
-  optionElement.value = option;
-  optionElement.textContent = option;
-  select.appendChild(optionElement);
-});
-
-input.appendChild(select);
-
 // TOOLTIP element
-// add a div in the html to show the bubble being selected/hovered upon
+// add a div in the to show the bubble being hovered upon
 const tooltip = d3
   .select('body')
   .append('div')
   .attr('id', 'tooltip');
 
 // D3 VIZ
-// the idea is to include the planets through circle elements and only afterwards position/color the element according to the selection
+// the idea is to include the planets through circle elements
 // add an SVG element in the .output container
 const margin = {
   top: 20,
@@ -413,7 +359,7 @@ const outputSVG = output
   .append('svg')
   .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`);
 
-// add a gradient to emulate a small tint on the circle
+// gradient for the outline of the circle
 const gradientStroke = outputSVG
   .append('defs')
   .append('linearGradient')
@@ -433,6 +379,7 @@ gradientStroke
   .attr('stop-color', '#FF6420')
   .attr('offset', '100%');
 
+// gradient for the tint included in the top right corner of the circle elements
 const gradientFill = outputSVG
   .append('defs')
   .append('radialGradient')
@@ -468,14 +415,13 @@ const planets = planetsGroup
   .enter()
   .append('g')
   .attr('class', 'planet')
-  .attr('data-name', d => d.planet)
+  // on enter show the tooltip and add the information through paragraph elements
   .on('mouseenter', (d) => {
     tooltip
       .append('p')
       .attr('class', 'planet')
       .append('strong')
       .text(d.planet);
-
 
     tooltip
       .append('p')
@@ -492,13 +438,14 @@ const planets = planetsGroup
       .attr('class', 'source')
       .text(`From ${d.source}`);
 
-
+    // show the tooltip where the cursor lies
     tooltip
       .style('opacity', '1')
       .style('visibility', 'visible')
       .style('left', `${d3.event.pageX}px`)
       .style('top', `${d3.event.pageY}px`);
   })
+  // on exit hide the tooltip and remove the nested paragraph elements
   .on('mouseout', () => {
     tooltip
       .style('opacity', '0')
@@ -518,6 +465,7 @@ planets
   .attr('stroke', 'url(#gradient-stroke)')
   .attr('stroke-width', '2');
 
+// add a semi transparent circle with the chosen radial gradient
 planets
   .append('circle')
   .attr('r', 16)
@@ -527,6 +475,7 @@ planets
   .attr('opacity', '0.3')
   .style('pointer-events', 'none');
 
+// add a small line to reinforce the idea of a light source
 planets
   .append('path')
   .attr('d', 'M 0 -11 a 11 11 0 0 1 11 11')
@@ -540,53 +489,41 @@ planets
   .style('pointer-events', 'none');
 
 
+// D3 FORCE
+// create force functions
+// describe the center of the diagraph
 const center = d3
   .forceCenter()
   .x(0)
   .y(0);
 
+// describe the force bringing the particles together
 const charge = d3
   .forceManyBody()
   .strength(10);
 
+// describe the force making it possible to push particles from one another
 const collision = d3
   .forceCollide()
   .radius(16);
 
-
-const simulation = d3
-  .forceSimulation(data)
-  .force('charge', charge)
-  .force('collision', collision)
-  .on('tick', ticked);
-
-function ticked() {
-  simulation
-    .force('center', center);
-
+// function run following the simulation
+function tick() {
+  // push the planets from the center of the svg and according to the variables included through the simulation
   planets
     .attr('transform', ({ x, y }) => {
+      // ! cap the translation to avoid pushing the elements outside of the svg
       const translateX = x > 0 ? Math.min(x, (width / 2 - 5)) : Math.max(x, (-width / 2 + 5));
       const translateY = y > 0 ? Math.min(y, (height / 2 - 5)) : Math.max(y, (-height / 2 + 5));
       return `translate(${translateX} ${translateY})`;
     });
 }
 
-// function regulating the visualization
-// the idea is to consider a center of gravity for each particular category and have the planets gravitate toward the matching value
-function highlightPlanets(selection = 'planet') {
-  const category = categories[selection];
-  console.log(category);
-}
-
-// highlightPlanets();
-
-
-// SELECT LISTENER
-// listen for the submit event on the select element to modify the visualization
-function handleSelection() {
-  // retrieve the value from the selected option
-  const { value } = this;
-  highlightPlanets(value);
-}
-select.addEventListener('input', handleSelection);
+// create a simulation with the chosen forces
+const simulation = d3
+  .forceSimulation(data)
+  .force('center', center)
+  .force('charge', charge)
+  .force('collision', collision)
+  // call the tick function running the simulation
+  .on('tick', tick);
