@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: #313b69;
+  background: #131930;
+  color: #fff;
+  font-family: "Lato", sans-serif;
+}
+
+main {
+  min-height: 100vh;
+  text-align: center;
+  padding: 1rem;
+}
+main .input {
+  margin: 1rem 0;
+}
+main .input select {
+  padding: 0.5rem 5rem;
+  padding-left: 0.25rem;
+  text-align: left;
+  background: none;
+  color: inherit;
+  border: 2px solid currentColor;
+  text-transform: uppercase;
+  line-height: 2;
+  font-family: inherit;
+}
+main .input select option {
+  background: #1a1a1a;
+  color: inherit;
+}
+
+main .output {
+  max-width: 800px;
+  width: 90vw;
+  margin: 1rem auto;
+}
+main .output svg {
+  width: 100%;
+  height: auto;
+}
+
+#tooltip {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-out;
+  padding: 1rem 1.5rem;
+  line-height: 2;
+  background: #fff;
+  color: #222;
+  pointer-events: none;
+  max-width: 350px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-gap: 0.25rem;
+  align-items: center;
+}
+#tooltip .planet {
+  font-size: 1.25rem;
+}
+
+#tooltip .year,
+#tooltip .medium {
+  font-size: 0.9rem;
+}
+#tooltip .medium:before {
+  content: "|";
+}
+
+#tooltip .source {
+  grid-column: span 3;
+}
