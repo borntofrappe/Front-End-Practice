@@ -25,6 +25,8 @@ const states = [
 ];
 // state indicating the possible value
 let state = 0;
+// rotation to have the wheel rotate according to the chosen direction
+let rotation = 0;
 
 const button = document.querySelector('button');
 const phone = document.querySelector('.phone');
@@ -46,14 +48,21 @@ function handleClick(e) {
     return false;
   }
 
-  // update the state incrementing / decrementing the value on the basis of the horizontal threshold
+  // update the state to identify a valid entry in the states array
   state = x > xThreshold ? state + 1 : state - 1;
+  if(state >= states.length) {
+    state = 0;
+  }
+  if(state< 0) {
+    state = states.length - 1;
+  }
+  // update the rotation incrementing / decrementing the value on the basis of the horizontal threshold
+  rotation = x > xThreshold ? rotation + 1 : rotation - 1;
 
-  // extract the information from the selected state (using an index in the [0, 4] range)
-  const { value, gradient, path } = states[Math.abs(state % states.length)];
+  // extract the information from the selected state (using the index in the [0, 4] range)
+  const { value, gradient, path } = states[state];
 
   // update the phone
-
   // update the svg making up the face
   const feedbackFace = phone.querySelector('svg#feedback-face');
   // gradient for the circle and path elements
@@ -82,7 +91,7 @@ function handleClick(e) {
   // rotate the quadrants starting from 90 degrees
   anime({
     targets: quadrants,
-    transform: `translate(50 50) rotate(${45 - 90 * state})`,
+    transform: `translate(50 50) rotate(${45 - 90 * rotation})`,
     easing: 'easeOutQuad',
     duration: 500,
   });
@@ -91,7 +100,7 @@ function handleClick(e) {
   const text = feedbackWheel.querySelector('g#text');
   anime({
     targets: text,
-    transform: `translate(50 50) rotate(${-90 * state})`,
+    transform: `translate(50 50) rotate(${-90 * rotation})`,
     easing: 'easeOutQuad',
     duration: 500,
   });
