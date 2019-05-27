@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Election Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <!-- dashboard structure
+    nav describing an icon and two buttons to toggle between visualizations
+    main showcasing the selected visualization (by default the donut chart)
+    -->
+    <div class="dashboard">
+        <nav class="dashboard-nav">
+            <!-- icon of the european parliament -->
+            <svg class="nav-icon" viewBox="0 0 100 100" width="80" height="80">
+                <!-- group centering the ellipses -->
+                <g
+                    transform="translate(50 50)">
+                    <!-- group used to rotate the ellipses around the x axis to make them "squishier" -->
+                    <g
+                        stroke="#7E8A91"
+                        stroke-width="4"
+                        fill="none"
+                        stroke-dasharray="25 7"
+                        style="transform: rotateX(40deg)">
+                        <!-- ellipses, scaled to create smaller and smaller shapes -->
+                        <ellipse
+                            cx="0"
+                            cy="0"
+                            rx="48"
+                            ry="30">
+                        </ellipse>
+
+                        <g transform="scale(0.75)">
+                            <ellipse
+                                cx="0"
+                                cy="0"
+                                rx="48"
+                                ry="30">
+                            </ellipse>
+                        </g>
+
+                        <g transform="scale(0.5)">
+                            <ellipse
+                                cx="0"
+                                cy="0"
+                                rx="48"
+                                ry="30">
+                            </ellipse>
+                        </g>
+                    </g>
+                </g>
+
+                <!-- group describing the eu flag
+                positioned from the center of the ellipses' group
+                ! the rectangle's stroke needs to match the background of the navigation bar
+                -->
+                <g
+                    transform="translate(50 50)">
+                    <rect
+                        x="0"
+                        y="0"
+                        width="50"
+                        height="30"
+                        fill="#034EA2"
+                        stroke="#f2f3f7"
+                        stroke-width="2">
+                    </rect>
+                    <!-- stars place around the rectangle -->
+                    <g
+                        transform="translate(25 15)"
+                        fill="#f2f3f7">
+                        <path
+                            transform="rotate(-90) translate(8 0) rotate(90)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(-60) translate(8 0) rotate(60)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(-30) translate(8 0) rotate(30)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(0) translate(8 0) rotate(0)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(30) translate(8 0) rotate(-30)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(60) translate(8 0) rotate(-60)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(90) translate(8 0) rotate(-90)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(120) translate(8 0) rotate(-120)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(150) translate(8 0) rotate(-150)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(180) translate(8 0) rotate(-180)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(210) translate(8 0) rotate(-210)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                        <path
+                            transform="rotate(240) translate(8 0) rotate(-240)"
+                            d="m 0 -2.2 0.59413 1.6476 1.7506 0.056-1.3834 1.0742 0.48778 1.6822-1.4491-0.9837-1.4491 0.9837 0.48778-1.6822-1.3834-1.0742 1.7506-0.056z">
+                        </path>
+                    </g>
+                </g>
+            </svg>
+
+
+            <!-- navigation's buttons
+            for each button add an icon before text explaining the button's purpose
+            ! add a class of selection to distinguish the currently selected viz
+            -->
+            <button
+                class="selection"
+                id="donut-chart">
+                <!-- icon representing half a donut chart
+                use a nested svg to create the shape by cropping a circle
+                -->
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                    <!-- reposition the nested svg, fabricating the semi circle to have it centered in the main svg -->
+                    <svg x="0" y="-25" viewBox="0 0 100 100" width="100" height="100">
+                        <!-- mask allowing to carve out a small circle at the bottom of the shape, as well as lines ranging from the center -->
+                        <defs>
+                            <mask id="donut-mask">
+                                <rect
+                                    x="0"
+                                    y="0"
+                                    width="100"
+                                    height="100"
+                                    fill="#fff">
+                                </rect>
+                                <!-- have the lines faking the slices of the donut chart included through lines which are rotated around the circle -->
+                                <g
+                                    transform="translate(50 100)"
+                                    stroke="#000"
+                                    stroke-width="4"
+                                    fill="none">
+
+                                    <!-- give an id to the first line to have it animated while the button is being hovered -->
+                                    <g id="donut-line" transform="rotate(-30)">
+                                        <path
+                                            d="M 0 0 v -50"
+                                            >
+                                        </path>
+                                    </g>
+                                    <g transform="rotate(25)">
+                                        <path
+                                            d="M 0 0 v -50">
+                                        </path>
+                                    </g>
+                                    <g transform="rotate(60)">
+                                        <path
+                                            d="M 0 0 v -50">
+                                        </path>
+                                    </g>
+                                </g>
+                                <circle
+                                    mask="url(#donut-mask)"
+                                    cx="50"
+                                    cy="100"
+                                    r="10"
+                                    fill="#000">
+                                </circle>
+                            </mask>
+                        </defs>
+                        <circle
+                            mask="url(#donut-mask)"
+                            fill="#7E8A91"
+                            cx="50"
+                            cy="100"
+                            r="50">
+                        </circle>
+                    </svg>
+                </svg>
+
+                Donut Chart
+            </button>
+
+
+            <button
+                id="row-chart">
+                <!-- icon describing a row chart by having rectangles of diminishing width positioned atop one another -->
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                    <path
+                        d="M 30 15 v 70"
+                        stroke="#7E8A91"
+                        stroke-width="5"
+                        fill="none">
+                    </path>
+                    <!-- identify the container of the rectangles to have them animated when hovering the button -->
+                    <g
+                        id="row-rect"
+                        fill="#7E8A91"
+                        transform="translate(30 2.5)">
+                        <rect
+                            x="0"
+                            y="20"
+                            width="55"
+                            height="15">
+                        </rect>
+                        <rect
+                            x="0"
+                            y="40"
+                            width="40"
+                            height="15">
+                        </rect>
+                        <rect
+                            x="0"
+                            y="60"
+                            width="20"
+                            height="15">
+                        </rect>
+                    </g>
+                </svg>
+                Row Chart
+            </button>
+        </nav>
+
+        <main class="dashboard-viz">
+
+        </main>
+    </div>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
