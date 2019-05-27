@@ -29,6 +29,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[D3 Colorful Donut](https://codepen.io/borntofrappe/pen/yWJWVV)|Practice with a donut visualization inspired by [this design](https://dribbble.com/shots/5902025-Shopin-Marketing-Website-Design-Part-2).|12th May 2019|
 |[D3 Dashboard](https://codepen.io/borntofrappe/pen/bywXzO)|Create a dashboard inspired by [this specific design](https://dribbble.com/shots/6235860-eCommerce-Analytics-pt-2) to practice with D3, SVG and the table element.|13th May 2019|
 |D3 Force Directed Graph|Practice with D3 to create a force directed graph showcasing multiple planets through small circles.|25th May 2019|
+|D3 Election Dashboard|Inspired by the recent European elections, display the composition of the EU parliament through a series of visualizations.|27th May 2019|
 
 ### JS
 
