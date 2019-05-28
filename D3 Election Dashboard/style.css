@@ -113,10 +113,14 @@ div.dashboard main div.viz-introduction h2 {
 }
 /* have the svg expand to consider the full width and available height */
 div.dashboard main svg {
+  width: 70%;
+  margin: 1rem auto;
+}
+/* for the container nesting the visualizations, use flex properties  */
+div.dashboard main div.viz-visualization {
   flex-grow: 1;
-  max-width: 500px;
-  height: auto;
-  margin: 1rem auto 1.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 /* display the legend items in a grid of 3 columns top */
@@ -150,4 +154,26 @@ div.dashboard main div.viz-legend div.legend-item strong:after {
   font-size: 1rem;
   font-weight: 400;
   opacity: 0.7;
+}
+
+/* on smaller viewports
+- have the nav display the buttons horizontally
+- have the grid display the legend's items vertically
+*/
+@media (max-width: 700px) {
+  div.dashboard {
+    flex-direction: column;
+  }
+  div.dashboard nav {
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  div.dashboard nav svg.nav-icon {
+    margin-bottom: 0;
+  }
+  div.dashboard main div.viz-legend {
+    grid-template-columns: 1fr;
+    margin: 1rem 0;
+  }
 }

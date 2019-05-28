@@ -1,75 +1,92 @@
 // data describing the composition of the european parliament
 // 2014 and provisional 2019
-const parliament = {
-  exiting: [
+const data = {
+  'exiting': [
     {
-      party: 'Conservatives',
-      seats: 217,
+      'party': 'Conservatives',
+      'seats': 217,
+      'color': '#2495C1'
     },
     {
-      party: 'Social democrats',
-      seats: 186,
+      'party': 'Social democrats',
+      'seats': 186,
+      'color': '#FF6D90'
     },
     {
-      party: 'Nationalist right and sovereignist',
-      seats: 116,
+      'party': 'Nationalist right and sovereignist',
+      'seats': 116,
+      'color': '#02279C'
     },
     {
-      party: 'Centrists and liberals',
-      seats: 68,
+      'party': 'Centrists and liberals',
+      'seats': 68,
+      'color': '#FF7F00'
     },
     {
-      party: 'Ecologists and regionalists',
-      seats: 52,
+      'party': 'Ecologists and regionalists',
+      'seats': 52,
+      'color': '#64CC76'
     },
     {
-      party: 'Radical left',
-      seats: 52,
+      'party': 'Radical left',
+      'seats': 52,
+      'color': '#D6001A'
     },
     {
-      party: 'Extreme right',
-      seats: 37,
+      'party': 'Extreme right',
+      'seats': 37,
+      'color': '#671706'
     },
     {
-      party: 'Others',
-      seats: 22,
-    },
+      'party': 'Others',
+      'seats': 22,
+      'color': '#C0C2C9'
+    }
   ],
-  entering: [
+  'entering': [
     {
-      party: 'Conservatives',
-      seats: 175,
+      'party': 'Conservatives',
+      'seats': 175,
+      'color': '#2495C1'
     },
     {
-      party: 'Social democrats',
-      seats: 148,
+      'party': 'Social democrats',
+      'seats': 148,
+      'color': '#FF6D90'
     },
     {
-      party: 'Nationalist right and sovereignist',
-      seats: 58,
+      'party': 'Nationalist right and sovereignist',
+      'seats': 58,
+      'color': '#02279C'
     },
     {
-      party: 'Centrists and liberals',
-      seats: 109,
+      'party': 'Centrists and liberals',
+      'seats': 109,
+      'color': '#FF7F00'
     },
     {
-      party: 'Ecologists and regionalists',
-      seats: 77,
+      'party': 'Ecologists and regionalists',
+      'seats': 77,
+      'color': '#64CC76'
     },
     {
-      party: 'Radical left',
-      seats: 41,
+      'party': 'Radical left',
+      'seats': 41,
+      'color': '#D6001A'
     },
     {
-      party: 'Extreme right',
-      seats: 115,
+      'party': 'Extreme right',
+      'seats': 115,
+      'color': '#671706'
     },
     {
-      party: 'Others',
-      seats: 28,
-    },
-  ],
+      'party': 'Others',
+      'seats': 28,
+      'color': '#C0C2C9'
+    }
+  ]
 };
+
 // data describing the parties from left to right
 const affiliation = [
   'Radical left',
@@ -81,55 +98,12 @@ const affiliation = [
   'Extreme right',
   'Others'
 ];
-// data describing the color palette for each party
-const colors = [
-  '#D6001A',
-  '#FF6D90',
-  '#64CC76',
-  '#FF7F00',
-  '#2495C1',
-  '#02279C',
-  '#671706',
-  '#C0C2C9',
-];
-
-/* data massaging:
-  from the parliament array
-  - sort according to the left to right affiliation
-  - add the color matching the party
-
-  finally data ought to look as follows
-
-  - objects for the entering and exiting parliament
-    - array of parties sorted by affiliation
-      - party name
-      - seat count
-      - party color
-*/
-const data = {};
-const elections = Object.entries(parliament);
-elections.forEach(([election, results]) => {
-  Object.assign(data, {
-    [election]: results
-      .sort(({party: partyA}, {party: partyB}) => {
-        const affiliationA = affiliation.findIndex(party => party === partyA);
-        const affiliationB = affiliation.findIndex(party => party === partyB);
-        return affiliationA > affiliationB ? 1 : -1;
-      })
-      .map(({party, seats}) => ({
-        party,
-        seats,
-        color: colors[affiliation.findIndex(aff => aff === party)]
-      })
-    )
-  })
-});
-
 
 // function adding the donut chart
 function showDonutChart() {
   // the donut chart is based on the provisional data regarding the entering parliament
-  const { entering } = data;
+  // create a copy of the necessary data, to massage the data structure according to the donut's requirement without affecting the original
+  const entering = [...data.entering];
 
   // target the main container
   const main = d3
@@ -187,15 +161,25 @@ function showDonutChart() {
     .attr('class', 'slices')
     .attr('transform', `translate(${width/2} ${height})`);
 
-  // ! modify the data to have the last slice (the one dedicated to 'Others') split in two and positioned at the beginning and end of the donunt)
-  // use Object.assign() to avoid modifying the original object
+  /* data massaging:
+    - sort the parties according to the political affiliation
+    - split the 'Others' category so to have it at the beginning _and_ end of the donut
+  */
+  entering.sort(({party: partyA}, {party: partyB}) => {
+      const affiliationA = affiliation.findIndex(party => party === partyA);
+      const affiliationB = affiliation.findIndex(party => party === partyB);
+      return affiliationA > affiliationB ? 1 : -1;
+    });
+
+  // create a copy of the 'Others' category
+  // ! this to avoid modifying the original object
   const others = Object.assign({}, entering[entering.length - 1]);
   others.seats /= 2;
+  // include the halved category at the beginning of the input data
   const enteringData = [
     others,
-    ...entering
-      .slice(0, entering.length - 1),
-    others,
+    ...entering.slice(0, entering.length - 1),
+    others
   ]
 
   // add the individual slices binding the pie-ed data
@@ -259,6 +243,122 @@ function showDonutChart() {
 
 // function adding the row chart
 function showRowChart() {
+  // the row chart displays the exiting and entering visualizations side by side
+  const {exiting, entering} = data;
+
+  console.log(exiting);
+  // target the main container
+  const main = d3
+    .select('main');
+
+  // INTRODUCTION with a heading
+  const introduction = main
+    .append('div')
+    .attr('class', 'viz-introduction');
+
+  introduction
+    .append('h1')
+    .text('Evolution of the European Parliament');
+
+  // ROW CHART through svg elements
+  // in a wrapping container include the two visualizations
+  const margin = {
+    top: 50,
+    right: 30,
+    bottom: 30,
+    left: 100,
+  };
+
+  const width = 300 - (margin.left + margin.right);
+  const height = 380 - (margin.top + margin.bottom);
+
+  const visualizations = main
+    .append('div')
+    .attr('class', 'viz-visualization');
+
+  const groups = visualizations
+    .selectAll('svg')
+    .data([exiting, entering])
+    .enter()
+    .append('svg')
+    .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`)
+    .append('g')
+    .attr('transform', `translate(${margin.left} ${margin.top})`);;
+
+  // add text elements describing the purpose of the separate charts
+  groups
+    .append('text')
+    .attr('x', 0)
+    .attr('y', -20)
+    .attr('class', 'label')
+    .style('font-weight', 'bold')
+    .style('letter-spacing', '0.002rem')
+    .attr('fill', '#555')
+    .text((d, i) => `${i === 0 ? 'Outgoing': 'Sitting'} Parliament`)
+
+
+  // for each visualization, include a row chart benefiting from a ordinal scale (y-axis, listing the parties) and a linear scale (x-axis, representing the seats)
+  const maxEntering = d3.max(entering, d => d.seats);
+  const maxExiting = d3.max(exiting, d => d.seats);
+  const max = d3.max([maxEntering, maxExiting]);
+
+  const xScale = d3
+    .scaleLinear()
+    .domain([0, Math.floor(max * 1.2)])
+    .range([0, width]);
+
+  const yScale = d3
+    .scaleBand()
+    .domain(exiting.map(({party}) => party))
+    .range([0, height]);
+
+  // add rectangles to show the number of seats
+  groups
+    .selectAll('rect')
+    .data(d => d)
+    .enter()
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', ({party}) => (yScale(party) + yScale.bandwidth() / 8))
+    .attr('width', ({seats}) => xScale(seats))
+    .attr('height', ({party}) => yScale.bandwidth() - yScale.bandwidth() / 4)
+    .attr('fill', ({color}) => color);
+
+  // add text elements after the rectangles detailing the actual number
+  groups
+    .selectAll('text.seat')
+    .data(d => d)
+    .enter()
+    .append('text')
+    .attr('class', 'seat')
+    .text(({seats}) => seats)
+    .attr('dominant-baseline', 'middle')
+    .attr('x', ({seats}) => xScale(seats) + 5)
+    .attr('y', ({party}) => (yScale(party) + yScale.bandwidth() / 2));
+
+
+      // add the y axis with the parties's names
+  const yAxis = d3
+  .axisLeft(yScale)
+  .tickSize(0);
+
+  const groupAxis = groups
+    .append('g')
+    .attr('class', 'axis')
+    .call(yAxis);
+
+  groupAxis
+    .selectAll('text')
+    .attr('x', -100)
+    .attr('text-anchor', 'start')
+    .attr('font-size', '11px')
+    .attr('fill', '#777')
+    .style('letter-spacing', '0.02rem')
+    .text(d => d.length > 16 ? `${d.substring(0, 16)}...` : d);
+
+  groupAxis
+    .select('path')
+    .attr('stroke-width', 1);
 
 }
 // function showing a specific visualization according to the input value
