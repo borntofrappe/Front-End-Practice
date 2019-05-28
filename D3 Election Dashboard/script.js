@@ -102,7 +102,7 @@ const affiliation = [
 // function adding the donut chart
 function showDonutChart() {
   // the donut chart is based on the provisional data regarding the entering parliament
-  // create a copy of the necessary data, to massage the data structure according to the donut's requirement without affecting the original
+  // create a copy of the necessary data, to massage the data structure **without** affecting the original array
   const entering = [...data.entering];
 
   // target the main container
@@ -117,9 +117,7 @@ function showDonutChart() {
   introduction
     .append('h1')
     .text('Results of the European Election');
-  introduction
-    .append('h2')
-    .text('by political affiliation');
+
 
   // DONUT CHART through svg
   const margin = {
@@ -145,7 +143,7 @@ function showDonutChart() {
     //establishing the half a donut structure through the startAngle and endAngle functions
     .startAngle(-Math.PI / 2)
     .endAngle(Math.PI / 2)
-    // sorting is handled later, massaging the input data
+    // sorting is handled when massaging the input data
     .sort(null)
     .padAngle(0.01);
 
@@ -171,8 +169,7 @@ function showDonutChart() {
       return affiliationA > affiliationB ? 1 : -1;
     });
 
-  // create a copy of the 'Others' category
-  // ! this to avoid modifying the original object
+  // ! avoid modifying the original object
   const others = Object.assign({}, entering[entering.length - 1]);
   others.seats /= 2;
   // include the halved category at the beginning of the input data
@@ -189,6 +186,7 @@ function showDonutChart() {
     .enter()
     .append('g')
     .attr('class', 'slice')
+    // data attribute to later identify the slice as the matching legend item is selected
     .attr('data-party', d => d.data.party);
 
   // draw the slices through the arc function
@@ -206,7 +204,8 @@ function showDonutChart() {
     .style('font-size', '25px')
     .style('font-weight', 600);
 
-  // LEGEND through  a grid
+
+  // LEGEND highlighting the colors and displaying the actual number of seats for each party
   const legend = main
     .append('div')
     .attr('class', 'viz-legend');
@@ -219,7 +218,7 @@ function showDonutChart() {
     .attr('class', 'legend-item')
     .style('border-left', (d) => `5px solid ${d.color}`)
     // when hovering on an item highlight the matching slice in the visualization
-    // ! only the matching slice
+    // ! only the matching slice(s)
     .on('mouseenter', ({party}) => {
       d3
         .selectAll(`g.slice`)
@@ -246,7 +245,6 @@ function showRowChart() {
   // the row chart displays the exiting and entering visualizations side by side
   const {exiting, entering} = data;
 
-  console.log(exiting);
   // target the main container
   const main = d3
     .select('main');
@@ -272,10 +270,12 @@ function showRowChart() {
   const width = 300 - (margin.left + margin.right);
   const height = 380 - (margin.top + margin.bottom);
 
+  // display the svg elements in a wrapping container
   const visualizations = main
     .append('div')
     .attr('class', 'viz-visualization');
 
+  // add two svg elements binding the different arrays of data
   const groups = visualizations
     .selectAll('svg')
     .data([exiting, entering])
@@ -285,19 +285,22 @@ function showRowChart() {
     .append('g')
     .attr('transform', `translate(${margin.left} ${margin.top})`);;
 
-  // add text elements describing the purpose of the separate charts
+  // above the charts add text elements describing the purpose of each viz
   groups
     .append('text')
-    .attr('x', 0)
+    .attr('x', 50)
     .attr('y', -20)
+    .text((d, i) => i === 0 ? 'Outgoing Parliament' : 'Provisional Results')
     .attr('class', 'label')
+    .attr('text-anchor', 'middle')
     .style('font-weight', 'bold')
     .style('letter-spacing', '0.002rem')
-    .attr('fill', '#555')
-    .text((d, i) => `${i === 0 ? 'Outgoing': 'Sitting'} Parliament`)
+    .attr('fill', '#555');
 
 
   // for each visualization, include a row chart benefiting from a ordinal scale (y-axis, listing the parties) and a linear scale (x-axis, representing the seats)
+
+  // linear scale considering the highest number of seats
   const maxEntering = d3.max(entering, d => d.seats);
   const maxExiting = d3.max(exiting, d => d.seats);
   const max = d3.max([maxEntering, maxExiting]);
@@ -307,6 +310,7 @@ function showRowChart() {
     .domain([0, Math.floor(max * 1.2)])
     .range([0, width]);
 
+  // ordinal scale considering the parties of either array
   const yScale = d3
     .scaleBand()
     .domain(exiting.map(({party}) => party))
@@ -315,6 +319,7 @@ function showRowChart() {
   // add rectangles to show the number of seats
   groups
     .selectAll('rect')
+    // one rectangle for each party+seats object
     .data(d => d)
     .enter()
     .append('rect')
@@ -337,7 +342,7 @@ function showRowChart() {
     .attr('y', ({party}) => (yScale(party) + yScale.bandwidth() / 2));
 
 
-      // add the y axis with the parties's names
+  // add the y axis with the parties's names
   const yAxis = d3
   .axisLeft(yScale)
   .tickSize(0);
@@ -350,40 +355,70 @@ function showRowChart() {
   groupAxis
     .selectAll('text')
     .attr('x', -100)
+    .text(d => d.length > 16 ? `${d.substring(0, 16)}...` : d)
     .attr('text-anchor', 'start')
     .attr('font-size', '11px')
     .attr('fill', '#777')
-    .style('letter-spacing', '0.02rem')
-    .text(d => d.length > 16 ? `${d.substring(0, 16)}...` : d);
+    .style('letter-spacing', '0.02rem');
 
   groupAxis
     .select('path')
     .attr('stroke-width', 1);
 
 }
+
+
 // function showing a specific visualization according to the input value
 function showVisualization(viz = 'donut-chart') {
+  // target the main container and all its children
   const main = document.querySelector('main');
+  const children = main.children;
+
+  // hide the elements and set a transition for the opacity value
+  [...children].forEach(child => {
+    child.style.opacity = 0;
+    child.style.transition = 'opacity 0.2s ease-out';
+  });
+
+  // erase the html present in the main container
   main.innerHTML = '';
+  // add the visualization calling the appropriate function
   if (viz === 'donut-chart') {
     showDonutChart();
   } else {
     showRowChart();
   }
+
+  // retrieve the children elements
+  const addedChildren = main.children;
+  // hide the children from sight and after a brief delay show the elements one after the other
+  [...addedChildren].forEach((child, index) => {
+    child.style.opacity = 0;
+
+    const childTimeout = setTimeout(() => {
+      child.style.transition = 'opacity 0.3s ease-in';
+      child.style.transitionDelay = `${0.05 * index}s`;
+      child.style.opacity = 1;
+
+      clearTimeout(childTimeout);
+    }, 200);
+  });
 }
 // immediately call the function to show the default visualization
 showVisualization();
 
 // target the buttons in the nav element
 const buttons = document.querySelectorAll('nav button');
-// when a click is registered on the buttons update the buttons through the selection class and call a function to show the appropriate visualization
+
+// on click update the buttons through the selection class and call the function to show the appropriate visualization
 function updateSelection() {
   // ! proceed only if the selection differs from the previous visualization
   if (!this.classList.contains('selection')) {
-    const selection = this.getAttribute('id');
     buttons.forEach(button => button.classList.remove('selection'));
     this.classList.add('selection');
+
     // call the function to inject the matching visualization in the main container
+    const selection = this.getAttribute('id');
     showVisualization(selection);
   }
 }

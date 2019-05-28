@@ -18,10 +18,8 @@ div.dashboard {
   width: 90vw;
   margin: 2rem auto;
   box-shadow: 0 0 5px -3px hsla(0, 0%, 0%, 0.2);
-
   /* display the nav and main elements side by side */
   display: flex;
-  min-height: 500px;
 }
 
 /* display the navigation items in a column */
@@ -37,15 +35,7 @@ div.dashboard nav {
 div.dashboard nav svg.nav-icon {
   margin-bottom: 2rem;
 }
-/* make the buttons slightly transparent by default */
-div.dashboard nav button {
-  opacity: 0.5;
-  transition: opacity 0.25s ease-out;
-}
-/* reset the opacity for the selected button */
-div.dashboard nav button.selection {
-  opacity: 1;
-}
+
 /* style the button to show the icon and text atop one another */
 div.dashboard nav button {
   margin: 0.5rem 0;
@@ -58,7 +48,15 @@ div.dashboard nav button {
   color: inherit;
   font-family: inherit;
   font-weight: 600;
+  /* make the buttons slightly transparent */
+  opacity: 0.5;
+  transition: opacity 0.25s ease-out;
 }
+/* reset the opacity for the selected button */
+div.dashboard nav button.selection {
+  opacity: 1;
+}
+/* remove pointer events from the icons */
 div.dashboard nav button svg {
   pointer-events: none;
 }
@@ -77,6 +75,7 @@ div.dashboard nav button#donut-chart:hover svg g#donut-line {
 div.dashboard nav button#row-chart:hover svg g#row-rect rect {
   animation: rescaleRect 2s 0.25s ease-in-out infinite alternate;
 }
+/* stagger the animation on the different shapes */
 div.dashboard nav button#row-chart:hover svg g#row-rect rect:nth-of-type(1) {
   animation-delay: 0.5s;
 }
@@ -97,8 +96,10 @@ div.dashboard main {
   padding: 1.5rem 1rem;
   line-height: 1.5;
   background: #ffffff;
+  /* display visualization's items in a column */
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 /* style the introductory elements  */
 div.dashboard main div.viz-introduction {
@@ -107,20 +108,10 @@ div.dashboard main div.viz-introduction {
 div.dashboard main div.viz-introduction h1 {
   font-size: 1.7rem;
 }
-div.dashboard main div.viz-introduction h2 {
-  font-weight: 400;
-  font-size: 1.1rem;
-}
 /* have the svg expand to consider the full width and available height */
 div.dashboard main svg {
-  width: 70%;
-  margin: 1rem auto;
-}
-/* for the container nesting the visualizations, use flex properties  */
-div.dashboard main div.viz-visualization {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
+  max-width: 500px;
+  margin: 1rem 0;
 }
 
 /* display the legend items in a grid of 3 columns top */
@@ -141,11 +132,12 @@ div.dashboard main div.viz-legend div.legend-item h3 {
   text-transform: uppercase;
   max-width: 150px;
 }
+/* with a pseudo element include a label below the strong elements describing the number of seats */
 div.dashboard main div.viz-legend div.legend-item strong {
-  font-size: 1.5rem;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
   line-height: 1;
 }
 div.dashboard main div.viz-legend div.legend-item strong:after {
@@ -156,9 +148,17 @@ div.dashboard main div.viz-legend div.legend-item strong:after {
   opacity: 0.7;
 }
 
+/* have the row charts in the second visualization occupy half of the available width */
+div.dashboard main div.viz-visualization svg {
+  width: 50%;
+  height: auto;
+}
+
 /* on smaller viewports
 - have the nav display the buttons horizontally
+- scale down the svg icons
 - have the grid display the legend's items vertically
+- have the row charts displayed on top of one another
 */
 @media (max-width: 700px) {
   div.dashboard {
@@ -171,9 +171,19 @@ div.dashboard main div.viz-legend div.legend-item strong:after {
   }
   div.dashboard nav svg.nav-icon {
     margin-bottom: 0;
+    width: 62px;
+    height: auto;
+  }
+  div.dashboard nav button svg {
+    width: 36px;
+    height: auto;
   }
   div.dashboard main div.viz-legend {
     grid-template-columns: 1fr;
     margin: 1rem 0;
+  }
+  div.dashboard main div.viz-visualization svg {
+    width: 100%;
+    height: auto;
   }
 }
