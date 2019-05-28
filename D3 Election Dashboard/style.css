@@ -103,7 +103,6 @@ div.dashboard main {
 /* style the introductory elements  */
 div.dashboard main div.viz-introduction {
   text-align: center;
-  margin-bottom: 0.5rem;
 }
 div.dashboard main div.viz-introduction h1 {
   font-size: 1.7rem;
@@ -113,21 +112,25 @@ div.dashboard main div.viz-introduction h2 {
   font-size: 1.1rem;
 }
 /* have the svg expand to consider the full width and available height */
-div.dashboard main div.viz-chart {
+div.dashboard main svg {
   flex-grow: 1;
+  max-width: 500px;
+  height: auto;
+  margin: 1rem auto 1.5rem;
 }
 
 /* display the legend items in a grid of 3 columns top */
 div.dashboard main div.viz-legend {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem 2rem;
+  grid-gap: 1rem;
 }
 /* in each column include the heading and strong elements side by side */
 div.dashboard main div.viz-legend div.legend-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 1rem;
 }
 div.dashboard main div.viz-legend div.legend-item h3 {
   font-size: 0.8rem;
