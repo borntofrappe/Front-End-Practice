@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Expandable Tooltip</title>
+    <title>Tooltip Icons</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -137,6 +137,7 @@
             </g>
         </symbol>
 
+        <!-- tooltip outline -->
         <symbol id="tooltip" viewBox="0 0 100 116" width="100" height="116">
             <path
                 fill="currentColor"
@@ -147,11 +148,29 @@
     </svg>
 
 
+    <!-- in a wrapping container include the anchor link elements with the SVG icons and the explanatory text
+    ! the svg icons use the defined symbol to create tooltips matching the specific link
+    -->
     <main>
         <a href="#" style="color: #e7c760;">
-            <svg viewBox="0 0 100 116" width="100" height="116">
+            <!-- svg structure (for each tooltip)
+            use, describing the tooltip
+            svg, describing the nested icon
+                use, describing the actual icon
+            -->
+            <svg
+                viewBox="0 0 100 116"
+                width="100"
+                height="116">
                 <use href="#tooltip"></use>
-                <svg color="#0e4637" x="15" y="15" viewBox="0 0 100 100" width="70" height="70">
+                <!-- scale down the icon and use a specific hue -->
+                <svg
+                    color="#0e4637"
+                    x="15"
+                    y="15"
+                    viewBox="0 0 100 100"
+                    width="70"
+                    height="70">
                     <use href="#bistro"></use>
                 </svg>
             </svg>
@@ -176,7 +195,6 @@
                 </svg>
             </svg>
             <span>School</span>
-
         </a>
 
         <a href="#" style="color: #3cb066;">
@@ -187,11 +205,8 @@
                 </svg>
             </svg>
             <span>Park</span>
-
         </a>
-
     </main>
 
-    <script src="script.js"></script>
 </body>
 </html>
