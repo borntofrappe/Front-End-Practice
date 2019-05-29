@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #1d4a47;
+  font-family: "Source Sans Pro", sans-serif;
+}
+:root {
+  --accent: #3e9371;
+  --accent: #3cb066;
+  --accent: #e7c760;
+  --accent: #e7c9d5;
+  --accent: #9cbcc9;
+  --text: #0e4637;
+}
+main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a {
+  background: none;
+  border: none;
+  /* filter: drop-shadow(0 0 1px currentColor); */
+  font-weight: 700;
+  margin: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  padding: 0.25rem;
+  font-size: 1.1rem;
+}
+a svg {
+  width: 62px;
+  height: auto;
+  opacity: 0;
+  visibility: none;
+  transition: all 0.2s ease-out;
+  transform-origin: 50% 100%;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, 0) scale(0);
+}
+a:hover svg,
+a:focus svg {
+  transform: translate(-50%, 0) scale(1);
+  visibility: visible;
+  opacity: 1;
+}
+a:hover svg svg,
+a:focus svg svg {
+  transition-delay: 0.2s;
+}
