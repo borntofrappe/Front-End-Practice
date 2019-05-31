@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:800|Open+Sans&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background: #1d1e22;
+  color: #fff;
+  /* center in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+a {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+  font-size: 2rem;
+  font-weight: bold;
+  /* position relative to absolute position the .tooltip container */
+  position: relative;
+}
+/* absolute position the .tooltip container to the bottom right of the wrapping anchor link  */
+a .tooltip {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+  /* no wrap to avoid having each word in its own line */
+  white-space: nowrap;
+  background: #0580ed;
+  box-shadow: 1px 1px 5px -3px #000;
+  border-radius: 20px;
+  border-top-left-radius: 0;
+
+  /* by default hide the tooltip from view */
+  transition: all 0.2s ease-out;
+  transform: scale(0);
+  /* have the tooltip scaled from the corner closest to the anchor link */
+  transform-origin: 0 0;
+}
+
+/* on hover / when focused scale the tooltip to its full size */
+a:hover .tooltip,
+a:focus .tooltip {
+  transform: scale(1);
+}
+
+/* for the span elements included by default, have them displayed side by side */
+a .tooltip span.tool {
+  display: inline-block;
+}
+/* animate the three dots to move up and down in sequence
+! animation following the scaling up of the wrapping container
+*/
+a:hover .tooltip span.tool,
+a:focus .tooltip span.tool {
+  animation: wait 0.75s 0.3s ease-out 2;
+}
+a .tooltip span.tool:nth-of-type(2) {
+  animation-delay: 0.45s;
+}
+a .tooltip span.tool:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes wait {
+  25% {
+    transform: translateY(-3px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+  75% {
+    transform: translateY(0);
+  }
+}

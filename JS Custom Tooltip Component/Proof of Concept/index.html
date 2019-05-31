@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom Tooltip - Proof of Concept</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- anchor link structure
+    - add the information to-be-displayed in the tooltip in a data-tip attribute
+    - following the text of the anchor link include a div.tooltip in which to display the detailed information
+    -->
+    <a href="#" data-tip="Neat">
+        Hover on Me
+        <!-- ! by default have three span elements describing three dots -->
+        <div class="tooltip"><span class="tool">•</span><span class="tool">•</span><span class="tool">•</span></div>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
