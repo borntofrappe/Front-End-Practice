@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom Tooltip</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- html structure
+    following a heading include paragraph elements with the custom element instead of the default anchor link
+    -->
+    <main>
+        <h1>Custom Tooltip <span role="img">💬</span></h1>
+        <!--
+            each anchor link benefits from the following attributes
+            - href for the referenced URL
+            - tip for the text shown on hover
+            - corner for the position of the tooltip (starting at 0 with the top left corner and going clockwise)
+
+            <custom-link
+                href="#"
+                tip="You really should"
+                corner="0">
+                Go to page
+            <custom-link>
+
+        -->
+        <p>
+            Hello there. This is meant to be an entry for the
+            <custom-link
+                href="https://www.florin-pop.com/blog/2019/03/weekly-coding-challenge/"
+                tip="Check it out!"
+                corner="0">
+                weekly coding challenge
+            </custom-link>.
+
+            It is also a perfect excuse to practice with the
+            <custom-link
+                href="https://developer.mozilla.org/en-US/docs/Web/Web_Components"
+                tip="Plenty to learn"
+                corner="0">
+                Web Component API
+            </custom-link>.
+        </p>
+
+        <p>
+            What's so special about it? Well, turns out anchor links on this page are actually
+
+            <custom-link
+                href="https://developers.google.com/web/fundamentals/web-components/customelements"
+                tip="Handcrafted with care"
+                corner="0">
+                custom elements
+            </custom-link>,
+
+            equipped with a rather
+
+            <custom-link
+                href="https://www.merriam-webster.com/dictionary/cutesy"
+                tip="Hope that's a word"
+                corner="3">
+                cutsy
+            </custom-link>
+
+            tooltip.
+        </p>
+        <p>
+            Hover or focus on them at will.
+        </p>
+
+        <p>
+            Here's
+
+            <custom-link
+                href="#"
+                tip="Right here!"
+                corner="1">
+                one
+            </custom-link>
+
+            , here's
+
+            <custom-link
+                href="#"
+                tip="Oh well..."
+                corner="1">
+                another
+            </custom-link>.
+
+            Getting old quickly?
+
+            <custom-link
+                href="#"
+                tip="Hope not"
+                corner="2">
+                Nah
+            </custom-link>.
+        </p>
+
+
+        <!--
+            reference the pen showcasing a single custom tooltip,
+            built without the web components API
+        -->
+        <p>
+            If you are on Edge, you might enjoy
+            <custom-link
+                href="https://codepen.io/borntofrappe/full/mYaPwg"
+                tip="Not supported yet..."
+                corner="0">
+                this proof of concept
+            </custom-link>.
+        </p>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

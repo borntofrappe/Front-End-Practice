@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Poppins:300&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background: #fff;
+  color: #1d1e22;
+  background: #111214;
+  font-family: "Lato", sans-serif;
+}
+/* horizontally center the main container in the viewport */
+main {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  line-height: 1.5;
+  min-height: 100vh;
+  background: #fff;
+  box-shadow: 0 0 5px -4px currentColor;
+}
+/* create noticeable whitespace around the elements of the page */
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+
+p {
+  margin: 1rem 0;
+  line-height: 2.5;
+}
+
+/* reduce the size of the last paragraph, used as a final note */
+p:last-of-type {
+  margin-top: 3rem;
+  font-size: 0.8rem;
+  text-align: right;
+}
