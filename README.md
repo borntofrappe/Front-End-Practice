@@ -40,7 +40,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[JS Animate SVG](https://codepen.io/borntofrappe/pen/xejMWe)|Practice with anime.js to re-create the first frame in the F1 evolution video, morphing and translating SVG elements.|19th April 2019|
 |[JS Status Component](https://codepen.io/borntofrappe/pen/ROYvBd)|Practice with the Web Components API while tinkering with the `window.ononline` and `window.onoffline` events.|23rd April 2019|
 |JS Brain.js|Create a series of neural networks while going through a course on the JavaScript library Brain.js.|24th-25th April 2019|
-
+|[JS Custom Tooltip Component](https://codepen.io/borntofrappe/pen/QRzNqE)|Practice with the Web Component API to create anchor link elements equipped with a tooltip.|31st May 2019|
 
 ### SVG
 
