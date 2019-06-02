@@ -12,60 +12,53 @@ body {
   background: #f8f8f8;
 }
 
-h1 {
-  font-weight: 700;
-  text-align: center;
-  line-height: 2;
-}
+/* center the container horizontally, capping its width at an arbitrary amount */
 div.app {
   max-width: 700px;
   width: 90vw;
   margin: 1rem auto;
 }
-.viz--geo {
-  display: flex;
-  flex-direction: column;
+div.app h1 {
+  font-weight: 700;
+  text-align: center;
+  line-height: 2;
 }
+
+/* display the legend's items in a grid */
 .viz--geo div.legend {
-  font-size: 0.8rem;
   display: grid;
-  justify-content: center;
-  align-items: center;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 0.25rem;
+  grid-gap: 1.25rem;
+  justify-content: center;
+  font-size: 0.8rem;
   margin: 1rem 0;
-  padding: 0.5rem;
+  padding: 1rem;
   background: #fff;
   border: 1px solid #f0f0f0;
-  /* border-bottom: 1px solid #f0f0f0; */
 }
 .viz--geo div.legend div.item {
-  margin: 0.5rem;
   display: flex;
   align-items: center;
 }
-
+/* show the background color of the span through circles */
 .viz--geo div.legend div.item span {
   margin-right: 0.5rem;
-  width: 0.7em;
-  height: 0.7em;
+  width: 0.4rem;
+  height: 0.4rem;
   border-radius: 50%;
 }
-.viz--geo svg {
-  max-width: 500px;
-  align-self: center;
-}
 
+/* display the card describing the nations in a grid */
 .viz--tetris {
-  margin-top: 2rem;
   display: grid;
-  grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  grid-gap: 1rem;
+  margin-top: 2rem;
 }
+/* on hover have each nation highlighted through a small change in background/shadow */
 .viz--tetris div.nation {
   padding: 0.75rem 1.25rem;
   transition: all 0.2s ease-out;
-  min-height: 250px;
 }
 .viz--tetris div.nation:hover {
   background: #fff;
@@ -77,22 +70,29 @@ div.app {
   line-height: 2;
 }
 
-.seats {
+/* display the columns describing the different parties side by side */
+.viz--tetris div.nation .seats {
   display: flex;
   margin: 1rem 0;
 }
-.party {
-  margin: 0 0.05rem;
+/* display the seats for each party in columns
+columns with 10 rows, with excess items creating new columns
+// ! since there is no reverse, and the items are squares, a fix is simply rotating the 10 rowed column on its head
+*/
+.viz--tetris div.nation .party {
   display: grid;
   grid-gap: 0.1rem;
-  /* grid-auto-rows: 10px; */
-  grid-auto-columns: 10px;
   grid-template-rows: repeat(10, 10px);
   grid-auto-flow: column;
   transform: scaleY(-1);
+  margin: 0 0.05rem;
+  /* position relative for the pseudo element */
   position: relative;
 }
-.party:before {
+/* add the data-seat attribute (expressing the number of seats) at the bottom of each grid
+! since the grid is flipped, the positioning occurs from the bottom
+ */
+.viz--tetris div.nation .party:before {
   content: attr(data-seat);
   position: absolute;
   transform: scaleY(-1) translate(-50%, 0);
@@ -101,9 +101,8 @@ div.app {
   font-size: 0.7rem;
   text-align: center;
 }
-
-.seat {
+/* size the divs as 10x10 squares */
+.viz--tetris div.nation .seat {
   width: 10px;
   height: 10px;
-  order: -1;
 }

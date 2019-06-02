@@ -1,4 +1,4 @@
-
+// data describing the hue for each party
 const dataColors = [
   {
     party: 'Radical Left',
@@ -33,7 +33,7 @@ const dataColors = [
     color: '#C0C2C9',
   },
 ];
-
+// data describing the results for a subset of nations
 const dataElection = [
   {
     nation: 'germany',
@@ -333,8 +333,13 @@ const dataElection = [
   },
 ];
 
+
 // FIRST VIZ: GEOMAP
-// target the node in which to include the geomap
+// MISSING THE ACTUAL GEOMAP :P
+// currently showing the legend only
+
+
+// target the node in which to include the viz
 const vizGeo = d3
   .select('.viz--geo');
 
@@ -361,9 +366,7 @@ items
   .append('p')
   .text(d => d.party);
 
-
-// MISSING
-// include SVG with the map of europe and the representation through the squares
+// add SVG and geomap here
 
 
 // SECOND VIZ: TETRIS MAP
@@ -412,4 +415,5 @@ parties
   .enter()
   .append('div')
   .attr('class', 'seat')
+  // use the color matching the party's name
   .style('background', d => dataColors.find(color => color.party === d).color);
