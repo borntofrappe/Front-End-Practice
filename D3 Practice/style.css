@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  min-height: 100vh;
+  background: #f8f8f8;
+}
+
+h1 {
+  font-weight: 700;
+  text-align: center;
+  line-height: 2;
+}
+div.app {
+  max-width: 700px;
+  width: 90vw;
+  margin: 1rem auto;
+}
+.viz--geo {
+  display: flex;
+  flex-direction: column;
+}
+.viz--geo div.legend {
+  font-size: 0.8rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 0.25rem;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  /* border-bottom: 1px solid #f0f0f0; */
+}
+.viz--geo div.legend div.item {
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.viz--geo div.legend div.item span {
+  margin-right: 0.5rem;
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+}
+.viz--geo svg {
+  max-width: 500px;
+  align-self: center;
+}
+
+.viz--tetris {
+  margin-top: 2rem;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+}
+.viz--tetris div.nation {
+  padding: 0.75rem 1.25rem;
+  transition: all 0.2s ease-out;
+  min-height: 250px;
+}
+.viz--tetris div.nation:hover {
+  background: #fff;
+  box-shadow: 0 0 5px -3px hsla(0, 0%, 0%, 0.2);
+}
+.viz--tetris div.nation h3 {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  line-height: 2;
+}
+
+.seats {
+  display: flex;
+  margin: 1rem 0;
+}
+.party {
+  margin: 0 0.05rem;
+  display: grid;
+  grid-gap: 0.1rem;
+  /* grid-auto-rows: 10px; */
+  grid-auto-columns: 10px;
+  grid-template-rows: repeat(10, 10px);
+  grid-auto-flow: column;
+  transform: scaleY(-1);
+  position: relative;
+}
+.party:before {
+  content: attr(data-seat);
+  position: absolute;
+  transform: scaleY(-1) translate(-50%, 0);
+  bottom: 100%;
+  left: 50%;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.seat {
+  width: 10px;
+  height: 10px;
+  order: -1;
+}
