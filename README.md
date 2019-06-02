@@ -30,6 +30,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[D3 Dashboard](https://codepen.io/borntofrappe/pen/bywXzO)|Create a dashboard inspired by [this specific design](https://dribbble.com/shots/6235860-eCommerce-Analytics-pt-2) to practice with D3, SVG and the table element.|13th May 2019|
 |D3 Force Directed Graph|Practice with D3 to create a force directed graph showcasing multiple planets through small circles.|25th May 2019|
 |[D3 Election Dashboard](https://codepen.io/borntofrappe/full/ZNjgmv)|Inspired by the recent European elections, display the composition of the EU parliament through a series of visualizations.|27th-28th May 2019|
+|[D3 Practice](https://codepen.io/borntofrappe/pen/WBPwPw)|Practice with d3 and CSS layout properties to visualiaze a subset of data from the recent European elections.|2nd June 2019|
 
 ### JS
 
