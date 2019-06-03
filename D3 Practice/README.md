@@ -1,9 +1,7 @@
-# D3 Practice
+# D3 Election Map
 
 ## [Live Demo](https://codepen.io/borntofrappe/full/WBPwPw).
 
-Currently unfinished. I plan to extend the practice session with a geomap.
-
 ## Goal
 
-Practice with d3 and CSS layout properties to visualiaze a subset of data from the recent European elections.
+Practice with the data visualization library and CSS layout properties to highlight the results of the recent European elections.

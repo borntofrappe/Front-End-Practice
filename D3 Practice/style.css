@@ -23,7 +23,6 @@ div.app h1 {
   text-align: center;
   margin-bottom: 1rem;
 }
-
 div.app a {
   color: inherit;
 }
@@ -51,16 +50,11 @@ div.app a {
   height: 0.4rem;
   border-radius: 50%;
 }
+/* with a large enough viewport, include negative horizontal margins to have the geomap expand past the boundaries of the 700px-wude container */
 @media (min-width: 700px) {
   .viz--geo svg {
     margin: 0 -4rem;
   }
-}
-.viz--geo svg .semitransparent {
-  opacity: 0.4;
-}
-.viz--geo svg text {
-  text-transform: capitalize;
 }
 
 /* display the card describing the nations in a grid */
