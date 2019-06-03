@@ -21,7 +21,11 @@ div.app {
 div.app h1 {
   font-weight: 700;
   text-align: center;
-  line-height: 2;
+  margin-bottom: 1rem;
+}
+
+div.app a {
+  color: inherit;
 }
 
 /* display the legend's items in a grid */
@@ -31,7 +35,7 @@ div.app h1 {
   grid-gap: 1.25rem;
   justify-content: center;
   font-size: 0.8rem;
-  margin: 1rem 0;
+  margin-top: 2rem;
   padding: 1rem;
   background: #fff;
   border: 1px solid #f0f0f0;
@@ -47,11 +51,22 @@ div.app h1 {
   height: 0.4rem;
   border-radius: 50%;
 }
+@media (min-width: 700px) {
+  .viz--geo svg {
+    margin: 0 -4rem;
+  }
+}
+.viz--geo svg .semitransparent {
+  opacity: 0.4;
+}
+.viz--geo svg text {
+  text-transform: capitalize;
+}
 
 /* display the card describing the nations in a grid */
 .viz--tetris {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   grid-gap: 1rem;
   margin-top: 2rem;
 }
@@ -73,7 +88,7 @@ div.app h1 {
 /* display the columns describing the different parties side by side */
 .viz--tetris div.nation .seats {
   display: flex;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 /* display the seats for each party in columns
 columns with 10 rows, with excess items creating new columns
@@ -85,7 +100,7 @@ columns with 10 rows, with excess items creating new columns
   grid-template-rows: repeat(10, 10px);
   grid-auto-flow: column;
   transform: scaleY(-1);
-  margin: 0 0.05rem;
+  margin: 0 0.1rem;
   /* position relative for the pseudo element */
   position: relative;
 }
