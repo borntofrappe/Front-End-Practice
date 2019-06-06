@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 Anime JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- icons describing the visualizations -->
+    <svg style="display: none;" viewBox="0 0 100 100">
+        <!-- icon for the line chart showing the progression across the months -->
+        <symbol id="line-chart" viewBox="0 0 100 100">
+            <path
+                stroke="currentColor"
+                stroke-width="25"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M 12.5 70 l 27.5 -27.5 20 20 27.5 -27.5">
+            </path>
+        </symbol>
+
+        <!-- icon for the column chart displaying the sales for the last month -->
+        <symbol id="column-chart" viewBox="0 0 100 100">
+            <g
+                stroke="currentColor"
+                stroke-width="28"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                    opacity="0.2"
+                    transform="translate(15 0)"
+                    d="M 0 75 v -22">
+                </path>
+                <path
+                    opacity="0.2"
+                    transform="translate(50 0)"
+                    d="M 0 75 v -40">
+                </path>
+                <path
+                    opacity="0.2"
+                    transform="translate(85 0)"
+                    d="M 0 75 v -5">
+                </path>
+            </g>
+        </symbol>
+
+    </svg>
+
+
+    <!-- html structure
+    h3, h1, introducing the project
+    form element, with the checkbox allowing to toggle between visualizations
+    -->
+    <main>
+        <h3>Shop 2019</h3>
+        <h1>Monthly sales</h1>
+
+        <form>
+            <!-- in the form include a label with the two svg icons -->
+            <label for="toggle-visualization">
+                <svg width="32" height="32" viewBox="0 0 100 100">
+                    <use href="#line-chart"></use>
+                </svg>
+
+                <svg width="32" height="32" viewBox="0 0 100 100">
+                    <use href="#column-chart"></use>
+                </svg>
+            </label>
+            <input type="checkbox" id="toggle-visualization" name="toggle-visualization">
+        </form>
+    </main>
+
+    <!-- import d3 -->
+    <script src="https://unpkg.com/d3@5.9.2/dist/d3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
