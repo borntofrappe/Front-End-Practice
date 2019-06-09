@@ -57,11 +57,17 @@ function handleClick(index) {
 
 buttons.forEach((button, index) => button.addEventListener('click', () => handleClick(index)));
 
-
+// boolean describing the state of the animation
+let isGuessing = false;
 // function called callowing the submit event on the form
 function handleSubmit(e) {
   // prevent the default behavior and assess the guess for the selected input
   e.preventDefault();
+  // if the animation is ongoing pre-emptively exit the function
+  if(isGuessing) {
+    return false;
+  }
+  isGuessing = true;
 
   // retrieve the guess's information
   const { left, player, correct } = state.guess;
@@ -69,60 +75,87 @@ function handleSubmit(e) {
   // identify the labels to update their opacity and HTML
   const labels = document.querySelectorAll('label');
 
-  /* victory logic
-  - add an svg icon on the correct label
-  - relate the victory in the heading
-  - set left to 0, to reset the game next time around
-  - set correct to 0, to avoid potential matches
+  /* pokewalker logic
+  left === 0
+    reset the game
+  else
+    animate the bush and compare the player v correct option
   */
-  if (player === correct) {
-    state.guess.left = 0;
-    state.guess.correct = 0;
-    document.querySelector('h1').textContent = 'Found It!';
-    // add an svg describing the item in the matching label
-    labels[player - 1].innerHTML += `
-    <svg id="found-item" viewBox="0 0 120 100" width="18" height="15">
-        <use href="#item"></use>
-    </svg>`;
+  if(left === 0) {
+    // update the state and the headings to reset the game
+    isGuessing = false;
+    state.guess.left = 2;
+    state.guess.correct = randomGuess();
+    document.querySelector('h2 span').textContent = '2';
+    document.querySelector('h1').textContent = 'Discover an Item!';
+
+    // reset the opacity of the labels
+    labels.forEach((label) => { label.style.opacity = 1; });
+
+    // remove the svg element with an id of #found-item
+    const foundItem = document.querySelector('svg#found-item');
+    foundItem.parentNode.removeChild(foundItem);
   } else {
-    /* post-victory logic
-    - left === 2: update the state and the heading to give another opportunity
-    - left === 1: update the state and the heading to show a loss
-    - left === 0: reset left to 2, correct to a new random value
-    */
+    // animate the bush of the selected label
+    const bush = labels[player - 1].querySelector('svg');
+    bush.style.animation = 'select 1s step-start';
 
-    // decrement the number of guesses left
-    const guessesLeft = left - 1;
+    // once the animation is complete proceed to compare the player v correct option
+    const timeoutID = setTimeout(() => {
+      // set the controlling boolean back to false
+      isGuessing = false;
+      // reset the animation property
+      bush.style.animation = 'initia';
 
-    if (left > 0) {
-      // update the state and the visual shown in the heading
-      state.guess.left = guessesLeft;
-      document.querySelector('h2 span').textContent = guessesLeft;
-      // reduce the opacity of the matching label
-      labels[player - 1].style.opacity = 0.2;
-      if (left === 2) {
-        // communicate the distance between the player's guess and the correct option
-        const spread = Math.abs(player - correct);
-        document.querySelector('h1').textContent = `It's ${spread > 1 ? 'far away!' : 'close!'}`;
-      } else {
-        // set the correct option to 0 to avoid matches
+      /* victory logic
+      - relate the victory through the heading and the graphic of the found item
+      - set left to 0, to fall in the first conditional in the iteration which follows
+      - set correct to 0, to avoid potential matches
+      */
+      if (player === correct) {
+        document.querySelector('h1').textContent = 'Found It!';
+        // add an svg describing the item in the matching label
+        labels[player - 1].innerHTML += `
+        <svg id="found-item" viewBox="0 0 120 100" width="18" height="15">
+            <use href="#item"></use>
+        </svg>`;
+        state.guess.left = 0;
         state.guess.correct = 0;
-        document.querySelector('h1').textContent = 'Out of luck...';
+      } else {
+        /* post-victory logic
+        - left === 2: update the state and the heading to give another opportunity
+        - left === 1: update the state and the heading to show a loss
+        */
+
+        // decrement the number of guesses left
+        const guessesLeft = left - 1;
+
+        if (left > 0) {
+          // update the state and the visual shown in the heading
+          state.guess.left = guessesLeft;
+          document.querySelector('h2 span').textContent = guessesLeft;
+          // reduce the opacity of the matching label
+          labels[player - 1].style.opacity = 0.2;
+          if (left === 2) {
+            // communicate the distance between the player's guess and the correct option
+            const spread = Math.abs(player - correct);
+            document.querySelector('h1').textContent = `It's ${spread > 1 ? 'far away!' : 'close!'}`;
+          } else {
+            // show where the item was through the svg icon of the found item
+            labels[correct - 1].innerHTML += `
+            <svg id="found-item" viewBox="0 0 120 100" width="18" height="15">
+                <use href="#item"></use>
+            </svg>`;
+
+            // set the correct option to 0 to avoid matches
+            state.guess.correct = 0;
+
+            document.querySelector('h1').textContent = 'Out of luck...';
+          }
+        }
       }
-    } else {
-      // update the state and the headings to reset the game
-      state.guess.left = 2;
-      state.guess.correct = randomGuess();
-      document.querySelector('h2 span').textContent = '2';
-      document.querySelector('h1').textContent = 'Discover an Item!';
-
-      // reset the opacity of the labels
-      labels.forEach((label) => { label.style.opacity = 1; });
-
-      // remove the svg element with an id of #found-item
-      const foundItem = document.querySelector('svg#found-item');
-      foundItem.parentElement.removeChild(foundItem);
-    }
+      clearTimeout(timeoutID);
+    }, 1000);
   }
 }
 
