@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokewalker Dowsing Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- icons used in the project -->
+    <svg style="display: none;" viewBox="0 0 100 100">
+        <symbol id="placeholder" viewBox="0 0 100 100">
+            <rect
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+                fill="currentColor">
+            </rect>
+        </symbol>
+
+        <!-- graphic describing a tree -->
+        <symbol id="tree" viewBox="0 0 150 100">
+            <g>
+                <!-- leaf-filled branches -->
+                <rect
+                    x="0"
+                    y="36"
+                    width="17"
+                    height="16"
+                    fill="currentColor">
+                </rect>
+                <!-- trunk -->
+                <rect
+                    x="4"
+                    y="32"
+                    width="9"
+                    height="28"
+                    fill="currentColor">
+                </rect>
+            </g>
+        </symbol>
+
+        <!-- graphic describing a house -->
+        <symbol id="house" viewBox="0 0 150 100">
+            <g>
+                <!-- window -->
+                <path
+                    d="M 16.5 43 v 10"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="5">
+                </path>
+                <!-- roof -->
+                <path
+                    d="M 2.5 38 h 40 l -10 -10 h -20 l -10 10"
+                    fill="currentColor"
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    stroke="currentColor"
+                    stroke-width="5">
+                </path>
+                <!-- supporting structure -->
+                <rect
+                    x="7.5"
+                    y="38"
+                    width="30"
+                    height="20"
+                    stroke="currentColor"
+                    stroke-width="5"
+                    fill="none">
+                </rect>
+            </g>
+        </symbol>
+
+        <!-- graphic hihglighting the current location -->
+        <symbol id="location" viewBox="0 0 150 100">
+            <!-- draw two trees and two houses side by side, using the previous symbols -->
+            <use transform="translate(5 0) " href="#tree"></use>
+            <use transform="translate(30 0) " href="#house"></use>
+            <use transform="translate(80 0) " href="#tree"></use>
+            <use transform="translate(105 0) " href="#house"></use>
+
+            <!-- below the world structures include a line for the horizon and the ground -->
+            <line
+                x1="0"
+                x2="150"
+                y1="60"
+                y2="60"
+                stroke="currentColor"
+                stroke-width="5">
+            </line>
+            <rect
+                opacity="0.3"
+                x="0"
+                y="60"
+                width="150"
+                height="40"
+                fill="currentColor">
+            </rect>
+        </symbol>
+
+        <!-- graphic for the bushes -->
+        <symbol id="bush" viewBox="0 0 120 100">
+            <path
+                d="M 2.5 30 q 5 50 20 67.5 h 75 q 15 -17.5 20 -67.5 q -15 10 -25 30 q 5 -30 0 -50 q -20 10 -32.5 40 q -12.5 -30 -32.5 -40 q -5 20 0 50 q -10 -20 -25 -30"
+                fill="currentColor"
+                stroke="currentColor"
+                stroke-width="5"
+                stroke-linejoin="round"
+                stroke-linecap="round">
+            </path>
+        </symbol>
+
+        <!-- graphic for the smaller buttons -->
+        <symbol id="arrow" viewBox="0 0 100 100">
+            <path
+                opacity="0.2"
+                d="M 20 0 l 70 50 l -70 50"
+                fill="currentColor">
+            </path>
+        </symbol>
+
+        <!-- graphic describing the found item -->
+        <symbol id="item" viewBox="0 0 120 100">
+            <path
+                d="M 25 37.5 v -10 l 25 -25 h 20 l 25 25 v 10"
+                stroke="currentColor"
+                stroke-width="5"
+                fill="currentColor">
+            </path>
+            <rect
+                x="25"
+                y="37.5"
+                width="50"
+                height="60"
+                stroke="currentColor"
+                stroke-width="5"
+                fill="none">
+            </rect>
+            <rect
+                x="75"
+                y="37.5"
+                width="20"
+                height="60"
+                stroke="currentColor"
+                stroke-width="5"
+                fill="none">
+            </rect>
+        </symbol>
+    </svg>
+
+    <!-- pokewalker structure
+    form, wrapping container
+        main.screen, highlighting the screen
+        div.controls, with the button elements
+    -->
+    <form class="pokewalker">
+
+        <!-- in the screen include
+            - the graphic for the current location
+            - a heading describing the number of guesses left
+            - a div with a series of input elements describing the options of the game
+            - a heading hihglighting the state of the game
+        -->
+        <main class="screen">
+            <svg viewBox="0 0 150 100" width="50" height="33.33">
+                <use href="#location"></use>
+            </svg>
+            <h2>
+                Left:
+                <span>2</span>
+            </h2>
+
+            <div class="options">
+                <!-- for each option, wrap the input of type radio and a copy of the icon representing the bush in a label
+                    ! add a class of active to the option being selected
+                -->
+                <label class="active" for="option-1">
+                    <input checked type="radio" name="option" value="option-1" id="option-1">
+                    <svg viewBox="0 0 120 100" width="12" height="10">
+                        <use href="#bush"></use>
+                    </svg>
+                </label>
+                <label for="option-2">
+                    <input type="radio" name="option" value="option-2" id="option-2">
+                    <svg viewBox="0 0 120 100" width="12" height="10">
+                        <use href="#bush"></use>
+                    </svg>
+                </label>
+                <label for="option-3">
+                    <input type="radio" name="option" value="option-3" id="option-3">
+                    <svg viewBox="0 0 120 100" width="12" height="10">
+                        <use href="#bush"></use>
+                    </svg>
+                </label>
+                <label for="option-4">
+                    <input type="radio" name="option" value="option-4" id="option-4">
+                    <svg viewBox="0 0 120 100" width="12" height="10">
+                        <use href="#bush"></use>
+                    </svg>
+                </label>
+                <label for="option-5">
+                    <input type="radio" name="option" value="option-5" id="option-5">
+                    <svg viewBox="0 0 120 100" width="12" height="10">
+                        <use href="#bush"></use>
+                    </svg>
+                </label>
+            </div>
+
+            <h1>Discover an Item!</h1>
+        </main>
+
+        <!-- for the controls, detail a button of type submit in between two smaller buttons allowing to interact with the input of type radio
+        these are an alternative to actually clicking the labels
+        ! specify a type of button on the elements which are not meant to trigger the submit event on the form
+        -->
+        <div class="controls">
+            <button type="button">
+                <svg
+                    style="transform: rotateY(180deg)"
+                    viewBox="0 0 100 100"
+                    width="15"
+                    height="15">
+                    <use href="#arrow"></use>
+                </svg>
+            </button>
+
+            <button type="submit">
+            </button>
+
+            <button type="button">
+                <svg
+                    viewBox="0 0 100 100"
+                    width="15"
+                    height="15">
+                    <use href="#arrow"></use>
+                </svg>
+            </button>
+        </div>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(207, 100%, 95%);
+  /* center in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Titillium Web", sans-serif;
+}
+/* style the wrapping form to be a circle, half red, half white and with a black stroke separating the two colros */
+.pokewalker {
+  padding: 3.25rem;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: linear-gradient(
+    to bottom,
+    #f60b4a 48%,
+    #282843 48%,
+    #282843 52%,
+    #f6f6f6 52%
+  );
+  box-shadow: 0 0 15px -7.5px hsla(0, 0%, 0%, 0.5);
+}
+/* style the screen as a slightly rounded box
+! the color property is inherited by the svg icons through the currentColor value
+*/
+.screen {
+  color: #1a1a13;
+  background: #959564;
+  border-radius: 5px;
+  border: 4px solid #282843;
+  padding: 0.5rem;
+  margin: 0.25rem 0.25rem 0.5rem;
+  /* display the content in a grid of two columns, the second of which takes as much space as readily available */
+  display: grid;
+  /* 50px being the size devoted to the svg icon */
+  grid-template-columns: 50px auto;
+  grid-gap: 0.5rem 0.25rem;
+}
+.screen h2 {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+/* have the .options container spread to occupy both columns of its row */
+.screen .options {
+  grid-column: span 2;
+  /* display the labels side by side, evenly distributed in the row */
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem 0 0.75rem;
+}
+/* have the labels styled as squares */
+.options label {
+  width: 24px;
+  height: 20px;
+  /* position relative for the svg icons _and_ the pseudo element */
+  position: relative;
+}
+/* visually hide the input of type radio */
+.options label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* absolute position the svg icons to occupy as much space as the wrapping labels allow */
+.options label svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* animate the svg icon describing the item to show above the label */
+.options label svg#found-item {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -2px);
+  top: initial;
+  width: initial;
+  height: initial;
+}
+
+/* with a pseudo element highlight the selected option with an arrow pointing at the matching icon */
+.options label.active:before {
+  position: absolute;
+  content: "";
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 12px;
+  height: 12px;
+  background: #1a1a13;
+  clip-path: polygon(0% 80%, 40% 40%, 60% 40%, 100% 80%, 100% 100%, 0% 100%);
+}
+
+/* have the last heading spread to occupy both columns of its row */
+.screen h1 {
+  grid-column: span 2;
+  font-size: 14px;
+  padding: 0.2rem;
+  border: 2px solid #2c2c20;
+  border-radius: 4px;
+}
+
+/* display the buttons in the .controls container in a row */
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+/* style the buttons to be circle elements
+style the first and last buttons to be smaller than the central one
+*/
+.controls button {
+  margin: 0 0.5rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  padding: 0.4rem;
+  border: none;
+  background: none;
+  box-shadow: 0 0 2px hsla(0, 0%, 0%, 1);
+}
+.controls button:first-of-type,
+.controls button:last-of-type {
+  width: 28px;
+  height: 28px;
+}
+.controls button svg {
+  width: 100%;
+  height: 100%;
+}
