@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F1 Live Gap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- graphic describing the f1 car -->
+    <svg viewBox="0 0 60 100" style="display: none;">
+        <symbol id="car" viewBox="0 0 60 100">
+            <g
+                fill="currentColor">
+
+                <!-- header -->
+                <path
+                    d="M 2 4 q 28 -4 56 0 q 2 5 0 10 q -12 -2 -24 -9 h -8 q -12 7 -24 9 q -2 -5 0 -10">
+                </path>
+                <!-- nose -->
+                <path
+                    d="M 27 2 q 3 -2 6 0 q 3 22.5 5 45 q -8 2 -16 0 q 2 -22.5 5 -45">
+                </path>
+                <!-- front wheels -->
+                <g
+                    transform="translate(0 20)">
+                    <path
+                        d="M 2 0 q -2 10 0 20 q 7.5 1 15 0 q 2 -10 0 -20 q -7.5 -1 -15 0">
+                    </path>
+                    <path
+                        transform="translate(41 0)"
+                        d="M 2 0 q -2 10 0 20 q 7.5 1 15 0 q 2 -10 0 -20 q -7.5 -1 -15 0">
+                    </path>
+
+                    <path
+                        d="M 5 10 h 42"
+                        stroke="currentColor"
+                        stroke-width="4">
+                    </path>
+                </g>
+
+                <!-- cockpit -->
+                <path
+                    d="M 8 48 q 22 -10 44 0 q -8 30 -15 40 q -7 5 -14 0 q -7 -10 -15 -40">
+                </path>
+                <!-- spoiler -->
+                <path
+                    d="M 26 90 l 8 0 q 4 2 7 7 q -11 2 -22 0 q 3 -5 7 -7">
+                </path>
+
+                <!-- back wheels -->
+                <g transform="translate(0 80)">
+                    <path
+                        d="M 2 0 q -2 10 0 20 q 7.5 1 15 0 q 2 -10 0 -20 q -7.5 -1 -15 0">
+                    </path>
+                    <path
+                        transform="translate(41 0)"
+                        d="M 2 0 q -2 10 0 20 q 7.5 1 15 0 q 2 -10 0 -20 q -7.5 -1 -15 0">
+                    </path>
+                    <path
+                        d="M 5 10 h 42"
+                        stroke="currentColor"
+                        stroke-width="4">
+                    </path>
+                </g>
+            </g>
+        </symbol>
+    </svg>
+
+
+    <!-- app structure
+    header introducing the project
+    svg responsible for the graphics and subject of the animation
+    section detailing the two drivers
+    -->
+    <div class="app">
+        <!-- specify a custom property on a selection of elements to style their borders -->
+        <header style="--border: #C8070C;">
+            <h1><strong>Q3</strong> Mini sector comparison</h1>
+        </header>
+
+        <svg class="gap" viewBox="0 0 100 300" width="120" height="360">
+            <text
+                fill="currentColor"
+                style="font-weight: 700; text-transform: uppercase; font-size: 14px;"
+                x="50"
+                y="8"
+                text-anchor="middle"
+                dominant-baseline="middle">
+                Live Gap
+            </text>
+            <text
+                style="font-size: 12px;"
+                fill="currentColor"
+                x="50"
+                y="25"
+                text-anchor="middle"
+                dominant-baseline="middle">
+                (sec)
+            </text>
+            <line
+                x1="50"
+                x2="50"
+                y1="50"
+                y2="300"
+                stroke="#000"
+                stroke-width="2">
+            </line>
+
+            <!-- cars using the symbol drawn earlier -->
+            <g class="cars" transform="translate(0 50)">
+                <g>
+                    <use viewBox="0 0 60 100" width="30" height="50" href="#car" color="#E00000"></use>
+                </g>
+                <g transform="translate(70 0)">
+                    <use viewBox="0 0 60 100" width="30" height="50" href="#car" color="#0BD3BD"></use>
+                </g>
+            </g>
+
+            <g
+                font-size="12"
+                text-anchor="middle"
+                dominant-baseline="middle"
+                fill="currentColor">
+                <text
+                    x="50"
+                    y="95">
+                    + 0.1
+                </text>
+
+                <text
+                    x="50"
+                    y="190">
+                    + 0.2
+                </text>
+
+                <text
+                    x="50"
+                    y="285">
+                    + 0.3
+                </text>
+            </g>
+
+
+        </svg>
+
+        <section class="riders">
+            <div class="riders--rider" style="--border: #E00000;">
+                <h2>Sebastian <strong>Vettel</strong></h2>
+                <h3>Ferrari</h3>
+            </div>
+            <div class="riders--rider" style="--border: #0BD3BD;">
+                <h2>Lewis <strong>Hamilton</strong></h2>
+                <h3>Mercedes</h3>
+            </div>
+        </section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

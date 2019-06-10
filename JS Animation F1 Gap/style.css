@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: repeating-linear-gradient(
+      -45deg,
+      #181618 0px,
+      #181618 8px,
+      #141314 0px,
+      #141314 16px
+    ),
+    #141314;
+  color: #edeced;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.app {
+  margin: 1rem;
+  text-align: center;
+}
+/* separate each app component vertically */
+.app > * {
+  margin: 1.25rem 0;
+}
+
+/* style the header with the border color included inline */
+header {
+  background: #010001;
+  padding: 0.75rem 5rem;
+  border-top: 3px solid var(--border);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+header h1 {
+  font-size: 1.5rem;
+}
+/* thin out the headings used in the project */
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+
+/* display the riders in a flex column, each taking a portion of the width */
+.riders {
+  display: flex;
+}
+.riders--rider {
+  align-items: flex-start;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 2rem;
+  background: #010001;
+  margin: 0.5rem;
+  /* position relative for the pseudo element */
+  position: relative;
+}
+/* include the border with a pseudo element, as to have it fall within the boundaries of the container */
+.riders--rider:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 1rem;
+  width: 0.25rem;
+  /* offset by the padding included in the container */
+  height: calc(100% - 1.5rem);
+  transform: translateY(-50%);
+  background: var(--border);
+}
+.riders--rider h2 {
+  font-size: 1.3rem;
+}
+.riders--rider h3 {
+  font-size: 1rem;
+}
