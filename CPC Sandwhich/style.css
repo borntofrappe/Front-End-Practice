@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Major+Mono+Display|Open+Sans:800&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* center the heading in the viewport */
+body {
+  color: #5a0d0b;
+  font-family: "Open Sans", sans-serif;
+  /* above a solid background include a pattern through the svg icon describing a sandwich */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 100 100"><pattern id="pattern" viewBox="0 0 100 100" width="0.25" height="0.25"><g transform="translate(25 25)"><ellipse transform="rotate(20)" cx="0" cy="0" rx="5" ry="2"></ellipse></g><g transform="translate(25 75)"><ellipse transform="rotate(-20)" cx="0" cy="0" rx="5" ry="2"></ellipse></g><g transform="translate(75 25)"><ellipse transform="rotate(-40)" cx="0" cy="0" rx="5" ry="2"></ellipse></g><g transform="translate(75 75)"><ellipse transform="rotate(45)" cx="0" cy="0" rx="5" ry="2"></ellipse></g></pattern><rect opacity="0.1" x="0" y="0" width="100" height="100" fill="url(%23pattern)"></rect><g transform="translate(50 50) scale(0.25)"><path d="M -48 20 l 43 -68 l 43 20 z" fill="%23f9c271" stroke="%23f9c271" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path d="M -48 20 l 2 8 l 86 -48 l -2 -8 z" fill="%23ff6c5b" stroke="%23ff6c5b" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path transform="translate(2 8)" d="M -48 20 l 2 8 l 86 -48 l -2 -8 z" fill="%239ccc65" stroke="%239ccc65" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path transform="translate(4 16)" d="M -48 20 l 2 8 l 86 -48 l -2 -8 z" fill="%23f9d45c" stroke="%23f9d45c" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path transform="translate(6 24)" d="M -48 20 l 2 8 l 86 -48 l -2 -8 z" fill="%23be2927" stroke="%23be2927" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path transform="translate(8 32)" d="M -48 20 l 2 8 l 86 -48 l -2 -8 z" fill="%23f9c271" stroke="%23f9c271" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path></g></svg>'),
+    #fee496;
+  background-size: 10%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* have the heading occupy much of the viewport */
+h1 {
+  font-size: 10vw;
+  color: #be2927;
+  color: hsl(36, 92%, 71%);
+  /* position relative for the span elements */
+  position: relative;
+}
