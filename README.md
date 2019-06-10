@@ -91,3 +91,4 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[Crosshair Hover State](https://codepen.io/borntofrappe/pen/JqMxpL)|Create a hover state in which a cross hair icon is transitioned to highlight a hovered/focused anchor link.|22nd May 2019|
 |[CPC Fictional Desert Planets](https://codepen.io/borntofrappe/pen/qGYzPo)|Highlight a series of fictional desert planets through a force directed graph.|26th May 2019|
 |[Pokewalker Dowsing Machine](https://codepen.io/borntofrappe/pen/qGeyqN)|Recreate one of the mini-games available on the pokewalker.|8th June 2019|
+|[CPC Sandwhich](https://codepen.io/borntofrappe/pen/agbOQX)|Practice with a few JavaScript methods to fake a font themed around sandwhiches.|10th June 2019|
