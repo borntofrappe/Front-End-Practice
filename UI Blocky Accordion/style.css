@@ -78,12 +78,14 @@ body {
 }
 .app__faq details {
   /* padding to separate the details from each other and the first details from the absolutely positioned button
-  margin is not used to guarantee that the dotted border considers the entire width of the container
+  ! margin is not used to guarantee that the dotted border considers the entire width of the container
   */
   padding: 2rem;
+  /* ! lower padding-bottom to offset the margin included in the summary element */
+  padding-bottom: 1.5rem;
   font-size: 0.95rem;
   /* transition for the change in background color */
-  transition: background-color 0.2s ease-out;
+  transition: background-color 0.3s ease-out;
 }
 /* include an all details but the last a dotted border-top */
 .app__faq details + details {
@@ -91,6 +93,8 @@ body {
 }
 .app__faq summary {
   font-size: 1.15rem;
+  /* margin to distance the detailed text from the summary */
+  margin-bottom: 0.5rem;
   /* remove the default triangle */
   list-style: none;
   /* align the icon with the text of the summary and push the icon to the far right of the container */
@@ -104,7 +108,7 @@ body {
 }
 /* when the details element is opened rotate the svg icon */
 .app__faq details summary svg {
-  transition: transform 0.22s cubic-bezier(0.17, 0.74, 0.74, 1.2);
+  transition: transform 0.25s cubic-bezier(0.17, 0.74, 0.74, 1.2);
 }
 .app__faq details[open] summary svg {
   transform: rotate(180deg);
