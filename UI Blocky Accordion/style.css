@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700|Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #d0b693;
+  color: #000000;
+  font-family: "Lato", sans-serif;
+  /* horizontally center the .app container */
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  margin: 3rem 1rem;
+  /* considerable padding and position relative to accommodate the button in the top left corner */
+  padding: 2rem;
+  position: relative;
+  max-width: 600px;
+  width: 90vw;
+  background: #ecdecd;
+  border: 5px solid currentColor;
+}
+
+/* add a pseudo element for a border using a repeating linear gradient */
+.app:before {
+  content: "";
+  position: absolute;
+  left: 0%;
+  top: 0;
+  transform: translate(-2rem, 3rem);
+  width: 100%;
+  height: 95%;
+  background: repeating-linear-gradient(
+    -45deg,
+    #f7ca00 0px,
+    #f7ca00 4px,
+    #eac000 0px,
+    #eac000 8px
+  );
+  z-index: -5;
+}
+
+/* absolute position the toggle button in the top left corner of the container */
+.app__toggle {
+  position: absolute;
+  bottom: 100%;
+  right: 100%;
+  padding: 0.25rem;
+  transform: translate(50%, 50%);
+  width: 60px;
+  height: 60px;
+  background: #000000;
+  border: none;
+  clip-path: polygon(
+    0 20%,
+    20% 0%,
+    80% 0%,
+    100% 20%,
+    100% 80%,
+    80% 100%,
+    20% 100%,
+    0% 80%
+  );
+}
+.app__toggle svg {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: block;
+}
+
+.app__faq {
+  line-height: 1.75;
+}
+.app__faq details {
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+.app__faq summary {
+  font-size: 1.15rem;
+}
+.app__faq details a {
+  color: inherit;
+}
+.app__faq code {
+  font-family: "Inconsolata", monospace;
+  background: #000000;
+  color: #ecdecd;
+  border-radius: 4px;
+  padding: 0.1rem 0.3rem;
+}
