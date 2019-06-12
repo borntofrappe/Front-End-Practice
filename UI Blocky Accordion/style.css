@@ -17,8 +17,7 @@ body {
 
 .app {
   margin: 3rem 1rem;
-  /* considerable padding and position relative to accommodate the button in the top left corner */
-  padding: 2rem;
+  /*position relative to position the button in the top left corner */
   position: relative;
   max-width: 600px;
   width: 90vw;
@@ -78,12 +77,43 @@ body {
   line-height: 1.75;
 }
 .app__faq details {
-  margin: 1.5rem 0;
+  /* padding to separate the details from each other and the first details from the absolutely positioned button
+  margin is not used to guarantee that the dotted border considers the entire width of the container
+  */
+  padding: 2rem;
   font-size: 0.95rem;
+  /* transition for the change in background color */
+  transition: background-color 0.2s ease-out;
+}
+/* include an all details but the last a dotted border-top */
+.app__faq details + details {
+  border-top: 3px dotted currentColor;
 }
 .app__faq summary {
   font-size: 1.15rem;
+  /* remove the default triangle */
+  list-style: none;
+  /* align the icon with the text of the summary and push the icon to the far right of the container */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+/* when the details element is opened update the background's color */
+.app__faq details[open] {
+  background-color: #fff;
+}
+/* when the details element is opened rotate the svg icon */
+.app__faq details summary svg {
+  transition: transform 0.22s cubic-bezier(0.17, 0.74, 0.74, 1.2);
+}
+.app__faq details[open] summary svg {
+  transform: rotate(180deg);
+}
+/* remove the default triangle on chrome */
+.app__faq summary::-webkit-details-marker {
+  display: none;
+}
+
 .app__faq details a {
   color: inherit;
 }

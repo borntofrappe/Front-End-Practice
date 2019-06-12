@@ -72,10 +72,14 @@ const appFaq = document.createElement('div');
 appFaq.classList.add('app__faq');
 
 // map through the faq array and add details element using the question in a summary element
+// ! in the summary element include an svg icon to highlight the open/close toggle
 const markup = faq.map(({ question, answer }) => `
 <details>
   <summary>
     ${question}
+    <svg width="18" height="18">
+      <use href="#arrow"></use>
+    </svg>
   </summary>
   ${answer}
 </details>
