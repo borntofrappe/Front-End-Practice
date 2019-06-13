@@ -55,7 +55,10 @@ body {
 }
 .card__selected:empty:before {
   content: "Make your prediction";
+  line-height: 50px;
   text-transform: uppercase;
+  letter-spacing: -0.02rem;
+  font-size: 0.8rem;
   font-weight: bold;
 }
 
