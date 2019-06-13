@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI Carousel Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- markup structure
+    .card                       wrapping container
+        .card__question         describing the query
+        .card__selected         describing the selected option
+        .card__selection        listing the select-able options
+    -->
+    <div class="card">
+        <!-- question
+        p                   describing the number of the current question
+        h1                  actual question
+        -->
+        <header class="card__question">
+            <p>3 of 5</p>
+            <h1>Who will finish in the highest position?</h1>
+        </header>
+
+        <!-- selected
+        -->
+        <div class="card__selected"></div>
+
+        <!-- selection
+        h2                  explanatory heading
+        div                 wrapping container
+            button          one button for each option
+        -->
+        <div class="card__selection">
+            <h2>Select Driver</h2>
+            <div>
+                <!-- button
+                span        rider's number
+                div         rider's info
+                    h3          rider's first and last name
+                    p           rider's team
+                -->
+                <button>
+                    <span style="--accent: #fff500;">3</span>
+                    <div>
+                        <h3>Daniel <strong>Ricciardo</strong></h3>
+                        <p>Renault</p>
+                    </div>
+                </button>
+                <button>
+                    <span style="--accent: #FF8700;">4</span>
+                    <div>
+                        <h3>Lando <strong>Norris</strong></h3>
+                        <p>McLaren</p>
+                    </div>
+                </button>
+                <button>
+                    <span style="--accent: #9B0000;">7</span>
+                    <div>
+                        <h3>Kimi <strong>Raikkonen</strong></h3>
+                        <p>Alfa Romeo</p>
+                    </div>
+                </button>
+                <button>
+                    <span style="--accent: #F596C8;">11</span>
+                    <div>
+                        <h3>Sergio <strong>Perez</strong></h3>
+                        <p>Racing Point</p>
+                    </div>
+                </button>
+                <button>
+                    <span style="--accent: #469BFF;">23</span>
+                    <div>
+                        <h3>Alexander <strong>Albon</strong></h3>
+                        <p>Toro Rosso</p>
+                    </div>
+                </button>
+                <button>
+                    <span style="--accent: #FFFFFF;">63</span>
+                    <div>
+                        <h3>George <strong>Russel</strong></h3>
+                        <p>Williams</p>
+                    </div>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
