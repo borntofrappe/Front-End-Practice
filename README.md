@@ -75,7 +75,8 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[UI Tickets Booking](https://codepen.io/borntofrappe/pen/dENMNV)|Create the UI for a mobile application allowing to book seats for a hypothetical movie. Inspired by [this particular design](https://dribbble.com/shots/6418198-Tickets-booking).|14th-15th May 2019|
 |[UX Review Page Interaction](https://codepen.io/borntofrappe/pen/LoOBKR)|Try to recreate design and interaction provided in [this enticing visual](https://dribbble.com/shots/4332677-Review-Page-Interaction).|21st May 2019|
 |[UX Light & Dark Theme](https://codepen.io/borntofrappe/pen/WBWxZw)|Recreate [this design](https://dribbble.com/shots/5846239-Light-dark-toggle-switch-InVision-Studio) to implement a toggle allowing to switch between a light and dark theme.|4th June 2019|
-|[UI Blocky Accordion](https://codepen.io/borntofrappe/pen/NZPRRE)|Create an accordion with details and summary elements. Inspired by the FAQ section [Nintendo Labo's Website](https://labo.nintendo.com/faq/).|11th June 2019|
+|[UI Blocky Accordion](https://codepen.io/borntofrappe/pen/NZPRRE)|Create an accordion with details and summary elements. Inspired by the FAQ section [Nintendo Labo's Website](https://labo.nintendo.com/faq/).|11-12th June 2019|
+|[UI Carousel Card](https://codepen.io/borntofrappe/pen/ZdbeJw)|Re-create the UI of a card ultimately meant to be part of an interactive carousel. Inspired by the [F1 Play website](https://www.formula1.com/en/gaming/f1-play.html).|13th June 2019|
 
 ### Miscellaneous
 
