@@ -62,6 +62,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[SVG Ticktocking Pendulum](https://codepen.io/borntofrappe/pen/xNYoaM)|Highlight how SVG makes it possible to rapidly overlap element by replicating [this design](https://dribbble.com/shots/3252209-TickTock#shot-description).|23rd May 2019|
 |[SVG Controlled Clock](https://codepen.io/borntofrappe/pen/qGozVM)|Create a clock with SVG syntax and animate its appearance through a series of buttons and the animation library anime.js.|24th May 2019|
 |[SVG Tooltip Icons](https://codepen.io/borntofrappe/pen/OYBNgX)|Practice with SVG syntax to create a series of icons shown when hovering atop a series of anchor link elements.|29th May 2019|
+|[SVG Unnerving Progress](https://codepen.io/borntofrappe/pen/LKGWgp)|Create a progress bar out of a thermometer and animate its appearance through anime.js.|14th June 2019|
 
 ### UI UX
 
