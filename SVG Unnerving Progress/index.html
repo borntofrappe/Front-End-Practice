@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Progress - Unnerving Progress</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg making up the thermometer
+    the idea is to include a clipPath element atop the colored sections and have it translate to show the underlying content
+    -->
+    <svg viewBox="0 0 15 30" width="100" height="200">
+        <defs>
+            <clipPath id="clip">
+                <!-- y = 3 to have the clip ultimately hide a small part of the graphic
+                even when the translation reaches translate(0 0)
+                -->
+                <rect
+                    transform="translate(0 20)"
+                    x="0"
+                    y="3"
+                    width="15"
+                    height="30">
+                </rect>
+            </clipPath>
+        </defs>
+
+        <!-- lines on the side of the thermometer -->
+        <g
+            stroke="#272A6E"
+            fill="none"
+            stroke-width="1"
+            stroke-linecap="round"
+            transform="translate(7.5 0)">
+            <path
+                d="M 0 2.5 h 7">
+            </path>
+            <path
+                d="M 0 5.5 h 5">
+            </path>
+            <path
+                d="M 0 8.5 h 5">
+            </path>
+            <path
+                d="M 0 11.5 h 7">
+            </path>
+            <path
+                d="M 0 14.5 h 5">
+            </path>
+            <path
+                d="M 0 17.5 h 5">
+            </path>
+        </g>
+        <!-- colored line, hidden by the clipPath element -->
+        <g
+            clip-path="url(#clip)"
+            stroke="#FF4E2C"
+            fill="none"
+            stroke-width="1"
+            stroke-linecap="round"
+            transform="translate(7.5 0)">
+            <path
+                d="M 0 2.5 h 7">
+            </path>
+            <path
+                d="M 0 5.5 h 5">
+            </path>
+            <path
+                d="M 0 8.5 h 5">
+            </path>
+            <path
+                d="M 0 11.5 h 7">
+            </path>
+            <path
+                d="M 0 14.5 h 5">
+            </path>
+            <path
+                d="M 0 17.5 h 5">
+            </path>
+        </g>
+
+        <!-- thermometer -->
+        <g>
+            <path
+                d="M 7.5 2.5 v 20"
+                fill="none"
+                stroke="#F5F3E8"
+                stroke-width="5"
+                stroke-linecap="round">
+            </path>
+            <circle
+                cx="7.5"
+                cy="25"
+                r="5"
+                fill="#F5F3E8">
+            </circle>
+        </g>
+
+        <!-- line describing a shadow on the thermometer -->
+        <path
+            d="M 7.5 2.5 v 20"
+            fill="none"
+            stroke="#000"
+            stroke-width="2"
+            stroke-linecap="round"
+            opacity="0.2">
+        </path>
+
+
+        <!-- colored portions of the thermometer -->
+        <g>
+            <!-- line, clipped through the defined element -->
+            <g
+                clip-path="url(#clip)">
+                <path
+                    d="M 7.5 2.5 v 20"
+                    fill="none"
+                    stroke="#FF4E2C"
+                    stroke-width="2"
+                    stroke-linecap="round">
+                </path>
+            </g>
+
+            <!-- circle -->
+            <circle
+                cx="7.5"
+                cy="25"
+                r="3"
+                fill="#FF4E2C">
+            </circle>
+        </g>
+    </svg>
+
+    <!-- import anime.js -->
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
