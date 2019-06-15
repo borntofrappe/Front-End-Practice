@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CPC Watching Pot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg coded by hand :p -->
+    <svg viewBox="0 0 100 100" width="400" height="400">
+        <defs>
+            <!-- pattern used for the pot and the bowl
+                ! the circles are colored white so to use them in the mask
+                in so doing the shape using the mask can use a fill of any color, apply the mask to show the dots of that color
+            -->
+            <pattern
+                patternUnits="userSpaceOnUse"
+                id="pattern" width="3.5" height="3.5" viewBox="0 0 10 10">
+                <g
+                    fill="#FFFFFF">
+                    <circle
+                        cx="4"
+                        cy="4"
+                        r="1.1">
+                    </circle>
+                    <circle
+                        cx="8"
+                        cy="8"
+                        r="1.1">
+                    </circle>
+                </g>
+            </pattern>
+
+            <!-- mask using the pattern to visualize only the dots -->
+            <mask
+                id="mask">
+                <rect
+                    x="0"
+                    y="0"
+                    width="100"
+                    height="100"
+                    fill="url(#pattern)">
+                </rect>
+
+            </mask>
+
+            <!-- clip for the thermometer
+            ! the coordinates are relative to the viewBox of the thermometer
+            -->
+            <clipPath id="clip">
+                <!-- y = 3 to have the clip ultimately hide a small part of the graphic
+                even when the translation reaches translate(0 0)
+                -->
+                <rect
+                    transform="translate(0 20)"
+                    x="0"
+                    y="3"
+                    width="15"
+                    height="30">
+                </rect>
+            </clipPath>
+        </defs>
+
+        <!--
+        for the graphic the idea is to encapsulate each element in a symbol
+        this allows to later use the graphics repeatedly through the use element
+        -->
+
+        <symbol
+            id="pot"
+            viewBox="0 0 62 48">
+            <!-- body -->
+            <path
+                d="M 4 10 v 30 a 8 8 0 0 0 8 8 h 39 a 8 8 0 0 0 8 -8 v -30 h -55"
+                fill="#0d0522"
+                stroke="#93A2FC"
+                stroke-width="0.5"
+                stroke-linejoin="round"
+                stroke-linecap="round">
+            </path>
+            <!-- reflection -->
+            <path
+                d="M 56 25 v 12 a 8 8 0 0 1 -8 8"
+                stroke-dasharray="3 3 20"
+                fill="none"
+                stroke="#93A2FC"
+                stroke-width="0.5"
+                stroke-linecap="round">
+            </path>
+            <!-- lid -->
+            <rect
+                x="1"
+                y="6"
+                width="60"
+                height="4"
+                rx="2"
+                stroke="#93A2FC"
+                stroke-width="0.5"
+                fill="none">
+            </rect>
+            <!-- dotted section -->
+            <path
+                d="M 4 10 v 30 a 8 8 0 0 0 8 8 h 10 l -12 -38"
+                fill="#93A2FC"
+                mask="url(#mask)"
+                opacity="0.7">
+            </path>
+            <!-- rim -->
+            <path
+                d="M 4 14 l 55 -3.75 h -55"
+                fill="#93A2FC">
+            </path>
+
+        </symbol>
+
+        <symbol
+            viewBox="0 0 60 33.5"
+            id="bowl">
+            <!-- body through a cropped circle -->
+            <circle
+                cx="30"
+                cy="0"
+                r="29.5"
+                fill="#0d0522"
+                stroke="#FBA12A"
+                stroke-width="1">
+            </circle>
+             <!-- top -->
+            <path
+                d="M 0.5 0.5 h 59"
+                fill="none"
+                stroke="#FBA12A"
+                stroke-width="1">
+            </path>
+            <!-- reflection -->
+            <path
+                d="M 53 11 a 25 25 0 0 1 -12.5 12.5"
+                fill="none"
+                stroke="#FBA12A"
+                stroke-width="1"
+                stroke-linecap="round">
+            </path>
+            <!-- dotted section -->
+            <path
+                d="M 0.5 0.5 a 29 29 0 0 0 29 29 l -10 -29.5z"
+                fill="#FBA12A"
+                mask="url(#mask)"
+                opacity="0.7">
+            </path>
+            <!-- bowl support -->
+            <path
+                d="M 20 28 h 20 v 5 h -20 z"
+                fill="#0d0522"
+                stroke="#FBA12A"
+                stroke-width="1"
+                stroke-linejoin="round"
+                stroke-linecap="round">
+            </path>
+            <!-- rim -->
+            <path
+                d="M 20 30.5 l 20 -2 h -20"
+                fill="#FBA12A">
+            </path>
+        </symbol>
+
+        <!-- strands of pasta -->
+        <symbol id="pasta" viewBox="0 0 50 50">
+            <g
+                fill="none"
+                stroke="#FBA12A"
+                stroke-width="1"
+                stroke-linecap="round">
+                <path
+                    d="M 0 50 l 50 -50">
+                </path>
+                <path
+                    d="M 0 50 l 50 -45">
+                </path>
+                <path
+                    d="M 0 50 l 35 -45">
+                </path>
+                <path
+                    d="M 20 50 l 10 -45">
+                </path>
+                <path
+                    d="M 20 40 l 20 -40">
+                </path>
+                <path
+                    d="M 15 25 l 15 -20">
+                </path>
+                <path
+                    d="M 0 30 l 20 -20">
+                </path>
+                <path
+                    d="M 5 30 l 10 -20">
+                </path>
+            </g>
+        </symbol>
+
+
+        <!-- symbol making up the thermometer
+        the idea is to include a clipPath element atop the colored sections and have it translate to show the underlying content
+        -->
+        <symbol id="thermometer" viewBox="0 0 15 30">
+            <!-- lines on the side of the thermometer -->
+            <g
+                stroke="#272A6E"
+                fill="none"
+                stroke-width="1"
+                stroke-linecap="round"
+                transform="translate(7.5 0)">
+                <path
+                    d="M 0 2.5 h 7">
+                </path>
+                <path
+                    d="M 0 5.5 h 5">
+                </path>
+                <path
+                    d="M 0 8.5 h 5">
+                </path>
+                <path
+                    d="M 0 11.5 h 7">
+                </path>
+                <path
+                    d="M 0 14.5 h 5">
+                </path>
+                <path
+                    d="M 0 17.5 h 5">
+                </path>
+            </g>
+            <!-- colored line, hidden by the clipPath element -->
+            <g
+                clip-path="url(#clip)"
+                stroke="#FF4E2C"
+                fill="none"
+                stroke-width="1"
+                stroke-linecap="round"
+                transform="translate(7.5 0)">
+                <path
+                    d="M 0 2.5 h 7">
+                </path>
+                <path
+                    d="M 0 5.5 h 5">
+                </path>
+                <path
+                    d="M 0 8.5 h 5">
+                </path>
+                <path
+                    d="M 0 11.5 h 7">
+                </path>
+                <path
+                    d="M 0 14.5 h 5">
+                </path>
+                <path
+                    d="M 0 17.5 h 5">
+                </path>
+            </g>
+            <!-- thermometer -->
+            <g>
+                <path
+                    d="M 7.5 2.5 v 20"
+                    fill="none"
+                    stroke="#F5F3E8"
+                    stroke-width="5"
+                    stroke-linecap="round">
+                </path>
+                <circle
+                    cx="7.5"
+                    cy="25"
+                    r="5"
+                    fill="#F5F3E8">
+                </circle>
+            </g>
+            <!-- line describing a shadow on the thermometer -->
+            <path
+                d="M 7.5 2.5 v 20"
+                fill="none"
+                stroke="#000"
+                stroke-width="2"
+                stroke-linecap="round"
+                opacity="0.2">
+            </path>
+            <!-- colored portions of the thermometer -->
+            <g>
+                <!-- line, clipped through the defined element -->
+                <g
+                    clip-path="url(#clip)">
+                    <path
+                        d="M 7.5 2.5 v 20"
+                        fill="none"
+                        stroke="#FF4E2C"
+                        stroke-width="2"
+                        stroke-linecap="round">
+                    </path>
+                </g>
+                <!-- circle -->
+                <circle
+                    cx="7.5"
+                    cy="25"
+                    r="3"
+                    fill="#FF4E2C">
+                </circle>
+            </g>
+        </symbol>
+
+
+        <!-- symbol fabricating the composition
+        this allows to later include a <use> element for every single shape
+        -->
+        <symbol id="kitchen">
+            <!-- thermometer, positioned in the top right of the svg -->
+            <use
+                href="#thermometer"
+                viewBox="0 0 15 30"
+                x="90"
+                y="0"
+                width="10"
+                height="20">
+            </use>
+            <!-- pot, positioned atop the horizon line, on the right end of the counter -->
+            <use
+                href="#pot"
+                viewBox="0 0 62 48"
+                x="38"
+                y="41.3"
+                width="50"
+                height="38.7">
+            </use>
+            <!-- pasta, positioned atop the pot, but behind the bowl -->
+            <use
+                href="#pasta"
+                viewBox="0 0 25 25"
+                x="22"
+                y="55"
+                width="25"
+                height="25">
+            </use>
+            <!-- bowl, positioned in front of the pot and and pasta, on the left side of the counter -->
+            <use
+                href="#bowl"
+                viewBox="0 0 60 33.5"
+                x="12"
+                y="63.25"
+                width="30"
+                height="16.75">
+            </use>
+        </symbol>
+
+
+        <!-- actual drawing -->
+        <use href="#kitchen"></use>
+        <!-- mirrored, semi-transparent drawing -->
+        <use href="#kitchen" transform="translate(0 160) scale(1 -1)" opacity="0.2"></use>
+        <!-- line making up the kitchen's counter -->
+        <path
+            d="M 1 80 h 98"
+            stroke-linecap="round"
+            stroke-width="1"
+            stroke="#F5F3E8"
+            fill="none">
+        </path>
+    </svg>
+
+    <!-- import anime.js -->
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
