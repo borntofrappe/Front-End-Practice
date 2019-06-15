@@ -95,3 +95,4 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[CPC Fictional Desert Planets](https://codepen.io/borntofrappe/pen/qGYzPo)|Highlight a series of fictional desert planets through a force directed graph.|26th May 2019|
 |[Pokewalker Dowsing Machine](https://codepen.io/borntofrappe/pen/qGeyqN)|Recreate one of the mini-games available on the pokewalker.|8th June 2019|
 |[CPC Sandwhich](https://codepen.io/borntofrappe/pen/agbOQX)|Practice with a few JavaScript methods to fake a font themed around sandwhiches.|10th June 2019|
+|[CPC Noodles](https://codepen.io/borntofrappe/pen/YowMXm)|Inspired by [this design](https://dribbble.com/shots/5848600-Carbs) practice with SVG syntax to draw a basic kitchen counter.|15th June 2019|
