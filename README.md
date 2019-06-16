@@ -32,6 +32,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[D3 Election Dashboard](https://codepen.io/borntofrappe/full/ZNjgmv)|Inspired by the recent European elections, display the composition of the EU parliament through a series of visualizations.|27th-28th May 2019|
 |[D3 Election Map](https://codepen.io/borntofrappe/pen/WBPwPw)|Practice with the data visualization library and CSS layout properties to highlight the results of the recent European elections.|2nd-3rd June 2019|
 |[D3 Animated Visualization](https://codepen.io/borntofrappe/pen/WBqRRB)|Practice with D3 to show different facets of a dataset in a single visualization, at the check of a checkbox.|6th June 2019|
+|[D3 Quadrant Chart](https://codepen.io/borntofrappe/pen/QXNvjx)|Create a visualization sorting arbitrary data in four quadrants.|16th June 2019|
 
 ### JS
 
