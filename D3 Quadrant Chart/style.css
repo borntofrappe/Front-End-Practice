@@ -18,11 +18,21 @@ body {
 /* cap the width of the visualization */
 svg {
   width: 90vw;
-  max-width: 800px;
+  max-width: 900px;
 }
 svg text {
   font-family: "IBM Plex Mono", monospace;
   fill: currentColor;
   text-shadow: 0 0 1px hsla(0, 0%, 0%, 0.25);
   letter-spacing: 0.01rem;
+}
+
+/* animation for the path elements included through the tooltip
+! the offset needs to match the length of a dash and an empty space to avoid jumping from state to state
+stroke-dasharray: 7 4; --> stroke-dashoffset: 11;
+*/
+@keyframes dashOffset {
+  to {
+    stroke-dashoffset: -11;
+  }
 }

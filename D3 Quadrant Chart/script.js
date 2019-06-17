@@ -44,7 +44,7 @@ const randomDataPoint = () => {
 
   // call the function once more if the data point were to be located in the bottom right corner of the viz
   // this to avoid overlaps with the legend
-  if (percentage < 20 && count > 8000) {
+  if (percentage < 20 && count > 7000) {
     return randomDataPoint();
   }
   // retrieve an item from the legend array
@@ -58,7 +58,7 @@ const randomDataPoint = () => {
 };
 
 // number of data points
-const dataPoints = 30;
+const dataPoints = 15;
 // create an array of data points leveraging the utility functions
 const data = Array(dataPoints).fill('').map(randomDataPoint);
 
@@ -67,14 +67,14 @@ const data = Array(dataPoints).fill('').map(randomDataPoint);
 // in the .viz container include an SVG element following the margin convention
 const margin = {
   top: 20,
-  right: 20,
+  right: 65,
   bottom: 50,
-  left: 55,
+  left: 65,
 };
 
 // the chart ought to be wider than taller
 const width = 600 - (margin.left + margin.right);
-const height = 425 - (margin.top + margin.bottom);
+const height = 400 - (margin.top + margin.bottom);
 
 const svg = d3
   .select('.viz')
@@ -141,6 +141,7 @@ quadrants
   .text(d => d)
   .style('text-transform', 'uppercase')
   .style('font-weight', '300')
+  .style('font-size', '0.9rem')
   .attr('opacity', 0.9);
 
 // legend
@@ -148,7 +149,7 @@ quadrants
 const legendGroup = group
   .append('g')
   .attr('class', 'legend')
-  .attr('transform', `translate(${countScale(8500)} ${percentageScale(15)})`);
+  .attr('transform', `translate(${countScale(8500)} ${percentageScale(16)})`);
 
 // separate the groups vertically
 const legendItems = legendGroup
@@ -165,7 +166,7 @@ legendItems
   .attr('cx', 0)
   .attr('cy', 0)
   .attr('r', 4)
-  .attr('fill', d => d.color);
+  .attr('fill', ({color}) => color);
 
 legendItems
   .append('text')
@@ -173,7 +174,7 @@ legendItems
   .attr('y', 0)
   .attr('dominant-baseline', 'middle')
   .text(d => d.name)
-  .style('font-size', '0.55rem')
+  .style('font-size', '0.5rem')
   .style('letter-spacing', '0.05rem');
 
 // axes
@@ -214,6 +215,10 @@ d3
   .selectAll('line')
   .attr('x2', -4);
 
+d3
+  .selectAll('.axis')
+  .selectAll('text')
+  .attr('font-size', '0.5rem');
 
 // grid
 // include dotted lines for each tick and for both axes
@@ -274,7 +279,7 @@ d3
 // style both labels with a heavier weight
 d3
   .selectAll('g.label text')
-  .style('font-size', '0.7rem')
+  .style('font-size', '0.65rem')
   .style('font-weight', '600')
   .style('letter-spacing', '0.05rem');
 
@@ -291,12 +296,181 @@ const dataPointsGroup = dataGroup
   .enter()
   .append('g')
   .attr('class', 'data-point')
-  .attr('transform', d => `translate(${countScale(d.count)} ${percentageScale(d.percentage)})`);
+  .attr('transform', ({count, percentage}) => `translate(${countScale(count)} ${percentageScale(percentage)})`);
 
 // circles using the defined color
 dataPointsGroup
   .append('circle')
   .attr('cx', 0)
   .attr('cy', 0)
-  .attr('r', 6)
-  .attr('fill', d => d.color);
+  .attr('r', 5)
+  .attr('fill', ({color}) => color);
+
+// labels describing the circle elements
+dataPointsGroup
+  .append('text')
+  .attr('x', 8)
+  .attr('y', 0)
+  .attr('class', 'name')
+  .text(({name}, i) => `${name} ${i}`)
+  .attr('dominant-baseline', 'central')
+  .style('font-size', '0.55rem')
+  .style('letter-spacing', '0.05rem')
+  .style('pointer-events', 'none');
+
+
+// on hover highlight the data point
+dataPointsGroup
+  .on('mouseenter', function(d) {
+    // slightly translate the text to the left and change the fill color
+    const text = d3
+      .select(this)
+      .select('text.name')
+
+    text
+      .transition()
+      .attr('transform', 'translate(12 0)')
+      .style('color', 'hsl(230, 29%, 19%)')
+      .style('text-shadow', 'none');
+
+    /* as the first child of the group add another group in which to gather the elements making up the tooltip
+    - rectangle faking the text's background
+    - circle highlighting the selected data point
+    - path elements connecting the circle to the values on the axes
+    - rectangles faking the background for the labels on the axes
+    - text elements making up the labels on the axes
+    */
+    const tooltip = d3
+      .select(this)
+      .insert('g', ':first-child')
+      .attr('class', 'tooltip')
+      .attr('opacity', 0);
+
+
+    // for the rectangle retrieve the width and height of the text elements to have the rectangle match in size
+    const textElement = text['_groups'][0][0];
+    const { x, y, width: textWidth, height: textHeight } = textElement.getBBox();
+
+    tooltip
+      .append('rect')
+      .attr('x', x - 3)
+      .attr('y', y - 1.5)
+      .attr('width', textWidth + 6)
+      .attr('height', textHeight + 3)
+      .attr('fill', 'hsl(227, 9%, 81%)')
+      .attr('rx', '2')
+      .transition()
+      // transition the rectangle to match the text translation
+      .attr('transform', 'translate(12 0)');
+
+
+    // include the two dotted lines in a group to centralize their common properties
+    const dashedLines = tooltip
+      .append('g')
+      .attr('fill', 'none')
+      .attr('stroke', 'hsl(227, 9%, 81%)')
+      .attr('stroke-width', 2)
+      // have the animation move the path with a stroke-dashoffset considering the cumulative value of a dash and an empty space
+      .attr('stroke-dasharray', '7 4')
+      // animate the path elements to perennially move toward the axes
+      .style('animation', 'dashOffset 1.5s linear infinite');
+
+
+    dashedLines
+      .append('path')
+      .attr('d', ({percentage}) => `M 0 0 v ${percentageScale(percentages.max - percentage)}`);
+
+    dashedLines
+      .append('path')
+      .attr('d', ({count}) => `M 0 0 h -${countScale(count)}`);
+
+    // include two labels centered on the axes, highlighting the matching values
+    const labels = tooltip
+      .append('g')
+      .attr('font-size', '0.6rem')
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', 'hsl(227, 9%, 81%)');
+
+    const labelCount = labels
+      .append('g')
+      .attr('transform', ({percentage}) => `translate(0 ${percentageScale(percentages.max - percentage)})`);
+
+    const textCount = labelCount
+      .append('text')
+      .attr('x', 0)
+      .attr('y', 0)
+      .style('color', 'hsl(230, 29%, 19%)')
+      .text(({count}) => count);
+
+    const labelPercentage = labels
+      .append('g')
+      .attr('transform', ({count}) => `translate(-${countScale(count)} 0)`);
+
+    const textPercentage = labelPercentage
+      .append('text')
+      .attr('x', 0)
+      .attr('y', 0)
+      .style('color', 'hsl(230, 29%, 19%)')
+      .text(({percentage})=> `${percentage}%`);
+
+    // behind the labels include two rectangles, replicating the faux background specified for the original text element
+    const { width: countWidth, height: countHeight } = textCount['_groups'][0][0].getBBox();
+    const { width: percentageWidth, height: percentageHeight } = textPercentage['_groups'][0][0].getBBox();
+
+    labelCount
+      .insert('rect', ':first-child')
+      .attr('x', -countWidth / 2 - 4)
+      .attr('y', -countHeight / 2 - 2)
+      .attr('width', countWidth + 8)
+      .attr('height', countHeight + 4)
+      .attr('rx', 3);
+
+    labelPercentage
+      .insert('rect', ':first-child')
+      .attr('x', -percentageWidth / 2 - 4)
+      .attr('y', -percentageHeight / 2 - 2)
+      .attr('width', percentageWidth + 8)
+      .attr('height', percentageHeight + 4)
+      .attr('rx', 3);
+
+
+    // detail a circle, with a darker fill and a larger radius
+    tooltip
+      .append('circle')
+      .attr('cx', 0)
+      .attr('cy', 0)
+      .attr('fill', 'hsl(0, 0%, 0%)')
+      .attr('stroke', 'hsl(227, 9%, 81%)')
+      .attr('stroke-width', 2)
+      .attr('r', 0)
+      // transition the circle its full radius
+      .transition()
+      .attr('r', 9.5);
+
+    // transition the tooltip to be fully opaque
+    tooltip
+      .transition()
+      .attr('opacity', 1);
+
+  })
+  // when exiting the hover state reset the appearance of the data point and remove the tooltip
+  .on('mouseout', function(d) {
+    d3
+      .select(this)
+      .select('text.name')
+      .transition()
+      .delay(100)
+      .attr('transform', 'translate(0 0)')
+      .style('color', 'inherit')
+      .style('text-shadow', 'inherit');
+
+    // remove the tooltip after rendering it fully transparent
+    d3
+      .select(this)
+      .select('g.tooltip')
+      .transition()
+      .attr('opacity', 0)
+      .remove();
+
+  });
