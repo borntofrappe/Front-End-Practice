@@ -1,7 +1,8 @@
 /* globals d3 */
-// DATA
-// starting from an object describing the possible categories and matching colors
-// the idea is to fabricate an array of data points with random percentage and user count values
+/* DATA
+starting from an object describing the possible categories and matching colors
+the idea is to fabricate an array of data points with random percentage and count values
+*/
 const legend = [
   {
     name: 'Purple',
@@ -21,7 +22,7 @@ const legend = [
   },
 ];
 
-// utility functions to return random values, in a range and from an array
+// utility functions
 const randomBetween = (min, max) => Math.floor(Math.random() * (max - min) + min);
 const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -42,7 +43,7 @@ const randomDataPoint = () => {
   const count = randomBetween(counts.min, counts.max);
 
   // call the function once more if the data point were to be located in the bottom right corner of the viz
-  // this is where the legend is specified
+  // this to avoid overlaps with the legend
   if (percentage < 20 && count > 8000) {
     return randomDataPoint();
   }
@@ -58,12 +59,11 @@ const randomDataPoint = () => {
 
 // number of data points
 const dataPoints = 30;
-// create an array of data points benefiting from the random functions
+// create an array of data points leveraging the utility functions
 const data = Array(dataPoints).fill('').map(randomDataPoint);
 
 
 // VIZ
-// using the D3 library
 // in the .viz container include an SVG element following the margin convention
 const margin = {
   top: 20,
@@ -76,17 +76,14 @@ const margin = {
 const width = 600 - (margin.left + margin.right);
 const height = 425 - (margin.top + margin.bottom);
 
-// svg container
 const svg = d3
   .select('.viz')
   .append('svg')
   .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`);
 
-// group element in which to add the actual viz
 const group = svg
   .append('g')
   .attr('transform', `translate(${margin.left} ${margin.top})`);
-
 
 // scales
 // for both the x and y dimensions define linear scales, using the minimum and maximum values defined earlier
@@ -101,7 +98,7 @@ const percentageScale = d3
   .range([height, 0]);
 
 // quadrants and labels
-// position four rectangles and text elements to section the larger viz in four areas
+// position four rectangles and text elements to divvy up the larger shape in four sections
 const quad = [
   'Assess',
   'Adopt',
@@ -143,18 +140,16 @@ quadrants
   .attr('dominant-baseline', 'middle')
   .text(d => d)
   .style('text-transform', 'uppercase')
-  .style('letter-spacing', '0.1rem')
   .style('font-weight', '300')
-  .style('text-shadow', '0 0 1px hsla(0, 0%, 0%, 0.25)');
+  .attr('opacity', 0.9);
 
 // legend
-// include in the bottom right corner of the viz the legend
+// include the categories in the bottom right corner of the viz
 const legendGroup = group
   .append('g')
   .attr('class', 'legend')
   .attr('transform', `translate(${countScale(8500)} ${percentageScale(15)})`);
 
-// include one group for each legend item
 // separate the groups vertically
 const legendItems = legendGroup
   .selectAll('g.legend-item')
@@ -179,11 +174,9 @@ legendItems
   .attr('dominant-baseline', 'middle')
   .text(d => d.name)
   .style('font-size', '0.55rem')
-  .style('letter-spacing', '0.05rem')
-  .style('text-shadow', '0 0 1px hsla(0, 0%, 0%, 0.25)');
+  .style('letter-spacing', '0.05rem');
 
 // axes
-// beside the lines and ticks include two labels describing the axes
 const countAxis = d3
   .axisBottom(countScale)
   .tickFormat(d => d);
@@ -192,7 +185,7 @@ const percentageAxis = d3
   .axisLeft(percentageScale)
   .tickFormat(d => `${d}%`);
 
-// add a class to the group elements to rapidly reference them afterwards
+// add classes to later identify the axes individually and jointly
 group
   .append('g')
   .attr('transform', `translate(0 ${height})`)
@@ -221,14 +214,9 @@ d3
   .selectAll('line')
   .attr('x2', -4);
 
-// style the text elements with the imported font
-d3
-  .selectAll('.axis')
-  .selectAll('text')
-  .style('letter-spacing', '0.01rem');
 
 // grid
-// include dotted lines for each tick and both dimensions
+// include dotted lines for each tick and for both axes
 d3
   .select('.axis-count')
   .selectAll('g.tick')
@@ -251,9 +239,8 @@ d3
 
 
 // labels
-// add a group in which position the label
-// for the percentage label, this allows to also modify the transform-origin to rotate the label from the center of the axis
-// add a class to identify both labels when needed
+// add a group to position the label where needed
+// for the percentage label, this allows to also modify the transform-origin as to rotate the label from the center of the axis
 d3
   .select('.axis-count')
   .append('g')
@@ -267,7 +254,6 @@ d3
   .attr('y', 0)
   .text('User Count')
   .attr('text-anchor', 'middle');
-
 
 d3
   .select('.axis-percentage')
@@ -285,12 +271,12 @@ d3
   .attr('dominant-baseline', 'hanging')
   .attr('transform', 'rotate(-90)');
 
+// style both labels with a heavier weight
 d3
   .selectAll('g.label text')
   .style('font-size', '0.7rem')
   .style('font-weight', '600')
-  .style('letter-spacing', '0.05rem')
-  .style('text-shadow', '0 0 1px hsla(0, 0%, 0%, 0.25)');
+  .style('letter-spacing', '0.05rem');
 
 
 // data points
