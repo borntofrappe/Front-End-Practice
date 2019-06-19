@@ -11,7 +11,7 @@
 
     <!-- svg element made up of two overlapping polyline elements
     both elements are animated in their points attribute
-    the second is also animated through the stroke-dasharray and stroke-dashoffset properties to progressively draw in the element
+    the second is also animated through the stroke-dasharray and stroke-dashoffset properties to progressively draw in the colored shape
     -->
     <svg
         id="progress"
@@ -30,6 +30,7 @@
 
         </g>
     </svg>
+
 
     <!-- buttons used to modify the appearance of the polyline elements
     - sectioned in two containers, each describing the purpose through an SVG icon
@@ -52,35 +53,34 @@
                         </rect>
 
                         <circle
-                            cx="45"
-                            cy="25"
+                            cx="50"
+                            cy="20"
                             r="8"
                             fill="hsl(0, 0%, 0%)">
                         </circle>
 
                         <circle
-                            cx="70"
-                            cy="30"
+                            cx="72"
+                            cy="35"
                             r="8"
                             fill="hsl(0, 0%, 0%)">
                         </circle>
                         <circle
-                            cx="80"
-                            cy="55"
+                            cx="28"
+                            cy="35"
                             r="8"
                             fill="hsl(0, 0%, 0%)">
                         </circle>
 
                         <path
-                            d="M 0 50 a 15 15 0 0 0 15 0 v 20"
+                            d="M 40 70 a 10 10 0 0 1 20 0 a 15 15 0 0 0 30 0 v 30 h -80 v -30 a 15 15 0 0 0 30 0"
                             fill="hsl(0, 0%, 0%)">
                         </path>
-
                     </mask>
                 </defs>
 
                 <g
-                    transform="translate(50 50) rotate(0)">
+                    transform="translate(50 50) rotate(50)">
                     <g
                         transform="translate(-50 -50)">
                         <circle
@@ -99,7 +99,7 @@
         <div class="controls__shape">
             <!-- icon resembling the pen tool -->
             <svg viewBox="0 0 100 100" width="50" height="50">
-                <!-- rotate the icons toward the matching buttons -->
+                <!-- rotate the icon toward the matching buttons -->
                 <g
                     transform="translate(50 50) rotate(30)">
                     <g

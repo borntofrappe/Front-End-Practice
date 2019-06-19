@@ -5,7 +5,7 @@
   padding: 0;
   margin: 0;
 }
-/* horizontally center the elements in a column */
+/* display the elements in a column, horizontally centered */
 body {
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@ body {
   background: #16132f;
   color: hsl(252, 65%, 63%);
 }
-/* size the larger svg to encompass a consierable portion of the viewport */
+/* size the larger svg to encompass a considerable portion of the viewport */
 svg#progress {
   width: 300px;
   height: 300px;
@@ -21,19 +21,20 @@ svg#progress {
   fill: currentColor;
   /* transition for the change in color */
   transition: color 0.2s ease-in-out;
-  margin: 2rem 0 1rem;
+  margin: 2rem 0;
 }
 
 /* display the icon and buttons in a row */
 .controls__color,
 .controls__shape {
-  margin: 3rem 0;
+  margin: 2.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* position relative to absolute position the svg icons */
   position: relative;
 }
-/* absolute position the first icon to the left of each row */
+/* absolute position the first icon of each container to its side */
 .controls__color > svg,
 .controls__shape > svg {
   position: absolute;
@@ -41,13 +42,15 @@ svg#progress {
   right: 100%;
   transform: translate(0%, -50%);
   opacity: 0.5;
-  width: 75px;
-  height: 75px;
+  width: 70px;
+  height: 70px;
 }
+/* second icon to the right of the container */
 .controls__shape > svg {
   right: 0;
   transform: translate(100%, -50%);
 }
+
 /* style the buttons to remove the default background and border */
 .controls__color button,
 .controls__shape button {
