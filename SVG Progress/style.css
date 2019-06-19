@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,600&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* horizontally center the elements in a column */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #16132f;
+  color: hsl(252, 65%, 63%);
+}
+/* size the larger svg to encompass a consierable portion of the viewport */
+svg#progress {
+  width: 300px;
+  height: 300px;
+  /* fill dictated by the color set on the body */
+  fill: currentColor;
+  /* transition for the change in color */
+  transition: color 0.2s ease-in-out;
+  margin: 2rem 0 1rem;
+}
+
+/* display the icon and buttons in a row */
+.controls__color,
+.controls__shape {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+/* absolute position the first icon to the left of each row */
+.controls__color > svg,
+.controls__shape > svg {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translate(0%, -50%);
+  opacity: 0.5;
+  width: 75px;
+  height: 75px;
+}
+.controls__shape > svg {
+  right: 0;
+  transform: translate(100%, -50%);
+}
+/* style the buttons to remove the default background and border */
+.controls__color button,
+.controls__shape button {
+  color: currentColor;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  margin: 0.75rem;
+}
+/* expand the nested svg to occupy as much space as allocated by the button elements */
+.controls__color button svg,
+.controls__shape button svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* transition for the change in color */
+  transition: color 0.2s ease-in-out;
+}
+
+/* animation for the colored path */
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

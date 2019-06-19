@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Progress</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg element made up of two overlapping polyline elements
+    both elements are animated in their points attribute
+    the second is also animated through the stroke-dasharray and stroke-dashoffset properties to progressively draw in the element
+    -->
+    <svg
+        id="progress"
+        viewBox="0 0 100 100"
+        width="100"
+        height="100">
+        <g
+            fill="none"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            transform="translate(5 5) scale(0.9 0.9)">
+
+            <polyline stroke="hsl(0, 0%, 0%)" opacity="0.5" points="0 50, 100 50"></polyline>
+            <polyline stroke="currentColor" points="0 50, 100 50"></polyline>
+
+        </g>
+    </svg>
+
+    <!-- buttons used to modify the appearance of the polyline elements
+    - sectioned in two containers, each describing the purpose through an SVG icon
+    - included through JavaScript, one for each option
+    -->
+    <div class="controls">
+        <!-- controls to modify the color -->
+        <div class="controls__color">
+            <!-- icon resembling a color palette -->
+            <svg viewBox="0 0 100 100" width="50" height="50">
+                <!-- cut out parts of the circle to describe the curvy silhouette of the color palette -->
+                <defs>
+                    <mask id="mask">
+                        <rect
+                            x="0"
+                            y="0"
+                            width="100"
+                            height="100"
+                            fill="#fff">
+                        </rect>
+
+                        <circle
+                            cx="45"
+                            cy="25"
+                            r="8"
+                            fill="hsl(0, 0%, 0%)">
+                        </circle>
+
+                        <circle
+                            cx="70"
+                            cy="30"
+                            r="8"
+                            fill="hsl(0, 0%, 0%)">
+                        </circle>
+                        <circle
+                            cx="80"
+                            cy="55"
+                            r="8"
+                            fill="hsl(0, 0%, 0%)">
+                        </circle>
+
+                        <path
+                            d="M 0 50 a 15 15 0 0 0 15 0 v 20"
+                            fill="hsl(0, 0%, 0%)">
+                        </path>
+
+                    </mask>
+                </defs>
+
+                <g
+                    transform="translate(50 50) rotate(0)">
+                    <g
+                        transform="translate(-50 -50)">
+                        <circle
+                            mask="url(#mask)"
+                            cx="50"
+                            cy="50"
+                            r="45"
+                            fill="hsl(0, 0%, 0%)">
+                        </circle>
+                    </g>
+                </g>
+            </svg>
+        </div>
+
+        <!-- controls to modify the shape -->
+        <div class="controls__shape">
+            <!-- icon resembling the pen tool -->
+            <svg viewBox="0 0 100 100" width="50" height="50">
+                <!-- rotate the icons toward the matching buttons -->
+                <g
+                    transform="translate(50 50) rotate(30)">
+                    <g
+                        transform="translate(-50 -50)">
+                        <path
+                            fill="none"
+                            stroke-linejoin="round"
+                            stroke-linecap="round"
+                            stroke-width="10"
+                            stroke="hsl(0, 0%, 0%)"
+                            d="M 40 20 h 20 l 20 30 l -30 40 v -40 v 40 l -30 -40 l 20 -30 v -10 h 20 v 10">
+                        </path>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+
+    <!-- import anime js -->
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
