@@ -99,3 +99,4 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[Pokewalker Dowsing Machine](https://codepen.io/borntofrappe/pen/qGeyqN)|Recreate one of the mini-games available on the pokewalker.|8th June 2019|
 |[CPC Sandwhich](https://codepen.io/borntofrappe/pen/agbOQX)|Practice with a few JavaScript methods to fake a font themed around sandwhiches.|10th June 2019|
 |[CPC Noodles](https://codepen.io/borntofrappe/pen/YowMXm)|Inspired by [this design](https://dribbble.com/shots/5848600-Carbs) practice with SVG syntax to draw a basic kitchen counter.|15th June 2019|
+|[CPC Fruit Ninja](https://codepen.io/borntofrappe/pen/KjWezV)|Using the physics library Matter.js create a basic game in which berries are thrown into the scope of the screen and destroyed following a click.|21st June 2019|
