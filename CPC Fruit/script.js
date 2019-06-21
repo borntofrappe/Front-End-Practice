@@ -46,27 +46,14 @@ const render = Render.create({
   },
 });
 
-// array describing the possible colors of the circle elements
-const fruitStyle = [
-  '#F68B51',
-  '#F84B7F',
-  '#41B6FA',
-  '#F6DA00',
-  '#3246E3',
-  '#26A7A8',
-];
-
-
 // utility functions
-// random item in an array
-const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
 // random integer in between two values
 const randomIntBetween = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
 // function including a new circle in the Matter js world
 const addFruit = () => {
   // starting with a random fill color and somewhere below the bottom edge of the screen
-  const fillStyle = randomItem(fruitStyle);
+  const fillStyle = `hsl(${randomIntBetween(0, 360)}, 80%, 60%)`;
   const cx = randomIntBetween(0, width);
   const cy = height + 50;
   const radius = randomIntBetween(15, 25);
