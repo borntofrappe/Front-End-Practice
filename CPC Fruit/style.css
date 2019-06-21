@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css?family=Atma:700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: url('data:image/svg+xml;utf8,<svg opacity="0.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g transform="translate(50 50) scale(0.4) rotate(-20)"><g transform="translate(-50 -50)"><circle cx="50" cy="50" r="28" fill="%23EF2364"></circle><g stroke="%23EF2364" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M 50 32 q 0 -15 25 -15 q 0 15 -25 15"></path><path transform="translate(100 0) scale(-1 1)" d="M 50 32 q 0 -15 25 -15 q 0 15 -25 15"></path><path d="M 50 32 q -15 -7.5 0 -25 q 15 7.5 0 25"></path></g></g></g></svg>'),
+    #1a1a1a;
+  background-size: 125px, 100%;
+  background-position: 0px -50px;
+  font-family: "Atma", sans-serif;
+  color: hsl(341, 80%, 54%);
+}
+/* center the game screen in the viewport */
+.game {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+/* absolute position the .game__info container in the top right corner of the screen */
+.game__info {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  /* vertically align to the end of the flex container */
+  align-items: flex-end;
+  top: 0;
+  right: 0;
+}
+/* display the information and the icons side by side */
+.info--health,
+.info--score {
+  margin: 0.5rem;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+/* separate the svg icons and scale them according to the font-size of the parent element */
+.info--health svg,
+.info--score svg {
+  width: 1.5em;
+  height: 1.5em;
+  display: block;
+  margin-left: 0.5rem;
+}
+
+/* position relative to absolute position the nested button */
+.game_screen {
+  position: relative;
+}
+/* style the canvas with a solid border */
+.game__screen canvas {
+  margin: 2rem 0 3rem;
+  background: #fefefe;
+  border-radius: 20px;
+  border: 0.5rem solid currentColor;
+  /* clip path detailing the edges at either end of the phone */
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 30%,
+    99.6% 31%,
+    99.6% 69%,
+    100% 70%,
+    100% 100%,
+    0% 100%,
+    0% 70%,
+    0.4% 69%,
+    0.4% 31%,
+    0% 30%
+  );
+  transition: border-color 0.25s ease-out;
+  transition-delay: 0.1s;
+}
+/* when a class of .gameover is added to the container change the color of the border to a lighter hue */
+.game__screen.gameover canvas {
+  border-color: hsl(341, 86%, 80%);
+}
+
+/* absolute position the button in the center of the container */
+.game__screen button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* display the icon atop the text, in a horizontally centered column */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 3rem;
+  color: inherit;
+  /* transition for the change in opacity */
+  transition-property: opacity, visibility;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-out;
+  /* by default hide the button from sight */
+  opacity: 0;
+  visibility: hidden;
+}
+/* when a class of .gameover is added to the container show the button
+! add the class to immediately show the button
+*/
+.game__screen.gameover button {
+  opacity: 1;
+  visibility: visible;
+}
+/* size the nested icon according to the size of the font */
+.game__screen button svg {
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Berry Picker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- icons used in the project -->
+    <svg viewBox="0 0 100 100" style="display: none;">
+        <!-- heart for the health icon -->
+        <symbol id="health" viewBox="0 0 100 100">
+            <path
+                fill="currentColor"
+                d="M 50 80 q -30 -20 -30 -40 a 15 15 0 0 1 30 0 a 15 15 0 0 1 30 0 q 0 20 -30 40">
+            </path>
+        </symbol>
+
+        <!-- berry for the score icon
+        ! the same graphic is incorporated in the background of the body element
+        -->
+        <symbol id="score" viewBox="0 0 100 100">
+            <g transform="translate(50 50) scale(0.9) rotate(20)">
+                <g transform="translate(-50 -50)">
+                    <circle
+                        cx="50"
+                        cy="50"
+                        r="28"
+                        fill="currentColor">
+                    </circle>
+                    <g
+                        stroke="currentColor"
+                        stroke-width="7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="none">
+                        <path
+                            d="M 50 32 q 0 -15 25 -15 q 0 15 -25 15">
+                        </path>
+                        <path
+                            transform="translate(100 0) scale(-1 1)"
+                            d="M 50 32 q 0 -15 25 -15 q 0 15 -25 15">
+                        </path>
+                        <path
+                            d="M 50 32 q -15 -7.5 0 -25 q 15 7.5 0 25">
+                        </path>
+                    </g>
+                </g>
+
+            </g>
+        </symbol>
+
+        <!-- right-facing triangle for the play icon -->
+        <symbol id="play" viewBox="0 0 100 100">
+            <path
+                fill="currentColor"
+                stroke="currentColor"
+                stroke-width="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M 30 10 l 55 40 l -55 40 z">
+            </path>
+        </symbol>
+    </svg>
+
+    <!-- html structure
+    .game, wrapping container
+        .game__info, detailing information regarding the current state of the game
+        .game__screen, describing the canvas as well as the button allowing to play/pause the game
+    -->
+
+    <div class="game">
+        <!-- include information regarding the game -->
+        <div class="game__info">
+            <!-- for each piece of information include text through a span element and a matching icon from the svg block defined earlier -->
+            <div class="info--health">
+                <span>3</span>
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                    <use href="#health"></use>
+                </svg>
+            </div>
+
+            <div class="info--score">
+                <span>0</span>
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                    <use href="#score"></use>
+                </svg>
+            </div>
+        </div>
+
+        <!-- include the canvas element alongside a button to play a new game -->
+        <div class="game__screen gameover">
+            <!-- canvas replicating a phone in landscape mode -->
+            <canvas width="600" height="300"></canvas>
+            <!-- button to play a new game
+            the idea is to hide it by default and show it only on gameover, to play a new round
+            -->
+            <button>
+                <svg viewBox="0 0 100 100" width="40" height="40">
+                    <use href="#play"></use>
+                </svg>
+                <span>
+                    Play
+                </span>
+            </button>
+        </div>
+    </div>
+
+
+
+    <!-- import matter js -->
+    <script src="https://unpkg.com/matter-js@0.14.2/build/matter.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
