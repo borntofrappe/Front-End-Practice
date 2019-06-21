@@ -65,6 +65,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[SVG Tooltip Icons](https://codepen.io/borntofrappe/pen/OYBNgX)|Practice with SVG syntax to create a series of icons shown when hovering atop a series of anchor link elements.|29th May 2019|
 |[SVG Thermometer](https://codepen.io/borntofrappe/pen/LKGWgp)|Draw a thermometer and leveraging the anime.js library animate its appearance.|14th June 2019|
 |[SVG Progress](https://codepen.io/borntofrappe/pen/gNLKBw)|Practice with SVG and anime.js to create a progress bar and animate its appearance in color and shape.|19th-20th June 2019|
+|[SVG Icons Practice](https://codepen.io/borntofrappe/pen/ydgxGO)|Practice with SVG syntax, HSL colors and a few lines of JavaScript to include SVG icons where such icons are made available.|20th June 2019|
 
 ### UI UX
 
