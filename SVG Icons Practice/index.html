@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG HSL JS Icons</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- specify a few icons in the initial svg block and through symbol elements -->
+    <svg
+        id="icons"
+        viewBox="0 0 100 100"
+        style="display: none;">
+
+        <symbol
+            id="text"
+            viewBox="0 0 100 100">
+            <g>
+                <path
+                    d="M 57.5 72 v 10 l -15 -10"
+                    fill="#fff">
+                </path>
+                <rect
+                    rx="5"
+                    x="20"
+                    y="28"
+                    width="60"
+                    height="44"
+                    fill="#fff">
+                </rect>
+            </g>
+            <g
+                fill="hsl(35, 98%, 48%)">
+                <circle
+                    r="5"
+                    cx="35"
+                    cy="50">
+                </circle>
+
+                <circle
+                    r="5"
+                    cx="50"
+                    cy="50">
+                </circle>
+
+                <circle
+                    r="5"
+                    cx="65"
+                    cy="50">
+                </circle>
+            </g>
+        </symbol>
+
+
+        <symbol
+            id="location"
+            viewBox="0 0 100 100">
+            <path
+                d="M 50 18 q 20 2 22 22 t -22 40 z M 50 18 q -20 2 -22 22 t 22 40"
+                fill="#fff">
+            </path>
+            <circle
+                cx="50"
+                cy="42"
+                r="12"
+                fill="hsl(341, 82%, 60%)">
+            </circle>
+        </symbol>
+
+
+        <symbol
+            id="video"
+            viewBox="0 0 100 100">
+            <rect
+                rx="5"
+                x="20"
+                y="28"
+                width="60"
+                height="44"
+                fill="#fff">
+            </rect>
+            <g transform="translate(50 50) scale(0.7 0.65)">
+                <g transform="translate(-50 -50)">
+                    <rect
+                        rx="5"
+                        x="20"
+                        y="28"
+                        width="60"
+                        height="44"
+                        fill="hsl(86, 98%, 43%)">
+                    </rect>
+                </g>
+            </g>
+            <path
+                d="M 47 45 l 7 5 l -7 5 z"
+                fill="#fff"
+                stroke="#fff"
+                stroke-width="5"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+            </path>
+        </symbol>
+
+
+        <symbol
+            id="camera"
+            viewBox="0 0 100 100">
+            <rect
+                rx="5"
+                x="35"
+                y="28"
+                width="30"
+                height="12"
+                fill="#fff">
+            </rect>
+            <rect
+                rx="5"
+                x="20"
+                y="36"
+                width="60"
+                height="36"
+                fill="#fff">
+            </rect>
+            <g
+                fill="hsl(238, 84%, 63%)">
+                <circle
+                    cx="70"
+                    cy="45"
+                    r="4">
+                </circle>
+
+                <circle
+                    cx="50"
+                    cy="54"
+                    r="10">
+                </circle>
+            </g>
+        </symbol>
+    </svg>
+
+
+    <!-- specify a series of buttons with two attributes
+        - data-icon indicating the matching icon
+        - data-colro describing the theme color behind the icon
+
+        by default the buttons show only text, and icons are included through the script only when they are identified as available
+    -->
+    <button
+        data-icon="text"
+        data-color="hsl(35, 98%, 48%)">
+        Send a text
+    </button>
+
+    <button
+        data-icon="location"
+        data-color="hsl(341, 82%, 60%)">
+        Find yourself
+    </button>
+
+    <button
+        data-icon="video"
+        data-color="hsl(86, 98%, 43%)">
+        Watch a video
+    </button>
+
+    <button
+        data-icon="camera"
+        data-color="hsl(238, 84%, 63%)">
+        Take a picture
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
