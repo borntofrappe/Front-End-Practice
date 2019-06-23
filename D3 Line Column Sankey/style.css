@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* give the body an off-white color to stress the importance of the white .viz container */
+body {
+  background: hsl(0, 0%, 94%);
+  font-family: "Lato", sans-serif;
+  color: hsl(0, 0%, 12%);
+}
+/* cap the width of the .viz container and center it horizontally */
+.viz {
+  max-width: 550px;
+  width: 90vw;
+  margin: 1.5rem auto 1rem;
+  padding: 1rem;
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0 1px 5px hsla(0, 0%, 12%, 0.1);
+}
+
+/* global styles for the visualizations */
+h1 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+p {
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+svg {
+  margin: 1.25rem;
+}
+svg text {
+  letter-spacing: 0.02rem;
+  font-family: inherit;
+}
+.link {
+  margin: 0.75rem 0;
+  font-size: 0.8rem;
+}
+a {
+  color: inherit;
+}
