@@ -85,6 +85,105 @@ const rowData = [
   },
 ];
 
+// data for the sankey diagram, describing the refugees recorded from country to country
+const dataSankey = [
+  {
+    country: 'Bangladesh',
+    origin: 'Myanmar',
+    value: 906635,
+  },
+  {
+    country: 'Germany',
+    origin: 'Afghanistan',
+    value: 126018,
+  },
+  {
+    country: 'Germany',
+    origin: 'Syria',
+    value: 532065,
+  },
+  {
+    country: 'Egypt',
+    origin: 'Syria',
+    value: 132871,
+  },
+  {
+    country: 'Ethiopia',
+    origin: 'Somalia',
+    value: 257199,
+  },
+  {
+    country: 'Ethiopia',
+    origin: 'South Sudan',
+    value: 422135,
+  },
+  {
+    country: 'Iran',
+    origin: 'Afghanistan',
+    value: 951142,
+  },
+  {
+    country: 'Iraq',
+    origin: 'Syria',
+    value: 252526,
+  },
+  {
+    country: 'Jordan',
+    origin: 'Syria',
+    value: 676283,
+  },
+  {
+    country: 'Kenya',
+    origin: 'Somalia',
+    value: 252498,
+  },
+  {
+    country: 'Kenya',
+    origin: 'South Sudan',
+    value: 115202,
+  },
+  {
+    country: 'Lebanon',
+    origin: 'Syria',
+    value: 944181,
+  },
+  {
+    country: 'Malaysia',
+    origin: 'Myanmar',
+    value: 114227,
+  },
+  {
+    country: 'Pakistan',
+    origin: 'Afghanistan',
+    value: 1403521,
+  },
+  {
+    country: 'Sudan',
+    origin: 'South Sudan',
+    value: 852080,
+  },
+  {
+    country: 'Sweden',
+    origin: 'Syria',
+    value: 109343,
+  },
+  {
+    country: 'Turkey',
+    origin: 'Syria',
+    value: 3622366,
+  },
+  {
+    country: 'Uganda',
+    origin: 'South Sudan',
+    value: 788848,
+  },
+  {
+    country: 'Yemen',
+    origin: 'Somalia',
+    value: 248955,
+  },
+];
+
 // object describing the theme colors for the visualizations
 const colors = {
   line: 'hsl(359, 97%, 65%)',
@@ -183,6 +282,10 @@ lineChartGroup
   .attr('transform', `translate(0 ${lineChartHeight})`)
   .call(lineChartXAxis);
 
+  d3.select('.viz__line-chart .x-axis')
+  .selectAll('text')
+  .style('font-size', '0.75rem');
+
 // for the y axis remove the segment in favor of text labels and horizontal lines spanning the width
 lineChartGroup
   .append('g')
@@ -220,6 +323,7 @@ d3.select('.viz__line-chart .y-axis')
   .attr('text-anchor', 'start')
   .attr('y', -5)
   .attr('fill', 'currentColor')
+  .style('font-size', '0.8rem')
   .text((d, i) => (i % 2 !== 0 ? `${d} Millions` : ''));
 
 // line function
@@ -370,10 +474,10 @@ rowChartOverview
 
 // svg visualization
 const rowChartMargin = {
-  top: 20,
+  top: 30,
   right: 20,
   bottom: 20,
-  left: 130, // more whitespace on the left side, to allocate the axis's labels
+  left: 140, // more whitespace on the left side, to allocate the axis's labels
 };
 
 // describe a rectangle taller than wider
@@ -405,8 +509,8 @@ const rowChartYScale = d3
 // for the x axis remove the segment and show a subset of labels
 const rowChartXAxis = d3
   .axisTop(rowChartXScale) // include the axis at the top of the visualization
-  .ticks(5);
-
+  .ticks(5)
+  .tickPadding(10);
 
 rowChartGroup
   .append('g')
@@ -420,7 +524,9 @@ d3.select('.viz__row-chart .x-axis')
 d3.select('.viz__row-chart .x-axis')
   .selectAll('text')
   .attr('fill', 'currentColor')
-  .attr('opacity', (d, i) => i % 2 !== 0 ? 1 : 0);
+  .attr('opacity', (d, i) => i % 2 !== 0 ? 1 : 0)
+  .style('font-size', '0.6rem')
+  .style('letter-spacing', '0');
 
 // for every other tick add lines spanning the entire height of the visualization
 d3.select('.viz__row-chart .x-axis')
@@ -448,7 +554,14 @@ const rowChartGroups = rowChartGroup
   .attr('class', 'group')
   .attr('transform', ({country}) => `translate(0 ${rowChartYScale(country)})`)
   // on hover show the tooltip always on the right of the visualization, but vertically matching the cursor's coordinate
-  .on('mouseenter', ({country, value}) => {
+  .on('mouseenter', function({country, value}) {
+    // show the selected line by highlighting the previously hidden rectangle
+    d3
+      .select(this)
+      .select('rect:nth-of-type(2)')
+      .transition()
+      .attr('opacity', 0.2);
+
     // in the tooltip detail the country and value in two paragraph elments
     tooltip
       .append('p')
@@ -467,18 +580,24 @@ const rowChartGroups = rowChartGroup
       Resettlements: <strong>${format(value)}</strong>
       `);
 
-    // const { width: tooltipWidth } = document.querySelector('#tooltip').getBoundingClientRect();
     const {left, width} = document.querySelector('.viz__row-chart svg').getBoundingClientRect();
-    const {width: tooltipWidth} = document.querySelector('#tooltip').getBoundingClientRect();
+    const {width: tooltipWidth, height: tooltipHeight} = document.querySelector('#tooltip').getBoundingClientRect();
     tooltip
       .style('opacity', 1)
       .style('visibility', 'visible')
       .style('left', `${left + width - tooltipWidth}px`)
-      .style('top', `${d3.event.pageY}px`);
+      .style('top', `${d3.event.pageY - tooltipHeight / 2}px`);
 
   })
-  // when exiting the group remove the tooltip
-  .on('mouseout', () => {
+  // when exiting the group remove the tooltip and reset the opacity of the second rectangle
+  .on('mouseout', function() {
+    d3
+      .select(this)
+      .select('rect:nth-of-type(2)')
+      .transition()
+      .attr('opacity', 0);
+
+
     tooltip
       .style('opacity', 0)
       .style('visibility', 'hidden')
@@ -486,7 +605,7 @@ const rowChartGroups = rowChartGroup
       .remove();
 });
 
-  // rectangle proportionate to the data point's value
+// rectangle proportionate to the data point's value
 rowChartGroups
   .append('rect')
   .attr('x', 0)
@@ -502,6 +621,7 @@ rowChartGroups
   .attr('y', 0)
   .attr('width', rowChartWidth)
   .attr('height', rowChartYScale.bandwidth())
+  .attr('fill', colors.row)
   .attr('opacity', 0); // hide the rectangles from sight, and use them only for the hover state
 
 
@@ -519,6 +639,10 @@ d3.select('.viz__row-chart .y-axis')
   .select('path')
   .attr('d', `M 0 0 v ${rowChartHeight}`);
 
+d3.select('.viz__row-chart .y-axis')
+  .selectAll('text')
+  .attr('font-size', `0.68rem`);
+
 // remove the ticks from both axes
 d3.selectAll('.viz__row-chart .axis')
   .selectAll('line')
@@ -534,3 +658,143 @@ rowChart
   .attr('target', '_blank')
   .attr('href', href)
   .text('HCR');
+
+
+// SANKEY DIAGRAM
+const sankeyDiagram = d3
+  .select('.viz')
+  .append('article')
+  .attr('class', 'viz__sankey-diagram');
+
+// html elements briefly describing the visualization and its core message
+const sankeyDiagramOverview = sankeyDiagram
+  .append('div');
+
+sankeyDiagramOverview
+  .append('h1')
+  .text('The flows outside of the countries reflect the conflicts of the years 2010s');
+
+sankeyDiagramOverview
+  .append('p')
+  .text('This chart highlights the flow of people covered by the UN Refugee Agency for few countries.');
+
+// svg visualization
+const sankeyDiagramMargin = {
+  top: 20,
+  right: 20,
+  bottom: 20,
+  left: 20,
+};
+
+// describe a rectangle taller than wider
+const sankeyDiagramWidth = 400 - (sankeyDiagramMargin.left + sankeyDiagramMargin.right);
+const sankeyDiagramHeight = 500 - (sankeyDiagramMargin.top + sankeyDiagramMargin.bottom);
+
+const sankeyDiagramSVG = sankeyDiagram
+  .append('svg')
+  .attr('viewBox', `0 0 ${sankeyDiagramWidth + (sankeyDiagramMargin.left + sankeyDiagramMargin.right)} ${sankeyDiagramHeight + (sankeyDiagramMargin.top + sankeyDiagramMargin.bottom)}`);
+
+const sankeyDiagramGroup = sankeyDiagramSVG
+  .append('g')
+  .attr('transform', `translate(${sankeyDiagramMargin.left} ${sankeyDiagramMargin.top})`);
+
+// color scale to color the sankey chords differently
+var sankeyColor = d3.scaleOrdinal(d3.schemeSet2);
+
+/* the sankey function requires an object detailing the nodes and links in two properties
+{
+  nodes,
+  links
+}
+*/
+/* nodes describes one object for each country
+{
+  country,
+}
+*/
+// retrieve the countries from the dataSankey array
+const countries = dataSankey.map(({country}) => country);
+const origins = dataSankey.map(({origin}) => origin);
+const uniqueCountries = new Set([...countries, ...origins]);
+
+const nodes = [...uniqueCountries].map(country => ({
+  country,
+}));
+
+/* links describes one object with source, target and value properties
+{
+  source,
+  target,
+  value,
+}
+the structure is simular to the dataSankey array, just with different labels
+*/
+const links = dataSankey.map(({country: target, origin: source, value}) => ({
+  source,
+  target,
+  value,
+}));
+
+// larger object for the sankey function
+const data = {
+  nodes,
+  links,
+};
+
+// sankey function
+const sankey = d3.sankey()
+  .nodeWidth(4)
+  .nodePadding(15)
+  .nodeId(d => d.country)
+  .size([sankeyDiagramWidth, sankeyDiagramHeight]);
+
+// process the data to retrieve the values necessary to draw the nodes and connections
+const {nodes: nds, links: lnks} = sankey(data);
+
+// for each link add a path element connecting the source and target
+// gengerator function
+const sankeyLinks = d3
+    .sankeyLinkHorizontal();
+
+// path elements
+sankeyDiagramGroup
+  .selectAll('path.link')
+  .data(lnks)
+  .enter()
+  .append('path')
+  .attr('class', 'link')
+  .attr('d', sankeyLinks)
+  .attr('fill', 'none')
+  .attr('stroke', (d, i) => sankeyColor(i))
+  .attr('stroke-width', ({width}) => width)
+  .attr('opacity', 0.5);
+
+
+// for each node draw include a group element to group the rectangle and text labels
+// position the group (and the subsequent elements) using the computed properties x0, x1, y0, y1
+const sankeyDiagramNodes = sankeyDiagramGroup
+  .selectAll('g.node')
+  .data(nds)
+  .enter()
+  .append('g')
+  .attr('class', 'node')
+.attr('transform', ({x0, y0}) => `translate(${x0} ${y0})`);
+
+sankeyDiagramNodes
+  .append('rect')
+  .attr('x', 0)
+  .attr('y', 0)
+  .attr('width', ({x0, x1}) => x1 - x0)
+  .attr('height', ({y0, y1}) => y1 - y0)
+  .attr('fill', 'currentColor');
+
+// position the labels inwards
+sankeyDiagramNodes
+  .append('text')
+  .attr('x', ({depth}) => depth === 0 ? 10 : -10)
+  .attr('y', ({y0, y1}) => (y1 - y0) / 2)
+  .attr('text-anchor', ({depth}) => depth === 0 ? 'start' : 'end')
+  .attr('dominant-baseline', 'middle')
+  .attr('font-size', '0.7rem')
+  .attr('font-weight', 'bold')
+  .text(({country}) => country);

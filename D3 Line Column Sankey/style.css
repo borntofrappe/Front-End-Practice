@@ -9,7 +9,7 @@
 body {
   background: hsl(0, 0%, 94%);
   font-family: "Lato", sans-serif;
-  color: hsl(0, 0%, 12%);
+  color: hsl(0, 0%, 25%);
 }
 /* cap the width of the .viz container and center it horizontally */
 .viz {
@@ -35,7 +35,7 @@ p {
   font-size: 0.9rem;
 }
 svg {
-  margin: 1.25rem;
+  margin: 1.5rem;
 }
 svg text {
   letter-spacing: 0.02rem;
