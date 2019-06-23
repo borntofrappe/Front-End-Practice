@@ -190,11 +190,11 @@ lineChartGroup
   .call(lineChartYAxis);
 
 d3
-  .select('.y-axis')
+  .select('.viz__line-chart .y-axis')
   .selectAll('text')
   .remove();
 
-d3.select('.y-axis')
+d3.select('.viz__line-chart .y-axis')
   .select('path')
   .remove();
 
@@ -202,7 +202,7 @@ d3.select('.y-axis')
   .selectAll('line')
   .remove();
 
-d3.select('.y-axis')
+d3.select('.viz__line-chart .y-axis')
   .selectAll('g.tick')
   .append('path')
   .attr('d', `M 0 0 h ${lineChartWidth}`)
@@ -213,7 +213,7 @@ d3.select('.y-axis')
   .attr('opacity', 0.2);
 
 // for every other tick include a text describing the value on the axis
-d3.select('.y-axis')
+d3.select('.viz__line-chart .y-axis')
   .selectAll('g.tick')
   .append('text')
   .attr('x', 5)
@@ -276,7 +276,7 @@ const lineChartGroups = lineChartGroup
       .append('strong')
       .text(2018 - length + i + 1);
 
-    // for the second paragraph include a circle colored with the same hue of the visualizatiojn
+    // for the second paragraph include a circle colored with the same hue of the visualization
     tooltip
       .append('p')
       .style('display', 'flex')
@@ -285,27 +285,20 @@ const lineChartGroups = lineChartGroup
       <svg width="6" height="6" viewBox="0 0 10 10" style="margin: 0; margin-right: 0.35rem;">
         <circle cx="5" cy="5" r="5" fill="${colors.line}"></circle>
       </svg>
-      Persons of concern: ${d} Millions
+      Persons of concern: <strong>${d}</strong> Millions
       `);
 
 
     // position the tooltip
     // horizontally to center the div around the cursor coordinate
-    const width = tooltip.style('width');
-
     // vertically above the connected circle element
-    // ! since the tooltip is absolutely positioned with respect to the body you need to offset for the distance between the top of the window and the svg visualization
-    const height = tooltip.style('height');
-
-    const {top: verticalOffset} = document.querySelector('.viz__line-chart svg').getBoundingClientRect();
-
-    const tooltipWidth = parseFloat(width.replace(/px/gi, ''));
-    const tooltipHeight = parseFloat(height.replace(/px/gi, ''));
+    const { width: tooltipWidth } = document.querySelector('#tooltip').getBoundingClientRect();
+    const { top: offset } = document.querySelector('.viz__line-chart svg').getBoundingClientRect();
     tooltip
       .style('opacity', 1)
       .style('visibility', 'visible')
       .style('left', `${d3.event.pageX - tooltipWidth / 2}px`)
-      .style('top', `${lineChartYScale(d) + verticalOffset - tooltipHeight - 25}px`);
+      .style('top', `${offset}px`);
 
   })
   // when exiting the group reset the appearance of the circle and remove the tooltip
@@ -314,7 +307,7 @@ const lineChartGroups = lineChartGroup
     d3
       .select(this)
       .select('circle')
-      .attr('r', 4)
+      .attr('r', 3.5)
       .attr('stroke-width', 2)
       .attr('opacity', i !== 0 && i !== length - 1 ? 0 : 1);
 
@@ -340,7 +333,7 @@ lineChartGroups
   .append('circle')
   .attr('cx', 0)
   .attr('cy', d => lineChartYScale(d))
-  .attr('r', 4)
+  .attr('r', 3.5)
   .attr('stroke', colors.line)
   .attr('stroke-width', 2)
   .attr('fill', 'hsl(0, 100%, 100%)')
@@ -348,6 +341,192 @@ lineChartGroups
 
 // link forwarding toward the source URL
 lineChart
+  .append('p')
+  .attr('class', 'link')
+  .text('Source: ')
+  .append('a')
+  .attr('target', '_blank')
+  .attr('href', href)
+  .text('HCR');
+
+
+// ROW CHART
+const rowChart = d3
+  .select('.viz')
+  .append('article')
+  .attr('class', 'viz__row-chart');
+
+// html elements briefly describing the visualization and its core message
+const rowChartOverview = rowChart
+  .append('div');
+
+rowChartOverview
+  .append('h1')
+  .text('The majority of people move within their country');
+
+rowChartOverview
+  .append('p')
+  .text('This chart highlights the resettlements for the states covered by the UN Refugee Agency with more than 100,000 concerned people.');
+
+// svg visualization
+const rowChartMargin = {
+  top: 20,
+  right: 20,
+  bottom: 20,
+  left: 130, // more whitespace on the left side, to allocate the axis's labels
+};
+
+// describe a rectangle taller than wider
+const rowChartWidth = 400 - (rowChartMargin.left + rowChartMargin.right);
+const rowChartHeight = 500 - (rowChartMargin.top + rowChartMargin.bottom);
+
+const rowChartSVG = rowChart
+  .append('svg')
+  .attr('viewBox', `0 0 ${rowChartWidth + (rowChartMargin.left + rowChartMargin.right)} ${rowChartHeight + (rowChartMargin.top + rowChartMargin.bottom)}`);
+
+const rowChartGroup = rowChartSVG
+  .append('g')
+  .attr('transform', `translate(${rowChartMargin.left} ${rowChartMargin.top})`);
+
+
+// scales and axes
+// horizontally specify a linear scale from 0 up to an indefinite amount larger than the maximum found in the dataset
+const rowChartXScale = d3
+  .scaleLinear()
+  .domain([0, d3.max(rowData, d => d.value) * 1.5])
+  .range([0, rowChartWidth]);
+
+// vertically detail a ordinal scale with one band for each country
+const rowChartYScale = d3
+  .scaleBand()
+  .domain(rowData.map(({country}) => country))
+  .range([0, rowChartHeight]); // display the countries from top to bottom
+
+// for the x axis remove the segment and show a subset of labels
+const rowChartXAxis = d3
+  .axisTop(rowChartXScale) // include the axis at the top of the visualization
+  .ticks(5);
+
+
+rowChartGroup
+  .append('g')
+  .attr('class', 'axis x-axis')
+  .call(rowChartXAxis);
+
+d3.select('.viz__row-chart .x-axis')
+  .select('path')
+  .remove();
+
+d3.select('.viz__row-chart .x-axis')
+  .selectAll('text')
+  .attr('fill', 'currentColor')
+  .attr('opacity', (d, i) => i % 2 !== 0 ? 1 : 0);
+
+// for every other tick add lines spanning the entire height of the visualization
+d3.select('.viz__row-chart .x-axis')
+  .selectAll('g.tick')
+  .append('path')
+  .attr('d', `M 0 0 v ${rowChartHeight}`)
+  .attr('fill', 'none')
+  .attr('stroke', 'currentColor')
+  .attr('stroke-width', '0.5')
+  .attr('stroke-dasharray', '3 2')
+  .attr('opacity', (d, i) => i % 2 !== 0 ? 0.2 : 0);
+
+// ! add the y axis **after** the visualization, to have the segment on top of the rectangles
+
+// format function for the number of millions of people described in the rows
+const format = d3.format(',');
+
+// viz elements
+// include one group for each data point
+const rowChartGroups = rowChartGroup
+  .selectAll('g.group')
+  .data(rowData)
+  .enter()
+  .append('g')
+  .attr('class', 'group')
+  .attr('transform', ({country}) => `translate(0 ${rowChartYScale(country)})`)
+  // on hover show the tooltip always on the right of the visualization, but vertically matching the cursor's coordinate
+  .on('mouseenter', ({country, value}) => {
+    // in the tooltip detail the country and value in two paragraph elments
+    tooltip
+      .append('p')
+      .append('strong')
+      .text(country);
+
+    // for the second paragraph include a circle colored with the same hue of the visualization
+    tooltip
+      .append('p')
+      .style('display', 'flex')
+      .style('align-items', 'center')
+      .html(`
+      <svg width="6" height="6" viewBox="0 0 10 10" style="margin: 0; margin-right: 0.35rem;">
+        <circle cx="5" cy="5" r="5" fill="${colors.row}"></circle>
+      </svg>
+      Resettlements: <strong>${format(value)}</strong>
+      `);
+
+    // const { width: tooltipWidth } = document.querySelector('#tooltip').getBoundingClientRect();
+    const {left, width} = document.querySelector('.viz__row-chart svg').getBoundingClientRect();
+    const {width: tooltipWidth} = document.querySelector('#tooltip').getBoundingClientRect();
+    tooltip
+      .style('opacity', 1)
+      .style('visibility', 'visible')
+      .style('left', `${left + width - tooltipWidth}px`)
+      .style('top', `${d3.event.pageY}px`);
+
+  })
+  // when exiting the group remove the tooltip
+  .on('mouseout', () => {
+    tooltip
+      .style('opacity', 0)
+      .style('visibility', 'hidden')
+      .selectAll('p')
+      .remove();
+});
+
+  // rectangle proportionate to the data point's value
+rowChartGroups
+  .append('rect')
+  .attr('x', 0)
+  .attr('y', rowChartYScale.bandwidth() / 4)
+  .attr('width', ({value}) => rowChartXScale(value))
+  .attr('height', rowChartYScale.bandwidth() / 2)
+  .attr('fill', colors.row);
+
+// rectangle spanning the entirety of the visualization's width, for the tooltip
+rowChartGroups
+  .append('rect')
+  .attr('x', 0)
+  .attr('y', 0)
+  .attr('width', rowChartWidth)
+  .attr('height', rowChartYScale.bandwidth())
+  .attr('opacity', 0); // hide the rectangles from sight, and use them only for the hover state
+
+
+// y axis, on top of the rectangles
+const rowChartYAxis = d3
+  .axisLeft(rowChartYScale);
+
+rowChartGroup
+  .append('g')
+  .attr('class', 'axis y-axis')
+  .call(rowChartYAxis);
+
+// for the y axis reshape the path making up the segment to be a vertical line, without horizontal lines
+d3.select('.viz__row-chart .y-axis')
+  .select('path')
+  .attr('d', `M 0 0 v ${rowChartHeight}`);
+
+// remove the ticks from both axes
+d3.selectAll('.viz__row-chart .axis')
+  .selectAll('line')
+  .remove();
+
+
+// link forwarding toward the source URL
+rowChart
   .append('p')
   .attr('class', 'link')
   .text('Source: ')
