@@ -67,6 +67,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[SVG Thermometer](https://codepen.io/borntofrappe/pen/LKGWgp)|Draw a thermometer and leveraging the anime.js library animate its appearance.|14th June 2019|
 |[SVG Progress](https://codepen.io/borntofrappe/pen/gNLKBw)|Practice with SVG and anime.js to create a progress bar and animate its appearance in color and shape.|19th-20th June 2019|
 |[SVG Icons Practice](https://codepen.io/borntofrappe/pen/ydgxGO)|Practice with SVG syntax, HSL colors and a few lines of JavaScript to include SVG icons where such icons are made available.|20th June 2019|
+|[SVG Timeline Animation](https://codepen.io/borntofrappe/pen/zVzWOE)|Replicate the animation of a spelling bee logo as displayed on [Hasan Minhaj Youtube channel](https://youtu.be/7ms7gxdzBos?t=665).|24th June 2019|
 
 ### UI UX
 
