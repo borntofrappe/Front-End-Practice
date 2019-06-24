@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Playfair+Display&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* center in the viewport */
+body {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lato", sans-serif;
+  /* include a hive pattern with two overlapping gradients using the transparent property */
+  background: repeating-linear-gradient(
+      -45deg,
+      #fec412 0,
+      #fec412 15px,
+      transparent 0,
+      transparent 30px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      #fec412 0,
+      #fec412 15px,
+      transparent 0,
+      transparent 30px
+    ),
+    #f8bd1f;
+}
+/* hide the spelling bee logo by default */
+svg#logo-spelling-bee {
+  transform: scale(0);
+}
+
+/* absolute position the button in the bottom right corner of the viewport */
+button {
+  position: absolute;
+  font-size: 0.9rem;
+  bottom: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+}
