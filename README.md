@@ -33,7 +33,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[D3 Election Map](https://codepen.io/borntofrappe/pen/WBPwPw)|Practice with the data visualization library and CSS layout properties to highlight the results of the recent European elections.|2nd-3rd June 2019|
 |[D3 Animated Visualization](https://codepen.io/borntofrappe/pen/WBqRRB)|Practice with D3 to show different facets of a dataset in a single visualization, at the check of a checkbox.|6th June 2019|
 |[D3 Quadrant Chart](https://codepen.io/borntofrappe/pen/QXNvjx)|Create a visualization sorting arbitrary data in four quadrants.|16th-17th June 2019|
-|[D3 Line Column Sankey]()|Practice with the data visualization library to highlight data in a line chart, row chart, sankey diagram..|22nd-23rd June 2019|
+|[D3 Line Column Sankey](https://codepen.io/borntofrappe/pen/zVwGaP)|Practice with the data visualization library to highlight data in a line chart, row chart and a sankey diagram.|22nd-23rd June 2019|
 
 ### JS
 

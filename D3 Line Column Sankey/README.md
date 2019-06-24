@@ -4,7 +4,7 @@
 
 ## Goal
 
-Practice with the data visualization library to highlight data in a line chart, row chart, sankey diagram.
+Practice with the data visualization library to highlight data in a line chart, row chart and a sankey diagram.
 
 ## Notes
 

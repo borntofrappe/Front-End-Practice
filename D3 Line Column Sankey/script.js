@@ -44,7 +44,7 @@ const rowData = [
     value: 1864195,
   },
   {
-    country: 'Irak',
+    country: 'Iraq',
     value: 1802832,
   },
   {
@@ -88,101 +88,132 @@ const rowData = [
 // data for the sankey diagram, describing the refugees recorded from country to country
 const dataSankey = [
   {
-    country: 'Bangladesh',
-    origin: 'Myanmar',
-    value: 906635,
-  },
-  {
-    country: 'Germany',
-    origin: 'Afghanistan',
-    value: 126018,
-  },
-  {
-    country: 'Germany',
     origin: 'Syria',
-    value: 532065,
-  },
-  {
-    country: 'Egypt',
-    origin: 'Syria',
-    value: 132871,
-  },
-  {
-    country: 'Ethiopia',
-    origin: 'Somalia',
-    value: 257199,
-  },
-  {
-    country: 'Ethiopia',
-    origin: 'South Sudan',
-    value: 422135,
-  },
-  {
-    country: 'Iran',
-    origin: 'Afghanistan',
-    value: 951142,
-  },
-  {
-    country: 'Iraq',
-    origin: 'Syria',
-    value: 252526,
-  },
-  {
-    country: 'Jordan',
-    origin: 'Syria',
-    value: 676283,
-  },
-  {
-    country: 'Kenya',
-    origin: 'Somalia',
-    value: 252498,
-  },
-  {
-    country: 'Kenya',
-    origin: 'South Sudan',
-    value: 115202,
-  },
-  {
-    country: 'Lebanon',
-    origin: 'Syria',
-    value: 944181,
-  },
-  {
-    country: 'Malaysia',
-    origin: 'Myanmar',
-    value: 114227,
-  },
-  {
-    country: 'Pakistan',
-    origin: 'Afghanistan',
-    value: 1403521,
-  },
-  {
-    country: 'Sudan',
-    origin: 'South Sudan',
-    value: 852080,
-  },
-  {
-    country: 'Sweden',
-    origin: 'Syria',
-    value: 109343,
-  },
-  {
     country: 'Turkey',
-    origin: 'Syria',
     value: 3622366,
   },
   {
-    country: 'Uganda',
+    origin: 'Syria',
+    country: 'Lebanon',
+    value: 944181,
+  },
+  {
+    origin: 'Syria',
+    country: 'Jordan',
+    value: 676283,
+  },
+  {
+    origin: 'Syria',
+    country: 'Germany',
+    value: 532065,
+  },
+  {
+    origin: 'Syria',
+    country: 'Iraq',
+    value: 252526,
+  },
+  {
+    origin: 'Syria',
+    country: 'Egypt',
+    value: 132871,
+  },
+  {
+    origin: 'Syria',
+    country: 'Sweden',
+    value: 109343,
+  },
+  {
+    origin: 'Afghanistan',
+    country: 'Pakistan',
+    value: 1403521,
+  },
+  {
+    origin: 'Afghanistan',
+    country: 'Iran',
+    value: 951142,
+  },
+  {
+    origin: 'Afghanistan',
+    country: 'Turkey',
+    value: 164913,
+  },
+  {
+    origin: 'Afghanistan',
+    country: 'Germany',
+    value: 126018,
+  },
+  {
+    origin: 'Venezuela',
+    country: 'Colombia',
+    value: 1171552,
+  },
+  {
+    origin: 'Venezuela',
+    country: 'Peru',
+    value: 655539,
+  },
+  {
+    origin: 'Venezuela',
+    country: 'Chile',
+    value: 285122,
+  },
+  {
+    origin: 'Venezuela',
+    country: 'Ecuador',
+    value: 256265,
+  },
+  {
+    origin: 'Venezuela',
+    country: 'Argentina',
+    value: 127152,
+  },
+  {
     origin: 'South Sudan',
+    country: 'Sudan',
+    value: 852080,
+  },
+  {
+    origin: 'South Sudan',
+    country: 'Uganda',
     value: 788848,
   },
   {
-    country: 'Yemen',
+    origin: 'South Sudan',
+    country: 'Ethiopia',
+    value: 422135,
+  },
+  {
+    origin: 'South Sudan',
+    country: 'Kenya',
+    value: 115202,
+  },
+  {
+    origin: 'Myanmar',
+    country: 'Bangladesh',
+    value: 906635,
+  },
+  {
+    origin: 'Myanmar',
+    country: 'Malasia',
+    value: 114227,
+  },
+  {
     origin: 'Somalia',
+    country: 'Ethiopia',
+    value: 257199,
+  },
+  {
+    origin: 'Somalia',
+    country: 'Kenya',
+    value: 252498,
+  },
+  {
+    origin: 'Somalia',
+    country: 'Yemen',
     value: 248955,
   },
 ];
+
 
 // object describing the theme colors for the visualizations
 const colors = {
@@ -743,8 +774,8 @@ const data = {
 
 // sankey function
 const sankey = d3.sankey()
-  .nodeWidth(4)
-  .nodePadding(15)
+  .nodeWidth(2)
+  .nodePadding(10)
   .nodeId(d => d.country)
   .size([sankeyDiagramWidth, sankeyDiagramHeight]);
 
@@ -752,7 +783,7 @@ const sankey = d3.sankey()
 const {nodes: nds, links: lnks} = sankey(data);
 
 // for each link add a path element connecting the source and target
-// gengerator function
+// gengerator function describing the path elements based on the links' attributes
 const sankeyLinks = d3
     .sankeyLinkHorizontal();
 
@@ -767,7 +798,45 @@ sankeyDiagramGroup
   .attr('fill', 'none')
   .attr('stroke', (d, i) => sankeyColor(i))
   .attr('stroke-width', ({width}) => width)
-  .attr('opacity', 0.5);
+  .attr('opacity', 0.4)
+  // on hover show the information connected with the path element
+  .on('mouseenter', function({source, target, value}, i) {
+    d3
+      .select(this)
+      .transition()
+      .attr('opacity', 0.8);
+
+    tooltip
+      .append('p')
+      .style('display', 'flex')
+      .style('align-items', 'center')
+      .html(`
+        <svg width="6" height="6" viewBox="0 0 10 10" style="margin: 0; margin-right: 0.35rem;">
+          <circle cx="5" cy="5" r="5" fill="${sankeyColor(i)}"></circle>
+        </svg>
+        <strong>${format(value)}</strong> from ${source.country} to ${target.country}
+      `);
+
+    tooltip
+      .style('opacity', 1)
+      .style('visibility', 'visible')
+      .style('left', `${d3.event.pageX}px`)
+      .style('top', `${d3.event.pageY}px`);
+
+
+  })
+  .on('mouseout', function(d) {
+    d3
+      .select(this)
+      .transition()
+      .attr('opacity', 0.4);
+
+    tooltip
+      .style('opacity', 0)
+      .style('visibility', 'hidden')
+      .selectAll('p')
+      .remove();
+  });
 
 
 // for each node draw include a group element to group the rectangle and text labels
@@ -786,7 +855,7 @@ sankeyDiagramNodes
   .attr('y', 0)
   .attr('width', ({x0, x1}) => x1 - x0)
   .attr('height', ({y0, y1}) => y1 - y0)
-  .attr('fill', 'currentColor');
+  .attr('fill', 'hsl(0, 0%, 5%)');
 
 // position the labels inwards
 sankeyDiagramNodes
@@ -798,3 +867,13 @@ sankeyDiagramNodes
   .attr('font-size', '0.7rem')
   .attr('font-weight', 'bold')
   .text(({country}) => country);
+
+
+sankeyDiagram
+  .append('p')
+  .attr('class', 'link')
+  .text('Source: ')
+  .append('a')
+  .attr('target', '_blank')
+  .attr('href', href)
+  .text('HCR');
