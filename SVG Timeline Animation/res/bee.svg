@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+  <!-- pattern describing the stripes in the bee's body -->
+  <pattern id="pattern-stripes" width="1" height="0.25" viewBox="0 0 100 100">
+    <rect
+      x="-250"
+      y="50"
+      width="500"
+      height="60">
+    </rect>
+  </pattern>
+
+  <!-- draw the icon from the center of the svg -->
+  <g transform="translate(50 50)">
+    <g class="bee" transform="rotate(30)">
+      <path
+        class="body"
+        fill="url(#pattern-stripes)"
+        stroke="currentColor"
+        stroke-width="3"
+        d="M 0 0 a 18 18 0 0 1 18 18 q 0 15 -18 25 q -18 -10 -18 -25 a 18 18 0 0 1 18 -18">
+      </path>
+
+      <!-- for the wings create a mirrored version through negative scale, replicating the first design and flipping it around the y axis -->
+      <g
+        class="wings"
+        transform="translate(0 -7)"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-linecap="round">
+        <g>
+          <path
+            d="M -5 0 q -10 -10 -20 -10 a 10 10 0 0 0 -10 10 a 10 10 0 0 0 10 10 q 10 0 20 -10">
+          </path>
+          <path
+            transform="translate(-10 0) scale(0.5)"
+            d="M -5 0 q -10 -10 -20 -10 a 10 10 0 0 0 -10 10 a 10 10 0 0 0 10 10 q 10 0 20 -10">
+          </path>
+        </g>
+
+        <g
+          transform="scale(-1 1)">
+          <path
+            d="M -5 0 q -10 -10 -20 -10 a 10 10 0 0 0 -10 10 a 10 10 0 0 0 10 10 q 10 0 20 -10">
+          </path>
+          <path
+            transform="translate(-10 0) scale(0.5)"
+            d="M -5 0 q -10 -10 -20 -10 a 10 10 0 0 0 -10 10 a 10 10 0 0 0 10 10 q 10 0 20 -10">
+          </path>
+        </g>
+      </g>
+
+      <g
+        class="head"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3">
+        <path
+          d="M 0 -12 a 8 8 0 0 1 -8 -8 q 0 -10 8 -10 q 8 0 8 10 a 8 8 0 0 1 -8 8">
+        </path>
+
+        <g
+          class="antennas"
+          stroke-width="2">
+          <path
+            d="M -2 -30 q 0 -5 -5 -5">
+          </path>
+          <path
+            d="M 2 -30 q 0 -5 5 -5">
+          </path>
+        </g>
+
+        <g
+          class="eyes">
+          <circle
+            cx="10"
+            cy="-35"
+            r="3">
+          </circle>
+          <circle
+            cx="-10"
+            cy="-35"
+            r="3">
+          </circle>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
