@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Cantarell:700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* display the svg and buttons in a column */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cantarell", sans-serif;
+  /* include small rectangles to replicate the appearance of grass leaves */
+  background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 8px,
+      #e3d29c 0,
+      #e3d29c 12px
+    ),
+    repeating-linear-gradient(
+      to right,
+      #c4af7a 0,
+      #c4af7a 2px,
+      transparent 0,
+      transparent 14px
+    ),
+    #e3d29c;
+}
+
+/* display the buttons in a row */
+.controls {
+  margin-top: 1.5rem;
+  display: flex;
+}
+
+/* style the button removing the corners of the border */
+.controls button {
+  margin: 1rem;
+  background: #e8d8a7;
+  font-family: inherit;
+  color: inherit;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.1rem;
+  border: 5px solid currentColor;
+  clip-path: polygon(
+    5px 5px,
+    5px 0%,
+    calc(100% - 5px) 0%,
+    calc(100% - 5px) 5px,
+    100% 5px,
+    100% calc(100% - 5px),
+    calc(100% - 5px) calc(100% - 5px),
+    calc(100% - 5px) 100%,
+    5px 100%,
+    5px calc(100% - 5px),
+    0% calc(100% - 5px),
+    0% 5px
+  );
+}
+
+/* translate the buttons when hovered/focused/clicked */
+.controls button:hover,
+.controls button:focus {
+  transform: translateY(-1px);
+}
+.controls button:active {
+  transform: translateY(1px);
+}
+/* add a darker hue to the background of the selected button */
+.controls button.active {
+  background: #aba071;
+}
