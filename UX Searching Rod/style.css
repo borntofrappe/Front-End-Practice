@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css?family=Lora|Roboto+Mono&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: #000;
+  /* include small rectangles to replicate the appearance of grass leaves */
+  background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 8px,
+      #e3d29c 0,
+      #e3d29c 12px
+    ),
+    repeating-linear-gradient(
+      to right,
+      #d3be88 0,
+      #d3be88 2px,
+      transparent 0,
+      transparent 14px
+    ),
+    #e3d29c;
+  font-family: "Roboto Mono", monospace;
+}
+
+/* cap the width of the container */
+.app {
+  max-width: 45rem;
+  margin: 1.5rem auto;
+  width: 90vw;
+}
+/* display the input and label side by side, aligned to the bottom of the container */
+.app form {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+/* with a pseudo element add a small right-facing arrow before the form */
+.app form:before {
+  content: "";
+  position: absolute;
+  bottom: 0.6rem;
+  left: 0%;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: currentColor;
+  clip-path: polygon(20% 0%, 50% 0%, 90% 42%, 90% 58%, 50% 100%, 20% 100%);
+}
+/* have the input expand to cover the available width */
+.app form input {
+  flex-grow: 1;
+  padding: 0.2rem 0.8rem;
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.2rem;
+}
+.app form input::placeholder {
+  color: inherit;
+  opacity: 0.9;
+}
+/* rotate the svg icon toward the input */
+.app form label svg {
+  display: block;
+  transform: rotateY(180deg);
+}
+
+/* display the articles in a column */
+.app section {
+  display: flex;
+  flex-direction: column;
+  /* horizontally center the articles */
+  align-items: center;
+  /* include a squiggly line replicating the waves of the body of water */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g opacity="0.2" transform="translate(50 50) scale(1) rotate(-45)"><path d="M -40 0 q 20 -20 40 0 t 40 0" fill="none" stroke="%23fff" stroke-linecap="round" stroke-width="15"></path></g></svg>'),
+    #7e7358;
+  background-size: 20px;
+  padding: 2rem 0;
+  margin: 1rem;
+  /* give a minimum height in rem to have the pseudo element display a full iteration of the 1rem pattern
+  ! as articles are added to the script, the height ultimately varies
+  */
+  min-height: 20rem;
+  position: relative;
+}
+/* with a pseudo element add a border with the pattern of rotated squares */
+.app section:before {
+  position: absolute;
+  content: "";
+  top: -1rem;
+  right: -1rem;
+  bottom: -1rem;
+  left: -1rem;
+  z-index: -5;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M 50 4 l 46 46 l -46 46 l -46 -46 l 46 -46" fill="none" stroke="%23000" stroke-width="8"></path></svg>'),
+    #61553c;
+  background-size: 1rem;
+}
+
+/* display the articles as cards, with a two column layout in which the anchor link occupies thrice the space of the icon */
+.app section article {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 3fr;
+  background: #fdf7e1;
+  border: 7px solid currentColor;
+  /* clip the corners of the border */
+  clip-path: polygon(
+    7px 7px,
+    7px 0%,
+    calc(100% - 7px) 0%,
+    calc(100% - 7px) 7px,
+    100% 7px,
+    100% calc(100% - 7px),
+    calc(100% - 7px) calc(100% - 7px),
+    calc(100% - 7px) 100%,
+    7px 100%,
+    7px calc(100% - 7px),
+    0% calc(100% - 7px),
+    0% 7px
+  );
+}
+/* animation to show the articles
+the animation property is added through the script
+*/
+@keyframes appear {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* align the anchor link to the end of the respective column */
+.app section article a {
+  justify-self: end;
+  text-decoration: none;
+  color: inherit;
+  /* display the heading and icon side by side, vertically aligned */
+  display: flex;
+  align-items: center;
+}
+/* cap the width of the heading */
+.app section article h2 {
+  width: 20ch;
+  text-align: right;
+  font-family: "Lora", serif;
+  font-size: 1.3rem;
+  font-weight: initial;
+  text-transform: capitalize;
+}
+.app section article a svg {
+  margin-left: 0.5rem;
+}
+/* change the background of the mark elements to match the project's theme */
+.app section article a h2 mark {
+  background: #d3be88;
+}

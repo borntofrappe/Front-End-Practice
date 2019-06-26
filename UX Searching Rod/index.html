@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Searching Rod</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- svg used in the project -->
+    <svg viewBox="0 0 100 100" style="display: none;">
+        <!-- fish icon -->
+        <symbol
+            id="fish">
+            <g
+                transform="translate(50 50)"
+                fill="none"
+                stroke="hsl(0, 0%, 0%)"
+                stroke-width="1.5">
+                <!-- add a background with the outline of the body of the fish and benefiting from the color set on the svg -->
+                <path
+                    transform="translate(-5 -8)"
+                    stroke="none"
+                    fill="currentColor"
+                    d="M -44 0 c 30 -50 70 -10 75 0 c -5 10 -45 50 -75 0"
+                    stroke-dasharray="105 10 75">
+                </path>
+
+                <!-- draw the actual fish, using the stroke-dasharray property to segment the lines where needed -->
+                <path
+                    stroke-dasharray="0 11 72 10"
+                    d="M 18 0 a 35 35 0 0 1 25 -16 v 32 a 35 35 0 0 1 -25 -16">
+                </path>
+
+                <g>
+                    <path
+                        d="M -10 -25 l 25 -8 l -3 15">
+                    </path>
+                    <path
+                        transform="scale(1 -1)"
+                        d="M -10 -25 l 25 -8 l -3 15">
+                    </path>
+                </g>
+
+                <path
+                    d="M -44 0 c 30 -50 70 -10 75 0 c -5 10 -45 50 -75 0"
+                    stroke-dasharray="105 10 75">
+                </path>
+
+                <g>
+                    <path
+                        d="M -18 -23 q 10 15 5 35">
+                    </path>
+                    <circle
+                        fill="hsl(0, 0%, 0%)"
+                        stroke="none"
+                        r="2"
+                        cx="-25"
+                        cy="-8">
+                    </circle>
+                </g>
+            </g>
+        </symbol>
+
+        <!-- anchor icon -->
+        <symbol
+            id="anchor">
+            <g
+                transform="translate(50 50) rotate(30)"
+                stroke="currentColor"
+                stroke-width="10"
+                fill="none">
+                <circle
+                    cx="0"
+                    cy="-30"
+                    r="10"
+                    >
+                </circle>
+                <path
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    d="M 0 -15 v 50 q 20 -10 30 -20 v -7.5 M 0 -15 v 50 q -20 -10 -30 -20 v -7.5">
+                </path>
+                <path
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    d="M -5 -12 h 10">
+                </path>
+                <path
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    d="M -10 -2 h 20">
+                </path>
+            </g>
+        </symbol>
+    </svg>
+
+    <!-- html structure
+    div, wrapping container
+        form, allowing to search for fish' names
+            input, type search
+            label, with the sprite animated to match the state of the input
+        section, showing the list of matching results
+
+    -->
+
+    <div class="app">
+        <form class="app__search">
+            <input type="text" id="search" name="search" placeholder="Search fish by name" />
+            <label for="search">
+                <svg id="sprite" role="img" viewBox="0 0 21 31" width="42" height="63"><path d="M44 0h10v1H44z"/><path fill="#E8D8A7" d="M43 1h12v10H43z"/><path d="M43 1h1v1h-1zM54 1h1v1h-1zM42 2h1v8h-1zM43 10h1v1h-1zM44 11h10v1H44zM54 10h1v1h-1zM55 2h1v8h-1zM48 2h2v5h-2zM48 8h2v2h-2zM47 12h2v1h-2zM48 13h1v1h-1z"/><path fill="#ABA071" d="M44 16h9v4h-9z"/><path d="M45 15h7v1h-7zM44 16h1v1h-1zM52 16h1v1h-1zM43 17h1v1h-1zM53 17h1v1h-1zM43 18h1v1h-1z"/><path fill="#E8D8A7" d="M52 18h1v1h-1z"/><path d="M53 18h2v1h-2zM42 19h3v1h-3z"/><path fill="#E8D8A7" d="M51 19h4v1h-4z"/><path d="M55 19h1v1h-1zM42 20h7v1h-7z"/><path fill="#E8D8A7" d="M49 20h4v1h-4z"/><path d="M53 20h2v1h-2zM61 20h2v1h-2zM42 21h6v1h-6z"/><path fill="#E8D8A7" d="M48 21h5v1h-5z"/><path d="M51 21h1v1h-1zM53 21h1v1h-1zM59 21h2v1h-2zM43 22h2v1h-2z"/><path fill="#E8D8A7" d="M45 22h8v1h-8z"/><path d="M47 22h1v1h-1zM51 22h1v1h-1zM53 22h1v1h-1zM57 22h2v1h-2zM44 23h1v1h-1z"/><path fill="#E8D8A7" d="M45 23h8v1h-8z"/><path d="M53 23h1v1h-1zM55 23h2v1h-2zM45 24h2v1h-2z"/><path fill="#E8D8A7" d="M47 24h5v1h-5z"/><path d="M52 24h3v1h-3zM44 25h2v1h-2z"/><path fill="#ABA071" d="M46 25h2v1h-2z"/><path d="M48 25h7v1h-7zM44 26h3v1h-3z"/><path fill="#ABA071" d="M47 26h3v1h-3z"/><path d="M50 26h1v1h-1z"/><path fill="#E8D8A7" d="M51 26h2v1h-2z"/><path d="M53 26h1v1h-1zM44 27h1v1h-1z"/><path fill="#ABA071" d="M45 27h1v1h-1z"/><path d="M46 27h5v1h-5z"/><path fill="#E8D8A7" d="M51 27h2v1h-2z"/><path d="M53 27h1v1h-1zM44 28h3v1h-3z"/><path fill="#ABA071" d="M47 28h2v1h-2z"/><path d="M49 28h4v1h-4zM45 29h1v1h-1z"/><path fill="#ABA071" d="M46 29h4v1h-4z"/><path d="M50 29h1v1h-1zM46 30h4v1h-4z"/><g><path fill="#ABA071" d="M23 16h9v4h-9z"/><path d="M24 15h7v1h-7zM23 16h1v1h-1zM31 16h1v1h-1zM22 17h1v1h-1zM32 17h1v1h-1zM22 18h1v1h-1z"/><path fill="#E8D8A7" d="M31 18h1v1h-1z"/><path d="M32 18h2v1h-2zM21 19h3v1h-3z"/><path fill="#E8D8A7" d="M30 19h4v1h-4z"/><path d="M34 19h1v1h-1zM21 20h7v1h-7z"/><path fill="#E8D8A7" d="M28 20h4v1h-4z"/><path d="M32 20h2v1h-2zM40 20h2v1h-2zM21 21h6v1h-6z"/><path fill="#E8D8A7" d="M27 21h5v1h-5z"/><path d="M30 21h1v1h-1zM32 21h1v1h-1zM38 21h2v1h-2zM22 22h2v1h-2z"/><path fill="#E8D8A7" d="M24 22h8v1h-8z"/><path d="M26 22h1v1h-1zM30 22h1v1h-1zM32 22h1v1h-1zM36 22h2v1h-2zM23 23h1v1h-1z"/><path fill="#E8D8A7" d="M24 23h8v1h-8z"/><path d="M32 23h1v1h-1zM34 23h2v1h-2zM24 24h2v1h-2z"/><path fill="#E8D8A7" d="M26 24h5v1h-5z"/><path d="M31 24h3v1h-3zM23 25h2v1h-2z"/><path fill="#ABA071" d="M25 25h2v1h-2z"/><path d="M27 25h7v1h-7zM23 26h3v1h-3z"/><path fill="#ABA071" d="M26 26h3v1h-3z"/><path d="M29 26h1v1h-1z"/><path fill="#E8D8A7" d="M30 26h2v1h-2z"/><path d="M32 26h1v1h-1zM23 27h1v1h-1z"/><path fill="#ABA071" d="M24 27h1v1h-1z"/><path d="M25 27h5v1h-5z"/><path fill="#E8D8A7" d="M30 27h2v1h-2z"/><path d="M32 27h1v1h-1zM23 28h3v1h-3z"/><path fill="#ABA071" d="M26 28h2v1h-2z"/><path d="M28 28h4v1h-4zM24 29h1v1h-1z"/><path fill="#ABA071" d="M25 29h4v1h-4z"/><path d="M29 29h1v1h-1zM25 30h4v1h-4z"/></g><g><path fill="#ABA071" d="M2 16h9v4H2z"/><path d="M3 15h7v1H3zM2 16h1v1H2zM10 16h1v1h-1zM1 17h1v1H1zM11 17h1v1h-1zM1 18h1v1H1z"/><path fill="#E8D8A7" d="M10 18h1v1h-1z"/><path d="M11 18h2v1h-2zM0 19h3v1H0z"/><path fill="#E8D8A7" d="M9 19h4v1H9z"/><path d="M13 19h1v1h-1zM0 20h7v1H0z"/><path fill="#E8D8A7" d="M7 20h4v1H7z"/><path d="M11 20h2v1h-2zM0 21h6v1H0z"/><path fill="#E8D8A7" d="M6 21h5v1H6z"/><path d="M9 21h1v1H9zM11 21h1v1h-1zM1 22h2v1H1z"/><path fill="#E8D8A7" d="M3 22h8v1H3z"/><path d="M5 22h1v1H5zM9 22h1v1H9zM11 22h1v1h-1zM2 23h1v1H2z"/><path fill="#E8D8A7" d="M3 23h8v1H3z"/><path d="M11 23h1v1h-1zM1 24h1v1H1z"/><path fill="#ABA071" d="M2 24h1v1H2z"/><path d="M3 24h2v1H3z"/><path fill="#E8D8A7" d="M5 24h5v1H5z"/><path d="M10 24h1v1h-1zM1 25h1v1H1z"/><path fill="#ABA071" d="M2 25h2v1H2z"/><path d="M4 25h1v1H4zM5 25h5v1H5zM1 26h1v1H1z"/><path fill="#ABA071" d="M2 26h1v1H2z"/><path d="M3 26h1v1H3z"/><path fill="#E8D8A7" d="M4 26h2v1H4z"/><path d="M6 26h2v1H6zM1 27h1v1H1z"/><path fill="#ABA071" d="M2 27h1v1H2z"/><path d="M3 27h1v1H3z"/><path fill="#E8D8A7" d="M4 27h2v1H4z"/><path d="M6 27h2v1H6zM2 28h4v1H2z"/><path fill="#ABA071" d="M6 28h2v1H6z"/><path d="M8 28h1v1H8zM3 29h1v1H3z"/><path fill="#ABA071" d="M4 29h4v1H4z"/><path d="M8 29h1v1H8zM4 30h4v1H4z"/></g></svg>
+            </label>
+        </form>
+
+        <section class="app__results">
+            <!-- the results are grouped in article elements and structured as follows
+                svg, fish icon
+                a, forwarding toward the wiki page
+                    heading, fish' name
+                    svg, anchor icon
+
+                the elements are added through the script according to the input element's value
+            -->
+        </section>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
