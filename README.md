@@ -84,6 +84,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[UX Light & Dark Theme](https://codepen.io/borntofrappe/pen/WBWxZw)|Recreate [this design](https://dribbble.com/shots/5846239-Light-dark-toggle-switch-InVision-Studio) to implement a toggle allowing to switch between a light and dark theme.|4th June 2019|
 |[UI Blocky Accordion](https://codepen.io/borntofrappe/pen/NZPRRE)|Create an accordion with details and summary elements. Inspired by the FAQ section [Nintendo Labo's Website](https://labo.nintendo.com/faq/).|11-12th June 2019|
 |[UI Carousel Card](https://codepen.io/borntofrappe/pen/ZdbeJw)|Re-create the UI of a card ultimately meant to be part of an interactive carousel. Inspired by the [F1 Play website](https://www.formula1.com/en/gaming/f1-play.html).|13th June 2019|
+|[UX Searching Rod](https://codepen.io/borntofrappe/pen/ZdXMwM)|Create a form allowing to filter a list of fish' names with a video-game-inspired design and a couple of regular expressions.|26th June 2019|
 
 ### Miscellaneous
 
