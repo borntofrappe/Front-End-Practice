@@ -1,0 +1,15 @@
+<svg id="peach" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-7.0352 18.875)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+  <g stroke-width="2.5">
+   <path d="m47 16v-8a3 3 0 0 1 6 0v8"/>
+   <path d="m53 14q2-10 16-7-4 14-16 7l8-3"/>
+  </g>
+  <path d="m50 16a20 20 0 0 0-20 20 18 18 0 0 0 18 18q2.5 0 5 3 2.5-3 5-3a18 18 0 0 0 18-18 20 20 0 0 0-20-20 20 20 0 0 0-10 20" stroke-dasharray="70, 45, 80"/>
+  <g transform="rotate(30 -43.373 151.62)">
+   <path d="m0-18c-20 8-16 32 0 32s20-24 0-32"/>
+  </g>
+  <g transform="rotate(30 -43.373 151.62)">
+   <path d="m0-8c-8 4-8 12 0 16 8-4 8-12 0-16"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg id="pineapple" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(0,12.5)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+  <path d="m50 21q20 0 20 20 0 25-15 25h-10q-15 0-15-25 0-20 20-20" stroke-dasharray="55 8 80"/>
+  <g stroke-width="2.5">
+   <path d="m36 33 2-2 2 2"/>
+   <path d="m60 33 2-2 2 2"/>
+   <path d="m30 46 4-4 4 4" stroke-dasharray="8, 3, 5"/>
+   <path d="m62 46 4-4 4 4"/>
+   <path d="m33 57 2.5-2.5 2.5 2.5"/>
+   <path d="m62 57 2.5-2.5 2.5 2.5"/>
+   <path d="m43 41 7-7 7 7"/>
+   <path d="m43 56 7-7 7 7"/>
+  </g>
+  <g fill="#ffffff">
+   <path d="m43 16 7-7 7 7"/>
+   <path d="m43 21-2-11 9 9 9-9-2 11"/>
+   <path d="m40 21-7-7 17 7 17-7-7 7"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,194 @@
+<svg class="phone--drink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 180" width="300" height="440">
+    <defs>
+        <!-- linear gradient applied on the straw, to create a light source in the top left corner -->
+        <linearGradient
+            id="gradient-light"
+            gradientUnits="userSpaceOnUse"
+            x1="50"
+            x2="100"
+            y1="-50"
+            y2="20">
+            <stop stop-color="#ffffff" offset="0"></stop>
+            <stop stop-color="#ff4966" offset="1"></stop>
+        </linearGradient>
+
+        <!-- clip matching the body of the drink, to crop the rectangles used creating the shadow and the liquid within the drink -->
+        <clipPath
+            id="clip-body">
+            <path
+                d="M 12.5 70 l 10 100 a 150 150 0 0 0 55 0 l 10 -100 v 5 a 160 160 0 0 1 -80 0">
+            </path>
+        </clipPath>
+        <!-- clip above the drink's lid, to crop the lid where the straw pops out -->
+        <clipPath
+            id="clip-lid">
+            <path
+                d="M 0 10 h 47 v 30 a 6 6 0 0 0 6 0 v -30 h 47 v 80 h -100">
+            </path>
+        </clipPath>
+        <!-- mask for the drink's rim, to show the rim's back minus the straw -->
+        <mask
+            id="mask-rim">
+            <rect
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+                fill="#fff">
+            </rect>
+            <path
+                fill="#000"
+                d="M 47 140 a 4 4 0 0 0 6 0 v -125 q 0 -4 5 -5 l 20 -3 l -0.5 -7 l -26 3.9 q -5 1 -5 5">
+            </path>
+        </mask>
+    </defs>
+    <g>
+        <!-- straw -->
+        <g>
+            <path
+                fill="#ff4966"
+                d="M 47 140 a 4 4 0 0 0 6 0 v -125 q 0 -4 5 -5 l 20 -3 l -0.5 -7 l -26 3.9 q -5 1 -5 5">
+            </path>
+
+            <path
+                fill="url(#gradient-light)"
+                d="M 47 140 a 4 4 0 0 0 6 0 v -125 q 0 -4 5 -5 l 20 -3 l -0.5 -7 l -26 3.9 q -5 1 -5 5">
+            </path>
+        </g>
+
+        <!-- cup -->
+        <g>
+            <!-- lid
+                clip the lid where the straw ought to pop out
+                include a small line to remark the straw's presence
+                include a reflection through an ellipse in the top left section of the lid
+            -->
+            <g>
+                <path
+                    clip-path="url(#clip-lid)"
+                    opacity="0.5"
+                    fill="#F1F7F3"
+                    d="M 8 70 a 42 40 0 0 1 84 0 a 90 90 0 0 1 -84 0">
+                </path>
+                <path
+                    opacity="0.5"
+                    stroke="none"
+                    fill="#F1F7F3"
+                    d="M 47 40 a 6 6 0 0 0 6 0 v 1 a 6 6 0 0 1 -6 0">
+                </path>
+
+                <g transform="translate(30 50) rotate(30)">
+                    <ellipse
+                        opacity="0.5"
+                        fill="#ffffff"
+                        cx="0"
+                        cy="0"
+                        rx="6"
+                        ry="12">
+                    </ellipse>
+                </g>
+            </g>
+
+            <!-- body
+            above a path element describing the body add the rectangles drawing the drink's liquid and the rectangles giving three shades of the underlying color -->
+            <path
+                stroke="#F7F7F7"
+                fill="#fcfcfc"
+                stroke-width="5"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                d="M 10 70 l 10 100 a 150 150 0 0 0 60 0 l 10 -100 a 120 120 0 0 1 -80 0">
+            </path>
+
+            <!-- both the liquid and the shades rectangles use the clip element to avoid drawing outside of the drink -->
+            <!-- liquid -->
+            <g
+                clip-path="url(#clip-body)">
+                <!-- include rectangle elements in this group
+                    given the negative scale, increasing y values make the rectangles go upwards
+                -->
+                <g transform="translate(0 180) scale(1 -1)">
+                    <rect
+                        x="0"
+                        y="0"
+                        width="100"
+                        height="20"
+                        fill="#f00">
+                    </rect>
+                    <rect
+                        x="0"
+                        y="20"
+                        width="100"
+                        height="50"
+                        fill="#a0f">
+                    </rect>
+                </g>
+            </g>
+
+            <!-- above the liquid include the body with a semi transparent fill to match the lid's color -->
+            <path
+                opacity="0.2"
+                fill="#F7F7F7"
+                d="M 10 70 l 10 100 a 150 150 0 0 0 60 0 l 10 -100 a 120 120 0 0 1 -80 0">
+            </path>
+
+            <!-- shades
+            overlap semi transparent rectangles to give a different shade to the underlying assets
+            -->
+            <g
+                clip-path="url(#clip-body)">
+                <rect
+                    x="0"
+                    y="0"
+                    width="100"
+                    height="200"
+                    fill="#fff"
+                    opacity="0.2">
+                </rect>
+                <rect
+                    x="0"
+                    y="0"
+                    width="62"
+                    height="200"
+                    fill="#fff"
+                    opacity="0.2">
+                </rect>
+                <rect
+                    x="0"
+                    y="0"
+                    width="38"
+                    height="200"
+                    fill="#fff"
+                    opacity="0.2">
+                </rect>
+            </g>
+
+            <!-- rim
+            overlap multiple paths to create a 3d effect
+            use a fill instead of a stroke to rapidly overlap elements by modifying few command values -->
+            <g>
+                <g mask="url(#mask-rim)">
+                    <path
+                        fill="#F7F7F7"
+                        d="M 4 70 a 180 180 0 0 1 92 0 v 5 a 180 180 0 0 0 -92 0">
+                    </path>
+                    <path
+                        fill="#000"
+                        opacity="0.03"
+                        d="M 4 72 a 180 180 0 0 1 92 0 v 3 a 180 180 0 0 0 -92 0">
+                    </path>
+                </g>
+
+                <path
+                    fill="#F7F7F7"
+                    d="M 4 70 a 200 200 0 0 0 92 0 v 5 a 200 200 0 0 1 -92 0">
+                </path>
+                <path
+                    fill="#000"
+                    opacity="0.03"
+                    d="M 4 72 a 200 200 0 0 0 92 0 v 3 a 200 200 0 0 1 -92 0">
+                </path>
+            </g>
+        </g>
+    </g>
+</svg>
