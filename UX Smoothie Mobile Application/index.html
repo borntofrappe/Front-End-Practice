@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI Smoothie Mobile Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- icons used in the project -->
+    <svg style="display: none;" viewBox="0 0 100 100" width="50" height="50">
+        <!-- navigation bar -->
+        <symbol id="signal" viewBox="0 0 100 100">
+            <g transform="translate(2.5 0)">
+                <rect
+                    x="0"
+                    y="80"
+                    width="20"
+                    height="20"
+                    fill="currentColor">
+                </rect>
+                <g transform="translate(25 0)">
+                    <rect
+                        x="0"
+                        y="60"
+                        width="20"
+                        height="40"
+                        fill="currentColor">
+                    </rect>
+                </g>
+                <g transform="translate(50 0)">
+                    <rect
+                        x="0"
+                        y="40"
+                        width="20"
+                        height="60"
+                        fill="currentColor">
+                    </rect>
+                </g>
+                <g transform="translate(75 0)">
+                    <rect
+                        x="0"
+                        y="20"
+                        width="20"
+                        height="80"
+                        fill="currentColor">
+                    </rect>
+                    <rect
+                        x="0"
+                        y="20"
+                        width="20"
+                        height="80"
+                        fill="currentColor">
+                    </rect>
+                </g>
+            </g>
+        </symbol>
+
+        <symbol id="wifi" viewBox="0 0 100 100">
+            <circle
+                cx="50"
+                cy="90"
+                r="10"
+                fill="currentColor">
+            </circle>
+
+            <g
+                stroke="currentColor"
+                stroke-width="20"
+                fill="none">
+                <path
+                    d="M 25 70 a 35 35 0 0 1 50 0">
+                </path>
+
+                <path
+                    d="M 10 45 a 65 65 0 0 1 80 0">
+                </path>
+            </g>
+        </symbol>
+
+        <symbol id="battery" viewBox="0 0 100 100">
+            <rect
+                x="5"
+                y="35"
+                width="80"
+                height="50"
+                fill="currentColor">
+            </rect>
+            <rect
+                x="85"
+                y="45"
+                width="15"
+                height="30"
+                fill="currentColor">
+            </rect>
+        </symbol>
+
+        <!-- confirm button -->
+        <symbol id="arrow" viewBox="0 0 100 100">
+            <path
+                d="M 20 50 h 65 l -25 -25 l 25 25 l -25 25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="10"
+                stroke="currentColor"
+                fill="none">
+            </path>
+        </symbol>
+
+        <!-- fruit icons -->
+        <!-- pineapple -->
+        <symbol id="pineapple" viewBox="0 0 100 100">
+            <g transform="translate(0,12.5)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+                <path d="m50 21q20 0 20 20 0 25-15 25h-10q-15 0-15-25 0-20 20-20" stroke-dasharray="55 8 80"/>
+                <g stroke-width="2.5">
+                    <path d="m36 33 2-2 2 2"/>
+                    <path d="m60 33 2-2 2 2"/>
+                    <path d="m30 46 4-4 4 4" stroke-dasharray="8, 3, 5"/>
+                    <path d="m62 46 4-4 4 4"/>
+                    <path d="m33 57 2.5-2.5 2.5 2.5"/>
+                    <path d="m62 57 2.5-2.5 2.5 2.5"/>
+                    <path d="m43 41 7-7 7 7"/>
+                    <path d="m43 56 7-7 7 7"/>
+                </g>
+                <g fill="#ffffff">
+                    <path d="m43 16 7-7 7 7"/>
+                    <path d="m43 21-2-11 9 9 9-9-2 11"/>
+                    <path d="m40 21-7-7 17 7 17-7-7 7"/>
+                </g>
+            </g>
+        </symbol>
+
+        <!-- peach -->
+        <symbol id="peach" viewBox="0 0 100 100">
+            <g transform="translate(-7.0352 18.875)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+                <g stroke-width="2.5">
+                    <path d="m47 16v-8a3 3 0 0 1 6 0v8"/>
+                    <path d="m53 14q2-10 16-7-4 14-16 7l8-3"/>
+                </g>
+                <path d="m50 16a20 20 0 0 0-20 20 18 18 0 0 0 18 18q2.5 0 5 3 2.5-3 5-3a18 18 0 0 0 18-18 20 20 0 0 0-20-20 20 20 0 0 0-10 20" stroke-dasharray="70, 45, 80"/>
+                <g transform="rotate(30 -43.373 151.62)">
+                    <path d="m0-18c-20 8-16 32 0 32s20-24 0-32"/>
+                </g>
+                <g transform="rotate(30 -43.373 151.62)">
+                    <path d="m0-8c-8 4-8 12 0 16 8-4 8-12 0-16"/>
+                </g>
+            </g>
+        </symbol>
+
+        <!-- raspberry -->
+        <symbol id="raspberry" version="1.1" viewBox="0 0 100 100">
+            <g transform="translate(50 50)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <g transform="translate(.10082 .49998)">
+                <g>
+                    <path d="m-2 0q-5-25 18-18 3 25-18 18"/>
+                    <path d="m-2 0 15-15" stroke-dasharray="12, 4, 1, 10"/>
+                </g>
+                <g>
+                    <path d="m-15-10q-5-10 5-15 4 8 7 10 10 8 0 10" fill="#ffffff" stroke-dasharray="25, 5, 20"/>
+                    <path d="m-5-9q-2-4-4-5"/>
+                </g>
+                <g transform="matrix(.020627 -.99979 -.99979 -.020627 -.99002 -2.0879)">
+                    <path d="m-15-10q-5-10 5-15 4 8 7 10 10 8 0 10" fill="#ffffff" stroke-dasharray="25, 5, 20"/>
+                    <path d="m-5-9q-2-4-4-5"/>
+                </g>
+                    <g fill="#ffffff">
+                        <circle cx="-20" cy="20" r="4"/>
+                        <circle cx="-19" cy="14" r="4.1"/>
+                        <circle cx="-14" cy="18" r="4.1"/>
+                        <circle cx="-18" cy="9" r="4.2"/>
+                        <circle cx="-9" cy="17" r="4.2"/>
+                        <circle cx="-14" cy="13" r="4.2"/>
+                        <circle cx="-17" cy="4" r="4.3"/>
+                        <circle cx="-4" cy="16" r="4.3"/>
+                        <circle cx="-9" cy="8" r="4.3"/>
+                        <circle cx="-16" cy="-1" r="4.4"/>
+                        <circle cx="1" cy="15" r="4.4"/>
+                        <circle cx="-5" cy="3" r="4.4"/>
+                        <circle cx="-11" cy="1" r="4.4"/>
+                        <circle cx="-1" cy="9" r="4.4"/>
+                        <circle cx="-14" cy="-9" r="4.5"/>
+                        <circle cx="-8" cy="-6" r="4.5"/>
+                        <circle cx="3" cy="5" r="4.5"/>
+                        <circle cx="8" cy="12" r="4.5"/>
+                        <circle cx="-1" cy="-1" r="4.5"/>
+                    </g>
+                </g>
+            </g>
+        </symbol>
+
+        <!-- button icons, making use of the fruit symbols alongside text elements describing the icons and atop a white circle, used as a background -->
+        <symbol id="pineapple-button" viewBox="0 0 100 100">
+            <circle
+                cx="50"
+                cy="50"
+                r="50"
+                fill="#ffffff">
+            </circle>
+            <use href="#pineapple" transform="translate(0 -10)"></use>
+            <text
+                text-anchor="middle"
+                font-size="0.7rem"
+                font-weight="bold"
+                x="50"
+                y="80">
+                Pineapple
+            </text>
+        </symbol>
+
+        <symbol id="peach-button" viewBox="0 0 100 100">
+            <circle
+                cx="50"
+                cy="50"
+                r="50"
+                fill="#ffffff">
+            </circle>
+            <use href="#peach" transform="translate(0 -10)"></use>
+            <text
+                text-anchor="middle"
+                font-size="0.7rem"
+                font-weight="bold"
+                x="50"
+                y="80">
+                Peach
+            </text>
+        </symbol>
+
+        <symbol id="raspberry-button" viewBox="0 0 100 100">
+            <circle
+                cx="50"
+                cy="50"
+                r="50"
+                fill="#ffffff">
+            </circle>
+            <use href="#raspberry" transform="translate(0 -10)"></use>
+            <text
+                text-anchor="middle"
+                font-size="0.7rem"
+                font-weight="bold"
+                x="50"
+                y="80">
+                Raspberry
+            </text>
+        </symbol>
+    </svg>
+
+
+    <!-- phone UI
+    div, wrapping container
+        nav, svg icons
+        header, state of the current order
+        svg, drink
+        div, scrollable list of ingredients
+        div, list of choices and button to proceed to mixing the drink
+    -->
+
+    <div class="phone">
+        <!-- in the nav show the current time before the three icons created earlier in the svg block -->
+        <nav class="phone__nav">
+            <span>9:42</span>
+            <svg viewBox="0 0 100 100" width="20" height="20">
+                <use href="#signal"></use>
+            </svg>
+            <svg viewBox="0 0 100 100" width="20" height="20">
+                <use href="#wifi"></use>
+            </svg>
+            <svg viewBox="0 0 100 100" width="20" height="20">
+                <use href="#battery"></use>
+            </svg>
+        </nav>
+
+        <!-- highlight the number of ingredients left in a strong element -->
+        <header class="phone__state">
+            <h2>Hello there</h2>
+            <p>You can choose<br/>
+                <strong>
+                    2 more
+                </strong>
+                ingredients.
+            </p>
+        </header>
+
+        <!-- within a mixer, draw the milk and fruit section through rectangle elements -->
+        <svg class="phone__drink" viewBox="0 0 100 180" width="300" height="440">
+            <defs>
+                <!-- linear gradient applied on the straw, to create a light source in the top left corner -->
+                <linearGradient
+                    id="gradient-light"
+                    gradientUnits="userSpaceOnUse"
+                    x1="50"
+                    x2="100"
+                    y1="-50"
+                    y2="20">
+                    <stop stop-color="#ffffff" offset="0"></stop>
+                    <stop stop-color="#ff4966" offset="1"></stop>
+                </linearGradient>
+
+                <!-- clip matching the body of the drink, to crop the rectangles describing the liquid within the drink and the rectangles fabricating the shades through semi transparent elements -->
+                <clipPath
+                    id="clip-body">
+                    <path
+                        d="M 12.5 70 l 10 100 a 150 150 0 0 0 55 0 l 10 -100 v 5 a 160 160 0 0 1 -80 0">
+                    </path>
+                </clipPath>
+
+                <!-- clip above the drink's lid, to crop the lid where the straw pops out -->
+                <clipPath
+                    id="clip-lid">
+                    <path
+                        d="M 0 10 h 47 v 30 a 6 6 0 0 0 6 0 v -30 h 47 v 80 h -100">
+                    </path>
+                </clipPath>
+
+                <!-- mask for the drink's rim, to show the rim's back minus the straw -->
+                <mask
+                    id="mask-rim">
+                    <rect
+                        x="0"
+                        y="0"
+                        width="100"
+                        height="100"
+                        fill="#fff">
+                    </rect>
+                    <path
+                        fill="#000"
+                        d="M 47 140 a 4 4 0 0 0 6 0 v -125 q 0 -4 5 -5 l 20 -3 l -0.5 -7 l -26 3.9 q -5 1 -5 5">
+                    </path>
+                </mask>
+            </defs>
+            <g>
+                <!-- straw -->
+                <g>
+                    <path
+                        fill="#ff4966"
+                        d="M 47 140 a 4 4 0 0 0 6 0 v -125 q 0 -4 5 -5 l 20 -3 l -0.5 -7 l -26 3.9 q -5 1 -5 5">
+                    </path>
+
+                    <path
+                        fill="url(#gradient-light)"
+                        d="M 47 140 a 4 4 0 0 0 6 0 v -125 q 0 -4 5 -5 l 20 -3 l -0.5 -7 l -26 3.9 q -5 1 -5 5">
+                    </path>
+                </g>
+
+                <!-- cup -->
+                <g>
+                    <!-- lid
+                        clip the lid where the straw ought to pop out
+                        include a small line to remark where the straw pops out
+                        include a reflection through an ellipse in the top left section of the lid
+                    -->
+                    <g>
+                        <path
+                            clip-path="url(#clip-lid)"
+                            opacity="0.5"
+                            fill="#F1F7F3"
+                            d="M 8 70 a 42 40 0 0 1 84 0 a 90 90 0 0 1 -84 0">
+                        </path>
+                        <path
+                            opacity="0.5"
+                            stroke="none"
+                            fill="#F1F7F3"
+                            d="M 47 40 a 6 6 0 0 0 6 0 v 1 a 6 6 0 0 1 -6 0">
+                        </path>
+
+                        <g transform="translate(30 50) rotate(30)">
+                            <ellipse
+                                opacity="0.7"
+                                fill="#ffffff"
+                                cx="0"
+                                cy="0"
+                                rx="6"
+                                ry="12">
+                            </ellipse>
+                        </g>
+                    </g>
+
+                    <!-- body -->
+                    <path
+                    fill="none"
+                        stroke="#F7F7F7"
+                        stroke-width="5"
+                        stroke-linejoin="round"
+                        stroke-linecap="round"
+                        d="M 10 70 l 10 100 a 150 150 0 0 0 60 0 l 10 -100 a 120 120 0 0 1 -80 0">
+                    </path>
+
+
+                    <!-- clip the group describing the rectangles for the milk and fruit section, to show only the element within the mixer's body -->
+                    <!-- liquid -->
+                    <g
+                        clip-path="url(#clip-body)">
+                        <!-- include rectangle elements in this group
+                            given the negative scale, increasing y values push the rectangles go upwards
+                        -->
+                        <g class="drink" transform="translate(0 180) scale(1 -1)">
+                            <rect
+                                x="0"
+                                y="0"
+                                width="100"
+                                height="50"
+                                fill="#fbe054">
+                            </rect>
+                        </g>
+                    </g>
+
+                    <!-- above the liquid include the body with a semi transparent fill to match the lid's color -->
+                    <path
+                        opacity="0.2"
+                        fill="#F7F7F7"
+                        d="M 10 70 l 10 100 a 150 150 0 0 0 60 0 l 10 -100 a 120 120 0 0 1 -80 0">
+                    </path>
+
+                    <!-- shades
+                    overlap semi transparent rectangles to give a different shade to the underlying assets
+                    -->
+                    <g
+                        clip-path="url(#clip-body)">
+                        <rect
+                            x="0"
+                            y="0"
+                            width="100"
+                            height="200"
+                            fill="#fff"
+                            opacity="0.4">
+                        </rect>
+                        <rect
+                            x="0"
+                            y="0"
+                            width="62"
+                            height="200"
+                            fill="#fff"
+                            opacity="0.4">
+                        </rect>
+                        <rect
+                            x="0"
+                            y="0"
+                            width="38"
+                            height="200"
+                            fill="#fff"
+                            opacity="0.4">
+                        </rect>
+                    </g>
+
+                    <!-- rim
+                    overlap multiple paths to create a 3d effect
+                    use a fill instead of a stroke to rapidly overlap elements by modifying few command values -->
+                    <g>
+                        <g mask="url(#mask-rim)">
+                            <path
+                                fill="#F7F7F7"
+                                d="M 4 70 a 180 180 0 0 1 92 0 v 5 a 180 180 0 0 0 -92 0">
+                            </path>
+                            <path
+                                fill="#000"
+                                opacity="0.03"
+                                d="M 4 72 a 180 180 0 0 1 92 0 v 3 a 180 180 0 0 0 -92 0">
+                            </path>
+                        </g>
+
+                        <path
+                            fill="#F7F7F7"
+                            d="M 4 70 a 200 200 0 0 0 92 0 v 5 a 200 200 0 0 1 -92 0">
+                        </path>
+                        <path
+                            fill="#000"
+                            opacity="0.03"
+                            d="M 4 72 a 200 200 0 0 0 92 0 v 3 a 200 200 0 0 1 -92 0">
+                        </path>
+                    </g>
+                </g>
+            </g>
+        </svg>
+
+
+        <!-- describe the ingredients in a div, each with an svg icon and a button to add/remove the ingredients -->
+        <div class="phone__ingredients">
+            <button>
+                <!-- the color applied on the svg cascades through the currentColor property to style the fruit icons -->
+                <svg style="color: #fbe054;" width="20" height="20">
+                    <use href="#pineapple-button"></use>
+                </svg>
+                <span>Add +</span>
+            </button>
+            <button>
+                <svg style="color: #fdb07d;" width="20" height="20">
+                    <use href="#peach-button"></use>
+                </svg>
+                <span>Add +</span>
+            </button>
+            <button>
+                <svg style="color: #ff6060;" width="20" height="20">
+                    <use href="#raspberry-button"></use>
+                </svg>
+                <span>Add +</span>
+            </button>
+        </div>
+
+        <!-- list the ingredients in the outgoing receipt and display the button to proceed mixing the drink -->
+        <div class="phone__order">
+            <div class="order--list">
+                <h3>Your choice:</h3>
+                <ul>
+                    <li>1x Big Soya Smoothie</li>
+                </ul>
+            </div>
+            <button>
+                <svg width="20" height="20">
+                    <use href="#arrow"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+
+</body>
+</html>
