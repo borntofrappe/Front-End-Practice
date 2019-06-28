@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:300,400,600,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  color: #333;
+  font-family: "Muli", sans-serif;
+  min-height: 100vh;
+  /* add a circle with a linear gradient in the center of the screen, above another linear gradient */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><linearGradient id="gradient" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="%23FBDBE3"></stop><stop offset="1" stop-color="%23F39BAE"></stop></linearGradient><circle cx="50" cy="50" r="50" fill="url(%23gradient)"></circle></svg>'),
+    linear-gradient(45deg, #ffecf0, #f5c3cf);
+  background-position: 50%, 0%;
+  background-size: 40%, 100%;
+  background-repeat: no-repeat;
+}
+
+/* for the phone UI specify a tall, thin, rounded rectangle */
+div.phone {
+  max-width: 280px;
+  margin: 2rem auto;
+  border-radius: 15px;
+  background: #fffffd;
+  /* display the content in a column */
+  display: flex;
+  flex-direction: column;
+  /* add multiple shadows to make a solid rounded border with a small blue-ish overlay and a softer shadow */
+  box-shadow: 0 0 0 0.02rem #ddf, 0 0 1rem 0.1rem #f4f4ff, 0 0 0 0.8rem #fcfcff,
+    0 0 0.8rem 0.5rem #ccf;
+}
+
+/* display the navigation's items in a row */
+.phone__nav {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+.phone__nav span {
+  flex-grow: 1;
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+.phone__nav svg {
+  margin: 0 0.1rem;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.phone__state {
+  padding: 0 1rem;
+}
+.phone__state h2 {
+  color: #ff4966;
+  font-size: 1.4rem;
+}
+.phone__state p {
+  font-size: 0.8rem;
+}
+
+/* display the drink in the center of the phone */
+.phone__drink {
+  align-self: center;
+  width: 70%;
+  height: auto;
+  margin: 1.5rem 0 0;
+}
+
+/* display the ingredients in a non-wrapping row */
+.phone__ingredients {
+  display: flex;
+  align-items: center;
+  margin: 0 0.5rem;
+  /* allow for horizontal scroll */
+  overflow-x: auto;
+}
+/* visually hide the scrollbar */
+.phone__ingredients::-webkit-scrollbar {
+  opacity: 0;
+}
+
+/* prevent the buttons from shrinking */
+.phone__ingredients button {
+  margin: 0.5rem;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  position: relative;
+  font-family: inherit;
+  /* display the svg and span atop one another */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.phone__ingredients button svg {
+  width: 82px;
+  height: 82px;
+  display: block;
+  filter: drop-shadow(0 0 10px hsla(0, 0%, 0%, 0.05));
+}
+/* have the span overlap on the svg */
+.phone__ingredients button span {
+  position: relative;
+  border-radius: 20px;
+  background: #ff4966;
+  color: #fff;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  margin-top: -0.5rem;
+}
+
+/* display the receipt on a completely white background */
+.phone__order {
+  display: flex;
+  background: #fff;
+  margin: 0.5rem 0.75rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 15px;
+  box-shadow: 0 1px 15px -2px #f5c3cf;
+  min-height: 75px;
+}
+/* have the heading and list stretch to occupy the available width */
+.phone__order .order--list {
+  flex-grow: 1;
+}
+.phone__order .order--list h3 {
+  font-size: 0.6rem;
+  color: #ff4966;
+  text-transform: uppercase;
+  margin-bottom: 0.1rem;
+}
+/* remove the bullet point from the unordered list */
+.phone__order .order--list ul {
+  list-style: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* highlight the button with the accent color */
+.phone__order button {
+  align-self: center;
+  background: #ff4966;
+  border: none;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  padding: 0.3rem;
+  border-radius: 50%;
+}
+.phone__order button svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
