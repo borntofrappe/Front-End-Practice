@@ -80,7 +80,6 @@ div.phone {
 .phone__ingredients::-webkit-scrollbar {
   opacity: 0;
 }
-
 /* prevent the buttons from shrinking */
 .phone__ingredients button {
   margin: 0.5rem;
@@ -110,6 +109,26 @@ div.phone {
   font-size: 0.75rem;
   margin-top: -0.5rem;
 }
+/* on click darken the background color of the span element through an overlapping pseudo element */
+.phone__ingredients button span:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: #000;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  transition-property: opacity, transform;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-out;
+}
+.phone__ingredients button:active span:before {
+  opacity: 0.2;
+  transform: translate(-50%, -50%) scale(1);
+}
 
 /* display the receipt on a completely white background */
 .phone__order {
@@ -135,10 +154,15 @@ div.phone {
 .phone__order .order--list ul {
   list-style: none;
   font-size: 0.8rem;
-  font-weight: bold;
+  text-transform: capitalize;
+  line-height: 1.5;
 }
 
-/* highlight the button with the accent color */
+/* highlight the button with the accent color
+replicate the active state created for the ingredients' span
+! enable this state alongside full opacity only when a class is added
+this to highlight when the button is clickable
+*/
 .phone__order button {
   align-self: center;
   background: #ff4966;
@@ -148,9 +172,16 @@ div.phone {
   height: 30px;
   padding: 0.3rem;
   border-radius: 50%;
+  opacity: 0.5;
+  cursor: not-allowed;
+  transition: opacity 0.15s ease-out;
 }
 .phone__order button svg {
   display: block;
   width: 100%;
   height: 100%;
+}
+.phone__order.complete button {
+  opacity: 1;
+  cursor: pointer;
 }
