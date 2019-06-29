@@ -1,4 +1,6 @@
-# UI Smoothie Mobile App
+# UI Smoothie App
+
+## [Live Demo](https://codepen.io/borntofrappe/full/pXpOqP)
 
 ## Goal
 
