@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>UI Smoothie Mobile Application</title>
+    <title>UX Smoothie Mobile Application</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- icons used in the project -->
+    <!-- graphics used in the project -->
     <svg style="display: none;" viewBox="0 0 100 100" width="50" height="50">
-        <!-- navigation bar -->
+        <!-- icons for the navigation bar -->
         <symbol id="signal" viewBox="0 0 100 100">
             <g transform="translate(2.5 0)">
                 <rect
@@ -96,7 +96,7 @@
             </rect>
         </symbol>
 
-        <!-- confirm button -->
+        <!-- icon for the order button -->
         <symbol id="arrow" viewBox="0 0 100 100">
             <path
                 d="M 20 50 h 65 l -25 -25 l 25 25 l -25 25"
@@ -108,8 +108,7 @@
             </path>
         </symbol>
 
-        <!-- fruit icons -->
-        <!-- pineapple -->
+        <!-- icon of fruits -->
         <symbol id="pineapple" viewBox="0 0 100 100">
             <g transform="translate(0,12.5)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
                 <path d="m50 21q20 0 20 20 0 25-15 25h-10q-15 0-15-25 0-20 20-20" stroke-dasharray="55 8 80"/>
@@ -131,7 +130,6 @@
             </g>
         </symbol>
 
-        <!-- peach -->
         <symbol id="peach" viewBox="0 0 100 100">
             <g transform="translate(-7.0352 18.875)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
                 <g stroke-width="2.5">
@@ -148,7 +146,6 @@
             </g>
         </symbol>
 
-        <!-- raspberry -->
         <symbol id="raspberry" version="1.1" viewBox="0 0 100 100">
             <g transform="translate(50 50)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                 <g transform="translate(.10082 .49998)">
@@ -189,7 +186,7 @@
             </g>
         </symbol>
 
-        <!-- button icons, making use of the fruit symbols alongside text elements describing the icons and atop a white circle, used as a background -->
+        <!-- icons for the buttons, framing the fruit icons with accompanying text and a circle as a background -->
         <symbol id="pineapple-button" viewBox="0 0 100 100">
             <circle
                 cx="50"
@@ -246,13 +243,13 @@
     </svg>
 
 
-    <!-- phone UI
+    <!-- html structure
     div, wrapping container
         nav, svg icons
-        header, state of the current order
-        svg, drink
+        header, state of the application
+        svg, graphic visualizing the drink in a mixer
         div, scrollable list of ingredients
-        div, list of choices and button to proceed to mixing the drink
+        div, list of selected ingredients and button to proceed to mixing the drink
     -->
 
     <div class="phone">
@@ -390,8 +387,9 @@
                     <!-- liquid -->
                     <g
                         clip-path="url(#clip-body)">
-                        <!-- include rectangle elements in this group
-                            given the negative scale, increasing y values push the rectangles go upwards
+                        <!--
+                            ! include rectangle elements in this group
+                            given the negative scale, increasing y values push the rectangles upwards
                         -->
                         <g class="drink" transform="translate(0 180) scale(1 -1)">
                             <rect
@@ -399,7 +397,7 @@
                                 y="0"
                                 width="100"
                                 height="50"
-                                fill="#fbe054">
+                                fill="rgb(239, 224, 153)">
                             </rect>
                         </g>
                     </g>
@@ -422,7 +420,7 @@
                             width="100"
                             height="200"
                             fill="#fff"
-                            opacity="0.4">
+                            opacity="0.2">
                         </rect>
                         <rect
                             x="0"
@@ -430,7 +428,7 @@
                             width="62"
                             height="200"
                             fill="#fff"
-                            opacity="0.4">
+                            opacity="0.3">
                         </rect>
                         <rect
                             x="0"
@@ -475,8 +473,8 @@
 
         <!-- describe the ingredients in a div, each with an svg icon and a button to add/remove the ingredients -->
         <div class="phone__ingredients">
-            <button>
-                <!-- the color applied on the svg cascades through the currentColor property to style the fruit icons -->
+            <!-- ! include the button elements through the script -->
+            <!-- <button>
                 <svg style="color: #fbe054;" width="20" height="20">
                     <use href="#pineapple-button"></use>
                 </svg>
@@ -493,15 +491,16 @@
                     <use href="#raspberry-button"></use>
                 </svg>
                 <span>Add +</span>
-            </button>
+            </button> -->
         </div>
 
-        <!-- list the ingredients in the outgoing receipt and display the button to proceed mixing the drink -->
+        <!-- list the selected ingredients in an unordered list and highlight the button to proceed mixing the drink -->
         <div class="phone__order">
             <div class="order--list">
                 <h3>Your choice:</h3>
                 <ul>
                     <li>1x Big Soya Smoothie</li>
+                    <li></li>
                 </ul>
             </div>
             <button>
@@ -513,5 +512,8 @@
     </div>
 
 
+    <!-- import anime.js -->
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
