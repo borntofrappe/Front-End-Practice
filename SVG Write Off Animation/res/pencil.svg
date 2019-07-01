@@ -1,0 +1,15 @@
+<!-- the viewbox considers the size of the path (32*73) plus the space allocated for the stroke (4) -->
+<svg class="pencil" viewBox="0 0 36 77" width="360" height="770">
+    <g
+        transform="translate(2 2)"
+        stroke-width="4"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none">
+
+        <path
+            d="M 0 15 h 32 h -32 v -10 a 5 5 0 0 1 5 -5 h 22 a 5 5 0 0 1 5 5 v 10 v 40 h -32 l 16 18 l 16 -18 h -10 v -40 h -12 v 40 h -10 z">
+        </path>
+    </g>
+</svg>
