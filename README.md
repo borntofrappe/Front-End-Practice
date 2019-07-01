@@ -69,6 +69,7 @@ This doesn't mean I will forgo projects benefitting from vanilla HTML, CSS, JS. 
 |[SVG Icons Practice](https://codepen.io/borntofrappe/pen/ydgxGO)|Practice with SVG syntax, HSL colors and a few lines of JavaScript to include SVG icons where such icons are made available.|20th June 2019|
 |[SVG Timeline Animation](https://codepen.io/borntofrappe/pen/zVzWOE)|Replicate the animation of a spelling bee logo as displayed on [Hasan Minhaj Youtube channel](https://youtu.be/7ms7gxdzBos?t=665).|24th June 2019|
 |[SVG Sprites](https://codepen.io/borntofrappe/pen/EBvRvK)|Create an SVG which allows to display different images according to the coordinates given to the viewBox attribute.|25th June 2019|
+|[SVG Write Off Animation](https://codepen.io/borntofrappe/pen/VJQBZe)|Draw a pencil and animate the graphic to continuously include and remove a stroke.|30th June 2019|
 
 ### UI UX
 
