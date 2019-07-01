@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Write Off Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- in a larger svg include a path for the stroke  and the svg for the pencil  -->
+    <svg viewBox="0 0 110 100" width="330" height="300">
+        <!-- translate and rotate the pencil, using the group elements used to modify the transform-origin value -->
+        <!-- animate the path to be drawn in and out of sight -->
+        <style>
+            #group-bottom {
+                animation: movePencil 3s ease-in-out both infinite;
+            }
+            #group-center {
+                animation: flipPencil 3s ease-in-out both infinite;
+            }
+            #group-stroke {
+                animation: drawStroke 3s ease-in-out both infinite;
+            }
+            @keyframes movePencil {
+                0% {
+                    transform: translate(-20px, 0) rotate(20deg);
+                }
+                25%, 50% {
+                    transform: translate(10px, 0) rotate(0deg);
+                }
+                75%, 100% {
+                    transform: translate(-20px, 0) rotate(20deg);
+                }
+            }
+            @keyframes flipPencil {
+                0%, 33% {
+                    transform: translate(0, 0) rotate(0deg);
+                }
+                50%, 90% {
+                    transform: translate(12px, 0) rotate(220deg);
+                }
+            }
+            @keyframes drawStroke {
+                25%, 50% {
+                    stroke-dashoffset: 0;
+                }
+                75%, 100% {
+                    stroke-dashoffset: 28;
+                }
+            }
+        </style>
+
+        <!-- path positioned below and behind the pencil
+        animated through the stroke-dashoffset property
+        -->
+        <g
+            id="group-stroke"
+            stroke-width="3"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-dasharray="28"
+            stroke-dashoffset="28"
+            fill="none">
+            <path
+                d="M 32 82.5 h 28">
+            </path>
+        </g>
+
+        <!-- svg describing the pencil
+        ! specify group elements to modify the value of transform-origin
+        -->
+        <g
+            transform="translate(50 83.5)">
+            <!-- transform this group element to have the rotation occur from the bottom of the svg -->
+            <g
+                id="group-bottom">
+                <g transform="translate(0 -38.5)">
+                    <!-- transform this group to have the rotation occur from the center of the svg -->
+                    <g
+                        id="group-center">
+                        <g
+                        transform="translate(-50 -45)">
+                            <!-- actual drawing of the pencil
+                            the viewbox considers the size of the path (32*73) plus the space allocated for the stroke (4) -->
+                            <svg id="pencil" viewBox="0 0 36 77" x="32" y="6.5" width="36" height="77">
+                                <g
+                                    transform="translate(2 2)"
+                                    stroke-width="4"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    fill="none">
+                                        <path
+                                            d="M 0 15 h 32 h -32 v -10 a 5 5 0 0 1 5 -5 h 22 a 5 5 0 0 1 5 5 v 10 v 40 h -32 l 16 18 l 16 -18 h -10 v -40 h -12 v 40 h -10 z">
+                                        </path>
+
+                                </g>
+                            </svg>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </svg>
+
+</body>
+</html>

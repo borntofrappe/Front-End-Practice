@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* center the svg in the viewport */
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #111;
+  color: #fff;
+}
