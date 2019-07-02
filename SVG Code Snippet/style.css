@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:700|Roboto+Mono&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* center the container in the viewport viewport */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* include a pattern as a background */
+  background: url('data:image/svg+xml;utf8,<svg opacity="0.3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="none" stroke="%23000000" stroke-width="1" d="M 0 0.5 h 50 l 50 99 M 0 99.5"></path></svg>');
+  background-size: 40px;
+}
+
+/* have the svg stretch to occupy a sizeable portion of the viewport */
+svg {
+  display: block;
+  width: 90vw;
+  max-width: 1000px;
+  height: auto;
+}
