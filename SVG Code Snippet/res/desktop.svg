@@ -1,0 +1,16 @@
+<!-- the viewbox considers the size of the path (21 * 15) plus the space allocated to the stroke () -->
+<svg id="desktop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16" width="220" height="160">
+    <g
+        transform="translate(0.5 0.5)"
+        stroke-width="1"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="currentColor">
+
+        <path
+            fill-rule="even-odd"
+            d="M 0 0 h 20 v 12.5 h -20 v -1.5 h 20 v -11 h -20 v 11.5 h 8 q 0 3.5 -2 3.5 h 8 q -2 0 -2 -3.5 h -12">
+        </path>
+    </g>
+</svg>

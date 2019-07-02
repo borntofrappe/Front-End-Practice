@@ -1,0 +1,25 @@
+<!-- the viewbox considers the size of the path (20.5 * 20.5) plus the space allocated to the stroke (1.5) -->
+<svg id="trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 24" width="220" height="240">
+    <g
+        transform="translate(0.5 0.5)"
+        stroke-width="1.5"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none">
+
+        <path
+            d="M 1 2.25 h 18.75 a 1 1 0 0 1 1 1 v 2 a 1 1 0 0 1 -1 1 h -18.75 a 1 1 0 0 1 -1 -1 v -2 a 1 1 0 0 1 1 -1">
+        </path>
+        <path
+            fill="currentColor"
+            d="M 5 2.25 q 1.5 0 3 -2 h 5 q 1.5 1.5 3 2 z">
+        </path>
+        <path
+            d="M 3.5 6.25 v 15.5 a 1 1 0 0 0 1 1 h 12 a 1 1 0 0 0 1 -1 v -15.5">
+        </path>
+        <path
+            d="M 10.5 6.25 v 14 m 3.5 -14 v 14 m -7 -14 v 14">
+        </path>
+    </g>
+</svg>

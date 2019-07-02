@@ -1,0 +1,19 @@
+<!-- the viewbox considers the size of the path (21 * 21) plus the space allocated to the stroke (1) -->
+<svg id="pen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="220" height="220">
+    <g
+        transform="translate(0.5 0.5)"
+        stroke-width="1"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="currentColor">
+
+        <path
+            fill-rule="even-odd"
+            d="M 0 16 v 5 h 5 l 12 -12 l -5 -5 l -12 12 h 2.5 v 2.5 h 2.5 v 2.5 h -5">
+        </path>
+        <path
+            d="M 14 2 l 5 5 l 2 -2 a 5 5 0 0 0 -5 -5 l -2 2">
+        </path>
+    </g>
+</svg>
