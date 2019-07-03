@@ -11,6 +11,7 @@ body {
   color: #fff;
 }
 
+/* cap the width of the .viz container */
 .viz {
   margin: 1rem auto;
   max-width: 500px;
@@ -24,7 +25,7 @@ body {
   font-family: "Noto Serif SC", serif;
   font-size: 1.5rem;
 }
-/* separate the svg from the surrounding header and footer */
+/* separate the svg displaying the visualization from the surrounding header and footer */
 .viz > svg {
   margin: 1rem;
   display: block;

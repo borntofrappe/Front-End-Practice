@@ -779,14 +779,13 @@ const data = [
 // target the .viz container
 const viz = d3.select('.viz');
 
-
 // HEADER
-// include preliminary information about the project
 const header = viz.append('header');
 header
   .append('h1')
   .text('Iris Flowers - Petals');
 
+// SVG
 const margin = {
   top: 20,
   right: 20,
@@ -795,16 +794,17 @@ const margin = {
 };
 const width = 500 - (margin.left + margin.right);
 const height = 500 - (margin.top + margin.bottom);
-const legendWidth = 500;
-const legendHeight = 30;
 
 // LEGEND
 // before the scatter plot include an svg element describing the subspecies and matching colors through rectangle and text elements
+const legendWidth = 500;
+const legendHeight = 30;
+
 const legend = viz
   .append('svg')
   .attr('viewBox', `0 0 ${legendWidth} ${legendHeight}`);
 
-
+// include one group for each color
 const colorEntries = Object.entries(colors);
 
 const legendEntries = legend
@@ -813,28 +813,26 @@ const legendEntries = legend
   .enter()
   .append('g')
   .attr('class', 'entry')
+  // translate the group at fractions of the legend's width
   .attr('transform', (d, i, { length }) => `translate(${(legendWidth / length) * i} ${0})`)
   // on hover highlight the selected entry and the matching petals in the subsequent visualization
   .on('mouseenter', function ([species]) {
+    // highlight the label by translating the hidden rectangle into view
     d3
       .select(this)
       .select('rect')
       .transition()
       .attr('transform', 'translate(0 0)');
 
+    // highlight the matching circles by reducing the opacity and the radius of the non-matching circles
     d3
       .selectAll(`g.petal:not(.petal-${species})`)
       .attr('opacity', 0.1)
       .selectAll('circle')
       .transition()
       .attr('r', 3);
-    d3
-      .selectAll(`g.petal.petal-${species}`)
-      .attr('opacity', 1)
-      .selectAll('circle')
-      .transition()
-      .attr('r', 5);
   })
+  // on mouseout hide the rectangles back and reset the opacity/radius of all circle elements
   .on('mouseout', function () {
     d3
       .select(this)
@@ -844,13 +842,14 @@ const legendEntries = legend
 
     d3
       .selectAll('g.petal')
+      .attr('opacity', 1)
       .selectAll('circle')
       .transition()
       .attr('r', 5);
   });
 
-
-// add a colored rectangle transitioned on hover to highlight the selection
+// for each color
+// add a rectangle transitioned on hover to highlight the selection
 legendEntries
   .append('rect')
   .attr('x', 0)
@@ -861,7 +860,7 @@ legendEntries
   .attr('transform', `translate(0 ${legendHeight})`)
   .attr('opacity', 0.2);
 
-// for each entry add a label, a colored underline and a path element drawing a small flower
+// add a label describing the entry
 legendEntries
   .append('text')
   .attr('x', 5)
@@ -872,6 +871,7 @@ legendEntries
   .style('text-transform', 'capitalize')
   .text(([species]) => species);
 
+// add a path describing a small underline
 legendEntries
   .append('path')
   .attr('d', (d, i, { length }) => `M 0 ${legendHeight} h ${(legendWidth / length)}`)
@@ -879,11 +879,13 @@ legendEntries
   .attr('stroke-width', 5)
   .attr('stroke', ([, color]) => `hsl(${color.h}, ${color.s}%, ${color.l}%)`);
 
+// add the SVG describing the basic icon of a flower
 const flowers = legendEntries
   .append('svg')
   .attr('viewBox', '0 0 7 10')
   .attr('height', legendHeight)
   .attr('width', (legendHeight) * 7 / 10)
+  // positioned at the end of the respective area
   .attr('x', (d, i, { length }) => ((legendWidth / length) - (legendHeight) * 7 / 10))
   .attr('y', 0);
 
@@ -897,8 +899,6 @@ flowers
   .attr('stroke-linejoin', 'round')
   .attr('stroke-linecap', 'round')
   .attr('stroke', ([, color]) => `hsl(${color.h}, ${color.s}%, ${color.l}%)`);
-
-// .attr('fill', ([, color]) => `hsl(${color.h}, ${color.s}%, ${color.l}%)`);
 
 // add rectangle spanning the width of each section to trigger mouse event on the parent group, whenever hovering the matching section
 legendEntries
@@ -931,7 +931,7 @@ const colorGradients = defs
   .attr('y1', 0)
   .attr('y2', 1);
 
-// include a lighter variant at the top of the svg
+// include a lighter variant at the top of each circle
 colorGradients
   .append('stop')
   .attr('stop-color', ([, color]) => `hsl(${color.h + 5}, ${color.s + 5}%, ${color.l + 15}%)`)
@@ -965,7 +965,6 @@ group
   .attr('class', 'axis x-axis')
   .attr('transform', `translate(0 ${height})`)
   .call(xAxis);
-
 
 // petal length on the y axis
 const yScale = d3
@@ -1036,33 +1035,32 @@ d3
   .attr('dy', dy)
   .attr('opacity', (d, i) => (i === 1 ? 1 : 0));
 
-// include labels describing both axes
+// include two labels describing the axes
 d3
   .select('.x-axis')
   .append('text')
+  .attr('class', 'axis-label')
   .attr('x', width)
   .attr('y', -5)
-  .attr('fill', 'currentColor')
-  .attr('font-size', '1rem')
   .attr('text-anchor', 'end')
-  .attr('font-family', 'inherit')
-  .attr('opacity', 0.5)
-  .style('letter-spacing', '0.2rem')
-  .text('width (cm)');
-
+  .text('width (cm)')
 
 d3
   .select('.y-axis')
   .append('text')
+  .attr('class', 'axis-label')
   .attr('x', 5)
   .attr('y', 15)
-  .attr('fill', 'currentColor')
   .attr('text-anchor', 'start')
+  .text('length (cm)');
+
+d3
+  .selectAll('.axis-label')
+  .attr('fill', 'currentColor')
   .attr('font-size', '1rem')
   .attr('font-family', 'inherit')
   .attr('opacity', 0.5)
-  .style('letter-spacing', '0.2rem')
-  .text('length (cm)');
+  .style('letter-spacing', '0.2rem');
 
 
 // DATA POINTS
@@ -1073,6 +1071,7 @@ const petals = group
   .enter()
   .append('g')
   .attr('class', d => `petal petal-${d.species}`)
+  // translate the group according to the data point's value
   .attr('transform', ({ petalWidth, petalLength }) => `translate(${xScale(petalWidth)} ${yScale(petalLength)})`);
 
 // for each petal add a circle with a fixed radius and the gradient defined earlier
@@ -1083,33 +1082,41 @@ petals
 
 
 // BRUSH
+// function called following the brush and end events
 function highlightViz() {
+  // if there is a selection, proceed to find the circle elements falling within the selection
   if (d3.event.selection) {
+    // retrieve the values from the coordinates of the selection
     const [[x0, y0], [x1, y1]] = d3.event.selection;
     const [width0, width1] = [x0, x1].map(coordinate => xScale.invert(coordinate));
     const [length0, length1] = [y1, y0].map(coordinate => yScale.invert(coordinate));
 
+    // reduce the opacity of all g.petals except for those falling within the values' ranges
     petals
       .attr('opacity', ({ petalWidth, petalLength }) => ((petalWidth > width0 && petalWidth < width1 && petalLength > length0 && petalLength < length1) ? 1 : 0.2));
   } else {
+    // else reset the opacity
     petals
       .attr('opacity', 1);
   }
 }
 
+// create a brush spanning the entirety of the group element
 const brush = d3
   .brush()
   .extent([[0, 0], [width, height]])
   .on('end brush', highlightViz);
 
+// append the brush
 group.append('g')
   .attr('class', 'brush')
   .call(brush);
-
+// reduce the opacity of the rectangle describing the selected area
 group
   .select('g.brush rect.selection')
   .attr('opacity', 0.3);
 
+// when entering the svg element reset the opacity of the rectangles and remove the selection0
 svg
   .on('mouseenter', () => {
     d3
@@ -1120,7 +1127,6 @@ svg
       .select('g.brush')
       .call(brush.move, null);
 
-    // brush.move(group, null);
   });
 
 

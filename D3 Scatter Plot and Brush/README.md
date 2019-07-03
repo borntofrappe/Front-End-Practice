@@ -1,6 +1,6 @@
 # D3 Scatter Plot and Brush
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/XLYPWQ)
 
 ## Goal
 
