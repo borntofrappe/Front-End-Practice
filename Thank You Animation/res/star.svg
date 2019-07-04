@@ -1,0 +1,15 @@
+<!-- the viewbox considers the size of the path (14 * 13) plus the space allocated to the stroke (2) -->
+<svg xmlns="http://www.w3.org/2000/svg" id="star" viewBox="0 0 16 15" width="160" height="150">
+    <g
+        transform="translate(1 1)"
+        stroke-width="2"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="currentColor">
+
+        <path
+            d="M 0 4.5 l 4.5 0 l 2.5 -4.5 l 2.5 4.5 l 4.5 0 l -3.5 3.5 l 1.5 5 l -5 -2.5 l -5 2.5 l 1.5 -5 l -3.5 -3.5">
+        </path>
+    </g>
+</svg>
