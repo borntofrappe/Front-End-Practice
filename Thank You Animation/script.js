@@ -1,4 +1,4 @@
-/* globals Zdog */
+/* globals Zdog anime */
 // from the Zdog object extract the necessary modules
 const {
   Illustration, Ellipse, Rect, Shape, Group, Anchor,
@@ -8,6 +8,17 @@ const {
 const illustration = new Illustration({
   element: 'canvas',
   dragRotate: true,
+});
+
+// below the star draw a circle with a fill and no stroke, for the shadow
+const shadow = new Ellipse({
+  addTo: illustration,
+  diameter: 100,
+  stroke: false,
+  fill: true,
+  color: 'hsla(45, 100%, 58%, 0.4)',
+  translate: { x: 50, y: 100 },
+  rotate: { x: Math.PI / 1.7 },
 });
 
 // include an anchor point for the star
@@ -120,17 +131,6 @@ const mouth = new Shape({
   color: 'hsl(358, 100%, 65%)',
 });
 
-// below the start draw a circle with a fill and no stroke, for the shadow
-const shadow = new Ellipse({
-  addTo: illustration,
-  diameter: 100,
-  stroke: false,
-  fill: true,
-  color: 'hsla(45, 100%, 58%, 0.4)',
-  translate: { x: 50, y: 100 },
-  rotate: { x: Math.PI / 1.7 },
-});
-
 illustration.updateRenderGraph();
 
 /* to animate the star, change the transform property as follows
@@ -139,7 +139,59 @@ illustration.updateRenderGraph();
 |---|---|---|
 |starAnchor|rotate.z|[Math.PI/10, -Math.PI/10]|
 |leftIrisAnchor && rightIrisAnchor|rotate.z|[0, Math.PI/2]|
-|mouthAnchor|scale|[1, 1.2]|
+|mouthAnchor|scale|[0.8, 1.2]|
 |shadow|translate.x|[50, -50]|
-
 */
+
+// ! I am positive there are much better ways to achieve this animation, but this is my take using anime.js
+// I am still a newbie when it comes to animation
+// create an object describing the values for the different elements
+const starObject = {
+  star: Math.PI / 10,
+  shadow: 50,
+  mouth: 0.8,
+  eyes: 0,
+};
+
+// set up a repeating animation which constantly updates the illustration and updates the desired transform properties according to the object's values
+const timeline = anime.timeline({
+  duration: 1100,
+  easing: 'easeInOutQuart',
+  direction: 'alternate',
+  loop: true,
+  update: () => {
+    starAnchor.rotate.z = starObject.star;
+    shadow.translate.x = starObject.shadow;
+    mouth.scale = starObject.mouth;
+    leftEyeAnchor.rotate.z = starObject.eyes;
+    rightEyeAnchor.rotate.z = starObject.eyes;
+
+    illustration.updateRenderGraph();
+  },
+});
+
+// animate the star with a slightly more pronounced easing function
+timeline.add({
+  targets: starObject,
+  star: -Math.PI / 10,
+  easing: 'easeInOutQuint',
+});
+// have the shadow follow with a small delay
+timeline.add({
+  targets: starObject,
+  delay: 20,
+  shadow: -50,
+}, '-=1100');
+
+// with a smaller duration and slightly postponed, animate the mouth and the eyes
+timeline.add({
+  targets: starObject,
+  mouth: 1.2,
+  duration: 300,
+}, '-=800');
+
+timeline.add({
+  targets: starObject,
+  eyes: Math.PI / 2,
+  duration: 900,
+}, '-=1000');
