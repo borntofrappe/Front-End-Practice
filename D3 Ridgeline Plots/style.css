@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Noto+Serif+SC:700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #100c20;
+  color: #fff;
+  font-family: "Lato", sans-serif;
+}
+/* display the visualizations in a grid
+
+  |  header   |
+  | viz | viz |
+  |  footer   |
+
+*/
+.viz {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 400px);
+  grid-gap: 1rem;
+  justify-content: center;
+}
+/* have the header and footer span both columns of the respective row */
+.viz header,
+.viz footer {
+  grid-column: span 2;
+  line-height: 2;
+}
+.viz header h1 {
+  font-family: "Noto Serif SC", serif;
+  position: relative;
+  display: inline-block;
+}
+.viz header h1:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  height: 90px;
+  width: calc(90px * 7 / 10);
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" id="flower" viewBox="0 0 7 10"><g transform="translate(0.5 0.5)" stroke-width="1" stroke="%23ffffff" stroke-linecap="round" stroke-linejoin="round" fill="%23ffffff"><path d="M 1 9 q 2 -2 2 -5 a 3 3 0 0 1 -3 -3 a 1 1 0 0 1 2 0 a 1 1 0 0 1 2 0 a 1 1 0 0 1 2 0 a 3 3 0 0 1 -3 3"></path></g></svg>');
+  background-repeat: no-repeat;
+  transform: rotate(30deg);
+  opacity: 0.1;
+  z-index: -5;
+}
+/* separate the svg from the surrounding header and footer */
+.viz > svg {
+  margin: 1.5rem 0;
+  width: 100%;
+  height: auto;
+}
+/* with a pseudo element include a P.S. label highlighting the purpose of the footer */
+.viz footer {
+  margin-top: 4rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+.viz footer:before {
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  transform: translate(0, -50%);
+  content: "P.S.";
+  font-size: 4rem;
+  opacity: 0.1;
+  font-family: "Noto Serif SC", serif;
+  z-index: -5;
+}
+.viz footer a {
+  color: inherit;
+}
+
+/* on smaller viewports display the items in a single column */
+@media (max-width: 800px) {
+  .viz {
+    grid-template-columns: 400px;
+  }
+  .viz header,
+  .viz footer {
+    grid-column: initial;
+  }
+  .viz footer {
+    margin-top: 2rem;
+  }
+}
