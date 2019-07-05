@@ -97,16 +97,18 @@ const svgHistogram = viz
 const defs = svgHistogram
   .append('defs');
 
+// include each successive gradient at a fraction of the height, as if adding a light source to each level
 const colorGradients = defs
   .selectAll('linearGradient')
   .data(Object.entries(colors))
   .enter()
   .append('linearGradient')
+  .attr('gradientUnits', 'userSpaceOnUse')
   .attr('id', ([species]) => `gradient-${species}`)
-  .attr('x1', 1)
+  .attr('x1', width)
   .attr('x2', 0)
   .attr('y1', 0)
-  .attr('y2', 1);
+  .attr('y2', (d, i) => maxHeight * i);
 
 // include a lighter variant starting from the top left corner of the visualization
 colorGradients
