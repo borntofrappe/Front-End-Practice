@@ -47,16 +47,16 @@ const margin = {
 const width = 500 - (margin.left + margin.right);
 const height = 500 - (margin.top + margin.bottom);
 
-// for both visualizations the idea is to have the flowers represented on different lines, at different heights of the visualization
+// for both visualizations the idea is to have the distribution represented at different heights of the visualization
 // the vertical scale needs to therefore consider a fraction of the height
 const dataEntries = Object.entries(data);
 
-
 // for the horizontal scale, both visualization consider the actual length of the petals
+const dataLengths = dataEntries.reduce((acc, curr) => [...acc, ...curr[1]], []);
 const xScale = d3
   .scaleLinear()
   // start at 0 and end at the greatest value considering every observation
-  .domain([0, d3.max(dataEntries, d => d3.max(d[1]))])
+  .domain([0, d3.max(dataLengths)])
   .range([0, width])
   .nice();
 
@@ -65,22 +65,26 @@ const xAxis = d3
   .ticks(5);
 
 // for the vertical scale, each petal needs to occupy a fraction of the total height
-// ! the domain is dictated by the number of the bins of the visualization
+// ! the domain is dictated by the number of bins and is specified later
 const histogram = d3
   .histogram()
   .domain(xScale.domain());
 
+/* create an array describing for each subspecies an object
+bins is an array of values describing the bins, with x0, x1 properties and the data points falling in between the two
+*/
 const dataHistogram = dataEntries.map(([species, values]) => ({
   species,
   bins: histogram(values),
 }));
 
+// create a variable allowing to separate the different flowers
 const maxHeight = height / dataEntries.length;
-const yScale = d3
+// use the variable to dictate the maximum height reach-able by the histograms
+const yScaleHistogram = d3
   .scaleLinear()
   .range([0, maxHeight * 0.8])
   .nice();
-
 
 // RIDGELINE HISTOGRAM
 // wrapping container
@@ -115,10 +119,10 @@ colorGradients
   .attr('stop-color', ([, color]) => `hsl(${color.h}, ${color.s}%, ${color.l}%)`)
   .attr('offset', 1);
 
+// group describing the visualization itself
 const groupHistogram = svgHistogram
   .append('g')
   .attr('transform', `translate(${margin.left} ${margin.top})`);
-
 
 // add the x axis
 groupHistogram
@@ -127,12 +131,18 @@ groupHistogram
   .attr('transform', `translate(0 ${height})`)
   .call(xAxis);
 
+// function called for every species to draw the respective histogram
 function includeBins(species, bins, groupBins) {
-  yScale
+  // update the linear scale with the maximum value of the bins lengths
+  yScaleHistogram
     .domain([0, d3.max(bins, bin => bin.length)]);
 
+  // apply the gradient of the matching species
   groupBins
     .attr('fill', `url(#gradient-${species})`);
+
+  // include one rectangle for every bin
+  // ! the height is dictated by the updated linear scale
   groupBins
     .selectAll('rect')
     .data(bins)
@@ -140,10 +150,11 @@ function includeBins(species, bins, groupBins) {
     .append('rect')
     .attr('data-length', ({ length }) => length)
     .attr('x', ({ x0 }) => xScale(x0))
-    .attr('y', ({ length }) => -yScale(length))
+    .attr('y', ({ length }) => -yScaleHistogram(length))
     .attr('width', ({ x0, x1 }) => xScale(x1) - xScale(x0))
-    .attr('height', ({ length }) => yScale(length));
+    .attr('height', ({ length }) => yScaleHistogram(length));
 
+  // add a rectangle describing the ground level
   groupBins
     .append('rect')
     .attr('x', 0)
@@ -151,27 +162,33 @@ function includeBins(species, bins, groupBins) {
     .attr('width', width)
     .attr('height', 1);
 
+  // add a text label centered on the axis
   groupBins
     .append('text')
     .attr('x', -5)
-    .attr('y', -yScale(d3.max(bins, bin => bin.length) / 2))
+    .attr('y', -yScaleHistogram(d3.max(bins, bin => bin.length) / 2))
     .attr('text-anchor', 'end')
     .attr('dominant-baseline', 'middle')
     .text(species);
 }
 
+// data histogram describes the species as well as the bins
+// bins is an array describing the data points and the x0,x1 values
+// for each flower create a group element
 dataHistogram.forEach(({ species, bins }, index) => {
-  // add a group for each series of bins
   const groupBins = groupHistogram
     .append('g')
-    .attr('class', 'bins')
+    .attr('class', `bins-${species}`)
+    // translate the group to have the histograms on different levels
     .attr('transform', `translate(0 ${maxHeight * (index + 1)})`);
 
+  // call the function including in the group element the necessary elements
   includeBins(species, bins, groupBins);
 });
 
 
 // RIDGELINE DENSITY
+// the visualization mirrors the ridgeline with histogram, but using the area function instead of rectangle elements
 const svgDensity = viz
   .append('svg')
   .attr('class', 'density')
@@ -182,8 +199,6 @@ const groupDensity = svgDensity
   .append('g')
   .attr('transform', `translate(${margin.left} ${margin.top})`);
 
-
-// add the x axis
 groupDensity
   .append('g')
   .attr('class', 'axis x-axis')
@@ -197,10 +212,13 @@ const area = d3
   .y0(0)
   .curve(d3.curveBasis);
 
+// specify a different vertical scale given the different range
 const yScaleDensity = d3
   .scaleLinear()
   .range([0, maxHeight]);
 
+// create an array describing the species and an array with the density values
+// density computed as the bins' lengths divided by the sum of all bins' lengths
 const dataDensity = dataHistogram.map(({ species, bins }) => {
   const total = bins.reduce((acc, curr) => acc + curr.length, 0);
   const density = bins.map(({ length }) => length / total);
@@ -209,20 +227,27 @@ const dataDensity = dataHistogram.map(({ species, bins }) => {
     density,
   };
 });
+
+// function called to draw the area in each group element
 function includeCurves(species, density, groupCurves) {
+  // update the domain to consider the maximum value for the density
   yScaleDensity
     .domain([0, d3.max(density)]);
 
+  // update the area function to use the now updated scale
   area
     .y1(d => -yScaleDensity(d));
 
+  // specify the matching gradient for the fill of the path and of the text
   groupCurves
     .attr('fill', `url(#gradient-${species})`);
 
+  // include the area
   groupCurves
     .append('path')
     .attr('d', area(density));
 
+  // rectangle for the ground level
   groupCurves
     .append('rect')
     .attr('x', 0)
@@ -230,6 +255,7 @@ function includeCurves(species, density, groupCurves) {
     .attr('width', width)
     .attr('height', 1);
 
+  // text label
   groupCurves
     .append('text')
     .attr('x', -5)
@@ -239,19 +265,20 @@ function includeCurves(species, density, groupCurves) {
     .text(species);
 }
 
+// for each flower extract the species and array of densities
 dataDensity.forEach(({ species, density }, index) => {
-  // add a group for each series of bins
   const groupCurves = groupDensity
     .append('g')
     .attr('class', 'bins')
+    // translate each successive group vertically
     .attr('transform', `translate(0 ${maxHeight * (index + 1)})`);
 
+  // call the
   includeCurves(species, density, groupCurves);
 });
 
 
-// style the x axes of both visualizations to include vertical grid lines
-// increase the size of the labels and add a label beneath the values
+// style the x axes of both visualizations to remove the axis, the ticks and leave the ticks' labels only
 d3
   .selectAll('.x-axis')
   .selectAll('path')
@@ -260,15 +287,14 @@ d3
 d3
   .selectAll('.x-axis')
   .selectAll('line')
-  .attr('y0', 0)
-  .attr('y1', -height)
-  .attr('opacity', 0.1);
+  .remove();
 
 d3
   .selectAll('.x-axis')
   .selectAll('text')
-  .attr('font-size', '0.9rem');
+  .attr('font-size', '1rem');
 
+// include a label describing the ticks' labels unit of measure
 d3
   .selectAll('.x-axis')
   .append('text')
