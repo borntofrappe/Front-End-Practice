@@ -1,0 +1,17 @@
+.App {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #1e1f26;
+}
+
+button {
+  padding: 0.3rem;
+  border: 0.2rem solid #444857;
+  border-radius: 5px;
+  background: none;
+}
+button svg {
+  display: block;
+}
