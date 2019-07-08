@@ -602,6 +602,77 @@ function displayStage(stage) {
     .attr('fill', '#f00')
     .attr('font-size', '0.7rem')
     .text(({ category }) => category);
+
+    // RECTANGLES
+  // identify the segment described by the sprint property, if existing
+  const { sprint } = stage;
+
+  // below the SVG detailing the line segment, include another vector graphic for the rectangles stacked horizontally
+  const rectGroup = container
+    .append('svg')
+    .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`)
+    .append('g')
+    // avoid vertical margin to have the visualization cover a smaller height
+    .attr('transform', `translate(${margin.left} 0)`);
+
+  // add a group for each item of the schedule array
+  const rectanglesGroup = rectGroup
+    .selectAll('g')
+    .data(schedule)
+    .enter()
+    .append('g')
+    // translate the group horizontally according to the starting value
+    .attr('transform', ({ starting: start }) => `translate(${xScale(new Date(`${date} ${start}`))} 0)`);
+
+  // add a colored rectangle spanning the width given by the start and end values
+  rectanglesGroup
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('width', ({ starting: start, ending: end }) => xScale(new Date(`${date} ${end}`)) - xScale(new Date(`${date} ${start}`)))
+    .attr('height', height / 2)
+    .attr('fill', 'hsl(44, 100%, 60%)')
+    // opacity according to whether or not the segment is named
+    .attr('opacity', ({ name }) => (name ? 1 : 0.25));
+
+
+  // if a sprint exist include a triangle and label for the matching segment
+  if (sprint) {
+    const { starting: start, ending: end } = schedule.find(({ name }) => name === sprint);
+    const startingStep = new Date(`${date} ${start}`);
+    const endingStep = new Date(`${date} ${end}`);
+    // horizontally centered in the segment
+    const time = new Date((startingStep.getTime() + endingStep.getTime()) / 2);
+
+    const sprintGroup = rectGroup
+      .append('g')
+      .attr('transform', `translate(${xScale(time)} ${height / 2})`);
+
+    sprintGroup
+      .append('path')
+      .attr('d', 'M -7.5 0 l 7.5 -10 l 7.5 10 z')
+      .attr('fill', 'hsl(123, 44%, 81%)')
+      .attr('stroke', '#ffffff')
+      .attr('stroke-width', 2);
+
+    sprintGroup
+      .append('text')
+      .attr('x', 0)
+      .attr('y', 10)
+      .attr('font-size', '0.65rem')
+      .attr('text-anchor', 'middle')
+      .attr('font-style', 'italic')
+      .text('Intermediate Sprint');
+  }
+
+  // include a line to separate the visualizations
+  rectGroup
+    .append('path')
+    .attr('d', `M 0 ${height} h ${width}`)
+    .attr('fill', 'none')
+    .attr('stroke', 'currentColor')
+    .attr('stroke-width', '1')
+    .attr('opacity', 0.2);
 }
 
 // for each item of the array call the displayStage function passing the item as argument
