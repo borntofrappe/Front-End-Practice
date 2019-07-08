@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  /* specify an off-white background to highlight the central column */
+  background: hsl(0, 0%, 93%);
+}
+/* display each successive visualization in a column capped in terms of width */
+.viz {
+  max-width: 550px;
+  width: 90vw;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 1.5rem 0.5rem;
+  background: hsl(0, 0%, 100%);
+}
+/* each visualization is described in a div.stage */
+.stage {
+  margin: 1rem;
+}
+.stage h2 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: hsl(240, 4%, 49%);
+  font-weight: 300;
+}
+.stage h3 {
+  font-size: 0.8rem;
+  color: hsl(240, 1%, 33%);
+  margin: 0.2rem 0 0;
+}
+/* with a pseudo element include a colored background in the bottom half of the strong elements */
+.stage h3 strong {
+  text-transform: uppercase;
+  position: relative;
+  z-index: 5;
+}
+.stage h3 strong:before {
+  z-index: -5;
+  content: "";
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  height: 40%;
+  width: 100%;
+  background: hsl(123, 44%, 81%);
+}
+.stage h3 span {
+  font-weight: 300;
+  font-size: 0.65rem;
+  color: hsl(240, 4%, 49%);
+}
