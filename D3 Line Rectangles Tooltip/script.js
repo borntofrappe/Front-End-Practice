@@ -406,6 +406,14 @@ const data = [
 const viz = d3
   .select('.viz');
 
+// include a div#tooltip, used for all visualizations to highlight the selected circle/rectangle elements
+const tooltip = viz
+  .append('div')
+  .attr('id', 'tooltip')
+  .style('opacity', 0)
+  .style('position', 'absolute')
+  .style('pointer-events', 'none');
+
 // specify global values, shared by every visualization
 const margin = {
   top: 20,
@@ -581,7 +589,73 @@ function displayStage(stage) {
     .attr('class', 'climb')
     // horizontally position the group according to the date instance
     // vertically position the group according to the category
-    .attr('transform', d => `translate(${xScale(d.time)} ${yScale(d.category)})`);
+    .attr('transform', d => `translate(${xScale(d.time)} ${yScale(d.category)})`)
+    // on hover show the tooltip and highlight the selected circle
+    .on('mouseenter', function ({
+      name, category, start, end,
+    }) {
+      // highlight the nested circle and text element
+      d3
+        .select(this)
+        .select('circle')
+        .transition()
+        .attr('r', 5);
+      d3
+        .select(this)
+        .select('text')
+        .transition()
+        .attr('font-size', '1rem');
+
+      // show the tooltip with information connected to the stage
+      const tooltipContent = tooltip
+        .append('div');
+
+      tooltipContent
+        .append('h3')
+        .text(name);
+
+      tooltipContent
+        .append('h4')
+        .text(`Climb of category ${category}`);
+
+      tooltipContent
+        .append('p')
+        .text(`Expected between ${start} and ${end}`);
+
+      // position the tooltip horizontally centered on the text
+      // vertically have the tooltip above the same element
+      const { pageYOffset } = window;
+      const text = d3.select(this).select('text');
+      const {
+        x: textX, y: textY, width: textWidth, height: textHeight,
+      } = text._groups[0][0].getBoundingClientRect();
+      const { width: tooltipWidth, height: tooltipHeight } = document.querySelector('#tooltip').getBoundingClientRect();
+
+      tooltip
+        .style('opacity', 1)
+        .style('left', `${textX + textWidth / 2 - tooltipWidth / 2}px`)
+        .style('top', `${pageYOffset + textY - textHeight - tooltipHeight}px`);
+    })
+    .on('mouseout', function (d) {
+      // reset the radius and font-size
+      d3
+        .select(this)
+        .select('circle')
+        .transition()
+        .attr('r', 4);
+
+      d3
+        .select(this)
+        .select('text')
+        .transition()
+        .attr('font-size', '0.7rem');
+
+      // remove the tooltip
+      tooltip
+        .style('opacity', 0)
+        .select('div')
+        .remove();
+    });
 
   // for each group include a small red circle and a red label describing the category
   climbsGroup
@@ -622,7 +696,79 @@ function displayStage(stage) {
     .enter()
     .append('g')
     // translate the group horizontally according to the starting value
-    .attr('transform', ({ starting: start }) => `translate(${xScale(new Date(`${date} ${start}`))} 0)`);
+    .attr('transform', ({ starting: start }) => `translate(${xScale(new Date(`${date} ${start}`))} 0)`)
+    // on hover increase the opacity of the .overlay rectangle and show the tooltip
+    .on('mouseenter', function ({
+      name, category, starting: start, ending: end,
+    }) {
+      d3
+        .select(this)
+        .select('rect.overlay')
+        .attr('opacity', 0.1);
+
+      // show the tooltip with information connected to the stage
+      // ! show a different message according to whether a name / category exist or whether the segment matches the sprint's segment
+
+      const tooltipContent = tooltip
+        .append('div');
+      if (name) {
+        tooltipContent
+          .append('h3')
+          .text(name);
+
+        if (category) {
+          tooltipContent
+            .append('h4')
+            .text(`Climb of category ${category}`);
+        }
+        if (name === sprint) {
+          tooltipContent
+            .append('h4')
+            .text('Intermediate Sprint');
+        }
+
+        tooltipContent
+          .append('p')
+          .text(`Expected between ${start} and ${end}`);
+      } else {
+        tooltipContent
+          .append('h3')
+          .text('No predictable event');
+        tooltipContent
+          .append('p')
+          .text(`Siesta possible until about ${end}`);
+      }
+
+      // position the tooltip horizontally centered on the rectangle element
+      // vertically above the rectangle itself
+      const { pageYOffset } = window;
+      const rect = d3
+        .select(this)
+        .select('rect');
+      const {
+        x: rectX, y: rectY, width: rectWidth, height: rectHeight,
+      } = rect._groups[0][0].getBoundingClientRect();
+
+      const { width: tooltipWidth, height: tooltipHeight } = document.querySelector('#tooltip').getBoundingClientRect();
+
+      tooltip
+        .style('opacity', 1)
+        .style('left', `${rectX + rectWidth / 2 - tooltipWidth / 2}px`)
+        .style('top', `${pageYOffset + rectY - rectHeight - tooltipHeight}px`);
+    })
+    .on('mouseout', function (d) {
+      // reset the opacity of the overlay
+      d3
+        .select(this)
+        .select('rect.overlay')
+        .attr('opacity', 0);
+
+      // hide the tooltip and remove its elements
+      tooltip
+        .style('opacity', 0)
+        .select('div')
+        .remove();
+    });
 
   // add a colored rectangle spanning the width given by the start and end values
   rectanglesGroup
@@ -635,6 +781,16 @@ function displayStage(stage) {
     // opacity according to whether or not the segment is named
     .attr('opacity', ({ name }) => (name ? 1 : 0.25));
 
+  // include an overlay with a darker variant of the fill color
+  rectanglesGroup
+    .append('rect')
+    .attr('class', 'overlay')
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('width', ({ starting: start, ending: end }) => xScale(new Date(`${date} ${end}`)) - xScale(new Date(`${date} ${start}`)))
+    .attr('height', height / 2)
+    .attr('fill', 'hsl(40, 100%, 10%)')
+    .attr('opacity', 0);
 
   // if a sprint exist include a triangle and label for the matching segment
   if (sprint) {
