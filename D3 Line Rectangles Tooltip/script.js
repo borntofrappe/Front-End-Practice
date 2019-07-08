@@ -455,10 +455,11 @@ function displayStage(stage) {
     .text(`Stage ${number} - ${kilometers} Km`);
 
   // below the header specify the starting/ending location as well as the date
-  const { date, from, to } = stage;
+  const { date, from, to, ending } = stage;
   // ! for the date consider an instance of the date object as well as an instance of the current date
   // this last one to include a label if the stage has already been completed
-  const stageDate = new Date(date);
+  const stageDate = new Date(`${date} ${ending}`);
+  console.log(stageDate)
   const currentDate = new Date();
 
   const section = container
@@ -480,7 +481,7 @@ function displayStage(stage) {
   /* ! the date object can specify the hour in the following format
     July 6 2019 14:32
   */
-  const { starting, ending } = stage;
+  const { starting } = stage;
   const startingDate = new Date(`${date} ${starting}`);
   const endingDate = new Date(`${date} ${ending}`);
 
@@ -684,9 +685,9 @@ function displayStage(stage) {
   // below the SVG detailing the line segment, include another vector graphic for the rectangles stacked horizontally
   const rectGroup = container
     .append('svg')
-    .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`)
+    // ! avoid vertical margin to have the visualization cover a smaller height
+    .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height}`)
     .append('g')
-    // avoid vertical margin to have the visualization cover a smaller height
     .attr('transform', `translate(${margin.left} 0)`);
 
   // add a group for each item of the schedule array
@@ -802,6 +803,9 @@ function displayStage(stage) {
 
     const sprintGroup = rectGroup
       .append('g')
+      // avoid accidental overlaps between the triangle and the rectangle underneath
+      // otherwise the tooltip would disappear upon hovering on the triangle
+      .attr('pointer-events', 'none')
       .attr('transform', `translate(${xScale(time)} ${height / 2})`);
 
     sprintGroup

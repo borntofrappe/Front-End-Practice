@@ -17,12 +17,15 @@ body {
   width: 90vw;
   margin: 0 auto;
   min-height: 100vh;
-  padding: 1.5rem 0.5rem;
+  padding: 1rem;
   background: hsl(0, 0%, 100%);
 }
 /* each visualization is described in a div.stage */
 .stage {
-  margin: 1rem;
+  margin: 0.5rem 1rem;
+}
+.stage + .stage {
+  margin-top: 2rem;
 }
 .stage h2 {
   text-transform: uppercase;
