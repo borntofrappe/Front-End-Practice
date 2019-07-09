@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:500&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  /* display the svg and button in a horizontally centered column */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* give the svg a default value for the fill property (through currentColor) */
+svg {
+  display: block;
+  color: hsl(240, 100%, 15%);
+  width: 90vmin;
+  height: auto;
+}
+/* separate the button from the svg, to make space for the pseudo element(s) */
+button {
+  margin-top: 2rem;
+  background: none;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  position: relative;
+  cursor: grab;
+}
+/* remove events from the svg to avoid overlaps with the parent button */
+button svg {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+/* with pseudo elements include a label describing the action available on the button
+with one element describe the action, with the other fabricate an arrow pointing downwards toward the button
+*/
+/* both pseudo elements are absolutely positioned, horizontally centered on the button and share the same background */
+button::after,
+button::before {
+  position: absolute;
+  transform: translate(-50%, 0%);
+  left: 50%;
+  background: hsla(161, 100%, 42%, 0.2);
+  pointer-events: none;
+  transition-property: opacity, visibility;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-out;
+}
+/* the ::after pseudo element describes the label */
+button:after {
+  content: "Press and hold";
+  text-transform: uppercase;
+  bottom: 100%;
+  white-space: nowrap;
+  font-weight: bold;
+  padding: 0.75rem 0.5rem;
+  color: hsl(161, 100%, 42%);
+}
+/* the ::before pseudo element describes the arrow, positioned below the label */
+button:before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  width: 18px;
+  height: 10px;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+/* when the button is active remove the outline to avoid showing the blue outline around the hidden pseudo elements */
+button:active {
+  outline: none;
+}
+/* when active hide the pseudo elements */
+button:active:before,
+button:active:after {
+  opacity: 0;
+  visibility: hidden;
+}
+/* when active transition the last circle to the accent color and its full size */
+/* include a transition for the last circle element in the button */
+button svg circle:last-of-type {
+  transition-property: color, transform;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-out;
+}
+button:active svg circle:last-of-type {
+  color: hsl(161, 100%, 42%);
+  transform: scale(1);
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Low Frequency Oscillator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg describing the environment and the robot -->
+    <svg viewBox="0 0 200 170" width="600" height="510">
+        <!-- at the bottom of the svg include a line and a label -->
+        <g
+            opacity="0.3"
+            transform="translate(0 160)">
+            <text
+                dominant-baseline="middle"
+                font-size="0.3rem"
+                x="5"
+                y="0"
+                style="text-transform: uppercase; letter-spacing: 0.02rem;">
+                Time
+            </text>
+            <line
+                x1="20"
+                x2="200"
+                y1="0"
+                y2="0"
+                stroke-width="0.25"
+                stroke="currentColor">
+            </line>
+        </g>
+
+        <!-- sitting on top of the line draw the robot with circle and rect elements -->
+        <g transform="translate(170 0)">
+            <g id="robot" transform="translate(0 0)"> <!-- translate this group toward the circle (up to -36.5, considering the width of the arm) -->
+                <!-- position the circles fabricating the wheels on top of the existing line -->
+                <g transform="translate(0 158)">
+                    <circle
+                        cx="4.5"
+                        cy="0"
+                        r="2"
+                        fill="currentColor">
+                    </circle>
+                    <circle
+                        cx="-4.5"
+                        cy="0"
+                        r="2"
+                        fill="currentColor">
+                    </circle>
+                </g>
+                <!-- position the rectangle for the body of the robot above the wheels -->
+                <g transform="translate(0 147.5)">
+                    <rect
+                        x="-8"
+                        y="0"
+                        width="16"
+                        height="10"
+                        fill="#fff"
+                        stroke="currentColor"
+                        stroke-width="1.5">
+                    </rect>
+                    <text
+                        x="0"
+                        y="5"
+                        text-anchor="middle"
+                        dominant-baseline="middle"
+                        font-size="0.3rem"
+                        font-weight="bold"
+                        style="text-transform: uppercase; letter-spacing: 0.04rem;">
+                        LFO
+                    </text>
+                </g>
+                <!-- include the support propping up the arm from the center of the svg down to the rectangle describing the body of the robot -->
+                <g transform="translate(0 85)">
+                    <!-- include a group to modify the transform-origin property and have the rectangles scaled from the bottom -->
+                    <g transform="translate(0 62)"> <!-- 62 being the height of the rectangles -->
+                        <g id="support" transform="scale(1 1)"> <!-- scale this group -->
+                            <g transform="translate(0 -62)">
+                                <rect
+                                    x="-0.8"
+                                    y="0"
+                                    width="1.6"
+                                    height="18"
+                                    fill="currentColor">
+                                </rect>
+                                <rect
+                                    x="-1.1"
+                                    y="18"
+                                    width="2.2"
+                                    height="20"
+                                    fill="currentColor">
+                                </rect>
+                                <rect
+                                    x="-1.4"
+                                    y="38"
+                                    width="2.8"
+                                    height="24"
+                                    fill="currentColor">
+                                </rect>
+                            </g>
+                        </g>
+                    </g>
+                    <!-- from the center of the svg include the arm, with rectangle and circle elements -->
+                    <g id="arm"> <!-- translate this group -->
+                        <rect
+                            x="-30"
+                            y="-0.75"
+                            width="30"
+                            height="1.5"
+                            fill="currentColor">
+                        </rect>
+                        <!-- include a polyline element at the end of the circle, for the section supposedly moving the centered circle up and down -->
+                        <g transform="translate(-30.75 0)">
+                            <polyline
+                                points="-4.75 -3 0 -3 0 3 -4.75 3"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5">
+                            </polyline>
+                        </g>
+                        <circle
+                            cx="0"
+                            cy="0"
+                            r="5"
+                            fill="#fff"
+                            stroke="currentColor"
+                            stroke-width="1.5">
+                        </circle>
+                        <circle
+                            cx="0"
+                            cy="0"
+                            r="1"
+                            fill="currentColor">
+                        </circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+
+        <!-- beside the ground level and robot, include a circle and a polyline in the middle of the SVG
+        these elements describe the pitch by translating the circle and drawing a polyline element
+        -->
+
+        <g id="pitch" transform="translate(100 85)">
+            <!-- behind the circle include a polyline element without points
+            these are created in the script when the button is pressed
+            -->
+            <polyline
+                id="line"
+                points="0 0"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5">
+            </polyline>
+
+            <g id="circle"> <!-- group the circle and its label to translate the two elements together -->
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="2"
+                    fill="currentColor">
+                </circle>
+                <text
+                    text-anchor="middle"
+                    font-size="0.3rem"
+                    x="0"
+                    y="-10"
+                    style="text-transform: uppercase; letter-spacing: 0.02rem;">
+                    Pitch
+                </text>
+            </g>
+        </g>
+    </svg>
+
+    <!-- button allowing to trigger the animation
+    inclued an svg describing two overlapping circles
+    scale down the second circle to have it scaled back to its default size when the button is active
+    -->
+    <button aria-labelledby="#press-and-hold">
+        <span id="press-and-hold" hidden>Press and hold</span>
+        <svg viewBox="0 0 10 10" width="30" height="30">
+            <g transform="translate(5 5)">
+                <circle
+                    cx="0"
+                    cy="0"
+                    fill="none"
+                    r="4.5"
+                    stroke-width="0.8"
+                    stroke="currentColor"> <!-- 0.8 to have the subsequent circle overlap and hide the element completely -->
+                </circle>
+                <circle
+                    transform="scale(0.2)"
+                    cx="0"
+                    cy="0"
+                    fill="currentColor"
+                    r="5">
+                </circle>
+            </g>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
