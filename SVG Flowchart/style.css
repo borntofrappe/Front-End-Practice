@@ -18,20 +18,21 @@ svg {
   box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
   background: hsl(0, 100%, 100%);
 }
-/* custom properties used to style the different shapes */
+/* specify the custom properties used to style the different shapes */
 svg {
   --pink: hsl(351, 100%, 87%);
   --yellow: hsl(60, 100%, 77%);
   --green: hsl(124, 76%, 74%);
   color: hsl(351, 100%, 10%);
 }
-/* default properties for the text elements */
+/* style the text elements to be centered around the given x and y coordinates */
 svg text {
   text-anchor: middle;
   dominant-baseline: middle;
   font-size: 6px;
   font-family: "Poppins", sans-serif;
 }
+/* remove the default color attributed to the arrows and text wrapped in the anchor links elements  */
 svg a {
   color: inherit;
 }

@@ -5,9 +5,7 @@ const svgLinks = document.querySelectorAll('svg a');
 // function updating the viewbox based on the input x and y value
 // ! given the regex x and y values are strings, be wary of that
 function updateViewBox(x, y) {
-  // update the viewBox to match
   const viewBox = `${x} ${y} 100 100`;
-  // svg.setAttribute('viewBox', viewBox);
 
   // animate the viewBox to its new values
   anime({
