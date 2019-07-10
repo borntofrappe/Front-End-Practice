@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* center the svg in the viewport */
+body {
+  min-height: 100vh;
+  display: flex;
+}
+svg {
+  margin: auto;
+  display: block;
+  width: 50vmin;
+  height: auto;
+  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
+  background: hsl(0, 100%, 100%);
+}
+/* custom properties used to style the different shapes */
+svg {
+  --pink: hsl(351, 100%, 87%);
+  --yellow: hsl(60, 100%, 77%);
+  --green: hsl(124, 76%, 74%);
+  color: hsl(351, 100%, 10%);
+}
+/* default properties for the text elements */
+svg text {
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-size: 6px;
+  font-family: "Poppins", sans-serif;
+}
+svg a {
+  color: inherit;
+}
+svg a text {
+  font-size: 5px;
+}

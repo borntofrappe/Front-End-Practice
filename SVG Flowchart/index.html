@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Flowchart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg fabricating the flowchart
+    the idea is to include each step of the flowchart in its own quadrant
+    and then use anchor link elements to redirect to different sections of the svg by altering the first two values of the viewBox attribute
+    -->
+    <svg
+        viewBox="0 0 100 100"
+        width="100"
+        height="100">
+        <!-- include each shape + text in its own group element, encompassing a square 100 wide and tall -->
+        <g
+            id="lamp-broken">
+            <rect
+                x="8"
+                y="42"
+                width="84"
+                height="16"
+                rx="2"
+                fill="var(--pink)"
+                stroke="currentColor"
+                stroke-width="0.5">
+            </rect>
+            <text
+                x="50"
+                y="50"
+                fill="currentColor">
+                Lamp doesn't work
+            </text>
+            <g transform="translate(50 78)">
+                <!-- wrap each arrow pointing toward the other sections of the flowchart in an anchor link element
+                in the anchor link elements describe the coordinates to highlight the connected quadrant
+                ! in the anchor link specify the id of the destination region to update the focus of the chart
+                -->
+                <a
+                    href="#lamp-plugged"
+                    data-viewbox="0 100">
+                    <!-- in terms of svg elements include an arrow through a path element and a transparent rectangle to increase the hit area -->
+                    <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="0.5"
+                        d="M 0 0 v 12 h 3 l -3 3 l -3 -3 h 3">
+                    </path>
+                    <rect
+                        x="-3.25"
+                        y="-0.25"
+                        width="6.5"
+                        height="15.5"
+                        opacity="0">
+                    </rect>
+                </a>
+            </g>
+
+        </g>
+        <g
+            id="lamp-plug"
+            transform="translate(0 100)">
+            <path
+                d="M 50 31 l 35 20 l -35 20 l -35 -20 z"
+                fill="var(--yellow)"
+                stroke="currentColor"
+                stroke-width="0.5">
+            </path>
+            <text>
+                <tspan
+                    x="50"
+                    y="45">
+                    Lamp
+                </tspan>
+                <tspan
+                    x="50"
+                    y="55">
+                    plugged in?
+                </tspan>
+            </text>
+            <!-- for the quadrants highlighting a fork include two anchor links, both with text elements highlighting the selection -->
+            <!-- ! first include the option to go back -->
+            <g transform="translate(50 5)">
+                <a
+                    href="#lamp-broken"
+                    data-viewbox="0 0">
+                    <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="0.5"
+                        d="M 0 15 v -12 h 3 l -3 -3 l -3 3 h 3">
+                    </path>
+                    <rect
+                        x="-3.25"
+                        y="0.25"
+                        width="6.5"
+                        height="15.5"
+                        opacity="0">
+                    </rect>
+                </a>
+            </g>
+            <g transform="translate(87 51)">
+                <a
+                    href="#lamp-plug-no"
+                    data-viewbox="100 100">
+                    <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="0.5"
+                        d="M 0 0 h 6 v -3 l 3 3 l -3 3 v-3">
+                    </path>
+                    <rect
+                        x="-0.25"
+                        y="-3.25"
+                        width="9.5"
+                        height="6.5"
+                        opacity="0">
+                    </rect>
+                    <text
+                        x="4"
+                        y="-7">
+                        No
+                    </text>
+                </a>
+            </g>
+            <g transform="translate(50 78)">
+                <a
+                    href="#lamp-plug-yes"
+                    data-viewbox="0 200">
+                    <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="0.5"
+                        d="M 0 0 v 12 h 3 l -3 3 l -3 -3 h 3">
+                    </path>
+                    <rect
+                        x="-3.25"
+                        y="-0.25"
+                        width="6.5"
+                        height="15.5"
+                        opacity="0">
+                    </rect>
+                    <text
+                        x="7"
+                        y="7">
+                        Yes
+                    </text>
+                </a>
+            </g>
+        </g>
+
+        <g
+            id="lamp-plug-no"
+            transform="translate(100 100)">
+            <rect
+                x="22"
+                y="43"
+                width="56"
+                height="14"
+                rx="2"
+                fill="var(--green)"
+                stroke="currentColor"
+                stroke-width="0.5">
+            </rect>
+            <text
+                x="50"
+                y="50">
+                Plug in lamp
+            </text>
+            <g transform="translate(18 50)">
+                <a
+                    href="#lamp-plug"
+                    data-viewbox="0 100">
+                    <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="0.5"
+                        d="M 0 0 h -10 v 3 l -3 -3 l 3 -3 v 3">
+                    </path>
+                    <rect
+                        x="-13.25"
+                        y="-3.25"
+                        width="13.5"
+                        height="6.5"
+                        opacity="0">
+                    </rect>
+                </a>
+            </g>
+        </g>
+
+        <g
+            id="lamp-plug-yes"
+            transform="translate(0 200)">
+            <path
+                d="M 50 31 l 35 20 l -35 20 l -35 -20 z"
+                fill="var(--yellow)"
+                stroke="currentColor"
+                stroke-width="0.5">
+            </path>
+            <text>
+                <tspan
+                    x="50"
+                    y="45">
+                    Bulb
+                </tspan>
+                <tspan
+                    x="50"
+                    y="55">
+                    burned out?
+                </tspan>
+            </text>
+            <g transform="translate(50 5)">
+                    <a
+                        href="#lamp-plug"
+                        data-viewbox="0 100">
+                        <path
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="0.5"
+                            d="M 0 15 v -12 h 3 l -3 -3 l -3 3 h 3">
+                        </path>
+                        <rect
+                            x="-3.25"
+                            y="-0.25"
+                            width="6.5"
+                            height="15.5"
+                            opacity="0">
+                        </rect>
+                    </a>
+                </g>
+            <g transform="translate(87 51)">
+                <a
+                    href="#lamp-bulb-yes"
+                    data-viewbox="100 200">
+                    <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="0.5"
+                        d="M 0 0 h 6 v -3 l 3 3 l -3 3 v-3">
+                    </path>
+                    <rect
+                        x="-0.25"
+                        y="-3.5"
+                        width="9.5"
+                        height="6.5"
+                        opacity="0">
+                    </rect>
+                    <text
+                        x="4"
+                        y="-7">
+                        Yes
+                    </text>
+                </a>
+            </g>
+            <g transform="translate(50 78)">
+                <a
+                    href="#lamp-bulb-no"
+                    data-viewbox="0 300">
+                    <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="0.5"
+                        d="M 0 0 v 12 h 3 l -3 3 l -3 -3 h 3">
+                    </path>
+                    <rect
+                        x="-3.25"
+                        y="-0.25"
+                        width="6.5"
+                        height="15.5"
+                        opacity="0">
+                    </rect>
+                    <text
+                        x="7"
+                        y="7">
+                        No
+                    </text>
+                </a>
+            </g>
+        </g>
+
+        <g
+            id="lamp-bulb-yes"
+            transform="translate(100 200)">
+            <rect
+                x="22"
+                y="43"
+                width="56"
+                height="14"
+                rx="2"
+                fill="var(--green)"
+                stroke="currentColor"
+                stroke-width="0.5">
+            </rect>
+            <text
+                x="50"
+                y="50">
+                Replace bulb
+            </text>
+            <g transform="translate(18 50)">
+                <a
+                    href="#lamp-plug-yes"
+                    data-viewbox="0 200">
+                    <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="0.5"
+                        d="M 0 0 h -10 v 3 l -3 -3 l 3 -3 v 3">
+                    </path>
+                    <rect
+                        x="-13.25"
+                        y="-3.25"
+                        width="13.5"
+                        height="6.5"
+                        opacity="0">
+                    </rect>
+                </a>
+            </g>
+        </g>
+
+        <g
+            id="lamp-bulb-no"
+            transform="translate(0 300)">
+            <rect
+                x="22"
+                y="43"
+                width="56"
+                height="14"
+                rx="2"
+                fill="var(--green)"
+                stroke="currentColor"
+                stroke-width="0.5">
+            </rect>
+            <text
+                x="50"
+                y="50">
+                Repair lamp
+            </text>
+
+            <g transform="translate(50 5)">
+                <a
+                    href="#lamp-plug-yes"
+                    data-viewbox="0 200">
+                    <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="0.5"
+                        d="M 0 15 v -12 h 3 l -3 -3 l -3 3 h 3">
+                    </path>
+                    <rect
+                        x="-3.25"
+                        y="-0.25"
+                        width="6.5"
+                        height="15.5"
+                        opacity="0">
+                    </rect>
+                </a>
+            </g>
+        </g>
+    </svg>
+
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
