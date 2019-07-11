@@ -1,0 +1,28 @@
+<!-- the viewBox is 79x79 due to
+    - the size of the graphic, 65x75
+    - the stroke width, 4x4
+-->
+<svg xmlns="http://www.w3.org/2000/svg" id="bell" viewBox="0 0 69 79" width="69" height="79">
+    <g
+        stroke="currentColor"
+        stroke-width="4">
+        <g transform="translate(2 2)">
+            <g transform="translate(32.5 0)">
+                <circle
+                    cx="0"
+                    cy="8"
+                    r="8">
+                </circle>
+                <circle
+                    cx="0"
+                    cy="63"
+                    r="12">
+                </circle>
+                <path
+                    stroke-linejoin="round"
+                    d="M 0 8 a 25 25 0 0 1 25 25 v 17 l 5 6 q 3 7 -6 7 h -48 q -9 0 -6 -7 l 5 -6 v -17 a 25 25 0 0 1 25 -25">
+                </path>
+            </g>
+        </g>
+    </g>
+</svg>
