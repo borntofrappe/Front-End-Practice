@@ -1,5 +1,7 @@
+// utility function returning a random item from the input array
 const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
 
+// possible values for the message title and modifier
 const messageTitle = [
   'info',
   'success',
@@ -7,33 +9,42 @@ const messageTitle = [
   'danger',
 ];
 
-// p*20>lorem8
-const messageText = ['Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-  'Fugit sequi nobis, eum quae voluptas laborum nam.',
-  'Nesciunt ipsa magnam, ab quia praesentium cumque ex.',
-  'Ea, at. Pariatur repudiandae necessitatibus veritatis at ea!',
-  'Culpa eaque facere nemo sed quod praesentium voluptatum?',
-  'Amet minima earum quas corporis autem rerum sequi.',
-  'Ullam nobis deleniti porro aspernatur necessitatibus minima eum?',
-  'Deleniti totam nisi doloremque laudantium alias? Impedit, unde.',
-  'Labore molestias, sequi neque illo earum eius ipsam?',
-  'Eveniet, pariatur id tempora libero aut omnis ipsa.',
-  'Doloribus eaque reiciendis officiis perspiciatis recusandae doloremque laboriosam.',
-  'Asperiores doloremque iusto alias incidunt dignissimos dolor reprehenderit.',
-  'Natus reprehenderit aliquid tempore quae, itaque nihil fugiat.',
-  'Doloribus maxime recusandae deserunt error vitae sint assumenda.',
-  'Repellendus voluptate dolores ut modi rem veritatis! Praesentium?',
-  'Impedit labore facere delectus et ipsum voluptas reprehenderit?',
-  'Illum dolor vel, odit suscipit ratione architecto tempora?',
-  'Nisi voluptate cumque dicta pariatur commodi corrupti nostrum.',
-  'Saepe doloremque quaerat perspiciatis odio non dicta aspernatur.',
-  'Esse harum possimus, animi libero reprehenderit atque inventore?',
+// possible values for the body of the message
+// end result of the emmet shortcut p*10>lorem10
+const messageText = [
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quaerat.',
+  'Ab asperiores inventore tempora maiores, est et magni harum maxime?',
+  'Laboriosam, vel maxime. Doloremque saepe aut quis mollitia corporis illo?',
+  'Cum eum magnam facere commodi quae voluptate suscipit doloribus architecto?',
+  'Ipsa veniam tempora necessitatibus corporis voluptate nobis, ut quam magni.',
+  'Veritatis obcaecati non dolorum vero? Ipsam aperiam optio sint dicta.',
+  'Itaque quod amet a. Voluptate nostrum temporibus ipsa explicabo exercitationem.',
+  'Quasi veritatis inventore mollitia ipsum, aut voluptatibus suscipit a labore.',
+  'Iusto alias eius quae ducimus quibusdam veniam sint soluta nam!',
+  'Corrupti temporibus sequi laboriosam alias magni? Nam consectetur amet odit!'
 ];
 
+/* logic
+- create a message
+- show the message
+- allow to dismiss the message through the dismiss button
+
+once the message is dismissed the idea is to go through the loop one more time, with a different title and text values
+*/
 const notification = document.querySelector('.notification');
 
-// function showing the message by adding a class of .received to the .notification container
+// function called when the button to dismiss the message is clicked
+function dismissMessage() {
+  // remove the .received class from the .notification widget
+  notification.classList.remove('received');
+
+  // call the generateMessage function to show another message after a brief delay
+  generateMessage();
+}
+
+// function showing the message
 function showMessage() {
+  // add a class of .received to the .notification container
   notification.classList.add('received');
 
   // attach an event listener on the button to dismiss the message
@@ -42,7 +53,7 @@ function showMessage() {
   button.addEventListener('click', dismissMessage, { once: true });
 }
 
-// function generating a message with a random modifier and text
+// function generating a message with a random title and text
 function generateMessage() {
   // after an arbitrary and brief delay create the message and call the function to show the element
   const delay = Math.floor(Math.random() * 1000) + 1500;
@@ -64,14 +75,5 @@ function generateMessage() {
   }, delay);
 }
 
-// function called when the button to dismiss the message is clicked
-function dismissMessage() {
-  // remove the .received class from the .notification widget
-  notification.classList.remove('received');
-
-  // call the generateMessage function to show another message after a brief delay
-  generateMessage();
-}
-
-
+// immediately call the generateMessage function to kickstart the loop
 generateMessage();
