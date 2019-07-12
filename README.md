@@ -122,3 +122,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[CPC Fruit Ninja](https://codepen.io/borntofrappe/pen/KjWezV)|Using the physics library Matter.js create a basic game in which berries are thrown into the scope of the screen and destroyed following a click.|21st June 2019|
 |[Thank You Animation](https://codepen.io/borntofrappe/pen/wLxxvv)|Celebrate the acquisition of a considerable number of followers, on Codepen and on Twitter.|4th July 2019|
 |[Notification Bell](https://codepen.io/borntofrappe/pen/LKaqOM)|Design a notification widget where an SVG icon is animated while a message is introduced from the side.|11th July 2019|
+|[CPC Dad Jokes]()|Create a linear application where a joke is retrieved from the dad jokes API and told through the Web Speech API.|12th July 2019|
