@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:500&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Roboto Mono", monospace;
+  /* with repeating linear gradients build a grid as if the project is laid on graph paper */
+  background: repeating-linear-gradient(
+      to right,
+      hsl(0, 0%, 95%) 0px,
+      hsl(0, 0%, 95%) 1px,
+      transparent 0px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      hsl(0, 0%, 95%) 0px,
+      hsl(0, 0%, 95%) 1px,
+      transparent 0px,
+      transparent 20px
+    ),
+    hsl(0, 0%, 100%);
+  min-height: 100vh;
+}
+/* display the button and joke in a column, horizontally centered */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+/* style the button to have a solid border */
+.app__button {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid hsl(0, 0%, 5%);
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0 1px 2px -1px hsl(0, 0%, 5%);
+  font-family: inherit;
+  color: inherit;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  /* clip the corners of the border */
+  clip-path: polygon(
+    3px 3px,
+    3px 0%,
+    calc(100% - 3px) 0%,
+    calc(100% - 3px) 3px,
+    100% 3px,
+    100% calc(100% - 3px),
+    calc(100% - 3px) calc(100% - 3px),
+    calc(100% - 3px) 100%,
+    3px 100%,
+    3px calc(100% - 3px),
+    0% calc(100% - 3px),
+    0% 3px
+  );
+  /* animate the button into view */
+  animation: showButton 0.3s 0.2s ease-out both;
+}
+@keyframes showButton {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+/* when hovering or focusing the button flip the color and background values */
+.app__button:hover,
+.app__button:focus {
+  color: hsl(0, 0%, 100%);
+  background: hsl(0, 0%, 5%);
+}
+/* when pressing the button animate it downwards and out of sight */
+.app__button.active {
+  animation: hideButton 0.3s ease-out forwards;
+}
+@keyframes hideButton {
+  to {
+    transform: translateY(5px);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* display the joke in a column, positioning the reaction on the right end of the container */
+.app__joke {
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__joke h1 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 1rem 0 2rem;
+}
+.app__joke h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  align-self: flex-end;
+}
