@@ -1,6 +1,6 @@
 # CPC Dad Jokes
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/XLQoEX)
 
 ## Goal
 

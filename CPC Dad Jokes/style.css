@@ -92,6 +92,7 @@ body {
 }
 
 /* display the joke in a column, positioning the reaction on the right end of the container */
+
 .app__joke {
   max-width: 350px;
   display: flex;
@@ -103,8 +104,31 @@ body {
   font-size: 1.5rem;
   margin: 1rem 0 2rem;
 }
+.app__joke h1 span:first-of-type {
+  position: relative;
+}
 .app__joke h2 {
   font-size: 1rem;
   font-weight: 500;
   align-self: flex-end;
+  position: relative;
+  opacity: 0;
+}
+
+/* with pseudo elements include two lines connecting the joke and the reaction to imaginary voices coming from either side */
+.app__joke h1 span:first-of-type:after,
+.app__joke h2:after {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" width="100" height="50"><path fill="none" stroke="%23333333" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" d="M 1 1 q 49 48 98 48"></path></svg>');
+  position: absolute;
+  margin: 1rem;
+  top: 100%;
+}
+
+.app__joke h1 span:first-of-type:after {
+  right: 100%;
+  transform: scaleX(-1);
+}
+
+.app__joke h2:after {
+  left: 100%;
 }
