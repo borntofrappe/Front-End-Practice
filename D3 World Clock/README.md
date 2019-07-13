@@ -1,6 +1,6 @@
 # D3 World Clock
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/MMdbZo)
 
 ## Goal
 

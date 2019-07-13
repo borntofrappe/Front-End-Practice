@@ -1,10 +1,8 @@
 /* globals d3 */
 
 /* the idea is to include in the .viz container the following elements
-- a donut describing the hours of the day, using noon/6pm/midnight/6am instead of the cardinal points
-- the project of a world map, rotated to have the nations match the current time zone
-
-the map should rotate, while the outermost donut should remain fixed
+- a donut chart describing the hours of the day
+- the world's map, rotated to have Antartica shown in the middle
 */
 const viz = d3
   .select('.viz');
@@ -18,10 +16,10 @@ const svg = viz
   .append('svg')
   .attr('viewBox', `0 0 ${size + (margin * 2)} ${size + (margin * 2)}`);
 
-/* in a defs block, define linear gradients for the outermost donut
+/* in a defs block, define linear gradients
 - one to color the donut
-- one to color the text elements and the gaps between the donut (by including another donut behind the first one)
-the idea is to have a hard-stop change in color and have the top half represent the day, the bottom half the night
+- one to color the text elements
+the idea is to have a change in color in the middle of the visualization, to hihglight the day/night cycle
 */
 const defs = svg
   .append('defs');
@@ -64,7 +62,7 @@ gradientText
   .attr('stop-color', '#f8f5f1')
   .attr('offset', 1);
 
-
+// actual visualization
 const group = svg
   .append('g')
   .attr('transform', `translate(${margin} ${margin})`);
@@ -102,7 +100,6 @@ const hours = d3.range(24).map(hour => ({
   value: cardinal.map(({ point }) => point).includes(hour) ? 2 : 1,
 }));
 
-
 // arc function
 // specify a large inner radius to have a donut chart with a small outline
 const arc = d3
@@ -115,65 +112,59 @@ const arc = d3
 const pieBackground = d3
   .pie()
   .value(d => d.value)
+  .sort(null)
+
+  .startAngle(Math.PI - Math.PI / 14) // (24 + 4) / 2
+  .endAngle(Math.PI * 3 - Math.PI / 14);
+
+const pie = d3
+  .pie()
+  .value(d => d.value)
   // avoid sorting, otherwise the segments with a larger value would be positioned close together
   .sort(null)
+  .padAngle(0.008)
   // start the visualization from the bottom of the svg (0 representing midnight)
   // the default values for the start and end angle are 0 and Math.PI * 2, starting and ending at the top of the svg
   // add Math.PI to both, to have the donut start at the bottom
   // remove half the size of the larger segments to have them cenetered at the cardinal points
-  .startAngle(Math.PI - Math.PI / 14) // (24 + 4) / 2
+  .startAngle(Math.PI - Math.PI / 14) // (20 + 8) / 2
   .endAngle(Math.PI * 3 - Math.PI / 14);
 
-const pieForeground = d3
-  .pie()
-  .value(d => d.value)
-  .sort(null)
-  .padAngle(0.008)
-  .startAngle(Math.PI - Math.PI / 14) // (24 + 4) / 2
-  .endAngle(Math.PI * 3 - Math.PI / 14);
-
+// DONUT CHART
 // group centered in the svg
 // the idea is to add the slices from the center of the svg
 const center = group
   .append('g')
   .attr('transform', `translate(${size / 2} ${size / 2})`);
 
-// in a first group add path elements for the donut used as background
+// in group add path elements for the donut colored half day and half night
 center
   .append('g')
   .selectAll('path')
-  .data(pieBackground(hours))
-  .enter()
-  .append('path')
-  .attr('d', arc)
-  .attr('fill', 'url(#gradient-text)');
-
-// in another group add path elements for the donut colored half day and half night
-center
-  .append('g')
-  .selectAll('path')
-  .data(pieForeground(hours))
+  .data(pie(hours))
   .enter()
   .append('path')
   .attr('d', arc)
   .attr('fill', 'url(#gradient-donut)')
   .attr('data-hour', d => d.data.hour);
 
+// in another group include text labels centered on each arc, but show only the chosen 4 values
 // include 4 text labels for noon, 6pm, midnight and 6am
-
 center
   .append('g')
   .selectAll('text')
-  .data(pieForeground(hours))
+  .data(pie(hours))
   .enter()
   .append('text')
   .attr('text-anchor', 'middle')
   .attr('dominant-baseline', d => (d.data.hour === 0 || d.data.hour === 12 ? 'middle' : 'initial'))
   .attr('fill', 'url(#gradient-text)')
+  // show the label of the cardinal point
   .text((d) => {
     const cardinalIndex = cardinal.findIndex(({ point }) => point === d.data.hour);
     return cardinalIndex !== -1 ? cardinal[cardinalIndex].label : '';
   })
+  // position the label around the circle's perimeter
   .attr('x', (d) => {
     const [x] = arc.centroid(d);
     return x;
@@ -184,10 +175,12 @@ center
   })
   .attr('dy', d => (d.data.hour === 6 || d.data.hour === 18 ? -5 : 1));
 
+// in another group add text elements for the 6am/6pm discrepancy
+// position the appropriate label below the original text
 center
   .append('g')
   .selectAll('text')
-  .data(pieForeground(hours))
+  .data(pie(hours))
   .enter()
   .append('text')
   .attr('text-anchor', 'middle')
@@ -212,22 +205,49 @@ center
   })
   .attr('dy', 15);
 
-// inside the donut add the world map
-d3
-  .json('https://unpkg.com/world-atlas@1.1.4/world/110m.json')
-  .then((data) => {
-    const date = new Date();
-    const utcHours = date.getUTCHours(); // 0-23 range
-    const countries = topojson.feature(data, data.objects.countries);
-    const projection = d3.geoAzimuthalEquidistant().rotate([utcHours * 360 / 24 + 180, 90, 0]).scale(size / 7);
-    const geoPath = d3.geoPath().projection(projection);
-    group
-      .append('g')
-      .attr('transform', `translate(${-size / 2} -10)`)
-      .selectAll('path')
-      .data(countries.features)
-      .enter()
-      .append('path')
-      .attr('d', geoPath)
-      .attr('fill', (d, i) => `hsl(${20 * i}, 50%, 70%)`);
-  });
+// WORLD MAP
+const urlTsv = 'https://unpkg.com/world-atlas@1.1.4/world/110m.tsv';
+const urlTopojson = 'https://unpkg.com/world-atlas@1.1.4/world/110m.json';
+
+// reach for the tsv file, describing the countries ID and most importantly continent
+// reach for the json file, describing the topojson objects for the countries outline
+Promise.all([
+  d3.tsv(urlTsv),
+  d3.json(urlTopojson)
+])
+.then(([tsv, json]) => {
+  // create an array of objects in which the id of a country is used as property, while the country's continent as the matching value
+  const continents = tsv.reduce((acc, curr) => {
+    acc[curr.iso_n3] = curr.continent;
+    return acc;
+  }, {});
+
+  // create an array of unique continents
+  const continentsSet = new Set(Object.values(continents));
+  const continentsArray = [...continentsSet];
+
+  // retrieve an instance of the date object and its UTC hour
+  const date = new Date();
+  const utcHours = date.getUTCHours(); // 0-23 range
+
+  // create the geojson object necessary for a geoPath
+  const countries = topojson.feature(json, json.objects.countries);
+  // create a projection and rotate it as follows
+  // - enough degress to have the map indicate where is noon (+ 180 for the fact that midnight is already at the bottom)
+  // - 90 degrees to have Antartica centered on the screen
+  const projection = d3.geoAzimuthalEquidistant().rotate([utcHours * 360 / 24 + 180, 90, 0]).scale(size / 7);
+  const geoPath = d3.geoPath().projection(projection);
+
+  // include a path element for each country
+  group
+    .append('g')
+    .attr('transform', `translate(${-size / 2} -15)`)
+    .selectAll('path')
+    .data(countries.features)
+    .enter()
+    .append('path')
+    .attr('d', geoPath)
+    // use the position in the continentsArray array to determine a different hue for each continent
+    .attr('fill', (d, i) => `hsl(${360 / continentsArray.length * continentsArray.findIndex(continent => continent === continents[d.id])}, 90%, 80%)`);
+
+});

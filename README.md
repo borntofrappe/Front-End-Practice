@@ -38,7 +38,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Scatter Plot and Brush](https://codepen.io/borntofrappe/pen/XLYPWQ)|Highlight the length and the width of the petals for a few subspecies of the iris flower in an interactive scatter plot.|3rd July 2019|
 |[D3 Ridgeline Plots](https://codepen.io/borntofrappe/pen/rEZpGo)|Highlight the length for three subspecies of the iris flower displaying histogram and density plots in the same visualization.|5th July 2019|
 |[D3 Line Rectangles Tooltip](https://codepen.io/borntofrappe/pen/bPQare)|Highlight the first seven stages of the Tour de France through a line and rectangle elements. Increase interactivity through a tooltip.|7th-8th July 2019|
-|[D3 World Clock]()|Highlight the time around the globe. Using D3 to replicate the idea behind [this design](https://xkcd.com/1335/).|13th July 2019|
+|[D3 World Clock](https://codepen.io/borntofrappe/pen/MMdbZo)|Highlight the time around the globe. Using D3 to replicate the idea behind [this design](https://xkcd.com/1335/).|13th July 2019|
 
 ### JS
 

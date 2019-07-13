@@ -14,7 +14,6 @@ body {
 }
 /* center the visualization in the viewport */
 .viz {
-  color: #f9fd00;
   margin: auto;
 }
 /* size the svg to cover a considerable portion of the viewport */
