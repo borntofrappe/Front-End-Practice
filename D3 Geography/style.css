@@ -7,10 +7,14 @@
 }
 body {
   min-height: 100vh;
-  background: hsl(0, 0%, 100%);
   display: flex;
   font-family: "Open Sans", sans-serif;
   color: hsl(240, 80%, 5%);
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 142 100" width="142" height="100"><g transform="translate(1 1)" fill="none" stroke="%23333333" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path stroke-dasharray="10 10 100 100" d="M 0 98 l 50 -70 l 50 70"></path><path stroke-dasharray="13 4 13" d="M 38 48 l 5 4 l 5 -4 h 4 l 5 4 l 5 -4"></path><path stroke-dasharray="110 10 50" d="M 40 98 l 50 -70 l 50 70"></path><path stroke-dasharray="13 4 13 4 13" d="M 71 59 l 5 4 l 5 -4 h 4 l 5 4 l 5 -4 h 4 l 5 4 l 5 -4"></path><path stroke-dasharray="85 10" d="M 110 50 a 20 20 0 0 0 0 -40 a 20 20 0 0 0 -20 20"></path><path d="M 135 30 h 5"></path><g transform="translate(110 30)"><path transform="rotate(45)" d="M 25 0 h 5"></path><path transform="rotate(-45)" d="M 25 0 h 5"></path><path transform="rotate(-90)" d="M 25 0 h 5"></path><path transform="rotate(-135)" d="M 25 0 h 5"></path></g><path d="M 0 98 h 140"></path></g></svg>'),
+    hsl(0, 0%, 100%);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 15%;
 }
 /* highlight the visualization with a very bright blue background, approaching almost white */
 .viz {
