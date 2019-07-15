@@ -1,4 +1,4 @@
-# D3 Geo Map
+# D3 Holiday Travels
 
 ## [Live Demo](https://codepen.io/borntofrappe/full/xooyrq)
 

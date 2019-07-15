@@ -39,7 +39,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Ridgeline Plots](https://codepen.io/borntofrappe/pen/rEZpGo)|Highlight the length for three subspecies of the iris flower displaying histogram and density plots in the same visualization.|5th July 2019|
 |[D3 Line Rectangles Tooltip](https://codepen.io/borntofrappe/pen/bPQare)|Highlight the first seven stages of the Tour de France through a line and rectangle elements. Increase interactivity through a tooltip.|7th-8th July 2019|
 |[D3 World Clock](https://codepen.io/borntofrappe/pen/MMdbZo)|Highlight the time around the globe. Using D3 to replicate the idea behind [this design](https://xkcd.com/1335/).|13th July 2019|
-|D3 Geo Map(https://codepen.io/borntofrappe/pen/xooyrq)|Recreate part of a visualization found in an article of the French newspaper LeMonde, detailing where citizens travel during the holidays.|14th July 2019|
+|[D3 Holiday Travels](https://codepen.io/borntofrappe/pen/xooyrq)|Recreate part of a visualization found in an article of the French newspaper LeMonde, detailing where citizens travel during the holidays.|14th-15th July 2019|
 
 ### JS
 
