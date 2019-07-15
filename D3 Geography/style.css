@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700|Noto+Serif+SC:700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,22 +7,29 @@
 }
 body {
   min-height: 100vh;
-  background: hsl(0, 0%, 95%);
+  background: hsl(0, 0%, 100%);
   display: flex;
   font-family: "Open Sans", sans-serif;
+  color: hsl(240, 80%, 5%);
 }
+/* highlight the visualization with a very bright blue background, approaching almost white */
 .viz {
-  background: hsl(0, 0%, 100%);
-  box-shadow: 0 0 5px -4px hsla(0, 0%, 0%, 0.2);
+  background: hsl(240, 80%, 98%);
+  box-shadow: 0 0 15px -10px hsl(240, 80%, 95%), 0 2px 5px hsl(240, 80%, 90%);
   margin: auto;
   padding: 1rem;
   max-width: 500px;
   display: flex;
   flex-direction: column;
+  font-family: "Noto Sans JP", sans-serif;
 }
 .viz header h1 {
   font-size: 1.25rem;
+  font-weight: 700;
+  color: hsl(240, 80%, 10%);
+  font-family: "Noto Serif SC", serif;
 }
+/* center the svg horizontally */
 .viz svg {
   align-self: center;
   display: block;
@@ -30,6 +37,23 @@ body {
   height: 400px;
   margin: 1rem 0;
 }
+.viz svg text {
+  font-family: inherit;
+}
+/* include an animation for all path elements used to describe the link between regions, to animate them toward their respective destination */
+.viz svg path.link {
+  animation: linkDestination 5s ease-out forwards infinite;
+}
+@keyframes linkDestination {
+  60%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+.viz main p {
+  font-size: 0.9rem;
+}
+/* display the anchor footer and nested anchor link on the right end of the flex column */
 .viz footer {
   align-self: flex-end;
 }
