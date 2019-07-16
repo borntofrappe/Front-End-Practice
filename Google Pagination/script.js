@@ -45,4 +45,5 @@ const html = text
   .join('');
 
 nav.innerHTML = html;
+// immediately call the function to select the first page
 goToPage();
