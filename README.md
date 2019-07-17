@@ -103,6 +103,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[UX Searching Rod](https://codepen.io/borntofrappe/pen/ZdXMwM)|Create a form allowing to filter a list of fish' names with a video-game-inspired design and a couple of regular expressions.|26th June 2019|
 |[UI Smoothie App](https://codepen.io/borntofrappe/pen/pXpOqP)|Inspired by [this design](https://dribbble.com/shots/5410284-Smoothie-Land) create the UI of a mobile application allowing to order soya smoothies with particular flavors.|27th-28th June 2019|
 |[UX Smoothie App](https://codepen.io/borntofrappe/pen/bPLpxo)|Inspired by [this design](https://dribbble.com/shots/5410284-Smoothie-Land), create an interactive couple of screens allowing to select a couple of ingredients and produce a cool looking smoothie.|28th-29th June 2019|
+|[UI Testimonial]()|Inspired by [this design](https://dribbble.com/shots/6767315-Quote-Card), design a card for an hypothetical testimonial.|17th July 2019|
 
 ### Miscellaneous
 
