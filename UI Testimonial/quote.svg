@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" width="70" height="70">
+  <defs>
+    <rect id="square" x="0" y="0" width="30" height="30">
+    </rect>
+    <path id="stem" d="M 0 0 q 0 -40 30 -40 v 15 q -15 0 -15 25">
+    </path>
+  </defs>
+
+  <use href="#square" x="0" y="40"></use>
+  <use href="#stem" x="0" y="40"></use>
+  <use href="#square" x="40" y="40"></use>
+  <use href="#stem" x="40" y="40"></use>
+</svg>
