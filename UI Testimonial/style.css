@@ -6,37 +6,43 @@
   margin: 0;
 }
 body {
-  min-height: 100vh;
-  background: hsl(216, 65%, 95%);
-  color: hsl(0, 0%, 60%);
-  font-family: "Lato", sans-serif;
+  /* center the article in the viewport */
   display: flex;
+  min-height: 100vh;
   justify-content: center;
   align-items: center;
+  /* include an off-white background */
+  background: hsl(216, 65%, 95%);
+  /* add perspective for the rotation of the article, added through the script */
   perspective: 500px;
-  font-family: "Lato", sans-serif;
 }
 
 article {
-  background: hsl(0, 0%, 100%);
-  border-radius: 10px;
+  /* limit the width of the article container */
   width: 300px;
+  /* display the contents in a column */
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: hsl(0, 0%, 100%);
   line-height: 2;
-  transition: transform 0.2s ease-out;
+  border-radius: 10px;
   margin: 0.5rem;
+  /* transition for the transform property, updated in the script */
+  transition: transform 0.2s ease-out;
 }
 article figure {
+  /* limit the width and height of the figure to show the image in a circle */
   width: 120px;
   height: 120px;
-  display: flex;
   border-radius: 50%;
+  /* specify negative margin matching half the height of the element */
   margin-top: -60px;
+  /* position relative for the pseudo element */
   position: relative;
 }
 article figure:before {
+  /* add a border around the figure matching the color of the background, faking the clip */
   content: "";
   border-radius: inherit;
   position: absolute;
@@ -48,39 +54,31 @@ article figure:before {
   border: 1rem solid hsl(216, 65%, 95%);
 }
 article figure img {
-  box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
+  /* stretch the image to cover the size of the wrapping container */
   border-radius: inherit;
   width: 100%;
   height: 100%;
+  /* object fit to maintain the aspect ratio and fit the width/height */
   object-fit: cover;
 }
-article figure svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  fill: hsl(216, 65%, 95%);
-  stroke: #f00;
-  border-radius: inherit;
-  width: 100%;
-  height: 100%;
-}
 
-article .card__brief {
-  margin: 2rem 1rem;
+article div {
+  /* center the text in the div container */
   text-align: center;
+  margin: 2rem 1rem;
 }
-article .card__brief p {
-  color: hsl(0, 0%, 65%);
-
-  font-weight: thin;
+article div p {
+  color: hsl(0, 0%, 45%);
+  font-weight: 400;
   font-style: italic;
   margin: 1rem 0 2rem;
   font-family: "Noticia Text", serif;
+  /* position relative for the pseudo element */
   position: relative;
   z-index: 5;
 }
-article .card__brief p:before {
+article div p:before {
+  /* with SVG elements include two icons for the quote */
   content: "";
   position: absolute;
   top: 50%;
@@ -90,13 +88,17 @@ article .card__brief p:before {
   transform: translate(-50%, -50%);
   z-index: -5;
   opacity: 0.05;
+  /* position the icons at either end of the paragraph, rotate the second to have a mirrorer image */
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" width="70" height="70"><rect x="0" y="40" width="30" height="30"></rect><path d="M 0 40 q 0 -40 30 -40 v 15 q -15 0 -15 25"></path><rect x="40" y="40" width="30" height="30"></rect><path d="M 40 40 q 0 -40 30 -40 v 15 q -15 0 -15 25"></path></svg>'),
     url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" width="70" height="70" transform="rotate(180)"><rect x="0" y="40" width="30" height="30"></rect><path d="M 0 40 q 0 -40 30 -40 v 15 q -15 0 -15 25"></path><rect x="40" y="40" width="30" height="30"></rect><path d="M 40 40 q 0 -40 30 -40 v 15 q -15 0 -15 25"></path></svg>');
   background-position: 20% 20%, 80% 80%;
   background-repeat: no-repeat;
 }
-article .card__brief h1 {
-  font-size: 0.7rem;
+article div h1 {
+  /* considerably reduce the size of the heading */
+  color: hsl(0, 0%, 55%);
+  font-family: "Lato", sans-serif;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
 }
