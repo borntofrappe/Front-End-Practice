@@ -135,53 +135,17 @@ article {
   color: hsl(0, 0%, 19%);
   margin-bottom: 1rem;
   line-height: 1.5;
-  /* add a background through a pseudo element, to freely scale the background without affecting the content */
-  z-index: 5;
-  position: relative;
-}
-/* with the pseudo element include a white background */
-article:before {
-  z-index: -5;
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
   background: hsl(0, 0%, 100%);
   box-shadow: 0 2px 5px hsl(0, 0%, 42%, 0.2);
-  /* animate the background from the bottom center (as if coming from the pokeball) */
-  transform-origin: 50% 100%;
-  transform: scale(0, 0);
-}
-/* scale the pseudo element when a class of .entry is added to the article */
-article.entry:before {
-  animation: scaleUp 0.5s 0.1s ease-out both;
-}
-/* animation to scale the background, in height first and width second */
-@keyframes scaleUp {
-  0% {
-    transform: scale(0, 0);
-  }
-  50%,
-  70% {
-    transform: scale(0.05, 1);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
-}
-
-/* style the contents of the article, but by default hide them from view */
-article > * {
+  /* by default hide the article from view */
   opacity: 0;
   visibility: hidden;
   transition-property: opacity, visibility;
   transition-duration: 0.5s;
+  transition-delay: 0.2s;
   transition-timing-function: ease-out;
 }
-article.entry > * {
+article.entry {
   opacity: 1;
   visibility: visible;
 }
@@ -189,7 +153,6 @@ article h1 {
   font-size: 1.5rem;
   font-family: "Josefin Sans", sans-serif;
 }
-
 /* style the button and anchor link similarly */
 article button,
 article a {
