@@ -128,3 +128,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Notification Bell](https://codepen.io/borntofrappe/pen/LKaqOM)|Design a notification widget where an SVG icon is animated while a message is introduced from the side.|11th July 2019|
 |[CPC Dad Jokes](https://codepen.io/borntofrappe/pen/XLQoEX)|Create a linear application where a joke is retrieved from the dad jokes API and told through the Web Speech API.|12th July 2019|
 |[Google Pagination](https://codepen.io/borntofrappe/pen/dBxarJ)|Recreate the pagination highlighting google search results, by stretching the google name to cover multiple pages.|16th July 2019|
+|[CPC Fetch Em All]()|Display a message according to the resolution of a promise, retrieving information from a public API.|19th July 2019|
