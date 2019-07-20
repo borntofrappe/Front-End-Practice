@@ -1226,17 +1226,8 @@ const colors = {
 const viz = d3
   .select('.viz');
 
-// HEADER
-const header = viz
-  .append('header');
-
-header
-  .append('h1')
-  .text('Iris Dataset');
-
-// SVG
 // LEGEND
-// before the grid of visualiaztions include a legend based on the species and color
+// include a legend based on the species and color
 const legendWidth = 500;
 const legendHeight = 25;
 
@@ -1265,7 +1256,7 @@ legendEntries
   .attr('y', legendHeight / 1.5)
   .attr('fill', 'currentColor')
   .attr('font-family', 'inherit')
-  .attr('font-size', '0.9rem')
+  .attr('font-size', '0.8rem')
   .style('text-transform', 'capitalize')
   .text(([species]) => species);
 
@@ -1318,7 +1309,6 @@ const group = svg
   .attr('transform', `translate(${margin.left} ${margin.top})`);
 
 // the idea is to include four columns and rows to analyse the different variables
-// use each category to include a row and for each row use the categories once again for the column
 const categories = [
   'sepalLength',
   'sepalWidth',
@@ -1326,16 +1316,54 @@ const categories = [
   'petalWidth',
 ];
 
-// function to draw a histogram
-function drawHistogram(variable) {
+// include two lines and text elements to describe the nature of each row and column
+const rowLabel = group.append('g');
+const columnLabel = group.append('g');
+categories.forEach((category, index) => {
+  const labelWidth = width / categories.length;
+  const labelHeight = height / categories.length;
+  const x = labelWidth * index;
+  const y = labelHeight * index;
 
+  // for the label separate the
+  const capitalLetter = category.match(/[A-Z]/)[0];
+  const [flowerTrait, flowerMeasure] = category.split(capitalLetter);
+  const label = `${flowerTrait} ${capitalLetter}${flowerMeasure}`;
+
+  rowLabel
+    .append('text')
+    .attr('x', x + labelWidth / 2)
+    .attr('y', -5)
+    .text(label)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#fff')
+    .attr('font-size', '0.55rem')
+    .style('text-transform', 'uppercase');
+
+  columnLabel
+    .append('text')
+    .attr('x', 0)
+    .attr('y', 0)
+    .text(label)
+    .attr('fill', '#fff')
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#fff')
+    .attr('font-size', '0.55rem')
+    .attr('transform', `translate(-15 ${y + labelHeight / 2}) rotate(90)`)
+    .style('text-transform', 'uppercase');
+});
+
+// function to draw a histogram
+function drawHistogram(specs) {
+  // console.log(specs);
 }
 // function to draw a scatterplot
-function drawScatterplot(variableX, variableY) {
+function drawScatterplot(specs) {
+  // console.log(specs);
 
 }
 
-// create one group for each row and column, translating the group at fractions of the width/height of the wrapping svg
+// use each category to include a row and for each row use the categories once again for the column
 categories.forEach((row, indexRow, rows) => {
   const groupWidth = width / rows.length;
   const translateX = indexRow * groupWidth;
@@ -1343,24 +1371,27 @@ categories.forEach((row, indexRow, rows) => {
     const groupHeight = height / columns.length;
     const translateY = indexColumn * groupHeight;
 
+    // create one group for each row and column, translating the group at fractions of the width/height of the wrapping svg
     const groupVisualization = group
       .append('g')
       .attr('data-categories', `${row}-${column}`)
       .attr('transform', `translate(${translateX} ${translateY})`);
 
-    // call a function to draw an histogram or scatterplot plot according to the row and column value
+    // call a function to draw an histogram or scatterplot plot according to the value row and column
     // in both instances, pass an object describing the group, width and height of the visualization
     const specs = {
       groupVisualization,
       groupWidth,
       groupHeight,
     };
+    // matching value: include a plot describing the distribution for said value
     if (row === column) {
       const variable = row;
-      drawHistogram(variable, specs);
+      drawHistogram(Object.assign({}, specs, {variable}));
     } else {
+      // different values: include a plot describing the relation between the two
       const [variableX, variableY] = [row, column];
-      drawScatterplot(variableX, variableY, specs);
+      drawScatterplot(Object.assign({}, specs, {variableX, variableY}));
     }
 
     // as a proof of concept add a rectangle for each cell
@@ -1370,20 +1401,9 @@ categories.forEach((row, indexRow, rows) => {
       .attr('y', 0)
       .attr('width', groupWidth)
       .attr('height', groupHeight)
-      .attr('fill', 'none')
+      .attr('fill', '#ffffff11')
       .attr('stroke', '#fff')
       .attr('stroke-width', '1px');
   });
 });
 
-
-// FOOTER
-// reference the inspiration behind the project
-const href = 'https://en.wikipedia.org/wiki/Iris_flower_data_set';
-
-viz
-  .append('footer')
-  .append('a')
-  .attr('target', '_blank')
-  .attr('href', href)
-  .text('Inspiration');

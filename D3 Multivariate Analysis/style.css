@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato|Noto+Serif+SC:700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 * {
   box-sizing: border-box;
@@ -8,38 +8,20 @@
 body {
   min-height: 100vh;
   background: #0c1620;
-  color: #fff;
+  color: #ffffff;
 }
+/* center the div wrapping the visualization and cap its width */
 .viz {
   width: 90vw;
   max-width: 700px;
-  margin: 1rem auto;
+  margin: 0 auto;
   padding: 0.5rem 0.75rem;
-  display: flex;
-  flex-direction: column;
   font-family: "Lato", sans-serif;
 }
 
-.viz header,
-.viz footer {
-  margin: 1rem 0;
-}
-.viz header h1 {
-  font-family: "Noto Serif SC", serif;
-  font-size: 1.5rem;
-}
-/* separate the svg displaying the visualization from the surrounding header and footer */
 .viz > svg {
-  margin: 1rem;
+  margin: 2rem;
   display: block;
   width: 100%;
   height: auto;
-}
-.viz footer {
-  align-self: flex-end;
-}
-.viz footer a {
-  color: inherit;
-  font-size: 0.9rem;
-  font-weight: initial;
 }
