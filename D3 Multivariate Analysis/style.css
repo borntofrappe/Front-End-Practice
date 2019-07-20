@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Noto+Serif+SC:700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: #0c1620;
+  color: #fff;
+}
+.viz {
+  width: 90vw;
+  max-width: 700px;
+  margin: 1rem auto;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  font-family: "Lato", sans-serif;
+}
+
+.viz header,
+.viz footer {
+  margin: 1rem 0;
+}
+.viz header h1 {
+  font-family: "Noto Serif SC", serif;
+  font-size: 1.5rem;
+}
+/* separate the svg displaying the visualization from the surrounding header and footer */
+.viz > svg {
+  margin: 1rem;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.viz footer {
+  align-self: flex-end;
+}
+.viz footer a {
+  color: inherit;
+  font-size: 0.9rem;
+  font-weight: initial;
+}
