@@ -1,1205 +1,1055 @@
 // dataset describing the length and width of the sepal and petal for the different iris flowers
 const data = [
   {
-    index: 1,
     sepalLength: 5.1,
     sepalWidth: 3.5,
     petalLength: 1.4,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 2,
     sepalLength: 4.9,
     sepalWidth: 3.0,
     petalLength: 1.4,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 3,
     sepalLength: 4.7,
     sepalWidth: 3.2,
     petalLength: 1.3,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 4,
     sepalLength: 4.6,
     sepalWidth: 3.1,
     petalLength: 1.5,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 5,
     sepalLength: 5.0,
     sepalWidth: 3.6,
     petalLength: 1.4,
     petalWidth: 0.3,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 6,
     sepalLength: 5.4,
     sepalWidth: 3.9,
     petalLength: 1.7,
     petalWidth: 0.4,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 7,
     sepalLength: 4.6,
     sepalWidth: 3.4,
     petalLength: 1.4,
     petalWidth: 0.3,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 8,
     sepalLength: 5.0,
     sepalWidth: 3.4,
     petalLength: 1.5,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 9,
     sepalLength: 4.4,
     sepalWidth: 2.9,
     petalLength: 1.4,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 10,
     sepalLength: 4.9,
     sepalWidth: 3.1,
     petalLength: 1.5,
     petalWidth: 0.1,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 11,
     sepalLength: 5.4,
     sepalWidth: 3.7,
     petalLength: 1.5,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 12,
     sepalLength: 4.8,
     sepalWidth: 3.4,
     petalLength: 1.6,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 13,
     sepalLength: 4.8,
     sepalWidth: 3.0,
     petalLength: 1.4,
     petalWidth: 0.1,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 14,
     sepalLength: 4.3,
     sepalWidth: 3.0,
     petalLength: 1.1,
     petalWidth: 0.1,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 15,
     sepalLength: 5.8,
     sepalWidth: 4.0,
     petalLength: 1.2,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 16,
     sepalLength: 5.7,
     sepalWidth: 4.4,
     petalLength: 1.5,
     petalWidth: 0.4,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 17,
     sepalLength: 5.4,
     sepalWidth: 3.9,
     petalLength: 1.3,
     petalWidth: 0.4,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 18,
     sepalLength: 5.1,
     sepalWidth: 3.5,
     petalLength: 1.4,
     petalWidth: 0.3,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 19,
     sepalLength: 5.7,
     sepalWidth: 3.8,
     petalLength: 1.7,
     petalWidth: 0.3,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 20,
     sepalLength: 5.1,
     sepalWidth: 3.8,
     petalLength: 1.5,
     petalWidth: 0.3,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 21,
     sepalLength: 5.4,
     sepalWidth: 3.4,
     petalLength: 1.7,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 22,
     sepalLength: 5.1,
     sepalWidth: 3.7,
     petalLength: 1.5,
     petalWidth: 0.4,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 23,
     sepalLength: 4.6,
     sepalWidth: 3.6,
     petalLength: 1.0,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 24,
     sepalLength: 5.1,
     sepalWidth: 3.3,
     petalLength: 1.7,
     petalWidth: 0.5,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 25,
     sepalLength: 4.8,
     sepalWidth: 3.4,
     petalLength: 1.9,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 26,
     sepalLength: 5.0,
     sepalWidth: 3.0,
     petalLength: 1.6,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 27,
     sepalLength: 5.0,
     sepalWidth: 3.4,
     petalLength: 1.6,
     petalWidth: 0.4,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 28,
     sepalLength: 5.2,
     sepalWidth: 3.5,
     petalLength: 1.5,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 29,
     sepalLength: 5.2,
     sepalWidth: 3.4,
     petalLength: 1.4,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 30,
     sepalLength: 4.7,
     sepalWidth: 3.2,
     petalLength: 1.6,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 31,
     sepalLength: 4.8,
     sepalWidth: 3.1,
     petalLength: 1.6,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 32,
     sepalLength: 5.4,
     sepalWidth: 3.4,
     petalLength: 1.5,
     petalWidth: 0.4,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 33,
     sepalLength: 5.2,
     sepalWidth: 4.1,
     petalLength: 1.5,
     petalWidth: 0.1,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 34,
     sepalLength: 5.5,
     sepalWidth: 4.2,
     petalLength: 1.4,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 35,
     sepalLength: 4.9,
     sepalWidth: 3.1,
     petalLength: 1.5,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 36,
     sepalLength: 5.0,
     sepalWidth: 3.2,
     petalLength: 1.2,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 37,
     sepalLength: 5.5,
     sepalWidth: 3.5,
     petalLength: 1.3,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 38,
     sepalLength: 4.9,
     sepalWidth: 3.6,
     petalLength: 1.4,
     petalWidth: 0.1,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 39,
     sepalLength: 4.4,
     sepalWidth: 3.0,
     petalLength: 1.3,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 40,
     sepalLength: 5.1,
     sepalWidth: 3.4,
     petalLength: 1.5,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 41,
     sepalLength: 5.0,
     sepalWidth: 3.5,
     petalLength: 1.3,
     petalWidth: 0.3,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 42,
     sepalLength: 4.5,
     sepalWidth: 2.3,
     petalLength: 1.3,
     petalWidth: 0.3,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 43,
     sepalLength: 4.4,
     sepalWidth: 3.2,
     petalLength: 1.3,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 44,
     sepalLength: 5.0,
     sepalWidth: 3.5,
     petalLength: 1.6,
     petalWidth: 0.6,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 45,
     sepalLength: 5.1,
     sepalWidth: 3.8,
     petalLength: 1.9,
     petalWidth: 0.4,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 46,
     sepalLength: 4.8,
     sepalWidth: 3.0,
     petalLength: 1.4,
     petalWidth: 0.3,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 47,
     sepalLength: 5.1,
     sepalWidth: 3.8,
     petalLength: 1.6,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 48,
     sepalLength: 4.6,
     sepalWidth: 3.2,
     petalLength: 1.4,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 49,
     sepalLength: 5.3,
     sepalWidth: 3.7,
     petalLength: 1.5,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 50,
     sepalLength: 5.0,
     sepalWidth: 3.3,
     petalLength: 1.4,
     petalWidth: 0.2,
-    species: 'setosa',
+    species: "setosa"
   },
   {
-    index: 51,
     sepalLength: 7.0,
     sepalWidth: 3.2,
     petalLength: 4.7,
     petalWidth: 1.4,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 52,
     sepalLength: 6.4,
     sepalWidth: 3.2,
     petalLength: 4.5,
     petalWidth: 1.5,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 53,
     sepalLength: 6.9,
     sepalWidth: 3.1,
     petalLength: 4.9,
     petalWidth: 1.5,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 54,
     sepalLength: 5.5,
     sepalWidth: 2.3,
     petalLength: 4.0,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 55,
     sepalLength: 6.5,
     sepalWidth: 2.8,
     petalLength: 4.6,
     petalWidth: 1.5,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 56,
     sepalLength: 5.7,
     sepalWidth: 2.8,
     petalLength: 4.5,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 57,
     sepalLength: 6.3,
     sepalWidth: 3.3,
     petalLength: 4.7,
     petalWidth: 1.6,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 58,
     sepalLength: 4.9,
     sepalWidth: 2.4,
     petalLength: 3.3,
     petalWidth: 1.0,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 59,
     sepalLength: 6.6,
     sepalWidth: 2.9,
     petalLength: 4.6,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 60,
     sepalLength: 5.2,
     sepalWidth: 2.7,
     petalLength: 3.9,
     petalWidth: 1.4,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 61,
     sepalLength: 5.0,
     sepalWidth: 2.0,
     petalLength: 3.5,
     petalWidth: 1.0,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 62,
     sepalLength: 5.9,
     sepalWidth: 3.0,
     petalLength: 4.2,
     petalWidth: 1.5,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 63,
     sepalLength: 6.0,
     sepalWidth: 2.2,
     petalLength: 4.0,
     petalWidth: 1.0,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 64,
     sepalLength: 6.1,
     sepalWidth: 2.9,
     petalLength: 4.7,
     petalWidth: 1.4,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 65,
     sepalLength: 5.6,
     sepalWidth: 2.9,
     petalLength: 3.6,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 66,
     sepalLength: 6.7,
     sepalWidth: 3.1,
     petalLength: 4.4,
     petalWidth: 1.4,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 67,
     sepalLength: 5.6,
     sepalWidth: 3.0,
     petalLength: 4.5,
     petalWidth: 1.5,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 68,
     sepalLength: 5.8,
     sepalWidth: 2.7,
     petalLength: 4.1,
     petalWidth: 1.0,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 69,
     sepalLength: 6.2,
     sepalWidth: 2.2,
     petalLength: 4.5,
     petalWidth: 1.5,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 70,
     sepalLength: 5.6,
     sepalWidth: 2.5,
     petalLength: 3.9,
     petalWidth: 1.1,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 71,
     sepalLength: 5.9,
     sepalWidth: 3.2,
     petalLength: 4.8,
     petalWidth: 1.8,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 72,
     sepalLength: 6.1,
     sepalWidth: 2.8,
     petalLength: 4.0,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 73,
     sepalLength: 6.3,
     sepalWidth: 2.5,
     petalLength: 4.9,
     petalWidth: 1.5,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 74,
     sepalLength: 6.1,
     sepalWidth: 2.8,
     petalLength: 4.7,
     petalWidth: 1.2,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 75,
     sepalLength: 6.4,
     sepalWidth: 2.9,
     petalLength: 4.3,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 76,
     sepalLength: 6.6,
     sepalWidth: 3.0,
     petalLength: 4.4,
     petalWidth: 1.4,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 77,
     sepalLength: 6.8,
     sepalWidth: 2.8,
     petalLength: 4.8,
     petalWidth: 1.4,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 78,
     sepalLength: 6.7,
     sepalWidth: 3.0,
     petalLength: 5.0,
     petalWidth: 1.7,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 79,
     sepalLength: 6.0,
     sepalWidth: 2.9,
     petalLength: 4.5,
     petalWidth: 1.5,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 80,
     sepalLength: 5.7,
     sepalWidth: 2.6,
     petalLength: 3.5,
     petalWidth: 1.0,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 81,
     sepalLength: 5.5,
     sepalWidth: 2.4,
     petalLength: 3.8,
     petalWidth: 1.1,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 82,
     sepalLength: 5.5,
     sepalWidth: 2.4,
     petalLength: 3.7,
     petalWidth: 1.0,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 83,
     sepalLength: 5.8,
     sepalWidth: 2.7,
     petalLength: 3.9,
     petalWidth: 1.2,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 84,
     sepalLength: 6.0,
     sepalWidth: 2.7,
     petalLength: 5.1,
     petalWidth: 1.6,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 85,
     sepalLength: 5.4,
     sepalWidth: 3.0,
     petalLength: 4.5,
     petalWidth: 1.5,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 86,
     sepalLength: 6.0,
     sepalWidth: 3.4,
     petalLength: 4.5,
     petalWidth: 1.6,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 87,
     sepalLength: 6.7,
     sepalWidth: 3.1,
     petalLength: 4.7,
     petalWidth: 1.5,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 88,
     sepalLength: 6.3,
     sepalWidth: 2.3,
     petalLength: 4.4,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 89,
     sepalLength: 5.6,
     sepalWidth: 3.0,
     petalLength: 4.1,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 90,
     sepalLength: 5.5,
     sepalWidth: 2.5,
     petalLength: 4.0,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 91,
     sepalLength: 5.5,
     sepalWidth: 2.6,
     petalLength: 4.4,
     petalWidth: 1.2,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 92,
     sepalLength: 6.1,
     sepalWidth: 3.0,
     petalLength: 4.6,
     petalWidth: 1.4,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 93,
     sepalLength: 5.8,
     sepalWidth: 2.6,
     petalLength: 4.0,
     petalWidth: 1.2,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 94,
     sepalLength: 5.0,
     sepalWidth: 2.3,
     petalLength: 3.3,
     petalWidth: 1.0,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 95,
     sepalLength: 5.6,
     sepalWidth: 2.7,
     petalLength: 4.2,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 96,
     sepalLength: 5.7,
     sepalWidth: 3.0,
     petalLength: 4.2,
     petalWidth: 1.2,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 97,
     sepalLength: 5.7,
     sepalWidth: 2.9,
     petalLength: 4.2,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 98,
     sepalLength: 6.2,
     sepalWidth: 2.9,
     petalLength: 4.3,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 99,
     sepalLength: 5.1,
     sepalWidth: 2.5,
     petalLength: 3.0,
     petalWidth: 1.1,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 100,
     sepalLength: 5.7,
     sepalWidth: 2.8,
     petalLength: 4.1,
     petalWidth: 1.3,
-    species: 'versicolor',
+    species: "versicolor"
   },
   {
-    index: 101,
     sepalLength: 6.3,
     sepalWidth: 3.3,
     petalLength: 6.0,
     petalWidth: 2.5,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 102,
     sepalLength: 5.8,
     sepalWidth: 2.7,
     petalLength: 5.1,
     petalWidth: 1.9,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 103,
     sepalLength: 7.1,
     sepalWidth: 3.0,
     petalLength: 5.9,
     petalWidth: 2.1,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 104,
     sepalLength: 6.3,
     sepalWidth: 2.9,
     petalLength: 5.6,
     petalWidth: 1.8,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 105,
     sepalLength: 6.5,
     sepalWidth: 3.0,
     petalLength: 5.8,
     petalWidth: 2.2,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 106,
     sepalLength: 7.6,
     sepalWidth: 3.0,
     petalLength: 6.6,
     petalWidth: 2.1,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 107,
     sepalLength: 4.9,
     sepalWidth: 2.5,
     petalLength: 4.5,
     petalWidth: 1.7,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 108,
     sepalLength: 7.3,
     sepalWidth: 2.9,
     petalLength: 6.3,
     petalWidth: 1.8,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 109,
     sepalLength: 6.7,
     sepalWidth: 2.5,
     petalLength: 5.8,
     petalWidth: 1.8,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 110,
     sepalLength: 7.2,
     sepalWidth: 3.6,
     petalLength: 6.1,
     petalWidth: 2.5,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 111,
     sepalLength: 6.5,
     sepalWidth: 3.2,
     petalLength: 5.1,
     petalWidth: 2.0,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 112,
     sepalLength: 6.4,
     sepalWidth: 2.7,
     petalLength: 5.3,
     petalWidth: 1.9,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 113,
     sepalLength: 6.8,
     sepalWidth: 3.0,
     petalLength: 5.5,
     petalWidth: 2.1,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 114,
     sepalLength: 5.7,
     sepalWidth: 2.5,
     petalLength: 5.0,
     petalWidth: 2.0,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 115,
     sepalLength: 5.8,
     sepalWidth: 2.8,
     petalLength: 5.1,
     petalWidth: 2.4,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 116,
     sepalLength: 6.4,
     sepalWidth: 3.2,
     petalLength: 5.3,
     petalWidth: 2.3,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 117,
     sepalLength: 6.5,
     sepalWidth: 3.0,
     petalLength: 5.5,
     petalWidth: 1.8,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 118,
     sepalLength: 7.7,
     sepalWidth: 3.8,
     petalLength: 6.7,
     petalWidth: 2.2,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 119,
     sepalLength: 7.7,
     sepalWidth: 2.6,
     petalLength: 6.9,
     petalWidth: 2.3,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 120,
     sepalLength: 6.0,
     sepalWidth: 2.2,
     petalLength: 5.0,
     petalWidth: 1.5,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 121,
     sepalLength: 6.9,
     sepalWidth: 3.2,
     petalLength: 5.7,
     petalWidth: 2.3,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 122,
     sepalLength: 5.6,
     sepalWidth: 2.8,
     petalLength: 4.9,
     petalWidth: 2.0,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 123,
     sepalLength: 7.7,
     sepalWidth: 2.8,
     petalLength: 6.7,
     petalWidth: 2.0,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 124,
     sepalLength: 6.3,
     sepalWidth: 2.7,
     petalLength: 4.9,
     petalWidth: 1.8,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 125,
     sepalLength: 6.7,
     sepalWidth: 3.3,
     petalLength: 5.7,
     petalWidth: 2.1,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 126,
     sepalLength: 7.2,
     sepalWidth: 3.2,
     petalLength: 6.0,
     petalWidth: 1.8,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 127,
     sepalLength: 6.2,
     sepalWidth: 2.8,
     petalLength: 4.8,
     petalWidth: 1.8,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 128,
     sepalLength: 6.1,
     sepalWidth: 3.0,
     petalLength: 4.9,
     petalWidth: 1.8,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 129,
     sepalLength: 6.4,
     sepalWidth: 2.8,
     petalLength: 5.6,
     petalWidth: 2.1,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 130,
     sepalLength: 7.2,
     sepalWidth: 3.0,
     petalLength: 5.8,
     petalWidth: 1.6,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 131,
     sepalLength: 7.4,
     sepalWidth: 2.8,
     petalLength: 6.1,
     petalWidth: 1.9,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 132,
     sepalLength: 7.9,
     sepalWidth: 3.8,
     petalLength: 6.4,
     petalWidth: 2.0,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 133,
     sepalLength: 6.4,
     sepalWidth: 2.8,
     petalLength: 5.6,
     petalWidth: 2.2,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 134,
     sepalLength: 6.3,
     sepalWidth: 2.8,
     petalLength: 5.1,
     petalWidth: 1.5,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 135,
     sepalLength: 6.1,
     sepalWidth: 2.6,
     petalLength: 5.6,
     petalWidth: 1.4,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 136,
     sepalLength: 7.7,
     sepalWidth: 3.0,
     petalLength: 6.1,
     petalWidth: 2.3,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 137,
     sepalLength: 6.3,
     sepalWidth: 3.4,
     petalLength: 5.6,
     petalWidth: 2.4,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 138,
     sepalLength: 6.4,
     sepalWidth: 3.1,
     petalLength: 5.5,
     petalWidth: 1.8,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 139,
     sepalLength: 6.0,
     sepalWidth: 3.0,
     petalLength: 4.8,
     petalWidth: 1.8,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 140,
     sepalLength: 6.9,
     sepalWidth: 3.1,
     petalLength: 5.4,
     petalWidth: 2.1,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 141,
     sepalLength: 6.7,
     sepalWidth: 3.1,
     petalLength: 5.6,
     petalWidth: 2.4,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 142,
     sepalLength: 6.9,
     sepalWidth: 3.1,
     petalLength: 5.1,
     petalWidth: 2.3,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 143,
     sepalLength: 5.8,
     sepalWidth: 2.7,
     petalLength: 5.1,
     petalWidth: 1.9,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 144,
     sepalLength: 6.8,
     sepalWidth: 3.2,
     petalLength: 5.9,
     petalWidth: 2.3,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 145,
     sepalLength: 6.7,
     sepalWidth: 3.3,
     petalLength: 5.7,
     petalWidth: 2.5,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 146,
     sepalLength: 6.7,
     sepalWidth: 3.0,
     petalLength: 5.2,
     petalWidth: 2.3,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 147,
     sepalLength: 6.3,
     sepalWidth: 2.5,
     petalLength: 5.0,
     petalWidth: 1.9,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 148,
     sepalLength: 6.5,
     sepalWidth: 3.0,
     petalLength: 5.2,
     petalWidth: 2.0,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 149,
     sepalLength: 6.2,
     sepalWidth: 3.4,
     petalLength: 5.4,
     petalWidth: 2.3,
-    species: 'virginica',
+    species: "virginica"
   },
   {
-    index: 150,
     sepalLength: 5.9,
     sepalWidth: 3.0,
     petalLength: 5.1,
     petalWidth: 1.8,
-    species: 'virginica',
-  },
+    species: "virginica"
+  }
 ];
 
 // array describing the hsl color for each subspecies
@@ -1208,23 +1058,21 @@ const colors = {
   setosa: {
     h: 280,
     s: 75,
-    l: 60,
+    l: 60
   },
   versicolor: {
     h: 330,
     s: 75,
-    l: 60,
+    l: 60
   },
   virginica: {
     h: 230,
     s: 75,
-    l: 60,
-  },
+    l: 60
+  }
 };
 
-// target the .viz container
-const viz = d3
-  .select('.viz');
+const viz = d3.select(".viz");
 
 // LEGEND
 // include a legend based on the species and color
@@ -1232,178 +1080,378 @@ const legendWidth = 500;
 const legendHeight = 25;
 
 const legend = viz
-  .append('svg')
-  .attr('class', 'legend')
-  .attr('viewBox', `0 0 ${legendWidth} ${legendHeight}`);
+  .append("svg")
+  .attr("class", "legend")
+  .attr("viewBox", `0 0 ${legendWidth} ${legendHeight}`);
 
 const colorEntries = Object.entries(colors);
 
 // for each color add a group
 const legendEntries = legend
-  .selectAll('g.entry')
+  .selectAll("g.entry")
   .data(colorEntries)
   .enter()
-  .append('g')
-  .attr('class', 'entry')
+  .append("g")
+  .attr("class", "entry")
   // translate the group at fractions of the legend's width
-  .attr('transform', (d, i, { length }) => `translate(${(legendWidth / length) * i} ${0})`);
+  .attr(
+    "transform",
+    (d, i, { length }) => `translate(${(legendWidth / length) * i} ${0})`
+  )
+  // on hover highlight the elements with a matching species by reducing the visual weight of the elements with a different class
+  .on("mouseenter", function([subspecies]) {
+    d3.selectAll(`.iris`).attr("opacity", 0.1);
+
+    d3.selectAll(`.${subspecies}`).attr("opacity", 1);
+
+    // scale the nested overlay to highlight the selection
+    d3.selectAll(".overlay").attr("transform", "scale(1 0)");
+
+    d3.select(this)
+      .select(".overlay")
+      .transition()
+      .attr("transform", "scale(1 1)");
+  });
 
 // for each color
 // add a label describing the entry
 legendEntries
-  .append('text')
-  .attr('x', 5)
-  .attr('y', legendHeight / 1.5)
-  .attr('fill', 'currentColor')
-  .attr('font-family', 'inherit')
-  .attr('font-size', '0.8rem')
-  .style('text-transform', 'capitalize')
+  .append("text")
+  .attr("x", 5)
+  .attr("y", legendHeight / 1.5)
+  .attr("fill", "currentColor")
+  .attr("font-family", "inherit")
+  .attr("font-size", "0.8rem")
+  .style("text-transform", "capitalize")
   .text(([species]) => species);
 
 // add a path describing a small underline
 legendEntries
-  .append('path')
-  .attr('d', (d, i, { length }) => `M 0 ${legendHeight} h ${(legendWidth / length)}`)
-  .attr('fill', 'none')
-  .attr('stroke-width', 5)
-  .attr('stroke', ([, color]) => `hsl(${color.h}, ${color.s}%, ${color.l}%)`);
+  .append("path")
+  .attr(
+    "d",
+    (d, i, { length }) => `M 0 ${legendHeight} h ${legendWidth / length}`
+  )
+  .attr("fill", "none")
+  .attr("stroke-width", 5)
+  .attr("stroke", ([, color]) => `hsl(${color.h}, ${color.s}%, ${color.l}%)`);
 
 // add the SVG describing the basic icon of a flower
 const flowers = legendEntries
-  .append('svg')
-  .attr('viewBox', '0 0 7 10')
-  .attr('height', legendHeight)
-  .attr('width', (legendHeight) * 7 / 10)
+  .append("svg")
+  .attr("viewBox", "0 0 7 10")
+  .attr("height", legendHeight)
+  .attr("width", (legendHeight * 7) / 10)
   // positioned at the end of the respective area
-  .attr('x', (d, i, { length }) => ((legendWidth / length) - (legendHeight) * 7 / 10))
-  .attr('y', 0);
+  .attr(
+    "x",
+    (d, i, { length }) => legendWidth / length - (legendHeight * 7) / 10
+  )
+  .attr("y", 0);
 
 flowers
-  .append('g')
-  .attr('transform', 'translate(0.5 0.5)')
-  .append('path')
-  .attr('d', 'M 1 9 q 2 -2 2 -5 a 3 3 0 0 1 -3 -3 a 1 1 0 0 1 2 0 a 1 1 0 0 1 2 0 a 1 1 0 0 1 2 0 a 3 3 0 0 1 -3 3')
-  .attr('fill', 'none')
-  .attr('stroke-width', 1)
-  .attr('stroke-linejoin', 'round')
-  .attr('stroke-linecap', 'round')
-  .attr('stroke', ([, color]) => `hsl(${color.h}, ${color.s}%, ${color.l}%)`);
+  .append("g")
+  .attr("transform", "translate(0.5 0.5)")
+  .append("path")
+  .attr(
+    "d",
+    "M 1 9 q 2 -2 2 -5 a 3 3 0 0 1 -3 -3 a 1 1 0 0 1 2 0 a 1 1 0 0 1 2 0 a 1 1 0 0 1 2 0 a 3 3 0 0 1 -3 3"
+  )
+  .attr("fill", "none")
+  .attr("stroke-width", 1)
+  .attr("stroke-linejoin", "round")
+  .attr("stroke-linecap", "round")
+  .attr("stroke", ([, color]) => `hsl(${color.h}, ${color.s}%, ${color.l}%)`);
+
+// add an almost transparent rectangle to describe an overlay on hover
+legendEntries
+  .append("rect")
+  .attr("class", "overlay")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", (d, i, { length }) => legendWidth / length)
+  .attr("height", legendHeight)
+  .attr("fill", "#fff")
+  .attr("opacity", 0.08)
+  .attr("transform", "scale(1 0)");
+
+// add a transparent rectangle to describe an area for mouse events
+legendEntries
+  .append("rect")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", (d, i, { length }) => legendWidth / length)
+  .attr("height", legendHeight)
+  .attr("opacity", 0);
 
 // GRID
-// following the legend add an SVG with the 16 visualizations
+// following the legend add an SVG in which to plot the different visualization
 const margin = {
   top: 20,
   right: 20,
   bottom: 20,
-  left: 20,
+  left: 20
 };
 const width = 500 - (margin.left + margin.right);
 const height = 500 - (margin.top + margin.bottom);
 
 const svg = viz
-  .append('svg')
-  .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`);
+  .append("svg")
+  .attr(
+    "viewBox",
+    `0 0 ${width + (margin.left + margin.right)} ${height +
+      (margin.top + margin.bottom)}`
+  )
+  // on hover set the opacity of all .iris elements to 1
+  .on("mouseenter", () => {
+    d3.selectAll(".iris").attr("opacity", 1);
+    d3.selectAll(".overlay").attr("transform", "scale(1 0)");
+  });
 
 const group = svg
-  .append('g')
-  .attr('transform', `translate(${margin.left} ${margin.top})`);
+  .append("g")
+  .attr("transform", `translate(${margin.left} ${margin.top})`);
 
 // the idea is to include four columns and rows to analyse the different variables
-const categories = [
-  'sepalLength',
-  'sepalWidth',
-  'petalLength',
-  'petalWidth',
-];
+const categories = ["sepalLength", "sepalWidth", "petalLength", "petalWidth"];
 
-// include two lines and text elements to describe the nature of each row and column
-const rowLabel = group.append('g');
-const columnLabel = group.append('g');
+// on two sides of the grid include the labels describing the variable analysed in the specific row and column
+const rowLabel = group.append("g");
+const columnLabel = group.append("g");
 categories.forEach((category, index) => {
   const labelWidth = width / categories.length;
-  const labelHeight = height / categories.length;
   const x = labelWidth * index;
+
+  const labelHeight = height / categories.length;
   const y = labelHeight * index;
 
-  // for the label separate the
+  // given the camelCase cateogory, use a regular expression to split the name
   const capitalLetter = category.match(/[A-Z]/)[0];
-  const [flowerTrait, flowerMeasure] = category.split(capitalLetter);
-  const label = `${flowerTrait} ${capitalLetter}${flowerMeasure}`;
+  const [flowerPart, flowerVariable] = category.split(capitalLetter);
+  const label = `${flowerPart} ${capitalLetter}${flowerVariable}`;
 
   rowLabel
-    .append('text')
-    .attr('x', x + labelWidth / 2)
-    .attr('y', -5)
+    .append("text")
+    .attr("x", x + labelWidth / 2)
+    .attr("y", -5)
     .text(label)
-    .attr('text-anchor', 'middle')
-    .attr('fill', '#fff')
-    .attr('font-size', '0.55rem')
-    .style('text-transform', 'uppercase');
+    .attr("text-anchor", "middle")
+    .attr("fill", "#ffffff")
+    .attr("font-size", "0.55rem")
+    .style("text-transform", "uppercase");
 
+  // ! instead of using the x and y coordinate position the vertical labels with the transform property
+  // this to shift the transfom-origin and rotate the string from the center of the respective cell
   columnLabel
-    .append('text')
-    .attr('x', 0)
-    .attr('y', 0)
+    .append("text")
+    .attr("x", 0)
+    .attr("y", 0)
     .text(label)
-    .attr('fill', '#fff')
-    .attr('text-anchor', 'middle')
-    .attr('fill', '#fff')
-    .attr('font-size', '0.55rem')
-    .attr('transform', `translate(-15 ${y + labelHeight / 2}) rotate(90)`)
-    .style('text-transform', 'uppercase');
+    .attr("text-anchor", "middle")
+    .attr("fill", "#ffffff")
+    .attr("font-size", "0.55rem")
+    .attr("transform", `translate(-15 ${y + labelHeight / 2}) rotate(90)`)
+    .style("text-transform", "uppercase");
 });
 
-// function to draw a histogram
-function drawHistogram(specs) {
-  // console.log(specs);
-}
-// function to draw a scatterplot
-function drawScatterplot(specs) {
-  // console.log(specs);
+// function to visualize the distribution of the single variable
+function visualizeDistribution(dataDistribution, settings) {
+  // extract the necessary values from the settings object
+  const { groupVisualization, widthGroup, heightGroup, dy, species, variable } = settings;
 
+  // specify the margin convention on the basis of the width and height of the group
+  const marginDistribution = {
+    top: 10,
+    right: 10,
+    bottom: 10,
+    left: 10
+  };
+  const widthDistribution =
+    widthGroup - (marginDistribution.left + marginDistribution.right);
+  const heightDistribution =
+    heightGroup - (marginDistribution.top + marginDistribution.bottom);
+
+  const groupDistribution = groupVisualization
+    .append("g")
+    .attr(
+      "transform",
+      `translate(${marginDistribution.left} ${marginDistribution.top})`
+    );
+
+  // horizontal scale based on the input data
+  // for the domain use the values of the entire dataset instead of the input data
+  const xScaleDistribution = d3
+    .scaleLinear()
+    .domain(d3.extent(data.map(flower => flower[variable])))
+    .range([0, widthDistribution])
+    .nice();
+
+  // vertical scale based on the length of each bin of the histogram
+  // ! the domain is included as the bins are created
+  const yScaleDistribution = d3
+    .scaleLinear()
+    .range([heightDistribution, 0])
+    .nice();
+
+  // histogram function, based on the horizontal scale
+  const histogram = d3.histogram().domain(xScaleDistribution.domain());
+
+  // multidimensional array describing for each bin the observations recorded in the input data
+  const dataHistogram = histogram(dataDistribution);
+
+  // specify the domain of the vertical scale based on the bin with the greatest number of observations
+  const maxYScale = d3.max(dataHistogram, arr => arr.length);
+
+  yScaleDistribution.domain([0, maxYScale]);
+
+  // include for each bin a rectangle
+  groupDistribution
+    .selectAll("rect")
+    .data(dataHistogram)
+    .enter()
+    .append("rect")
+    .attr('class', `iris ${species}`)
+    // horizontally based on the bin's range
+    // vertically based on the number of observations
+    .attr("x", ({ x0 }) => xScaleDistribution(x0))
+    .attr("y", d => yScaleDistribution(d.length))
+    .attr(
+      "width",
+      ({ x0, x1 }) => xScaleDistribution(x1) - xScaleDistribution(x0)
+    )
+    .attr("height", d => heightDistribution - yScaleDistribution(d.length))
+    .attr("fill", () => {
+      const color = colorEntries.find(entry => entry[0] === species)[1];
+      const { h, s, l } = color;
+      return `hsl(${h} ${s}% ${l}%)`;
+    })
+    .attr('transform', `translate(0 ${dy})`);
 }
 
+// function to describe the relationship between the two input variables
+function visualizeRelationship(dataRelationship, settings) {
+  // destructure the necessary values
+  const { groupVisualization, widthGroup, heightGroup } = settings;
+
+  // margin convention relative to the wrapping group
+  const marginRelationship = {
+    top: 10,
+    right: 10,
+    bottom: 10,
+    left: 10
+  };
+
+  const widthRelationship =
+    widthGroup - (marginRelationship.left + marginRelationship.right);
+  const heightRelationship =
+    heightGroup - (marginRelationship.top + marginRelationship.bottom);
+
+  const groupRelationship = groupVisualization
+    .append("g")
+    .attr(
+      "transform",
+      `translate(${marginRelationship.left} ${marginRelationship.top})`
+    );
+
+  // horizontal scale considering the first variable
+  const xScaleRelationship = d3
+    .scaleLinear()
+    .domain(d3.extent(dataRelationship, d => d.x))
+    .range([0, widthRelationship])
+    .nice();
+
+  // vertical scale considering the second variable
+  const yScaleRelationship = d3
+    .scaleLinear()
+    .domain(d3.extent(dataRelationship, d => d.y))
+    .range([heightRelationship, 0])
+    .nice();
+
+  // for each observation add a circle
+  groupRelationship
+    .selectAll("circle")
+    .data(dataRelationship)
+    .enter()
+    .append("circle")
+    .attr("cx", ({ x }) => xScaleRelationship(x))
+    .attr("cy", ({ y }) => yScaleRelationship(y))
+    .attr("r", 2.5)
+    // assign the circles a class matching the species
+    .attr("class", ({ species }) => `iris ${species}`)
+    // use the color of the matching species
+    .attr("fill", ({ species }) => {
+      const color = colorEntries.find(entry => entry[0] === species)[1];
+      const { h, s, l } = color;
+      return `hsl(${h} ${s}% ${l}%)`;
+    });
+}
 // use each category to include a row and for each row use the categories once again for the column
 categories.forEach((row, indexRow, rows) => {
-  const groupWidth = width / rows.length;
-  const translateX = indexRow * groupWidth;
+  const widthGroup = width / rows.length;
+  const translateX = indexRow * widthGroup;
+
   categories.forEach((column, indexColumn, columns) => {
-    const groupHeight = height / columns.length;
-    const translateY = indexColumn * groupHeight;
+    const heightGroup = height / columns.length;
+    const translateY = indexColumn * heightGroup;
 
     // create one group for each row and column, translating the group at fractions of the width/height of the wrapping svg
     const groupVisualization = group
-      .append('g')
-      .attr('data-categories', `${row}-${column}`)
-      .attr('transform', `translate(${translateX} ${translateY})`);
+      .append("g")
+      .attr("data-categories", `${row}-${column}`)
+      .attr("transform", `translate(${translateX} ${translateY})`);
 
-    // call a function to draw an histogram or scatterplot plot according to the value row and column
-    // in both instances, pass an object describing the group, width and height of the visualization
-    const specs = {
-      groupVisualization,
-      groupWidth,
-      groupHeight,
-    };
+    // call a function to visualize the input data
     // matching value: include a plot describing the distribution for said value
     if (row === column) {
-      const variable = row;
-      drawHistogram(Object.assign({}, specs, {variable}));
+      /* loop through the data considering only the input variable and the flower's species
+      the idea is to have for each species an array of values
+      */
+     const species = [
+       'setosa',
+       'versicolor',
+       'virginica',
+     ];
+     const dataDistribution = species.map(specie => ({
+       species: specie,
+       value: data.filter((flower) => flower.species === specie).map((flower) => flower[row]),
+     }));
+     dataDistribution.forEach((distribution, index) => {
+      visualizeDistribution(distribution.value, {
+        groupVisualization,
+        widthGroup,
+        heightGroup: heightGroup / 3,
+        dx: 0,
+        dy: index * heightGroup / 3,
+        species: distribution.species,
+        variable: row,
+      });
+     });
+     console.log(dataDistribution);
     } else {
       // different values: include a plot describing the relation between the two
-      const [variableX, variableY] = [row, column];
-      drawScatterplot(Object.assign({}, specs, {variableX, variableY}));
+      // loop through the data considering the properties described by the variables
+      const dataRelationship = data.map(flower => ({
+        x: flower[row],
+        y: flower[column],
+        species: flower.species
+      }));
+
+      visualizeRelationship(dataRelationship, {
+        groupVisualization,
+        widthGroup,
+        heightGroup,
+      });
     }
 
-    // as a proof of concept add a rectangle for each cell
+    // encase each cell in a rectangle with a stroke and no fill
     groupVisualization
-      .append('rect')
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('width', groupWidth)
-      .attr('height', groupHeight)
-      .attr('fill', '#ffffff11')
-      .attr('stroke', '#fff')
-      .attr('stroke-width', '1px');
+      .append("rect")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("width", widthGroup)
+      .attr("height", heightGroup)
+      .attr("fill", "none")
+      .attr("stroke", "#ffffff")
+      .attr("stroke-width", "1px");
   });
 });
-
