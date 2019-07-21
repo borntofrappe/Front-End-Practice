@@ -7,18 +7,19 @@
 }
 body {
   min-height: 100vh;
+  background: #142433;
   background: #0c1620;
   color: #ffffff;
 }
 /* center the div wrapping the visualization and cap its width */
 .viz {
   width: 90vw;
-  max-width: 700px;
+  max-width: 650px;
   margin: 0 auto;
   padding: 0.5rem 0.75rem;
   font-family: "Lato", sans-serif;
 }
-
+/* separate the svg directly nested in the .viz container (the legend and the grid) from one another */
 .viz > svg {
   margin: 2rem;
   display: block;
