@@ -1187,16 +1187,17 @@ legendEntries
 // GRID
 // following the legend add an SVG in which to plot the different visualization
 const margin = {
-  top: 20,
-  right: 20,
-  bottom: 20,
-  left: 20
+  top: 15,
+  right: 15,
+  bottom: 15,
+  left: 15
 };
 const width = 500 - (margin.left + margin.right);
 const height = 500 - (margin.top + margin.bottom);
 
 const svg = viz
   .append("svg")
+  .attr("class", "grid")
   .attr(
     "viewBox",
     `0 0 ${width + (margin.left + margin.right)} ${height +
@@ -1257,7 +1258,14 @@ categories.forEach((category, index) => {
 // function to visualize the distribution of the single variable
 function visualizeDistribution(dataDistribution, settings) {
   // extract the necessary values from the settings object
-  const { groupVisualization, widthGroup, heightGroup, dy, species, variable } = settings;
+  const {
+    groupVisualization,
+    widthGroup,
+    heightGroup,
+    dy,
+    species,
+    variable
+  } = settings;
 
   // specify the margin convention on the basis of the width and height of the group
   const marginDistribution = {
@@ -1310,7 +1318,7 @@ function visualizeDistribution(dataDistribution, settings) {
     .data(dataHistogram)
     .enter()
     .append("rect")
-    .attr('class', `iris ${species}`)
+    .attr("class", `iris ${species}`)
     // horizontally based on the bin's range
     // vertically based on the number of observations
     .attr("x", ({ x0 }) => xScaleDistribution(x0))
@@ -1325,7 +1333,22 @@ function visualizeDistribution(dataDistribution, settings) {
       const { h, s, l } = color;
       return `hsl(${h} ${s}% ${l}%)`;
     })
-    .attr('transform', `translate(0 ${dy})`);
+    .attr("transform", `translate(0 ${dy})`);
+
+  // add the horizontal axis based on the x scale
+  const xAxisDistribution = d3
+    .axisBottom(xScaleDistribution)
+    .ticks(5)
+    .tickSize(0);
+
+  groupDistribution
+    .append('g')
+    .attr('class', 'axis x-axis')
+    .attr('transform', `translate(0 ${heightDistribution + dy})`)
+    .attr('opacity', 0)
+    .call(xAxisDistribution);
+
+
 }
 
 // function to describe the relationship between the two input variables
@@ -1384,7 +1407,34 @@ function visualizeRelationship(dataRelationship, settings) {
       const { h, s, l } = color;
       return `hsl(${h} ${s}% ${l}%)`;
     });
+
+// add the axes based on the scales
+const xAxisRelationship = d3
+.axisBottom(xScaleRelationship)
+.ticks(5)
+.tickSize(0);
+
+groupRelationship
+.append('g')
+.attr('class', 'axis x-axis')
+.attr('transform', `translate(0 ${heightRelationship})`)
+.attr('opacity', 0)
+.call(xAxisRelationship);
+
+const yAxisRelationship = d3
+.axisLeft(yScaleRelationship)
+.ticks(5)
+.tickSize(0);
+
+groupRelationship
+.append('g')
+.attr('class', 'axis y-axis')
+.attr('opacity', 0)
+.call(yAxisRelationship);
 }
+
+// boolean describing the zoomed in/ panned out nature of the visualization
+let isZoomed = false;
 // use each category to include a row and for each row use the categories once again for the column
 categories.forEach((row, indexRow, rows) => {
   const widthGroup = width / rows.length;
@@ -1398,7 +1448,47 @@ categories.forEach((row, indexRow, rows) => {
     const groupVisualization = group
       .append("g")
       .attr("data-categories", `${row}-${column}`)
-      .attr("transform", `translate(${translateX} ${translateY})`);
+      .attr("transform", `translate(${translateX} ${translateY})`)
+      // on click zoom in the respective region
+      // if already zooomed-in, pan out
+      .on("click", function() {
+        isZoomed = !isZoomed;
+        // alter the viewBox of the wrapping SVG to zoom in the specific quadrant
+        if (isZoomed) {
+          d3.select("svg.grid")
+            .transition()
+            // +1 for the origin, -2 for the size to crop the stroke of the grid as well
+            .attr(
+              "viewBox",
+              `${translateX + margin.left + 1} ${translateY +
+                margin.top +
+                1} ${widthGroup - 2} ${heightGroup - 2}`
+            );
+
+          // show the axis of the specific group
+          d3.select(this)
+            .selectAll(".axis")
+            .transition()
+            .delay(200)
+            .attr("opacity", 1);
+        } else {
+          d3.select("svg.grid")
+            .transition()
+            .delay(200)
+            // pan out to the original values
+            .attr(
+              "viewBox",
+              `0 0 ${width + (margin.left + margin.right)} ${height +
+                (margin.top + margin.bottom)}`
+            );
+
+          // hide the axis of the specific group
+          d3.select(this)
+            .selectAll(".axis")
+            .transition()
+            .attr("opacity", 0);
+        }
+      });
 
     // call a function to visualize the input data
     // matching value: include a plot describing the distribution for said value
@@ -1406,27 +1496,24 @@ categories.forEach((row, indexRow, rows) => {
       /* loop through the data considering only the input variable and the flower's species
       the idea is to have for each species an array of values
       */
-     const species = [
-       'setosa',
-       'versicolor',
-       'virginica',
-     ];
-     const dataDistribution = species.map(specie => ({
-       species: specie,
-       value: data.filter((flower) => flower.species === specie).map((flower) => flower[row]),
-     }));
-     dataDistribution.forEach((distribution, index) => {
-      visualizeDistribution(distribution.value, {
-        groupVisualization,
-        widthGroup,
-        heightGroup: heightGroup / 3,
-        dx: 0,
-        dy: index * heightGroup / 3,
-        species: distribution.species,
-        variable: row,
+      const species = ["setosa", "versicolor", "virginica"];
+      const dataDistribution = species.map(specie => ({
+        species: specie,
+        value: data
+          .filter(flower => flower.species === specie)
+          .map(flower => flower[row])
+      }));
+      dataDistribution.forEach((distribution, index) => {
+        visualizeDistribution(distribution.value, {
+          groupVisualization,
+          widthGroup,
+          heightGroup: heightGroup / 3,
+          dx: 0,
+          dy: (index * heightGroup) / 3,
+          species: distribution.species,
+          variable: row
+        });
       });
-     });
-     console.log(dataDistribution);
     } else {
       // different values: include a plot describing the relation between the two
       // loop through the data considering the properties described by the variables
@@ -1439,7 +1526,7 @@ categories.forEach((row, indexRow, rows) => {
       visualizeRelationship(dataRelationship, {
         groupVisualization,
         widthGroup,
-        heightGroup,
+        heightGroup
       });
     }
 
@@ -1450,7 +1537,7 @@ categories.forEach((row, indexRow, rows) => {
       .attr("y", 0)
       .attr("width", widthGroup)
       .attr("height", heightGroup)
-      .attr("fill", "none")
+      .attr("fill", "#ffffff00")
       .attr("stroke", "#ffffff")
       .attr("stroke-width", "1px");
   });
