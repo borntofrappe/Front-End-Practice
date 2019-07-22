@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Animated Graphic</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg describing zero from the movie "nightmare before christmas"
+        https://dribbble.com/shots/3669570-Zero
+    -->
+    <svg viewBox="0 0 172 121" width="172" height="121">
+        <defs>
+            <linearGradient id="gradient-collar" x1="0" x2="0" y1="0" y2="1">
+                <stop stop-color="#FA8622" offset="0.5"></stop>
+                <stop stop-color="#EF4038" offset="0.5"></stop>
+            </linearGradient>
+        </defs>
+        <g>
+        <!-- collar -->
+        <path
+            d="M 71 69 a 3.5 3.5 0 0 1 0 7 h -20 a 3.5 3.5 0 0 1 0 -7"
+            fill="url(#gradient-collar)">
+        </path>
+
+        <!-- ears -->
+        <path
+            d="M 59 12 a 12 12 0 0 1 12 -12 h 48 a 12 12 0 0 1 12 12 v 25 q -12 0 -12 -8 v -17"
+            fill="#fff">
+        </path>
+        <path
+            d="M 102 17 h 10 v 19 q -12 0 -12 -8 v -11"
+            fill="#fff">
+        </path>
+        <!-- face -->
+        <circle
+            cx="62"
+            cy="38"
+            r="30"
+            fill="#fff">
+        </circle>
+        <!-- eyes -->
+        <circle
+            cx="47"
+            cy="42"
+            r="6"
+            fill="#2B0E33">
+        </circle>
+        <circle
+            cx="67"
+            cy="42"
+            r="6"
+            fill="#2B0E33">
+        </circle>
+        <!-- chin -->
+        <path
+            d="M 72 50 a 10 10 0 0 1 0 20 h -40 q -15 -0 -20 -20"
+            fill="#fff">
+        </path>
+        <!-- mouth -->
+        <path
+            d="M 45 66 c 4 0 8 -4 8 -8"
+            fill="none"
+            stroke-width="2"
+            stroke="#2B0E33">
+        </path>
+        <!-- nose -->
+        <circle
+            cx="12"
+            cy="50"
+            r="12"
+            opacity="0.4"
+            fill="#EF4038">
+        </circle>
+        <circle
+            cx="12"
+            cy="50"
+            r="8"
+            opacity="0.4"
+            fill="#EF4038">
+        </circle>
+        <circle
+            cx="12"
+            cy="50"
+            r="4.5"
+            fill="#FA8622">
+        </circle>
+        <circle
+            cx="12"
+            cy="50"
+            r="3"
+            fill="#F7EC16">
+        </circle>
+
+        <!-- body -->
+        <path
+            d="M 125 76 h -80 a 15 15 0 0 0 0 30 h 15 a 15 15 0 0 0 15 15 h 20 q 15 0 15 -10 h -5 a 3 3 0 0 1 0 -6 h 15 q 12 0 12 -8 h -5 a 3 3 0 0 1 0 -6 h 15 q 10 0 10 -15"
+            fill="#fff">
+        </path>
+
+        <!-- dashes -->
+        <path
+            d="M 160 78 h 10"
+            fill="none"
+            stroke="#fff"
+            stroke-width="4"
+            stroke-linejoin="round"
+            stroke-linecap="round">
+        </path>
+        <path
+            d="M 155 90 h 1"
+            fill="none"
+            stroke="#fff"
+            stroke-width="4"
+            stroke-linejoin="round"
+            stroke-linecap="round">
+        </path>
+        <path
+            d="M 140 108 h 10 m 10 0 h 1"
+            fill="none"
+            stroke="#fff"
+            stroke-width="4"
+            stroke-linejoin="round"
+            stroke-linecap="round">
+        </path>
+        <path
+            d="M 120 118 h 1"
+            fill="none"
+            stroke="#fff"
+            stroke-width="4"
+            stroke-linejoin="round"
+            stroke-linecap="round">
+        </path>
+      </g>
+    </svg>
+
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>
