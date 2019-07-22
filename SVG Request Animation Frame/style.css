@@ -17,3 +17,17 @@ svg {
   height: auto;
   display: block;
 }
+/* animate the nose to pulse */
+svg g.nose {
+  animation: pulse 5s ease-in-out;
+}
+@keyframes pulse {
+  8% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  15% {
+    transform: initial;
+    opacity: initial;
+  }
+}
