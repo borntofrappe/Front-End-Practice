@@ -87,6 +87,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Low Frequency Oscillator](https://codepen.io/borntofrappe/pen/ZdVovy)|Recreate the animation presented [on this captivating and informative website explaining how synthesizers work](https://learningsynths.ableton.com/lfos/modulating-pitch-with-oscillators), sans audio.|9th July 2019|
 |[SVG Flowchart](https://codepen.io/borntofrappe/pen/rEPqpr)|Using SVG syntax and specifically the viewBox attribute create an interactice flowchart replicating [this design](https://upload.wikimedia.org/wikipedia/commons/9/91/LampFlowchart.svg)|10th July 2019|
 |[SVG Pokeball](https://codepen.io/borntofrappe/pen/zgYgKp)|Design a pokeball with SVG syntax and manage keyframe animations with JavaScript.|18th July 2019|
+|[SVG Request Animation Frame]()|Inspired by [this graphic](https://dribbble.com/shots/3669570-Zero) use SVG syntax and requestAnimationFrame to animate the visual as to follow the cursor.|22nd July 2019|
 
 ### UI UX
 
