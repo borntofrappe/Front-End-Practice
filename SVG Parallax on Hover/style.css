@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: #2a1034;
+  /* center the svg in the viewport */
+  display: flex;
+}
+svg {
+  margin: auto;
+  display: block;
+  width: 80vh;
+  height: auto;
+}

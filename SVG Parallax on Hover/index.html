@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Parallax on Hover</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <!--
+        the idea is to use the cursor coordinates to translate the groups horizontally
+    -->
+    <svg viewBox="0 0 600 540" width="600" height="540">
+        <defs>
+            <!-- gradient used for the collar -->
+            <linearGradient id="gradient-collar" x1="0" x2="0" y1="0" y2="1">
+                <stop stop-color="#FA8622" offset="0.5"></stop>
+                <stop stop-color="#EF4038" offset="0.5"></stop>
+            </linearGradient>
+            <!-- mask to cut out a slice of moon -->
+            <mask id="mask-moon">
+                <rect
+                    x="0"
+                    y="0"
+                    width="100"
+                    height="100"
+                    fill="#fff">
+                </rect>
+                <circle
+                    cx="65"
+                    cy="15"
+                    r="40"
+                    fill="#000">
+                </circle>
+            </mask>
+
+            <!-- elements used (and re-used) to draw the environment -->
+            <!-- basic shapes -->
+            <circle
+                id="star-aquamarine"
+                cx="0"
+                cy="0"
+                r="5"
+                fill="#71CEE6">
+            </circle>
+            <path
+                id="star-purple"
+                d="M -10 0 a 16 16 0 0 0 20 0 a 16 16 0 0 0 -20 0 M 0 -10 a 16 16 0 0 0 0 20 a 16 16 0 0 0 0 -20"
+                stroke="#5A3894"
+                stroke-width="0.25"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                fill="#5A3894">
+            </path>
+            <path
+                id="diamond"
+                d="M 0.25 22.25 l 14 -22.25 l 14 22.25 l -14 22.25 z"
+                stroke="#5A3894"
+                stroke-width="0.5"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                fill="#5A3894">
+            </path>
+            <!-- specify the stroke when <use>ing the element, to describe the line for the lamps and the trees alike -->
+            <path
+                id="line"
+                d="M 0 0 v 100"
+                stroke-width="4"
+                stroke-linecap="square"
+                fill="none">
+            </path>
+            <path
+                id="grass"
+                d="M 15 15 l -15 -15 a 15 15 0 0 1 15 15 M 15 15 l 15 -15 a 15 15 0 0 0 -15 15"
+                fill="#80C4DF">
+            </path>
+            <!-- specify the stroke and fill when <use>ing the element, to describe the clouds in the sky and the mounds on the ground -->
+            <path
+                id="semicircle"
+                d="M -10 10 a 10 10 0 0 1 20 0z"
+                stroke-width="1"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+            </path>
+            <circle
+                id="moon"
+                cx="40"
+                cy="40"
+                r="40"
+                fill="#fff"
+                mask="url(#mask-moon)">
+            </circle>
+
+            <!-- composite shapes, made up of multiple basic shapes
+            ! be aware that symbols carry their own viewBox
+            using x="-5" for instance would crop the shape falling outside the symbol
+            to fix this, use only positive values
+            -->
+            <symbol
+                id="lamp">
+                <use
+                    href="#diamond"
+                    x="0"
+                    y="0">
+                </use>
+                <!-- translate the line at the bottom of the diamond (28 wide and 45 tall) and scale as needed -->
+                <use
+                    href="#line"
+                    x="0" y="0"
+                    transform="translate(14 55) scale(1 1.15)"
+                    stroke="#5A3894">
+                </use>
+            </symbol>
+
+            <!-- ! the tree is upside down -->
+            <symbol
+                id="tree">
+                <use href="#line" x="0" y="0" transform="translate(18 6) rotate(-45) scale(1 0.22)" stroke="#80C4DF"></use>
+                <use href="#line" x="0" y="0" transform="translate(18 6) rotate(45) scale(1 0.22)" stroke="#80C4DF"></use>
+                <use href="#line" x="0" y="0" transform="translate(18 22) rotate(-45) scale(1 0.16)" stroke="#80C4DF"></use>
+                <use href="#line" x="0" y="0" transform="translate(18 22) rotate(45) scale(1 0.16)" stroke="#80C4DF"></use>
+                <use href="#line" x="0" y="0" transform="translate(18 38) rotate(-45) scale(1 0.10)" stroke="#80C4DF"></use>
+                <use href="#line" x="0" y="0" transform="translate(18 38) rotate(45) scale(1 0.10)" stroke="#80C4DF"></use>
+                <use href="#line" x="0" y="0" transform="translate(18 2) scale(1 0.5)" stroke="#80C4DF"></use>
+            </symbol>
+
+            <symbol
+                id="cloud"
+                fill="#fff">
+                <use href="#semicircle" x="0" y="0" transform="translate(10 5) scale(1)"></use>
+                <use href="#semicircle" x="0" y="0" transform="translate(35 0) scale(1.5)"></use>
+                <use href="#semicircle" x="0" y="0" transform="translate(60 5) scale(1)"></use>
+            </symbol>
+            <symbol
+                id="cloud-two"
+                fill="#fff">
+                <use href="#semicircle" x="0" y="0" transform="translate(15 0) scale(1.5)"></use>
+                <use href="#semicircle" x="0" y="0" transform="translate(40 5) scale(1)"></use>
+            </symbol>
+
+            <!-- complex symbol describing half of the sky, by using basic and composite shapes alike -->
+            <symbol
+                id="half-sky">
+                <use x="60" y="5" href="#star-aquamarine"></use>
+                <use x="110" y="60" href="#star-purple"></use>
+                <use x="170" y="70" href="#star-aquamarine"></use>
+                <use x="130" y="110" href="#star-purple"></use>
+                <use x="240" y="170" href="#star-aquamarine"></use>
+                <use x="120" y="170" href="#star-aquamarine"></use>
+                <use x="200" y="170" href="#star-purple"></use>
+                <use x="140" y="230" href="#star-purple"></use>
+                <use x="230" y="240" href="#star-purple"></use>
+                <use x="185" y="260" href="#star-aquamarine"></use>
+                <use x="200" y="70" href="#cloud"></use>
+            </symbol>
+
+            <!-- symbol describing the sky, by replicating the respective half twice -->
+            <symbol
+                id="sky">
+                <g transform="translate(300 0)">
+                    <use href="#half-sky"></use>
+                    <use href="#half-sky" transform="scale(-1 1)"></use>
+                </g>
+                <!-- in addition to the symmetric elements include the moon an the second type of cloud -->
+                <use x="80" y="120" href="#moon"></use>
+                <use x="200" y="90" href="#cloud-two"></use>
+                <use x="410" y="160" href="#cloud-two"></use>
+            </symbol>
+
+            <!-- complex symbol describing half of the ground, by using basic and composite shapes alike -->
+            <symbol
+                id="half-ground">
+                <use x="140" y="280" href="#lamp"></use>
+                <use x="220" y="310" href="#lamp"></use>
+                <use x="100" y="400" href="#grass"></use>
+                <use x="180" y="440" href="#grass"></use>
+                <use x="230" y="525" href="#grass"></use>
+                <!-- for the mounds on the ground consider semicircle of different color and sizes -->
+                <use x="0" y="0" transform="translate(0 460) scale(14 3.5)" href="#semicircle" fill="#5A3894" stroke="#5A3894"></use>
+                <use x="0" y="0" transform="translate(0 510) scale(1.8 1.1)" href="#semicircle" fill="#5A3894" stroke="#5A3894"></use>
+                <use x="0" y="0" transform="translate(170 510) scale(1.8 1.1)" href="#semicircle" fill="#5A3894" stroke="#5A3894"></use>
+                <use x="0" y="0" transform="translate(85 525) scale(3 1.25)" href="#semicircle" fill="#ffffff" stroke="#ffffff"></use>
+                <use x="0" y="0" transform="translate(70 485) scale(1 -1)" href="#tree"></use>
+            </symbol>
+
+            <!-- symbol describing the ground, by replicating the respective half twice -->
+            <symbol
+                id="ground">
+                <g transform="translate(300 0)">
+                    <use href="#half-ground"></use>
+                    <use href="#half-ground" transform="scale(-1 1)"></use>
+                </g>
+            </symbol>
+        </defs>
+
+        <!-- elements describing the environment -->
+        <use href="#sky" data-force="2"></use><!-- translate this element -->
+        <use href="#ground" data-force="1"></use><!-- translate this element -->
+
+
+        <!-- group describing the dog zero -->
+        <g transform="translate(200 240)">
+            <g data-force="3"><!-- translate this group -->
+                <!-- collar -->
+                <path
+                    d="M 71 69 a 3.5 3.5 0 0 1 0 7 h -20 a 3.5 3.5 0 0 1 0 -7"
+                    fill="url(#gradient-collar)">
+                </path>
+
+                <!-- ears -->
+                <g
+                    fill="#fff">
+                    <path
+                        d="M 59 12 a 12 12 0 0 1 12 -12 h 48 a 12 12 0 0 1 12 12 v 25 q -12 0 -12 -8 v -17">
+                    </path>
+                    <path
+                        d="M 102 17 h 10 v 19 q -12 0 -12 -8 v -11">
+                    </path>
+                </g>
+                <!-- face -->
+                <g>
+                    <circle
+                        cx="62"
+                        cy="38"
+                        r="30"
+                        fill="#fff">
+                    </circle>
+                    <!-- eyes -->
+                    <g
+                        fill="#201922">
+                        <circle
+                            cx="47"
+                            cy="42"
+                            r="6">
+                        </circle>
+                        <circle
+                            cx="67"
+                            cy="42"
+                            r="6">
+                        </circle>
+                    </g>
+                    <!-- chin -->
+                    <path
+                        d="M 72 50 a 10 10 0 0 1 0 20 h -40 q -15 -0 -20 -20"
+                        fill="#fff">
+                    </path>
+                    <!-- mouth -->
+                    <path
+                        d="M 45 66 c 4 0 8 -4 8 -8"
+                        fill="none"
+                        stroke-width="2"
+                        stroke="#2B0E33">
+                    </path>
+                </g>
+                <!-- nose -->
+                <!-- translate to modify the transform-origin-->
+                <g transform="translate(12 50)">
+                    <g class="nose"><!-- scale this group to scale all nested circles from their respective center -->
+                        <circle
+                            cx="0"
+                            cy="0"
+                            r="12"
+                            opacity="0.4"
+                            fill="#EF4038">
+                        </circle>
+                        <circle
+                            cx="0"
+                            cy="0"
+                            r="8"
+                            opacity="0.4"
+                            fill="#EF4038">
+                        </circle>
+                        <circle
+                            cx="0"
+                            cy="0"
+                            r="4.5"
+                            fill="#FA8622">
+                        </circle>
+                        <circle
+                            cx="0"
+                            cy="0"
+                            r="3"
+                            fill="#F7EC16">
+                        </circle>
+                    </g>
+                </g>
+
+                <!-- body -->
+                <path
+                    d="M 125 76 h -80 a 15 15 0 0 0 0 30 h 15 a 15 15 0 0 0 15 15 h 20 q 15 0 15 -10 h -5 a 3 3 0 0 1 0 -6 h 15 q 12 0 12 -8 h -5 a 3 3 0 0 1 0 -6 h 15 q 10 0 10 -15"
+                    fill="#fff">
+                </path>
+
+                <!-- dashes -->
+                <g
+                    fill="none"
+                    stroke="#fff"
+                    stroke-width="4"
+                    stroke-linejoin="round"
+                    stroke-linecap="round">
+                    <path
+                        d="M 160 78 h 10">
+                    </path>
+                    <path
+                        d="M 155 90 h 1">
+                    </path>
+                    <path
+                        d="M 140 108 h 10 m 10 0 h 1">
+                    </path>
+                    <path
+                        d="M 120 118 h 1">
+                    </path>
+                </g>
+            </g>
+        </g>
+    </svg>
+
+    <script src="script.js"></script>
+</body>
+</html>
