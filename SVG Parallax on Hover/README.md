@@ -1,5 +1,7 @@
 # SVG Parallax on Hover
 
+## [Live Demo](https://codepen.io/borntofrappe/full/voGOvw)
+
 ## Goal
 
-Building on the previous project using requestAnimationFrame increase draw a more complex SVG and translate different elements at different rates on hover.
+Building upon a [previous project](https://codepen.io/borntofrappe/pen/qebWxQ) practice with SVG, the `<use>` element and `requestAnimationFrame`.
