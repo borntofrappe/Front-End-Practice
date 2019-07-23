@@ -9,7 +9,6 @@
 </head>
 <body>
 
-
     <!--
         the idea is to use the cursor coordinates to translate the groups horizontally
     -->
@@ -143,7 +142,7 @@
 
             <!-- complex symbol describing half of the sky, by using basic and composite shapes alike -->
             <symbol
-                id="half-sky">
+                id="half-stars">
                 <use x="60" y="5" href="#star-aquamarine"></use>
                 <use x="110" y="60" href="#star-purple"></use>
                 <use x="170" y="70" href="#star-aquamarine"></use>
@@ -154,18 +153,25 @@
                 <use x="140" y="230" href="#star-purple"></use>
                 <use x="230" y="240" href="#star-purple"></use>
                 <use x="185" y="260" href="#star-aquamarine"></use>
-                <use x="200" y="70" href="#cloud"></use>
             </symbol>
 
-            <!-- symbol describing the sky, by replicating the respective half twice -->
+            <!-- symbol describing the stars, by replicating the respective half twice -->
+            <symbol
+                id="stars">
+                <g transform="translate(300 0)">
+                    <use href="#half-stars"></use>
+                    <use href="#half-stars" transform="scale(-1 1)"></use>
+                </g>
+            </symbol>
+
+            <!-- symbol describing the clouds and the moon -->
             <symbol
                 id="sky">
-                <g transform="translate(300 0)">
-                    <use href="#half-sky"></use>
-                    <use href="#half-sky" transform="scale(-1 1)"></use>
-                </g>
-                <!-- in addition to the symmetric elements include the moon an the second type of cloud -->
                 <use x="80" y="120" href="#moon"></use>
+                <g transform="translate(300 0)">
+                    <use x="200" y="70" href="#cloud"></use>
+                    <use x="200" transform="scale(-1 1)" y="70" href="#cloud"></use>
+                </g>
                 <use x="200" y="90" href="#cloud-two"></use>
                 <use x="410" y="160" href="#cloud-two"></use>
             </symbol>
@@ -197,13 +203,13 @@
         </defs>
 
         <!-- elements describing the environment -->
-        <use href="#sky" data-force="2"></use><!-- translate this element -->
-        <use href="#ground" data-force="1"></use><!-- translate this element -->
-
+        <use href="#stars" data-strength="0.2" data-threshold="10"></use><!-- translate this element -->
+        <use href="#sky" data-strength="0.2" data-threshold="20"></use><!-- translate this element -->
+        <use href="#ground" data-strength="0.3" data-threshold="25"></use><!-- translate this element -->
 
         <!-- group describing the dog zero -->
         <g transform="translate(200 240)">
-            <g data-force="3"><!-- translate this group -->
+            <g data-strength="0.5" data-threshold="100"><!-- translate this group -->
                 <!-- collar -->
                 <path
                     d="M 71 69 a 3.5 3.5 0 0 1 0 7 h -20 a 3.5 3.5 0 0 1 0 -7"
@@ -220,6 +226,7 @@
                         d="M 102 17 h 10 v 19 q -12 0 -12 -8 v -11">
                     </path>
                 </g>
+
                 <!-- face -->
                 <g>
                     <circle
@@ -255,6 +262,7 @@
                         stroke="#2B0E33">
                     </path>
                 </g>
+
                 <!-- nose -->
                 <!-- translate to modify the transform-origin-->
                 <g transform="translate(12 50)">
