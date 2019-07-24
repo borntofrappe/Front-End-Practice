@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- the viewbox considers the size of the path ( * ) plus the space allocated to the stroke () -->
+    <svg viewBox="0 0 114 100" width="114" height="100">
+        <path
+            class="fuse"
+            fill="none"
+            stroke="none"
+            d="M 0 0 v 5 a 10 10 0 0 1 -20 0 a 18 18 0 0 0 -36 0">
+        </path>
+        <g
+            fill="#0D3730">
+            <g transform="translate(30 70)">
+                <g class="bomb" transform="scale(1)"><!-- scale this group -->
+                    <circle
+                        cx="0"
+                        cy="0"
+                        r="30">
+                    </circle>
+
+                    <rect
+                        x="-12"
+                        y="-37"
+                        width="24"
+                        height="10">
+                    </rect>
+                </g>
+            </g>
+
+            <!-- the fuse ends at (86,28) -->
+            <g transform="translate(86 28)">
+                <path
+                    class="match"
+                    fill="none"
+                    stroke="#458588"
+                    stroke-width="2"
+                    d="M 0 0 v 5 a 10 10 0 0 1 -20 0 a 18 18 0 0 0 -36 0">
+                </path>
+                <g class="spark"><!-- translate this group -->
+                    <path
+                        transform="scale(1.5)"
+                        stroke="#F3A37C"
+                        stroke-width="1.5"
+                        d="M -5 -3 h 3.5 l 1.5 -3 l 1.5 3 h 3.5 l -3 2.5 l 1.5 3.5 l -3.5 -2 l -3.5 2 l 1.5 -3.5 z"
+                        fill="#FFF9EE">
+                    </path><!-- scale this path -->
+                    <g class="sparkles"><!-- scale this group -->
+                        <g
+                            fill="#F3A37C">
+                            <circle
+                                transform="rotate(10) translate(12 0)"
+                                cx="0"
+                                cy="0"
+                                r="2">
+                            </circle>
+                            <circle
+                                transform="rotate(170) translate(12 0)"
+                                cx="0"
+                                cy="0"
+                                r="2">
+                            </circle>
+                            <circle
+                                transform="rotate(-60) translate(12 0)"
+                                cx="0"
+                                cy="0"
+                                r="2">
+                            </circle>
+                        </g>
+                    </g>
+                </g>
+
+            </g>
+        </g>
+    </svg>
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
