@@ -3,10 +3,10 @@
   padding: 0;
   margin: 0;
 }
+/* center the svg in the viewport */
 body {
   min-height: 100vh;
   background: #fffaf0;
-  background: #fff;
   display: flex;
 }
 svg {

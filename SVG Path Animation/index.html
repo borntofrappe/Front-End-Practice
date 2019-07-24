@@ -4,56 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>SVG Path Animation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- the viewbox considers the size of the path ( * ) plus the space allocated to the stroke () -->
-    <svg viewBox="0 0 114 100" width="114" height="100">
+    <!-- specify a viewBox larger than the actual shape, to allocate space for the bomb as it gets scaled beyond its normal size -->
+    <svg viewBox="-30 -10 150 120" width="150" height="120">
+        <!-- path used by anime.js to trace the movement of the fuse -->
         <path
-            class="fuse"
+            id="motion-path"
             fill="none"
             stroke="none"
-            d="M 0 0 v 5 a 10 10 0 0 1 -20 0 a 18 18 0 0 0 -36 0">
+            d="M 0 0 v 5 a 10 10 0 0 1 -20 0 a 18 18 0 0 0 -36 0 v 30">
         </path>
-        <g
-            fill="#0D3730">
-            <g transform="translate(30 70)">
-                <g class="bomb" transform="scale(1)"><!-- scale this group -->
-                    <circle
-                        cx="0"
-                        cy="0"
-                        r="30">
-                    </circle>
 
-                    <rect
-                        x="-12"
-                        y="-37"
-                        width="24"
-                        height="10">
-                    </rect>
-                </g>
-            </g>
+        <g>
 
-            <!-- the fuse ends at (86,28) -->
-            <g transform="translate(86 28)">
+            <g transform="translate(86 14)">
                 <path
-                    class="match"
+                    id="fuse"
                     fill="none"
                     stroke="#458588"
                     stroke-width="2"
-                    d="M 0 0 v 5 a 10 10 0 0 1 -20 0 a 18 18 0 0 0 -36 0">
+                    d="M 0 0 v 5 a 10 10 0 0 1 -20 0 a 18 18 0 0 0 -36 0 v 30">
                 </path>
-                <g class="spark"><!-- translate this group -->
+                <!-- translate the #spark group -->
+                <g id="spark">
+                    <!-- scale the #ember path -->
                     <path
-                        transform="scale(1.5)"
+                        id="ember"
+                        transform="scale(1.75)"
                         stroke="#F3A37C"
-                        stroke-width="1.5"
-                        d="M -5 -3 h 3.5 l 1.5 -3 l 1.5 3 h 3.5 l -3 2.5 l 1.5 3.5 l -3.5 -2 l -3.5 2 l 1.5 -3.5 z"
+                        stroke-width="1.25"
+                        d="M -4.5 -1.5 h 3 l 1.5 -3 l 1.5 3 h 3 l -2.5 2.5 l 1.5 3.25 l -3.5 -2 l -3.5 2 l 1.5 -3.25 l -2.5 -2.5z"
                         fill="#FFF9EE">
-                    </path><!-- scale this path -->
-                    <g class="sparkles"><!-- scale this group -->
+                    </path>
+                    <!-- scale #sparkles group -->
+                    <g
+                        id="sparkles"
+                        transform="scale(0)">
                         <g
                             fill="#F3A37C">
                             <circle
@@ -69,15 +58,46 @@
                                 r="2">
                             </circle>
                             <circle
-                                transform="rotate(-60) translate(12 0)"
+                                transform="rotate(90) translate(12 0)"
                                 cx="0"
                                 cy="0"
                                 r="2">
                             </circle>
+                            <circle
+                                transform="rotate(-60) translate(13 0)"
+                                cx="0"
+                                cy="0"
+                                r="2">
+                            </circle>
+                            <circle
+                                transform="rotate(-120) translate(13 0)"
+                                cx="0"
+                                cy="0"
+                                r="1.75">
+                            </circle>
                         </g>
                     </g>
                 </g>
+            </g>
 
+            <g transform="translate(30 56)"><!-- translate to modify the transform origin and scale the bomb from its center -->
+                <!-- scale the #bomb group -->
+                <g
+                    id="bomb"
+                    fill="#0D3730">
+                    <circle
+                        cx="0"
+                        cy="0"
+                        r="30">
+                    </circle>
+
+                    <rect
+                        x="-12"
+                        y="-37"
+                        width="24"
+                        height="10">
+                    </rect>
+                </g>
             </g>
         </g>
     </svg>
