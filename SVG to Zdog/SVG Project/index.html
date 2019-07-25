@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <svg viewBox="0 0 247 210" width="247" height="210">
+        <defs>
+            <!-- elements repeated in the graphic -->
+            <!-- -30 40 to center the transform-origin in the center of the star -->
+            <path
+                id="star"
+                d="M -30 40 0 -50 30 40 -50 -15 50 -15 z">
+            </path>
+            <!-- 0 0 to have the transform-origin at the top of the triangle -->
+            <path
+                id="triangle"
+                d="M 0 0 l 10 16 h -20 z"
+                fill="#FFF9EE">
+            </path>
+        </defs>
+
+        <!-- fuse and sparkle(s) -->
+        <g transform="translate(215 30)">
+            <path
+                fill="none"
+                stroke="#458588"
+                stroke-width="5"
+                d="M 0 0 v 15 a 30 30 0 0 1 -60 0 a 40 40 0 0 0 -80 0"><!-- ends at 75 45 -->
+            </path>
+            <g
+                fill="#F3A37C">
+                <circle
+                    transform="rotate(30) translate(32 0)"
+                    cx="0"
+                    cy="0"
+                    r="4">
+                </circle>
+                <circle
+                    transform="rotate(150) translate(32 0)"
+                    cx="0"
+                    cy="0"
+                    r="4">
+                </circle>
+                <circle
+                    transform="rotate(-50) translate(32 0)"
+                    cx="0"
+                    cy="0"
+                    r="4">
+                </circle>
+            </g>
+            <use
+            transform="scale(0.6)"
+                href="#star"
+                fill="#F3A37C">
+            </use>
+            <use
+                transform="scale(0.3)"
+                href="#star"
+                fill="#FFF9EE">
+            </use>
+        </g>
+
+        <!-- bomb -->
+        <g transform="translate(75 135)"><!-- 75 to center, 135 to consider the fuse and the top of the rectangle -->
+            <circle
+                cx="0"
+                cy="0"
+                r="75"
+                fill="#0D3730">
+            </circle>
+            <rect
+                x="-25"
+                y="-90"
+                width="50"
+                height="20"
+                fill="#0D3730">
+            </rect>
+            <path
+                fill="#092E2B"
+                transform="rotate(30)"
+                d="M 0 -75 a 75 75 0 0 1 0 150 a 77 77 0 0 0 0 -150">
+            </path>
+            <circle
+                fill="none"
+                stroke="#458588"
+                stroke-width="2"
+                cx="0"
+                cy="0"
+                r="40">
+            </circle>
+            <!-- the triangle is centered in a 20*16 box -->
+            <g transform="translate(0 -5)">
+                <use href="#triangle" transform="translate(0 -16)"></use>
+                <use href="#triangle" transform="translate(-10 0)"></use>
+                <use href="#triangle" transform="translate(10 0)"></use>
+            </g>
+        </g>
+    </svg>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
