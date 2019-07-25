@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- specify a viewBox larger than the actual shape, to allocate space for the bomb as it gets scaled beyond its normal size -->
-    <svg viewBox="-30 -10 150 120" width="150" height="120">
+    <svg viewBox="-30 -20 150 120" width="150" height="120">
         <!-- path used by anime.js to trace the movement of the fuse -->
         <path
             id="motion-path"
@@ -19,6 +19,20 @@
         </path>
 
         <g>
+            <g transform="translate(30 58)">
+                <g id="rupee">
+                    <path
+                        fill="#458588"
+                        transform="scale(0.8)"
+                        d="M 0 -24 l 12 12 v 20 l -12 12 l -12 -12 v -20 z">
+                    </path>
+                    <path
+                        fill="#65b3b8"
+                        transform="scale(0.5)"
+                        d="M 0 -24 l 12 12 v 20 l -12 12 l -12 -12 v -20 z">
+                    </path>
+                </g>
+            </g>
 
             <g transform="translate(86 14)">
                 <path
@@ -80,6 +94,7 @@
                 </g>
             </g>
 
+
             <g transform="translate(30 56)"><!-- translate to modify the transform origin and scale the bomb from its center -->
                 <!-- scale the #bomb group -->
                 <g
@@ -90,6 +105,29 @@
                         cy="0"
                         r="30">
                     </circle>
+                    <path
+                        fill="#092E2B"
+                        transform="rotate(30)"
+                        d="M 0 -30 a 30 30 0 0 1 0 60 a 31 31 0 0 0 0 -60">
+                    </path>
+
+                    <circle
+                        fill="none"
+                        stroke="#458588"
+                        stroke-width="1.5"
+                        cx="0"
+                        cy="0"
+                        r="15">
+                    </circle>
+                    <path
+                        d="M 0 -8.5 l 8 14 h -16 z"
+                        fill="#FFF9EE">
+                    </path>
+                    <path
+                        transform="scale(0.5) rotate(180)"
+                        d="M 0 -11 l 8 14 h -16 z"
+                        fill="#0D3730">
+                    </path>
 
                     <rect
                         x="-12"
@@ -101,6 +139,9 @@
             </g>
         </g>
     </svg>
+
+    <input type="range" min="0" max="100" value="0" />
+
     <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="script.js"></script>
 </body>

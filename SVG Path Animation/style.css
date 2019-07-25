@@ -3,15 +3,63 @@
   padding: 0;
   margin: 0;
 }
-/* center the svg in the viewport */
+/* display the svg and input in a centered column */
 body {
   min-height: 100vh;
-  background: #fffaf0;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fffaf0;
 }
 svg {
   display: block;
-  margin: auto;
   width: 200px;
   height: auto;
+}
+
+/* style the input of type range to highlight two dots atop a thin line
+the whole thing is optimized for chrome and should be carefully considered for cross-browser support
+*/
+input[type="range"] {
+  margin-top: 2.5rem;
+  width: 300px;
+  -webkit-appearance: none;
+  height: 1rem;
+  background: transparent;
+  color: #0d3730;
+  position: relative;
+  cursor: e-resize;
+}
+/* circle making up the thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #0d3730;
+}
+/* thin line  */
+input[type="range"]:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: #0d3730;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: -5;
+}
+/* ticks added at either end */
+input[type="range"]:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-left: 2px solid #0d3730;
+  border-right: 2px solid #0d3730;
+  z-index: -5;
 }
