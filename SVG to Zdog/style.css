@@ -11,3 +11,6 @@ body {
   justify-content: center;
   align-items: center;
 }
+canvas {
+  cursor: grab;
+}

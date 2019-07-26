@@ -90,7 +90,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Request Animation Frame](https://codepen.io/borntofrappe/pen/qebWxQ)|Inspired by [this graphic](https://dribbble.com/shots/3669570-Zero) use SVG syntax and requestAnimationFrame to animate the visual as to follow the cursor.|22nd July 2019|
 |[SVG Parallax on Hover](https://codepen.io/borntofrappe/pen/voGOvw)|Building upon the previous project practice with SVG, the `<use>` element and requestAnimationFrame.|23rd July 2019|
 |[SVG Path Animation](https://codepen.io/borntofrappe/pen/LwZRON)|Inspired by [this design](https://dribbble.com/shots/3848395-Zelda-Switch) practice with SVG and the anime.js.|24th-25th July 2019|
-|[SVG to Zdog]()|Building upon the previous project recreate the SVG graphic in the pseudo-3d environment provided by the Zdog library.|25th-26th July 2019|
+|[SVG to Zdog](https://codepen.io/borntofrappe/pen/VomjpG)|Building upon the previous project recreate the SVG graphic in the pseudo-3d environment provided by the Zdog library.|25th-26th July 2019|
 
 ### UI UX
 
