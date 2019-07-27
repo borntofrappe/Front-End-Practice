@@ -134,3 +134,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[CPC Dad Jokes](https://codepen.io/borntofrappe/pen/XLQoEX)|Create a linear application where a joke is retrieved from the dad jokes API and told through the Web Speech API.|12th July 2019|
 |[Google Pagination](https://codepen.io/borntofrappe/pen/dBxarJ)|Recreate the pagination highlighting google search results, by stretching the google name to cover multiple pages.|16th July 2019|
 |[CPC Fetch Em All](https://codepen.io/borntofrappe/pen/xvbvqp)|Display a message according to the resolution of a promise, retrieving information from a public API.|19th July 2019|
+|[CPC Book by Title]()|Fetch books through the open library API and display the results using SVG element.|27th July 2019|
