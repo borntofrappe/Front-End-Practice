@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CPC Book by Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg elements defined for the project -->
+    <svg hidden style="opacity: 0; width: 0; height: 0; position: absolute; top: 100%; left: 100%;">
+        <defs>
+            <!-- mask to cut out sections of the letter b -->
+            <mask id="mask-b">
+                <rect
+                    x="0"
+                    y="0"
+                    width="52"
+                    height="150"
+                    fill="#fff">
+                </rect>
+                <path
+                    d="M 14 14 h 20 a 3 3 0 0 1 3 3 v 6 a 3 3 0 0 1 -3 3 h -20 z"
+                    fill="#000">
+                </path>
+                <path
+                    d="M 14 44 h 20 a 3 3 0 0 1 3 3 v 6 a 3 3 0 0 1 -3 3 h -20 z"
+                    fill="#000">
+                </path>
+            </mask>
+            <!-- mask to cut out the central section of the letter(s) o -->
+            <mask id="mask-o">
+                <rect
+                    x="0"
+                    y="0"
+                    width="50"
+                    height="150"
+                    fill="#fff">
+                </rect>
+                <!-- cut-out section replicating the letter o, but scaled from the center -->
+                <g
+                    transform="translate(25 40) scale(0.5 0.6)">
+                    <g transform="translate(-25 -40)">
+                        <path
+                            fill="#000"
+                            d="M 0 0 a 100 100 0 0 1 50 15 v 70 a 100 100 0 0 0 -50 -15 v -70">
+                        </path>
+                    </g>
+                </g>
+            </mask>
+            <!-- letter o
+                including the mask and additional paths for the leaves above the letter
+                ! this means the letters b and k need to be translated vertically to be aligned with the letter(s) o
+            -->
+            <symbol id="letter-o">
+                <path
+                    transform="translate(0 21)"
+                    mask="url(#mask-o)"
+                    d="M 0 0 a 100 100 0 0 1 50 15 v 70 a 100 100 0 0 0 -50 -15 v -70">
+                </path>
+                <path
+                    d="M 50 31 a 100 100 0 0 0 -45 -20 v 5 a 100 100 0 0 1 45 15">
+                </path>
+                <path
+                    d="M 50 26 a 100 100 0 0 0 -22 -26 v 10 a 100 100 0 0 1 22 16">
+                </path>
+            </symbol>
+            <!-- gradient overlaid on the books to give them a semitransparent shadow
+            ! each book is mean to be 25 wide, hence the x2 value
+            -->
+            <linearGradient id="gradient-book" gradientUnits="userSpaceOnUse" y1="0" y2="0" x1="0" x2="25">
+                <stop stop-color="#FF184A" offset="0"></stop>
+                <stop stop-color="#311839" offset="1"></stop>
+            </linearGradient>
+            <!-- symbols describing the books included later in the project
+                three variants with different patterns -->
+            <symbol id="book-1">
+                <g>
+                    <rect
+                        fill="#FF184A"
+                        x="5"
+                        y="0"
+                        width="15"
+                        height="125"
+                        rx="2">
+                    </rect>
+                    <rect
+                        fill="#932243"
+                        x="5"
+                        y="5"
+                        width="15"
+                        height="10">
+                    </rect>
+                    <rect
+                        fill="#932243"
+                        x="5"
+                        y="110"
+                        width="15"
+                        height="10">
+                    </rect>
+                    <rect
+                        fill="url(#gradient-book)"
+                        x="5"
+                        y="0"
+                        width="15"
+                        height="125"
+                        rx="2"
+                        opacity="0.6">
+                    </rect>
+                </g>
+            </symbol>
+            <symbol id="book-2">
+                <g>
+                    <rect
+                        fill="#FF184A"
+                        x="0"
+                        y="0"
+                        width="25"
+                        height="125"
+                        rx="3.5">
+                    </rect>
+                    <rect
+                        fill="#932243"
+                        x="0"
+                        y="10"
+                        width="25"
+                        height="2">
+                    </rect>
+                    <rect
+                        fill="#932243"
+                        x="0"
+                        y="17"
+                        width="25"
+                        height="20">
+                    </rect>
+                    <rect
+                        fill="#932243"
+                        x="0"
+                        y="42"
+                        width="25"
+                        height="2">
+                    </rect>
+                    <rect
+                        fill="url(#gradient-book)"
+                        x="0"
+                        y="0"
+                        width="25"
+                        height="125"
+                        rx="3.5"
+                        opacity="0.6">
+                    </rect>
+                </g>
+            </symbol>
+            <symbol id="book-3">
+                <g>
+                    <rect
+                        fill="#FF184A"
+                        x="0.5"
+                        y="25"
+                        width="24"
+                        height="100"
+                        rx="5">
+                    </rect>
+                    <rect
+                        fill="#932243"
+                        x="5.5"
+                        y="50"
+                        width="2"
+                        height="35">
+                    </rect>
+                    <rect
+                        fill="#932243"
+                        x="11.5"
+                        y="45"
+                        width="2"
+                        height="45">
+                    </rect>
+                    <rect
+                        fill="#932243"
+                        x="17.5"
+                        y="50"
+                        width="2"
+                        height="35">
+                    </rect>
+                    <rect
+                        fill="url(#gradient-book)"
+                        x="0.5"
+                        y="25"
+                        width="24"
+                        height="100"
+                        rx="5"
+                        opacity="0.6">
+                    </rect>
+                </g>
+            </symbol>
+            <symbol id="book-4">
+                <g>
+                    <rect
+                        fill="#FF184A"
+                        x="6"
+                        y="0"
+                        width="13"
+                        height="125"
+                        rx="2">
+                    </rect>
+                    <rect
+                        fill="#932243"
+                        x="11.5"
+                        y="12.5"
+                        width="2"
+                        height="100"
+                        rx="2">
+                    </rect>
+                    <rect
+                        fill="url(#gradient-book)"
+                        x="6"
+                        y="0"
+                        width="13"
+                        height="125"
+                        rx="2"
+                        opacity="0.6">
+                    </rect>
+                </g>
+            </symbol>
+        </defs>
+    </svg>
+
+
+    <!-- html structure
+    .app, wrapping container
+        header
+            svg
+        form
+            label, input and submit button
+        section
+            one article for each book, nesting an svg element and a div describing the book
+            ! elements added through the script following the fetch request
+    -->
+    <div class="app">
+        <header>
+            <svg viewBox="0 0 240 106" width="240" height="106">
+                <g fill="currentColor">
+                    <!-- b -->
+                    <g transform="translate(0 21)">
+                        <path
+                            mask="url(#mask-b)"
+                            d="M 0 0 h 40 a 12 12 0 0 1 12 12 v 18 a 5 5 0 0 1 -5 5 a 5 5 0 0 1 5 5 v 18 a 12 12 0 0 1 -12 12 h -40">
+                        </path>
+                    </g>
+                    <!-- o -->
+                    <g transform="translate(64 0)">
+                        <use href="#letter-o"></use>
+                    </g>
+                    <!-- o scaled with a negative x value to create a mirrored version -->
+                    <g transform="translate(69 0)">
+                        <!-- scaled from the right edge of the letter -->
+                        <g transform="translate(50 0) scale(-1 1)">
+                            <g transform="translate(-50 0)">
+                                <use href="#letter-o"></use>
+                            </g>
+                        </g>
+                    </g>
+                    <!-- k -->
+                    <g transform="translate(181 21)">
+                        <path
+                            d="M 0 0 v 70 h 15 v -30 l 24 30 h 20 l -28 -35 l 28 -35 h -20 l -24 30 v -30 z">
+                        </path>
+                    </g>
+                </g>
+            </svg>
+        </header>
+
+        <form>
+            <label for="title">Search by title</label>
+            <input type="text" name="title" id="title">
+
+            <button aria-describedby="search-book">
+                <svg viewBox="0 0 100 100" width="30" height="30">
+                    <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="5">
+                        <circle
+                            cx="42"
+                            cy="42"
+                            r="25">
+                        </circle>
+                        <path
+                            stroke-linecap="round"
+                            d="M 67 67 l 15 15">
+                        </path>
+                    </g>
+                </svg>
+                <span hidden id="search-book">Search for book</span>
+            </button>
+        </form>
+
+        <!-- article structure
+            svg, drawing the side of the book
+            div, describing the book's information
+         -->
+        <section>
+            <!-- <article>
+                <svg viewBox="0 0 25 125" width="25" height="125">
+                    <use href="#book-1"></use>
+                </svg>
+                <div>
+                    <h1>Book name</h1>
+                    <h2>Author</h2>
+                    ...
+                </div>
+            </article> -->
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

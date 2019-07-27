@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: #180b24;
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  /* center the .app container horizontally */
+  display: flex;
+  justify-content: center;
+}
+/* display the header, form and section in a single column */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 1rem;
+}
+/* display the input and submit button side by side, with the former growing to cover the available space */
+.app form {
+  margin: 3.5rem 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: 2px solid currentColor;
+}
+/* absolute position the label above the form */
+.app form label {
+  z-index: -5;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease-out;
+  transition-delay: 0.15s; /* small delay as the focus is removed */
+}
+/* when the form has focus reduce the weight of the label */
+.app form:focus-within label {
+  opacity: 0.7;
+  transition-delay: 0; /* no delay as the focus is gained */
+}
+
+/* when the form has focus animate the svg to rotate back to 0 */
+.app form:focus-within button svg {
+  transform: rotate(0);
+  transition-delay: 0.15s; /* small delay as the focus is gained */
+}
+.app form input {
+  outline: none;
+  flex-grow: 1;
+  font-family: inherit;
+  font-size: 1.2rem;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+}
+.app form button {
+  margin-left: 0.5rem;
+  background: none;
+  border: none;
+  width: 45px;
+  height: 45px;
+  color: inherit;
+  padding: 5px;
+}
+/* rotate the svg by default */
+.app form button svg {
+  transition: transform 0.25s ease-out;
+  transform: rotate(45deg);
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/* display the articles in a row */
+.app section {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+/* animate the articles to appear one after another (delay included in the script) */
+.app section article {
+  color: inherit;
+  text-decoration: none;
+  padding: 0 0.25rem;
+  animation: addBook 0.7s ease-out both;
+  /* position relative to absolute position the div describing the book below the article */
+  position: relative;
+}
+/* animation for the articles */
+@keyframes addBook {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+/* when hovering the articles scale the svg element to as if picking out the book */
+.app section article svg {
+  transition-property: transform, opacity;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+  transform-origin: 50% 100%;
+  opacity: 0.8;
+}
+.app section article:hover svg {
+  transform: scale(1.1);
+  opacity: 1;
+}
+/* position the container describing the book below the svg */
+.app section article div {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 5px);
+  white-space: nowrap;
+  background: #fff;
+  color: #000;
+  /* include more whitespace atop the container to make space for the clip-path */
+  padding: 0.5rem 1rem;
+  padding-top: 1rem;
+  /* add an arrow pointing upwards by clipping the background */
+  clip-path: polygon(
+    0% 0.5rem,
+    42% 0.5rem,
+    50% 0%,
+    58% 0.5rem,
+    100% 0.5rem,
+    100% 100%,
+    0% 100%
+  );
+  /* by default hide the container */
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+/* on hover show the container describing the information */
+.app section article:hover div {
+  /* transition only as the hover event occurs */
+  transition-property: opacity, visibility;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0.1s;
+  opacity: 1;
+  visibility: visible;
+}
+.app section article div h1 {
+  font-size: 1rem;
+}
+.app section article div h2 {
+  font-size: 0.9rem;
+}
+.app section article div p {
+  font-size: 0.9rem;
+}
