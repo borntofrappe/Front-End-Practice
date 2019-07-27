@@ -1,7 +1,7 @@
 // global variables
 
 // endpoint allowing to build the URL
-const endpoint = 'http://openlibrary.org/search.json';
+const endpoint = 'https://openlibrary.org/search.json';
 // limit capping the number of results returned from the call to the API
 const limit = 10;
 
