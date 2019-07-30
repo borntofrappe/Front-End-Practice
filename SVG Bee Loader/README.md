@@ -1,7 +1,7 @@
 # SVG Bee Loader
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/vomyOB)
 
 ## Goal
 
-Create a loading screen themed around bees and apiculture.
+Draw several bees with SVG and animate them with CSS to create a loading screen.
