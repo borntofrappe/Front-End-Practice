@@ -4,22 +4,25 @@
   margin: 0;
 }
 body {
+  /* center in the viewport */
   min-height: 100vh;
-  justify-content: center;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="87.5" height="70" viewBox="0 0 87.5 70" fill="none" stroke="%23fade42" stroke-width="5"><g transform="translate(2.5 2.5)" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 0 l 20 12 v 20 l -20 12 l -20 -12 v -20 l 20 -12"></path></g><g transform="translate(25 37.5)" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 0 l 20 12 v 20 l -20 12 l -20 -12 v -20 l 20 -12"></path></g><g transform="translate(47.5 2.5)" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 0 l 20 12 v 20 l -20 12 l -20 -12 v -20 l 20 -12"></path></g></svg>'),
-    #ffe345;
-  color: #ebfbfb;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* pattern creating a beehive out of hexagon shapes */
+  background: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 183.2 300" xmlns="http://www.w3.org/2000/svg" width="183.2" height="300"><g fill="none" stroke-width="10" stroke="%23ffcd12" opacity="0.4"><g transform="translate(5 5)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path><g transform="translate(86.6 0)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path></g><g transform="translate(43.3 75)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path></g><g transform="translate(0 150)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path><g transform="translate(86.6 0)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path></g><g transform="translate(43.3 75)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path></g></g></g></g></svg>'),
+    #ffe345;
 }
+/* size the svg to cover a sizeable portion of the viewport */
 body > svg {
   width: 80vmin;
   height: auto;
 }
+/* animation to rotate the bees around the center */
 .rotate {
-  animation: rotate 5s infinite reverse cubic-bezier(0.25, 0.45, 0.75, 0.55);
+  animation: rotate 5s infinite reverse cubic-bezier(0.25, 0.45, 0.75, 0.55); /* timing function slightly different than linear to give a bit of a nod to each step */
 }
+/* rotate the bees around the center in multiple steps, this to have the timing function affect each step */
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
