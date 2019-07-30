@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  justify-content: center;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="87.5" height="70" viewBox="0 0 87.5 70" fill="none" stroke="%23fade42" stroke-width="5"><g transform="translate(2.5 2.5)" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 0 l 20 12 v 20 l -20 12 l -20 -12 v -20 l 20 -12"></path></g><g transform="translate(25 37.5)" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 0 l 20 12 v 20 l -20 12 l -20 -12 v -20 l 20 -12"></path></g><g transform="translate(47.5 2.5)" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 0 l 20 12 v 20 l -20 12 l -20 -12 v -20 l 20 -12"></path></g></svg>'),
+    #ffe345;
+  color: #ebfbfb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body > svg {
+  width: 80vmin;
+  height: auto;
+}
+.rotate {
+  animation: rotate 5s infinite reverse cubic-bezier(0.25, 0.45, 0.75, 0.55);
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(120deg);
+  }
+  67% {
+    transform: rotate(240deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
