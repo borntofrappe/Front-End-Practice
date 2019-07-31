@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Recursion Loader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <svg viewBox="0 0 600 600" width="600" height="600">
+        <defs>
+            <!-- shape used to draw the fish -->
+            <path
+                id="semicircle"
+                d="M -50 0 a 50 50 0 0 1 100 0z"
+                stroke="#475c6d"">
+            </path>
+
+            <!-- symbol using the defined shape and additional elements to draw the fish
+            ! the starting viewBox is '0 0 156.5 109', as in
+            156.5 = 100 (size of the fish' head) + 52.5 (size of the tail (starting at 50, scaled up 5 percent)) + 4 (width of the stroke)
+            109 = 105 (size of the fish' tail (100 scaled up 5 percent)) + 4 (size of the stroke)
+
+            from these values add a 18x18 cushion to rotate the shapes without fear of cropping them
+            specify negative values to translate the shape
+            -->
+            <symbol
+                id="fish"
+                viewBox="-9 -9 174.5 127">
+                <g transform="translate(2 4.5)"><!-- translate for the stroke (4.5 considering the height of the fin, exceeding the fish by 2.5) -->
+
+                        <!-- for each copy of use#semicircle, use group elements to modify not only the position and rotation of the semicircle, but also its transform origin -->
+                        <g transform="translate(50 50)">
+                            <g transform="translate(0 -50)"><!-- change the origin to refer to the segment at the top of the shape-->
+                                <g id="fin" transform="rotate(0)"><!-- rotate this group -->
+                                    <g transform="translate(25 0)">
+                                        <use href="#semicircle" transform="rotate(180) scale(0.5)" stroke-width="8"></use>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+
+                        <!-- scale the group describing the tail from the last corner -->
+                        <g transform="translate(50 50)">
+                            <g transform="translate(100 0)">
+                                <g transform="translate(-50 0)">
+                                    <g transform="scale(1.05)">
+                                        <g id="tail" transform="rotate(0)"><!-- rotate this group -->
+                                            <g transform="translate(50 0)">
+                                                <use href="#semicircle" transform="rotate(-90)"  fill="#fff" stroke-width="4"></use>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+
+
+                        <g transform="translate(50 50)">
+                            <g transform="scale(-1 1)">
+                                <g id="mouth" transform="rotate(0)"><!-- rotate this group -->
+                                    <use href="#semicircle" transform="rotate(180)" stroke-width="4"></use>
+                                    <path
+                                        transform="scale(-1 1)"
+                                        d="M 0 2 h 20 q 0 46 -20 46 a 48 48 0 0 0 48 -48"
+                                        fill="#000"
+                                        opacity="0.15">
+                                    </path>
+                                </g>
+                            </g>
+
+                        </g>
+
+
+                        <g transform="translate(50 50)">
+                            <g id="head" transform="rotate(0)"><!-- rotate this group -->
+                                <use href="#semicircle" fill="#fff" stroke-width="4"></use>
+
+                                <circle
+                                    cx="-20"
+                                    cy="-15"
+                                    r="4"
+                                    fill="#475c6d">
+                                </circle>
+                                <path
+                                    opacity="0.3"
+                                    fill="none"
+                                    stroke="#475c6d"
+                                    stroke-width="4"
+                                    stroke-linecap="round"
+                                    stroke-dasharray="0 30 30 85"
+                                    d="M -44 0 a 44 44 0 0 1 88 0">
+                                </path>
+                            </g>
+                        </g>
+
+
+
+                        <g transform="translate(50 50)">
+                            <g id="flipper" transform="rotate(0)"><!-- rotate this group -->
+                                <g transform="translate(25 0)">
+                                    <use href="#semicircle" transform="rotate(180) scale(0.5)" fill="#fff" stroke-width="8"></use>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+            </symbol>
+            <!-- clip path to fake the z-index on the second fish -->
+            <clipPath transform="translate(0 0)" id="clip" clipPathUnits="objectBoundingBox">
+                <path
+                    d="M -0.2 0 h 1.3 l 0.5 0.5 l -0.5 0.5 h -1.3z"
+                    fill="#fff">
+                </path>
+            </clipPath>
+
+        </defs>
+
+
+        <!-- actual graphic
+        the idea is to draw two fishes with a different color and animate them continuously and as follows:
+        - position past the right edge of thesvg, cropping the shape
+        - translate toward the first third
+        - scale the fish to 0
+        - translate back past the right edge
+        - scale the fish to 1
+
+        ! in the translation from right to left rotate the different shapes identified by id, to fake the fish movement under the sea 🎵
+        ! apply a negative delay to have the first fish already positioned in the first third
+        ! wrap the shapes in group elements to center the fish vertically and change the transform-origin -->
+        -->
+        <g
+            transform="translate(300 300)">
+            <g transform="translate(-78.25 -54.5)">
+                <g class="translate" style="animation-delay: -2s"><!-- translate this group to move the fish-->
+                    <g transform="translate(156.5 54.5)">
+                        <g class="scale" style="animation-delay: -2s"><!-- scale this group to have the fish disappear as if pullef from the right-->
+                            <g transform="translate(-156.5 -54.5)">
+                                <svg width="156.5" height="109">
+                                    <use href="#fish" fill="#ff9bbd"></use>
+                                </svg>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+
+                <g class="translate"><!-- translate this group to move the fish-->
+                    <g transform="translate(156.5 54.5)">
+                        <g class="scale"><!-- scale this group to have the fish disappear as if pullef from the right-->
+                            <g transform="translate(-156.5 -54.5)">
+                                <g>
+                                    <svg clip-path="url(#clip)" width="156.5" height="109">
+                                        <use  href="#fish" fill="#dbb8ff"></use>
+                                    </svg>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+
+
+            </g>
+        </g>
+    </svg>
+
+    <script src="script.js"></script>
+</body>
+</html>

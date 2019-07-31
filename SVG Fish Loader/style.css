@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: #ebfdff;
+  display: grid;
+  place-items: center;
+}
+
+/* keyframe animations for the fish */
+
+/* animate the mouth and head to rotate as to open the mouth of the fish
+given the negative scale of the rotated semicircle, the rotation affects the two shapes in the opposite direction, as desired
+*/
+#head,
+#mouth {
+  animation: open 2s -1s cubic-bezier(0.645, 0.045, 0.355, 1) infinite both;
+}
+@keyframes open {
+  25% {
+    transform: rotate(30deg);
+  }
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+/* animate the fin, flipper and tail to rotate around their respective hinge */
+#fin,
+#flipper,
+#tail {
+  animation: flap 2s cubic-bezier(0.645, 0.045, 0.355, 1) infinite alternate
+    both;
+}
+/* faster animation for the flipper, animated in the opposite direction */
+#flipper {
+  animation-duration: 1.5s;
+  animation-direction: alternate-reverse;
+}
+/* nagative margin for the tail, to offset it from the flap animation */
+#tail {
+  animation-delay: -3s;
+}
+@keyframes flap {
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+/* animate the entire fish to translate from right to left
+from outside the viewbox to the first third
+*/
+.translate {
+  animation: translate 4s cubic-bezier(0.645, 0.045, 0.355, 1) infinite both;
+}
+@keyframes translate {
+  0% {
+    transform: translateX(400px);
+  }
+  65% {
+    transform: translateX(-120px);
+  }
+  80% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(-120px);
+  }
+}
+
+/* animate the entire fish to disappear behind the subsequent creature */
+.scale {
+  animation: scale 4s cubic-bezier(0.645, 0.045, 0.355, 1) infinite both;
+}
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(0.9);
+  }
+  90% {
+    transform: scale(0.6);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+/* animate the clip to hide the second fish as the first one overlaps */
+#clip {
+  animation: clip 4s cubic-bezier(0.645, 0.045, 0.355, 1) infinite both;
+}
+@keyframes clip {
+  0%,
+  83.2% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-180px);
+  }
+}
