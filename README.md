@@ -92,6 +92,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Path Animation](https://codepen.io/borntofrappe/pen/LwZRON)|Inspired by [this design](https://dribbble.com/shots/3848395-Zelda-Switch) practice with SVG and the anime.js.|24th-25th July 2019|
 |[SVG to Zdog](https://codepen.io/borntofrappe/pen/VomjpG)|Building upon the previous project recreate the SVG graphic in the pseudo-3d environment provided by the Zdog library.|25th-26th July 2019|
 |[SVG Bee Loader](https://codepen.io/borntofrappe/full/vomyOB)|Draw several bees with SVG and animate them with CSS to create a loading screen.|30th July 2019|
+|[SVG Fish Loader]()|Draw two fish with SVG and animate them with CSS to create a loading screen.|31st July 2019|
 
 ### UI UX
 
