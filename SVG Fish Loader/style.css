@@ -97,13 +97,13 @@ from outside the viewbox to roughly the first third
   }
 }
 
-/* animate the clip to hide the second fish as if the first one would overlap on it */
+/* animate the clip to fake the overlap between the second and first fish */
 #clip {
   animation: clip 6s cubic-bezier(0.645, 0.045, 0.355, 1) infinite both;
 }
 @keyframes clip {
   0%,
-  82.7% {
+  82.9% {
     transform: translateX(0px);
   }
   100% {
@@ -111,10 +111,10 @@ from outside the viewbox to roughly the first third
   }
 }
 
+/* animate the group#bubbles to highlight each iteration */
 #bubbles {
   animation: bubbles 3s cubic-bezier(0.645, 0.045, 0.355, 1) infinite both;
 }
-/* animate the group#bubbles to highlight the iteration */
 @keyframes bubbles {
   0%,
   70% {
