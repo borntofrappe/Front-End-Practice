@@ -137,3 +137,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Google Pagination](https://codepen.io/borntofrappe/pen/dBxarJ)|Recreate the pagination highlighting google search results, by stretching the google name to cover multiple pages.|16th July 2019|
 |[CPC Fetch Em All](https://codepen.io/borntofrappe/pen/xvbvqp)|Display a message according to the resolution of a promise, retrieving information from a public API.|19th July 2019|
 |[CPC Book by Title](https://codepen.io/borntofrappe/pen/pMNOaa)|Fetch books through the open library API and display the results using SVG element.|27th July 2019|
+|[100 Days of Code]()|Celebrate the completion of another round of the coding challenge describing the experience through vector graphics.|1st-2nd August 2019|
