@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(0, 0%, 20%);
+  /* display the icons in a row, centered in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+svg {
+  display: block;
+  width: 180px;
+  height: auto;
+  filter: drop-shadow(0 1px 10px hsla(0, 0%, 0%, 0.5));
+}
+
+/* animate the path describing the current day to be drawn in
+delay the animation to follow the 100 hundred point's animation
+*/
+#today {
+  animation: offsetStroke 1.5s 2s ease-in-out forwards;
+}
+@keyframes offsetStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

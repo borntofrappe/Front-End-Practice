@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>100DaysOfCode</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg describing a calendar -->
+    <svg viewBox="0 0 100 100" width="100" height="100">
+        <defs>
+            <!-- define the square for the day, the row for the week and the grid for the month -->
+            <rect
+                id="day"
+                x="0"
+                y="0"
+                width="8"
+                height="8"
+                fill="#A6A6A6">
+            </rect>
+            <symbol
+                id="week">
+                <use transform="translate(0 0)" href="#day"></use>
+                <use transform="translate(13 0)" href="#day"></use>
+                <use transform="translate(26 0)" href="#day"></use>
+                <use transform="translate(39 0)" href="#day"></use>
+                <use transform="translate(52 0)" href="#day"></use>
+                <use transform="translate(65 0)" href="#day"></use>
+                <use transform="translate(78 0)" href="#day"></use>
+            </symbol>
+            <symbol
+                id="month">
+                <use transform="translate(0 0)" href="#week"></use>
+                <use transform="translate(0 12)" href="#week"></use>
+                <use transform="translate(0 24)" href="#week"></use>
+                <use transform="translate(0 36)" href="#week"></use>
+                <use transform="translate(0 48)" href="#week"></use>
+            </symbol>
+
+            <!-- define a mask to hide the squares at the beginning and end of the grid
+            the idea is to show the days of the week starting from monday
+            ideally, the adjustment would be applied through a script, to consider the current month
+            -->
+            <mask
+                id="adjustment">
+                <rect
+                    x="0"
+                    y="0"
+                    width="86"
+                    height="56"
+                    fill="#fff">
+                </rect>
+                <rect
+                    x="0"
+                    y="0"
+                    width="39"
+                    height="8"
+                    fill="#000">
+                </rect>
+                <rect
+                    transform="translate(78 48)"
+                    x="0"
+                    y="0"
+                    width="8"
+                    height="8"
+                    fill="#000">
+                </rect>
+            </mask>
+
+        </defs>
+
+        <!-- draw the calendar including the grid atop rectangle elements -->
+        <rect
+            x="0"
+            y="0"
+            width="100"
+            height="100"
+            fill="#F2F2F2">
+        </rect>
+        <rect
+            x="0"
+            y="0"
+            width="100"
+            height="20"
+            fill="#F13917">
+        </rect>
+
+        <g transform="translate(7 28)">
+            <use href="#month" mask="url(#adjustment)"></use>
+
+            <!-- add a path element describing the current day -->
+            <g transform="translate(39 0)"><!-- translate according to the current date -->
+                <path
+                    id="today"
+                    stroke="#F13917"
+                    fill="none"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-dasharray="35"
+                    stroke-dashoffset="35"
+                    d="M -2 5 a 6 6 0 0 1 12 0 a 4.25 4.25 0 0 1 -8.5 0">
+                </path>
+            </g>
+        </g>
+
+        <path
+            d="M 0 98 h 90 l 10 -10 v 12 h -90z"
+            fill="#CBCBCB">
+        </path>
+        <path
+            d="M 90 98 v -10 h 10z"
+            fill="#fff">
+        </path>
+    </svg>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
