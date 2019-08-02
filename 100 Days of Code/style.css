@@ -5,25 +5,28 @@
 }
 body {
   min-height: 100vh;
-  background: hsl(0, 0%, 20%);
   /* display the icons in a row, centered in the viewport */
   display: flex;
   justify-content: center;
   align-items: center;
+  background: repeating-linear-gradient(
+    45deg,
+    hsl(0, 0%, 100%) 0px,
+    hsl(0, 0%, 100%) 4px,
+    hsl(0, 0%, 97%) 0px,
+    hsl(0, 0%, 97%) 16px
+  );
 }
-svg {
+body > svg {
   display: block;
-  width: 180px;
-  height: auto;
-  /* filter: drop-shadow(0 1px 10px hsla(0, 0%, 0%, 0.5)); */
-  margin: 0 1rem;
+  margin: 0 1.5rem;
 }
 
 /* animate the path describing the current day to be drawn in
 delay the animation to follow the 100 hundred point's animation
 */
 
-svg {
+body > svg {
   animation: scale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 }
 svg.hundred {
@@ -33,20 +36,27 @@ svg.hundred #numbers {
   animation: scaleSkew 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
 }
 svg.hundred .dash {
-  animation: offsetStroke 0.35s 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+  animation: offsetStroke 0.3s 0.26s cubic-bezier(0.445, 0.05, 0.55, 0.95)
     forwards;
 }
 svg.hundred .dash:nth-child(2) {
-  animation-delay: 0.27s;
+  animation-delay: 0.28s;
 }
 svg.days {
-  animation-delay: 0.4s;
+  animation-delay: 0.45s;
 }
 svg.days #today {
-  animation: offsetStroke 0.5s 0.75s ease-in-out forwards;
+  animation: offsetStroke 0.5s 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+    forwards;
 }
 svg.code {
-  animation-delay: 0.8s;
+  animation-delay: 0.7s;
+}
+svg.code #display {
+  animation: turnOn 0.3s 1.05s step-end forwards;
+}
+svg.code #commands {
+  animation: scale 0.5s 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
 }
 @keyframes offsetStroke {
   to {
@@ -55,14 +65,21 @@ svg.code {
 }
 @keyframes scaleSkew {
   to {
-    transform: skewX(-10deg) scale(1.15);
+    transform: skewX(-10deg) scale(1.1);
   }
 }
 @keyframes scale {
   from {
     transform: scale(0);
+    opacity: 0;
   }
   to {
     transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes turnOn {
+  to {
+    opacity: 1;
   }
 }
