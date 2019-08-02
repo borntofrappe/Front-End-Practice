@@ -15,17 +15,54 @@ svg {
   display: block;
   width: 180px;
   height: auto;
-  filter: drop-shadow(0 1px 10px hsla(0, 0%, 0%, 0.5));
+  /* filter: drop-shadow(0 1px 10px hsla(0, 0%, 0%, 0.5)); */
+  margin: 0 1rem;
 }
 
 /* animate the path describing the current day to be drawn in
 delay the animation to follow the 100 hundred point's animation
 */
-#today {
-  animation: offsetStroke 1.5s 2s ease-in-out forwards;
+
+svg {
+  animation: scale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+svg.hundred {
+  animation-delay: 0s;
+}
+svg.hundred #numbers {
+  animation: scaleSkew 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+}
+svg.hundred .dash {
+  animation: offsetStroke 0.35s 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+    forwards;
+}
+svg.hundred .dash:nth-child(2) {
+  animation-delay: 0.27s;
+}
+svg.days {
+  animation-delay: 0.4s;
+}
+svg.days #today {
+  animation: offsetStroke 0.5s 0.75s ease-in-out forwards;
+}
+svg.code {
+  animation-delay: 0.8s;
 }
 @keyframes offsetStroke {
   to {
     stroke-dashoffset: 0;
+  }
+}
+@keyframes scaleSkew {
+  to {
+    transform: skewX(-10deg) scale(1.15);
+  }
+}
+@keyframes scale {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
   }
 }
