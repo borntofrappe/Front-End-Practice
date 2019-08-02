@@ -1,6 +1,6 @@
 # 100 Days of Code
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/gVGwez)
 
 ## Goal
 
