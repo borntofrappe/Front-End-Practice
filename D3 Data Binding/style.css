@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: repeating-linear-gradient(
+      -45deg,
+      hsl(0, 0%, 94%) 0px,
+      hsl(0, 0%, 94%) 5px,
+      transparent 0px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      hsl(0, 0%, 94%) 0px,
+      hsl(0, 0%, 94%) 10px,
+      transparent 0px,
+      transparent 100px
+    ),
+    hsl(0, 0%, 97%);
+  font-family: "Lato", sans-serif;
+}
+
+.app {
+  background: #fff;
+  padding: 1rem 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  min-height: 80vh;
+  box-shadow: 0 1px 10px hsla(0, 0%, 0%, 0.1);
+
+  /* display the containers in a single column */
+  display: flex;
+  flex-direction: column;
+}
+.app > * {
+  margin: 1rem 0;
+}
+.visualization {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.visualization div {
+  width: 48px;
+  height: 48px;
+  margin: 0.5rem;
+  line-height: 48px;
+  border-radius: 50%;
+  border: 2px dashed currentColor;
+  text-align: center;
+  font-weight: 900;
+}
+.controls {
+  display: flex;
+  justify-content: center;
+}
+.controls button {
+  margin: 0 1rem;
+  background: hsl(0, 0%, 20%);
+  color: hsl(0, 0%, 94%);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px hsla(0, 0%, 0%, 0.1);
+  font-family: inherit;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.controls button:active {
+  transform: translateY(2px);
+}
+/* display the selections in a wrapping row */
+.selection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.selection div {
+  margin: 1rem;
+  border-radius: 20px;
+  padding: 1rem;
+  border: 2px dashed currentColor;
+}
+.selection--update {
+  background: hsl(240, 75%, 90%);
+}
+.selection--enter {
+  background: hsl(120, 75%, 90%);
+}
+
+.selection--exit {
+  background: hsl(0, 75%, 90%);
+}

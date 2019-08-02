@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 Enter Update Exit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- markup structure
+    .app, wrapping container
+        header, introducing the visualization
+        .data, showing the array behind the visualization
+        .visualization, showing the data points in the array
+        .controls, allowing to add or remove data points in the array
+        .selection, highlighting the selections after each operation
+    -->
+    <div class="app">
+        <header>
+            <h1>Enter Update Exit</h1>
+        </header>
+
+        <!-- include here the array describing the data points -->
+        <div class="data-points">
+            <p>
+                <strong>Input array:</strong>
+                <span></span>
+            </p>
+        </div>
+
+        <!-- include here one sphere for each data point -->
+        <main class="visualization"></main>
+
+        <div class="controls">
+            <button class="controls--add">Add data point</button>
+            <button class="controls--remove">Remove data point</button>
+        </div>
+
+        <!-- include here the data points described in the enter/update/exit selection -->
+        <div class="selection">
+            <div class="selection--enter">
+                <h3>Enter Selection</h3>
+                <p></p>
+            </div>
+            <div class="selection--update">
+                <h3>Update Selection</h3>
+                <p></p>
+
+            </div>
+            <div class="selection--exit">
+                <h3>Exit Selection</h3>
+                <p></p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/d3@5.9.7/dist/d3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
