@@ -32,38 +32,41 @@ body {
   margin: 2rem auto;
   min-height: 80vh;
   box-shadow: 0 1px 10px hsla(0, 0%, 0%, 0.1);
-
-  /* display the containers in a single column */
+  /* display the containers in a column */
   display: flex;
   flex-direction: column;
 }
+/* separate the direct children vertically */
 .app > * {
   margin: 1rem 0;
 }
+/* stretch the visualization to cover the available space, if any */
 .visualization {
   flex-grow: 1;
+  /* display the circle in a wrapping row */
   display: flex;
   flex-wrap: wrap;
 }
+/* style the div included for the data points as circles */
 .visualization div {
   width: 48px;
   height: 48px;
   margin: 0.5rem;
   line-height: 48px;
   border-radius: 50%;
-  border: 2px dashed currentColor;
   text-align: center;
   font-weight: 900;
 }
+/* center the controls */
 .controls {
   display: flex;
   justify-content: center;
 }
 .controls button {
   margin: 0 1rem;
+  padding: 0.5rem 1rem;
   background: hsl(0, 0%, 20%);
   color: hsl(0, 0%, 94%);
-  padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
   box-shadow: 0 1px 5px hsla(0, 0%, 0%, 0.1);
@@ -75,6 +78,7 @@ body {
 .controls button:active {
   transform: translateY(2px);
 }
+
 /* display the selections in a wrapping row */
 .selection {
   display: flex;
@@ -85,15 +89,19 @@ body {
   margin: 1rem;
   border-radius: 20px;
   padding: 1rem;
-  border: 2px dashed currentColor;
 }
+
+/* style the classes describing the different selection with a different background and border-style */
 .selection--update {
   background: hsl(240, 75%, 90%);
+  border: 2px solid currentColor;
 }
 .selection--enter {
   background: hsl(120, 75%, 90%);
+  border: 2px dashed currentColor;
 }
 
 .selection--exit {
   background: hsl(0, 75%, 90%);
+  border: 2px dotted currentColor;
 }
