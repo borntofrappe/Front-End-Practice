@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>100 Days of Code</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- recreate the following emoji(s) through vector graphics 💯📅💻 -->
+    <svg class="hundred" viewBox="0 0 100 100" width="180" height="180">
+        <defs>
+            <!-- define the numbers and dashes by overlapping a colored stroke on a thicker #000 stroke -->
+            <symbol
+                id="number-1">
+                <!-- begin at 6 given the 12 width of the thicker stroke -->
+                <g transform="translate(6 6)">
+                <path
+                    d="M 0 18 l 12 -18 l 0 52"
+                    fill="none"
+                    stroke-width="12"
+                    stroke="#000">
+                </path>
+                <path
+                    d="M 0 18 l 12 -18 l 0 52"
+                    fill="none"
+                    stroke-width="6"
+                    stroke="#F13917">
+                </path>
+                </g>
+            </symbol>
+            <symbol
+                id="number-0">
+                <g transform="translate(6 6)">
+                    <path
+                        d="M 0 20 v -10 a 10 10 0 0 1 20 0 v 20 a 10 10 0 0 1 -20 0z"
+                        fill="none"
+                        stroke-width="12"
+                        stroke="#000">
+                    </path>
+                    <path
+                        d="M 0 20 v -10 a 10 10 0 0 1 20 0 v 20 a 10 10 0 0 1 -20 0z"
+                        fill="none"
+                        stroke-width="6"
+                        stroke="#F13917">
+                    </path>
+                </g>
+            </symbol>
+            <symbol
+                id="dash">
+                <g transform="translate(6 6)">
+                    <path
+                        d="M 0 8 q 25 -10 50 -8"
+                        fill="none"
+                        stroke-width="12"
+                        stroke="#000">
+                    </path>
+                    <path
+                        d="M 0 8 q 25 -10 50 -8"
+                        fill="none"
+                        stroke-width="6"
+                        stroke="#F13917">
+                    </path>
+                </g>
+            </symbol>
+        </defs>
+
+        <!-- graphic using the predefined shapes -->
+        <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            fill="none">
+            <!-- add group elements to center and scale the dashes
+            size of the symbols: 62x20
+            -->
+            <g transform="translate(50 70)">
+                <g
+                    class="dash"
+                    stroke-dasharray="62"
+                    stroke-dashoffset="62">
+                    <g transform="scale(1.1)">
+                        <g transform="translate(-31 -10)">
+                            <use href="#dash"></use>
+                        </g>
+                    </g>
+                </g>
+                <g
+                    class="dash"
+                    stroke-dasharray="62"
+                    stroke-dashoffset="62">
+                    <g transform="scale(1.2)">
+                        <g transform="translate(-31 -0)">
+                            <use href="#dash"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+
+            <!-- add group elements to center and skew the numbers
+            size of the symbols: 32x52
+            ! number-1 is actually taller, to have the path stretch below the 32x52 container
+            -->
+            <g transform="translate(50 10)">
+                <g transform="translate(0 28)">
+                    <g id="numbers"><!-- ! animate this group -->
+                        <g transform="translate(-0 -28)">
+                            <!-- translate the numbers from the center -->
+                            <g transform="translate(10 0)">
+                                <use href="#number-0"></use>
+                            </g>
+                            <g transform="translate(-16 0)"><!-- horizontally centered -->
+                                <use href="#number-0"></use>
+                            </g>
+                            <g transform="translate(-36 0)">
+                                <use href="#number-1"></use>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </svg>
+
+
+    <svg class="days" viewBox="0 0 100 100" width="150" height="150">
+        <defs>
+            <!-- define the square for the day, the row for the week and the grid for the month -->
+            <rect
+                id="day"
+                x="0"
+                y="0"
+                width="8"
+                height="8"
+                fill="#CBCBCB">
+            </rect>
+            <symbol
+                id="week">
+                <use transform="translate(0 0)" href="#day"></use>
+                <use transform="translate(13 0)" href="#day"></use>
+                <use transform="translate(26 0)" href="#day"></use>
+                <use transform="translate(39 0)" href="#day"></use>
+                <use transform="translate(52 0)" href="#day"></use>
+                <use transform="translate(65 0)" href="#day"></use>
+                <use transform="translate(78 0)" href="#day"></use>
+            </symbol>
+            <symbol
+                id="month">
+                <use transform="translate(0 0)" href="#week"></use>
+                <use transform="translate(0 12)" href="#week"></use>
+                <use transform="translate(0 24)" href="#week"></use>
+                <use transform="translate(0 36)" href="#week"></use>
+                <use transform="translate(0 48)" href="#week"></use>
+            </symbol>
+
+            <!-- define a mask to hide the squares at the beginning and end of the grid
+            the idea is to show the days of the week starting from monday -->
+            <mask
+                id="adjustment">
+                <rect
+                    x="0"
+                    y="0"
+                    width="86"
+                    height="56"
+                    fill="#fff">
+                </rect>
+                <rect
+                    x="0"
+                    y="0"
+                    width="39"
+                    height="8"
+                    fill="#000">
+                </rect>
+                <rect
+                    transform="translate(78 48)"
+                    x="0"
+                    y="0"
+                    width="8"
+                    height="8"
+                    fill="#000">
+                </rect>
+            </mask>
+
+        </defs>
+
+        <!-- draw the calendar including the grid atop rectangle elements -->
+        <g transform="translate(1.5 1.5)">
+            <rect
+                x="0"
+                y="0"
+                width="97"
+                height="97"
+                fill="#F2F2F2"
+                stroke="#000"
+                stroke-width="3"
+                stroke-linejoin="round">
+            </rect>
+            <rect
+                x="1.5"
+                y="1.5"
+                width="94"
+                height="21"
+                fill="#39D395">
+            </rect>
+
+            <path
+                d="M 1.5 93.5 h 84 l 10 -10 v 12 h -94z"
+                fill="#CBCBCB">
+            </path>
+            <path
+                d="M 85.5 93.5 v -10 h 10z"
+                fill="#fff">
+            </path>
+        </g>
+
+        <!-- grid of days -->
+        <g transform="translate(7 30)">
+            <use href="#month" mask="url(#adjustment)"></use>
+            <!-- add a path element describing the current day -->
+            <g transform="translate(52 0)"><!-- translate according to the current date -->
+                <path
+                    id="today"
+                    stroke="#39D395 "
+                    fill="none"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-dasharray="35"
+                    stroke-dashoffset="35"
+                    d="M -2 5 a 6 6 0 0 1 12 0 a 4.25 4.25 0 0 1 -8.5 0">
+                </path>
+            </g>
+        </g>
+    </svg>
+
+
+    <svg class="code" viewBox="0 0 100 100" width="180" height="180">
+        <!-- define shapes for the symbols shown above (and behind) the computer -->
+        <defs>
+            <path
+                id="plus"
+                d="M 1.5 6.5 h 10 m -5 -5 v 10"
+                fill="none"
+                stroke-width="3"
+                stroke-linejoin="round"
+                stroke-linecap="round">
+            </path>
+            <path
+                id="tag"
+                d="M 1.5 1.5 l 5 5 l -5 5"
+                fill="none"
+                stroke-width="3"
+                stroke-linejoin="round"
+                stroke-linecap="round">
+            </path>
+            <path
+                id="curly-bracket"
+                d="M 1.5 1.5 a 2.25 2.25 0 0 1 2.25 2.25 v 2.25 a 2.25 2.25 0 0 0 2.25 2.25 a 2.25 2.25 0 0 0 -2.25 2.25 v 2.5 a 2.25 2.25 0 0 1 -2.25 2.25"
+                fill="none"
+                stroke-width="3"
+                stroke-linejoin="round"
+                stroke-linecap="round">
+            </path>
+            <path
+                id="modulo"
+                d="M 7.5 1.5 l -7 11 m 0 -10 a 1 1 0 0 0 2 0 a 1 1 0 0 0 -2 0 m 6 9 a 1 1 0 0 0 2 0 a 1 1 0 0 0 -2 0"
+                fill="none"
+                stroke-width="3"
+                stroke-linejoin="round"
+                stroke-linecap="round">
+            </path>
+        </defs>
+        <!-- include a group element to modify the transform origin and position the path elements behind the monitor -->
+        <g transform="translate(50 30)">
+            <g id="syntax"><!-- animate this group to scale it to its normal size (given the position of the nested elements, scaling its size allows to move the path elements closer/away from the transform origin) -->
+                <!-- position the path elements around the monitor
+                ! consider their size to center the transform origin
+                plus 13x13
+                tag 8x13
+                curly 8x18
+                modulo 10.5x14
+                -->
+                <g transform="translate(-5 -30)">
+                    <g transform="translate(-25 10)">
+                        <g transform="translate(6.5 6.5) rotate(-12)">
+                            <g transform="translate(-6.5 -6.5)">
+                                <use href="#plus" stroke="#2C5B6E"></use>
+                            </g>
+                        </g>
+                    </g>
+                    <g transform="translate(-5 2)">
+                        <g transform="translate(4 6.5) rotate(-5)">
+                            <g transform="translate(-4 -6.5)">
+                                <use href="#tag" stroke="#A8DCF0"></use>
+                            </g>
+                        </g>
+                    </g>
+                    <g transform="translate(12 6)">
+                        <g transform="translate(4 9) rotate(10)">
+                            <g transform="translate(-4 -9)">
+                                <use href="#curly-bracket" stroke="#4D646E"></use>
+                            </g>
+                        </g>
+                    </g>
+                    <g transform="translate(25 0)">
+                        <g transform="translate(5.5 7) scale(0.8) rotate(3)">
+                            <g transform="translate(-5.5 -7)">
+                                <use href="#modulo" stroke="#4A9BBA"></use>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+
+        <g transform="translate(0 26)"><!-- 33 to reach the bottom, 26 to have the computer above the bottom of the calendar -->
+            <g transform="translate(1.5 1.5)">
+                <path
+                    d="M 17 3 a 3 3 0 0 1 3 -3 h 60 a 3 3 0 0 1 3 3 v 45 l 11 16 h -88 l 11 -16z"
+                    fill="#F2F2F2"
+                    stroke="#000"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                </path>
+                <rect
+                    x="22"
+                    y="5"
+                    width="56"
+                    height="40">
+                </rect>
+                <rect
+                    id="display"
+                    x="22"
+                    y="5"
+                    width="56"
+                    height="40"
+                    fill="#5fc4ec"
+                    opacity="0">
+                </rect>
+
+                <path
+                    d="M 22 48 h 56 l 4 5.8 h -64"
+                    fill="#CBCBCB">
+                </path>
+                <path
+                    d="M 42 55 h 16 l 4 5.8 h -24"
+                    fill="#CBCBCB">
+                </path>
+            </g>
+        </g>
+    </svg>
+
+</body>
+</html>

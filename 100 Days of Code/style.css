@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  /* display the icons in a row, centered in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: repeating-linear-gradient(
+    45deg,
+    hsl(0, 0%, 100%) 0px,
+    hsl(0, 0%, 100%) 4px,
+    hsl(0, 0%, 97%) 0px,
+    hsl(0, 0%, 97%) 16px
+  );
+}
+body > svg {
+  display: block;
+  margin: 0 1.5rem;
+}
+/* below an arbitrary thresholds show the icons in a column */
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+  }
+  body > svg {
+    margin: 1.5rem 0;
+  }
+}
+
+/* animate the svg elements */
+/* animate each wrapping svg to scale from 0 to 1
+! add a delay for each subsequent svg
+*/
+body > svg {
+  animation: scale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+/* first graphic */
+svg.hundred {
+  animation-delay: 0s;
+}
+/* scale and skew the numbers to their rightful size */
+svg.hundred #numbers {
+  animation: scaleSkew 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95) both;
+}
+/* draw the dashes setting stroke-dashoffset to 0 */
+svg.hundred .dash {
+  animation: offsetStroke 0.3s 0.26s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+    forwards;
+}
+svg.hundred .dash:nth-child(2) {
+  animation-delay: 0.28s;
+}
+
+/* second graphic */
+svg.days {
+  animation-delay: 0.45s;
+}
+/* draw the stroke on the described day setting stroke-dashoffset to 0 */
+svg.days #today {
+  animation: offsetStroke 0.5s 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+    forwards;
+}
+
+/* third graphic */
+svg.code {
+  animation-delay: 0.7s;
+}
+/* animate the display as if to turn on */
+svg.code #display {
+  animation: makeOpaque 0.3s 1.05s step-end forwards;
+}
+/* scale the group nesting the commands to show them from behind the display */
+svg.code #syntax {
+  animation: scale 0.5s 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) both;
+}
+
+/* keyframe animations for the various elements */
+@keyframes scale {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleSkew {
+  from {
+    transform: skewX(0deg) scale(0);
+  }
+  to {
+    transform: skewX(-10deg) scale(1.1);
+  }
+}
+
+@keyframes offsetStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes makeOpaque {
+  to {
+    opacity: 1;
+  }
+}
