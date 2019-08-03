@@ -94,7 +94,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG to Zdog](https://codepen.io/borntofrappe/pen/VomjpG)|Building upon the previous project recreate the SVG graphic in the pseudo-3d environment provided by the Zdog library.|25th-26th July 2019|
 |[SVG Bee Loader](https://codepen.io/borntofrappe/pen/vomyOB)|Draw several bees with SVG and animate them with CSS to create a loading screen.|30th July 2019|
 |[SVG Fish Loader](https://codepen.io/borntofrappe/pen/PMjpPd)|Draw two fish with SVG and animate them with CSS to create a loading screen.|31st July 2019|
-![SVG Opera Logo]()|Using SVG elements and defining a mask and a linear gradient replicate Opera's logo.|03 August 2019|
+|SVG Opera Logo|Using SVG elements and defining a mask and a linear gradient replicate Opera's logo.|03 August 2019|
 
 ### UI UX
 
