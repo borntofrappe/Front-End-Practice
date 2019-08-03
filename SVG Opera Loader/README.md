@@ -1,7 +1,7 @@
 # SVG Opera Loader
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/jgGXbp)
 
 ## Goal
 
-Using the SVG graphic created in the previous project create a loading screen for the same Opera browser.
+Using the SVG graphic created in the previous project create a loading screen for the Opera browser.

@@ -33,7 +33,7 @@ translate from side to side, stopping in the middle for as much time as it takes
 */
 @keyframes translate {
   0% {
-    transform: translateX(-100px);
+    transform: translateX(-70px);
   }
   33%,
   63% {
@@ -41,7 +41,7 @@ translate from side to side, stopping in the middle for as much time as it takes
     animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
   }
   100% {
-    transform: translateX(100px);
+    transform: translateX(70px);
   }
 }
 
