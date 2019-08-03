@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Opera Logo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<svg viewBox="0 0 100 100" width="100" height="100">
+		<defs>
+			<!-- mask to cut out a circle from the shape -->
+			<mask id="mask">
+				<!-- show everything -->
+				<rect
+					x="-50"
+					y="-50"
+					width="100"
+					height="100"
+					fill="#fff">
+				</rect>
+				<!-- except for a circle with radius 40 positioned 10 to the right of the shape -->
+				<circle
+					cx="10"
+					cy="0"
+					r="40"
+					fill="#000">
+				</circle>
+			</mask>
+
+			<!-- gradient faking a shadow from the bottom left
+			! using userSpaceOnUse specify the coordinates relative to the wrapping svg and its 100x100 viewBox
+			-->
+			<linearGradient id="shadow" x1="50" y1="150" x2="100" y2="0" gradientUnits="userSpaceOnUse">
+				<stop stop-color="#000" offset="0"></stop>
+				<stop stop-color="#fa192b" offset="1"></stop>
+			</linearGradient>
+
+			<!-- circle using the mask to crop out the shape
+			! position the circle in the center of the svg with group elements and the transform property
+			-->
+			<circle
+				id="opera-half"
+				cx="0"
+				cy="0"
+				r="50"
+				mask="url(#mask)">
+			</circle>
+		</defs>
+
+		<!-- actual graphic
+		draw the masked circle above another copy, rotated as to create a mirrored version
+		! the non-rotated shape needs to be on top of the rotated variant
+		-->
+
+		<!-- wrapping group to position the transform-origin in the center of the svg -->
+		<g transform="translate(50 50)">
+			<!-- for each half add a copy of the graphic using the linear gradient to give depth to the icon -->
+			<!-- rotated half -->
+			<g transform="rotate(180)">
+				<use href="#opera-half" fill="#fa192b"></use>
+				<use href="#opera-half" fill="url(#shadow)" opacity="0.5"></use>
+			</g>
+			<!-- default half -->
+			<use href="#opera-half" fill="#fa192b"></use>
+			<use href="#opera-half" fill="url(#shadow)" opacity="0.5"></use>
+		</g>
+	</svg>
+
+</body>
+</html>
