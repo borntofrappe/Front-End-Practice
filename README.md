@@ -95,6 +95,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Bee Loader](https://codepen.io/borntofrappe/pen/vomyOB)|Draw several bees with SVG and animate them with CSS to create a loading screen.|30th July 2019|
 |[SVG Fish Loader](https://codepen.io/borntofrappe/pen/PMjpPd)|Draw two fish with SVG and animate them with CSS to create a loading screen.|31st July 2019|
 |SVG Opera Logo|Using SVG elements and defining a mask and a linear gradient replicate Opera's logo.|03 August 2019|
+|[SVG Opera Loader]()|Using the SVG graphic created in the previous project create a loading screen for the same Opera browser.|03 August 2019|
 
 ### UI UX
 
