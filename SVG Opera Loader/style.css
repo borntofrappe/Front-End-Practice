@@ -4,14 +4,74 @@
   margin: 0;
 }
 body {
+  background: hsl(0, 0%, 0%);
   /* center in the viewport */
   min-height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body > svg {
+  display: block;
+  width: 600px;
+  height: auto;
 }
 
-svg {
-  display: block;
-  width: 200px;
-  height: auto;
+.translate {
+  animation: translate 6s cubic-bezier(0.47, 0, 0.745, 0.715) both infinite;
+}
+.rotate {
+  animation: rotate 6s 2s cubic-bezier(0.39, 0.575, 0.565, 1) both infinite;
+}
+.oscillate {
+  animation: oscillate 6s 2s linear both infinite;
+}
+
+/* translate animation for the outer ball
+translate from side to side, stopping in the middle for as much time as it takes for the second ball to rotate around the logo
+! 33% instead of 30%, 63% instead of 70% to shorten the succession between the two balls
+*/
+@keyframes translate {
+  0% {
+    transform: translateX(-100px);
+  }
+  33%,
+  63% {
+    transform: translateX(0px);
+    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
+
+/* rotate animation for the inner ball
+translate from side to side, stopping in the middle for as much time as it takes for the second ball to rotate around the logo
+*/
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  40%,
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* translate animation to have the rotation following the trajectory of an ellipse more than a circle
+! 15% instead of 20% and 7% instead of 10% given the easing curve doesn't split the rotation evenly
+*/
+@keyframes oscillate {
+  0%,
+  15%,
+  40%,
+  100% {
+    transform: translateX(0px);
+  }
+  7% {
+    transform: translateX(-5px);
+  }
+  28% {
+    transform: translateX(5px);
+  }
 }
