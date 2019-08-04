@@ -5,11 +5,16 @@
   padding: 0;
   margin: 0;
 }
+/* display the svg and heading in a column, limiting the column's width to a prescribed 600px value */
 .screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 600px;
   width: 90vw;
-  padding: 2rem 0;
+  padding: 2rem 0; /* no horizontal padding to have the svg cover the entirety of the parent's width */
   margin: 2rem auto;
+  /* include a light shadow toward the bottom right of the screen */
   background: linear-gradient(
       170deg,
       transparent 0,
@@ -18,30 +23,31 @@
       hsla(0, 0%, 0%, 0.04) 100%
     ),
     hsl(359, 100%, 60%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
   box-shadow: 0 1px 10px -10px hsl(359, 100%, 80%),
     0 2px 2px hsl(359, 100%, 60%);
 }
+
+/* have the svg cover the entirety of the parent's width */
 .screen > svg {
   display: block;
   width: 100%;
   height: auto;
 }
+/* center the heading */
 .screen h1 {
   color: #fff;
-  margin: 5rem 0 1rem;
+  text-align: center;
   font-family: "Cabin", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  text-align: center;
+  margin: 5rem 0 1rem;
 }
 
-/* animations for the svg */
+/* animations for the svg
+share the duration among the different animations, to have them overlap on each iteration
+*/
 .translate {
-  animation: translate 6s cubic-bezier(0.47, 0, 0.745, 0.715) both 6;
+  animation: translate 6s cubic-bezier(0.55, 0.085, 0.68, 0.53) both 6;
 }
 .rotate {
   animation: rotate 6s 2s cubic-bezier(0.39, 0.575, 0.565, 1) both 6;
@@ -52,24 +58,26 @@
 
 /* translate animation for the outer ball
 translate from side to side, stopping in the middle for as much time as it takes for the second ball to rotate around the logo
-! 33% instead of 30%, 63% instead of 70% to shorten the succession between the two balls
 */
 @keyframes translate {
   0% {
-    transform: translateX(-70px);
+    transform: translateX(-75px);
   }
-  33%,
+  32% {
+    transform: translateX(0px);
+    animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  }
   63% {
     transform: translateX(0px);
-    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   100% {
-    transform: translateX(70px);
+    transform: translateX(75px);
   }
 }
 
 /* rotate animation for the inner ball
-translate from side to side, stopping in the middle for as much time as it takes for the second ball to rotate around the logo
+rotate around the prescribed hinge and as the outer ball reaches the inner ball's position
 */
 @keyframes rotate {
   0% {
@@ -82,7 +90,7 @@ translate from side to side, stopping in the middle for as much time as it takes
 }
 
 /* translate animation to have the rotation following the trajectory of an ellipse more than a circle
-! 15% instead of 20% and 7% instead of 10% given the easing curve doesn't split the rotation evenly
+this to avoid having the inner ball follow the edge of the circle
 */
 @keyframes oscillate {
   0%,
@@ -100,12 +108,12 @@ translate from side to side, stopping in the middle for as much time as it takes
 }
 
 /* animation for the heading's characters */
-@keyframes fadeInOut {
+@keyframes fadeIn {
   0%,
-  20% {
+  10% {
     opacity: 0;
   }
-  60%,
+  55%,
   100% {
     opacity: 1;
   }

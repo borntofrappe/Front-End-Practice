@@ -4,10 +4,4 @@
 
 ## Goal
 
-Using the SVG graphic created in the previous project create a loading screen for the Opera browser.
-
-## TODO:
-
-- read up on generators
-- animate the letters to pop in (splitting js)
-- add dashes to emulate the speed of the ball
+Create a loading screen for the Opera browser, loosely describing the actions taken by a browser to request a page from the Internet.
