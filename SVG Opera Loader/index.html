@@ -10,102 +10,107 @@
 <body>
 
 	<!-- markup structure
-		svg, wrapping container
-			circle, ball translated from side to side
-			svg, opera's logo
+		.screen, wrapping container
+			svg, visualizing the action through the loading animation
+			h1, describing the action of the screen
 	-->
-	<svg viewBox="0 0 100 50" width="100" height="50">
-		<defs>
-			<!-- circle describing the ball -->
-			<circle
-				id="ball"
-				cx="0"
-				cy="0"
-				r="1.4"
-				fill="#fff">
-			</circle>
-		</defs>
-		<g transform="translate(50 48.6)">
-			<g class="translate"><!-- translate this group to have the ball move from side to side -->
-				<use href="#ball"></use>
-			</g>
-		</g>
-
-		<!-- ! in the logo and between the two halves include a circle as big as the one described above -->
-		<svg viewBox="0 0 100 100" x="37.5" y="25" width="25" height="25">
+	<div class="screen">
+		<svg  viewBox="0 0 100 25" width="100" height="25">
 			<defs>
-				<!-- mask to cut out a circle from the shape -->
-				<mask id="mask">
-					<!-- show everything -->
-					<rect
-						x="-50"
-						y="-50"
-						width="100"
-						height="100"
-						fill="#fff">
-					</rect>
-					<!-- except for a circle with radius 40 positioned 10 to the right of the shape -->
-					<circle
-						cx="10"
-						cy="0"
-						r="40"
-						fill="#000">
-					</circle>
-				</mask>
-
-				<!-- gradient faking a shadow from the bottom left
-				! using userSpaceOnUse specify the coordinates relative to the wrapping svg and its 100x100 viewBox
-				-->
-				<linearGradient id="shadow" x1="50" y1="150" x2="100" y2="0" gradientUnits="userSpaceOnUse">
-					<stop stop-color="#000" offset="0"></stop>
-					<stop stop-color="#fa192b" offset="1"></stop>
-				</linearGradient>
-
-				<!-- circle using the mask to crop out the shape
-				! position the circle in the center of the svg with group elements and the transform property
-				-->
+				<!-- circle describing the ball -->
 				<circle
-					id="opera-half"
+					id="ball"
 					cx="0"
 					cy="0"
-					r="50"
-					mask="url(#mask)">
+					r="1.25"
+					fill="#F53134">
 				</circle>
 			</defs>
-
-			<!-- actual graphic
-			draw the masked circle above another copy, rotated as to create a mirrored version
-			! the non-rotated shape needs to be on top of the rotated variant
-			-->
-
-			<!-- wrapping group to position the transform-origin in the center of the svg -->
-			<g transform="translate(50 50)">
-				<!-- for each half add a copy of the graphic using the linear gradient to give depth to the icon -->
-				<!-- rotated half -->
-				<g transform="rotate(180)">
-					<use href="#opera-half" fill="#fa192b"></use>
-					<use href="#opera-half" fill="url(#shadow)" opacity="0.75"></use>
+			<g transform="translate(50 23.75)">
+				<g class="translate"><!-- translate this group to have the ball move from side to side -->
+					<use href="#ball"></use>
 				</g>
+			</g>
+
+			<!-- ! in the logo and between the two halves include a circle as big as the one described above -->
+			<svg viewBox="0 0 100 100" x="37.5" y="0" width="25" height="25">
+				<defs>
+					<!-- mask to cut out a circle from the shape -->
+					<mask id="mask">
+						<!-- show everything -->
+						<rect
+							x="-50"
+							y="-50"
+							width="100"
+							height="100"
+							fill="#fff">
+						</rect>
+						<!-- except for a circle with radius 40 positioned 10 to the right of the shape -->
+						<circle
+							cx="10"
+							cy="0"
+							r="40"
+							fill="#000">
+						</circle>
+					</mask>
+
+					<!-- gradient faking a shadow from the bottom left
+					! using userSpaceOnUse specify the coordinates relative to the wrapping svg and its 100x100 viewBox
+					-->
+					<linearGradient id="shadow" x1="50" y1="150" x2="100" y2="0" gradientUnits="userSpaceOnUse">
+						<stop stop-color="#000" offset="0"></stop>
+						<stop stop-color="#fff" offset="1"></stop>
+					</linearGradient>
+
+					<!-- circle using the mask to crop out the shape
+					! position the circle in the center of the svg with group elements and the transform property
+					-->
+					<circle
+						id="opera-half"
+						cx="0"
+						cy="0"
+						r="50"
+						mask="url(#mask)">
+					</circle>
+				</defs>
+
+				<!-- actual graphic
+				draw the masked circle above another copy, rotated as to create a mirrored version
+				! the non-rotated shape needs to be on top of the rotated variant
+				-->
+
+				<!-- wrapping group to position the transform-origin in the center of the svg -->
+				<g transform="translate(50 50)">
+					<!-- for each half add a copy of the graphic using the linear gradient to give depth to the icon -->
+					<!-- rotated half -->
+					<g transform="rotate(180)">
+						<use href="#opera-half" fill="#fff"></use>
+						<use href="#opera-half" fill="url(#shadow)" opacity="0.5"></use>
+					</g>
 
 
-				<!-- circle replicating the previous ball -->
-				<g class="oscillate" transform="translate(0 0)"><!-- translate this group to avoid having the circle too close to the right and left edges of the logo -->
-					<g class="rotate" transform="rotate(0)"><!-- rotate this group to have the circle rotate around the shape -->
-						<g transform="translate(0 44.4)"><!-- 44.4 as in 50 - (1.4 * 4), to position the ball at the bottom and match the previous shape-->
-							<g transform="scale(4)"><!-- 4 given the nested svg is 1/4 the wrapping element -->
-								<use href="#ball"></use>
+					<!-- circle replicating the previous ball -->
+					<g class="oscillate" transform="translate(0 0)"><!-- translate this group to avoid having the circle too close to the right and left edges of the logo -->
+						<g class="rotate" transform="rotate(0)"><!-- rotate this group to have the circle rotate around the shape -->
+							<g transform="translate(0 45)"><!-- 45 as in 50 - (1.25 * 4), to position the ball at the bottom and match the previous shape-->
+								<g transform="scale(4)"><!-- 4 given the nested svg is 1/4 the wrapping element -->
+									<use href="#ball"></use>
+								</g>
 							</g>
 						</g>
 					</g>
+
+
+					<!-- default half -->
+					<use href="#opera-half" fill="#fff"></use>
+					<use href="#opera-half" fill="url(#shadow)" opacity="0.5"></use>
 				</g>
-
-
-				<!-- default half -->
-				<use href="#opera-half" fill="#fa192b"></use>
-				<use href="#opera-half" fill="url(#shadow)" opacity="0.75"></use>
-			</g>
+			</svg>
 		</svg>
-	</svg>
 
+		<h1>Sending request</h1>
+	</div>
+
+	<script src="script.js"></script>
 </body>
 </html>

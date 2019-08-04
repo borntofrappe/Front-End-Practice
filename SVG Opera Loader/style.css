@@ -1,30 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin:700&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
-body {
-  background: hsl(0, 0%, 0%);
-  /* center in the viewport */
-  min-height: 100vh;
+.screen {
+  max-width: 600px;
+  width: 90vw;
+  padding: 2rem 0;
+  margin: 2rem auto;
+  background: linear-gradient(
+      170deg,
+      transparent 0,
+      transparent 70%,
+      hsla(0, 0%, 0%, 0.04) 0%,
+      hsla(0, 0%, 0%, 0.04) 100%
+    ),
+    hsl(359, 100%, 60%);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 1px 10px -10px hsl(359, 100%, 80%),
+    0 2px 2px hsl(359, 100%, 60%);
 }
-body > svg {
+.screen > svg {
   display: block;
-  width: 600px;
+  width: 100%;
   height: auto;
 }
+.screen h1 {
+  color: #fff;
+  margin: 5rem 0 1rem;
+  font-family: "Cabin", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  text-align: center;
+}
 
+/* animations for the svg */
 .translate {
-  animation: translate 6s cubic-bezier(0.47, 0, 0.745, 0.715) both infinite;
+  animation: translate 6s cubic-bezier(0.47, 0, 0.745, 0.715) both 6;
 }
 .rotate {
-  animation: rotate 6s 2s cubic-bezier(0.39, 0.575, 0.565, 1) both infinite;
+  animation: rotate 6s 2s cubic-bezier(0.39, 0.575, 0.565, 1) both 6;
 }
 .oscillate {
-  animation: oscillate 6s 2s linear both infinite;
+  animation: oscillate 6s 2s linear both 6;
 }
 
 /* translate animation for the outer ball
@@ -73,5 +96,17 @@ translate from side to side, stopping in the middle for as much time as it takes
   }
   28% {
     transform: translateX(5px);
+  }
+}
+
+/* animation for the heading's characters */
+@keyframes fadeInOut {
+  0%,
+  20% {
+    opacity: 0;
+  }
+  60%,
+  100% {
+    opacity: 1;
   }
 }
