@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Catamaran:400,800&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 183.2 300" xmlns="http://www.w3.org/2000/svg" width="183.2" height="300"><g fill="none" stroke-width="10" stroke="%23ffcd12" opacity="0.5"><g transform="translate(5 5)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path><g transform="translate(86.6 0)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path></g><g transform="translate(43.3 75)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path></g><g transform="translate(0 150)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path><g transform="translate(86.6 0)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path></g><g transform="translate(43.3 75)"><path d="M 43.3 0 86.6 25 86.6 75 43.3 100 0 75 0 25 z"></path></g></g></g></g></svg>'),
+    #fefefe;
+  font-family: "Catamaran", sans-serif;
+}
+.app {
+  max-width: 850px;
+  width: 90vw;
+  margin: 1rem auto;
+  background: #fefefe;
+  box-shadow: 0 1px 5px hsla(0, 0%, 0%, 0.1);
+}
+header {
+  padding: 1rem;
+}
+.viz {
+  /* position relative to absolute position the tooltip in the top right corner of the svg
+  svg which covers the entirety of the container's size
+  */
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+}
+/* absolute position the tooltip
+the idea is to change the text when the mouseenter event is registered on the visualization's data points
+*/
+.viz__tooltip {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  width: 40%;
+  padding: 1rem;
+  border: 2px solid currentColor;
+  min-height: 50px;
+  background: url('data:image/svg+xml;utf8,<svg opacity="0.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="50" height="50"><pattern id="pattern-stripes" width="1" height="0.25" viewBox="0 0 100 100"><rect x="-250" y="50" width="500" height="60"></rect></pattern><g transform="translate(50 50)"><g transform="rotate(30)"><path fill="url(%23pattern-stripes)" stroke="currentColor" stroke-width="3" d="M 0 0 a 18 18 0 0 1 18 18 q 0 15 -18 25 q -18 -10 -18 -25 a 18 18 0 0 1 18 -18"></path><g transform="translate(0 -7)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><g><path d="M -5 0 q -10 -10 -20 -10 a 10 10 0 0 0 -10 10 a 10 10 0 0 0 10 10 q 10 0 20 -10"></path><path transform="translate(-10 0) scale(0.5)" d="M -5 0 q -10 -10 -20 -10 a 10 10 0 0 0 -10 10 a 10 10 0 0 0 10 10 q 10 0 20 -10"></path></g><g transform="scale(-1 1)"><path d="M -5 0 q -10 -10 -20 -10 a 10 10 0 0 0 -10 10 a 10 10 0 0 0 10 10 q 10 0 20 -10"></path><path transform="translate(-10 0) scale(0.5)" d="M -5 0 q -10 -10 -20 -10 a 10 10 0 0 0 -10 10 a 10 10 0 0 0 10 10 q 10 0 20 -10"></path></g></g><g fill="none" stroke="currentColor" stroke-width="3"><path d="M 0 -12 a 8 8 0 0 1 -8 -8 q 0 -10 8 -10 q 8 0 8 10 a 8 8 0 0 1 -8 8"></path><g stroke-width="2"><path d="M -2 -30 q 0 -5 -5 -5"></path><path d="M 2 -30 q 0 -5 5 -5"></path></g><g><circle cx="10" cy="-35" r="3"></circle><circle cx="-10" cy="-35" r="3"></circle></g></g></g></g></svg>'),
+    #fefefe;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+}
+/* style the labels used in stead of the axes */
+svg .label {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.18rem;
+  opacity: 0.3;
+  font-size: 0.5rem;
+}

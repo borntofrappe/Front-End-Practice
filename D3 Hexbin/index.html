@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 Hexbin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app">
+        <header>
+            <h1>D3 Hexbin</h1>
+        </header>
+
+        <!-- container for the visualization -->
+        <main class="viz">
+            <!-- include a div used as a tooltip for the visualization -->
+            <div class="viz__tooltip">
+                Hover on the hexagons to highlight detailed information on the country's honey market.
+            </div>
+        </main>
+    </div>
+
+
+    <!-- import the hexbin package on top of d3 -->
+    <script src="https://unpkg.com/d3-hexbin@0.2.2/build/d3-hexbin.js"></script>
+    <script src="https://unpkg.com/d3@5.9.7/dist/d3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
