@@ -42,6 +42,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Holiday Travels](https://codepen.io/borntofrappe/pen/xooyrq)|Recreate part of a visualization found in an article of the French newspaper LeMonde, detailing where citizens travel during the holidays.|14th-15th July 2019|
 |[D3 Multivariate Analysis](https://codepen.io/borntofrappe/pen/BXNgeq)|Highlight the relationship between multiple variables for three subspecies of the iris flower.|20th-21st July 2019|
 |[D3 Data Binding](https://codepen.io/borntofrappe/pen/LwzRyb)|Create a visualization to explain how D3 binds data, highlighting the enter-update-exit loop and object constancy.|2nd August 2019|
+|[D3 Hexbin](https://codepen.io/borntofrappe/pen/bXaezg)|Visualize arbitrary statistics on the honey market and for a few countries of the European Union.|5th August 2019|
 
 ### JS
 
