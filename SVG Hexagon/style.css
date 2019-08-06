@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  /* graph paper through repeating gradients */
+  background: repeating-linear-gradient(
+      to right,
+      hsl(0, 0%, 94%) 0px,
+      hsl(0, 0%, 94%) 2px,
+      transparent 0px,
+      transparent 15px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      hsl(0, 0%, 94%) 0px,
+      hsl(0, 0%, 94%) 2px,
+      transparent 0px,
+      transparent 15px
+    ),
+    hsl(0, 0%, 98%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* display the svg elements in a grid, with the smaller icons at either end of the grid */
+.app {
+  background: #fff;
+  padding: 1rem;
+  max-width: 500px;
+  width: 90vw;
+  display: grid;
+  grid-template-columns: 0 1fr 0;
+  grid-template-rows: 0 1fr 0;
+}
+/* have the main svg occupy the central space of the grid */
+#drawing {
+  width: 100%;
+  height: auto;
+  grid-column: 2;
+  grid-row: 2;
+}
+#compass {
+  align-self: center;
+  justify-self: center;
+  grid-column: 1;
+  grid-row: 1;
+}
+#ruler {
+  align-self: center;
+  justify-self: center;
+  grid-column: 3;
+  grid-row: 3;
+}
+
+/* keyframe animation to draw the different strokes into view */
+@keyframes removeOffset {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* keyframe animation to hide the drawing lines from sight */
+@keyframes eraseLine {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

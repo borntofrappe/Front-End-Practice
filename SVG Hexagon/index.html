@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Hexagon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- html structure
+    .app, wrapping container
+        svg for the hexagon animation
+        svg for the icon of a compass
+        svg for the icon of a ruler
+    -->
+
+    <div class="app">
+        <!-- svg for the hexagon, specifying growing lines behind the actual hexagon
+            ! use a clipPath to limit the section where the path elements are actually drawn
+            ! add a class of .line to all the elements whose stroke is animated into sight
+        -->
+        <svg id="drawing" viewBox="0 0 100 100" width="200" height="200">
+            <defs>
+                <clipPath id="clip">
+                    <circle
+                        cx="0"
+                        cy="0"
+                        r="40.25">
+                    </circle>
+                </clipPath>
+
+            </defs>
+                <path
+                    class="line"
+                    fill="none"
+                    stroke="#aaa"
+                    stroke-width="0.5"
+                    d="M 50 45 v 10">
+                </path>
+                <path
+                    class="line"
+                    fill="none"
+                    stroke="#aaa"
+                    stroke-width="0.5"
+                    d="M 0 50 h 100">
+                </path>
+                <g transform="translate(50 50)">
+                    <g
+                        clip-path="url(#clip)"
+                        fill="none"
+                        stroke="#aaa"
+                        stroke-width="0.5">
+                        <!-- ! getTotalLength() does not seem to be available when interacting with circles on Microsoft's Edge
+                        use a path element for the wrapping circle as well
+                        -->
+                        <path
+                            class="line"
+                            d="M 40 0 a 40 40 0 0 0 -80 0 a 40 40 0 0 0 80 0">
+                        </path>
+
+                        <path
+                            class="line"
+                            d="M 40 -40 a 40 40 0 0 0 0 80">
+                        </path>
+                        <path
+                            class="line"
+                            d="M -40 -40 a 40 40 0 0 1 0 80">
+                        </path>
+                    </g>
+
+                    <!-- hexagon starting in the top left corner -->
+                    <path
+                        class="line"
+                        d="M -20 -34.64 h 40 l 20 34.64 l -20 34.64 h -40 l -20 -34.64 z"
+                        fill="none"
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-width="2">
+                    </path>
+                </g>
+        </svg>
+
+        <!-- svg describing the compass -->
+        <svg id="compass" viewBox="0 0 67 100" width="67" height="100">
+            <g transform="translate(33.5 1.5)">
+                <!-- top -->
+                <rect
+                    x="-4"
+                    width="8"
+                    y="0"
+                    height="25"
+                    rx="4"
+                    fill="#BAD0F3"
+                    stroke="#121C2C"
+                    stroke-width="3">
+                </rect>
+                <!-- body -->
+                <g transform="translate(0 25)">
+                    <!-- segment below, and behind the compass -->
+                    <g transform="translate(0 42)">
+                        <path
+                            d="M -27 0 h 54"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke="#121C2C"
+                            stroke-width="3">
+                        </path>
+                        <rect
+                            x="-3"
+                            width="6"
+                            y="-6"
+                            height="12"
+                            rx="3"
+                            fill="#fff"
+                            stroke="#121C2C"
+                            stroke-width="3">
+                        </rect>
+                    </g>
+                    <!-- left and right legs of the compass
+                    rotate around the hinge described by the parent's trasformation
+                    -->
+                    <g transform="rotate(20)">
+                        <rect
+                            x="-4"
+                            width="8"
+                            y="0"
+                            height="70"
+                            rx="4"
+                            fill="#BAD0F3"
+                            stroke="#121C2C"
+                            stroke-width="3">
+                        </rect>
+                        <path
+                            d="M 0 70 v 6"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke="#121C2C"
+                            stroke-width="3">
+                        </path>
+                    </g>
+                    <g transform="rotate(-20)">
+                        <rect
+                            x="-4"
+                            width="8"
+                            y="0"
+                            height="70"
+                            rx="4"
+                            fill="#BAD0F3"
+                            stroke="#121C2C"
+                            stroke-width="3">
+                        </rect>
+                        <path
+                            d="M 0 70 v 6"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke="#121C2C"
+                            stroke-width="3">
+                        </path>
+                    </g>
+                    <!-- circle connecting the shapes and functioning as the hinge -->
+                    <circle
+                        cx="0"
+                        cy="0"
+                        r="16"
+                        fill="#5D91E4"
+                        stroke="#121C2C"
+                        stroke-width="3">
+                    </circle>
+                    <circle
+                        cx="0"
+                        cy="0"
+                        r="7.5"
+                        fill="#fff"
+                        stroke="#121C2C"
+                        stroke-width="3">
+                    </circle>
+                    <!-- segment drawn to the side of the circle -->
+                    <path
+                        d="M -22 0 a 22 22 0 0 1 22 -22"
+                        fill="none"
+                        stroke-dasharray="18 4 2    "
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#121C2C"
+                        stroke-width="3">
+                    </path>
+                </g>
+                <!-- line describing the bottom of the svg -->
+                <g transform="translate(0 97)">
+                    <path
+                        d="M -32 0 h 64"
+                        fill="none"
+                        stroke-dasharray="15 6 22 21"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#121C2C"
+                        stroke-width="3">
+                    </path>
+                </g>
+            </g>
+        </svg>
+
+        <!-- svg describing the ruler -->
+        <svg id="ruler" viewBox="0 0 80 100" width="80" height="100">
+            <defs>
+                <!-- triangle used to draw the ruler and the mask -->
+                <path
+                    id="triangle"
+                    d="M 0 0 v 97 h 78 z"
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    stroke="#121C2C">
+                </path>
+                <!-- mask cropping out a smaller triangle from the larger shape -->
+                <mask
+                    id="mask">
+                    <rect
+                        x="0"
+                        y="0"
+                        width="80"
+                        height="100"
+                        fill="#fff">
+                    </rect>
+                    <g transform="translate(0 97)">
+                        <g transform="translate(16 -12) scale(0.4)">
+                            <g transform="translate(0 -97)">
+                                <use href="#triangle" fill="#000"></use>
+                            </g>
+                        </g>
+                    </g>
+                </mask>
+                <!-- pattern used to create the lines on a side of the triangle -->
+                <pattern
+                    id="pattern" viewBox="0 0 10 10" width="100%" height="16%">
+                    <path
+                        d="M 0 1 h 9"
+                        fill="none"
+                        stroke-linejoin="round"
+                        stroke-linecap="round"
+                        stroke="#121C2C"
+                        stroke-width="2">
+                    </path>
+                </pattern>
+            </defs>
+            <!-- triangle masked to crop a smaller triangle -->
+            <g mask="url(#mask)">
+                <g transform="translate(1.5 1.5)">
+                    <use href="#triangle" stroke-width="3" fill="#BAD0F3" ></use>
+                    <rect
+                        x="0"
+                        y="25"
+                        width="9"
+                        height="65"
+                        fill="url(#pattern)">
+                    </rect>
+                </g>
+            </g>
+            <!-- triangle with no fill and stroke, overlaid on top of the cropped area as if highlighting the inner stroke -->
+            <g transform="translate(0 97)">
+                <g transform="translate(16 -12) scale(0.4)">
+                    <g transform="translate(0 -97)">
+                        <use href="#triangle" stroke-width="7.5" fill="none"></use>
+                    </g>
+                </g>
+            </g>
+            <!-- dash parallel to the triangle -->
+            <path
+                d="M 20 10 l 78 97 z"
+                stroke-dasharray="30 6 1 200"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke="#121C2C"
+                stroke-width="3">
+            </path>
+        </svg>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
