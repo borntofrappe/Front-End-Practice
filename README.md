@@ -97,6 +97,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Fish Loader](https://codepen.io/borntofrappe/pen/PMjpPd)|Draw two fish with SVG and animate them with CSS to create a loading screen.|31st July 2019|
 |SVG Opera Logo|Using SVG elements and defining a mask and a linear gradient replicate Opera's logo.|03rd August 2019|
 |[SVG Opera Loader](https://codepen.io/borntofrappe/pen/jgGXbp)|Create a loading screen for the Opera browser, loosely describing the actions taken by a browser to request a page from the Internet.|03rd-04th August 2019|
+|[SVG Hexagon](https://codepen.io/borntofrappe/pen/MNQpYr)|Describe how to draw a hexagon through SVG syntax and path elements. Animate the elements through JavaScript and CSS keyframe animation.|06th August 2019|
 
 ### UI UX
 
