@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  font-family: "Nunito Sans", sans-serif;
+  background: hsl(0, 0%, 97%);
+  /* center in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* remove default properties
+! the outline is visually replaced by a pseudo element, included on hover _and_ on focus
+*/
+button {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit;
+  /* position relative and z index to manage the pseudo elements */
+  position: relative;
+  z-index: 5;
+}
+/* with a pseudo element include a decorative visual using svg as the pseudo elements' background */
+button::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 5px);
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 300px;
+  height: 300px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><circle id="circle" r="1"/></defs><g transform="translate(45 12)" fill="%23f0d78e"><use href="%23circle"/><use href="%23circle" x="2" y="-1" transform="scale(2)"/></g><g transform="translate(78 27)" fill="%23bff08e"><use href="%23circle"/><use href="%23circle" x="3" y="1" transform="scale(2)"/></g><g transform="translate(83 58)" fill="%238ef0a6"><use href="%23circle"/><use href="%23circle" x="1.5" y="3" transform="scale(2)"/></g><g transform="translate(65 83)" fill="%238ef0f0"><use href="%23circle"/><use href="%23circle" x="3.5" y="1" transform="scale(2)"/></g><g transform="translate(32 81)" fill="%238ea6f0"><use href="%23circle"/><use href="%23circle" x="1" y="1.5" transform="scale(2)"/></g><g transform="translate(15 53)" fill="%23bf8ef0"><use href="%23circle"/><use href="%23circle" x="-2" y="-1" transform="scale(2)"/></g><g transform="translate(20 28)" fill="%23f08ed7"><use href="%23circle"/><use href="%23circle" x=".5" y="-2" transform="scale(2)"/></g><g><circle r="30" stroke="%23f08e8e" stroke-width="4" fill="none" transform="translate(50 50)"/></g></svg>');
+  pointer-events: none;
+}
+/* with another pseudo element add a label atop the button, describing its purpose */
+button::after {
+  content: "Like";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.6rem;
+  color: hsl(0, 0%, 94%);
+  background: hsl(0, 0%, 5%);
+  border-radius: 5px;
+  /* hide the label by default */
+  transform: translate(-50%, -30%);
+  opacity: 0;
+  visibility: hidden;
+  transition-property: transform, opacity, visibility;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-out;
+  transition-delay: 0;
+}
+/* on hover & when focused show the label with a small vertical translation */
+button:hover::after,
+button:focus::after {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  visibility: visible;
+}
+/* style the svg with a gray-ish fill */
+button svg {
+  fill: #adb5ce;
+  height: 100px;
+  width: auto;
+  display: block;
+}
+
+/* when .active */
+/* change the label in the pseudo element, avoiding the wrapping caused by the absolute position */
+button.active::after {
+  content: "Undo like";
+  white-space: nowrap;
+}
+/* animate the decorative graphic to scale and then hide itself */
+button.active::before {
+  animation: scaleOpacity 0.5s cubic-bezier(0.03, 1, 0.65, 1.22);
+  z-index: -5;
+}
+/* instantly change the fill of the button and animate the graphic to scale from 0 to 1 */
+button.active svg {
+  fill: #f74b42;
+  animation: scale 0.25s 0.1s cubic-bezier(0.03, 1, 0.65, 1.22) both;
+}
+
+/* keyframe animations for the button's :::before element and the nested svg */
+@keyframes scale {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes scaleOpacity {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
