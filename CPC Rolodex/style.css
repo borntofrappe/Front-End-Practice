@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(206, 100%, 19%);
+  /* center the deck horizontally */
+  display: flex;
+  justify-content: center;
+  font-family: "Nunito Sans", sans-serif;
+}
+/* give the deck a fixed width and height */
+.deck {
+  margin: 3rem 0;
+  width: 320px;
+  height: 275px;
+  /* position relative for the pseudo element */
+  position: relative;
+  /* perspective for the nested cards */
+  perspective: 1200px;
+}
+
+/* with a pseudo element add two rectangles at the bottom of the deck, to create the hinges of the rolodex */
+.deck:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  transform: translate(0, -50%);
+  clip-path: polygon(
+    35% 0%,
+    40% 0%,
+    40% 100%,
+    35% 100%,
+    35% 0%,
+    60% 0%,
+    65% 0%,
+    65% 100%,
+    60% 100%,
+    60% 0%
+  );
+  background: linear-gradient(to bottom, #93a9d2, #fff, #93a9d2);
+  /* z index to have the pseudo element _behind_ the cards which follow */
+  z-index: -5;
+}
+/* absolute position each card to cover the size of the deck */
+.deck .card {
+  color: #00090f;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* set up a transition from the bottom of the card */
+  transition: transform 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transform-origin: 50% 100%;
+  transform-style: preserve-3d;
+  transform: translateY(-4px) rotateX(0deg);
+  /* z-index to have the card above the deck's pseudo element */
+  z-index: 5;
+  /* backface-visibility: hidden; */
+}
+/* background
+! it is not set on the card because of the clip-path property
+*/
+.deck .card:before,
+.deck .card:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: -5;
+  clip-path: polygon(
+    0% 100%,
+    35% 100%,
+    35% calc(100% - 8.25px),
+    40% calc(100% - 8.25px),
+    40% 100%,
+    60% 100%,
+    60% calc(100% - 8.25px),
+    65% calc(100% - 8.25px),
+    65% 100%,
+    100% 100%,
+    100% 0%,
+    0% 0%
+  ); /* 8.25 = (25/ 2) + 4; considering the height of the hinges and the vertical translation*/
+}
+.deck .card:after {
+  transform: rotateY(180deg);
+}
+/* style the content of each card */
+.deck .card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.deck .card svg {
+  width: 90px;
+  height: auto;
+  background: #fff;
+  border-radius: 50%;
+  color: #063054;
+  display: block;
+  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.5);
+}
+.deck .card h1 {
+  text-transform: uppercase;
+}
+.deck .card p {
+  align-self: flex-start;
+}
+.deck .card button {
+  color: hsl(0, 0%, 100%);
+  background: hsla(206, 100%, 19%, 1);
+  border: none;
+  font-family: inherit;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  padding: 0.25rem;
+  box-shadow: 0 0 5px hsla(206, 100%, 2%, 0.5);
+}
+
+/* when the card is toggled to .active rotate the container */
+.deck .card.active {
+  transform: translateY(4px) rotateX(-180deg);
+  z-index: 0 !important;
+}
+/* position the rolodex icon in the bottom right corner */
+svg#rolodex {
+  width: 60px;
+  height: auto;
+  position: fixed;
+  bottom: 0.5rem;
+  right: 1rem;
+  display: block;
+}
+/* animate the lines in the #flip group to rotate to 0 */
+svg#rolodex g#flip use {
+  animation: rotate 10s infinite ease-out;
+}
+/* increase the delay for each subsequent line */
+svg#rolodex g#flip use:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+svg#rolodex g#flip use:nth-of-type(3) {
+  animation-delay: 0.4s;
+}
+svg#rolodex g#flip use:nth-of-type(4) {
+  animation-delay: 0.6s;
+}
+svg#rolodex g#flip use:nth-of-type(5) {
+  animation-delay: 0.8s;
+}
+svg#rolodex g#flip use:nth-of-type(6) {
+  animation-delay: 1s;
+}
+@keyframes rotate {
+  10%,
+  100% {
+    transform: rotate(0deg);
+  }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CPC Rolodex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- add cards in a div container -->
+    <div class="deck"></div>
+
+    <svg id="rolodex" viewBox="0 0 464 464" width="464" height="464">
+        <g>
+            <circle
+                cx="232"
+                cy="232"
+                r="232"
+                fill="#fff">
+            </circle>
+        </g>
+        <!-- icon with the appearance of a rolodex -->
+        <svg  viewBox="0 0 210 264" x="127" y="100" width="210" height="264">
+            <defs>
+                <!-- line used for the profile of the cards -->
+                <path
+                    id="line"
+                    d="M 0 0 v -100"
+                    fill="none"
+                    stroke="#063054"
+                    stroke-linecap="round"
+                    stroke-width="10">
+                </path>
+                <!-- semicircle used to create the rolodex structure -->
+                <path
+                    id="semicircle"
+                    d="M 0 0 v -100 a 100 100 0 0 1 0 200 z">
+                </path>
+            </defs>
+            <g>
+                <!-- group to translate the shapes and change the transform-origin -->
+                <g transform="translate(105 105)">
+                    <!-- include two lines at either side of the rolodex structure -->
+                    <use href="#line" transform="rotate(10)"></use>
+                    <use href="#line" transform="rotate(260)"></use>
+                    <!-- in a group (used to target the lines in CSS) add lines rotated from the bottom card to the top -->
+                    <g id="flip" transform="rotate(260)"><!-- 260 + 105 means the cards overlap with the first line -->
+                        <use href="#line" transform="rotate(110)"></use><!-- and when animating their rotation to 0, it means the cards overlap with the second line-->
+                        <use href="#line" transform="rotate(110)"></use>
+                        <use href="#line" transform="rotate(110)"></use>
+                        <use href="#line" transform="rotate(110)"></use>
+                        <use href="#line" transform="rotate(110)"></use>
+                        <use href="#line" transform="rotate(110)"></use>
+                    </g>
+                    <!-- to fake a section of the pie larger than the semicircle overlap a semicircle
+                    given the path element included afterwords, the stroke separating the two semicircles is hidden
+                    -->
+                    <g
+                        fill="#FFF"
+                        stroke="#063054"
+                        stroke-linecap="round"
+                        stroke-width="10">
+                        <use href="#semicircle" transform="rotate(60)"></use>
+                        <use href="#semicircle" transform="rotate(25)"></use>
+                    </g>
+                    <!-- smaller semicircles to give a tint of color to the rolodex structure -->
+                    <g
+                        transform="scale(0.8)"
+                        fill="#063054"
+                        stroke="none"
+                        opacity="0.25">
+                        <use href="#semicircle" transform="rotate(60)"></use>
+                        <use href="#semicircle" transform="rotate(25)"></use>
+                    </g>
+
+                    <circle
+                        cx="0"
+                        cy="0"
+                        r="40"
+                        stroke="#063054"
+                        stroke-width="10"
+                        fill="#fff">
+                    </circle>
+
+                    <!-- path element describing the stand, and hiding the stroke of the connected semicircles -->
+                    <path
+                        d="M 0 0 l -60 130 q -10 20 10 20 h 130"
+                        fill="none"
+                        stroke="#063054"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="18">
+                    </path>
+                </g>
+            </g>
+        </svg>
+    </svg>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
