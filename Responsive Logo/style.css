@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: #ffca74;
+  /* center in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* increase the size of the heading by a considerable amount */
+header {
+  font-family: "Lato", sans-serif;
+  font-size: 8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  padding: 3rem 1vw; /* horizontal padding depends on the viewport width, to have the psuedo elements closer as the viewport diminishes*/
+  color: #673d93;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+header > span {
+  margin: 0 calc(6vw - 3.5rem);
+  transition: margin 0.1s ease-out;
+}
+/* with pseudo elements add two bars around the header */
+header:before,
+header:after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  height: 200px;
+  width: 10px;
+  border-radius: 10px;
+  background: #fffafe;
+  transform: translate(0, -50%);
+}
+header:before {
+  right: 100%;
+}
+header:after {
+  left: 100%;
+}
+/* have the icon inline, and animate its scale as it is introduced */
+svg.heart {
+  width: 10vw;
+  height: auto;
+  animation: scale 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+svg.pulse {
+  display: none;
+  width: 260px;
+  height: 260px;
+  margin: -130px;
+  animation: scaleOpacity 0.4s cubic-bezier(0.175, 0.885, 0.32, 1) both;
+}
+@keyframes scale {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes scaleOpacity {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+/* at different viewport values hide different elements of the logo
+! increase also the padding to distance the fewer words/icon from the surrounding bars
+*/
+/* > 1000px: hide the icon */
+@media screen and (min-width: 1000px) {
+  svg.heart {
+    display: none;
+  }
+}
+/* < 1000px: hide the love string */
+@media screen and (max-width: 1000px) {
+  header span:nth-of-type(2) {
+    display: none;
+  }
+  header {
+    padding: 3rem 2vw;
+  }
+  svg.pulse:nth-of-type(2) {
+    display: inline-block;
+  }
+  header > * {
+    margin: 0 calc(6vw - 3rem);
+  }
+}
+/* < 85px: hide the yo string */
+@media screen and (max-width: 850px) {
+  header span:nth-of-type(3) {
+    display: none;
+  }
+  header {
+    padding: 3rem 3vw;
+  }
+  svg.pulse:nth-of-type(4) {
+    display: inline-block;
+  }
+  svg.heart {
+    transform: scale(1.25);
+  }
+  header > * {
+    margin: 0 calc(6vw - 2rem);
+  }
+}
+/* < 600px: hide the i and u */
+@media screen and (max-width: 600px) {
+  header span:first-of-type {
+    display: none;
+  }
+  header span:last-of-type {
+    display: none;
+  }
+  header {
+    padding: 3rem 3rem;
+  }
+  svg.pulse:nth-of-type(1) {
+    display: inline-block;
+  }
+  svg.pulse:nth-of-type(5) {
+    display: inline-block;
+    animation-delay: 0.1s;
+  }
+  svg.heart {
+    transform: scale(1.5);
+    width: 60px;
+    height: auto;
+  }
+  header > * {
+    margin: 0 4vw;
+  }
+}

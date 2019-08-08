@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive Header</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- graphics used in the header -->
+    <svg style="display: none;">
+        <defs>
+            <!-- heart icon -->
+            <symbol
+                viewBox="0 0 100 85"
+                width="100"
+                height="85"
+                id="heart"
+                fill="#F74B42" >
+                    <circle
+                        cx="25"
+                        cy="25"
+                        r="25">
+                    </circle>
+                    <circle
+                        cx="75"
+                        cy="25"
+                        r="25">
+                    </circle>
+                    <path
+                        d="M 0 25 q 0 40 50 60 q 50 -20 50 -60">
+                    </path>
+            </symbol>
+
+            <!-- circle used in the symbol fabricating the animation highlighting the elements being removed
+            scale using the transform attribute
+            -->
+            <circle
+                id="circle"
+                cx="0"
+                cy="0"
+                r="1">
+            </circle>
+
+            <!-- in the symbol include the defined circle in the center of the graphic as well as sparingly around the same -->
+            <symbol
+                viewBox="0 0 100 100"
+                width="100"
+                height="100"
+                id="pulse">
+                <g transform="translate(50 50)">
+                    <use
+                        href="#circle"
+                        transform="scale(30)"
+                        fill="none"
+                        stroke="#673d93"
+                        stroke-width="0.1">
+                    </use>
+                    <g transform="translate(30 -45)">
+                        <use
+                            href="#circle"
+                            transform="scale(3)"
+                            fill="#673d93">
+                        </use>
+                    </g>
+                    <g transform="translate(-20 40)">
+                        <use
+                            href="#circle"
+                            transform="scale(2)"
+                            fill="#673d93">
+                        </use>
+                    </g>
+                </g>
+            </symbol>
+        </defs>
+    </svg>
+
+
+
+    <!-- in a header include the text through span elements
+    separate the spans with a copy of the svg animated as the elements are removed
+    include the svg detailing the heart following the "love" span
+
+    -->
+    <header>
+        <span>I</span>
+        <svg class="pulse" viewBox="0 0 100 100" width="100" height="100">
+            <use href="#pulse"></use>
+        </svg>
+        <span>love</span>
+        <svg class="pulse" viewBox="0 0 100 100" width="100" height="100">
+            <use href="#pulse"></use>
+        </svg>
+        <svg class="heart" viewBox="0 0 100 85" width="100" height="85">
+            <use href="#heart"></use>
+        </svg>
+        <svg class="pulse" viewBox="0 0 100 100" width="100" height="100">
+            <use href="#pulse"></use>
+        </svg>
+        <span style="margin-right: 0;">yo</span>
+        <span>u</span>
+        <svg class="pulse" viewBox="0 0 100 100" width="100" height="100">
+            <g transform="translate(50 50) rotate(180)">
+                <g transform="translate(-50 -50)">
+                    <use href="#pulse"></use>
+                </g>
+            </g>
+        </svg>
+        <svg class="pulse" viewBox="0 0 100 100" width="100" height="100">
+                <g transform="translate(50 50) rotate(180)">
+                    <g transform="translate(-50 -50)">
+                        <use href="#pulse"></use>
+                    </g>
+                </g>
+            </svg>
+    </header>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
