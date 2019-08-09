@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,900|Noto+Serif:700i&display=swap");
 
 * {
   box-sizing: border-box;
@@ -51,7 +51,6 @@ body {
 }
 /* absolute position each card to cover the size of the deck */
 .deck .card {
-  color: #00090f;
   position: absolute;
   top: 0;
   left: 0;
@@ -64,21 +63,17 @@ body {
   transform: translateY(-4px) rotateX(0deg);
   /* z-index to have the card above the deck's pseudo element */
   z-index: 5;
-  /* backface-visibility: hidden; */
 }
-/* background
-! it is not set on the card because of the clip-path property
-*/
-.deck .card:before,
-.deck .card:after {
-  content: "";
+/* absolute position each half of the card to cover the size of the card itself */
+.deck .card .card--front,
+.deck .card .card--back {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #fff;
-  z-index: -5;
+  background: hsl(0, 0%, 100%);
+  backface-visibility: hidden;
   clip-path: polygon(
     0% 100%,
     35% 100%,
@@ -94,31 +89,69 @@ body {
     0% 0%
   ); /* 8.25 = (25/ 2) + 4; considering the height of the hinges and the vertical translation*/
 }
-.deck .card:after {
+/* rotate the back of the card */
+.deck .card .card--back {
   transform: rotateY(180deg);
 }
-/* style the content of each card */
-.deck .card {
+/* when the card is toggled to .active rotate the container */
+.deck .card.active {
+  transform: translateY(4px) rotateX(-180deg);
+}
+
+/* property: value pairs styling the content of the cards */
+.deck .card .card--front {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 1rem;
+  justify-items: center;
+  align-items: center;
+}
+.deck .card .card--back {
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
+  backface-visibility: hidden;
 }
-.deck .card svg {
-  width: 90px;
+.deck .card .card--front > svg {
+  width: 100px;
   height: auto;
   background: #fff;
-  border-radius: 50%;
   color: #063054;
   display: block;
-  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.5);
+  grid-row: 1/3;
 }
-.deck .card h1 {
+.deck .card .card--front h1 {
   text-transform: uppercase;
+  font-size: 1.25rem;
+  justify-self: start;
+  align-self: end;
 }
-.deck .card p {
-  align-self: flex-start;
+.deck .card .card--back button {
+  width: 38px;
+  height: 38px;
+  opacity: 0.5;
+}
+.deck .card .card--back h2 {
+  font-size: 1.25rem;
+  transform: rotate(180deg);
+  font-style: italic;
+  font-family: "Noto Serif", serif;
+  font-weight: 400;
+}
+.deck .card .card--front h2 {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  justify-self: start;
+  align-self: start;
+}
+.deck .card .card--front p {
+  grid-column: span 2;
 }
 .deck .card button {
   color: hsl(0, 0%, 100%);
@@ -128,18 +161,19 @@ body {
   position: absolute;
   bottom: 0.5rem;
   right: 0.5rem;
-  width: 45px;
-  height: 45px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  padding: 0.25rem;
-  box-shadow: 0 0 5px hsla(206, 100%, 2%, 0.5);
+  padding: 0.75rem;
+  box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.2);
+}
+.deck .card button svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: none;
 }
 
-/* when the card is toggled to .active rotate the container */
-.deck .card.active {
-  transform: translateY(4px) rotateX(-180deg);
-  z-index: 0 !important;
-}
 /* position the rolodex icon in the bottom right corner */
 svg#rolodex {
   width: 60px;
