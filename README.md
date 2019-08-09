@@ -144,4 +144,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[CPC Fetch Em All](https://codepen.io/borntofrappe/pen/xvbvqp)|Display a message according to the resolution of a promise, retrieving information from a public API.|19th July 2019|
 |[CPC Book by Title](https://codepen.io/borntofrappe/pen/pMNOaa)|Fetch books through the open library API and display the results using SVG element.|27th July 2019|
 |[100 Days of Code](https://codepen.io/borntofrappe/full/gVGwez)|Celebrate the completion of another round of the coding challenge describing the experience through vector graphics.|1st-2nd August 2019|
-|[CPC Rolodex]()|Create a rolodex allowing to flip through cards with 3D rotation.|08th August 2019|
+|[CPC Rolodex](https://codepen.io/borntofrappe/pen/wVYKWg)|Create a rolodex in which cards can be flipped to highlight the members of the team @codepen.|08th-9th August 2019|

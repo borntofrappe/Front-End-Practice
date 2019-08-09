@@ -44,6 +44,16 @@ const cards = [
   },
 ];
 
+// array describing the d attributes for the icon included in the avatar
+// the idea is to pick at random from the array
+const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
+const icons = [
+  'M -6 -1 a 3 3 0 0 1 6 0 a 3 3 0 0 1 6 0 q 0 4 -6 7 q -6 -3 -6 -7', // heart
+  'M -2 -6 a 6 6 0 0 1 0 12 a 12 12 0 0 0 0 -12', // moon
+  'M 0 -5.5 l 2 4 h 4 l -3.5 2.5 l 1.5 4.5 l -4 -2 l -4 2 l 1.5 -4.5 l -3.5 -2.5 h 4 l 2 -4', // star
+  'M 5 1 a 5 5 0 0 1 -5 5 a 5 5 0 0 1 -5 -5 q 0 -2.5 1 -4 q 1 2.5 1 4 h 6 q 0 -2.5 1 -4 q 1 2.5 1 4 h -3 q 0 -4 -2 -6.5 q -2 3 -2 6.5 h -2', // fire
+];
+
 // for each card create an article and append it to the deck
 const deck = document.querySelector('.deck');
 
@@ -69,6 +79,50 @@ cards.forEach(({ name, at, tag }, index) => {
   card.innerHTML = `
     <div class="card--front">
       <svg fill="currentColor" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- mask to cut out the portion of the circle where the icon goes -->
+        <defs>
+          <mask id="icon">
+            <rect
+              x="0"
+              y="0"
+              width="100"
+              height="100"
+              fill="#fff">
+            </rect>
+            <circle
+              cx="75"
+              cy="80"
+              r="11"
+              fill="#000">
+            </circle>
+          </mask>
+        </defs>
+        <!-- wrap the avatar in a circle -->
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2">
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            mask="url(#icon)">
+          </circle>
+          <g
+            transform="translate(75 80)">
+            <circle
+              cx="0"
+              cy="0"
+              r="11">
+            </circle>
+            <!-- include the random icon -->
+            <g fill="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="${randomItem(icons)}">
+              </path>
+            </g>
+          </g>
+        </g>
         <g>
           <path d="m38.977 59.074c0 2.75-4.125 2.75-4.125 0s4.125-2.75 4.125 0"></path>
           <path d="m60.477 59.074c0 2.75-4.125 2.75-4.125 0s4.125-2.75 4.125 0"></path>
