@@ -100,6 +100,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Hexagon](https://codepen.io/borntofrappe/pen/MNQpYr)|Describe how to draw a hexagon through SVG syntax and path elements. Animate the elements through JavaScript and CSS keyframe animation.|06th August 2019|
 |[SVG Like](https://codepen.io/borntofrappe/pen/wVmKaN)|Draw a heart with SVG syntax and use it to create a button for a binary, like interaction.|07th August 2019|
 |SVG Star Wars Logo|Use SVG syntax to replicate [this specific design](https://dribbble.com/shots/2408834-BB-8) of a droid from a Star Wars movie.|10th August 2019|
+|[SVG Star Wars Loader]()|Animate the graphic created in a previous SVG project to create a Star Wars inspired loading screen.|10th-11th August 2019|
 
 ### UI UX
 
