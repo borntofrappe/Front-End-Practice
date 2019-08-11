@@ -11,3 +11,63 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* animate bb-8 to rotate and translate horizontally
+! the group makes it possible to transform the element from the bottom center
+*/
+.bb8-base {
+  animation: dash 1s infinite alternate cubic-bezier(0.645, 0.045, 0.55, 1);
+}
+@keyframes dash {
+  to {
+    transform: translate(50px) rotate(-20deg); /* starting values 0 translation -40 rotation */
+  }
+}
+
+/* animate the body of bb-8 to rotate
+! the rotation occurs from the center of the body
+*/
+.bb8-center {
+  animation: rotate 1s infinite linear;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* animate the ground to translate horizontally
+! the translation continuously occurs from side to side
+*/
+.ground {
+  animation: translate 1s infinite linear;
+}
+@keyframes translate {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* animate the dashes and particles to translate horizontally */
+.dash {
+  animation: translate 1s infinite linear;
+}
+
+.particle {
+  animation: translate 1s infinite linear;
+}
+
+/* animate the reflection on the droid's lens */
+.reflection {
+  animation: translateLight 1s infinite linear;
+}
+@keyframes translateLight {
+  0%,
+  25% {
+    transform: translateX(-20px);
+  }
+  75%,
+  100% {
+    transform: translateX(20px);
+  }
+}
