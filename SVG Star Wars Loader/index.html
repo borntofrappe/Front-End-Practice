@@ -19,6 +19,7 @@
 						r="33.75">
 					</circle>
 				</clipPath>
+
 				<!-- clip to crop the circle fabricating the reflection -->
 				<clipPath id="len">
 					<circle
@@ -27,9 +28,10 @@
 						r="6.75">
 					</circle>
 				</clipPath>
+
         <!-- linear gradient used for the reflection on the lens of the droid
 					! specify a repeating linear gradient with a partial end value (x2, y2) and the appropriate spread method
-					-->
+				-->
         <linearGradient
           id="lens"
           x1="0"
@@ -43,7 +45,6 @@
           <stop offset="1" stop-color="#fff"></stop>
 				</linearGradient>
 
-
 				<!-- dashes replicated to the side of the droid -->
 				<path
 					id="dash"
@@ -55,8 +56,7 @@
 					d="M 0 0 h 8">
 				</path>
 
-
-				<!-- particle replicated to the right of the droid -->
+				<!-- particle replicated to the side of the droid -->
 				<!-- the fill and stroke are specified in the <use> element, alongside a transform attribute changing the scale of the element -->
 				<path
 					id="particle"
@@ -108,9 +108,9 @@
         stroke-linecap="round"
         stroke-linejoin="round"
         transform="translate(86 56)">
-        <!-- translate at the top of the robot when leaning toward the left -->
+				<!-- translate at the top of the robot when leaning toward the left -->
+				<!-- add a negative delay to separate the introduction of the dashes -->
 				<g>
-					<!-- specify an id to replicate the dash elsewhere -->
 					<use
 						href="#dash"
 						class="dash"
@@ -120,15 +120,14 @@
 						<use
 							href="#dash"
 							class="dash"
-							style="animation-delay: -1.2s">
+							style="animation-delay: -0.3s">
 						</use>
 					</g>
 
 					<!-- colored particles
 						wrap <use> elements in groups to position and change the transform-origin
 						add transform="scale()" attributes to the same elements to have particles of different sizes
-						! wrap particles of the same color in group elements to share the fill and stroke values
-						! add animation-delay properties to the different particles; negative delay to avoid any initial pause
+						wrap particles of the same color in group elements to share the fill and stroke values
 					-->
 					<g
 						fill="#FF7761"

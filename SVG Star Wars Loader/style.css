@@ -59,9 +59,9 @@ body {
 
 /* animate the reflection on the droid's lens */
 .reflection {
-  animation: translateLight 1s infinite linear;
+  animation: translateReflection 1s infinite linear;
 }
-@keyframes translateLight {
+@keyframes translateReflection {
   0%,
   25% {
     transform: translateX(-20px);
