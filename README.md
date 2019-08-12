@@ -147,3 +147,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[CPC Book by Title](https://codepen.io/borntofrappe/pen/pMNOaa)|Fetch books through the open library API and display the results using SVG element.|27th July 2019|
 |[100 Days of Code](https://codepen.io/borntofrappe/full/gVGwez)|Celebrate the completion of another round of the coding challenge describing the experience through vector graphics.|1st-2nd August 2019|
 |[CPC Rolodex](https://codepen.io/borntofrappe/pen/wVYKWg)|Create a rolodex in which cards can be flipped to highlight the members of the team @codepen.|08th-9th August 2019|
+|[Responsive Header](https://codepen.io/borntofrappe/pen/PoYPNJE)|Create and animate a header to show different graphics depending on the viewport width.|08th-12th August 2019|
