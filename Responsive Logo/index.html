@@ -34,8 +34,7 @@
                     </path>
             </symbol>
 
-            <!-- circle used in the symbol fabricating the animation highlighting the elements being removed
-            scale using the transform attribute
+            <!-- circle used used in the symbol created to highlight the change in appearance
             -->
             <circle
                 id="circle"
@@ -44,31 +43,45 @@
                 r="1">
             </circle>
 
-            <!-- in the symbol include the defined circle in the center of the graphic as well as sparingly around the same -->
+            <!-- ring using the circle element to create a large circle surrounded by smaller circular particles -->
             <symbol
                 viewBox="0 0 100 100"
                 width="100"
                 height="100"
-                id="pulse">
+                id="decoration">
                 <g transform="translate(50 50)">
                     <use
                         href="#circle"
-                        transform="scale(30)"
+                        transform="scale(35)"
                         fill="none"
                         stroke="#673d93"
                         stroke-width="0.1">
                     </use>
-                    <g transform="translate(30 -45)">
+                    <g transform="translate(40 -45)">
                         <use
                             href="#circle"
-                            transform="scale(3)"
+                            transform="scale(3.2)"
                             fill="#673d93">
                         </use>
                     </g>
-                    <g transform="translate(-20 40)">
+                    <g transform="translate(40 45)">
                         <use
                             href="#circle"
-                            transform="scale(2)"
+                            transform="scale(3.4)"
+                            fill="#673d93">
+                        </use>
+                    </g>
+                    <g transform="translate(-40 45)">
+                        <use
+                            href="#circle"
+                            transform="scale(1.8)"
+                            fill="#673d93">
+                        </use>
+                    </g>
+                    <g transform="translate(-45 -40)">
+                        <use
+                            href="#circle"
+                            transform="scale(4)"
                             fill="#673d93">
                         </use>
                     </g>
@@ -77,48 +90,37 @@
         </defs>
     </svg>
 
+    <!-- header/logo
+    include the string 'I love you' separating each section of the logo in a span element
+    following the word love include the heart icon
+    in between the sections include the decorative svg
 
-
-    <!-- in a header include the text through span elements
-    separate the spans with a copy of the svg animated as the elements are removed
-    include the svg detailing the heart following the "love" span
-
+    the idea is to include the elements at different viewport widths
     -->
     <header>
         <span>I</span>
-        <svg class="pulse" viewBox="0 0 100 100" width="100" height="100">
-            <use href="#pulse"></use>
+        <svg class="decoration" viewBox="0 0 100 100" width="100" height="100">
+            <use href="#decoration"></use>
         </svg>
         <span>love</span>
-        <svg class="pulse" viewBox="0 0 100 100" width="100" height="100">
-            <use href="#pulse"></use>
+        <svg class="decoration" viewBox="0 0 100 100" width="100" height="100">
+            <use href="#decoration"></use>
         </svg>
         <svg class="heart" viewBox="0 0 100 85" width="100" height="85">
             <use href="#heart"></use>
         </svg>
-        <svg class="pulse" viewBox="0 0 100 100" width="100" height="100">
-            <use href="#pulse"></use>
+        <svg class="decoration" viewBox="0 0 100 100" width="100" height="100">
+            <use href="#decoration"></use>
         </svg>
         <span style="margin-right: 0;">yo</span>
-        <span>u</span>
-        <svg class="pulse" viewBox="0 0 100 100" width="100" height="100">
-            <g transform="translate(50 50) rotate(180)">
-                <g transform="translate(-50 -50)">
-                    <use href="#pulse"></use>
-                </g>
-            </g>
+        <svg class="decoration" viewBox="0 0 100 100" width="100" height="100">
+            <use href="#decoration"></use>
         </svg>
-        <svg class="pulse" viewBox="0 0 100 100" width="100" height="100">
-                <g transform="translate(50 50) rotate(180)">
-                    <g transform="translate(-50 -50)">
-                        <use href="#pulse"></use>
-                    </g>
-                </g>
-            </svg>
+        <span style="margin-left: 0;">u</span>
+        <svg class="decoration" viewBox="0 0 100 100" width="100" height="100">
+            <use href="#decoration"></use>
+        </svg>
     </header>
 
-
-
-    <script src="script.js"></script>
 </body>
 </html>
