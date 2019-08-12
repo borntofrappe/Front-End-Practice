@@ -1,7 +1,7 @@
-# Responsive Logo
+# Responsive Header
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/PoYPNJE)
 
 ## Goal
 
-Create and animate a logo to show different graphics depending on the viewport width.
+Create and animate a header to show different graphics depending on the viewport width.
