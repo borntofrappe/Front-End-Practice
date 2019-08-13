@@ -44,6 +44,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Data Binding](https://codepen.io/borntofrappe/pen/LwzRyb)|Create a visualization to explain how D3 binds data, highlighting the enter-update-exit loop and object constancy.|2nd August 2019|
 |[D3 Hexbin](https://codepen.io/borntofrappe/pen/bXaezg)|Visualize arbitrary statistics on the honey market and for a few countries of the European Union.|5th August 2019|
 |[D3 World Template](https://codepen.io/borntofrappe/pen/mdbVBJP)|Create a template for data visualization relying on a map of the world.|13th August 2019|
+|[D3 Stage Selection]()|Starting from the D3 World Template create an interactive map allowing to pick a stage from a selection of countries.|13th August 2019|
 
 ### JS
 
