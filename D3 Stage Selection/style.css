@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css?family=Audiowide&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #060a0f;
+  color: #d7dff0;
+}
+/* size the svg to cover the viewport width */
+.world > svg {
+  width: 100vw;
+  height: auto;
+}
+/* style the text positioned above the map */
+svg text {
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  font-weight: bold;
+  font-family: "Audiowide", cursive;
+  fill: currentColor;
+}
+/* style the path elements describing the country with a subdued color
+specify a variant for the stages and for the selected stage in particular
+*/
+svg path.country {
+  fill: #33415c;
+  opacity: 0.4;
+  stroke: #060a0f;
+  stroke-width: 0.1px;
+  transition: all 0.2s ease-out;
+}
+path.country.stage {
+  fill: #6ecdff;
+}
+path.country#selection {
+  opacity: 1;
+}
