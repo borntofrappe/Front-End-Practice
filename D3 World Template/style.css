@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(0, 0%, 97%);
+  /* center the in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* size the svg to cover a sizeable portion of the viewport */
+.world svg {
+  max-width: 1200px;
+  width: 80vw;
+  height: auto;
+}
