@@ -29,6 +29,9 @@ const stages = [
   'united arab emirates',
 ];
 
+// variable desribing the current selection
+let selection = stages[0];
+
 // add an svg element in which to plot the world map
 const width = 500;
 const height = 250;
@@ -37,6 +40,27 @@ const world = d3
   .select('.world')
   .append('svg')
   .attr('viewBox', `0 0 ${width} ${height}`);
+
+// function called when the buttons are clicked
+function updateSelection(direction) {
+  // find the index of the current selection
+  const index = stages.findIndex(stage => stage === selection);
+  // according to the direction update the selection
+  if(direction === 'prev') {
+    selection = (index === 0) ? stages[stages.length - 1] : stages[index - 1];
+  } else {
+    selection = (index === stages.length - 1) ? stages[0] : stages[index + 1];
+  }
+
+  // according to the selection style the matching path and update the text
+  d3
+    .selectAll('path.stage')
+    .attr('id', ({ name }) => name.toLowerCase() === selection ? 'selection' : null);
+
+  d3
+    .select('text')
+    .text(selection);
+}
 
 // function adding countries through the d3.geo module
 // called once the data from the url(s) is retrieved
@@ -64,7 +88,7 @@ function addCountries(countries) {
     .attr('y', 30)
     .attr('text-anchor', 'middle')
   // immediately describe the first stage
-    .text(stages[0]);
+    .text(selection);
 
   // for each feature of the countries object add a path element
   world
@@ -74,14 +98,15 @@ function addCountries(countries) {
     .append('path')
     // add a class of stage for the countries listed in the stages array
     .attr('class', ({ name }) => (stages.includes(name.toLowerCase()) ? 'country stage' : 'country'))
-    // add an identifier to the first stage
-    .attr('id', ({ name }) => ((stages[0] === name.toLowerCase()) ? 'selection' : null))
+    // add an identifier to the selection
+    .attr('id', ({ name }) => ((selection === name.toLowerCase()) ? 'selection' : null))
     .attr('d', geoPath);
 
   // select the path elements with a class of .stage and listen for mouseevent on the specific elements
   d3
     .selectAll('path.stage')
     // on hover highlight the element with an identifier and include the name in the prescribed text element
+    // ! update the selection variable
     .on('mouseenter', function ({ name }) {
       d3
         .selectAll('path.stage')
@@ -94,7 +119,24 @@ function addCountries(countries) {
       d3
         .select('text')
         .text(name);
+
+      selection = name.toLowerCase();
     });
+
+  // show the .controls container as the countries are successfully drawn
+  d3
+    .select('.controls')
+    .style('visibility', 'visible')
+    .style('opacity', 1);
+
+  // attach event listeners on the buttons to change the selection
+  d3
+    .select('.controls .prev')
+    .on('click', () => updateSelection('prev'));
+    d3
+    .select('.controls .next')
+    .on('click', () => updateSelection('next'));
+
 }
 
 // retrieve the data from the json and tsv references

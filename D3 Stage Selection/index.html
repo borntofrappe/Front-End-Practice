@@ -10,7 +10,29 @@
 <body>
 
     <!-- container for the visualization -->
-    <div class="world"></div>
+    <div class="world">
+        <!-- include two buttons to control the selection -->
+        <div class="controls">
+            <button aria-labelledby="previous-label" class="prev">
+                <span id="previous-label" hidden>Previous stage</span>
+                <svg viewBox="0 0 100 100" width="32" height="32">
+                    <path
+                        d="M 30 20 l 45 30 l -45 30 z"
+                        fill="currentColor">
+                    </path>
+                </svg>
+            </button>
+            <button aria-labelledby="next-label" class="next">
+                <span id="next-label" hidden>Next stage</span>
+                <svg viewBox="0 0 100 100" width="32" height="32">
+                    <path
+                        d="M 30 20 l 45 30 l -45 30 z"
+                        fill="currentColor">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </div>
 
     <!-- import topojson to convert topojson to geojson -->
     <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>

@@ -9,6 +9,49 @@ body {
   background: #060a0f;
   color: #d7dff0;
 }
+/* absolute position the controls button in the top right corner of the world container */
+.world {
+  position: relative;
+}
+/* hide the .controls container by default
+the visibility and opacity are modified in the script as the countries are drawn
+*/
+.world .controls {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-out;
+  transition-delay: 0.2s;
+}
+.world .controls button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  color: inherit;
+  width: 62px;
+  height: 62px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-out;
+}
+/* on hover & when focused make the button fully opaque */
+.world .controls button:hover,
+.world .controls button:focus {
+  opacity: 1;
+}
+/* rotate the first button to point the opposite way */
+.world .controls button:first-of-type {
+  transform: rotate(180deg);
+}
+.world .controls button svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 /* size the svg to cover the viewport width */
 .world > svg {
   width: 100vw;
