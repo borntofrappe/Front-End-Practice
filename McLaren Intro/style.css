@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:600|PT+Sans:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "PT Sans", sans-serif;
+  min-height: 100vh;
+  background: hsl(32, 0%, 2%);
+}
+/* absolute position the .grid container to cover the entirety of the screen */
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* create a grid of 6 columns,
+  ! the width of each column should be half the width of the nested items, to create the desired triangular pattern */
+  display: grid;
+  grid-template-columns: repeat(6, 55px);
+  grid-auto-rows: 110px;
+  grid-gap: 2px;
+  /* center the grid */
+  justify-content: center;
+  align-content: center;
+}
+/* have the span occupy twice the width allocated by the grid */
+.grid span {
+  width: 110px;
+  height: 110px;
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: hsl(0, 0%, 100%);
+}
+/* clip the background of the different cells alternating between triangles pointing downwards and upwards
+adjust the line-height to stress the different, alternated pattern */
+.grid span:nth-of-type(odd) {
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  line-height: 85px;
+}
+.grid span:nth-of-type(even) {
+  clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
+  line-height: 140px;
+}
+/* animate the span elements to rotate in and out of sight */
+.grid span {
+  animation: flip 0.5s ease-in forwards, flip 0.5s ease-in forwards reverse;
+}
+/*
+the transform-origin and transform properties depend on the different letters (on their position in the grid)
+the letters are animated in sequence and as follows
+
+- 'u' and 'x' from the bottom left toward the top right
+- 'n', 'o', and 'e' from the top left toward the bottom right
+- 'b' and 'd' from the top down
+
+! add a perspective to the individual elements (to maintain separate perspective points)
+! add two delays, to animate the letters in and out of sight in opposite directions
+*/
+.grid span:nth-of-type(1) {
+  animation-delay: 0s, 6.08s;
+  transform-origin: 0% 0%;
+  transform: perspective(1000px) rotateX(-90deg) rotateY(-90deg);
+}
+.grid span:nth-of-type(2) {
+  animation-delay: 0.18s, 5.9s;
+  transform-origin: 0% 100%;
+  transform: perspective(1000px) rotateX(90deg) rotateY(-90deg);
+}
+.grid span:nth-of-type(3) {
+  animation-delay: 0.36s, 5.72s;
+  transform-origin: 50% 0%;
+  transform: perspective(1000px) rotateX(-90deg);
+}
+.grid span:nth-of-type(4) {
+  animation-delay: 0.54s, 5.54s;
+  transform-origin: 0% 100%;
+  transform: perspective(1000px) rotateX(90deg) rotateY(-90deg);
+}
+.grid span:nth-of-type(5) {
+  animation-delay: 0.72s, 5.36s;
+  transform-origin: 0% 0%;
+  transform: perspective(1000px) rotateX(-90deg) rotateY(-90deg);
+}
+.grid span:nth-of-type(6) {
+  animation-delay: 0.9s, 5.18s;
+  transform-origin: 0% 100%;
+  transform: perspective(1000px) rotateX(90deg) rotateY(-90deg);
+}
+.grid span:nth-of-type(7) {
+  animation-delay: 1.08s, 5s;
+  transform-origin: 50% 0%;
+  transform: perspective(1000px) rotateX(-90deg);
+}
+
+/* keyframe animation to rotate the span elements into view */
+@keyframes flip {
+  0%,
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px);
+  }
+}
+
+/* animate the .grid container to disappear */
+.grid {
+  animation: fadeOut step-end 1s 6.2s forwards;
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* style the main content to show the headings with mclaren's colors */
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-transform: uppercase;
+}
+/* feature the heading prominently and in the center of the screen */
+main h1 {
+  font-size: 3rem;
+  margin: auto 0;
+  text-align: center;
+  align-self: center;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 0.25rem;
+  word-spacing: 0.4rem;
+}
+/* display the section's headings in a column */
+main section {
+  margin: 1.5rem;
+  letter-spacing: 0.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+/* add a dark color on top of a bright background */
+main section h3,
+main section h4 {
+  padding: 0.5rem 0.9rem;
+  color: hsl(0, 0%, 0%);
+  background: hsl(0, 0%, 100%);
+  padding-right: 1.5rem;
+  font-size: 1rem;
+}
+main section h4 {
+  background: hsl(32, 97%, 59%);
+}
+
+/* animate the main element to appear, as the .grid container is removed */
+main {
+  animation: fadeOut 0.5s 6.4s ease-in-out reverse both;
+}
+/* animate the heading to scale up, alongside the fading animation */
+main h1 {
+  animation: scaleUp 3s 5.4s ease-in-out both;
+}
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/* animate the sections's headings to progressively show them */
+main section h3,
+main section h4 {
+  animation: clipPath 0.75s 7.6s ease-in-out both;
+}
+main section h4 {
+  animation-delay: 7.75s;
+}
+@keyframes clipPath {
+  from {
+    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0% 0%, 100% 0%, calc(100% - 1rem) 100%, 0% 100%);
+  }
+}
