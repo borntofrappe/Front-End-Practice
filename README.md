@@ -45,7 +45,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Hexbin](https://codepen.io/borntofrappe/pen/bXaezg)|Visualize arbitrary statistics on the honey market and for a few countries of the European Union.|5th August 2019|
 |[D3 World Template](https://codepen.io/borntofrappe/pen/mdbVBJP)|Create a template for data visualization relying on a map of the world.|13th August 2019|
 |[D3 Stage Selection](https://codepen.io/borntofrappe/pen/qBWbKJO)|Starting from the D3 World Template create an interactive map allowing to pick a stage from a selection of countries.|13th August 2019|
-|[D3 Choropleth Grid]()|Practice with D3 and CSS grid to highlight the presence, or lack thereof, of French tennis players at the French Open.|15th August 2019|
+|[D3 Choropleth Grid](https://codepen.io/borntofrappe/pen/pozyxVV)|Practice with D3 and CSS grid to highlight the presence, or lack thereof, of French tennis players at the French Open.|15th August 2019|
 
 ### JS
 

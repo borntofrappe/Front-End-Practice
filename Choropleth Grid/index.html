@@ -9,17 +9,23 @@
 </head>
 <body>
 
+    <!-- in a wrapping container describe the following structure
+                            men     women
+    final  semi  fourths  eights    eights  fourths  semi  final
+
+    the grid then displays buttons and span elements in the 9-column grid
+    -->
     <div class="grid">
         <h3 style="grid-column: 4; justify-self: end; color: hsl(153, 100%, 18%);">Men</h3>
         <h3 style="grid-column: 6; color: hsl(345, 92%, 25%);">Women</h3>
-        <h4 class="round" style="grid-column: 1;">Finals</h4>
+        <h4 class="round" style="grid-column: 1;">Final</h4>
         <h4 class="round">Semi</h4>
         <h4 class="round">Fourths</h4>
         <h4 class="round">Eights</h4>
         <h4 class="round" style="grid-column: 6;">Eights</h4>
         <h4 class="round">Fourths</h4>
         <h4 class="round">Semi</h4>
-        <h4 class="round">Finals</h4>
+        <h4 class="round">Final</h4>
     </div>
 
     <script src="https://unpkg.com/d3@5.9.7/dist/d3.min.js"></script>

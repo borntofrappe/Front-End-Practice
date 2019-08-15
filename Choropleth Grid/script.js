@@ -1,6 +1,6 @@
 /* globals d3 */
 // data describing the presence, or lack thereof, of French tennis players at the French Open
-// ! provide a fallback value for the instances in which no player is presence in a stage of the tournament or even in the year
+// each item describes a year and the men and women who gained access to the different stages
 const data = [
   {
     year: 2000,
@@ -452,15 +452,18 @@ const data = [
 ];
 
 // create two scales for the button's background
-// ! use the maximum value for the arrays' lengths in the domain
+/* ! use the maximum value for the arrays' lengths in the domain
+d3.max(data.map(({men}) => Object.values(men)).map(stage => d3.max(stage, d => d.length)))
+  \- max value            \- 2D array describing the stages     \- array describing the lenghts of the stages
+*/
 const colorScaleMen = d3
   .scaleLinear()
-  .domain([0, 5])
+  .domain([0, d3.max(data.map(({men}) => Object.values(men)).map(stage => d3.max(stage, d => d.length)))])
   .range(['hsl(108, 71%, 91%)', 'hsl(120, 76%, 30%)']);
 
 const colorScaleWomen = d3
   .scaleLinear()
-  .domain([0, 3])
+  .domain([0, d3.max(data.map(({women}) => Object.values(women)).map(stage => d3.max(stage, d => d.length)))])
   .range(['hsl(11, 67%, 88%)', 'hsl(0, 82%, 45%)']);
 
 // target the .grid container and for every item in the data array add 9 items
@@ -470,9 +473,12 @@ const grid = d3
   .select('.grid');
 
 data.forEach(({ year, men, women }) => {
+  // ! reverse the order for the men' stages, to mirror the women' stages
   const stagesMen = Object.entries(men).reverse();
   const stagesWomen = Object.entries(women);
 
+  // apply the background according to the color scale
+  // nest a span to describe the number of players
   grid
     .selectAll(`button.men-${year}`)
     .data(stagesMen)
@@ -481,7 +487,7 @@ data.forEach(({ year, men, women }) => {
     .style('background', ([, players]) => colorScaleMen(players.length))
     .attr('class', `men men-${year}`)
     .append('span')
-    .text(([, stages]) => stages.length);
+    .text(([, players]) => players.length);
 
   grid
     .append('span')
@@ -500,13 +506,14 @@ data.forEach(({ year, men, women }) => {
     .text(([, players]) => players.length);
 });
 
-// filter all the buttons with no player in the respective stage and disable the buttons
+// filter all the buttons with no player and disable the elements
+// ! this makes it possible to skip the 0-button when tabbing through the keyboard
 d3
   .selectAll('button')
   .filter(([, players]) => players.length === 0)
   .attr('disabled', true);
 
-// filter all the buttons with at least 1 player and show the tooltip describing the actual players
+// filter all the buttons with at least 1 player and show a tooltip describing the actual players
 const tooltip = grid
   .append('div')
   .attr('id', 'tooltip')
@@ -515,7 +522,8 @@ const tooltip = grid
   .style('pointer-events', 'none')
   .style('opacity', '0');
 
-function hidePlayers() {
+// function to remove the tooltip from sight
+function removePlayers() {
   tooltip
     .style('visibility', 'hidden')
     .style('opacity', '0')
@@ -523,14 +531,18 @@ function hidePlayers() {
     .remove();
 }
 
+// function to show the tooltip
 function showPlayers(players) {
-  hidePlayers();
+  // call the remove function to avoid duplicating the tooltip when the mouseenter and the focus event follow one another
+  removePlayers();
 
+  // retrieve the target button and its coordinates
   const { target } = d3.event;
   const {
     top, left, width, height,
   } = target.getBoundingClientRect();
 
+  // show the tooltip with the desired information below the target
   tooltip
     .append('p')
     .append('strong')
@@ -547,11 +559,12 @@ function showPlayers(players) {
     .style('top', `${top + height * 1.2}px`);
 }
 
+// call the functions for the prescribed buttons and following the keyboard/mouse events
 d3
   .selectAll('button')
   .filter(([, players]) => players.length > 0)
   .style('cursor', 'pointer')
   .on('focus', ([, players]) => showPlayers(players))
   .on('mouseenter', ([, players]) => showPlayers(players))
-  .on('blur', () => hidePlayers())
-  .on('mouseout', () => hidePlayers());
+  .on('blur', () => removePlayers())
+  .on('mouseout', () => removePlayers());
