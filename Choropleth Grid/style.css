@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(25, 90%, 85%);
+  font-family: "Source Sans Pro", sans-serif;
+  display: flex;
+  justify-content: center;
+}
+.grid {
+  background: hsl(0, 0%, 100%);
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 60px) 80px repeat(4, 60px);
+  grid-template-rows: 30px 45px;
+  grid-auto-rows: 20px;
+  box-shadow: 0px 0px 5px -2px hsla(0, 0%, 0%, 0.2);
+}
+.round {
+  font-size: 0.85rem;
+  transform: rotate(-35deg);
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+}
+.round:nth-of-type(n + 5) {
+  transform: rotate(35deg);
+}
+
+.grid button {
+  font-family: inherit;
+  font-weight: 700;
+  background: none;
+  border: 2px solid transparent;
+}
+.grid button span {
+  opacity: 0;
+  pointer-events: none;
+}
+.grid button:hover,
+.grid button:focus {
+  border-color: currentColor;
+}
+.grid button:hover span,
+.grid button:focus span {
+  opacity: 1;
+}
+
+/* remove the default color included for disabled buttons */
+.grid button:disabled {
+  color: inherit;
+}
+/* remove the outline for focused elements (replaced by the #000 border) and nested span */
+.grid button:focus {
+  outline: none;
+}
+
+/* style the tooltip to reduce its width and add a solid background */
+#tooltip {
+  max-width: 250px;
+  font-size: 0.9rem;
+  line-height: 2;
+  border-radius: 5px;
+  padding: 0.5rem 0.9rem;
+  background: hsl(0, 0%, 99%);
+  border: 2px solid hsl(0, 0%, 90%);
+  box-shadow: 0 1px 5px hsla(0, 0%, 0%, 0.2);
+}
