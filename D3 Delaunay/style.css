@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Montserrat+Alternates:900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(38, 46%, 92%);
+  color: hsl(0, 80%, 72%);
+  color: hsl(20, 3%, 22%);
+  font-family: "Lato", sans-serif;
+}
+/* center the visualization horizontally */
+.viz {
+  width: 90vw;
+  height: auto;
+  max-width: 850px;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  background: hsl(0, 0%, 100%);
+  line-height: 2;
+}
+.viz header h1 {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+/* highlight the label with a thin border */
+.viz label {
+  border-bottom: 1px solid currentColor;
+}
+/* style the text in the ticks and the two labels specifically */
+.viz svg text {
+  font-size: 0.7rem;
+  font-family: inherit;
+  fill: currentColor;
+}
+.viz svg text.label {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  opacity: 0.5;
+}
+/* style the tooltip to describe the description elements indented with respect to the matching term */
+.viz #tooltip {
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0 1px 5px -2px hsla(20, 3%, 22%, 0.5);
+  padding: 0.5rem 1.2rem;
+  border-radius: 5px;
+  line-height: 1.5;
+}
+.viz #tooltip p {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  border-bottom: 1px solid currentColor;
+}
+.viz #tooltip dl {
+  font-size: 0.9rem;
+}
+.viz #tooltip dl dt {
+  font-weight: bold;
+}
+.viz #tooltip dl dd {
+  margin-left: 1.25rem;
+}
