@@ -10,7 +10,7 @@ Currently, I divide the projects in the following sub-categories:
 
 - [JS](#js);
 
-- [React](#js); <!-- smaller scale react projects; for larger application I prefer using a separate repo -->
+- [React](#js); <!-- smaller scale react projects; for larger application I prefer using a separate repository -->
 
 - [SVG](#svg);
 
@@ -29,7 +29,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Colorful Donut](https://codepen.io/borntofrappe/pen/yWJWVV)|Practice with a donut visualization inspired by [this design](https://dribbble.com/shots/5902025-Shopin-Marketing-Website-Design-Part-2).|12th May 2019|
 |[D3 Dashboard](https://codepen.io/borntofrappe/pen/bywXzO)|Create a dashboard inspired by [this specific design](https://dribbble.com/shots/6235860-eCommerce-Analytics-pt-2) to practice with D3, SVG and the table element.|13th May 2019|
 |D3 Force Directed Graph|Practice with D3 to create a force directed graph showcasing multiple planets through small circles.|25th May 2019|
-|[D3 Election Dashboard](https://codepen.io/borntofrappe/full/ZNjgmv)|Inspired by the recent European elections, display the composition of the EU parliament through a series of visualizations.|27th-28th May 2019|
+|[D3 Election Dashboard](https://codepen.io/borntofrappe/pen/ZNjgmv)|Inspired by the recent European elections, display the composition of the EU parliament through a series of visualizations.|27th-28th May 2019|
 |[D3 Election Map](https://codepen.io/borntofrappe/pen/WBPwPw)|Practice with the data visualization library and CSS layout properties to highlight the results of the recent European elections.|2nd-3rd June 2019|
 |[D3 Animated Visualization](https://codepen.io/borntofrappe/pen/WBqRRB)|Practice with D3 to show different facets of a dataset in a single visualization, at the check of a checkbox.|6th June 2019|
 |[D3 Quadrant Chart](https://codepen.io/borntofrappe/pen/QXNvjx)|Create a visualization sorting arbitrary data in four quadrants.|16th-17th June 2019|
@@ -74,14 +74,14 @@ There are overlaps, but the category is meant to describe the core feature of th
 |---|---|---|
 |[SVG Process](https://codepen.io/borntofrappe/pen/EJvrqL)|Re-create [this design](https://dribbble.com/shots/5260798-Process) as closely as possible.|13th-14th April 2019|
 |[SVG Planets](https://codepen.io/borntofrappe/pen/qwKwoV)|Practice with SVG syntax trying to re-create a few of the icons showcased on [this inspiring set](https://dribbble.com/shots/4193533-Best-Icons-Of-The-Month).|21st April 2019|
-|[SVG Speech Bubbles](https://codepen.io/borntofrappe/pen/BEeqXR)|Create speech baloons inspired by comic books and with SVG syntax.|30th April 2019|
+|[SVG Speech Bubbles](https://codepen.io/borntofrappe/pen/BEeqXR)|Create speech balloons inspired by comic books and with SVG syntax.|30th April 2019|
 |[SVG Space Vector Graphics](https://codepen.io/borntofrappe/pen/WBNmYo)|Practice with SVG syntax to create a few planets, constellations and other space-inspired icons.|5th-6th May 2019|
 |[SVG Toaster Modal](https://codepen.io/borntofrappe/pen/dEPJwY)|Create a modal inspired by [this delightful animation](https://dribbble.com/shots/5832018-Your-data-is-ready).|6th May 2019|
 |[SVG Solar System](https://codepen.io/borntofrappe/pen/gJpKxx)|Through SVG syntax represent our solar system, detailing the scale of the planets _and_ their relative distance with respect to the central star.|7th May 2019|
 |[SVG Planet Symbols](https://codepen.io/borntofrappe/pen/joPexQ)|Practice with the `viewBox` attribute and a horizontal translation to show only one graphic at a time and hide the rest from sight.|8th May 2019|
 |[SVG Feedback Icons](https://codepen.io/borntofrappe/pen/ZNJvLL)|Create three SVG icons to give feedback in a pleasing, animated way.|19th May 2019|
 |[SVG Star Ratings](https://codepen.io/borntofrappe/pen/joGOKJ)|Inspired by the matching section on the topics page @codepen, create a series of star icons animated progressively through JavaScript.|20th May 2019|
-|[SVG Ticktocking Pendulum](https://codepen.io/borntofrappe/pen/xNYoaM)|Highlight how SVG makes it possible to rapidly overlap element by replicating [this design](https://dribbble.com/shots/3252209-TickTock#shot-description).|23rd May 2019|
+|[SVG Tick-tock-ing Pendulum](https://codepen.io/borntofrappe/pen/xNYoaM)|Highlight how SVG makes it possible to rapidly overlap element by replicating [this design](https://dribbble.com/shots/3252209-TickTock#shot-description).|23rd May 2019|
 |[SVG Controlled Clock](https://codepen.io/borntofrappe/pen/qGozVM)|Create a clock with SVG syntax and animate its appearance through a series of buttons and the animation library anime.js.|24th May 2019|
 |[SVG Tooltip Icons](https://codepen.io/borntofrappe/pen/OYBNgX)|Practice with SVG syntax to create a series of icons shown when hovering atop a series of anchor link elements.|29th May 2019|
 |[SVG Thermometer](https://codepen.io/borntofrappe/pen/LKGWgp)|Draw a thermometer and leveraging the anime.js library animate its appearance.|14th June 2019|
@@ -92,7 +92,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Write Off Animation](https://codepen.io/borntofrappe/pen/VJQBZe)|Draw a pencil and animate the graphic to continuously include and remove a stroke.|30th June 2019|
 |[SVG Code Snippet](https://codepen.io/borntofrappe/pen/OevZVw)|Display a code snippet replicating the Github interface and using SVG elements.|1st July 2019|
 |[SVG Low Frequency Oscillator](https://codepen.io/borntofrappe/pen/ZdVovy)|Recreate the animation presented [on this captivating and informative website explaining how synthesizers work](https://learningsynths.ableton.com/lfos/modulating-pitch-with-oscillators), sans audio.|9th July 2019|
-|[SVG Flowchart](https://codepen.io/borntofrappe/pen/rEPqpr)|Using SVG syntax and specifically the viewBox attribute create an interactice flowchart replicating [this design](https://upload.wikimedia.org/wikipedia/commons/9/91/LampFlowchart.svg)|10th July 2019|
+|[SVG Flowchart](https://codepen.io/borntofrappe/pen/rEPqpr)|Using SVG syntax and specifically the viewBox attribute create an interactive flowchart replicating [this design](https://upload.wikimedia.org/wikipedia/commons/9/91/LampFlowchart.svg)|10th July 2019|
 |[SVG Pokeball](https://codepen.io/borntofrappe/pen/zgYgKp)|Design a pokeball with SVG syntax and manage keyframe animations with JavaScript.|18th July 2019|
 |[SVG Request Animation Frame](https://codepen.io/borntofrappe/pen/qebWxQ)|Inspired by [this graphic](https://dribbble.com/shots/3669570-Zero) use SVG syntax and requestAnimationFrame to animate the visual as to follow the cursor.|22nd July 2019|
 |[SVG Parallax on Hover](https://codepen.io/borntofrappe/pen/voGOvw)|Building upon the previous project practice with SVG, the `<use>` element and requestAnimationFrame.|23rd July 2019|
@@ -134,14 +134,14 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[CPC Bubble Sort](https://codepen.io/borntofrappe/pen/WWLXGN)|Create an entry for the weekly codepenchallenge, themed around the bubble sort algorithm.|25th April 2019|
 |[Rhythm Test](https://codepen.io/borntofrappe/pen/rbRaxG)|Create a basic rhythm test through a button and a pseudo element.|27th April 2019|
 |[Jest Cards](https://codepen.io/borntofrappe/pen/BEgYwN)|Recreate the animation on [Jest.io](https://jestjs.io), documenting the testing library through a series of card showcasing passing and or failing tests.|1st May 2019|
-|[Holographic Modal](https://codepen.io/borntofrappe/pen/WBeXjR)|Create an entry for the #weeklycoding challenge, with a modal toggled through a button.|3rd May 2019|
+|[Holographic Modal](https://codepen.io/borntofrappe/pen/WBeXjR)|Create an entry for the weekly coding challenge, with a modal toggled through a button.|3rd May 2019|
 |[Pacman Home Screen](https://codepen.io/borntofrappe/pen/OYyrwy)|Practice with the library [splitting.js](https://splitting.js.org) to animate the characters of a word sequentially.|8th May 2019|
 |[CPC Star Gazing](https://codepen.io/borntofrappe/pen/LoZjxy)|Practice with SVG and the viewBox attribute to selectively highlight and crop parts of a vector based graphic.|11th May 2019|
 |[CPC Gravity Golf](https://codepen.io/borntofrappe/pen/KLqbag)|Create a basic game of golf with the matter.js library.|16th-17th-18th May 2019|
 |[Crosshair Hover State](https://codepen.io/borntofrappe/pen/JqMxpL)|Create a hover state in which a cross hair icon is transitioned to highlight a hovered/focused anchor link.|22nd May 2019|
 |[CPC Fictional Desert Planets](https://codepen.io/borntofrappe/pen/qGYzPo)|Highlight a series of fictional desert planets through a force directed graph.|26th May 2019|
 |[Pokewalker Dowsing Machine](https://codepen.io/borntofrappe/pen/qGeyqN)|Recreate one of the mini-games available on the pokewalker.|8th June 2019|
-|[CPC Sandwhich](https://codepen.io/borntofrappe/pen/agbOQX)|Practice with a few JavaScript methods to fake a font themed around sandwhiches.|10th June 2019|
+|[CPC Sandwich](https://codepen.io/borntofrappe/pen/agbOQX)|Practice with a few JavaScript methods to fake a font themed around sandwiches.|10th June 2019|
 |[CPC Noodles](https://codepen.io/borntofrappe/pen/YowMXm)|Inspired by [this design](https://dribbble.com/shots/5848600-Carbs) practice with SVG syntax to draw a basic kitchen counter.|15th June 2019|
 |[CPC Fruit Ninja](https://codepen.io/borntofrappe/pen/KjWezV)|Using the physics library Matter.js create a basic game in which berries are thrown into the scope of the screen and destroyed following a click.|21st June 2019|
 |[Thank You Animation](https://codepen.io/borntofrappe/pen/wLxxvv)|Celebrate the acquisition of a considerable number of followers, on Codepen and on Twitter.|4th July 2019|
@@ -150,7 +150,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Google Pagination](https://codepen.io/borntofrappe/pen/dBxarJ)|Recreate the pagination highlighting google search results, by stretching the google name to cover multiple pages.|16th July 2019|
 |[CPC Fetch Em All](https://codepen.io/borntofrappe/pen/xvbvqp)|Display a message according to the resolution of a promise, retrieving information from a public API.|19th July 2019|
 |[CPC Book by Title](https://codepen.io/borntofrappe/pen/pMNOaa)|Fetch books through the open library API and display the results using SVG element.|27th July 2019|
-|[100 Days of Code](https://codepen.io/borntofrappe/full/gVGwez)|Celebrate the completion of another round of the coding challenge describing the experience through vector graphics.|1st-2nd August 2019|
+|[100 Days of Code](https://codepen.io/borntofrappe/pen/gVGwez)|Celebrate the completion of another round of the coding challenge describing the experience through vector graphics.|1st-2nd August 2019|
 |[CPC Rolodex](https://codepen.io/borntofrappe/pen/wVYKWg)|Create a rolodex in which cards can be flipped to highlight the members of the team @codepen.|08th-9th August 2019|
 |[Responsive Header](https://codepen.io/borntofrappe/pen/PoYPNJE)|Create and animate a header to show different graphics depending on the viewport width.|08th-12th August 2019|
 |[McLaren Intro](https://codepen.io/borntofrappe/pen/LYPNZxb)|Practice CSS grid, animation and the `clip-path` property to recreate a frame of a video from the popular F1 manufacturer.|14th August 2019|
