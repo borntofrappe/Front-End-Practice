@@ -46,6 +46,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 World Template](https://codepen.io/borntofrappe/pen/mdbVBJP)|Create a template for data visualization relying on a map of the world.|13th August 2019|
 |[D3 Stage Selection](https://codepen.io/borntofrappe/pen/qBWbKJO)|Starting from the D3 World Template create an interactive map allowing to pick a stage from a selection of countries.|13th August 2019|
 |[D3 Choropleth Grid](https://codepen.io/borntofrappe/pen/pozyxVV)|Practice with D3 and CSS grid to highlight the presence, or lack thereof, of French tennis players at the French Open.|15th August 2019|
+|[D3 Scatter Plot Template](https://codepen.io/borntofrappe/pen/dybXpMJ)|Create a template for a scatter plot illustrating the relation between two numerical variables, with linear scales and unstyled axes.|16th August 2019|
 
 ### JS
 
