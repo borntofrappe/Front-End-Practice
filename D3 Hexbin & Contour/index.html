@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>D3 Hexbin & Contour</title>
+</head>
+<body>
+
+    <!-- in a wrapping container describe the project and include one section per visualization -->
+    <div class="viz">
+        <header>
+            <h1>Overplotting</h1>
+            <p>A <a target="_blank" href="https://codepen.io/borntofrappe/full/mdbErOG">scatter plot</a> might not be the best tool when displaying a large dataset of disparate values. Luckily, it is possible to lean on other visualizations to reduce the visual burden caused by too many data points.</p>
+        </header>
+
+        <!-- in each section add a checkbox to toggle the opacity of path elements which explain the visualization (or how the visualization is drawn) -->
+        <section class="viz__hexbin">
+            <h2>Hexbin</h2>
+            <p>Aggregate data points into larger, hexagonal shapes.</p>
+            <label for="mesh">Toggle mesh</label>
+            <input type="checkbox" id="mesh"/>
+        </section>
+        <section class="viz__contour">
+            <h2>Contour</h2>
+            <p>Describe the dataset through density areas.</p>
+            <label for="lines">Toggle lines</label>
+            <input type="checkbox" id="lines"/>
+        </section>
+    </div>
+
+    <!-- import the hexbin module -->
+    <script src="https://unpkg.com/d3-hexbin@0.2.2/build/d3-hexbin.js"></script>
+    <!-- import d3 -->
+    <script src="https://unpkg.com/d3@5.9.7/dist/d3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

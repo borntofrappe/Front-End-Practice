@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Montserrat+Alternates:900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(38, 46%, 92%);
+  color: hsl(20, 3%, 22%);
+  font-family: "Lato", sans-serif;
+}
+/* center the visualization horizontally */
+.viz {
+  width: 90vw;
+  height: auto;
+  max-width: 850px;
+  margin: 1rem auto;
+  line-height: 2;
+}
+/* add a white background to every direct children (the header and section elements) to create cards */
+.viz > * {
+  background: hsl(0, 0%, 100%);
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+}
+.viz header h1,
+.viz h2 {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+/* highlight the label and anchor link with a thin border */
+.viz label,
+.viz a {
+  border-bottom: 1px solid currentColor;
+}
+/* remove the default color and underline from the link (substituted by the border-bottom property) */
+.viz a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+/* style the text in the ticks and the two labels specifically */
+.viz svg text {
+  font-size: 0.7rem;
+  font-family: inherit;
+  fill: currentColor;
+}
+.viz svg text.label {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  opacity: 0.5;
+}
