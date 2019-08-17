@@ -1,6 +1,6 @@
 # D3 Hexbin & Contour
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/LYPZQpX)
 
 ## Goal
 
