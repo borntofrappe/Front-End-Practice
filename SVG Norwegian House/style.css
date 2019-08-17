@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: rgb(33, 46, 79);
+  display: grid;
+  place-items: center;
+}
+svg {
+  width: 300px;
+  height: auto;
+}

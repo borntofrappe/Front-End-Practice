@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Norwegian House</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <svg viewBox="0 0 448 415" width="448" height="415">
+        <!-- waves     -->
+        <path
+                fill="#fff"
+                opacity="0.1"
+                d="M 50 350 c -25 0 -50 25 -50 50 v 15 q 22 0 44 -8 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 q 22 8 44 8 v -35 c 0 -25 -25 -50 -50 -50 q -13.75 0 -27.5 -20 t -27.5 -20 v 60">
+            </path>
+
+            <!-- svg describing the house with the Norwegian flag
+            ! be sure to add a background, shown through the masked areas
+            -->
+            <svg viewBox="0 0 350 400" x="18" y="0" width="350" height="400">
+
+                <!-- define a mask which removes elements from the drawing to show more details (the flag's inner section, the house's door and windows, the barge) -->
+                <defs>
+                    <!-- the idea is to show everything **but** the sections colored with #000 -->
+                    <mask id="mask">
+                        <rect
+                            x="0"
+                            y="0"
+                            width="500"
+                            height="400"
+                            fill="#fff">
+                        </rect>
+                        <g fill="#000">
+                            <!-- flag -->
+                            <rect x="67" y="0" width="8" height="55"></rect>
+                            <rect x="40" y="23" width="85" height="8"></rect>
+
+                            <!-- path cropping the area between the roof and the house -->
+                            <path
+                                d="M 20 210 l 60 -100 l 60 100 h 185 v 140 h 16 v -160 h -191 l -60 -100 h -20 l -60 100"><!-- 16 and 191 to avoid a pixel issue when the svg is scaled -->
+                            </path>
+
+                            <!-- window on the left section -->
+                            <rect
+                                x="72.5"
+                                y="200"
+                                width="15"
+                                height="30">
+                            </rect>
+                            <!-- door -->
+                            <rect
+                                x="67"
+                                y="300"
+                                width="26"
+                                height="50">
+                            </rect>
+
+                            <!-- windows on the right section -->
+                            <g>
+                                <rect
+                                    id="#window"
+                                    x="232.5"
+                                    y="240"
+                                    width="15"
+                                    height="30">
+                                </rect>
+                                <rect
+                                    x="180"
+                                    y="240"
+                                    width="15"
+                                    height="30">
+                                </rect>
+                                <rect
+                                    x="285"
+                                    y="240"
+                                    width="15"
+                                    height="30">
+                                </rect>
+
+                                <rect
+                                    x="232.5"
+                                    y="295"
+                                    width="15"
+                                    height="30">
+                                </rect>
+                                <rect
+                                    x="180"
+                                    y="295"
+                                    width="15"
+                                    height="30">
+                                </rect>
+                                <rect
+                                    x="285"
+                                    y="295"
+                                    width="15"
+                                    height="30">
+                                </rect>
+                            </g>
+
+                            <!-- roof tiles -->
+                            <path d="M 150 125 h 40 l -25 25"></path>
+                            <path d="M 225 125 h 40 l -25 25"></path>
+
+                            <!-- barge -->
+                            <rect x="10" y="360" width="331" height="10"></rect><!-- 331 to avoid a pixel issue as the svg is scaled -->
+                            <circle cx="50" cy="370" r="10"></circle>
+                            <circle cx="120" cy="370" r="10"></circle>
+                            <circle cx="200" cy="370" r="10"></circle>
+                            <circle cx="250" cy="370" r="10"></circle>
+                            <circle cx="300" cy="370" r="10"></circle>
+                            <path d="M 10 400 q 8 0 16 -8 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 q 8 8 16 8"></path>
+                        </g>
+                    </mask>
+                </defs>
+
+                <!-- in a group using the mask draw the house -->
+                <g mask="url(#mask)">
+                    <!-- flag -->
+                    <rect fill="#F6E0B9" x="30" y="0" width="10" height="175"></rect>
+                    <rect fill="#D83D4A" x="40" y="0" width="85" height="55"></rect>
+                    <rect fill="#F6E0B9" x="62" y="0" width="18" height="55"></rect>
+                    <rect fill="#F6E0B9" x="40" y="18" width="85" height="18"></rect>
+
+                    <!-- ! to create darker variants use the roof's color with opacity -->
+                    <!-- house -->
+                    <path fill="#F6E0B9" d="M 20 350 h 320 v -160 h -200 l -60 -100 l -60 100"></path>
+                    <path fill="#D83D4A" opacity="0.35" d="M 20 350 h 120 v -120 h 200 v -40 h -200 l -60 -100 l -60 100"></path>
+
+                    <!-- roof -->
+                    <path fill="#D83D4A" d="M 80 90 h 200 l 60 100 h -200"></path>
+                    <!-- tiles -->
+                    <path fill="#F6E0B9" d="M 150 125 h 40 l 15 25 h -40 l -15 -25"></path>
+                    <path fill="#F6E0B9" d="M 225 125 h 40 l 15 25 h -40 l -15 -25"></path>
+
+                    <!-- chimney -->
+                    <path fill="#F6E0B9" d="M 245 90 v -30 h 53 v 60 h -15 l -18 -30"></path>
+                    <path fill="#D83D4A" opacity="0.35" d="M 245 90 v -30 h 53 v 60 h -15 l -18 -30"></path>
+                    <path fill="#D83D4A" opacity="0.7" d="M 245 90 v -30 h 20 v 30"></path>
+
+                    <!-- section between the barge and the house -->
+                    <rect fill="#F6E0B9" x="0" y="350" width="350" height="10"></rect>
+                    <rect fill="#D83D4A" opacity="0.35" x="0" y="350" width="350" height="10"></rect>
+                    <rect fill="#D83D4A" opacity="0.7" x="0" y="350" width="150" height="10"></rect>
+                    <!-- barge  -->
+                    <rect fill="#F6E0B9" x="10" y="360" width="330" height="40"></rect>
+                    <rect fill="#D83D4A" opacity="0.35" x="10" y="360" width="330" height="40"></rect>
+                    <rect fill="#D83D4A" opacity="0.7" x="10" y="360" width="150" height="40"></rect>
+                </g>
+            </svg>
+        </g>
+    </svg>
+</body>
+</html>
