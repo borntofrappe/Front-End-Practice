@@ -48,6 +48,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Choropleth Grid](https://codepen.io/borntofrappe/pen/pozyxVV)|Practice with D3 and CSS grid to highlight the presence, or lack thereof, of French tennis players at the French Open.|15th August 2019|
 |[D3 Scatter Plot Template](https://codepen.io/borntofrappe/pen/dybXpMJ)|Create a template for a scatter plot illustrating the relation between two numerical variables, with linear scales and unstyled axes.|16th August 2019|
 |[D3 Delaunay](https://codepen.io/borntofrappe/pen/mdbErOG)|Practice with the D3 Delaunay module to expand the area for mouse interaction.|16th August 2019|
+|[D3 Hexbin & Contour]()|Explore the `d3-hexbin` and `d3-contour` modules to analyse two approaches addressing overplotting.|17th August 2019|
 
 ### JS
 
