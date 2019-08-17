@@ -156,3 +156,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[CPC Rolodex](https://codepen.io/borntofrappe/pen/wVYKWg)|Create a rolodex in which cards can be flipped to highlight the members of the team @codepen.|08th-9th August 2019|
 |[Responsive Header](https://codepen.io/borntofrappe/pen/PoYPNJE)|Create and animate a header to show different graphics depending on the viewport width.|08th-12th August 2019|
 |[McLaren Intro](https://codepen.io/borntofrappe/pen/LYPNZxb)|Practice CSS grid, animation and the `clip-path` property to recreate a frame of a video from the popular F1 manufacturer.|14th August 2019|
+|[CPC Quite Literal Navigation]()|Using an SVG graphic created in a previous project create an interactive navigation bar where items are translated into view.|18th August 2019|
