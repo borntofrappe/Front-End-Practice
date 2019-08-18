@@ -5,9 +5,10 @@
 }
 body {
   min-height: 100vh;
-  /* the background is shown behind the svg, and in the masked areas */
-  background: rgb(33, 46, 79);
+  /* the background is shown behind the svg, and through the masked areas */
+  background: #212e4f;
   /* center in the viewport */
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
