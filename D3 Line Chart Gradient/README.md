@@ -1,6 +1,6 @@
 # D3 Line Chart Gradient
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/bGbeZKK)
 
 ## Goal
 

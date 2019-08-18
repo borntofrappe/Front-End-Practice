@@ -50,7 +50,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Delaunay](https://codepen.io/borntofrappe/pen/mdbErOG)|Practice with the D3 Delaunay module to expand the area for mouse interaction.|16th August 2019|
 |[D3 Hexbin & Contour](https://codepen.io/borntofrappe/pen/LYPZQpX)|Explore the `d3-hexbin` and `d3-contour` modules to analyse two approaches addressing overplotting.|17th August 2019|
 |[D3 Line Chart Template](https://codepen.io/borntofrappe/pen/PoYzLpK)|Create a template for visualizations plotting the evolution of a numerical variable over a time frame.|18th August 2019|
-|[D3 Line Chart Gradient]()|Starting from the line chart template enhance the visualization including a stylesheet and adding a gradient for the svg elements.|18th August 2019|
+|[D3 Line Chart Gradient](https://codepen.io/borntofrappe/pen/bGbeZKK)|Starting from the line chart template enhance the visualization including a stylesheet and adding a gradient for the svg elements.|18th-19th August 2019|
 
 ### JS
 
