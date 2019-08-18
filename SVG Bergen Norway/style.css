@@ -5,11 +5,9 @@
 }
 body {
   min-height: 100vh;
+  /* the background is shown behind the svg, and in the masked areas */
   background: rgb(33, 46, 79);
+  /* center in the viewport */
   display: grid;
   place-items: center;
-}
-svg {
-  width: 300px;
-  height: auto;
 }
