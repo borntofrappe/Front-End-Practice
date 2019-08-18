@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  /* include a two-color gradient behind the .viz container */
+  background: linear-gradient(180deg, #344f7c 10rem, #fff 10rem);
+  font-family: "Lexend Deca", sans-serif;
+}
+/* center the .viz container horizontally */
+.viz {
+  background: hsl(0, 0%, 100%);
+  color: hsl(240, 40%, 20%);
+  padding: 2rem 1.5rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  width: 90vw;
+  border-radius: 5px;
+  box-shadow: 0 1px 10px -2px hsla(0, 0%, 0%, 0.5);
+}
+/* reduce the size of the heading(s) */
+.viz h1 {
+  font-size: 1.5rem;
+}
+/* display the legend's items far apart from each other, with the paragraph pushed to the right */
+.viz .legend {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0 1rem;
+}
+.viz .legend h2 {
+  color: hsl(0, 0%, 35%);
+  font-weight: initial;
+  font-size: 0.9rem;
+  margin-right: auto;
+}
+.viz .legend p {
+  font-size: 0.85rem;
+  position: relative;
+}
+/* with a pseudo element add a rectangle with the same gradient used in the visualization */
+.viz .legend p:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translate(-20%, -50%);
+  border-radius: 5px;
+  width: 32px;
+  height: 4px;
+  background: linear-gradient(to right, #0cbde7, #58d943);
+}
+/* color the text of the visualization like the h2 element */
+.viz svg text {
+  color: hsl(0, 0%, 35%);
+}
+
+/* in smaller viewports position the .legend items atop one another */
+@media (max-width: 600px) {
+  .viz .legend {
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.5;
+  }
+  .viz .legend h2 {
+    margin: initial;
+  }
+}
