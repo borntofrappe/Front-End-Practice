@@ -1,6 +1,6 @@
 # Line Chart Template
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/PoYzLpK)
 
 ## Goal
 
