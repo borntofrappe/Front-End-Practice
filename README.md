@@ -107,7 +107,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Like](https://codepen.io/borntofrappe/pen/wVmKaN)|Draw a heart with SVG syntax and use it to create a button for a binary, like interaction.|07th August 2019|
 |SVG Star Wars Logo|Use SVG syntax to replicate [this specific design](https://dribbble.com/shots/2408834-BB-8) of a droid from a Star Wars movie.|10th August 2019|
 |[SVG Star Wars Loader](https://codepen.io/borntofrappe/pen/pMxWgj)|Create a loading screen inspired by Star Wars and the SVG graphic created in a previous project.|10th-11th August 2019|
-|[SVG Bergen Norway](https://codepen.io/borntofrappe/pen/mdbEGGa)|Practice  with SVG syntax to replicate [this design](https://dribbble.com/shots/6995258-Bergen) for the Norwegian city of Bergen.|17th-18th August 2019|
+|[SVG Bergen Norway](https://codepen.io/borntofrappe/pen/mdbEGGa)|Practice  with SVG syntax to replicate [this design](https://dribbble.com/shots/6995258-Bergen) for the Norwegian city of Bergen.|17th-18th-19th August 2019|
 
 ### UI UX
 
@@ -156,4 +156,3 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[CPC Rolodex](https://codepen.io/borntofrappe/pen/wVYKWg)|Create a rolodex in which cards can be flipped to highlight the members of the team @codepen.|08th-9th August 2019|
 |[Responsive Header](https://codepen.io/borntofrappe/pen/PoYPNJE)|Create and animate a header to show different graphics depending on the viewport width.|08th-12th August 2019|
 |[McLaren Intro](https://codepen.io/borntofrappe/pen/LYPNZxb)|Practice CSS grid, animation and the `clip-path` property to recreate a frame of a video from the popular F1 manufacturer.|14th August 2019|
-|[CPC Quite Literal Navigation]()|Using an SVG graphic created in a previous project create an interactive navigation bar where items are translated into view.|18th August 2019|

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -7,8 +9,52 @@ body {
   min-height: 100vh;
   /* the background is shown behind the svg, and through the masked areas */
   background: #212e4f;
-  /* center in the viewport */
+  /* center the svg and headings in a column */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+svg {
+  display: block;
+  width: 400px;
+  height: auto;
+}
+/* style the headings to feature prominently below the svg graphic */
+h1,
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-weight: 700;
+}
+h1 {
+  color: #f6e0b9;
+  margin: 2rem 0 1rem;
+  font-size: 2.75rem;
+}
+/* add two circles around the smaller heading through the :before and :after pseudo elements */
+h2 {
+  color: #e2957a;
+  font-size: 1.75rem;
+  position: relative;
+}
+h2:before,
+h2:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  opacity: 0.1;
+  border-radius: 50%;
+}
+h2:before {
+  left: -1.75rem;
+  transform: translate(-50%, -50%);
+}
+h2:after {
+  right: -1.75rem;
+  transform: translate(0%, -50%);
 }
