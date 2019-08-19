@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 Array</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- html structure
+    .viz, wrapping container
+        header, introducing the project
+        section, one for each visualization
+        footer, closing the project referencing the source data
+    -->
+    <div class="viz">
+        <header>
+            <h1>D3 Array</h1>
+            <p>
+                The module provides convenience methods when working with arrays.
+                <br/>
+                Methods like <code>d3.min()</code> and <code>d3.median()</code> rapidly provide key statistics.
+                <br/>
+                Methods like <code>d3.bin()</code> aggregate the data points according to their values.
+            </p>
+
+        </header>
+
+        <!-- in the first visualization structure a table to display a few statistics -->
+        <section class="viz__statistics">
+            <h2>Statistics</h2>
+            <!-- in a two-column table specify a statistic and corresponding value
+            ! add the values through array methods provided by the d3 library
+            -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>min</td>
+                        <td id="min"></td>
+                    </tr>
+                    <tr>
+                        <td>q1</td>
+                        <td id="q1"></td>
+                    </tr>
+                    <tr>
+                        <td>mean</td>
+                        <td id="mean"></td>
+                    </tr>
+                    <tr>
+                        <td>median</td>
+                        <td id="median"></td>
+                    </tr>
+                    <tr>
+                        <td>q3</td>
+                        <td id="q3"></td>
+                    </tr>
+                    <tr>
+                        <td>max</td>
+                        <td id="max"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- in the second visualization draw a box plot to visualize the computed statistics -->
+        <section class="viz__box-plot">
+            <h2>Box Plot</h2>
+        </section>
+
+        <!-- in the third visualization draw a histogram to illustrate the .bin() method -->
+        <section class="viz__histogram">
+            <h2>Histogram</h2>
+        </section>
+
+        <footer>
+            <p><strong>Note</strong>: the statistics and visualization in this project relate to the real interest rate in Australia, as measured on the <a href="https://data.worldbank.org/indicator/FR.INR.RINR?locations=AU">World Bank Open Data</a>.</p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/d3-array@2.2.0/dist/d3-array.min.js"></script>
+    <script src="https://unpkg.com/d3@5.9.7/dist/d3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

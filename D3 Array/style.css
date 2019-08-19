@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:400,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(250, 23%, 90%);
+  font-family: "Muli", sans-serif;
+}
+/* cap the width of the .viz container */
+.viz {
+  max-width: 800px;
+  margin: 1rem auto;
+  /* display the content in a grid with the boxplot and histogram on the side */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "header boxplot" "statistics histogram" "footer footer";
+  background: hsl(250, 23%, 98%);
+  color: hsl(227, 50%, 10%);
+  box-shadow: 0 2px 15px -2px hsla(230, 48%, 21%, 0.2);
+  align-items: baseline;
+}
+/* on smaller viewports remove the grid display in favor of the default top down layout */
+@media (max-width: 800px) {
+  .viz {
+    display: block;
+    margin: initial;
+  }
+}
+/* increase the white space for every direct children (the header, section and footer elements) */
+.viz > * {
+  padding: 1.25rem;
+}
+
+/* highlight the header with a lighter background */
+.viz header {
+  grid-area: header;
+  line-height: 2;
+  background: hsl(250, 23%, 100%);
+  position: relative;
+}
+/* flip the color and background value for the code element */
+.viz header code {
+  background: hsl(227, 50%, 10%);
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  font-family: "Fira Code", monospace;
+  font-size: 0.75rem;
+}
+/* with a pseudo element draw a triangle in the top left corner, as to describe the header as the starting point of the project */
+.viz header:before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  background: hsl(152, 70%, 60%);
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+}
+
+.viz section {
+  line-height: 2;
+}
+/* separate the sections' headings from connected visualization */
+.viz section h2 {
+  margin-bottom: 1rem;
+}
+.viz__boxplot {
+  grid-area: boxplot;
+}
+.viz__statistics {
+  grid-area: statistics;
+}
+.viz__histogram {
+  grid-area: histogram;
+}
+.viz footer {
+  grid-area: footer;
+}
+/* style the table to cover the available width */
+.viz section table {
+  width: 100%;
+  text-align: center;
+  line-height: 2;
+  border-collapse: collapse;
+}
+/* use the theme colors for the table's heading */
+.viz section table thead {
+  background: hsl(227, 50%, 10%);
+  border-bottom: 3px solid hsl(152, 70%, 60%);
+  color: #fff;
+}
+.viz section table tbody {
+  background: hsl(152, 70%, 60%, 0.15);
+  text-transform: capitalize;
+}
+
+/* style the anchor link with no decoration and a border matching the project's palette */
+.viz footer a {
+  text-decoration: none;
+  display: inline-block;
+  color: inherit;
+  border-bottom: 2px solid hsl(227, 50%, 10%);
+}
+/* increase the size of the text in the visualizations */
+.viz section svg text {
+  font-size: 1.2rem;
+}
