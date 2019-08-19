@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Bergen Norway</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- svg replicating this design
+    https://dribbble.com/shots/6995258-Bergen
+    -->
+    <svg viewBox="0 0 568 415" width="568" height="415">
+        <!-- waves -->
+        <path
+            fill="#fff"
+            opacity="0.1"
+            d="M 50 350 c -25 0 -50 25 -50 50 v 15 q 22 0 44 -8 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 q 22 8 44 8 v -60 c 0 -25 -25 -50 -50 -50 q -40 0 -80 -45 t -80 -45 h -15 v 135">
+        </path>
+
+        <!-- svg describing the house with the Norwegian flag
+        ! be sure to add a background, shown through the masked areas
+        -->
+        <svg viewBox="0 0 350 400" x="18" y="0" width="350" height="400">
+
+            <!-- define a mask which removes elements from the drawing to show more details (the flag's inner section, the house's door and windows, the barge) -->
+            <defs>
+                <!-- the idea is to show everything **but** the sections colored with #000 -->
+                <mask id="mask">
+                    <rect x="0" y="0" width="500" height="400" fill="#fff"></rect>
+                    <g fill="#000">
+                        <!-- flag -->
+                        <rect x="67" y="0" width="8" height="55"></rect>
+                        <rect x="40" y="23" width="85" height="8"></rect>
+
+                        <!-- path cropping the area between the roof and the house -->
+                        <path
+                            d="M 20 210 l 60 -100 l 60 100 h 185 v 140 h 16 v -160 h -191 l -60 -100 h -20 l -60 100">
+                        </path><!-- h 16 instead of 15; h -191 instead of -190 to fix a minor issue when the svg is scaled and the mask shows a thin line -->
+
+                        <!-- window on the left section -->
+                        <rect x="72.5" y="200" width="15" height="30"></rect>
+                        <!-- door -->
+                        <rect x="67" y="300" width="26" height="50"></rect>
+
+                        <!-- windows on the right section -->
+                        <g>
+                            <rect x="232.5" y="240" width="15" height="30"></rect>
+                            <rect x="180" y="240" width="15" height="30"></rect>
+                            <rect x="285" y="240" width="15" height="30"></rect>
+
+                            <rect x="232.5" y="295" width="15" height="30"></rect>
+                            <rect x="180" y="295" width="15" height="30"></rect>
+                            <rect x="285" y="295" width="15" height="30"></rect>
+                        </g>
+
+                        <!-- roof tiles -->
+                        <path d="M 150 125 h 40 l -25 25"></path>
+                        <path d="M 225 125 h 40 l -25 25"></path>
+
+                        <!-- barge -->
+                        <rect x="9" y="360" width="332" height="11.5"></rect><!-- 9 instead of 10; -332 instead of -330 to fix a minor issue when the svg is scaled and the mask shows a thin line -->
+                        <circle cx="56" cy="371.5" r="11.5"></circle>
+                        <circle cx="116" cy="371.5" r="11.5"></circle>
+                        <circle cx="176" cy="371.5" r="11.5"></circle>
+                        <circle cx="236" cy="371.5" r="11.5"></circle>
+                        <circle cx="296" cy="371.5" r="11.5"></circle>
+                        <path d="M 296 370 l 20 40 h 25 v -41 z"></path>
+                        <path d="M 10 400 q 8 0 16 -8 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 c 15 10.5 45 10.5 60 0 q 8 8 16 8"></path>
+                    </g>
+                </mask>
+            </defs>
+
+            <!-- in a group using the mask draw the house -->
+            <g mask="url(#mask)">
+                <!-- flag -->
+                <rect fill="#F6E0B9" x="30" y="0" width="10" height="175"></rect>
+                <rect fill="#D83D4A" x="40" y="0" width="85" height="55"></rect>
+                <rect fill="#F6E0B9" x="62" y="0" width="18" height="55"></rect>
+                <rect fill="#F6E0B9" x="40" y="18" width="85" height="18"></rect>
+
+                <!-- ! to create darker variants use the roof's color with opacity -->
+                <!-- house -->
+                <path fill="#F6E0B9" d="M 20 350 h 320 v -160 h -200 l -60 -100 l -60 100"></path>
+                <path fill="#D83D4A" opacity="0.4" d="M 20 350 h 120 v -120 h 200 v -40 h -200 l -60 -100 l -60 100"></path>
+
+                <!-- roof -->
+                <path fill="#D83D4A" d="M 80 90 h 200 l 60 100 h -200"></path>
+                <!-- tiles -->
+                <path fill="#F6E0B9" d="M 150 125 h 40 l 15 25 h -40 l -15 -25"></path>
+                <path fill="#F6E0B9" d="M 225 125 h 40 l 15 25 h -40 l -15 -25"></path>
+
+                <!-- chimney -->
+                <path fill="#F6E0B9" d="M 245 90 v -30 h 53 v 60 h -15 l -18 -30"></path>
+                <path fill="#D83D4A" opacity="0.4" d="M 245 90 v -30 h 53 v 60 h -15 l -18 -30"></path>
+                <path fill="#D83D4A" opacity="0.75" d="M 245 90 v -30 h 20 v 30"></path>
+
+                <!-- section between the barge and the house -->
+                <rect fill="#F6E0B9" x="0" y="350" width="350" height="10"></rect>
+                <rect fill="#D83D4A" opacity="0.4" x="0" y="350" width="350" height="10"></rect>
+                <rect fill="#D83D4A" opacity="0.75" x="0" y="350" width="150" height="10"></rect>
+                <!-- barge  -->
+                <rect fill="#F6E0B9" x="10" y="360" width="330" height="40"></rect>
+                <rect fill="#D83D4A" opacity="0.4" x="10" y="360" width="330" height="40"></rect>
+                <rect fill="#D83D4A" opacity="0.75" x="10" y="360" width="150" height="40"></rect>
+            </g>
+        </svg>
+
+        <!-- svg describing the sail boat -->
+        <svg viewBox="0 0 175 200" x="320" y="128" width="238.875" height="273">
+            <g transform="translate(80 60)">
+                <g transform="rotate(25)">
+                    <rect fill="#F6E0B9" x="-3.5" y="0" width="7" height="125"></rect>
+                </g>
+                <g transform="rotate(-30)">
+                    <rect fill="#F6E0B9" x="-3.5" y="0" width="7" height="140"></rect>
+                </g>
+            </g>
+            <rect fill="#F6E0B9" x="75.5" y="10" width="9" height="160"></rect>
+            <rect fill="#D83D4A" opacity="0.4" x="75.5" y="10" width="9" height="160"></rect>
+
+            <path fill="#D83D4A" d="M 75.5 0 l 35 12 l -35 12"></path>
+
+            <path fill="#F6E0B9" d="M 45 170 l 20 -22 h 40 l 12 22"></path>
+            <path fill="#D83D4A" opacity="0.4" d="M 45 170 l 20 -22 h 25 l 12 22"></path>
+
+            <path fill="#F6E0B9" d="M 0 170 h 167 l -8 30 q -8 -2 -16 -8 c -10 11 -48 11 -64 0 c -15 11 -48 11 -64 0 l -2 -7 l -5 -7 h -12"></path>
+            <path fill="#D83D4A" opacity="0.4" d="M 0 170 h 167 l -8 30 q -8 -2 -16 -8 c -10 11 -48 11 -64 0 c -15 11 -48 11 -64 0 l -2 -7 l -5 -7 h -12"></path>
+            <path fill="#D83D4A" opacity="0.8" d="M 0 170 h 167 l -8 30 q -8 -2 -16 -8 c -10 11 -48 11 -64 0 c -15 11 -48 11 -64 0 l -2 -7 l -5 -7 h -12"></path>
+            <path fill="#F6E0B9" d="M 167 170 l -8 30 q -8 -2 -16 -8 q -8 6 -16 7 l -8 -29"></path>
+            <path fill="#D83D4A" opacity="0.4" d="M 167 170 l -8 30 q -8 -2 -16 -8 q -8 6 -16 7 l -8 -29"></path>
+            <path fill="#212e4f" d="M 6 178.2 l 5 7 h 112 l -1.8 -7"></path>
+        </svg>
+
+    </svg>
+
+    <!-- heading describing the graphic -->
+    <h1>Bergen</h1>
+    <h2>Norway</h2>
+
+
+</body>
+</html>
