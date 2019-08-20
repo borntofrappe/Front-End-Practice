@@ -52,7 +52,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Line Chart Template](https://codepen.io/borntofrappe/pen/PoYzLpK)|Create a template for visualizations plotting the evolution of a numerical variable over a time frame.|18th August 2019|
 |[D3 Line Chart Gradient](https://codepen.io/borntofrappe/pen/bGbeZKK)|Starting from the line chart template enhance the visualization including a stylesheet and adding a gradient for the svg elements.|18th-19th August 2019|
 |[D3 Array](https://codepen.io/borntofrappe/pen/xxKEqmX)|Explore the D3 Array module and some of the convenience methods provided by the library.|19th August 2019|
-|[D3 Bar Plot Template]()|Create a template for visualizations describing a categorical and a numerical variable.|20th August 2019|
+|[D3 Bar Plot Template](https://codepen.io/borntofrappe/pen/oNvYXoa)|Create a template for visualizations describing a categorical and a numerical variable.|20th August 2019|
 
 ### JS
 

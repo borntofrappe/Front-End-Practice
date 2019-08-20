@@ -1,6 +1,6 @@
 # D3 Bar Plot Template
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/oNvYXoa)
 
 ## Goal
 
