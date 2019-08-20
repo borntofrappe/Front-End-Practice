@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  border-top: 4px solid #dc0000;
+  background: repeating-linear-gradient(
+      -45deg,
+      #181618 0px,
+      #181618 8px,
+      #141314 0px,
+      #141314 16px
+    ),
+    #141314;
+  color: #edeced;
+  font-family: "Josefin Sans", sans-serif;
+}
+/* center the visualization horizontally */
+.viz {
+  margin: 1.5rem auto;
+  width: 90vw;
+  max-width: 700px;
+  background: #010001;
+  padding: 1.5rem 2rem;
+}
+.viz header {
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+/* style the text in the svg with the same font of the header */
+svg text {
+  font-size: 1.05rem;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/* hide the visualization's lines, both for the ticks and the axes themselves */
+.axis .tick line,
+.axis path {
+  opacity: 0;
+}
