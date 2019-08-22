@@ -1,9 +1,6 @@
-/* eslint-disable no-new */
-/* globals Zdog */
-
 // extract the necessary classes from the Zdog object
 const {
-  TAU, Illustration, Ellipse, Shape, Group, Anchor, Cylinder, Cone,
+  Illustration, Ellipse, Shape, Cylinder, TAU, Group, Anchor,
 } = Zdog;
 
 // retrieve the canvas and its measures
@@ -12,9 +9,9 @@ const canvas = document.querySelector('canvas');
 const { width, height } = canvas;
 const margin = {
   top: 10,
-  right: 10,
+  right: 20,
   bottom: 10,
-  left: 10,
+  left: 20,
 };
 const innerWidth = width - (margin.left + margin.right);
 const innerHeight = height - (margin.top + margin.bottom);
@@ -25,8 +22,8 @@ const illustration = new Illustration({
   dragRotate: true,
 });
 
-// create a group element to translate the illustration according to the margin
-// add the elements in this group and use the innerX values to size/position the elements
+// add a group element to translate the illustration according to the margin
+// similar to the margin convention frequently used with D3
 const group = new Group({
   addTo: illustration,
   translate: {
@@ -35,9 +32,37 @@ const group = new Group({
   },
 });
 
-
-const star = new Shape({
+// include shapes from the top center of the illustration
+const topCenter = new Group({
   addTo: group,
+  translate: { x: innerWidth / 2 },
+});
+
+new Cylinder({
+  addTo: topCenter,
+  diameter: 20,
+  length: 30,
+  stroke: 15,
+  color: '#FFF2C7',
+  translate: { y: 10 }, // translate by half the height since the cylinder is rotated from the top left corner
+  rotate: { x: TAU / 4 },
+});
+
+// create an anchor starting with the ellipse, to have the nested elements rotate from its center
+const hook = new Anchor({
+  addTo: topCenter,
+  translate: { y: 55 }, // translate at the bottom center of the cylinder
+});
+
+// add a group of stars rotating alongside the hook
+const starGroup = new Group({
+  addTo: hook,
+  translate: { x : -innerWidth / 2 }
+});
+
+// add a star in the group element
+const star = new Shape({
+  addTo: starGroup,
   path: [
     { x: 0, y: 0 },
     { x: 4, y: 0 },
@@ -51,54 +76,32 @@ const star = new Shape({
     { x: 4, y: 2 },
   ],
   stroke: 5, // considerable stroke to avoid gaps in the star structure
-  color: '#EEAA00',
+  color: '#FFAE08',
 });
 
+
+// copy the star to include a pseudo-random constellation behind the mobile
 for (let columns = 1; columns < innerWidth; columns += innerWidth / 8) {
   for (let rows = 1; rows < innerHeight / 2; rows += innerHeight / 4) {
     star.copy({
-      translate: { x: columns, y: rows + Math.floor(Math.random() * innerHeight / 4), z: Math.floor(Math.random() * -500) },
+      translate: { x: columns, y: rows + Math.floor(Math.random() * innerHeight / 4), z: Math.floor(Math.random() * 200 - 100) },
     });
   }
 }
-
-// include shapes from the top center of the illustration
-const topCenter = new Group({
-  addTo: group,
-  translate: { x: innerWidth / 2 },
-});
-
-new Cylinder({
-  addTo: topCenter,
-  diameter: 20,
-  length: 30,
-  stroke: 15,
-  color: '#010318',
-  translate: { y: 25 }, // translate by half the height since the cylinder is rotated from the top left corner
-  rotate: { x: TAU / 4 },
-});
-
-// create an anchor starting with the ellipse, to have the nested elements rotate from its center
-const hook = new Anchor({
-  addTo: topCenter,
-  translate: { y: 70 }, // translate at the bottom center of the cylinder
-});
-
-
 // hook attached to the cylinder
 new Ellipse({
   addTo: hook,
   width: 30,
   height: 45,
   stroke: 12,
-  color: '#010318',
+  color: '#FFF2C7',
   rotate: { y: TAU / 4 }, // rotate to have the circle parallel to the viewer eyesight
 });
 
 new Shape({
   addTo: hook,
   stroke: 12,
-  color: '#010318',
+  color: '#FFF2C7',
   closed: false,
   path: [
     { x: 15, y: 15 },
@@ -126,27 +129,26 @@ new Shape({
   translate: { y: 8 }, // translate to the bottom center of the ellipse
 });
 
-// cylinder and paths connecting the hook with the celestial bodies and spaceship
 new Cylinder({
   addTo: hook,
   diameter: 45,
   length: 20,
   stroke: 15,
-  color: '#010318',
+  color: '#FFF2C7',
   translate: { y: 105 }, // translate at the bottom of the previous path (be sure to consider the height of the cylinder)
   rotate: { x: TAU / 4 },
 });
 
-// to fake an arm with a varying width (getting thinner as it goes) overlap multiple bezier curves
+// arms protruding from the central cylinder
 const arm = new Group({
   addTo: hook,
   translate: { y: 105 }, // translate to start from the center of the hook
 });
-// the arm is made up of two lines, of different size
+
 new Shape({
   addTo: arm,
   stroke: 12,
-  color: '#010318',
+  color: '#FFF2C7',
   closed: false,
   path: [
     { x: 0, y: 0 },
@@ -171,7 +173,7 @@ new Shape({
   ],
 });
 
-// copy the arm and rotate it around the cylinder
+// copy the arm twice and rotate the group around the cylinder
 const secondArm = arm.copyGraph({
   rotate: { y: TAU / 3 },
 });
@@ -180,22 +182,22 @@ const thirdArm = arm.copyGraph({
   rotate: { y: TAU / 3 * 2 },
 });
 
+// include different groups and shapes at the bottom of the different arms
 const firstPlanet = new Group({
   addTo: arm,
   translate: { z: 160, y: 140 },
 });
-
 new Shape({
   addTo: firstPlanet,
   stroke: 80,
   color: '#0A9DD0',
 });
 
+
 const secondPlanet = new Group({
   addTo: secondArm,
   translate: { z: 160, y: 150 },
 });
-
 new Ellipse({
   addTo: secondPlanet,
   stroke: 10,
@@ -220,7 +222,7 @@ new Shape({
   color: '#DF4D97',
 });
 
-
+// animate the illustration to continuously rotate the hook
 function animate() {
   illustration.updateRenderGraph();
   requestAnimationFrame(animate);
