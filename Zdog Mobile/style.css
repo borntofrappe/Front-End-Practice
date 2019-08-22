@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: linear-gradient(#040d53, #030a41);
+  /* center the canvas in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
