@@ -54,7 +54,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Array](https://codepen.io/borntofrappe/pen/xxKEqmX)|Explore the D3 Array module and some of the convenience methods provided by the library.|19th August 2019|
 |[D3 Bar Plot Template](https://codepen.io/borntofrappe/pen/oNvYXoa)|Create a template for visualizations describing a categorical and a numerical variable.|20th August 2019|
 |[D3 Racing Bars](https://codepen.io/borntofrappe/pen/rNBWVJY)|Starting from the bar plot template create a visualization in which the bars are updated at an interval to progressively show the eventual values.|20th August 2019|
-|[D3 Geo Events]()|Recreate a visualization plotting a map of the US and highlighting a few events at specific locations.|23rd August 2019|
+|[D3 Geo Events](https://codepen.io/borntofrappe/pen/WNeRmdp)|Recreate a visualization plotting a map of the US and highlighting a few events at specific locations.|23rd August 2019|
 
 ### JS
 
