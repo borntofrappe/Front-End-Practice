@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:600&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #eeeeee;
+}
+/* center the visualization horizontally */
+.viz {
+  max-width: 800px;
+  width: 90vw;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+/* style the text in the svg with the imported font */
+svg text {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 0.7rem;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 Geo Events</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- svg icons used in the project
+    ! setting "display: none" would make the masks from unavailable to the use elements
+    -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105 105" aria-hidden="true" style="position: absolute; width: 0; height: 0; opacity: 0; visibility: none;">
+        <!-- pin used to describe the locations -->
+        <symbol id="pin">
+            <defs>
+              <mask id="mask-pin">
+                <rect
+                  x="-2.5"
+                  y="-2.5"
+                  width="105"
+                  height="105"
+                  fill="#fff">
+                </rect>
+                <circle
+                  cx="40"
+                  cy="40"
+                  r="16"
+                  fill="#000">
+                </circle>
+              </mask>
+            </defs>
+            <g
+              transform="translate(2.5 2.5)"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="5"
+              stroke-linejoin="round"
+              stroke-linecap="round">
+              <g transform="translate(10 0)">
+
+                <path
+                  mask="url(#mask-pin)"
+                  d="M 0 40 a 40 40 0 0 1 80 0 q 0 25 -40 60 q -40 -35 -40 -60">
+                </path>
+              </g>
+            </g>
+        </symbol>
+
+		<!-- talking face used to describe a conference -->
+        <symbol id="talk">
+            <g
+              transform="translate(2.5 2.5)"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="5"
+              stroke-linejoin="round"
+              stroke-linecap="round">
+              <g transform="translate(0 7.5)">
+                <path
+                  d="M 30 60 a 30 30 0 0 1 0 -60 q 12.5 0 25 5 l 2 20 l 10 5 l -5 12 l 5 12 l -12 6 v 15 h -25 z">
+                </path>
+                <g
+                  transform="translate(50 42)">
+                  <path
+                    transform="rotate(-20)"
+                    d="M 35 0 h 12">
+                  </path>
+                  <path
+                    transform="rotate(0)"
+                    d="M 35 0 h 15">
+                  </path>
+                  <path
+                    transform="rotate(20)"
+                    d="M 35 0 h 12">
+                  </path>
+                </g>
+              </g>
+            </g>
+        </symbol>
+
+		<!-- desktop used to describe a workshop -->
+        <symbol id="workshop">
+            <defs>
+              <mask id="mask-pc">
+                <rect
+                  x="-2.5"
+                  y="-2.5"
+                  width="105"
+                  height="105"
+                  fill="#fff">
+                </rect>
+                <rect
+                  x="12"
+                  y="12"
+                  width="76"
+                  height="42"
+                  fill="#000">
+                </rect>
+              </mask>
+            </defs>
+            <g
+              transform="translate(2.5 2.5)"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="5"
+              stroke-linejoin="round"
+              stroke-linecap="round">
+              <g
+                transform="translate(0 9)">
+                <rect
+                  mask="url(#mask-pc)"
+                  x="0"
+                  y="0"
+                  width="100"
+                  height="65"
+                  rx="4">
+                </rect>
+                <path
+                  d="M 50 65 h 6 l 8 15 v 2 h -28 v -2 l 8 -15 h 6">
+                </path>
+              </g>
+            </g>
+        </symbol>
+    </svg>
+
+    <!-- container for the visualization -->
+    <div class="viz"></div>
+
+
+    <!-- import topojson -->
+    <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+    <!-- import d3 -->
+    <script src="https://unpkg.com/d3@5.11.0/dist/d3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
