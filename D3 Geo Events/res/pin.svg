@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105 105" width="100" height="100">
+  <defs>
+    <mask id="mask-pin">
+      <rect
+        x="-2.5"
+        y="-2.5"
+        width="105"
+        height="105"
+        fill="#fff">
+      </rect>
+      <circle
+        cx="40"
+        cy="40"
+        r="16"
+        fill="#000">
+      </circle>
+    </mask>
+  </defs>
+  <g
+    transform="translate(2.5 2.5)"
+    fill="currentColor"
+    stroke="currentColor"
+    stroke-width="5"
+    stroke-linejoin="round"
+    stroke-linecap="round">
+    <g transform="translate(10 0)">
+
+      <path
+        mask="url(#mask-pin)"
+        d="M 0 40 a 40 40 0 0 1 80 0 q 0 25 -40 60 q -40 -35 -40 -60">
+      </path>
+    </g>
+  </g>
+</svg>
