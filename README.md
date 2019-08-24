@@ -164,3 +164,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Responsive Header](https://codepen.io/borntofrappe/pen/PoYPNJE)|Create and animate a header to show different graphics depending on the viewport width.|08th-12th August 2019|
 |[McLaren Intro](https://codepen.io/borntofrappe/pen/LYPNZxb)|Practice CSS grid, animation and the `clip-path` property to recreate a frame of a video from the popular F1 manufacturer.|14th August 2019|
 |[Zdog Mobile](https://codepen.io/borntofrappe/pen/KKPaWeE)|Tinker with the pseudo-3d engine to recreate the structure usually hanged above a crib to entertain and delight.|22nd August 2019|
+|[CPC Connect the Dots]()|Starting from an svg element include a canvas plotting a worksheet to to connect a few dots.|24th August 2019|
