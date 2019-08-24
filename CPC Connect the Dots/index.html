@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <!-- the viewbox considers the size of the path (20.5 * 20.5) plus the space allocated to the stroke (1.5) -->
+    <!-- graphics used in the project -->
     <svg viewBox="0 0 22 24" style="display: none;">
         <symbol id="trash">
             <g
@@ -36,9 +36,18 @@
         </symbol>
     </svg>
 
+    <!-- markup
+    .app, wrapping container
+        .worksheet, describing the canvas element
+        .base, describing the svg element on which the canvas is based
+
+    ! for convenience the canvas and the svg share the width and height
+    -->
     <div class="app">
-        <main>
-            <canvas id="drawing-canvas" width="400" height="400"></canvas>
+        <main class="worksheet">
+            <!-- beside the canvas include a button to clear the path drawn on mousemove/touchmove -->
+            <canvas width="400" height="400"></canvas>
+            <!-- ! by default disable the button (enabled in the script as something is drawn in the canvas) -->
             <button disabled aria-labelledby="clear-button">
                 <span id="clear-button" hidden>Clear canvas</span>
                 <svg viewBox="0 0 22 24" width="22" height="24">
@@ -46,13 +55,18 @@
                 </svg>
             </button>
         </main>
-        <details>
+        <!-- include the svg in a details element to toggle its visibility -->
+        <details class="base">
             <summary>Show Base Drawing</summary>
-            <svg id="drawing-svg" width="400" height="400">
+            <svg width="400" height="400">
                 <g
                     fill="none"
-                    stroke="currentColor">
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                    stroke-linecap="round">
 
+                    <!-- the idea is to take the coordinates of the path element and use them to draw circle in the canvas -->
                     <path d="M 200 100 100 155 200 220 300 155 z"></path>
 
                 </g>

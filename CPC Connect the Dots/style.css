@@ -24,24 +24,25 @@ body {
     hsl(0, 0%, 97%);
   font-family: "Lato", sans-serif;
 }
+/* cap the width of the .app container */
 .app {
   max-width: 400px;
   margin: 1rem auto;
 }
-main {
+/* display the canvas and button ina  column */
+.worksheet {
   margin: 1rem 0 2.5rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-main canvas,
-main button,
-details svg {
-  box-shadow: 0 1px 10px -5px hsla(0, 0%, 0%, 0.2);
-  background: #fff;
-}
-main button {
+/* style the button to display a round circle
+! the button has two states, according to whether or not something is drawn on the canvas
+the state is managed through a class added/removed in the script
+it is shown through a different cursor and color
+*/
+.worksheet button {
   margin-top: 0.5rem;
   width: 62px;
   height: 62px;
@@ -49,16 +50,17 @@ main button {
   border-radius: 50%;
   border: none;
   color: #777;
-  font-family: inherit;
   position: relative;
+  font-family: inherit;
   z-index: 5;
   cursor: not-allowed;
 }
-button.active {
-  cursor: initial;
+.worksheet button.allowed {
   color: #333;
+  cursor: initial;
 }
-button.active:before {
+/* when the button is allowed include a tooltip on hover/focus */
+.worksheet button.allowed:before {
   content: "Clear canvas";
   font-size: 0.85rem;
   color: hsl(0, 0%, 92%);
@@ -75,13 +77,21 @@ button.active:before {
   z-index: -5;
   transition: all 0.25s ease-in-out;
 }
-button.active:hover:before,
-button.active:focus:before {
+.worksheet button.allowed:hover:before,
+.worksheet button.allowed:focus:before {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 4px);
 }
-details svg {
+
+.base svg {
   display: block;
   margin-top: 0.5rem;
+}
+/* give a shadow to the canvas, button and svg elements */
+.worksheet canvas,
+.worksheet button,
+.base svg {
+  box-shadow: 0 1px 10px -5px hsla(0, 0%, 0%, 0.2);
+  background: #fff;
 }
