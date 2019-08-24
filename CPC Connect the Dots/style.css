@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: repeating-linear-gradient(
+      to right,
+      hsl(0, 0%, 92%) 0px,
+      hsl(0, 0%, 92%) 2px,
+      transparent 0px,
+      transparent 15px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      hsl(0, 0%, 92%) 0px,
+      hsl(0, 0%, 92%) 2px,
+      transparent 0px,
+      transparent 15px
+    ),
+    hsl(0, 0%, 97%);
+  font-family: "Lato", sans-serif;
+}
+.app {
+  max-width: 400px;
+  margin: 1rem auto;
+}
+main {
+  margin: 1rem 0 2.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main canvas,
+main button,
+details svg {
+  box-shadow: 0 1px 10px -5px hsla(0, 0%, 0%, 0.2);
+  background: #fff;
+}
+main button {
+  margin-top: 0.5rem;
+  width: 62px;
+  height: 62px;
+  padding: 0.15rem;
+  border-radius: 50%;
+  border: none;
+  color: #777;
+  font-family: inherit;
+  position: relative;
+  z-index: 5;
+  cursor: not-allowed;
+}
+button.active {
+  cursor: initial;
+  color: #333;
+}
+button.active:before {
+  content: "Clear canvas";
+  font-size: 0.85rem;
+  color: hsl(0, 0%, 92%);
+  background: hsl(0, 0%, 10%);
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  white-space: nowrap;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  visibility: hidden;
+  opacity: 0;
+  z-index: -5;
+  transition: all 0.25s ease-in-out;
+}
+button.active:hover:before,
+button.active:focus:before {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 4px);
+}
+details svg {
+  display: block;
+  margin-top: 0.5rem;
+}
