@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Martel+Sans:900&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,91 +7,106 @@
 }
 body {
   min-height: 100vh;
-  background: repeating-linear-gradient(
-      to right,
-      hsl(0, 0%, 92%) 0px,
-      hsl(0, 0%, 92%) 2px,
-      transparent 0px,
-      transparent 15px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      hsl(0, 0%, 92%) 0px,
-      hsl(0, 0%, 92%) 2px,
-      transparent 0px,
-      transparent 15px
-    ),
-    hsl(0, 0%, 97%);
-  font-family: "Lato", sans-serif;
+  /* through a patterned svg include two grids of dots, at either end of the page */
+  background: url('data:image/svg+xml;utf8,<svg transform="translate(0 -40)" opacity="0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200"><defs><pattern id="pattern" width="0.1" height="0.1"><circle cx="5" cy="5" r="3"></circle></pattern></defs><rect x="0" y="0" width="120" height="200" fill="url(%23pattern)"></rect></svg>'),
+    url('data:image/svg+xml;utf8,<svg opacity="0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200"><defs><pattern id="pattern" width="0.1" height="0.1"><circle cx="5" cy="5" r="3"></circle></pattern></defs><rect x="0" y="0" width="120" height="200" fill="url(%23pattern)"></rect></svg>')
+      hsl(0, 0%, 97%);
+  background-repeat: no-repeat;
+  background-position: 10% 20%, 90% 80%;
+  font-family: "IBM Plex Mono", monospace;
 }
-/* cap the width of the .app container */
-.app {
-  max-width: 400px;
-  margin: 1rem auto;
-}
-/* display the canvas and button ina  column */
+/* display the content of the .worksheet in a column, horizontally centered */
 .worksheet {
-  margin: 1rem 0 2.5rem;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-/* style the button to display a round circle
-! the button has two states, according to whether or not something is drawn on the canvas
-the state is managed through a class added/removed in the script
-it is shown through a different cursor and color
-*/
-.worksheet button {
-  margin-top: 0.5rem;
-  width: 62px;
-  height: 62px;
-  padding: 0.15rem;
-  border-radius: 50%;
-  border: none;
-  color: #777;
-  position: relative;
-  font-family: inherit;
-  z-index: 5;
-  cursor: not-allowed;
-}
-.worksheet button.allowed {
-  color: #333;
-  cursor: initial;
-}
-/* when the button is allowed include a tooltip on hover/focus */
-.worksheet button.allowed:before {
-  content: "Clear canvas";
-  font-size: 0.85rem;
-  color: hsl(0, 0%, 92%);
-  background: hsl(0, 0%, 10%);
-  border-radius: 5px;
-  padding: 0.2rem 0.5rem;
-  white-space: nowrap;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  visibility: hidden;
-  opacity: 0;
-  z-index: -5;
-  transition: all 0.25s ease-in-out;
-}
-.worksheet button.allowed:hover:before,
-.worksheet button.allowed:focus:before {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, 4px);
+  padding: 1rem;
+  line-height: 2.25;
 }
 
-.base svg {
-  display: block;
-  margin-top: 0.5rem;
+/* style the header to include a custom counter in the top right corner of each span element
+the idea is to wrap each letter **o** in a span element
+*/
+.worksheet__header {
+  font-family: "Martel Sans", sans-serif;
+  font-size: 2.25rem;
 }
-/* give a shadow to the canvas, button and svg elements */
-.worksheet canvas,
-.worksheet button,
-.base svg {
+.worksheet__header span {
+  position: relative;
+  counter-increment: custom-counter;
+}
+.worksheet__header span:before {
+  font-family: "IBM Plex Mono", monospace;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  content: counter(custom-counter);
+  font-size: 1rem;
+}
+
+/* absolute position the svg element in the main container
+! the size is dictated by the canvas element
+*/
+.worksheet__paper {
+  position: relative;
   box-shadow: 0 1px 10px -5px hsla(0, 0%, 0%, 0.2);
   background: #fff;
+}
+.worksheet__paper canvas,
+.worksheet__paper svg {
+  display: block;
+}
+/* by default hide the svg */
+.worksheet__paper svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /* visibility hidden allows to interact with the canvas beneath the svg */
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+/* show the svg when a class of .show is added to the wrapping container */
+.worksheet__paper.show svg {
+  opacity: 1;
+  visibility: visible;
+  /* ! the canvas is made inaccessible as the svg overlaps
+  setting pointer-events to none would allow to draw while showing the svg
+  */
+  /* pointer-events: none; */
+}
+
+/* display the controls one above the other
+make them a flex container to display the svg+button, input+text in a row
+*/
+.worksheet__controls {
+  margin-top: 2.5rem;
+  line-height: 2.75;
+}
+.worksheet__controls > * {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+/* remove the default background and border from the button */
+.worksheet__controls button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+}
+/* when the button is disabled show a lighter hue and a fitting cursor */
+.worksheet__controls button:disabled {
+  color: #777;
+  cursor: not-allowed;
+}
+/* give the input and svg element the same width to align the controls' text */
+.worksheet__controls button svg,
+.worksheet__controls label input {
+  margin-right: 0.85rem;
+  width: 16px;
+  height: auto;
 }

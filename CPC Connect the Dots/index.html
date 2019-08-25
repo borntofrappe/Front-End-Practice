@@ -36,44 +36,46 @@
         </symbol>
     </svg>
 
-    <!-- markup
-    .app, wrapping container
-        .worksheet, describing the canvas element
-        .base, describing the svg element on which the canvas is based
-
-    ! for convenience the canvas and the svg share the width and height
+    <!--
+    in a wrapping container include the following elements
+        header, introducing the project
+        main, itself nesting
+            canvas, to draw a path on mousemove/touchmove
+            svg, to create the base drawing on which the canvas is based
+        div, controls to clear the canvas and show the svg
     -->
-    <div class="app">
-        <main class="worksheet">
-            <!-- beside the canvas include a button to clear the path drawn on mousemove/touchmove -->
+    <div class="worksheet">
+        <header class="worksheet__header">Connect the dots</header>
+        <!-- in the stylesheet have the svg overlap on top of the canvas element
+        ! for convenience, the canvas and svg share the same width and height
+        -->
+        <main class="worksheet__paper">
             <canvas width="400" height="400"></canvas>
-            <!-- ! by default disable the button (enabled in the script as something is drawn in the canvas) -->
-            <button disabled aria-labelledby="clear-button">
-                <span id="clear-button" hidden>Clear canvas</span>
+            <!-- the svg describes a path element which is used to initialize the canvas -->
+            <svg id="drawing-svg" width="400" height="400">
+                <g
+                    fill="none"
+                    stroke="currentColor">
+                    <!-- every set of coordinates is used to create a circle in the canvas -->
+                    <path d="M 200 100 100 155 200 220 300 155 z"></path>
+                </g>
+            </svg>
+        </main>
+
+        <div class="worksheet__controls">
+            <button disabled>
                 <svg viewBox="0 0 22 24" width="22" height="24">
                     <use href="#trash"></use>
                 </svg>
+                Clear canvas
             </button>
-        </main>
-        <!-- include the svg in a details element to toggle its visibility -->
-        <details class="base">
-            <summary>Show Base Drawing</summary>
-            <svg width="400" height="400">
-                <g
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linejoin="round"
-                    stroke-linecap="round">
+            <label>
+                <input type="checkbox">
+                Show final drawing
+            </label>
+        </div>
 
-                    <!-- the idea is to take the coordinates of the path element and use them to draw circle in the canvas -->
-                    <path d="M 200 100 100 155 200 220 300 155 z"></path>
-
-                </g>
-            </svg>
-        </details>
     </div>
-
 
     <script src="script.js"></script>
 </body>
