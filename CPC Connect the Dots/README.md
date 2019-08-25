@@ -1,6 +1,6 @@
 # CPC Connect the Dots
 
-<!-- ## Live Demo -->
+## [Live Demo](https://codepen.io/borntofrappe/full/LYPWLMv)
 
 ## Goal
 

@@ -10,28 +10,23 @@
 <body>
 
     <!-- graphics used in the project -->
-    <svg viewBox="0 0 22 24" style="display: none;">
+    <svg viewBox="0 0 110 110" style="display: none;">
         <symbol id="trash">
             <g
-                transform="translate(0.5 0.5)"
-                stroke-width="1.5"
+                transform="translate(5 5)"
+                stroke-width="10"
                 stroke="currentColor"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 fill="none">
                 <path
-                    d="M 1 2.25 h 18.75 a 1 1 0 0 1 1 1 v 2 a 1 1 0 0 1 -1 1 h -18.75 a 1 1 0 0 1 -1 -1 v -2 a 1 1 0 0 1 1 -1">
+                    d="M 0 10 h 20 l 10 -10 h 40 l 10 10 h 20 v 20 h -10 l -10 70 h -60 l -10 -70 h 80 h -90 z">
                 </path>
-                <path
-                    fill="currentColor"
-                    d="M 5 2.25 q 1.5 0 3 -2 h 5 q 1.5 1.5 3 2 z">
-                </path>
-                <path
-                    d="M 3.5 6.25 v 15.5 a 1 1 0 0 0 1 1 h 12 a 1 1 0 0 0 1 -1 v -15.5">
-                </path>
-                <path
-                    d="M 10.5 6.25 v 14 m 3.5 -14 v 14 m -7 -14 v 14">
-                </path>
+                <g transform="translate(50 65) rotate(45)">
+                    <path
+                        d="M -20 0 h 40 M 0 -20 v 40">
+                    </path>
+                </g>
             </g>
         </symbol>
     </svg>
@@ -52,19 +47,27 @@
         <main class="worksheet__paper">
             <canvas width="400" height="400"></canvas>
             <!-- the svg describes a path element which is used to initialize the canvas -->
-            <svg id="drawing-svg" width="400" height="400">
+            <svg width="400" height="400">
                 <g
                     fill="none"
-                    stroke="currentColor">
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linejoin="round"
+                    stroke-linecap="round">
                     <!-- every set of coordinates is used to create a circle in the canvas -->
-                    <path d="M 200 100 100 155 200 220 300 155 z"></path>
+                    <path id="trace" d="M 200 95 80 165 200 235 320 165 Z M 200 165 80 235 200 310 320 235 Z"></path>
+                    <!-- beside the path used to trace the drawing, include supporting elements shown by default -->
+                    <path d="M 200 95 v 70"></path>
+                    <path d="M 80 165 v 70"></path>
+                    <path d="M 200 235 v 70"></path>
+                    <path d="M 320 165 v 70"></path>
                 </g>
             </svg>
         </main>
 
         <div class="worksheet__controls">
             <button disabled>
-                <svg viewBox="0 0 22 24" width="22" height="24">
+                <svg viewBox="0 0 110 110" width="20" height="20">
                     <use href="#trash"></use>
                 </svg>
                 Clear canvas
@@ -74,7 +77,6 @@
                 Show final drawing
             </label>
         </div>
-
     </div>
 
     <script src="script.js"></script>

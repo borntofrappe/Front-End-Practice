@@ -56,26 +56,35 @@ the idea is to wrap each letter **o** in a span element
 .worksheet__paper svg {
   display: block;
 }
-/* by default hide the svg */
 .worksheet__paper svg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  /* visibility hidden allows to interact with the canvas beneath the svg */
-  visibility: hidden;
-  transition: all 0.2s ease-in-out;
-}
-/* show the svg when a class of .show is added to the wrapping container */
-.worksheet__paper.show svg {
-  opacity: 1;
-  visibility: visible;
   /* ! the canvas is made inaccessible as the svg overlaps
   setting pointer-events to none would allow to draw while showing the svg
   */
-  /* pointer-events: none; */
+  pointer-events: none;
+}
+/* by default hide the path element describing the drawing, and show it when a class of .trace is added to the wrapping container */
+.worksheet__paper svg path#trace {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+.worksheet__paper.trace svg path#trace {
+  opacity: 1;
+}
+/* opposite to the prescribed path element, show the canvas by default and hide it when the .trace class is added */
+.worksheet__paper canvas {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease-in;
+}
+/* ! setting visibility to hidden allows to avoid drawing while the canvas is hidden from sight */
+.worksheet__paper.trace canvas {
+  opacity: 0;
+  visibility: hidden;
 }
 
 /* display the controls one above the other
@@ -107,6 +116,27 @@ make them a flex container to display the svg+button, input+text in a row
 .worksheet__controls button svg,
 .worksheet__controls label input {
   margin-right: 0.85rem;
-  width: 16px;
+  width: 20px;
   height: auto;
+}
+
+/* on hover and when focused have animate the svg icon to slightly shake */
+.worksheet__controls button:hover svg,
+.worksheet__controls button:focus svg {
+  animation: shake 0.3s ease-in-out;
+  transform-origin: 50% 100%;
+}
+/* remove the animation when the button is disabled
+works due to higher specificity
+*/
+.worksheet__controls button:disabled svg {
+  animation: none;
+}
+@keyframes shake {
+  25% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-8deg);
+  }
 }

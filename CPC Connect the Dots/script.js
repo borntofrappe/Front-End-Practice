@@ -21,13 +21,13 @@ function setupCanvas() {
   points.forEach((point, index) => {
     const [x, y] = point;
     context.beginPath();
-    context.arc(x, y, 4, 0, Math.PI * 2);
+    context.arc(x, y, 5, 0, Math.PI * 2);
     context.fill();
 
     // below the circle include text describing the order of the point
     context.font = '14px sans-serif';
     context.textAlign = 'center';
-    context.fillText(index + 1, x, y + 18);
+    context.fillText(index + 1, x + 8, y + 16);
   });
 }
 // immediately call the function setting up the canvas
@@ -44,7 +44,7 @@ let startingY = 0;
 // ! update the initial coordinates
 function setupPath(x, y) {
   isCanvasFocused = true;
-  context.lineWidth = 4;
+  context.lineWidth = 3;
   [startingX, startingY] = [x, y];
 
   // remove the disabled attribute from the button
@@ -101,6 +101,6 @@ button.addEventListener('click', () => {
   button.setAttribute('disabled', true);
 });
 
-// target the input of type checkbox and following the input event show the svg in the .worksheet__paper container
+// target the input of type checkbox and following the input event trace the svg in the .worksheet__paper container
 const checkbox = document.querySelector('input[type="checkbox"]');
-checkbox.addEventListener('input', () => document.querySelector('.worksheet__paper').classList.toggle('show'));
+checkbox.addEventListener('change', () => document.querySelector('.worksheet__paper').classList.toggle('trace'));
