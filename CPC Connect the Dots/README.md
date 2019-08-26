@@ -17,3 +17,9 @@ Following a bit of experimentation I decided to update the project as follows:
 - instead of a repeating linear gradient, two svg elements are specified to describe a grid of dots;
 
 - a header is included to introduce the project. Every letter `o` in the header is furthermore wrapped in a `<span>` element to enumerate the letters themselves (in line with the worksheet motif).
+
+Finally, and after actually posting the project online, the following adjustments were included:
+
+- the touch events were fixed to consider the actual coordinates. The list `targetTouches` doesn't have an `x` and `y` property as much as `clientX` and `clientY`.
+
+- the distance between the canvas and surrounding viewport was included to have the mouse and touch coordinates accurately describe the position on the page.

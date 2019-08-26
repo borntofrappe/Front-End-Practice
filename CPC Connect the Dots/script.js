@@ -6,7 +6,9 @@ header.innerHTML = header.textContent.split('').map(letter => (letter.toLowerCas
 // retrieve the canvas and its dimensions
 const canvas = document.querySelector('.worksheet canvas');
 // ! consider the distance from the viewport to consider the precise coordinate in the canvas
-const {width, height, left: offsetX, top: offsetY} = canvas.getBoundingClientRect();
+const {
+  width, height, left: offsetX, top: offsetY,
+} = canvas.getBoundingClientRect();
 // context to draw the circle/path elements
 const context = canvas.getContext('2d');
 
@@ -16,7 +18,7 @@ function setupCanvas() {
   const d = document.querySelector('.worksheet svg path').getAttribute('d');
   const coordinates = d.match(/\d+ \d+/g);
   // consider the (x, y) integers described by the different sets of coordinates
-  const points  = coordinates.map(point => point.split(' ').map((coordinate) => parseInt(coordinate, 10)));
+  const points = coordinates.map(point => point.split(' ').map(coordinate => parseInt(coordinate, 10)));
 
   // for each point draw a circle
   points.forEach((point, index) => {
@@ -56,13 +58,13 @@ function setupPath(x, y) {
 function drawPath(x, y) {
   // draw a path from the starting coordinates to the new values
   context.beginPath();
-  context.moveTo(startingX, startingY)
-  context.lineTo(x, y)
+  context.moveTo(startingX, startingY);
+  context.lineTo(x, y);
   context.stroke();
 
   // update the starting coordinates to have the stroke continue from where it last was
   [startingX, startingY] = [x, y];
-};
+}
 
 // add the necessary event listeners
 // as the canvas is focused update the starting position and toggle the control value to true
@@ -74,7 +76,7 @@ canvas.addEventListener('mousedown', (e) => {
 canvas.addEventListener('touchstart', (e) => {
   e.preventDefault();
 
-  const { x, y } = e.targetTouches[0];
+  const { clientX: x, clientY: y } = e.targetTouches[0];
   setupPath(x - offsetX, y - offsetY);
 });
 
@@ -82,16 +84,16 @@ canvas.addEventListener('touchstart', (e) => {
 canvas.addEventListener('mousemove', (e) => {
   e.preventDefault();
 
-  if(isCanvasFocused) {
+  if (isCanvasFocused) {
     const { x, y } = e;
     drawPath(x - offsetX, y - offsetY);
   }
 });
 canvas.addEventListener('touchmove', (e) => {
   e.preventDefault();
-  if(isCanvasFocused) {
+  if (isCanvasFocused) {
     e.preventDefault();
-    const { x, y } = e.targetTouches[0];
+    const { clientX: x, clientY: y } = e.targetTouches[0];
     drawPath(x - offsetX, y - offsetY);
   }
 });
