@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,700|Roboto:400,500,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 5%);
+  /* by default use one of the two fonts
+  ! each font has three available weights, used in the page
+  */
+  font-family: "Fira Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+/* PAGE */
+/* display the page as a rectangle with a limited width */
+.page {
+  min-height: 100vh;
+  max-width: 650px;
+  width: 90vw;
+  margin: 1rem auto;
+  padding: 1rem 3rem;
+  box-shadow: 0 0 0 1px hsl(0, 0%, 70%), 0 1px 10px -5px hsla(0, 0%, 70%, 0.25);
+  border-radius: 4px;
+  line-height: 1.5;
+}
+/* display the page's controls in row */
+.page .controls {
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* add a border separating the .controls from the underlying text */
+  border-bottom: 1px solid hsl(0, 0%, 70%);
+}
+/* display the input of type range below te matching description */
+.page .controls label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+  line-height: 2.5;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+}
+/* style the select elements with the same font and padding */
+.page .controls select {
+  padding: 0.6rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+/* change the appearance of the two select elements to show in one a grey background, in the other a grey border */
+.page .controls select#text {
+  background: hsl(0, 0%, 95%);
+}
+.page .controls select#font {
+  border: 1px solid hsl(0, 0%, 80%);
+  background: none;
+}
+/* style the button with the accent color */
+.page .controls button {
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 4px;
+  background: hsl(0, 100%, 50%);
+  color: hsl(0, 0%, 100%);
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: all 0.2s ease-in-out;
+}
+/* when the button is clicked, its text is changed to show the word 'stop'
+through a class change the appearance of the button
+*/
+.page .controls button.stop {
+  background: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 5%);
+}
+/* display the text with a considerable line-height */
+.page .text {
+  margin: 1.5rem 0 1rem;
+  padding: 2rem 0 0.5rem;
+  color: hsl(0, 0%, 20%);
+  line-height: 2;
+  font-size: 0.8rem;
+  border-bottom: 1.5px solid hsl(0, 0%, 60%);
+  /* cap the height and allow for vertical scroll */
+  max-height: 450px;
+  overflow-y: auto;
+}
+/* separate the paragraph elements from one another */
+.page .text p + p {
+  margin-top: 0.75rem;
+}
+/* color the strikethrough text with the accent color */
+.page .text del {
+  color: hsl(0, 100%, 50%);
+}
+/* display the metrics in a flex row */
+.page .metrics {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0.5rem;
+}
+/* display each metric in a flex column */
+.page .metrics .metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+/* change the weight of the headings to give more visual importance to the metric's value */
+.page .metrics .metric h2 {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: hsl(0, 0%, 40%);
+  letter-spacing: 0.02rem;
+}
+.page .metrics .metric h3 {
+  color: hsl(0, 0%, 10%);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* GRID */
+/* set up a grid showing the study's result in columns and rows */
+.grid {
+  display: grid;
+  grid-gap: 0.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 200px;
+  /* cap the width when there are at most 4 columns */
+  max-width: 1000px;
+  /* include a small border casing the grid */
+  border: 1px solid hsl(0, 70%, 50%);
+  padding: 0.25rem;
+  margin: 2rem 10px;
+}
+.item {
+  /* include a small border creating another casing tier */
+  border: 1px solid hsl(0, 70%, 50%);
+  /* display the headings in a centered column */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.4;
+}
+/* have the first and last items occupy two rows each */
+.item:first-of-type,
+.item:last-of-type {
+  grid-column: span 2;
+}
+/* once the grid reaches is maximum size (approximately 1000, but slightly more due to the existing margin) center the grid horizontally and include negative and opposing margins to have the grid break its regular pattern */
+@media (min-width: 1020px) {
+  .grid {
+    margin: 2rem auto;
+  }
+  .item:first-of-type {
+    margin-right: -12px;
+  }
+  .item:last-of-type {
+    margin-left: -12px;
+  }
+  .item:nth-of-type(2) {
+    margin-left: 12px;
+  }
+  .item:nth-of-type(9) {
+    margin-right: 12px;
+  }
+}
+/* change the size highlighting the metrics of the studies */
+.item h1,
+.item h2 {
+  font-size: 5rem;
+}
+.item h3 {
+  font-size: 2.8rem;
+}
+.item h4 {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  color: hsl(0, 0%, 60%);
+  font-weight: 900;
+  letter-spacing: 0.015rem;
+}

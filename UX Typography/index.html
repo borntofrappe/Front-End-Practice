@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layout Practice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- section replicating one of the interactive pages displaying the reading interface
+    https://thomasjockin.github.io/lexend/
+    -->
+    <div class="page">
+        <!-- the page can be structured in three components
+            form, allowing to change the animation
+            main, describing the text with multiple paragraphs
+            section, detailing the metrics
+        -->
+        <form class="controls">
+            <label for="wpm">
+                <span id="wpm">Avg WPM (300)</span>
+                <input type="range" name="wpm" id="wpm" min="50" max="400" value="300" step="50"/>
+            </label>
+            <select name="text" id="text">
+                <option value="0">Text #1</option>
+                <option value="1">Text #2</option>
+            </select>
+            <select name="font" id="font">
+                <option value="roboto">Roboto</option>
+                <option value="fira-sans">Fira Sans</option>
+            </select>
+            <button>Start</button>
+        </form>
+        <main class="text">
+            <p>
+                Suddenly we saw something strange- a little bird with long tail feathers and spiky feathers on its head, running quickly across the sand.
+            </p>
+            <p>
+                We had never seen a bird run before. Commander Smith explained, " That' s a roadrunner. He can fly, but he would rather run." She went on to say, " You know, a lot of people think there is no life in the desert, but that is not true. Look- over there is a jackrabbit." We saw a large brown rabbit hopping out of a bush. Then I said, " Wow! I have found a little lobster." When we looked down, I saw something that did look like a tiny lobster, except it had a long tail that curled back over its body. Commander Smith yelled, " Do not touch that! It is a scorpion. It has a poisonous stinger in its tail, and if it stings you, you will get very sick. " When I heard that it was not safe, I jumped back a couple of feet. Fortunately, everyone was okay and so we could continue exploring.
+            </p>
+            <p>
+                So, after we had explored the desert for a little while, I decided that we should get back inside our ship and fly to northern Arizona. I really wanted to see the Grand Canyon. The Grand Canyon is one of the great natural wonders of the United States.
+            </p>
+            <p>
+                It looks like a big hole has been carved out of the Colorado River. It is 277 miles long, over a mile deep, and up to eighteen miles across. Even though it is a canyon it also has many caves which people lived in many years ago. If you look out over the edge of the Grand Canyon, you can see the river glistening far, far down at the bottom. The walls of the canyon are all different colors - red, brown, white, and yellow. The colors come from the layers of different kinds of rock. Like most visitors to the canyon, we just stood there for a long time, looking at it in awe. People on Earth were smart to call this canyon the Grand Canyon because it is very Grand!
+            </p>
+            <p>
+                After flying over Nevada, we headed west again, toward the Pacific Ocean. The part of the United States that borders the Pacific is known as the West Coast.
+            </p>
+        </main>
+        <section class="metrics">
+            <!-- include each numerical metric in a span element to update the values as needed -->
+            <div class="metric">
+                <h2>Time to read</h2>
+                <h3><span id="time-to-read">0</span></h3>
+            </div>
+            <div class="metric">
+                <h2>Words read</h2>
+                <h3><span id="words-read">0</span></h3>
+            </div>
+            <div class="metric">
+                <h2>Errors</h2>
+                <h3><span id="errors">0</span></h3>
+            </div>
+            <div class="metric">
+                <h2>Words correct per minute</h2>
+                <h3><span id="words-correct">0</span> WCPM</h3>
+            </div>
+        </section>
+    </div>
+
+    <!-- section replicating the grid describing a study through its results
+    each number is nested in a <span> element to show the number starting from 0
+    -->
+    <div class="grid">
+        <div class="item">
+            <h1><span>17</span>/<span>19</span></h1>
+            <h4>Had better scores with Lexend over Times New Roman</h4>
+        </div>
+        <div class="item">
+            <h3><span>1</span></h3>
+            <h4>Could not be measured</h4>
+        </div>
+        <div class="item">
+            <h3><span>2</span></h3>
+            <h4>Had the best score with Times New Roman</h4>
+        </div>
+        <div class="item">
+            <h3><span>2</span></h3>
+            <h4>Had the best score with Lexend Regular</h4>
+        </div>
+        <div class="item">
+            <h3><span>1</span></h3>
+            <h4>Had the best score with Lexend Deca</h4>
+        </div>
+        <div class="item">
+            <h3><span>9</span></h3>
+            <h4>Had the best score with Lexend Mega</h4>
+        </div>
+        <div class="item">
+            <h3><span>5</span></h3>
+            <h4>Had the best score with Lexend Giga</h4>
+        </div>
+        <div class="item">
+            <h3><span>110</span></h3>
+            <h4>AVG WCPM for Times New Roman</h4>
+        </div>
+        <div class="item">
+            <h3><span>128</span></h3>
+            <h4>AVG WCPM for Lexend</h4>
+        </div>
+        <div class="item">
+            <h2>+<span>19</span>.<span>8</span>%</h2>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
