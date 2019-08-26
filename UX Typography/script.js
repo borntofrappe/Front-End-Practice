@@ -1,10 +1,11 @@
 // PAGE
-// variables necessary for the speaking animation
+// variables used to keep track of the speaking animation
 const state = {
   intervalID: 0,
   index: 0,
-  time: 0, // for the time consider one variable to describe the cumulative number of milliseconds
-  startingTime: 0, // one variable to describe the date instance when the button is pressed
+  time: 0,
+  errors: 0,
+  wpm: 300,
 };
 
 // array describing the possible text values
@@ -24,44 +25,53 @@ const text = [
     'We landed our ship in southern Arizona and went exploring. The desert was very different from most of the other landscapes we had seen. We almost felt as if we were on another planet. Instead of trees, we saw cactus. Some of the cactus were short and round. Others were very tall and had thick " arms" sticking upward from their trunks.',
   ],
 ];
-// update the font chosen on the page
+
+// function to update the font chosen on the page
 const updateFont = (value) => {
   // the value is a lowercase, possibly dash separated string
   // convert to a capitalized, possibly space separated value
   const family = value.split('-').map(word => `${word[0].toUpperCase()}${word.slice(1)}`).join(' ');
   document.querySelector('body').style.fontFamily = `"${family}", sans-serif`;
 };
-// update the text rendered on the page
-const updateText = (value = 0) => {
+
+// function to update the text rendered on the page
+const updateText = (value) => {
   // consider the option highlighted by the index-value
   const option = text[parseInt(value, 10)];
-  // ! include one paragraph for each string, one span for each word
-  document.querySelector('.page .text').innerHTML = option.map(string => `<p>${string.split(' ').map(word => `<span>${word}</span>`).join(' ')}</p>`).join('');
+  // include one paragraph for each string
+  document.querySelector('.page .text').innerHTML = option.map(string => `<p>${string}</p>`).join('');
 };
-// immediately call the updateText function to section the paragraph with span elements
-updateText();
 
-// update the string displayed in the label
+// function to update the string displayed in the label
+// ! technically this function should also update the speed with which the animation occurs
 const updateWpm = (value) => {
   document.querySelector('#wpm').textContent = `Avg WPM (${value})`;
+  state.wpm = value;
+
+  // clear the interval and call the animating function with the new speed
+  clearInterval(state.intervalID);
+  updateSpans(state.wpm);
 };
 
 // target the form element
 const form = document.querySelector('form');
-// function resetting the page and the necesasry state variables
+// function resetting the page and the necessary state variables
 function resetPage() {
   state.index = 0;
   state.time = 0;
-  state.startingTime = 0;
+  state.errors = 0;
   clearInterval(state.intervalID);
-  form.querySelector('button').textContent = 'Start';
-  form.querySelector('button').classList.remove('stop');
+
+  const button = form.querySelector('button');
+  button.textContent = 'Start';
+  button.classList.remove('stop');
 
   const metrics = document.querySelectorAll('.metrics span');
   metrics.forEach((metric) => {
     metric.textContent = 0;
   });
 }
+
 // following the change event dispatch the necessary functions according to the target's name (or id)
 function handleChange(e) {
   const { name, value } = e.target;
@@ -83,48 +93,90 @@ function handleChange(e) {
 }
 form.addEventListener('change', handleChange);
 
+// function updating the appearance of the span elements at the speed dictated by the average word per minute
+function updateSpans(wpm) {
+  // from the word per minute, the delay considers the number of milliseconds necessary to read 1 word
+  const delay = 60 / wpm * 1000;
+  // consider the date instance stored in the state
+  const { time } = state;
+
+  // at an interval, consider the span element described by the index
+  // with every interval, be sure to increment the index
+  state.intervalID = setInterval(() => {
+    const { index } = state;
+    const spans = document.querySelectorAll('.page .text span');
+    // wrap the text of the current span element in a mark element
+    spans[index].innerHTML = `<mark>${spans[index].textContent}</mark>`;
+    // following the first span, remove the mark element from the span which precedes the current one
+    if (index > 0) {
+      // ! with a certain probability wrap the text in a del element instead, displaying an error
+      if (Math.random() > 0.75) {
+        spans[index - 1].innerHTML = `<del>${spans[index - 1].textContent}</del>`;
+        // increment the error variable and show it in the respective span
+        state.errors += 1;
+        document.querySelector('#errors').textContent = state.errors;
+      } else {
+        spans[index - 1].innerHTML = spans[index - 1].textContent;
+      }
+    }
+    // increment the index and show it in the respective span
+    state.index += 1;
+    document.querySelector('#words-read').textContent = state.index;
+
+    // compute the difference in milliseconds considering the starting time prior the interval
+    const now = new Date();
+    const gap = now - time;
+    // show the number of seconds once the measure reaches the fourth digit
+    const secondsGap = Math.floor(gap / 1000);
+    document.querySelector('#time-to-read').textContent = gap > 1000 ? `${secondsGap}s` : `${gap}ms`;
+
+    // if the number of seconds is greater than 0 (otherwise the risk is dividing a measure by 0)
+    // compute and display the correct word per minute
+    if (secondsGap > 0) {
+      const correctWords = state.index - state.errors;
+      const totalReadingTime = secondsGap / 60;
+      const wcpm = Math.floor(correctWords / totalReadingTime);
+      document.querySelector('#wcpm').textContent = wcpm;
+    }
+
+    // if index reaches the last span element terminate the interval
+    if (state.index === spans.length) {
+      clearInterval(state.intervalID);
+    }
+  }, delay);
+}
 
 // following the submit event update the appearance of the button and start the animation of the text on the page
 function handleSubmit(e) {
   e.preventDefault();
 
+  // change the appearance of the button and play/stop the animation
   const button = this.querySelector('button');
   const buttonText = button.textContent;
   if (buttonText === 'Start') {
     button.textContent = 'Stop';
     button.classList.add('stop');
 
-    const startingTime = new Date();
-    state.startingTime = startingTime;
+    // loop through the paragraphs and wrap each word in a span element
+    // the idea is to animate the span elements one after the other
+    const paragraphs = document.querySelectorAll('.page .text p');
+    paragraphs.forEach((paragraph) => {
+      paragraph.innerHTML = paragraph.textContent.trim().split(' ').map(word => `<span>${word}</span>`).join(' ');
+    });
 
-    // progressively, each span is then highlighted to a mark element
-    // ! with a certain probability change the mark element to a del element
-    state.intervalID = setInterval(() => {
-      const { index } = state;
-      const spans = document.querySelectorAll('.page .text span');
-      spans[index].innerHTML = `<mark>${spans[index].textContent}</mark>`;
-      if (index > 0) {
-        if (Math.random() > 0.7) {
-          spans[index - 1].innerHTML = `<del>${spans[index - 1].textContent}</del>`;
-          document.querySelector('#errors').textContent = document.querySelectorAll('.page .text del').length;
-        } else {
-          spans[index - 1].innerHTML = spans[index - 1].textContent;
-        }
-      }
-      state.index += 1;
-      document.querySelector('#words-read').textContent = state.index;
-
-      const time = new Date();
-      const gap = time - startingTime;
-      state.time = gap;
-      document.querySelector('#time-to-read').textContent = state.time > 1000 ? `${Math.floor(state.time / 1000)}s` : `${state.time}ms`;
-    }, 200);
+    // initialize time to refer to the date instance as the button is pressed
+    state.time = new Date();
+    // call the function to animate the span elements
+    const { wpm } = state;
+    updateSpans(wpm);
   } else {
     resetPage();
   }
 }
 form.addEventListener('submit', handleSubmit);
 
+
+// GRID
 // function used to show the text of the span element
 // from 0 up to (and including) the initial number
 function showEntry(entry) {
@@ -133,7 +185,7 @@ function showEntry(entry) {
   entry.textContent = counter;
   // to have larger numbers animate faster consider a delay inversely proportionate to the number itself
   const delay = 1400 / number;
-  // at every inteval increment the counter
+  // at every interval increment the counter
   const intervalID = setInterval(() => {
     counter += 1;
     // to show a staggered animation show the updated counter only with a certain probability
@@ -158,7 +210,6 @@ if (window.IntersectionObserver) {
       }
     });
   }, {}); // an empty objects mean the options are set to their default values
-  // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
   const spans = document.querySelectorAll('.grid span');
   spans.forEach(span => observer.observe(span));
 }

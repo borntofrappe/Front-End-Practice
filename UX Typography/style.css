@@ -95,7 +95,7 @@ through a class change the appearance of the button
 .page .text p + p {
   margin-top: 0.75rem;
 }
-/* color the strikethrough text with the accent color */
+/* color the strike through text with the accent color */
 .page .text del {
   color: hsl(0, 100%, 50%);
 }
