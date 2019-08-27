@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: hsl(198, 58%, 45%);
+  background: hsl(79, 58%, 45%);
+  background: hsl(0, 0%, 97%);
+  font-family: "Lato", sans-serif;
+}
+/* center the svg horizontally */
+.viz {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+svg {
+  height: 600px;
+  width: auto;
+  display: block;
+}
