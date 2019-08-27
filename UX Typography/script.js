@@ -1,11 +1,11 @@
 // PAGE
-// variables used to keep track of the speaking animation
+// variables used to keep track of the animations on the page
 const state = {
   intervalID: 0,
-  index: 0,
-  time: 0,
-  errors: 0,
-  wpm: 300,
+  index: 0, // keep track of the highlighted span element
+  time: 0, // keep track of the instance in which the button is pressed
+  errors: 0, // keep track of the span elements highlighting text with <del>
+  wpm: 300, // keep track of the value of the input of type range
 };
 
 // array describing the possible text values
@@ -26,35 +26,39 @@ const text = [
   ],
 ];
 
-// function to update the font chosen on the page
+// function to update the font following a change event on the matching select element
+// ! update the font of the paragraphs only
 const updateFont = (value) => {
   // the value is a lowercase, possibly dash separated string
   // convert to a capitalized, possibly space separated value
   const family = value.split('-').map(word => `${word[0].toUpperCase()}${word.slice(1)}`).join(' ');
-  document.querySelector('body').style.fontFamily = `"${family}", sans-serif`;
+  document.querySelector('.page .text').style.fontFamily = `"${family}", sans-serif`;
 };
 
-// function to update the text rendered on the page
+// function to update the text following a change event on the matching select element
 const updateText = (value) => {
   // consider the option highlighted by the index-value
+  // ! convert to integer the input value
   const option = text[parseInt(value, 10)];
   // include one paragraph for each string
   document.querySelector('.page .text').innerHTML = option.map(string => `<p>${string}</p>`).join('');
 };
 
-// function to update the string displayed in the label
-// ! technically this function should also update the speed with which the animation occurs
+// function to update the string displayed in the label and change the speed of the animation
 const updateWpm = (value) => {
   document.querySelector('#wpm').textContent = `Avg WPM (${value})`;
   state.wpm = value;
 
-  // clear the interval and call the animating function with the new speed
-  clearInterval(state.intervalID);
-  updateSpans(state.wpm);
+  // if the animation is ongoing clear the interval and call the animating function with the new speed
+  if (state.index !== 0) {
+    clearInterval(state.intervalID);
+    updateSpans(state.wpm);
+  }
 };
 
 // target the form element
 const form = document.querySelector('form');
+
 // function resetting the page and the necessary state variables
 function resetPage() {
   state.index = 0;

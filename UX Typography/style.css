@@ -9,10 +9,9 @@ body {
   min-height: 100vh;
   background: hsl(0, 0%, 100%);
   color: hsl(0, 0%, 5%);
-  /* by default use one of the two fonts
-  ! each font has three available weights, used in the page
+  /* use roboto for the page
+  fira sans is possibly included in the page's text
   */
-  font-family: "Fira Sans", sans-serif;
   font-family: "Roboto", sans-serif;
 }
 /* PAGE */
@@ -123,6 +122,28 @@ through a class change the appearance of the button
   color: hsl(0, 0%, 10%);
   font-size: 1.5rem;
   font-weight: 700;
+}
+/* on smaller viewport change the layout of the controls and metrics containers to take advantage of vertical space */
+@media (max-width: 500px) {
+  /* specify a grid of two columns */
+  .page .controls,
+  .page .metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.75rem 0.25rem;
+  }
+  /* have the label nesting the input of type range and the button occupy the entirety of their respective row */
+  .page .controls label,
+  .page .controls button {
+    grid-column: 1/-1;
+  }
+  /* align the first and third container in the .metric grid to the left
+  ! .metric containers are flex containers
+  */
+  .page .metrics .metric:nth-of-type(odd) {
+    justify-self: start;
+    align-items: flex-start;
+  }
 }
 
 /* GRID */
