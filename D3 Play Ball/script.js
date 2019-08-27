@@ -1,7 +1,8 @@
-// data describing two hypothetical teams with a specific score and array of players
-// the score of the team _and_ the score of the players is broken down in what are 150 data points
-// for every observation one of the two teams scores, one of its players scores
-// ! it is possible that no team scores for a few observations
+/* data describing two hypothetical teams with a specific score and array of players
+ - the score of the team _and_ the score of the players is broken down in what are 150 data points
+ - for every observation one of the two teams scores, one of its players scores
+ ! it is actually possible that a player does not score for either team
+*/
 const data = [
   {
     name: 'Turtles',
@@ -106,13 +107,14 @@ const game = group
   .attr('transform', `translate(${width / 2} ${height})`);
 
 // include two groups for the teams, and at either side of the center of the svg element
+const widthGap = width / 5;
 const teams = game
   .selectAll('g.team')
   .data(data)
   .enter()
   .append('g')
   .attr('class', 'team')
-  .attr('transform', (d, i) => `translate(${-width / 10 + width / 5 * i} 0)`);
+  .attr('transform', (d, i) => `translate(${-widthGap / 2 + widthGap * i} 0)`);
 
 // scale mapping the score to the height of the svg
 const teamScale = d3
@@ -138,12 +140,11 @@ teams
   .attr('text-anchor', (d, i) => (i === 0 ? 'end' : 'start'))
   .attr('font-size', '36px')
   .attr('font-weight', '900')
-  .text(({ score }) => score)
-  .attr('fill', (d, i) => ((i === 0) ? 'hsl(79, 70%, 40%)' : 'hsl(198, 70%, 40%)'));
-
+  .attr('fill', (d, i) => ((i === 0) ? 'hsl(79, 70%, 40%)' : 'hsl(198, 70%, 40%)'))
+  .text(({ score }) => score);
 
 // scale mapping the scores of the players to the remaining vertical space
-// below the text des
+// below the text describing the score
 const playerScale = d3
   .scaleLinear()
   .domain([0, d3.max(data, ({ score }) => score)])
@@ -153,6 +154,8 @@ const playerScale = d3
 // for each player add a group element
 const players = teams
   .selectAll('g.player')
+  // include the data by sorting the players in descending order and adding a cumulative property
+  // cumulative keeps track of the previous scores
   .data(d => d.players.sort((a, b) => d3.descending(a.score, b.score)).reduce((acc, curr, index) => {
     const { name, score, breakdown } = curr;
     const cumulative = index > 0 ? acc[index - 1].cumulative + score : score;
@@ -166,22 +169,21 @@ const players = teams
   .enter()
   .append('g')
   .attr('class', 'player')
-  .attr('data-player', ({ name }) => name)
-  // translate the group vertically to position the boxes above one another
-  // ! consider the cumulative score accrued by the players
-  // scale the boxes for the first team with a negative value to have the rectangles drawn away from the center
+  /*
+   -translate the group vertically to position the boxes one above the other (using the cumulative score
+   - scale the boxes for the first team with a negative value, to have the shaoes drawn away from the center
+  */
   .attr('transform', ({ name, cumulative }) => (data[0].players.find(player => player.name === name) ? `scale(-1 1) translate(0 ${-playerScale(cumulative)})` : `translate(0 ${-playerScale(cumulative)})`));
 
 
-// scale mapping the index of the rectangles to the width allocated beyond the group elements
-const playersWidth = (width / 2) - (width / 5);
+// scale mapping the index of the players to the width allocated beyond the group elements
+const playersWidth = (width / 2) - widthGap;
 const widthScale = d3
   .scaleLinear()
-  .domain([0, 5])
-  .range([playersWidth, 0]);
+  .domain([0, data[0].players.length])
+  .range([playersWidth, 0]); // the shape decrease with every passing index
 
 // for each player add a rectangle describing the score through its height
-// ! the width considers the order with which the rectangles are included
 players
   .append('rect')
   .attr('x', 0)
@@ -190,7 +192,8 @@ players
   .attr('height', ({ score }) => playerScale(score))
   .attr('stroke', 'currentColor')
   .attr('stroke-width', '0.5px')
-  .attr('fill', ({ name }) => (data[0].players.find(player => player.name === name) ? 'hsl(79, 70%, 40%)' : 'hsl(198, 70%, 40%)'));
+  // differentiate the color of the rectangle according to the matching team
+  .attr('fill', ({ name }) => (data[0].players.find(player => player.name === name) ? 'hsl(79, 50%, 48%)' : 'hsl(198, 50%, 48%)'));
 
 // for each player and next to the corresponding rectangle add a text element with its name
 players
@@ -202,25 +205,30 @@ players
   .attr('text-anchor', ({ name }) => (data[0].players.find(player => player.name === name) ? 'end' : 'start'))
   .attr('transform', ({ name }, i) => (data[0].players.find(player => player.name === name) ? `translate(${widthScale(i) + 5} 0) scale(-1 1)` : `translate(${widthScale(i) + 5} 0)`));
 
-// add a path element connecting the top of the rectangles
+/*
+  add a path connecting the top of the rectangles
+  the idea is to draw the element from the coordinates specified by the respective point
+*/
 const yMin = playerScale(d3.min(data, d => d.score));
 const yMax = playerScale(d3.max(data, d => d.score));
 
+// add a group to position the svg elements
+// the idea is to have them scale from the center
 const summary = game
   .append('g')
-  .attr('transform', `translate(0 ${(-yMax - yMin) / 2}) scale(0.75)`);
+  .attr('transform', `translate(0 ${(-yMax - yMin) / 2}) scale(0.75)`); // the scale is applied from the center of the shape
 
 summary
   .append('path')
-  .attr('d', `M ${-width / 10} -${(yMax - yMin) / 2} L ${width / 10} ${(yMax - yMin) / 2} H ${-width / 10}z`)
+  .attr('d', `M ${-widthGap / 2} -${(yMax - yMin) / 2} L ${widthGap / 2} ${(yMax - yMin) / 2} H ${-widthGap / 2}z`)
   .attr('fill', 'hsl(79, 70%, 50%)')
   .attr('stroke', 'hsl(79, 70%, 50%)')
   .attr('stroke-width', '1.5')
-  .attr('opacity', 0.4);
+  .attr('opacity', 0.5);
 
 summary
   .append('path')
-  .attr('d', `M ${-width / 10} -${(yMax - yMin) / 2} L ${width / 10} ${(yMax - yMin) / 2}`)
+  .attr('d', `M ${-widthGap / 2} -${(yMax - yMin) / 2} L ${widthGap / 2} ${(yMax - yMin) / 2}`)
   .attr('stroke', 'currentColor')
   .attr('stroke-width', '1.5')
   .attr('stroke-linecap', 'round');
