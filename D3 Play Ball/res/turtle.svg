@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 70" width="100" height="70">
+  <g
+    transform="translate(2 2)">
+      <path
+        stroke-width="4"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        stroke="hsl(0, 0%, 10%)"
+        fill="hsl(69, 91%, 44%)"
+        d="M 0 20 h 8 a 5 5 0 0 1 5 5 v 18 a 5 5 0 0 0 5 5 a 5 5 0 0 0 -5 5 v 10 a 3 3 0 0 0 3 3 h 8 a 3 3 0 0 0 3 -3 v -6 l 4 -8 v 14 a 3 3 0 0 0 3 3 h 6 a 3 3 0 0 0 3 -3 v -5 h 37 v 5 a 3 3 0 0 0 3 3 h 6 a 3 3 0 0 0 3 -3 v -10 a 3 3 0 0 0 -3 -3 h 2 a 5 5 0 0 0 0 -10 a 30 30 0 0 0 -30 -30 a 30 30 0 0 0 -30 30 v -28 a 12 12 0 0 0 -12 -12 h -7 a 12 12 0 0 0 -12 12 z">
+      </path>
+      <circle
+        fill="hsl(0, 0%, 10%)"
+        stroke="none"
+        cx="7"
+        cy="12"
+        r="1.5"
+        opacity="0.25">
+      </circle>
+      <path
+        stroke-width="4"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        stroke="hsl(0, 0%, 10%)"
+        fill="none"
+        d="M 18 10 v 4">
+      </path>
+  </g>
+</svg>
