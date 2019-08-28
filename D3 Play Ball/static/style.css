@@ -6,14 +6,22 @@
   margin: 0;
 }
 body {
-  background: hsl(0, 0%, 98%);
+  background: linear-gradient(
+    to right,
+    hsl(79, 80%, 40%) 50%,
+    hsl(198, 80%, 40%) 50%
+  );
   font-family: "Lato", sans-serif;
-}
-/* center the svg horizontally */
-.viz {
+  /* center the visualization in the viewport */
+  min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+.viz {
+  margin: 1rem;
   padding: 1rem;
+  background: hsl(0, 0%, 100%);
 }
 svg {
   height: 600px;
