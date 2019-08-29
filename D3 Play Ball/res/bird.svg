@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77 77" width="77" height="77">
+  <g
+    transform="translate(2 2)">
+      <path
+        stroke-width="4"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        stroke="hsl(0, 0%, 10%)"
+        fill="hsl(188, 85%, 50%)"
+        d="M 7 -0 h 34 v 8 l -8 8 v 8 l 40 40 h -15 l -7 -7 h -8 l -7 7 a 6 6 0 0 1 6 6 v 4 h -27 v -4 a 6 6 0 0 1 6 -6 l 8 -8 a 26 26 0 0 1 -26 -26 l 5 -10 h -8 v -4 z">
+      </path>
+      <path
+        stroke-width="4"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        stroke="hsl(0, 0%, 10%)"
+        fill="none"
+        d="M 16 10 v 4">
+      </path>
+  </g>
+</svg>
