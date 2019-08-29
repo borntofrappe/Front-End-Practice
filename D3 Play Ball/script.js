@@ -283,7 +283,7 @@ function showData(dex = 0) {
     .attr('y', ({ score }) => -teamScale(score) + 36)
     .text(({ score }) => score);
 
-  // add oe group for each player
+  // add one group for each player
   const groupPlayers = updateTeams
     .selectAll('g.player')
     .data(d => d.players.sort((a, b) => d3.descending(a.score, b.score)).reduce((acc, curr, index) => {
