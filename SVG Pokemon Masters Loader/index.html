@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG Pokemon Master Loader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <svg viewBox="0 0 100 100" width="200" height="200">
+        <defs>
+            <circle
+                id="placeholder"
+                cx="0"
+                cy="0"
+                r="8"
+                fill="#4D9CB6">
+            </circle>
+            <g
+                id="icon">
+                <path
+                    fill="#6ED9EC"
+                    d="M -8 0 a 8 8 0 0 1 16 0z">
+                </path>
+
+                <path
+                    fill="#98F4FB"
+                    d="M -8 0 a 8 8 0 0 0 16 0z">
+                </path>
+
+                <path
+                    fill="none"
+                    stroke="#1C6A77"
+                    d="M -8 0 h 16">
+                </path>
+                <circle
+                    id="placeholder"
+                    cx="0"
+                    cy="0"
+                    r="3"
+                    fill="#1C6A77">
+                </circle>
+                <circle
+                    id="placeholder"
+                    cx="0"
+                    cy="0"
+                    r="2"
+                    fill="#98F4FB">
+                </circle>
+            </g>
+        </defs>
+        <rect
+            x="0"
+            y="0"
+            width="100"
+            height="100"
+            rx="5"
+            fill="#2F687B">
+        </rect>
+        <g transform="translate(50 50)">
+            <!-- group describing the placeholder circles
+            scale the group to have the circles animated from the center of the rectangle
+            -->
+            <g class="placeholders">
+                <use href="#placeholder" transform="rotate(0) translate(0 -32)"></use>
+                <use href="#placeholder" transform="rotate(60) translate(0 -32)"></use>
+                <use href="#placeholder" transform="rotate(120) translate(0 -32)"></use>
+                <use href="#placeholder" transform="rotate(180) translate(0 -32)"></use>
+                <use href="#placeholder" transform="rotate(240) translate(0 -32)"></use>
+                <use href="#placeholder" transform="rotate(300) translate(0 -32)"></use>
+            </g>
+
+            <!-- group describing the icons
+            scale the use elements to have them scale from their respective center
+            -->
+            <g class="icons">
+                <g transform="rotate(0) translate(0 -32)">
+                    <use href="#icon"></use>
+                </g>
+                <g transform="rotate(60) translate(0 -32)">
+                    <use href="#icon"></use>
+                </g>
+                <g transform="rotate(120) translate(0 -32)">
+                    <use href="#icon"></use>
+                </g>
+                <g transform="rotate(180) translate(0 -32)">
+                    <use href="#icon"></use>
+                </g>
+                <g transform="rotate(240) translate(0 -32)">
+                    <use href="#icon"></use>
+                </g>
+                <g transform="rotate(300) translate(0 -32)">
+                    <use href="#icon"></use>
+                </g>
+            </g>
+
+        </g>
+    </svg>
+
+    <button>Toggle</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

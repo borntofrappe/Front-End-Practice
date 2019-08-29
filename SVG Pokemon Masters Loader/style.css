@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:500&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ceede6, #fbffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto Mono", monospace;
+}
+svg {
+  width: 200px;
+  height: auto;
+}
+svg,
+svg g.placeholders {
+  transform: scale(0);
+  transition: transform 0.35s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+svg g.placeholders {
+  transition-delay: 0s;
+}
+svg.animate,
+svg.animate g.placeholders {
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: scale(1);
+}
+svg g.placeholders {
+  transition-delay: 0.1s;
+}
+svg g.icons use {
+  opacity: 0;
+}
+svg.animate g.icons use {
+  animation: showIcon 1.5s ease-out infinite;
+}
+svg.animate g.icons g:nth-of-type(1) use {
+  animation-delay: 0.5s;
+}
+svg.animate g.icons g:nth-of-type(2) use {
+  animation-delay: 0.75s;
+}
+svg.animate g.icons g:nth-of-type(3) use {
+  animation-delay: 1s;
+}
+svg.animate g.icons g:nth-of-type(4) use {
+  animation-delay: 1.25s;
+}
+svg.animate g.icons g:nth-of-type(5) use {
+  animation-delay: 1.5s;
+}
+svg.animate g.icons g:nth-of-type(6) use {
+  animation-delay: 1.75s;
+}
+@keyframes showIcon {
+  0%,
+  20% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  25% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+button {
+  margin-top: 2.5rem;
+  padding: 1rem 2.5rem;
+  background: none;
+  border: none;
+  position: relative;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: #fff;
+  z-index: 5;
+  text-shadow: 2px 2px hsl(33, 100%, 28%);
+}
+button:before,
+button:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  clip-path: polygon(0% 50%, 15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%);
+  z-index: -5;
+}
+button:before {
+  background: #2f687b;
+  transform: translate(-50%, -50%) scale(1.05, 1.1);
+}
+button:after {
+  background: linear-gradient(to bottom, #ffa029, #e7d447);
+}
