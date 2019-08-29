@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,12 +7,16 @@
 }
 body {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #ceede6, #fbffff);
+  background: linear-gradient(
+    to bottom,
+    hsl(166, 46%, 87%),
+    hsl(180, 100%, 99%)
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "Roboto Mono", monospace;
+  font-family: "Lato", sans-serif;
 }
 svg {
   width: 200px;
@@ -41,22 +45,22 @@ svg.animate g.icons use {
   animation: showIcon 1.5s ease-out infinite;
 }
 svg.animate g.icons g:nth-of-type(1) use {
-  animation-delay: 0.5s;
+  animation-delay: 0.45s;
 }
 svg.animate g.icons g:nth-of-type(2) use {
-  animation-delay: 0.75s;
+  animation-delay: 0.7s;
 }
 svg.animate g.icons g:nth-of-type(3) use {
-  animation-delay: 1s;
+  animation-delay: 0.95s;
 }
 svg.animate g.icons g:nth-of-type(4) use {
-  animation-delay: 1.25s;
+  animation-delay: 1.2s;
 }
 svg.animate g.icons g:nth-of-type(5) use {
-  animation-delay: 1.5s;
+  animation-delay: 1.45s;
 }
 svg.animate g.icons g:nth-of-type(6) use {
-  animation-delay: 1.75s;
+  animation-delay: 1.7s;
 }
 @keyframes showIcon {
   0%,
@@ -72,18 +76,23 @@ svg.animate g.icons g:nth-of-type(6) use {
 
 button {
   margin-top: 2.5rem;
-  padding: 1rem 2.5rem;
+  padding: 0.7rem 1.4rem;
   background: none;
   border: none;
-  position: relative;
   font-family: inherit;
-  font-size: 1.5rem;
-  color: #fff;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: hsl(0, 0%, 100%);
   z-index: 5;
-  text-shadow: 2px 2px hsl(33, 100%, 28%);
+  text-shadow: 2px 1px hsl(33, 100%, 28%), 0px 0px 4px hsla(33, 100%, 28%, 0.75);
+  /* position relative for the pseudo elements */
+  position: relative;
+  filter: drop-shadow(0 1px 2px hsla(195, 45%, 13%, 0.2));
 }
-button:before,
-button:after {
+/* add two polygons as the button's background */
+button::before,
+button::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -94,10 +103,21 @@ button:after {
   clip-path: polygon(0% 50%, 15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%);
   z-index: -5;
 }
-button:before {
+button::before {
   background: #2f687b;
   transform: translate(-50%, -50%) scale(1.05, 1.1);
 }
-button:after {
-  background: linear-gradient(to bottom, #ffa029, #e7d447);
+button::after {
+  background: linear-gradient(to bottom, hsl(33, 100%, 58%), hsl(53, 77%, 59%));
+}
+/* on hover, when focused slightly translate the button upwards */
+button:hover,
+button:focus {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 1px 2px hsla(195, 45%, 13%, 0.4));
+}
+/* on click slightly translate the button downwards */
+button:active {
+  transform: translateY(1px);
+  filter: drop-shadow(0 0 hsla(195, 45%, 13%, 0.4));
 }

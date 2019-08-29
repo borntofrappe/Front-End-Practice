@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <svg viewBox="0 0 100 100" width="200" height="200">
+    <!-- svg element describing the loader -->
+    <svg class="animate" viewBox="0 0 100 100" width="200" height="200">
         <defs>
+            <!-- placeholder circles -->
             <circle
                 id="placeholder"
                 cx="0"
@@ -17,18 +19,17 @@
                 r="8"
                 fill="#4D9CB6">
             </circle>
+            <!-- pokeball icon -->
             <g
                 id="icon">
                 <path
                     fill="#6ED9EC"
                     d="M -8 0 a 8 8 0 0 1 16 0z">
                 </path>
-
                 <path
                     fill="#98F4FB"
                     d="M -8 0 a 8 8 0 0 0 16 0z">
                 </path>
-
                 <path
                     fill="none"
                     stroke="#1C6A77"
@@ -50,6 +51,7 @@
                 </circle>
             </g>
         </defs>
+        <!-- rounded rectangle used as a background -->
         <rect
             x="0"
             y="0"
@@ -94,10 +96,10 @@
                     <use href="#icon"></use>
                 </g>
             </g>
-
         </g>
     </svg>
 
+    <!-- button toggling the animation on the svg element -->
     <button>Toggle</button>
 
     <script src="script.js"></script>
