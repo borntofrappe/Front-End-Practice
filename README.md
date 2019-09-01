@@ -80,7 +80,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 
 |Title|Goal|Date|
 |---|---|---|
-|[Svelte's today's todos]()|Create another todo app to get acquainted with the svelte framework.|1st September 2019|
+|[Svelte's today's todos](https://codepen.io/borntofrappe/pen/GRKvbzY)|Create another todo app to get acquainted with the svelte framework.|1st September 2019|
 
 
 ### SVG

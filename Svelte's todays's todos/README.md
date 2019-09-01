@@ -1,6 +1,6 @@
 # Svelte's today's todos
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/GRKvbzY)
 
 ## Goal
 
