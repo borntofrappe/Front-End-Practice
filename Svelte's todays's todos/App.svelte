@@ -52,9 +52,80 @@ import { onMount , afterUpdate } from 'svelte';
 </script>
 
 <style>
+	@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
 	* {
 		padding: 0;
 		margin: 0;
+	}
+
+	.app {
+		max-width: 280px;
+		width: 90vw;
+		margin: 1rem auto;
+		display: flex;
+		flex-direction: column;
+		font-family: 'Lato', sans-serif;
+		color: #333;
+
+	}
+	header {
+		padding: 0 1rem;
+	}
+	header h1 {
+		font-weight: 400;
+	}
+	ul {
+		list-style: none;
+	}
+	ul li + li {
+		border-top: 1px solid #c5c5c5;
+	}
+	ul li button {
+		padding: 0.75rem 0;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		background: none;
+		border: none;
+		font-family: inherit;
+		font-size: 0.85rem;
+		transition: all 0.2s ease-out;
+	}
+	ul li button:hover {
+		background: #f3f3f3;
+	}
+	ul li button svg {
+		margin-right: 0.5rem;
+		width: 18px;
+		height: auto;
+		display: block;
+		color: #c5c5c5;
+	}
+	main, details {
+		margin: 0.75rem 0;
+	}
+	details {
+		line-height: 2;
+	}
+	form {
+		margin-top: auto;
+		display: flex;
+		align-items: center;
+	}
+	form input,
+	form button {
+		font-family: inherit;
+		border: none;
+		background: none;
+		padding: 0.5rem;
+		font-size: 0.9rem;
+	}
+	form input {
+		flex-grow: 1;
+	}
+	form button {
+		font-weight: 700;
 	}
 </style>
 
@@ -152,6 +223,3 @@ import { onMount , afterUpdate } from 'svelte';
 		<button>Save</button>
 	</form>
 </div>
-
-
-
