@@ -76,6 +76,13 @@ There are overlaps, but the category is meant to describe the core feature of th
 |---|---|---|
 |[React Like Button](https://codepen.io/borntofrappe/pen/pXOMZK)|Experiment with React Hooks to create a like button progressively increasing in size and color.|6th July 2019|
 
+### Svelte
+
+|Title|Goal|Date|
+|---|---|---|
+|[Svelte's today's todos]()|Create another todo app to get acquainted with the svelte framework.|1st September 2019|
+
+
 ### SVG
 
 |Title|Goal|Date|
