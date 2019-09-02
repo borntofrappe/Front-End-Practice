@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: hsl(240, 20%, 99%);
+  font-family: "Source Sans Pro", sans-serif;
+}
+/* display the content of the .app container in a column */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+}
+/* separate each subsequent element from the previous one */
+.app > * + * {
+  margin-top: 1.25rem;
+}
+header {
+  line-height: 1.25;
+  padding: 0.75rem 1rem;
+  border: 1px solid hsl(240, 20%, 50%);
+  color: hsl(240, 20%, 30%);
+}
+header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+/* align the text of the heading with the svg */
+header h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+header h3 svg {
+  width: 15px;
+  height: auto;
+  margin-left: 0.75rem;
+}
+/* size the svg describing the visualization */
+.viz > svg {
+  width: 90vw;
+  max-width: 600px;
+  height: auto;
+}
