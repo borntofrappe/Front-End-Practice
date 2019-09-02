@@ -1,7 +1,7 @@
 # UI Picross Table
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/MWgEbPz)
 
 ## Goal
 
-Practice with a table layout to recreate a few levels from the popular game.
+Tinker with the `<table>` element to recreate a few levels from the semi-popular Nintendo game.
