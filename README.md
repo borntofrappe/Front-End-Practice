@@ -144,6 +144,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[UX Smoothie App](https://codepen.io/borntofrappe/pen/bPLpxo)|Inspired by [this design](https://dribbble.com/shots/5410284-Smoothie-Land), create an interactive couple of screens allowing to select a couple of ingredients and produce a cool looking smoothie.|28th-29th June 2019|
 |[UI Testimonial](https://codepen.io/borntofrappe/pen/LwPKEj)|Inspired by [this design](https://dribbble.com/shots/6767315-Quote-Card), design a card for an hypothetical testimonial.|17th July 2019|
 |[UX Typography](https://codepen.io/borntofrappe/pen/KKPWOzZ)|Practice with CSS and Javascript while replicating parts of the design from [this website](https://thomasjockin.github.io/lexend/).|26th-27th August 2019|
+|[UI Picross Table](https://codepen.io/borntofrappe/pen/MWgEbPz)|Tinker with the `<table>` element to recreate a few levels from the semi-popular Nintendo game.|31st August - 2nd September 2019|
 
 ### Miscellaneous
 
