@@ -7,6 +7,7 @@
 }
 body {
   background: hsl(240, 20%, 99%);
+  color: hsl(240, 20%, 25%);
   font-family: "Source Sans Pro", sans-serif;
 }
 /* display the content of the .app container in a column */
@@ -15,18 +16,15 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 0.75rem;
-  max-width: 900px;
-  margin: 1rem auto;
 }
 /* separate each subsequent element from the previous one */
 .app > * + * {
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
 }
 header {
-  line-height: 1.25;
+  line-height: 1.5;
   padding: 0.75rem 1rem;
   border: 1px solid hsl(240, 20%, 50%);
-  color: hsl(240, 20%, 30%);
 }
 header h1 {
   font-size: 1.75rem;
@@ -44,46 +42,61 @@ header h3 svg {
   height: auto;
   margin-left: 0.75rem;
 }
-/* size the svg describing the geographical visualization */
+
 .geo {
+  background: hsl(240, 20%, 99%);
+}
+/* size the svg describing the geographical visualization */
+.geo svg {
   width: 90vw;
-  width: 600px;
+  max-width: 650px;
   height: auto;
 }
-.member-states {
+.line-chart {
   max-width: 400px;
-  align-self: flex-end;
-  border-left: 3px solid currentColor;
-  padding: 1rem 0;
-  padding-left: 1rem;
 }
-@media (max-width: 800px) {
-  .member-states {
-    align-self: center;
-  }
-}
-.member-states .member-state + .member-state {
-  margin-top: 3rem;
-}
-.member-states h2 {
+.line-chart h2 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   font-weight: 400;
-  position: relative;
 }
-.member-states h2:before {
-  position: absolute;
-  content: "";
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: hsl(240, 20%, 99%);
-  border: 2px solid currentColor;
-  top: 50%;
-  left: calc(-1rem - 1px);
-  transform: translate(-50%, -50%);
-}
-.member-states p {
+.line-chart p {
   line-height: 1.5;
   font-size: 0.9rem;
+}
+
+.line-chart {
+  padding: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+.line-chart h2 {
+  position: relative;
+}
+/* to the left of each heading include a circle through pseudo elements */
+.line-chart h2:after {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: hsl(240, 20%, 99%);
+  border: 2.5px solid hsl(240, 60%, 35%);
+  top: 50%;
+  right: calc(100% + 1.5rem);
+}
+.line-chart:before {
+  position: absolute;
+  content: "";
+  width: 4px;
+  height: 100%;
+  background: hsl(240, 60%, 35%);
+  top: 0%;
+  right: calc(100% + 8px);
+}
+
+/* when a class of .focus is applied to the line chart style the pseudo elements to show a filled circle */
+.line-chart.focused h2:after {
+  background: radial-gradient(hsl(240, 60%, 35%) 60%, hsl(240, 20%, 99%) 60%);
+  background-repeat: no-repeat;
 }

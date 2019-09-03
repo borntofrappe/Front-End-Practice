@@ -1,8 +1,7 @@
 /* data collected from eurostat (and slightly cleaned to remove islands outside of continental Europe)
 https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts
-
 */
-const geoJSON = {
+const dataGeoJson = {
   type: 'FeatureCollection',
   features: [
     {
@@ -195,7 +194,7 @@ const geoJSON = {
 
 // array describing member states through their country code and population
 // https://europa.eu/european-union/about-eu/figures/living_en#size-and-population
-const memberStatesByPopulation = [
+const dataPopulation = [
   {
     state: 'Belgium',
     population: 11258434,
@@ -340,7 +339,7 @@ const memberStatesByPopulation = [
 
 // array describing the member states per year of entry
 // https://europa.eu/european-union/about-eu/countries_en#tab-0-1
-const memberStatesByEntry = [
+const dataEntry = [
   {
     description: 'Founding fathers',
     year: '01-01-1958',
@@ -419,7 +418,7 @@ const memberStatesByEntry = [
   },
 ];
 
-// GEOVIZ - Europe
+// GEO Visualization
 // add an svg element in the .geo container
 const margin = {
   top: 20,
@@ -478,152 +477,157 @@ const geoGroup = geo
 const projection = d3
   .geoIdentity()
   .reflectY([true]) // for some reason the data is flipped around the x axis
-  .fitSize([width, height], geoJSON);
+  .fitSize([width, height], dataGeoJson);
 
-// create a path generator function for the geoJSON data
+// create a path generator function for the dataGeoJson data
 const geoPath = d3
   .geoPath()
   .projection(projection);
 
-// add path elements using the coordinates described in the geoJSON array
+// add path elements using the coordinates described in the dataGeoJson array
 geoGroup
   .selectAll('path.states')
-  .data(geoJSON.features)
+  .data(dataGeoJson.features)
   .enter()
   .append('path')
   .attr('d', geoPath)
   // add the country name to differentiate the svg shapes
   .attr('id', ({ id }) => {
-    const country = memberStatesByPopulation.find(({ code }) => code === id);
+    const country = dataPopulation.find(({ code }) => code === id);
     return country ? country.state : 'state';
   })
   // use variations of the theme color for countries present in the member states array
-  .attr('fill', ({ id }) => (memberStatesByPopulation.find(({ code }) => code === id) ? 'url(#gradient-member)' : 'hsl(233, 50%, 95%)'))
-  .attr('stroke', ({ id }) => (memberStatesByPopulation.find(({ code }) => code === id) ? 'hsl(233, 70%, 55%)' : 'hsl(233, 20%, 60%)'))
+  .attr('fill', ({ id }) => (dataPopulation.find(({ code }) => code === id) ? 'url(#gradient-member)' : 'hsl(233, 50%, 95%)'))
+  .attr('stroke', ({ id }) => (dataPopulation.find(({ code }) => code === id) ? 'hsl(233, 70%, 55%)' : 'hsl(233, 20%, 60%)'))
   .attr('stroke-width', '1.5');
 
-// LINE xCHARTS - Member states
-// using the data describing the countries by year of entry add a container in the .member-states container
+
+// LINE CHARTS
+// add a container for each entry in the dataEntry array
 const memberStates = d3
-  .select('.member-states')
-  .selectAll('div.member-state')
-  .data(memberStatesByEntry)
+  .select('.line-charts')
+  .selectAll('div.line-chart')
+  .data(dataEntry)
   .enter()
   .append('div')
-  .attr('class', 'member-state');
+  .attr('class', 'line-chart');
 
-// in each container add the list of countries and a line chart describing the population of the union, considering the cumulative states
-
+// in each container add the list of countries and a line chart describing the population of the union, considering the population in the given states
 // scales for the visualizations, so to describe the year on the horizontal axis and the population value of the member states on the y axis
 const xScale = d3
   .scaleTime()
+  // starting and ending at arbitrary values
   .domain([new Date('01-01-1950'), new Date('01-01-2019')])
   .range([0, width])
   .nice();
 
 const yScale = d3
   .scaleLinear()
-  .domain([0, memberStatesByPopulation.reduce((acc, {population}) => acc + population, 0)])
+  // consider the sum of all population values
+  .domain([0, dataPopulation.reduce((acc, { population }) => acc + population, 0)])
   .range([height, 0])
   .nice();
 
-// format function to display the name of the month in its entirety, followed by the zero-padded day of the month and four digit year
-const formatTime = d3.timeFormat("%B %d %Y");
+// format function to display the date objects through its month, day and year
+const formatTime = d3.timeFormat('%B %d, %Y');
 
 // introduce each container with a heading detailing the year
 memberStates
   .append('h2')
-  .text(({description, year}) => `${description}: ${formatTime(new Date(year))}`);
+  .text(({ description, year }) => `${description}: ${formatTime(new Date(year))}`);
 
 // list the states joining the union
 memberStates
   .append('p')
-  .html(({states}) => `${states.map(state => `<strong>${state}</strong>`).join(', ')} ${states.length > 1 ? 'join as member states' : 'joins as a member state'}`);
+  .html(({ states }) => `${states.map(state => `<strong>${state}</strong>`).join(', ')} ${states.length > 1 ? 'join as member states' : 'joins as a member state'}`);
 
 // for the line chart include an svg using the same values included in the first visualization
-const population = memberStates
+const lineChart = memberStates
   .append('svg')
-  .attr('class', 'line-chart')
   .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`);
 
-const populationGroup = population
+const lineChartGroup = lineChart
   .append('g')
   .attr('transform', `translate(${margin.left} ${margin.top})`);
 
-// add the horizontal axes
-const xAxis = d3
-  .axisBottom(xScale)
-  .ticks(0);
-
-populationGroup
-  .append('g')
-  .attr('class', '.x-axis')
-  .call(xAxis)
-  .attr('transform', `translate(0 ${height})`);
+// instead of adding the x axis add a straight line at the bottom of the visualization
+lineChartGroup
+  .append('path')
+  .attr('d', `M 0 ${height} h ${width}`)
+  .attr('fill', 'none')
+  .attr('stroke', 'currentColor')
+  .attr('stroke-width', '2');
 
 // create a line function to describe the change in population
 const line = d3
   .line()
   // horizontally consider the year
-  .x(({year}) => xScale(new Date(year)))
-  .y(({population}) => yScale(population))
+  .x(({ year }) => xScale(new Date(year)))
+  // vertically consider the population
+  .y(({ population }) => yScale(population))
   .curve(d3.curveStep);
 
 // create an area function to color the area below the lune
-// using the same value of the line function, plus the height to describe the spread of the area
+// using the same values of the line function, plus the height to describe the area from the line to the bottom of the visualization
 const area = d3
   .area()
-  .x(({year}) => xScale(new Date(year)))
-  .y0(({population}) => yScale(population))
+  .x(({ year }) => xScale(new Date(year)))
+  .y0(({ population }) => yScale(population))
   .y1(height)
   .curve(d3.curveStep);
 
-
-/* for the line and area function
+/*
+! for the line function massage the data to consider the cumulative number of people living in the member states
+create an array matching the entries according to the population
 [
   {
     year,
-    population      // population of the states up to the year
+    population      // population in the states up to the year
   }
 ]
 */
-const dataLineChart = memberStatesByEntry.reduce((acc, { year, states }, index) => {
-  const populationStates = states.map(state => memberStatesByPopulation.find(member => member.state === state).population).reduce((acc, curr) => acc + curr, 0);
-  const populationPrevious = index > 0 ? acc[index - 1].population : 0;
+const dataEntryPopulation = dataEntry.reduce((acc, { year, states }, index) => {
+  // sum the population values of the states in the entries
+  const statesPopulation = states.map(state => dataPopulation.find(member => member.state === state).population).reduce((acc, curr) => acc + curr, 0);
+  // consider the population value of the previous item in the array, if existing
+  const previousPopulation = index > 0 ? acc[index - 1].population : 0;
+  // return the array with the cumulative value for the population
   return [...acc, {
     year,
-    population: populationStates + populationPrevious,
+    population: previousPopulation + statesPopulation,
   }];
 }, []);
 
-const data = [{
+// ! to show the line from the beginning of the svg include an additional data point
+const dataLine = [{
   year: '01-01-1950',
-  population: 0
-}, ...dataLineChart];
+  population: 0,
+}, ...dataEntryPopulation];
 
-  // add the path element benefiting from the line function path describing the population over the specified stretch of time
-populationGroup
+// add the path element using the line function and a subset of the population data
+lineChartGroup
   .append('path')
-  // pass to the line function an array of objects describing the year and member states up to the specified year
-  .attr('d', (d, i) => line(data.slice(0, i + 2)))
+  // consider the member states included by the group (+1 due to the additional data point specifying the origin, +1 given zero-based indexing)
+  .attr('d', (d, i) => line(dataLine.slice(0, i + 2)))
   .attr('fill', 'none')
   .attr('stroke', 'hsl(240, 80%, 50%)')
   .attr('stroke-width', 4);
 
 // add a path for the area below the curve
-populationGroup
+lineChartGroup
   .append('path')
-  .attr('d', (d, i) => area(data.slice(0, i + 2)))
+  .attr('d', (d, i) => area(dataLine.slice(0, i + 2)))
   .attr('fill', 'hsl(240, 80%, 60%)')
   .attr('stroke', 'none')
   .attr('opacity', '0.1');
 
-  const populationDetails = populationGroup
+// add a group at the end of the line, to highlight the actual number
+const lineChartDetails = lineChartGroup
   .append('g')
-  .attr('transform', (d, i) => `translate(${xScale(new Date(data[i + 1].year))} ${yScale(data[i + 1].population)})`);
+  // + 1 to skip the first value
+  .attr('transform', (d, i) => `translate(${xScale(new Date(dataLine[i + 1].year))} ${yScale(dataLine[i + 1].population)})`);
 
-  // add a circle at the end of the line
-populationDetails
+lineChartDetails
   .append('circle')
   .attr('r', 8)
   .attr('cx', 0)
@@ -632,13 +636,13 @@ populationDetails
   .attr('stroke', 'blue')
   .attr('stroke-width', 4);
 
-const formatNumber = d3.format(",");
-  // add a text describing the population next to the circle
-populationDetails
+const formatNumber = d3.format(',');
+lineChartDetails
   .append('text')
   .attr('x', 0)
   .attr('text-anchor', 'middle')
   .attr('y', -25)
-  .text((d, i) => formatNumber(data[i + 1].population))
+  // + 1 to skip the first value
+  .text((d, i) => formatNumber(dataLine[i + 1].population))
   .attr('font-weight', 'bold')
   .attr('font-size', '2rem');
