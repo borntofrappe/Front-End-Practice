@@ -308,7 +308,7 @@ const dataPopulation = [
   {
     state: 'Poland',
     population: 38005614,
-    code: 'PT',
+    code: 'PL',
   },
   {
     state: 'Slovakia',
@@ -418,6 +418,25 @@ const dataEntry = [
   },
 ];
 
+/* data massaging: create an array describing the necessary data
+  description,
+  year,
+  states,
+  population
+
+  where population refers to the _cumulative_ population in the european union
+*/
+const data = dataEntry.reduce((acc, { description, year, states }, index) => {
+  const populationStates = states.map(state => dataPopulation.find(member => member.state === state).population).reduce((cumulative, current) => cumulative + current, 0);
+  const population = acc[index - 1] ? acc[index - 1].population + populationStates : populationStates;
+  return [...acc, ({
+    description,
+    year,
+    states,
+    population
+  })]
+},[]);
+
 // GEO Visualization
 // add an svg element in the .geo container
 const margin = {
@@ -431,11 +450,11 @@ const width = 700 - (margin.left + margin.right);
 const height = 500 - (margin.top + margin.bottom);
 
 const geo = d3
-  .select('.geo')
+  .select('.eu-geo')
   .append('svg')
   .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`);
 
-// specify a repeating linear gradient to show the country color
+// specify a repeating linear gradient to show the member states through the theme color
 const defs = geo
   .append('defs');
 
@@ -486,38 +505,30 @@ const geoPath = d3
 
 // add path elements using the coordinates described in the dataGeoJson array
 geoGroup
-  .selectAll('path.states')
+  .selectAll('path')
   .data(dataGeoJson.features)
   .enter()
   .append('path')
   .attr('d', geoPath)
-  // add the country name to differentiate the svg shapes
+  // add the country's name to differentiate the path elements
   .attr('id', ({ id }) => {
     const country = dataPopulation.find(({ code }) => code === id);
-    return country ? country.state : 'state';
+    return country ? country.state.split(' ').join('-') : 'state';
   })
-  // use variations of the theme color for countries present in the member states array
+  // use variations of the theme color for member states
   .attr('fill', ({ id }) => (dataPopulation.find(({ code }) => code === id) ? 'url(#gradient-member)' : 'hsl(233, 50%, 95%)'))
   .attr('stroke', ({ id }) => (dataPopulation.find(({ code }) => code === id) ? 'hsl(233, 70%, 55%)' : 'hsl(233, 20%, 60%)'))
   .attr('stroke-width', '1.5');
 
 
 // LINE CHARTS
-// add a container for each entry in the dataEntry array
-const memberStates = d3
-  .select('.line-charts')
-  .selectAll('div.line-chart')
-  .data(dataEntry)
-  .enter()
-  .append('div')
-  .attr('class', 'line-chart');
-
-// in each container add the list of countries and a line chart describing the population of the union, considering the population in the given states
 // scales for the visualizations, so to describe the year on the horizontal axis and the population value of the member states on the y axis
+const startingTime = '01-01-1950';
+const endingTime = '01-01-2019';
 const xScale = d3
   .scaleTime()
   // starting and ending at arbitrary values
-  .domain([new Date('01-01-1950'), new Date('01-01-2019')])
+  .domain([new Date(startingTime), new Date(endingTime)])
   .range([0, width])
   .nice();
 
@@ -530,28 +541,38 @@ const yScale = d3
 
 // format function to display the date objects through its month, day and year
 const formatTime = d3.timeFormat('%B %d, %Y');
+// format function to display the population separating the thousands and million's digits
+const formatNumber = d3.format(',');
 
-// introduce each container with a heading detailing the year
-memberStates
+// add a list item for each entry in the data array
+const entries = d3
+  .select('.eu-entries')
+  .selectAll('li')
+  .data(data)
+  .enter()
+  .append('li');
+
+// in each container add the list of countries and a line chart describing the population of the union
+entries
   .append('h2')
   .text(({ description, year }) => `${description}: ${formatTime(new Date(year))}`);
 
 // list the states joining the union
-memberStates
+entries
   .append('p')
-  .html(({ states }) => `${states.map(state => `<strong>${state}</strong>`).join(', ')} ${states.length > 1 ? 'join as member states' : 'joins as a member state'}`);
+  .html(({ states }) => states.map(state => `<strong>${state}</strong>`).join(', '));
 
 // for the line chart include an svg using the same values included in the first visualization
-const lineChart = memberStates
+const charts = entries
   .append('svg')
   .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`);
 
-const lineChartGroup = lineChart
+const chartsGroup = charts
   .append('g')
   .attr('transform', `translate(${margin.left} ${margin.top})`);
 
 // instead of adding the x axis add a straight line at the bottom of the visualization
-lineChartGroup
+chartsGroup
   .append('path')
   .attr('d', `M 0 ${height} h ${width}`)
   .attr('fill', 'none')
@@ -576,36 +597,14 @@ const area = d3
   .y1(height)
   .curve(d3.curveStep);
 
-/*
-! for the line function massage the data to consider the cumulative number of people living in the member states
-create an array matching the entries according to the population
-[
-  {
-    year,
-    population      // population in the states up to the year
-  }
-]
-*/
-const dataEntryPopulation = dataEntry.reduce((acc, { year, states }, index) => {
-  // sum the population values of the states in the entries
-  const statesPopulation = states.map(state => dataPopulation.find(member => member.state === state).population).reduce((acc, curr) => acc + curr, 0);
-  // consider the population value of the previous item in the array, if existing
-  const previousPopulation = index > 0 ? acc[index - 1].population : 0;
-  // return the array with the cumulative value for the population
-  return [...acc, {
-    year,
-    population: previousPopulation + statesPopulation,
-  }];
-}, []);
-
-// ! to show the line from the beginning of the svg include an additional data point
+// ! to show the line from the beginning of the svg include an additional data point starting at the beginning of the time scale
 const dataLine = [{
-  year: '01-01-1950',
+  year: startingTime,
   population: 0,
-}, ...dataEntryPopulation];
+}, ...data];
 
 // add the path element using the line function and a subset of the population data
-lineChartGroup
+chartsGroup
   .append('path')
   // consider the member states included by the group (+1 due to the additional data point specifying the origin, +1 given zero-based indexing)
   .attr('d', (d, i) => line(dataLine.slice(0, i + 2)))
@@ -614,7 +613,7 @@ lineChartGroup
   .attr('stroke-width', 4);
 
 // add a path for the area below the curve
-lineChartGroup
+chartsGroup
   .append('path')
   .attr('d', (d, i) => area(dataLine.slice(0, i + 2)))
   .attr('fill', 'hsl(240, 80%, 60%)')
@@ -622,12 +621,12 @@ lineChartGroup
   .attr('opacity', '0.1');
 
 // add a group at the end of the line, to highlight the actual number
-const lineChartDetails = lineChartGroup
+const chartsDetails = chartsGroup
   .append('g')
   // + 1 to skip the first value
   .attr('transform', (d, i) => `translate(${xScale(new Date(dataLine[i + 1].year))} ${yScale(dataLine[i + 1].population)})`);
 
-lineChartDetails
+chartsDetails
   .append('circle')
   .attr('r', 8)
   .attr('cx', 0)
@@ -636,8 +635,7 @@ lineChartDetails
   .attr('stroke', 'blue')
   .attr('stroke-width', 4);
 
-const formatNumber = d3.format(',');
-lineChartDetails
+chartsDetails
   .append('text')
   .attr('x', 0)
   .attr('text-anchor', 'middle')
@@ -646,3 +644,37 @@ lineChartDetails
   .text((d, i) => formatNumber(dataLine[i + 1].population))
   .attr('font-weight', 'bold')
   .attr('font-size', '2rem');
+
+
+const memberStates = dataPopulation.map(({ state }) => state);
+function highlightEntry(entry) {
+  const matchingStates = entry.querySelector('p').textContent.split(', ');
+  const lastState = matchingStates[matchingStates.length - 1];
+  const lastIndex = memberStates.findIndex(state => state === lastState) + 1;
+  memberStates.forEach((member, index) => {
+    if(!document.querySelector(`#${member.split(' ').join('-')}`)) {
+      console.log(member)
+    }
+    document.querySelector(`#${member.split(' ').join('-')}`).setAttribute('fill', index < lastIndex ? 'hsl(240, 70%, 40%)' : 'url(#gradient-member)');
+  })
+  document.querySelectorAll('li').forEach(item => item.className = '');
+  const timeoutID = setTimeout(() => {
+    entry.className = 'shown';
+    clearTimeout(timeoutID);
+  }, 200)
+
+}
+if(window.IntersectionObserver) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if(entry.isIntersecting) {
+        highlightEntry(entry.target);
+      }
+    })
+  }, {
+    threshold: 0.7
+  });
+
+  const items = document.querySelectorAll('ul li');
+  items.forEach(item => observer.observe(item));
+}

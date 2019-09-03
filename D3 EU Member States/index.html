@@ -34,25 +34,25 @@
     </svg>
 
     <!-- markup structure
-      .app
-        header, introducing the visualization
-        .geo, container for the geography describing the member states
-        .line-charts, container for the visualizations describing the member states by year of entry
+      .viz                      wrapping container
+        header                  introducing the project
+        .eu-geo                 wrapping container for the map of the european union
+        .eu-entries             wrapping container for the line charts describing the eu entries in population
     -->
-    <div class="app">
+    <div class="viz">
         <header>
             <h1>European Union</h1>
             <h3>
-                Highlighting the member states through scroll and through the years.
+                Highlighting the growth of the European Union in and its population.
                 <svg viewBox="0 0 65 95" width="13" height="19">
                     <use href="#cursor"></use>
                 </svg>
             </h3>
         </header>
 
-        <div class="geo"></div>
+        <div class="eu-geo"></div>
 
-        <div class="line-charts"></div>
+        <ul class="eu-entries"></ul>
     </div>
 
     <!-- import d3 -->

@@ -10,8 +10,8 @@ body {
   color: hsl(240, 20%, 25%);
   font-family: "Source Sans Pro", sans-serif;
 }
-/* display the content of the .app container in a column */
-.app {
+/* display the content of the .viz container in a column */
+.viz {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +30,7 @@ header h1 {
   font-size: 1.75rem;
   font-weight: 700;
 }
-/* align the text of the heading with the svg */
+/* align the text and the svg vertically */
 header h3 {
   font-size: 1rem;
   font-weight: 400;
@@ -43,60 +43,77 @@ header h3 svg {
   margin-left: 0.75rem;
 }
 
-.geo {
+.eu-geo {
   background: hsl(240, 20%, 99%);
-}
-/* size the svg describing the geographical visualization */
-.geo svg {
+  position: sticky;
+  top: 0;
+  z-index: 5;
   width: 90vw;
-  max-width: 650px;
-  height: auto;
+  max-width: 450px;
+  transition: transform 0.2s ease-in-out;
 }
-.line-chart {
-  max-width: 400px;
+/* cap the width of the container wrapping the line charts */
+.eu-entries {
+  max-width: 350px;
 }
-.line-chart h2 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  font-weight: 400;
-}
-.line-chart p {
-  line-height: 1.5;
-  font-size: 0.9rem;
+@media (min-width: 1000px) {
+  .eu-geo {
+    background: none;
+    max-width: 600px;
+    top: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+  }
+  .eu-entries {
+    transform: translate(50%, 0);
+    max-width: 400px;
+  }
 }
 
-.line-chart {
+/* include a line on the left side of the line charts
+include a circle for every heading introducing the line charts
+*/
+.eu-entries li {
   padding: 1rem;
-  padding-left: 1.5rem;
+  list-style: none;
   position: relative;
 }
-.line-chart h2 {
-  position: relative;
-}
-/* to the left of each heading include a circle through pseudo elements */
-.line-chart h2:after {
-  position: absolute;
+.eu-entries li:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  position: absolute;
+  width: 0.2rem;
+  height: 100%;
+  background: hsl(240, 70%, 40%);
+  top: 0%;
+  right: 100%;
+}
+.eu-entries li h2:after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
   background: hsl(240, 20%, 99%);
-  border: 2.5px solid hsl(240, 60%, 35%);
-  top: 50%;
-  right: calc(100% + 1.5rem);
-}
-.line-chart:before {
-  position: absolute;
-  content: "";
-  width: 4px;
-  height: 100%;
-  background: hsl(240, 60%, 35%);
+  box-shadow: 0 0 0 2px hsl(240, 70%, 40%);
   top: 0%;
-  right: calc(100% + 8px);
+  right: 100%;
+  transform: translate(
+    -0.6rem,
+    50%
+  ); /* -0.6rem magic number as in (1rem - 0.2rem) / 2 - 1rem [(size of the circle - overlap with the line / 2) - horizontal padding ] */
 }
-
-/* when a class of .focus is applied to the line chart style the pseudo elements to show a filled circle */
-.line-chart.focused h2:after {
-  background: radial-gradient(hsl(240, 60%, 35%) 60%, hsl(240, 20%, 99%) 60%);
-  background-repeat: no-repeat;
+.eu-entries li.shown h2:after {
+  background: hsl(240, 70%, 40%);
+  transition: all 0.2s ease-in-out;
+}
+/* style the text for every entry */
+.eu-entries h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+.eu-entries p {
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
