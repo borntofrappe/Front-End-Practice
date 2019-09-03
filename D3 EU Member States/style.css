@@ -42,7 +42,7 @@ header h3 svg {
   height: auto;
   margin-left: 0.75rem;
 }
-
+/* have the container describing the geography stick to the bottom of the viewport */
 .eu-geo {
   background: hsl(240, 20%, 99%);
   position: sticky;
@@ -52,10 +52,12 @@ header h3 svg {
   max-width: 450px;
   transition: transform 0.2s ease-in-out;
 }
-/* cap the width of the container wrapping the line charts */
+/* limit the size of the container describing the line charts to have the svg noticeably smaller than the geography */
 .eu-entries {
   max-width: 350px;
+  transition: transform 0.2s ease-in-out;
 }
+/* on larger viewports fix the position of the geography to the left, while moving the line charts to the right */
 @media (min-width: 1000px) {
   .eu-geo {
     background: none;
@@ -74,7 +76,7 @@ header h3 svg {
 include a circle for every heading introducing the line charts
 */
 .eu-entries li {
-  padding: 1rem;
+  padding: 2rem 1rem;
   list-style: none;
   position: relative;
 }

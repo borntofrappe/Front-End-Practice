@@ -1,4 +1,5 @@
-/* data collected from eurostat (and slightly cleaned to remove islands outside of continental Europe)
+// DATA
+/* data collected from eurostat (and slightly cleaned to remove territories outside of continental Europe)
 https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts
 */
 const dataGeoJson = {
@@ -437,6 +438,10 @@ const data = dataEntry.reduce((acc, { description, year, states }, index) => {
   })]
 },[]);
 
+// create an additional array describing the member states' codes (used for the intersection observer API)
+const memberStatesCodes = dataPopulation.map(({ code }) => code);
+
+// VIZ
 // GEO Visualization
 // add an svg element in the .geo container
 const margin = {
@@ -510,15 +515,13 @@ geoGroup
   .enter()
   .append('path')
   .attr('d', geoPath)
-  // add the country's name to differentiate the path elements
-  .attr('id', ({ id }) => {
-    const country = dataPopulation.find(({ code }) => code === id);
-    return country ? country.state.split(' ').join('-') : 'state';
-  })
+  // add the country's id to differentiate the path elements
+  .attr('id', ({ id }) => dataPopulation.find(({ code }) => code === id) ? dataPopulation.find(({ code }) => code === id).code : '')
   // use variations of the theme color for member states
   .attr('fill', ({ id }) => (dataPopulation.find(({ code }) => code === id) ? 'url(#gradient-member)' : 'hsl(233, 50%, 95%)'))
   .attr('stroke', ({ id }) => (dataPopulation.find(({ code }) => code === id) ? 'hsl(233, 70%, 55%)' : 'hsl(233, 20%, 60%)'))
   .attr('stroke-width', '1.5');
+
 
 
 // LINE CHARTS
@@ -550,7 +553,10 @@ const entries = d3
   .selectAll('li')
   .data(data)
   .enter()
-  .append('li');
+  .append('li')
+  // include the id(s) of the states as the string value of an attribute
+  // used with the intersection observer API to highlight the connected member states
+  .attr('data-id', d => d.states.map(state => dataPopulation.find(member => member.state === state).code).join(','));
 
 // in each container add the list of countries and a line chart describing the population of the union
 entries
@@ -646,24 +652,24 @@ chartsDetails
   .attr('font-size', '2rem');
 
 
-const memberStates = dataPopulation.map(({ state }) => state);
+// INTERSECTION OBSERVER API
+// function called every time the API observes an intersection with a list item
 function highlightEntry(entry) {
-  const matchingStates = entry.querySelector('p').textContent.split(', ');
-  const lastState = matchingStates[matchingStates.length - 1];
-  const lastIndex = memberStates.findIndex(state => state === lastState) + 1;
-  memberStates.forEach((member, index) => {
-    if(!document.querySelector(`#${member.split(' ').join('-')}`)) {
-      console.log(member)
-    }
-    document.querySelector(`#${member.split(' ').join('-')}`).setAttribute('fill', index < lastIndex ? 'hsl(240, 70%, 40%)' : 'url(#gradient-member)');
+  // retrieve the states represented by the selected list item
+  const matchingCodes = entry.getAttribute('data-id').split(',');
+  // find the last state in the provided array (this to select all states up to the last of the selected item)
+  const lastCode = matchingCodes[matchingCodes.length - 1];
+  const lastIndex = memberStatesCodes.findIndex(code => code === lastCode) + 1;
+  // loop through the path elements describing a country and add the theme color for the selected countries
+  // else reset to the default gradient
+  memberStatesCodes.forEach((code, index) => {
+    document.querySelector(`#${code}`).setAttribute('fill', index < lastIndex ? 'hsl(240, 70%, 40%)' : 'url(#gradient-member)');
   })
-  document.querySelectorAll('li').forEach(item => item.className = '');
-  const timeoutID = setTimeout(() => {
-    entry.className = 'shown';
-    clearTimeout(timeoutID);
-  }, 200)
-
+  // loop through all list items and add a class of .shown to the selected one (highlighted in the CSS)
+  document.querySelectorAll('li').forEach(listItem => listItem === entry ? listItem.className = 'shown' : listItem.className = '');
 }
+
+// if the intersection observer API is made available, set up an observer to consider the intersection with every list item in the .eu-entries list
 if(window.IntersectionObserver) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -672,9 +678,9 @@ if(window.IntersectionObserver) {
       }
     })
   }, {
-    threshold: 0.7
+    threshold: 0.7 // 0.7 to have the viewport consider 70% of the list item before calling the desired function
   });
 
-  const items = document.querySelectorAll('ul li');
+  const items = document.querySelectorAll('.eu-entries li');
   items.forEach(item => observer.observe(item));
 }
