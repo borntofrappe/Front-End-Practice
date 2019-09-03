@@ -193,125 +193,156 @@ const geoJSON = {
   ],
 };
 
-// array matching the member states with their country code
-const memberStatesByCountryCode = [
+// array describing member states through their country code and population
+// https://europa.eu/european-union/about-eu/figures/living_en#size-and-population
+const memberStatesByPopulation = [
   {
     state: 'Belgium',
+    population: 11258434,
     code: 'BE',
   },
   {
     state: 'France',
+    population: 66415161,
     code: 'FR',
   },
   {
     state: 'Germany',
+    population: 81197537,
     code: 'DE',
   },
   {
     state: 'Italy',
+    population: 60795612,
     code: 'IT',
   },
   {
     state: 'Luxembourg',
+    population: 562958,
     code: 'LU',
   },
   {
     state: 'Netherlands',
+    population: 16900726,
     code: 'NL',
   },
   {
     state: 'Denmark',
+    population: 5659715,
     code: 'DK',
   },
   {
     state: 'Ireland',
+    population: 4628949,
     code: 'IE',
   },
   {
     state: 'United Kingdom',
+    population: 64875165,
     code: 'UK',
   },
   {
     state: 'Greece',
+    population: 10858018,
     code: 'EL',
   },
   {
     state: 'Portugal',
+    population: 10374822,
     code: 'PT',
   },
   {
     state: 'Spain',
+    population: 46449565,
     code: 'ES',
   },
   {
     state: 'Austria',
+    population: 8576261,
     code: 'AT',
   },
   {
     state: 'Finland',
+    population: 5471753,
     code: 'FI',
   },
   {
     state: 'Sweden',
+    population: 9747355,
     code: 'SE',
   },
   {
     state: 'Cyprus',
+    population: 847008,
     code: 'CY',
   },
   {
     state: 'Czechia',
+    population: 10538275,
     code: 'CZ',
   },
   {
     state: 'Estonia',
+    population: 1313271,
     code: 'EE',
   },
   {
     state: 'Hungary',
+    population: 9855571,
     code: 'HU',
   },
   {
     state: 'Latvia',
+    population: 1986096,
     code: 'LV',
   },
   {
     state: 'Lithuania',
+    population: 2921262,
     code: 'LT',
   },
   {
     state: 'Malta',
+    population: 429344,
     code: 'MT',
   },
   {
     state: 'Poland',
+    population: 38005614,
     code: 'PT',
   },
   {
     state: 'Slovakia',
+    population: 5421349,
     code: 'SK',
   },
   {
     state: 'Slovenia',
+    population: 2062874,
     code: 'SI',
   },
   {
     state: 'Bulgaria',
+    population: 7202198,
     code: 'BG',
   },
   {
     state: 'Romania',
+    population: 19870647,
     code: 'RO',
   },
   {
     state: 'Croatia',
+    population: 4225316,
     code: 'HR',
   },
 ];
 
 // array describing the member states per year of entry
-const memberStatesByYearOfEntry = [
+// https://europa.eu/european-union/about-eu/countries_en#tab-0-1
+const memberStatesByEntry = [
   {
+    description: 'Founding fathers',
     year: '01-01-1958',
     states: [
       'Belgium',
@@ -323,6 +354,7 @@ const memberStatesByYearOfEntry = [
     ],
   },
   {
+    description: 'First enlargement',
     year: '01-01-1973',
     states: [
       'Denmark',
@@ -331,12 +363,14 @@ const memberStatesByYearOfEntry = [
     ],
   },
   {
+    description: 'Greece joins the EU',
     year: '01-01-1981',
     states: [
       'Greece',
     ],
   },
   {
+    description: 'Spain and Portugal become members',
     year: '01-01-1986',
     states: [
       'Portugal',
@@ -344,6 +378,7 @@ const memberStatesByYearOfEntry = [
     ],
   },
   {
+    description: 'The fourth enlargement',
     year: '01-01-1995',
     states: [
       'Austria',
@@ -352,6 +387,7 @@ const memberStatesByYearOfEntry = [
     ],
   },
   {
+    description: 'Largest enlargement so far',
     year: '01-05-2004',
     states: [
       'Cyprus',
@@ -367,6 +403,7 @@ const memberStatesByYearOfEntry = [
     ],
   },
   {
+    description: 'Romania and Bulgaria join',
     year: '01-01-2007',
     states: [
       'Bulgaria',
@@ -374,6 +411,7 @@ const memberStatesByYearOfEntry = [
     ],
   },
   {
+    description: 'Croatia joins the EU Union',
     year: '01-07-2013',
     states: [
       'Croatia',
@@ -381,7 +419,8 @@ const memberStatesByYearOfEntry = [
   },
 ];
 
-// add an svg element in the .viz container
+// GEOVIZ - Europe
+// add an svg element in the .geo container
 const margin = {
   top: 20,
   right: 20,
@@ -392,13 +431,13 @@ const margin = {
 const width = 700 - (margin.left + margin.right);
 const height = 500 - (margin.top + margin.bottom);
 
-const svg = d3
-  .select('.viz')
+const geo = d3
+  .select('.geo')
   .append('svg')
   .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`);
 
 // specify a repeating linear gradient to show the country color
-const defs = svg
+const defs = geo
   .append('defs');
 
 const linearGradient = defs
@@ -431,7 +470,7 @@ linearGradient
   .attr('stop-color', 'hsl(233, 50%, 95%)')
   .attr('offset', '1');
 
-const group = svg
+const geoGroup = geo
   .append('g')
   .attr('transform', `translate(${margin.left} ${margin.top})`);
 
@@ -447,15 +486,159 @@ const geoPath = d3
   .projection(projection);
 
 // add path elements using the coordinates described in the geoJSON array
-group
+geoGroup
   .selectAll('path.states')
   .data(geoJSON.features)
   .enter()
   .append('path')
   .attr('d', geoPath)
+  // add the country name to differentiate the svg shapes
+  .attr('id', ({ id }) => {
+    const country = memberStatesByPopulation.find(({ code }) => code === id);
+    return country ? country.state : 'state';
+  })
   // use variations of the theme color for countries present in the member states array
-  .attr('fill', ({ id }) => (memberStatesByCountryCode.find(({ code }) => code === id) ? 'url(#gradient-member)' : 'hsl(233, 50%, 95%)'))
-  .attr('stroke', ({ id }) => (memberStatesByCountryCode.find(({ code }) => code === id) ? 'hsl(233, 70%, 55%)' : 'hsl(233, 20%, 60%)'))
+  .attr('fill', ({ id }) => (memberStatesByPopulation.find(({ code }) => code === id) ? 'url(#gradient-member)' : 'hsl(233, 50%, 95%)'))
+  .attr('stroke', ({ id }) => (memberStatesByPopulation.find(({ code }) => code === id) ? 'hsl(233, 70%, 55%)' : 'hsl(233, 20%, 60%)'))
   .attr('stroke-width', '1.5');
 
-// theme color hsl(233, 70%, 55%)
+// LINE xCHARTS - Member states
+// using the data describing the countries by year of entry add a container in the .member-states container
+const memberStates = d3
+  .select('.member-states')
+  .selectAll('div.member-state')
+  .data(memberStatesByEntry)
+  .enter()
+  .append('div')
+  .attr('class', 'member-state');
+
+// in each container add the list of countries and a line chart describing the population of the union, considering the cumulative states
+
+// scales for the visualizations, so to describe the year on the horizontal axis and the population value of the member states on the y axis
+const xScale = d3
+  .scaleTime()
+  .domain([new Date('01-01-1950'), new Date('01-01-2019')])
+  .range([0, width])
+  .nice();
+
+const yScale = d3
+  .scaleLinear()
+  .domain([0, memberStatesByPopulation.reduce((acc, {population}) => acc + population, 0)])
+  .range([height, 0])
+  .nice();
+
+// format function to display the name of the month in its entirety, followed by the zero-padded day of the month and four digit year
+const formatTime = d3.timeFormat("%B %d %Y");
+
+// introduce each container with a heading detailing the year
+memberStates
+  .append('h2')
+  .text(({description, year}) => `${description}: ${formatTime(new Date(year))}`);
+
+// list the states joining the union
+memberStates
+  .append('p')
+  .html(({states}) => `${states.map(state => `<strong>${state}</strong>`).join(', ')} ${states.length > 1 ? 'join as member states' : 'joins as a member state'}`);
+
+// for the line chart include an svg using the same values included in the first visualization
+const population = memberStates
+  .append('svg')
+  .attr('class', 'line-chart')
+  .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`);
+
+const populationGroup = population
+  .append('g')
+  .attr('transform', `translate(${margin.left} ${margin.top})`);
+
+// add the horizontal axes
+const xAxis = d3
+  .axisBottom(xScale)
+  .ticks(0);
+
+populationGroup
+  .append('g')
+  .attr('class', '.x-axis')
+  .call(xAxis)
+  .attr('transform', `translate(0 ${height})`);
+
+// create a line function to describe the change in population
+const line = d3
+  .line()
+  // horizontally consider the year
+  .x(({year}) => xScale(new Date(year)))
+  .y(({population}) => yScale(population))
+  .curve(d3.curveStep);
+
+// create an area function to color the area below the lune
+// using the same value of the line function, plus the height to describe the spread of the area
+const area = d3
+  .area()
+  .x(({year}) => xScale(new Date(year)))
+  .y0(({population}) => yScale(population))
+  .y1(height)
+  .curve(d3.curveStep);
+
+
+/* for the line and area function
+[
+  {
+    year,
+    population      // population of the states up to the year
+  }
+]
+*/
+const dataLineChart = memberStatesByEntry.reduce((acc, { year, states }, index) => {
+  const populationStates = states.map(state => memberStatesByPopulation.find(member => member.state === state).population).reduce((acc, curr) => acc + curr, 0);
+  const populationPrevious = index > 0 ? acc[index - 1].population : 0;
+  return [...acc, {
+    year,
+    population: populationStates + populationPrevious,
+  }];
+}, []);
+
+const data = [{
+  year: '01-01-1950',
+  population: 0
+}, ...dataLineChart];
+
+  // add the path element benefiting from the line function path describing the population over the specified stretch of time
+populationGroup
+  .append('path')
+  // pass to the line function an array of objects describing the year and member states up to the specified year
+  .attr('d', (d, i) => line(data.slice(0, i + 2)))
+  .attr('fill', 'none')
+  .attr('stroke', 'hsl(240, 80%, 50%)')
+  .attr('stroke-width', 4);
+
+// add a path for the area below the curve
+populationGroup
+  .append('path')
+  .attr('d', (d, i) => area(data.slice(0, i + 2)))
+  .attr('fill', 'hsl(240, 80%, 60%)')
+  .attr('stroke', 'none')
+  .attr('opacity', '0.1');
+
+  const populationDetails = populationGroup
+  .append('g')
+  .attr('transform', (d, i) => `translate(${xScale(new Date(data[i + 1].year))} ${yScale(data[i + 1].population)})`);
+
+  // add a circle at the end of the line
+populationDetails
+  .append('circle')
+  .attr('r', 8)
+  .attr('cx', 0)
+  .attr('cy', 0)
+  .attr('fill', '#fff')
+  .attr('stroke', 'blue')
+  .attr('stroke-width', 4);
+
+const formatNumber = d3.format(",");
+  // add a text describing the population next to the circle
+populationDetails
+  .append('text')
+  .attr('x', 0)
+  .attr('text-anchor', 'middle')
+  .attr('y', -25)
+  .text((d, i) => formatNumber(data[i + 1].population))
+  .attr('font-weight', 'bold')
+  .attr('font-size', '2rem');
