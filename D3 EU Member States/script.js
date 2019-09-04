@@ -343,7 +343,7 @@ const dataPopulation = [
 const dataEntry = [
   {
     description: 'Founding fathers',
-    year: '01-01-1958',
+    year: '1958-01-01',
     states: [
       'Belgium',
       'France',
@@ -355,7 +355,7 @@ const dataEntry = [
   },
   {
     description: 'First enlargement',
-    year: '01-01-1973',
+    year: '1973-01-01',
     states: [
       'Denmark',
       'Ireland',
@@ -364,14 +364,14 @@ const dataEntry = [
   },
   {
     description: 'Greece joins the EU',
-    year: '01-01-1981',
+    year: '1981-01-01',
     states: [
       'Greece',
     ],
   },
   {
     description: 'Spain and Portugal become members',
-    year: '01-01-1986',
+    year: '1986-01-01',
     states: [
       'Portugal',
       'Spain',
@@ -379,7 +379,7 @@ const dataEntry = [
   },
   {
     description: 'The fourth enlargement',
-    year: '01-01-1995',
+    year: '1995-01-01',
     states: [
       'Austria',
       'Finland',
@@ -388,7 +388,7 @@ const dataEntry = [
   },
   {
     description: 'Largest enlargement so far',
-    year: '01-05-2004',
+    year: '2004-01-05',
     states: [
       'Cyprus',
       'Czechia',
@@ -404,7 +404,7 @@ const dataEntry = [
   },
   {
     description: 'Romania and Bulgaria join',
-    year: '01-01-2007',
+    year: '2007-01-01',
     states: [
       'Bulgaria',
       'Romania',
@@ -412,7 +412,7 @@ const dataEntry = [
   },
   {
     description: 'Croatia joins the EU Union',
-    year: '01-07-2013',
+    year: '2013-01-07',
     states: [
       'Croatia',
     ],
@@ -526,8 +526,8 @@ geoGroup
 
 // LINE CHARTS
 // scales for the visualizations, so to describe the year on the horizontal axis and the population value of the member states on the y axis
-const startingTime = '01-01-1950';
-const endingTime = '01-01-2019';
+const startingTime = '1950-01-01';
+const endingTime = '2019-01-01';
 const xScale = d3
   .scaleTime()
   // starting and ending at arbitrary values
@@ -546,6 +546,8 @@ const yScale = d3
 const formatTime = d3.timeFormat('%B %d, %Y');
 // format function to display the population separating the thousands and million's digits
 const formatNumber = d3.format(',');
+// format function to display percentages with two numbers after the decimal point
+const formatPercentage = d3.format('.2');
 
 // add a list item for each entry in the data array
 const entries = d3
@@ -566,7 +568,11 @@ entries
 // list the states joining the union
 entries
   .append('p')
-  .html(({ states }) => states.map(state => `<strong>${state}</strong>`).join(', '));
+  .html(({ states }) => `${states.length > 1 ? 'New entries' : 'New entry'} : ${states.map(state => `<strong>${state}</strong>`).join(', ')}`);
+
+entries
+  .append('p')
+  .html(({ population }, i) => i > 0 ? `Population growth: <strong>${formatPercentage((population - data[i-1].population) / population * 100)}%</strong>` : '');
 
 // for the line chart include an svg using the same values included in the first visualization
 const charts = entries
