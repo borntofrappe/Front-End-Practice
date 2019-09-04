@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- svg used in the project -->
+    <svg style="display: none;" viewBox="0 0 100 100" width="100" height="100">
+        <g id="home">
+            <g
+                fill="none"
+                stroke="currentColor"
+                stroke-width="15"
+                transform="translate(7.5 7.5)">
+                <g transform="translate(0 6.25)">
+                    <!-- 85*72.5 -->
+                    <path stroke-linejoin="round" stroke-linecap="round" d="M 42.5 0 l 37.5 20 v 52.5 h -75 v -52.5 z"></path>
+                </g>
+            </g>
+        </g>
+        <g id="favorites">
+            <g
+                fill="none"
+                stroke="currentColor"
+                stroke-width="15"
+                transform="translate(7.5 7.5)">
+                <g transform="translate(0 6.25)">
+                    <path stroke-linejoin="round" stroke-linecap="round" d="M 37.5 7.5 a 10 10 0 0 0 10 0 a 15 15 0 0 1 30 30 l -35 35 l -35 -35 a 15 15 0 0 1 30 -30"></path>
+                </g>
+            </g>
+        </g>
+        <g id="settings">
+            <g
+                fill="none"
+                stroke="currentColor"
+                stroke-width="15"
+                transform="translate(7.5 7.5)">
+                <g transform="translate(0 6.25)">
+                    <circle
+                        r="15"
+                        cx="15"
+                        cy="15">
+                    </circle>
+                    <path stroke-linecap="round" d="M 37.5 15 h 37.5"></path>
+                    <circle
+                        r="15"
+                        cx="70"
+                        cy="57.5">
+                    </circle>
+                    <path stroke-linecap="round" d="M 47.5 57.5 h -37.5"></path>
+                </g>
+            </g>
+        </g>
+    </svg>
+
+    <!--
+        nav structure
+        - one anchor link for each option, with an icon and matching text
+        - an svg describing a + + + pattern used as a faux-background
+    -->
+    <nav class="favorites">
+        <a href="#home">
+            <svg aria-hidden="true" viewBox="0 0 100 100" width="40" height="40">
+                <use href="#home"></use>
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="#favorites">
+            <svg aria-hidden="true" viewBox="0 0 100 100" width="40" height="40">
+                <use href="#favorites"></use>
+            </svg>
+            <span>Favorites</span>
+        </a>
+        <a href="#settings">
+            <svg aria-hidden="true" viewBox="0 0 100 100" width="40" height="40">
+                <use href="#settings"></use>
+            </svg>
+            <span>Settings</span>
+        </a>
+
+        <!-- for the + + + pattern define
+            - a linear gradient
+            - a mask to conceal the top of the graphic, using the gradient itself
+            - a pattern to repeat the + sign
+        -->
+        <svg id="graticulate" viewBox="0 0 300 100">
+            <defs>
+                <linearGradient id="graticulate-gradient" x1="0.5" x2="0.5" y1="0" y2="1">
+                    <stop stop-color="#000" offset="0"></stop>
+                    <stop stop-color="#222" offset="1"></stop>
+                </linearGradient>
+                <mask id="graticulate-mask">
+                    <rect
+                        x="0"
+                        y="0"
+                        width="300"
+                        height="100"
+                        fill="url(#graticulate-gradient">
+                    </rect>
+                </mask>
+                <pattern id="graticulate-pattern" width="0.025" height="0.05" viewBox="0 0 100 100">
+                    <path
+                        d="M 50 35 v 30 m -15 -15 h 30"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+                    </path>
+                </pattern>
+            </defs>
+
+            <rect
+                x="0"
+                y="0"
+                width="300"
+                height="100"
+                fill="url(#graticulate-pattern)"
+                mask="url(#graticulate-mask)">
+            </rect>
+
+        </svg>
+    </nav>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
