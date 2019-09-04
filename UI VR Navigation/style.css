@@ -8,45 +8,58 @@
 body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(to bottom, hsl(250, 14%, 9%), hsl(250, 20%, 15%));
+  /* center the nav in the viewport */
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  /* set a perspective for the nested nav */
   perspective: 500px;
 }
+/* display the anchor links in three columns of equal width */
 nav {
   display: grid;
   grid-template-columns: repeat(3, 100px);
   grid-column-gap: 4rem;
+  padding: 2rem 3rem;
   justify-items: center;
   align-items: center;
   background: hsl(250, 16%, 26%);
   box-shadow: 0 0 15px hsla(250, 16%, 5%, 0.3);
-  padding: 2rem 3rem;
-  border-radius: 15px;
+  border-radius: 30px;
   color: hsl(250, 16%, 90%);
-  transform: translateZ(-75px);
-  transform-style: preserve-3d;
+  /* translate the nav element backwards to offset the translation of the anchor links (otherwise the text would be fuzzy) */
+  transform: translateZ(-70px);
   transform-origin: 50% 100%;
+  /* transition for the transform property
+  the navigation is moved around the viewport with 3d transform
+  */
   transition-property: transform;
   transition-duration: 1.25s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* preserve3d to have the transform property on the anchor link retain the 3d space */
+  transform-style: preserve-3d;
+  /* position relative to absolute position the graticulate */
   position: relative;
 }
+/* display the nested icon and text element in a column */
 nav a {
-  opacity: 0.3;
-  width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: inherit;
   text-decoration: none;
+  /* by default have the anchor links semitransparent */
+  opacity: 0.3;
+  /* transition for the change in opacity and transform property */
   transition-property: opacity, transform;
   transition-duration: 0.6s;
   transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  /* position relative for the pseudo element */
   position: relative;
 }
+/* with a pseudo element include a circle centered in the link */
 nav a:before {
   position: absolute;
   content: "";
@@ -54,10 +67,17 @@ nav a:before {
   height: 150px;
   border-radius: 50%;
   background: hsl(250, 16%, 90%);
+  /* slightly offset the circle to have the shape closer to the icon than the text */
   top: 40%;
   left: 50%;
+  /* by default have the circle scaled out of sight
+  ! do not set a transition to have the circle removed without the smooth change
+  */
   transform: translate(-50%, -50%) scale(0);
   opacity: 1;
+}
+nav a svg {
+  display: block;
 }
 nav a span {
   font-size: 1rem;
@@ -65,19 +85,21 @@ nav a span {
   letter-spacing: 0.05rem;
   padding-top: 1rem;
 }
-nav a svg {
-  display: block;
-}
+/* absolute position the graticulate behind the navigation */
 nav svg#graticulate {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: auto;
+  /* stretch the svg to have the element fake the background */
   height: 150vh;
+  width: auto;
+  /* rotate the svg to give depth to the environment */
   transform-origin: 50% 100%;
   transform: translate(-50%, -50%) rotateX(30deg);
   z-index: -5;
 }
+
+/* set the transform and opacity values for the different states of the navigation */
 nav.home {
   transform: translateX(42px) translateZ(-70px) rotateX(2deg) rotateY(-3deg);
 }
@@ -85,6 +107,26 @@ nav.home a:nth-of-type(1) {
   opacity: 1;
   transform: translateZ(70px);
 }
+
+nav.favorites {
+  transform: translateZ(-70px) rotateX(1deg);
+}
+nav.favorites a:nth-of-type(2) {
+  opacity: 1;
+  transform: translateZ(70px);
+}
+
+nav.settings {
+  transform: translateX(-42px) translateZ(-70px) rotateX(2deg) rotateY(3deg);
+}
+nav.settings a:nth-of-type(3) {
+  opacity: 1;
+  transform: translateZ(70px);
+}
+
+/* set up a transition for the circle above the anchor links
+included as the elements are selected
+*/
 nav.home a:nth-of-type(1):before,
 nav.favorites a:nth-of-type(2):before,
 nav.settings a:nth-of-type(3):before {
@@ -93,18 +135,4 @@ nav.settings a:nth-of-type(3):before {
   transition-property: opacity, transform;
   transition-duration: 0.6s;
   transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
-}
-nav.favorites {
-  transform: translateZ(-70px) rotateX(1deg);
-}
-nav.favorites a:nth-of-type(2) {
-  opacity: 1;
-  transform: translateZ(70px);
-}
-nav.settings {
-  transform: translateX(-42px) translateZ(-70px) rotateX(2deg) rotateY(3deg);
-}
-nav.settings a:nth-of-type(3) {
-  opacity: 1;
-  transform: translateZ(70px);
 }

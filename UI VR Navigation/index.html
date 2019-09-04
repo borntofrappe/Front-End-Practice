@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>UI VR Navigation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -57,10 +57,11 @@
         </g>
     </svg>
 
+
     <!--
         nav structure
         - one anchor link for each option, with an icon and matching text
-        - an svg describing a + + + pattern used as a faux-background
+        - an svg describing the + + + pattern used as a faux-background
     -->
     <nav class="favorites">
         <a href="#home">
@@ -91,7 +92,7 @@
             <defs>
                 <linearGradient id="graticulate-gradient" x1="0.5" x2="0.5" y1="0" y2="1">
                     <stop stop-color="#000" offset="0"></stop>
-                    <stop stop-color="#222" offset="1"></stop>
+                    <stop stop-color="#333" offset="1"></stop>
                 </linearGradient>
                 <mask id="graticulate-mask">
                     <rect
@@ -102,6 +103,7 @@
                         fill="url(#graticulate-gradient">
                     </rect>
                 </mask>
+
                 <pattern id="graticulate-pattern" width="0.025" height="0.05" viewBox="0 0 100 100">
                     <path
                         d="M 50 35 v 30 m -15 -15 h 30"
@@ -122,10 +124,8 @@
                 fill="url(#graticulate-pattern)"
                 mask="url(#graticulate-mask)">
             </rect>
-
         </svg>
     </nav>
-
 
     <script src="script.js"></script>
 </body>
