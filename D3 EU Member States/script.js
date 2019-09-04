@@ -434,9 +434,9 @@ const data = dataEntry.reduce((acc, { description, year, states }, index) => {
     description,
     year,
     states,
-    population
-  })]
-},[]);
+    population,
+  })];
+}, []);
 
 // create an additional array describing the member states' codes (used for the intersection observer API)
 const memberStatesCodes = dataPopulation.map(({ code }) => code);
@@ -516,12 +516,11 @@ geoGroup
   .append('path')
   .attr('d', geoPath)
   // add the country's id to differentiate the path elements
-  .attr('id', ({ id }) => dataPopulation.find(({ code }) => code === id) ? dataPopulation.find(({ code }) => code === id).code : '')
+  .attr('id', ({ id }) => (dataPopulation.find(({ code }) => code === id) ? dataPopulation.find(({ code }) => code === id).code : ''))
   // use variations of the theme color for member states
   .attr('fill', ({ id }) => (dataPopulation.find(({ code }) => code === id) ? 'url(#gradient-member)' : 'hsl(233, 50%, 95%)'))
   .attr('stroke', ({ id }) => (dataPopulation.find(({ code }) => code === id) ? 'hsl(233, 70%, 55%)' : 'hsl(233, 20%, 60%)'))
   .attr('stroke-width', '1.5');
-
 
 
 // LINE CHARTS
@@ -572,7 +571,7 @@ entries
 
 entries
   .append('p')
-  .html(({ population }, i) => i > 0 ? `Population growth: <strong>${formatPercentage((population - data[i-1].population) / population * 100)}%</strong>` : '');
+  .html(({ population }, i) => (i > 0 ? `Population growth: <strong>${formatPercentage((population - data[i - 1].population) / data[i - 1].population * 100)}%</strong>` : ''));
 
 // for the line chart include an svg using the same values included in the first visualization
 const charts = entries
@@ -670,21 +669,21 @@ function highlightEntry(entry) {
   // else reset to the default gradient
   memberStatesCodes.forEach((code, index) => {
     document.querySelector(`#${code}`).setAttribute('fill', index < lastIndex ? 'hsl(240, 70%, 40%)' : 'url(#gradient-member)');
-  })
+  });
   // loop through all list items and add a class of .shown to the selected one (highlighted in the CSS)
-  document.querySelectorAll('li').forEach(listItem => listItem === entry ? listItem.className = 'shown' : listItem.className = '');
+  document.querySelectorAll('li').forEach(listItem => (listItem === entry ? listItem.className = 'shown' : listItem.className = ''));
 }
 
 // if the intersection observer API is made available, set up an observer to consider the intersection with every list item in the .eu-entries list
-if(window.IntersectionObserver) {
+if (window.IntersectionObserver) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if(entry.isIntersecting) {
+      if (entry.isIntersecting) {
         highlightEntry(entry.target);
       }
-    })
+    });
   }, {
-    threshold: 0.7 // 0.7 to have the viewport consider 70% of the list item before calling the desired function
+    threshold: 0.7, // 0.7 to have the viewport consider 70% of the list item before calling the desired function
   });
 
   const items = document.querySelectorAll('.eu-entries li');
