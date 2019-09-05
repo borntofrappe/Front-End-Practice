@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: hsl(0, 0%, 90%);
+  /* center in the viewport */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* animate the entire svg element to pop out */
+svg {
+  animation: pop 0.5s 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+@keyframes pop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/* animate the rays of light to scale them continuously */
+#sunshine g use {
+  animation: scale 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+}
+/* delay the 1st, 3rd, odd-th shape to have the rays animated in pairs
+! the use elements are not siblings, but are nested in group elements
+*/
+#sunshine g:nth-of-type(odd) use {
+  animation-delay: -5s;
+}
+@keyframes scale {
+  to {
+    transform: scale(0.9);
+  }
+}
+
+/* animate the waves to translate continuously to the right */
+#waves {
+  animation: translate 5s infinite linear;
+}
+@keyframes translate {
+  to {
+    /* 20 being the size of a full arc */
+    transform: translateX(20px);
+  }
+}
+
+/* animate the react logo to continuously rotate */
+#react {
+  animation: rotate 20s infinite linear;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

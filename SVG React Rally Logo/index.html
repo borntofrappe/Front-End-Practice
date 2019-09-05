@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Rally Logo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <svg viewBox="0 0 100 100" width="250" height="250">
+        <defs>
+            <!-- clip limiting the logo in the inner circle -->
+            <clipPath id="clip-circle">
+                    <circle
+                        cx="0"
+                        cy="0"
+                        r="38">
+                    </circle>
+            </clipPath>
+
+            <!-- path element re-used in the project -->
+            <path
+                id="ray"
+                d="M 0 0 v -38">
+            </path>
+        </defs>
+        <g transform="translate(50 50)">
+            <!-- frame for the logo, made of two overlapping circles -->
+            <g
+                fill="hsl(0, 0%, 92%)"
+                stroke="hsl(114, 27%, 44%)">
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="48.5"
+                    stroke-width="3">
+                </circle>
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="42"
+                    stroke-width="2">
+                </circle>
+            </g>
+
+            <!-- logo itself
+            use the clip to crop any path element which would otherwise overlap with the surrounding frame
+            -->
+            <g
+                id="logo"
+                clip-path="url(#clip-circle)">
+                <!-- sunshine
+                made of path elements creating straight lines
+                -->
+                <g
+                    id="sunshine"
+                    fill="none"
+                    stroke="hsl(37, 43%, 48%)"
+                    stroke-width="2">
+                    <!-- use the defined path element to create the rays of light
+                    wrap each <use> element in a group to rotate the shape
+                    -->
+                    <g transform="rotate(-100)">
+                        <use href="#ray" ></use>
+                    </g>
+                    <g transform="rotate(-80)">
+                        <use href="#ray" ></use>
+                    </g>
+                    <g transform="rotate(-60)">
+                        <use href="#ray" ></use>
+                    </g>
+                    <g transform="rotate(-40)">
+                        <use href="#ray" ></use>
+                    </g>
+                    <g transform="rotate(-20)">
+                        <use href="#ray" ></use>
+                    </g>
+                    <g transform="rotate(0)">
+                        <use href="#ray" ></use>
+                    </g>
+                    <g transform="rotate(20)">
+                        <use href="#ray" ></use>
+                    </g>
+                    <g transform="rotate(40)">
+                        <use href="#ray" ></use>
+                    </g>
+                    <g transform="rotate(60)">
+                        <use href="#ray" ></use>
+                    </g>
+                    <g transform="rotate(80)">
+                        <use href="#ray" ></use>
+                    </g>
+                    <g transform="rotate(100)">
+                        <use href="#ray" ></use>
+                    </g>
+                </g>
+
+                <!-- waves
+                made of squiggly path elements
+                -->
+                <g
+                    id="waves"
+                    fill="none"
+                    stroke="hsl(195, 46%, 56%)"
+                    stroke-width="2">
+                    <!--
+                        give an id to the path element, to rapidly repeat the shape
+                        use the arc command flipping the arc upwards and downwards
+                        ! subtract half the arc from the starting point to have the curve reach a local maximum in the center of the svg
+                    -->
+                    <path
+                        id="wave"
+                        d="M -55 15 a 10 10 0 0 0 10 0 10 10 0 0 1 10 0 a 10 10 0 0 0 10 0 10 10 0 0 1 10 0 a 10 10 0 0 0 10 0 10 10 0 0 1 10 0 a 10 10 0 0 0 10 0 10 10 0 0 1 10 0 a 10 10 0 0 0 10 0 10 10 0 0 1 10 0">
+                    </path>
+                    <!-- repeat the path to show waves one atop the other -->
+                    <use href="#wave" transform="translate(0 6)"></use>
+                    <use href="#wave" transform="translate(0 12)"></use>
+                    <use href="#wave" transform="translate(0 18)"></use>
+                    <use href="#wave" transform="translate(0 24)"></use>
+                </g>
+
+                <!-- react -->
+                <g
+                    id="react">
+                    <!-- the idea is to include multiple ellipses to create a fake background and the react logo itself
+                    the groups element style the nested shapes
+                    -->
+                    <!-- ellipses with no stroke and white fill -->
+                    <g
+                        fill="hsl(0, 0%, 92%)">
+                        <!-- give an id to the horizontal ellipse as to repeat the shape thrice -->
+                        <ellipse
+                            id="ellipse"
+                            cx="0"
+                            cy="0"
+                            rx="30"
+                            ry="12">
+                        </ellipse>
+                        <!-- repeat the ellipse rotating the shape
+                        the rotation occurs once again from the center of the svg (50, 50)
+                        -->
+                        <use href="#ellipse" transform="rotate(60)"></use>
+                        <use href="#ellipse" transform="rotate(120)"></use>
+                    </g>
+                    <!-- repeat the three ellipses, but adding a purple stroke and no fill
+                    scale the shape to be smaller than the white set of ellipses
+                    the scale occurs once more from the center, effectively replicating a smaller logo
+                    -->
+                    <g
+                        transform="scale(0.75)"
+                        fill="none"
+                        stroke="hsl(278, 22%, 49%)"
+                        stroke-width="2.5">
+                        <use href="#ellipse" transform="rotate(0)"></use>
+                        <use href="#ellipse" transform="rotate(60)"></use>
+                        <use href="#ellipse" transform="rotate(120)"></use>
+                    </g>
+                    <circle
+                        cx="0"
+                        cy="0"
+                        r="4"
+                        fill="hsl(278, 22%, 49%)">
+                    </circle>
+                </g>
+            </g>
+        </g>
+    </svg>
+
+</body>
+</html>
