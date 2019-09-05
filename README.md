@@ -125,6 +125,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Bergen Norway](https://codepen.io/borntofrappe/pen/mdbEGGa)|Practice  with SVG syntax to replicate [this design](https://dribbble.com/shots/6995258-Bergen) for the Norwegian city of Bergen.|17th-18th-19th August 2019|
 |[SVG Racing Loader](https://codepen.io/borntofrappe/pen/qBWqJYK)|Replicate [this design](https://dribbble.com/shots/3395665-F1-Aerodynamics) and animate the stroke's dashes to create a loading screen.|21st August 2019|
 |[SVG Pokemon Masters Loader](https://codepen.io/borntofrappe/pen/JjPJzBM)|Create a loading screen inspired by the mobile game Pokemon Masters.|29th August 2019|
+|[SVG React Rally Logo]()|Recreate and animate the logo from [the Youtube channel of React Rally](https://www.youtube.com/channel/UCXBhQ05nu3L1abBUGeQ0ahw).|5th September 2019|
 
 ### UI UX
 
