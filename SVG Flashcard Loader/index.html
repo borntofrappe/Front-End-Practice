@@ -9,7 +9,74 @@
 </head>
 <body>
 
+  <!-- add the svg graphic in a wrapping container -->
+  <div class="card">
+    <svg viewBox="0 0 100 100" width="100" height="100">
+      <defs>
+        <!-- define a circle with a radius of 1, replicated with different scale, fill and stroke around the project -->
+        <circle id="circle" cx="0" cy="0" r="1"></circle>
+      </defs>
+      <!-- center the shapes in the svg element -->
+      <g transform="translate(50 50)">
+        <!-- circle with stroke and no fill, for the orbit around the planet
+        ! the stroke is scaled as well
+        -->
+        <use href="#circle" transform="scale(45)" fill="none" stroke="currentColor" stroke-width="0.02"></use>
 
-    <script src="script.js"></script>
+        <!-- group describing the satellites, rotating around the planet -->
+        <g><!-- rotate this group to have the satellites rotate around the planet-->
+          <!-- by default translate the satellites to overlap with the orbit
+          wrap them in a circle to rotate them around said orbit
+          -->
+          <g transform="rotate(180)">
+            <use href="#circle" transform="translate(45 0) scale(5)" fill="currentColor" stroke="none"></use>
+          </g>
+          <use href="#circle" transform="translate(45 0) scale(5)" fill="currentColor" stroke="none"></use>
+        </g>
+
+        <!-- group describing the planet, with a circle and additional elements to detail a face -->
+        <g>
+          <use href="#circle" transform="scale(35)" fill="currentColor" stroke="none"></use>
+          <!-- describe the details as semi-transparent dark shapes -->
+          <g opacity="0.3" fill="hsl(0, 0% ,0%)">
+            <g transform="rotate(0)"> <!-- rotate this group to change the orientation of the details -->
+              <g transform="translate(0 0)"><!-- translate this group to move the details in the direction dictated by the rotation-->
+                <g transform="rotate(0)"><!-- rotate this group to reset the orientation of the details (-1 * the previous rotation) -->
+
+                <!-- draw the elements around the center of the svg -->
+                  <!-- rectangles for brows
+                    position the elements in the upper section
+                  -->
+                  <g transform="translate(-9 -14)">
+                    <!-- ! by scaling the starting shape all the use elements are updated in scale -->
+                    <rect id="brow" x="0" y="-2" width="6" height="2" rx="1"></rect>
+                    <use href="#brow" x="12"></use>
+                  </g>
+
+                  <!-- ellipse for the eyes and mouth
+                  position the elements below the brows
+                  -->
+                  <g transform="translate(-6 6)">
+                    <!-- just like for the rectangles, by scaling the starting shape all use elements follow suit -->
+                    <ellipse id="ellipse" cx="0" cy="-7" rx="3.5" ry="7" transform="scale(1 1)"></ellipse>
+                    <use href="#ellipse" x="12"></use>
+                    <!-- specify a white fill for the cheeks at the bottom of the eyes -->
+                    <use href="#ellipse" transform="scale(0.9 0.15)" fill="hsl(0, 100%, 100%)"></use>
+                    <!-- ! translate the shapes before scaling them as wanted -->
+                    <use href="#ellipse" transform="translate(12) scale(0.9 0.15)" fill="hsl(0, 100%, 100%)"></use>
+                  </g>
+                  <!-- position the mouth in the center -->
+                  <use href="#ellipse" transform="translate(0 18) scale(0.7 0.3)"></use>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

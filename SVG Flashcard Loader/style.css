@@ -5,5 +5,22 @@
 }
 body {
   min-height: 100vh;
-  background: hsl(0, 0%, 97%);
+  background: hsl(0, 0%, 95%);
+  /* center the card in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* specify a brighter background to have the card pop from the off-white background */
+.card {
+  background: hsl(0, 0%, 100%);
+  color: hsl(195, 100%, 60%);
+  padding: 5rem;
+  box-shadow: 0 1px 5px hsla(0, 0%, 5%, 0.1);
+}
+.card svg {
+  display: block;
+  width: 120px;
+  height: auto;
 }
