@@ -34,8 +34,7 @@ svg #satellites {
     transform: rotate(1turn);
   }
 }
-
-/* animate the shapes describing the brows, eyes and mouth to scale in the [1, 0.8, 1] range */
+/* animate the shapes describing the brows, eyes and mouth to scale continuously to a smaller size */
 svg #rectangle,
 svg #ellipse {
   animation: scale 2s ease-in-out infinite alternate;

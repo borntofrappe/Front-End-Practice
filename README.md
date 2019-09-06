@@ -126,7 +126,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Racing Loader](https://codepen.io/borntofrappe/pen/qBWqJYK)|Replicate [this design](https://dribbble.com/shots/3395665-F1-Aerodynamics) and animate the stroke's dashes to create a loading screen.|21st August 2019|
 |[SVG Pokemon Masters Loader](https://codepen.io/borntofrappe/pen/JjPJzBM)|Create a loading screen inspired by the mobile game Pokemon Masters.|29th August 2019|
 |[SVG React Rally Logo](https://codepen.io/borntofrappe/pen/KKPZWQK)|Recreate and animate the logo from [the Youtube channel of the React Rally conference](https://www.youtube.com/channel/UCXBhQ05nu3L1abBUGeQ0ahw).|5th September 2019|
-|[SVG Flashcard Loader]()|Recreate [this design](https://codepen.io/borntofrappe/full/yxExMw) with SVG syntax and a progress element.|6th September 2019|
+|[SVG Flashcard Loader](https://codepen.io/borntofrappe/pen/dybJxMv)|Recreate [this design](https://codepen.io/borntofrappe/full/yxExMw) with SVG syntax and a progress element.|6th September 2019|
 
 ### UI UX
 
