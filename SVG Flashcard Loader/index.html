@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <!-- add the svg graphic in a wrapping container -->
+  <!-- add the svg graphic and the progress element in a wrapping container -->
   <div class="card">
     <svg viewBox="0 0 100 100" width="100" height="100">
       <defs>
@@ -24,14 +24,16 @@
         <use href="#circle" transform="scale(45)" fill="none" stroke="currentColor" stroke-width="0.02"></use>
 
         <!-- group describing the satellites, rotating around the planet -->
-        <g><!-- rotate this group to have the satellites rotate around the planet-->
+        <g id="satellites"><!-- rotate this group to have the satellites rotate around the planet-->
           <!-- by default translate the satellites to overlap with the orbit
           wrap them in a circle to rotate them around said orbit
           -->
           <g transform="rotate(180)">
             <use href="#circle" transform="translate(45 0) scale(5)" fill="currentColor" stroke="none"></use>
           </g>
-          <use href="#circle" transform="translate(45 0) scale(5)" fill="currentColor" stroke="none"></use>
+          <g>
+            <use href="#circle" transform="translate(45 0) scale(5)" fill="currentColor" stroke="none"></use>
+          </g>
         </g>
 
         <!-- group describing the planet, with a circle and additional elements to detail a face -->
@@ -39,9 +41,9 @@
           <use href="#circle" transform="scale(35)" fill="currentColor" stroke="none"></use>
           <!-- describe the details as semi-transparent dark shapes -->
           <g opacity="0.3" fill="hsl(0, 0% ,0%)">
-            <g transform="rotate(0)"> <!-- rotate this group to change the orientation of the details -->
-              <g transform="translate(0 0)"><!-- translate this group to move the details in the direction dictated by the rotation-->
-                <g transform="rotate(0)"><!-- rotate this group to reset the orientation of the details (-1 * the previous rotation) -->
+            <g id="rotate" transform="rotate(0)"> <!-- rotate this group to change the orientation of the details -->
+              <g id="translate" transform="translate(0 0)"><!-- translate this group to move the details in the direction dictated by the rotation-->
+                <g id="rotate-opposite" transform="rotate(0)"><!-- rotate this group to reset the orientation of the details (-1 * the previous rotation) -->
 
                 <!-- draw the elements around the center of the svg -->
                   <!-- rectangles for brows
@@ -49,8 +51,8 @@
                   -->
                   <g transform="translate(-9 -14)">
                     <!-- ! by scaling the starting shape all the use elements are updated in scale -->
-                    <rect id="brow" x="0" y="-2" width="6" height="2" rx="1"></rect>
-                    <use href="#brow" x="12"></use>
+                    <rect id="rectangle" x="0" y="-2" width="6" height="2" rx="1"></rect>
+                    <use href="#rectangle" x="12"></use>
                   </g>
 
                   <!-- ellipse for the eyes and mouth
@@ -75,6 +77,7 @@
       </g>
     </svg>
 
+    <progress min="0" max="100" value="0"></progress>
   </div>
 
   <script src="script.js"></script>
