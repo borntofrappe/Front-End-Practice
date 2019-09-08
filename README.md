@@ -127,6 +127,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Pokemon Masters Loader](https://codepen.io/borntofrappe/pen/JjPJzBM)|Create a loading screen inspired by the mobile game Pokemon Masters.|29th August 2019|
 |[SVG React Rally Logo](https://codepen.io/borntofrappe/pen/KKPZWQK)|Recreate and animate the logo from [the Youtube channel of the React Rally conference](https://www.youtube.com/channel/UCXBhQ05nu3L1abBUGeQ0ahw).|5th September 2019|
 |[SVG Flashcard Loader](https://codepen.io/borntofrappe/pen/dybJxMv)|Recreate [this design](https://codepen.io/borntofrappe/full/yxExMw) with SVG syntax and a progress element.|6th September 2019|
+|[SVG Postcard]()|Recreate [this design](https://dribbble.com/shots/5888593-Damavand) with SVG syntax, using pattern, mask and clipPath elements.|8th September 2019|
 
 ### UI UX
 
