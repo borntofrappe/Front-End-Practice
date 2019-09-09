@@ -128,6 +128,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG React Rally Logo](https://codepen.io/borntofrappe/pen/KKPZWQK)|Recreate and animate the logo from [the Youtube channel of the React Rally conference](https://www.youtube.com/channel/UCXBhQ05nu3L1abBUGeQ0ahw).|5th September 2019|
 |[SVG Flashcard Loader](https://codepen.io/borntofrappe/pen/dybJxMv)|Recreate [this design](https://codepen.io/borntofrappe/full/yxExMw) with SVG syntax and a progress element.|6th September 2019|
 |[SVG Stamp](https://codepen.io/borntofrappe/pen/OJLQqwp)|Create a stamp inspired by [this design](https://dribbble.com/shots/5888593-Damavand) with SVG syntax and specifically pattern and mask elements.|8-9th September 2019|
+|[Small & Scalable Vector Graphic](https://codepen.io/borntofrappe/pen/LYPdNvg)|Starting from the **SVG Stamp** project create a small, but scalable illustration in a 100x150 pixel container.|9th September 2019|
 
 ### UI UX
 
@@ -181,4 +182,3 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[McLaren Intro](https://codepen.io/borntofrappe/pen/LYPNZxb)|Practice CSS grid, animation and the `clip-path` property to recreate a frame of a video from the popular F1 manufacturer.|14th August 2019|
 |[Zdog Mobile](https://codepen.io/borntofrappe/pen/KKPaWeE)|Tinker with the pseudo-3d engine to recreate the structure usually hanged above a crib to entertain and delight.|22nd August 2019|
 |[CPC Connect the Dots](https://codepen.io/borntofrappe/pen/LYPWLMv)|Starting from an svg element include a canvas plotting a worksheet to to connect a few dots.|24th-25th August 2019|
-|[CPC Think Small]()|Starting from the SVG project creating a stamp create a small, but scalable illustration in a 100x150 pixel container.|9th September 2019|

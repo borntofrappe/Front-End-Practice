@@ -11,6 +11,7 @@ body {
   justify-content: center;
   align-items: flex-end;
 }
+
 /* animate the svg element to scale itself up */
 svg {
   display: block;
@@ -27,12 +28,12 @@ svg {
     transform: scale(3);
   }
 }
+
 /* animate the path elements describing the fingers to show up and pause around the stamp */
 svg .finger {
   animation: translate 10s cubic-bezier(0.645, 0.045, 0.355, 1) infinite
     alternate;
 }
-
 @keyframes translate {
   25%,
   75% {
