@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>CPC Think Small</title>
+  <title>Small & Scalable Vector Graphic</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <svg viewBox="0 0 100 130" width="100" height="130">
+    <svg viewBox="0 0 100 150" width="100" height="150">
       <style>
         @import url("https://fonts.googleapis.com/css?family=Lato:300,900&display=swap");
 
@@ -30,7 +30,7 @@
         </pattern>
 
         <!-- mask using the patterns to cut out portions around te 100x150 container -->
-        <mask id="mask-rect">
+        <mask id="mask-edges">
           <rect x="0" y="0" width="100" height="130" fill="#fff"></rect>
           <rect id="x" x="2.5" y="0" width="95" height="8" fill="url(#pattern-x)"></rect>
           <use href="#x" transform="translate(0 130) scale(1 -1)"></use>
@@ -39,7 +39,7 @@
         </mask>
 
         <!-- linear gradient for the drawing inside the stamp -->
-        <linearGradient id="gradient-rect" x1="0.5" x2="0.5" y1="0" y2="1">
+        <linearGradient id="gradient-sunshine" x1="0.5" x2="0.5" y1="0" y2="1">
           <stop stop-color="#FE8F43" offset="0"></stop>
           <stop stop-color="#FDB648" offset="1"></stop>
         </linearGradient>
@@ -48,33 +48,60 @@
         userSpaceOnUse means the mask is applied relative to the wrapping svg
         ! define the circle element to re-use it throughout the project
         -->
-        <circle id="circle" cx="0" cy="0" r="18"></circle>
-        <mask id="mask-circle" maskUnits="userSpaceOnUse">
+        <circle id="sunshine" cx="0" cy="0" r="18"></circle>
+        <mask id="mask-sunshine" maskUnits="userSpaceOnUse">
           <rect x="0" y="0" width="100" height="130" fill="#fff"></rect>
-          <use href="#circle" x="50" y="55" fill="#000"></use>
+          <use href="#sunshine" x="50" y="55" fill="#000"></use>
         </mask>
 
         <!-- path used to create the mountains
         starting from the bottom right corner to scale the shape from that specific point
         -->
         <path id="mountain" d="M 0 0 l -40 -40 l -40 40" ></path>
+
+        <!-- path describing a finger
+        starting from the bottom center of the shape
+        -->
+        <path id="finger" d="M -15 0 v -25 a 15 15 0 0 1 30 0 v 25"></path>
+        <!-- ellipse describing the fingernail
+          used for the shape and for a clipPath element -->
+        <ellipse id="nail" cx="0" cy="-27" rx="12" ry="9"></ellipse>
+        <!-- clip for the finger, to crop the lighter part within the boundaries of the nail   -->
+        <clipPath id="clip-nail">
+            <use href="#ellipse"></use>
+        </clipPath>
       </defs>
+
+      <!-- actual graphic -->
       <g>
+        <!-- before (and below) the stamp add an instance of the finger's path -->
+        <!-- position the shape at the bottom of the graphic -->
+        <g transform="translate(75 155)">
+          <!-- rotate and translate away according to the updated direction -->
+          <g transform="rotate(-30) translate(0 5)">
+            <!-- h<ide the element outside of the svg
+            the idea is to animate this group to `0`
+            -->
+            <g transform="translate(0 35)" class="finger">
+              <use href="#finger" fill="#ECA891"></use>
+            </g>>
+          </g>
+        </g>
 
         <!-- group the rectangle and circle elements describing the main features to apply the mask and see the background through
         -->
-        <g mask="url(#mask-circle)">
+        <g mask="url(#mask-sunshine)">
           <!-- include an additional mask on the rectangle used as background, to carve out the edges with the circle pattern -->
-          <rect x="0" y="0" width="100" height="130" fill="#fff" mask="url(#mask-rect)"></rect>
+          <rect x="0" y="0" width="100" height="130" fill="#fff" mask="url(#mask-edges)"></rect>
 
           <!-- add the gradient for the sunshine -->
-          <rect  x="10" y="10" width="80" height="85" fill="url(#gradient-rect)"></rect>
+          <rect  x="10" y="10" width="80" height="85" fill="url(#gradient-sunshine)"></rect>
 
           <!-- on top of the gradient, add multiple instances of the circle, with different fill colors -->
           <g transform="translate(50 55)">
-            <use href="#circle" transform="scale(2)" fill="#fe8743"></use>
-            <use href="#circle" transform="scale(1.67)" fill="#fe9a43"></use>
-            <use href="#circle" transform="scale(1.33)" fill="#fead43 "></use>
+            <use href="#sunshine" transform="scale(2)" fill="#fe8743"></use>
+            <use href="#sunshine" transform="scale(1.67)" fill="#fe9a43"></use>
+            <use href="#sunshine" transform="scale(1.33)" fill="#fead43 "></use>
           </g>
         </g>
 
@@ -99,6 +126,18 @@
           <text font-size="7" style="text-transform: uppercase; font-weight: 900;">Damavand</text>
           <text y="8" font-size="8" style="font-weight: 300;">Tehran, <tspan style="text-transform: uppercase;">Iran</tspan></text>
           <text fill="#fd6663" x="80" y="8" font-size="18" text-anchor="end" style="font-weight: 900; letter-spacing: -0.05rem;">97</text>
+        </g>
+
+        <!-- following the stamp add another finger, detailed with additional path elements for the nail -->
+        <g transform="translate(85 155)">
+          <g transform="rotate(-10)">
+            <g transform="translate(0 35)" class="finger">
+              <use href="#finger" x="-1" y="1" fill="#000" opacity="0.2"></use>
+              <use href="#finger" fill="#ECA891"></use>
+              <use href="#ellipse" fill="#E69C7E"></use>
+              <ellipse clip-path="url(#clip-nail)" cx="0" cy="-22" rx="12" ry="3.5" fill="#F5C1AB"></ellipse>
+            </g>
+          </g>
         </g>
       </g>
     </svg>

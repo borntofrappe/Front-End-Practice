@@ -5,14 +5,37 @@
 }
 body {
   background: #fb6662;
-  /* center the svg in the viewport */
+  /* position the svg in the bottom center of the page */
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
+/* animate the svg element to scale itself up */
 svg {
-  width: 300px;
-  height: auto;
   display: block;
+  animation: scale 10s cubic-bezier(0.645, 0.045, 0.355, 1) infinite alternate;
+  transform-origin: 50% 100%;
+}
+@keyframes scale {
+  25%,
+  75% {
+    transform: scale(1);
+  }
+  35%,
+  60% {
+    transform: scale(3);
+  }
+}
+/* animate the path elements describing the fingers to show up and pause around the stamp */
+svg .finger {
+  animation: translate 10s cubic-bezier(0.645, 0.045, 0.355, 1) infinite
+    alternate;
+}
+
+@keyframes translate {
+  25%,
+  75% {
+    transform: translate(0);
+  }
 }
