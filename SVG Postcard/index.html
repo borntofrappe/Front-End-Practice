@@ -4,11 +4,104 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>SVG Postcard</title>
+  <title>SVG Stamp</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <svg viewBox="0 0 100 150">
 
+  <svg viewBox="0 0 100 130" width="100" height="130">
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Lato:300,900&display=swap");
+
+      text {
+        font-family: "Lato", sans-serif;
+      }
+    </style>
+    <defs>
+      <!-- pattern used to repeat a circle element on the x dimension -->
+      <pattern id="pattern-x" width="0.1" height="1" viewBox="0 0 10 10">
+        <circle cx="5" cy="0" r="4"></circle>
+      </pattern>
+      <!-- pattern used to repeat a circle element on the y dimension
+      the height is smaller then the width of the previous pattern since the pattern is applied on a larger area
+      -->
+      <pattern id="pattern-y" width="1" height="0.072" viewBox="0 0 10 10">
+        <circle cx="0" cy="5" r="4"></circle>
+      </pattern>
+
+      <!-- mask using the patterns to cut out portions around te 100x150 container -->
+      <mask id="mask-rect">
+        <rect x="0" y="0" width="100" height="130" fill="#fff"></rect>
+        <rect id="x" x="2.5" y="0" width="95" height="8" fill="url(#pattern-x)"></rect>
+        <use href="#x" transform="translate(0 130) scale(1 -1)"></use>
+        <rect id="y" x="0" y="2.5" width="8" height="125" fill="url(#pattern-y)"></rect>
+        <use href="#y" transform="translate(100 0) scale(-1 1)"></use>
+      </mask>
+
+      <!-- linear gradient for the drawing inside the stamp -->
+      <linearGradient id="gradient-rect" x1="0.5" x2="0.5" y1="0" y2="1">
+        <stop stop-color="#FE8F43" offset="0"></stop>
+        <stop stop-color="#FDB648" offset="1"></stop>
+      </linearGradient>
+
+      <!-- mask to crop a circle in the center of the postcard
+      userSpaceOnUse means the mask is applied relative to the wrapping svg
+      ! define the circle element to re-use it throughout the project
+      -->
+      <circle id="circle" cx="0" cy="0" r="18"></circle>
+      <mask id="mask-circle" maskUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="100" height="130" fill="#fff"></rect>
+        <use href="#circle" x="50" y="55" fill="#000"></use>
+      </mask>
+
+      <!-- path used to create the mountains
+      starting from the bottom right corner to scale the shape from that specific point
+      -->
+      <path id="mountain" d="M 0 0 l -40 -40 l -40 40" ></path>
+    </defs>
+    <g>
+
+      <!-- group the rectangle and circle elements describing the main features to apply the mask and see the background through
+      -->
+      <g mask="url(#mask-circle)">
+        <!-- include an additional mask on the rectangle used as background, to carve out the edges with the circle pattern -->
+        <rect x="0" y="0" width="100" height="130" fill="#fff" mask="url(#mask-rect)"></rect>
+
+        <!-- add the gradient for the sunshine -->
+        <rect  x="10" y="10" width="80" height="85" fill="url(#gradient-rect)"></rect>
+
+        <!-- on top of the gradient, add multiple instances of the circle, with different fill colors -->
+        <g transform="translate(50 55)">
+          <use href="#circle" transform="scale(2)" fill="#fe8743"></use>
+          <use href="#circle" transform="scale(1.67)" fill="#fe9a43"></use>
+          <use href="#circle" transform="scale(1.33)" fill="#fead43 "></use>
+        </g>
+      </g>
+
+      <!-- path elements describing the mountain
+      position the shape in the bottom right corner of the connected rectangle
+      -->
+      <g transform="translate(90 95)">
+          <use href="#mountain" fill="#6D3237"></use>
+          <!-- use multiple instances of the shape, each time with a smaller scale -->
+          <use transform="scale(0.85)" href="#mountain" fill="#823E3F"></use>
+          <use transform="scale(0.7)" href="#mountain" fill="#9C4D50"></use>
+          <use transform="scale(0.55)" href="#mountain" fill="#D0696B"></use>
+      </g>
+      <!-- snow atop the mountain -->
+      <path d="M 50 55 l -18 18 l 6 6 l 6 -6 l 6 6 l 6 -6 l 6 6 l 6 -6 z" fill="#fff" stroke-linejoin="round" stroke-linecap="round"></path>
+
+      <!-- text describing the destination, and positioned in the bottom section of the graphic
+      DAMAVAND
+      Tehran, IRAN    97
+      -->
+      <g transform="translate(10 110)" fill="#1D2028">
+        <text font-size="7" style="text-transform: uppercase; font-weight: 900;">Damavand</text>
+        <text y="8" font-size="8" style="font-weight: 300;">Tehran, <tspan style="text-transform: uppercase;">Iran</tspan></text>
+        <text fill="#fd6663" x="80" y="8" font-size="18" text-anchor="end" style="font-weight: 900; letter-spacing: -0.05rem;">97</text>
+      </g>
+    </g>
   </svg>
+
 </body>
 </html>

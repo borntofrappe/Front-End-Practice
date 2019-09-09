@@ -1,4 +1,4 @@
-# SVG Postcard
+# SVG Stamp
 
 <!-- ## [Live Demo]() -->
 
