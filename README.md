@@ -182,3 +182,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[McLaren Intro](https://codepen.io/borntofrappe/pen/LYPNZxb)|Practice CSS grid, animation and the `clip-path` property to recreate a frame of a video from the popular F1 manufacturer.|14th August 2019|
 |[Zdog Mobile](https://codepen.io/borntofrappe/pen/KKPaWeE)|Tinker with the pseudo-3d engine to recreate the structure usually hanged above a crib to entertain and delight.|22nd August 2019|
 |[CPC Connect the Dots](https://codepen.io/borntofrappe/pen/LYPWLMv)|Starting from an svg element include a canvas plotting a worksheet to to connect a few dots.|24th-25th August 2019|
+|[CPC 5 Lines](https://codepen.io/borntofrappe/pen/xxKzgqY)|Inspired by [this design](https://dribbble.com/shots/6488478-Guitar-letter-G) and with 5 lines of HTML, CSS and JavaScript, create a series of posters alternating in color.|12th September 2019|
