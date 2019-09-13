@@ -67,3 +67,32 @@ the idea is to increase its opacity when the checkbox is being focused on
 .input input[type="checkbox"]:checked + svg .icon {
   transform: translateX(0);
 }
+
+/* cap the width of the visualization */
+.viz {
+  width: 90vw;
+  max-width: 600px;
+}
+.member {
+  padding: 0.75rem 0;
+  display: flex;
+  align-items: center;
+}
+.member > * {
+  margin: 0 0.5rem;
+}
+.member:nth-of-type(odd) {
+  background: hsl(0, 0%, 95%);
+}
+.member svg {
+  width: 30px;
+  height: auto;
+}
+.member h2 {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.member .details {
+  height: 30px;
+  width: 100%;
+}
