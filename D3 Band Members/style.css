@@ -17,7 +17,7 @@ body {
   margin: 1rem;
 }
 .container > * + * {
-  margin: 0.75rem 0;
+  margin: 1.25rem 0;
 }
 .controls {
   display: flex;
@@ -73,26 +73,31 @@ the idea is to increase its opacity when the checkbox is being focused on
   width: 90vw;
   max-width: 600px;
 }
+/* display the icon and details side by side */
 .member {
-  padding: 0.75rem 0;
   display: flex;
   align-items: center;
 }
-.member > * {
-  margin: 0 0.5rem;
-}
+/* alternate the background of the data points */
 .member:nth-of-type(odd) {
   background: hsl(0, 0%, 95%);
 }
 .member svg {
+  margin: 0 0.75rem;
+  display: block;
   width: 30px;
   height: auto;
 }
-.member h2 {
-  font-size: 0.85rem;
-  font-weight: 600;
+
+.details {
+  min-height: 50px;
+  padding: 0.75rem 0;
+  flex-grow: 1;
+  position: relative;
 }
-.member .details {
-  height: 30px;
-  width: 100%;
+.details h2 {
+  color: hsl(0, 0%, 15%);
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  white-space: nowrap;
 }
