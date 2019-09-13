@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 30%);
+  font-family: "Open Sans", sans-serif;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+.container > * + * {
+  margin: 0.75rem 0;
+}
+.controls {
+  display: flex;
+  align-items: center;
+}
+.controls > * {
+  margin: 0 0.5rem;
+}
+/* when hovering on the labels shown an underline, to highlight their click-ability */
+.controls label:hover {
+  text-decoration: underline;
+}
+/* instead of the default input of type checkbox, style the svg graphic to take its place */
+.input {
+  position: relative;
+  height: 34px;
+  color: hsl(0, 0%, 100%);
+  fill: hsl(0, 0%, 70%);
+}
+.input svg {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+.input input[type="checkbox"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+/* by default reduce the transparency of the rectangle making up the toggle's background
+the idea is to increase its opacity when the checkbox is being focused on
+*/
+.input svg rect {
+  opacity: 0.4;
+  transition: opacity 0.25s ease-in-out;
+}
+/* on active as well to keep the transparency as the toggle is being clicked */
+.input input[type="checkbox"]:focus + svg rect,
+.input input[type="checkbox"]:active + svg rect {
+  opacity: 1;
+}
+/* when the checkbox is checked translate the prescribed circle to the right (by default it has a negative translation) */
+.input input[type="checkbox"] + svg .icon {
+  transition: transform 0.25s ease-in-out;
+}
+.input input[type="checkbox"]:checked + svg .icon {
+  transform: translateX(0);
+}

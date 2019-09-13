@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Input Type Checkbox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!--
+        include the visualization _after_ a .div container describing the controls
+    -->
+    <div class="container">
+        <!-- the controls allow to change the visualization's appearance with a toggle
+        ! have the label share the same `for` attribute to always toggle the checkbox
+        -->
+        <div class="controls">
+            <label for="toggle">Sort by year</label>
+            <!-- wrap the input of type checkbox in a label, and add an svg alongside it
+            the idea is to conceal the default checkbox and use a custom graphic instead
+            -->
+            <label class="input" for="toggle">
+                <input type="checkbox" id="toggle">
+                <svg viewBox="0 0 100 60" width="100" height="60">
+                    <rect x="0" y="0" width="100" height="60" rx="30"></rect>
+                    <circle class="icon" cx="75" cy="30" r="17" transform="translate(-50 0)" fill="currentColor"></circle>
+                </svg>
+            </label>
+            <label for="toggle">Sort by role</label>
+        </div>
+
+        <!-- bind the data to dom elements here -->
+        <div class="viz"></div>
+    </div>
+
+    <script src="https://unpkg.com/d3@5.12.0/dist/d3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
