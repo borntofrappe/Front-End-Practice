@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* display the icon and .details side by side */
+.member {
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  width: 90vw;
+  background: hsl(0, 0%, 95%);
+}
+.member svg {
+  display: block;
+  width: 42px;
+  height: 42px;
+  margin: 0.5rem;
+}
+/*
+- min-height since every nested element is absolute positioned, and the element would otherwise collapse
+- flex-grow to have the element expand and pick up the available space
+*/
+.member .details {
+  flex-grow: 1;
+  min-height: 60px;
+  position: relative;
+  background: hsl(0, 65%, 80%);
+}
+/* absolute position the heading
+- left should be updated according to the input data
+*/
+.member .details h2 {
+  font-size: 1rem;
+  position: absolute;
+  white-space: nowrap;
+  top: 5%;
+  left: 30%;
+  transform: translate(-50%, 0%);
+}
+/* absolute position the .years container
+- left should be updated according to the starting year (see the second .years container)
+- width should be updated in the same fashion, looking at the ending and starting year
+*/
+.member .details .years:nth-of-type(1) {
+  position: absolute;
+  left: 0%;
+  top: 35%;
+  height: 65%;
+  width: 20%;
+  background: hsl(120, 65%, 80%);
+}
+/* absolute position the spans to recreate the |---| line
+! the spans do not depend on the input data, but are added at the beginning, end and across the parent container
+*/
+.member .details .years:nth-of-type(1) span {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  background: hsl(0, 0%, 20%);
+}
+.member .details .years:nth-of-type(1) span:nth-of-type(1),
+.member .details .years:nth-of-type(1) span:nth-of-type(3) {
+  transform: translate(-50%, -50%);
+  width: 3px;
+  height: 20px;
+  border-radius: 2px;
+}
+.member .details .years:nth-of-type(1) span:nth-of-type(2) {
+  transform: translate(0%, -50%);
+  width: 100%;
+  height: 4px;
+}
+.member .details .years:nth-of-type(1) span:nth-of-type(3) {
+  left: 100%;
+}
+
+/* second .years container to test another set of years */
+.member .details .years:nth-of-type(2) {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  height: 65%;
+  width: 50%;
+  background: hsl(240, 65%, 80%);
+}
+.member .details .years:nth-of-type(2) span {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  background: hsl(0, 0%, 20%);
+}
+.member .details .years:nth-of-type(2) span:nth-of-type(1),
+.member .details .years:nth-of-type(2) span:nth-of-type(3) {
+  transform: translate(-50%, -50%);
+  width: 3px;
+  height: 20px;
+  border-radius: 2px;
+}
+.member .details .years:nth-of-type(2) span:nth-of-type(2) {
+  transform: translate(0%, -50%);
+  width: 100%;
+  height: 4px;
+}
+.member .details .years:nth-of-type(2) span:nth-of-type(3) {
+  left: 100%;
+}
