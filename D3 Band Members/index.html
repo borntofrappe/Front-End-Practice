@@ -69,9 +69,7 @@
         include the visualization _after_ a container describing the controls
     -->
     <div class="container">
-        <!-- allow to change the visualization's appearance with a toggle
-        ! have the label elements share the same `for` attribute to always toggle the checkbox
-        -->
+        <!-- allow to change the visualization's appearance with two labels and a toggle -->
         <div class="controls">
             <label for="toggle">Sort by year</label>
             <!-- wrap the input of type checkbox in a label, and add an svg alongside it
@@ -81,6 +79,7 @@
                 <input type="checkbox" id="toggle">
                 <svg viewBox="0 0 100 60" width="100" height="60">
                     <rect x="0" y="0" width="100" height="60" rx="30"></rect>
+                    <!-- translate the circle to 0 when the input is checked -->
                     <circle class="icon" cx="75" cy="30" r="17" transform="translate(-50 0)" fill="currentColor"></circle>
                 </svg>
             </label>

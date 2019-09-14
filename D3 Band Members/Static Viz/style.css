@@ -17,6 +17,7 @@ body {
   align-items: center;
   margin: 1rem;
 }
+
 /* cap the width of the visualization */
 .viz {
   width: 90vw;
@@ -36,4 +37,8 @@ body {
   display: block;
   width: 30px;
   height: auto;
+}
+.member .details h2 {
+  font-size: 0.85rem;
+  color: hsl(0, 0%, 20%);
 }

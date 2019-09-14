@@ -127,29 +127,36 @@ const band = [
   },
 ];
 
-// sort the array according to the starting year and according to the role
-const bandYears = [...band].sort((a, b) => a.active[0].beginning > b.active[0].beginning ? 1 : -1);
 
-// scale used to compute the % percentages to position the .details element
-// starting from the oldest year
-const startingYear = bandYears[0].active[0].beginning;
+// for the |---| line create a scale mapping the year values to the [0-100] range
+// range given by the % percentage value used to position and size the elements
+// ! to build a date object with arguments instead of a string, create a utility function to detail the first of January for the input year
+const yearToDate = (year) => new Date(`${year}`, 1, 1);
+
+// refer to the oldest year for the beginning of the scale
+const oldestYear = d3.min(band.reduce((acc, curr) => {
+  const beginnings = curr.active.map(({beginning}) => beginning);
+  return [...acc, ...beginnings];
+}, []));
 
 const timeScale = d3
   .scaleTime()
-  .domain([new Date(`${startingYear}`), new Date()])
+  .domain([yearToDate(oldestYear), new Date()])
   .range([0, 100]);
 
-// add a div container for each member
-const viz = d3.select('.viz');
 
+const viz = d3
+  .select('.viz');
+
+// add a div container for each member
 const members = viz
     .selectAll('div.member')
-    .data(bandYears)
+    .data(band)
     .enter()
     .append('div')
     .attr('class', 'member');
 
-// add an icon matching the role
+//icon matching the role
 members
   .append('svg')
   .attr('viewBox', '0 0 100 100')
@@ -158,7 +165,7 @@ members
   .append('use')
   .attr('href', ({ role }) => `#${role}`);
 
-// add a container in which to describe the name and years of activity
+// container in which to describe the name and years of activity
 const details = members
   .append('div')
   .attr('class', 'details')
@@ -171,20 +178,18 @@ details
   .append('h2')
   .text(({name}) => name)
   .style('position', 'absolute')
-  .style('font-size', '0.85rem')
-  .style('color', 'hsl(0, 0%, 15%)')
   .style('white-space', 'nowrap')
   .style('top', '15%')
   .style('left', ({ active }) => {
-    const beginning = new Date(`${active[0].beginning}`);
-    const end = active[active.length - 1].end ? new Date(`${active[active.length - 1].end}`) : new Date();
+    const beginning = yearToDate(active[0].beginning);
+    const end = active[active.length - 1].end ? yearToDate(active[active.length - 1].end) : new Date;
     const midPoint = timeScale(beginning) + (timeScale(end) - timeScale(beginning)) / 2;
     return `${midPoint}%`;
   })
-  // change the alignment of the text to avoid overlaps
+  // change the alignment of the text to avoid having the name overlap on the icon or exceed the visualization
   .style('transform', ({ active }) => {
-    const beginning = new Date(`${active[0].beginning}`);
-    const end = active[active.length - 1].end ? new Date(`${active[active.length - 1].end}`) : new Date();
+    const beginning = yearToDate(active[0].beginning);
+    const end = active[active.length - 1].end ? yearToDate(active[active.length - 1].end) : new Date;
     const midPoint = timeScale(beginning) + (timeScale(end) - timeScale(beginning)) / 2;
     if(midPoint < 10) {
       return 'translate(0%, 0%)';
@@ -194,8 +199,8 @@ details
     return 'translate(-50%, 0%)';
   });
 
+// container for the active years
 // absolute position each .years container according to the starting year
-// ! have the container take as much space as described by the beginning and end year values
 const years = details
   .selectAll('div.years')
   .data(({active}) => active)
@@ -205,11 +210,11 @@ const years = details
   .style('position', 'absolute')
   .style('top', '35%')
   .style('left', ({ beginning }) => {
-    return `${timeScale(new Date(`${beginning}`))}%`;
+    return `${timeScale(yearToDate(beginning))}%`;
   })
   .style('width', ({ beginning, end }) => {
     const endValue = end ? new Date(`${end}`) : new Date();
-    return `${timeScale(endValue) - timeScale(new Date(`${beginning}`))}%`;
+    return `${timeScale(endValue) - timeScale(yearToDate(beginning))}%`;
   })
   .style('height', '65%');
 

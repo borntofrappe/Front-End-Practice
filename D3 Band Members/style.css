@@ -75,18 +75,3 @@ the idea is to increase its opacity when the checkbox is being focused on
   width: 90vw;
   max-width: 600px;
 }
-/* display the icon and details side by side */
-.member {
-  display: flex;
-  align-items: center;
-}
-/* alternate the background of the data points */
-.member:nth-of-type(odd) {
-  background: hsl(0, 0%, 95%);
-}
-.member svg {
-  margin: 0 0.75rem;
-  display: block;
-  width: 30px;
-  height: auto;
-}
