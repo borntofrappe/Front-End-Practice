@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 Band Members - Static Viz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- icons used in the project -->
+    <svg style="display: none;" viewBox="0 0 100 100">
+        <symbol id="vocals" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="translate(50 50) rotate(45)">
+                <g transform="translate(0 -27.5)">
+                    <circle cx="0" cy="0" r="20"></circle>
+                    <path d="M -23 0 a 46 46 0 0 0 46 0" ></path>
+                    <path d="M -13 15 l 5 45 h 16 l 5 -45"></path>
+                    <path d="M 0 60 a 9 9 0 0 0 18 0 a 9 9 0 0 1 18 0"></path>
+                </g>
+            </g>
+        </symbol>
+
+        <symbol id="guitar" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="translate(50 50) rotate(20)">
+                <rect x="-10" y="-47.5" width="20" height="20" rx="5"></rect>
+                <path id="string-guitar" d="M 0 -27.5 v 35" stroke-width="3.5"></path>
+                <use href="#string-guitar" x="-5"></use>
+                <use href="#string-guitar" x="5"></use>
+                <circle cx="0" cy="17.5" r="10"></circle>
+                <path d="M 5 -10 h 7.5 q 7.5 0 7.5 7.5 v 13 c 10 10 10 20 0 30 c -10 10 -30 10 -40 0 c -10 -10 -10 -20 0 -30 v -13 q 0 -7.5 7.5 -7.5 h 7.5"></path>
+            </g>
+        </symbol>
+
+        <symbol id="bass" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="translate(50 50) rotate(-20)">
+                <path d="M -8 -50 v 22.5 h 16 v -12.5 q 0 -10 -16 -10"></path>
+                <g transform="translate(0 -27.5)">
+                    <path id="string-bass" d="M 0 0 v 50" stroke-width="3.5"></path>
+                    <use href="#string-bass" x="-5" transform="scale(1 0.85)"></use>
+                    <use href="#string-bass" x="5" transform="scale(1 1.15)"></use>
+                </g>
+                <path d="M 5 -10 h 5 q 7.5 0 7.5 7.5 v 13 c 10 10 10 20 0 30 c -10 10 -25 10 -35 0 c -10 -10 -10 -20 0 -30 v -13 q 0 -7.5 7.5 -7.5 h 5"></path>
+            </g>
+        </symbol>
+
+        <symbol id="drums" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="translate(50 50)" fill="none">
+                <g id="plate">
+                    <path d="M 37.5 -2.5 v 50"></path>
+                    <path d="M 27.5 -2.5 a 30 30 0 0 1 20 0 h -20"></path>
+                </g>
+                <use href="#plate" transform="scale(-1 1)" ></use>
+                <g transform="translate(0 -25)">
+                    <path id="stick" d="M -22.5 0 h 45 v 2.5 h -5 v -5 h 5 v 5" transform="rotate(-25)"></path>
+                    <use href="#stick" transform="scale(-1 1)" ></use>
+                </g>
+                <g transform="translate(0 20)">
+                    <circle cx="0" cy="0" r="25"></circle>
+                    <path d="M 0 0 v 10" transform="rotate(40) translate(0 25)"></path>
+                    <path d="M 0 0 v 10" transform="rotate(-40) translate(0 25)"></path>
+                </g>
+            </g>
+        </symbol>
+    </svg>
+
+    <!--
+        include the visualization in a wrapping container
+    -->
+    <div class="container">
+        <!-- bind the data to dom elements here -->
+        <div class="viz"></div>
+    </div>
+
+    <script src="https://unpkg.com/d3@5.12.0/dist/d3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

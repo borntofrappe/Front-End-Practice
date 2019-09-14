@@ -174,7 +174,7 @@ function displayBandMembers(data) {
     .select('svg use')
     .attr('href', ({ role }) => `#${role}`);
 
-  // add a container in which to describe the name and years of acivity
+  // add a container in which to describe the name and years of activity
   const details = member
     .append('div')
     .attr('class', 'details')
