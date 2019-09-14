@@ -127,10 +127,18 @@ const band = [
   },
 ];
 
+// array describing the starting years only
+const startingYears = band.reduce((acc, curr) => {
+  const beginnings = curr.active.map(({ beginning }) => beginning);
+  return [...acc, ...beginnings];
+}, []);
 
+// scale used to compute the % percentages to position the .details element
+// starting from the oldest year
+const startingYear = d3.min(startingYears);
 const timeScale = d3
   .scaleTime()
-  .domain([new Date('1973'), new Date()])
+  .domain([new Date(`${startingYear}`), new Date()])
   .range([0, 100]);
 
 // add a div container for each member
@@ -155,31 +163,41 @@ members
 // add a container in which to describe the name and years of acivity
 const details = members
   .append('div')
-  .attr('class', 'details');
+  .attr('class', 'details')
+  .style('flex-grow', '1')
+  .style('min-height', '60px')
+  .style('position', 'relative');
 
+// absolute position the heading in the middle of the active years
 details
   .append('h2')
   .text(({name}) => name)
   .style('position', 'absolute')
-  .style('top', '40%')
+  .style('font-size', '0.85rem')
+  .style('color', 'hsl(0, 0%, 15%)')
+  .style('white-space', 'nowrap')
+  .style('top', '15%')
   .style('left', ({ active }) => {
     const beginning = new Date(`${active[0].beginning}`);
     const end = active[active.length - 1].end ? new Date(`${active[active.length - 1].end}`) : new Date();
     const midPoint = timeScale(beginning) + (timeScale(end) - timeScale(beginning)) / 2;
     return `${midPoint}%`;
   })
+  // change the alignment of the text to avoid overlaps
   .style('transform', ({ active }) => {
     const beginning = new Date(`${active[0].beginning}`);
     const end = active[active.length - 1].end ? new Date(`${active[active.length - 1].end}`) : new Date();
     const midPoint = timeScale(beginning) + (timeScale(end) - timeScale(beginning)) / 2;
     if(midPoint < 10) {
-      return 'translate(0%, -50%)';
+      return 'translate(0%, 0%)';
     } else if(midPoint > 90) {
-      return 'translate(-100%, -50%)';
+      return 'translate(-100%, 0%)';
     }
-    return 'translate(-50%, -50%)';
+    return 'translate(-50%, 0%)';
   });
 
+// absolute position each .years container according to the starting year
+// ! have the container take as much space as described by the beginning and end year values
 const years = details
   .selectAll('div')
   .data(({active}) => active)
@@ -187,49 +205,49 @@ const years = details
   .append('div')
   .attr('class', 'div')
   .style('position', 'absolute')
-  .style('top', '0%')
-  .style('width', '100%')
-  .style('height', '100%')
+  .style('top', '35%')
   .style('left', ({ beginning }) => {
     return `${timeScale(new Date(`${beginning}`))}%`;
-  });
+  })
+  .style('width', ({ beginning, end }) => {
+    const endValue = end ? new Date(`${end}`) : new Date();
+    return `${timeScale(endValue) - timeScale(new Date(`${beginning}`))}%`;
+  })
+  .style('height', '65%');
 
+// include span elements to create a |---| line encompassing the container
 years
   .append('span')
   .style('position', 'absolute')
-  .style('top', '75%')
+  .style('top', '50%')
   .style('left', '0%')
   .style('background', 'currentColor')
   .style('border-radius', '5px')
   .style('width', '2px')
-  .style('height', '30%')
+  .style('height', '18px')
   .style('transform', 'translate(-50%, -50%)');
 
 years
   .append('span')
   .style('position', 'absolute')
-  .style('top', '75%')
+  .style('top', '50%')
   .style('left', '0%')
   .style('background', 'currentColor')
   .style('border-radius', '5px')
-  .style('width', ({ beginning, end }) => {
-    const left = end ? new Date(`${end}`) : new Date();
-    return `${timeScale(left) - timeScale(new Date(`${beginning}`))}%`;
-  })
+  .style('width', '100%')
   .style('height', '2px')
   .style('transform', 'translate(0%, -50%)');
 
+// conceal the final tick in case the member is still active
 years
   .append('span')
   .style('position', 'absolute')
-  .style('top', '75%')
-  .style('left', ({ beginning, end }) => {
-    const left = end ? new Date(`${end}`) : new Date();
-    return `${timeScale(left) - timeScale(new Date(`${beginning}`))}%`;
-  })
-  .style('opacity', ({ end }) => end ? '1' : '0')
+  .style('top', '50%')
+  .style('left', '100%')
   .style('background', 'currentColor')
   .style('border-radius', '5px')
   .style('width', '2px')
-  .style('height', '30%')
-  .style('transform', 'translate(-50%, -50%)');
+  .style('height', '18px')
+  .style('transform', 'translate(-50%, -50%)')
+  .style('opacity', ({ end }) => end ? '1' : '0');
+
