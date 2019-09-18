@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Merit Badges - Fork and Make your own</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <svg viewBox="0 0 100 100" width="200" height="200">
+        <defs>
+            <!-- rectangle repeated for the border -->
+            <rect transform="rotate(40)" id="rect" x="-1.2" y="-2.75" width="2.4" height="5.5" fill="hsl(220, 90%, 70%)" stroke="hsl(220, 90%, 50%)" stroke-width="0.5" rx="1"></rect>
+        </defs>
+        <!-- center the shapes in the svg -->
+        <g transform="translate(50 50)">
+            <!-- background -->
+            <circle fill="hsl(0, 0%, 11%)" r="44"></circle>
+            <!-- outer border, using the defined rectangle around the background's circle -->
+            <g id="border"></g>
+            <!-- inner border, with a dashed stroke encapsulating the graphic -->
+            <circle fill="none" stroke="hsl(220, 90%, 85%)" r="38" stroke-dasharray="3 4" stroke-width="1" stroke-linecap="round"></circle>
+
+            <!-- actual graphic describing the badge
+            in this instance a bezier curve with connected control points
+            -->
+            <g transform="rotate(145)">
+                <path d="M -25 0 c 20 -10 30 20 50 0" fill="none" stroke="hsl(0, 0%, 100%)" stroke-width="2" stroke-linecap="round"></path>
+
+                <g transform="translate(-25 0)">
+                    <rect id="point" x="-3" y="-3" width="6" height="6" fill="hsl(220, 90%, 70%)"></rect>
+                </g>
+                <g transform="translate(-5 -10)">
+                    <circle id="control" cx="0" cy="0" r="2" fill="hsl(220, 90%, 70%)"></circle>
+                </g>
+                <path d="M -25 0 L -5 -10" fill="none" stroke="hsl(220, 90%, 70%)" stroke-width="1"></path>
+
+                <g transform="translate(25 0)">
+                    <use href="#point"></use>
+                </g>
+                <g transform="translate(5 20)">
+                    <use href="#control"></use>
+                </g>
+                <path d="M 25 0 L 5 20" fill="none" stroke="hsl(220, 90%, 70%)" stroke-width="1"></path>
+            </g>
+        </g>
+    </svg>
+
+    <h1>Drew a semi-convincing bezier curve by hand.</h1>
+
+  <script src="script.js"></script>
+</body>
+</html>

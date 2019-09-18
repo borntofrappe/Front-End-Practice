@@ -1,6 +1,6 @@
 # Merit Badges
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/zYOmJMR)
 
 ## Goal
 
