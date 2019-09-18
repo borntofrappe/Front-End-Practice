@@ -1,0 +1,32 @@
+svg(viewBox="0 0 100 100" width="200" height="200")
+  defs
+    //- rectangle repeated for the border
+    rect(transform="rotate(40)" id="rect" x="-1.2" y="-2.75" width="2.4" height="5.5" fill="hsl(220, 90%, 70%)" stroke="hsl(220, 90%, 50%)" stroke-width="0.75" rx="1")
+  //- center the shapes
+  g(transform="translate(50 50)")
+    //- background
+    circle(fill="hsl(0, 0%, 11%)" r="44")
+    //- outer border
+    - for(var rotation = 0; rotation < 360; rotation += 4)
+      use(href="#rect" transform=`rotate(${rotation}) translate(0 -43)`)
+    //- inner border
+    circle(fill="none" stroke="hsl(220, 90%, 85%)" r="38" stroke-dasharray="3 4" stroke-width="1" stroke-linecap="round")
+
+    //- actual graphic
+    //- in this instance a cubic bezier curve
+    g(transform="rotate(145)")
+      //- re-use the coordinates of the path element to describe the points of the curve
+      path(d="M -25 0 c 20 -10 30 20 50 0" fill="none" stroke="hsl(0, 0%, 100%)" stroke-width="2" stroke-linecap="round")
+      g(transform="translate(-25 0)")
+        rect(id="point" x="-3" y="-3" width="6" height="6" fill="hsl(220, 90%, 70%)")
+      g(transform="translate(-5 -10)")
+        circle(id="control" cx="0" cy="0" r="2" fill="hsl(220, 90%, 70%)")
+      path(d="M -25 0 L -5 -10" fill="none" stroke="hsl(220, 90%, 70%)" stroke-width="1")
+      g(transform="translate(25 0)")
+        use(href="#point")
+      g(transform="translate(5 20)")
+        use(href="#control")
+      path(d="M 25 0 L 5 20" fill="none" stroke="hsl(220, 90%, 70%)" stroke-width="1")
+
+
+h1 Drew a semi-convincing bezier curve by hand.
