@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Merit Badges - Estimate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <svg viewBox="0 0 100 100" width="200" height="200">
+        <defs>
+            <!-- rectangle repeated for the border -->
+            <rect transform="rotate(40)" id="rect" x="-1.2" y="-2.75" width="2.4" height="5.5" fill="hsl(0, 0%, 10%)" stroke="hsl(10, 80%, 50%)" stroke-width="0.5" rx="1"></rect>
+        </defs>
+        <!-- center the shapes in the svg -->
+        <g transform="translate(50 50)">
+            <!-- background -->
+            <circle fill="hsl(10, 80%, 50%)" r="44"></circle>
+            <!-- outer border, using the defined rectangle around the background's circle -->
+            <g id="border"></g>
+            <!-- inner border, with a dashed stroke encapsulating the graphic -->
+            <circle fill="none" stroke="hsl(45, 100%, 70%)" r="38" stroke-dasharray="3 4" stroke-width="1" stroke-linecap="round"></circle>
+
+            <!-- actual graphic describing the badge
+            in this instance a series of circle elements for a target and a path for an array
+            ! stroke-dasharray is set with a bit of math, to consider a consistent gap on the differently-sized circles
+            the rotation is also altered to have the gap line up with the arrow
+            -->
+            <g transform="rotate(-33)">
+                <circle fill="none" stroke-dasharray="147 10" stroke="hsl(0, 0%, 20%)" r="25" stroke-width="2.5" stroke-linecap="round"></circle>
+                <circle transform="rotate(4)" fill="none" stroke-dasharray="99.9 10" stroke="hsl(0, 0%, 20%)" r="17.5" stroke-width="2.5" stroke-linecap="round"></circle>
+                <circle transform="rotate(14)" fill="none" stroke-dasharray="52.8 10" stroke="hsl(0, 0%, 20%)" r="10" stroke-width="2.5" stroke-linecap="round"></circle>
+            </g>
+            <path d="M 0 0 l 18 -18 v -9 l 11 -11 v 9 h 9 l -11 11 h -9" fill="hsl(0, 0%, 20%)" stroke="hsl(0, 0%, 20%)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path>
+            <circle fill="hsl(0, 0%, 20%)" r="4"></circle>
+        </g>
+    </svg>
+
+    <h1>Quoted the exact number of hours it took to do the job</h1>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

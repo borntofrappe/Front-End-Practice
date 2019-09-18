@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 10%);
+  font-family: "Rubik", sans-serif;
+  min-height: 100vh;
+  /* center the graphics in the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+svg {
+  display: block;
+  width: 250px;
+  height: auto;
+}
+h1 {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  max-width: 250px;
+}
