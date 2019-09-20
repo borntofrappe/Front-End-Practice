@@ -9,3 +9,9 @@ For a [take-home project](https://learn.freecodecamp.org/coding-interview-prep/t
 ## Update
 
 In the **D3 Geo** folder your find a first visualization, which focuses solely on the mapping of the world's countries. Given the intricacies of the `geo` module I though best to save the dedicated progress in a separate location.
+
+## TODO
+
+- [ ] highlight the meteorite landings through size;
+
+- [ ] allow to discover more about each site by hovering on the connected elements.
