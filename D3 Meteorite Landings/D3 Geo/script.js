@@ -53,44 +53,6 @@ function mapCountries(countries) {
     .attr('fill', 'none')
     .attr('opacity', '0.15');
 
-
-  // allow to rotate the projection following mouse events
-  const rotation = {
-    x: 0,
-    y: 0,
-  };
-  let isMouseDown = false;
-
-  d3.select('body')
-    .on('mouseup', () => { isMouseDown = false; })
-    .on('mouseleave', () => { isMouseDown = false; });
-
-  world
-    .on('mousedown', () => { isMouseDown = true; })
-    .on('mouseup', () => { isMouseDown = false; })
-    .on('mousemove', () => {
-      if (isMouseDown) {
-        // update the rotation using the horizontal and vertical movement
-        // ! greater y values should be reflected in a rotation in the opposite direction
-        const { movementX, movementY } = d3.event;
-        rotation.x += movementX;
-        rotation.y -= movementY;
-
-        // update the projection and the d attribute of all elements which rely on the projection
-        const { x, y } = rotation;
-        projection
-          .rotate([x, y]);
-
-        d3.select('path.sphere')
-          .attr('d', geoPath);
-
-        d3.selectAll('path.country')
-          .attr('d', geoPath);
-
-        d3.selectAll('path.graticule')
-          .attr('d', geoPath(geoGraticule()));
-      }
-    });
 }
 
 // topojson describing the world atlas
