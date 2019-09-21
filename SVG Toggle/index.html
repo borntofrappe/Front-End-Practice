@@ -4,62 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Input type checkbox</title>
+    <title>SVG Toggle</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 
-    <!-- graphics created for the toggle
-    draw the shapes within the svg to avoid cropping (for instance when )
-    -->
+    <!-- graphics created for the toggle -->
+
+    <!-- light variant -->
     <svg viewBox="0 0 100 45" width="400" height="180">
         <defs>
             <linearGradient id="gradient-light" x1="0" x2="0" y1="0" y2="1">
-                <stop stop-color="#8BC8F2" offset="0"></stop>
+                <stop stop-color="#8bc8f2" offset="0"></stop>
                 <stop stop-color="#fff" offset="1"></stop>
             </linearGradient>
-            <filter id="blur-sun">
+
+            <!-- filter applied to (a copy of) the sun -->
+            <filter id="blur-light">
                 <feGaussianBlur stdDeviation="1"></feGaussianBlur>
             </filter>
+
             <!-- rectangle used for the background and the clip path -->
-            <rect id="background" x="0" y="0" width="90" height="40" rx="20"></rect>
-            <clipPath id="clip-background">
-                <use href="#background"></use>
+            <rect id="background-light" x="0" y="0" width="90" height="40" rx="20"></rect>
+            <!-- clip to crop the waves within the background -->
+            <clipPath id="clip-light">
+                <use href="#background-light"></use>
             </clipPath>
 
             <!-- pattern for the waves -->
             <pattern id="pattern-light" width="0.1" height="1" viewBox="0 0 10 45">
-                <path fill="#40B5F8" d="M 0 0 a 6 6 0 0 0 10 0 v 45 h -10 z"></path>
+                <path fill="#40b5f8" d="M 0 0 a 6 6 0 0 0 10 0 v 45 h -10 z"></path>
             </pattern>
         </defs>
+
         <!-- background -->
         <g transform="translate(5 2.5)">
-            <g clip-path="url(#clip-background)">
-                <use fill="url(#gradient-light)" href="#background"></use>
+            <g clip-path="url(#clip-light)">
+                <use fill="url(#gradient-light)" href="#background-light"></use>
                 <!-- waves -->
                 <rect fill="url(#pattern-light)" x="-5" y="27.5" width="100" height="45"></rect>
             </g>
         </g>
-        <!-- sun -->
+        <!-- sun
+        include a blurred and slightly larger circle behind the solid variant
+        -->
         <g transform="translate(22.5 22.5)">
-            <circle fill="#FFD21F" cx="0" cy="0" r="21" filter="url(#blur-sun)"></circle>
+            <circle fill="#FFD21F" cx="0" cy="0" r="21" filter="url(#blur-light)"></circle>
             <circle fill="#FFD21F" cx="0" cy="0" r="20.5"></circle>
         </g>
     </svg>
 
+    <!-- dark variant -->
     <svg viewBox="0 0 100 45" width="400" height="180">
         <defs>
             <linearGradient id="gradient-dark" x1="0" x2="0" y1="0" y2="1">
                 <stop stop-color="#1F2241" offset="0"></stop>
                 <stop stop-color="#7D59DF" offset="1"></stop>
             </linearGradient>
+            <!-- gradient used for the the mask, overlaid on the stars, to progressively hide the shapes as they approach the bottom -->
             <linearGradient id="gradient-mask" x1="0" x2="0" y1="0" y2="1">
                 <stop stop-color="#000" offset="0"></stop>
                 <stop stop-color="#fff" offset="1"></stop>
             </linearGradient>
-            <mask id="mask-background">
-                <use fill="url(#gradient-mask)" href="#background"></use>
+            <!-- rectangle used for the clip and the mask (the same for the light variant, but included for completion sake) -->
+            <rect id="background-dark" x="0" y="0" width="90" height="40" rx="20"></rect>
+            <clipPath id="clip-dark">
+                <use href="#background-dark"></use>
+            </clipPath>
+            <mask id="mask-dark">
+                <use fill="url(#gradient-mask)" href="#background-dark"></use>
             </mask>
             <radialGradient id="gradient-moon">
                 <stop stop-color="#fdfdfd" offset="0.7"></stop>
@@ -80,9 +94,10 @@
         <!-- background -->
         <g transform="translate(5 2.5)">
             <g clip-path="url(#clip-background)">
-                <use fill="url(#gradient-dark)" href="#background"></use>
+                <use fill="url(#gradient-dark)" href="#background-dark"></use>
+                <!-- add a copy of the gradient on top of the patterned rectangle, and using the mask -->
                 <rect transform="translate(-5 0) rotate(5)" fill="url(#pattern-dark)" x="0" y="0" width="100" height="45"></rect>
-                <use mask="url(#mask-background)" fill="url(#gradient-dark)" href="#background"></use>
+                <use mask="url(#mask-dark)" fill="url(#gradient-dark)" href="#background-dark"></use>
             </g>
         </g>
         <!-- moon -->
@@ -99,7 +114,6 @@
             </g>
         </g>
     </svg>
-
 
     <script src="script.js"></script>
 </body>
