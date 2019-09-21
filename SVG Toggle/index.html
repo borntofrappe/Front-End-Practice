@@ -9,111 +9,117 @@
 </head>
 <body>
 
+    <!-- toggle structure
+    in a wrapping label include an input of type checkbox and the svg element responsible for the graphics
+    the idea is to change the opacity and position of a few elements to match the state of the checkbox
+    -->
+    <label for="toggle">
+        <input type="checkbox" />
+        <!-- light variant -->
+        <svg viewBox="0 0 100 45" width="400" height="180">
+            <defs>
+                <!-- rectangle used for the background and the clip path -->
+                <rect id="background" x="0" y="0" width="90" height="40" rx="20"></rect>
+                <clipPath id="clip">
+                    <use href="#background"></use>
+                </clipPath>
 
-    <!-- graphics created for the toggle -->
+                <!-- for the light variant -->
+                <linearGradient id="gradient-light" x1="0" x2="0" y1="0" y2="1">
+                    <stop stop-color="#8bc8f2" offset="0"></stop>
+                    <stop stop-color="#fff" offset="1"></stop>
+                </linearGradient>
 
-    <!-- light variant -->
-    <svg viewBox="0 0 100 45" width="400" height="180">
-        <defs>
-            <linearGradient id="gradient-light" x1="0" x2="0" y1="0" y2="1">
-                <stop stop-color="#8bc8f2" offset="0"></stop>
-                <stop stop-color="#fff" offset="1"></stop>
-            </linearGradient>
+                <!-- filter applied to (a copy of) the sun -->
+                <filter id="blur-light">
+                    <feGaussianBlur stdDeviation="1"></feGaussianBlur>
+                </filter>
 
-            <!-- filter applied to (a copy of) the sun -->
-            <filter id="blur-light">
-                <feGaussianBlur stdDeviation="1"></feGaussianBlur>
-            </filter>
+                <!-- pattern for the waves -->
+                <pattern id="pattern-light" width="0.1" height="1" viewBox="0 0 10 45">
+                    <path fill="#40b5f8" d="M 0 0 a 6 6 0 0 0 10 0 v 45 h -10 z"></path>
+                </pattern>
 
-            <!-- rectangle used for the background and the clip path -->
-            <rect id="background-light" x="0" y="0" width="90" height="40" rx="20"></rect>
-            <!-- clip to crop the waves within the background -->
-            <clipPath id="clip-light">
-                <use href="#background-light"></use>
-            </clipPath>
+                <!-- for the dark variant -->
+                <linearGradient id="gradient-dark" x1="0" x2="0" y1="0" y2="1">
+                    <stop stop-color="#1F2241" offset="0"></stop>
+                    <stop stop-color="#7D59DF" offset="1"></stop>
+                </linearGradient>
+                <!-- gradient used for the the mask, overlaid on the stars, to progressively hide the shapes as they approach the bottom -->
+                <linearGradient id="gradient-mask" x1="0" x2="0" y1="0" y2="1">
+                    <stop stop-color="#000" offset="0"></stop>
+                    <stop stop-color="#fff" offset="1"></stop>
+                </linearGradient>
 
-            <!-- pattern for the waves -->
-            <pattern id="pattern-light" width="0.1" height="1" viewBox="0 0 10 45">
-                <path fill="#40b5f8" d="M 0 0 a 6 6 0 0 0 10 0 v 45 h -10 z"></path>
-            </pattern>
-        </defs>
+                <mask id="mask-dark">
+                    <use fill="url(#gradient-mask)" href="#background"></use>
+                </mask>
 
-        <!-- background -->
-        <g transform="translate(5 2.5)">
-            <g clip-path="url(#clip-light)">
-                <use fill="url(#gradient-light)" href="#background-light"></use>
-                <!-- waves -->
-                <rect fill="url(#pattern-light)" x="-5" y="27.5" width="100" height="45"></rect>
+                <radialGradient id="gradient-moon">
+                    <stop stop-color="#fdfdfd" offset="0.7"></stop>
+                    <stop stop-color="#e2e2e2" offset="1"></stop>
+                </radialGradient>
+
+                <radialGradient id="gradient-crater">
+                    <stop stop-color="#efefef" offset="0"></stop>
+                    <stop stop-color="#e5e5e5" offset="1"></stop>
+                </radialGradient>
+                <!-- pattern for the stars -->
+                <pattern id="pattern-dark" width="0.2" height="1" viewBox="0 0 20 45">
+                    <path fill="#fff" d="M 2 5 l 1 1 l -1 1 l -1 -1 l 1 -1"></path>
+                    <path fill="#fff" d="M 10 16 l 1 1 l -1 1 l -1 -1 l 1 -1"></path>
+                    <path fill="#fff" d="M 16 27 l 1 1 l -1 1 l -1 -1 l 1 -1"></path>
+                </pattern>
+            </defs>
+
+            <!-- the idea is to overlay the graphics for the light variant on top of the dark counterpart, and make the overlay transparent -->
+            <!-- background -->
+            <g transform="translate(5 2.5)">
+                <g clip-path="url(#clip)">
+                    <!-- reposition the  -->
+                    <g class="dark">
+                        <use fill="url(#gradient-dark)" href="#background"></use>
+                        <g class="background" transform="translate(0 -40) scale(1 0.7)">
+                            <rect transform="translate(-40 0) rotate(4)" fill="url(#pattern-dark)" x="0" y="0" width="100" height="45"></rect>
+                        </g>
+                        <use mask="url(#mask-dark)" fill="url(#gradient-dark)" href="#background"></use>
+                    </g>
+                    <g class="light">
+                        <use fill="url(#gradient-light)" href="#background"></use>
+                        <g class="background" transform="translate(-30 -20)">
+                            <g transform="translate(30 20)">
+                                <rect fill="url(#pattern-light)" x="-5" y="27.5" width="100" height="45"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
             </g>
-        </g>
-        <!-- sun
-        include a blurred and slightly larger circle behind the solid variant
-        -->
-        <g transform="translate(22.5 22.5)">
-            <circle fill="#FFD21F" cx="0" cy="0" r="21" filter="url(#blur-light)"></circle>
-            <circle fill="#FFD21F" cx="0" cy="0" r="20.5"></circle>
-        </g>
-    </svg>
-
-    <!-- dark variant -->
-    <svg viewBox="0 0 100 45" width="400" height="180">
-        <defs>
-            <linearGradient id="gradient-dark" x1="0" x2="0" y1="0" y2="1">
-                <stop stop-color="#1F2241" offset="0"></stop>
-                <stop stop-color="#7D59DF" offset="1"></stop>
-            </linearGradient>
-            <!-- gradient used for the the mask, overlaid on the stars, to progressively hide the shapes as they approach the bottom -->
-            <linearGradient id="gradient-mask" x1="0" x2="0" y1="0" y2="1">
-                <stop stop-color="#000" offset="0"></stop>
-                <stop stop-color="#fff" offset="1"></stop>
-            </linearGradient>
-            <!-- rectangle used for the clip and the mask (the same for the light variant, but included for completion sake) -->
-            <rect id="background-dark" x="0" y="0" width="90" height="40" rx="20"></rect>
-            <clipPath id="clip-dark">
-                <use href="#background-dark"></use>
-            </clipPath>
-            <mask id="mask-dark">
-                <use fill="url(#gradient-mask)" href="#background-dark"></use>
-            </mask>
-            <radialGradient id="gradient-moon">
-                <stop stop-color="#fdfdfd" offset="0.7"></stop>
-                <stop stop-color="#e2e2e2" offset="1"></stop>
-            </radialGradient>
-            <radialGradient id="gradient-crater">
-                <stop stop-color="#efefef" offset="0"></stop>
-                <stop stop-color="#e5e5e5" offset="1"></stop>
-            </radialGradient>
-
-            <!-- pattern for the stars -->
-            <pattern id="pattern-dark" width="0.2" height="1" viewBox="0 0 20 45">
-                <path fill="#fff" d="M 2 5 l 1 1 l -1 1 l -1 -1 l 1 -1"></path>
-                <path fill="#fff" d="M 10 16 l 1 1 l -1 1 l -1 -1 l 1 -1"></path>
-                <path fill="#fff" d="M 16 27 l 1 1 l -1 1 l -1 -1 l 1 -1"></path>
-            </pattern>
-        </defs>
-        <!-- background -->
-        <g transform="translate(5 2.5)">
-            <g clip-path="url(#clip-background)">
-                <use fill="url(#gradient-dark)" href="#background-dark"></use>
-                <!-- add a copy of the gradient on top of the patterned rectangle, and using the mask -->
-                <rect transform="translate(-5 0) rotate(5)" fill="url(#pattern-dark)" x="0" y="0" width="100" height="45"></rect>
-                <use mask="url(#mask-dark)" fill="url(#gradient-dark)" href="#background-dark"></use>
+            <!-- sun/moon
+                the idea is to translate/rotate the shapes while making the sun transparent/opaque
+            -->
+            <g transform="translate(77.5 22.5)">
+                <g class="translate" transform="translate(-55)"><!-- translate this group to move the sun/moon -->
+                    <g class="rotate" transform="rotate(-100)"><!-- rotate this group to rotate the moon -->
+                        <g class="dark">
+                            <circle fill="url(#gradient-moon)" cx="0" cy="0" r="20.5"></circle>
+                            <g transform="translate(-8 -7.5)">
+                                <ellipse transform="rotate(-30)" fill="url(#gradient-crater)" stroke="#e0e0e0" stroke-width="0.2" cx="0" cy="0" rx="4" ry="3"></ellipse>
+                            </g>
+                            <g transform="translate(11 5)">
+                                <ellipse fill="url(#gradient-crater)" stroke="#e0e0e0" stroke-width="0.2" cx="0" cy="0" rx="3.85" ry="4"></ellipse>
+                            </g>
+                            <g transform="translate(-6 12)">
+                                <ellipse transform="rotate(-10)" fill="url(#gradient-crater)" stroke="#e0e0e0" stroke-width="0.2" cx="0" cy="0" rx="2" ry="1.75"></ellipse>
+                            </g>
+                        </g>
+                    </g>
+                    <g class="light"><!-- change the opacity of this group to show the moon behind the sun -->
+                        <circle fill="#FFD21F" cx="0" cy="0" r="21" filter="url(#blur-light)"></circle>
+                        <circle fill="#FFD21F" cx="0" cy="0" r="20.5"></circle>
+                    </g>
+                </g>
             </g>
-        </g>
-        <!-- moon -->
-        <g transform="translate(77.5 22.5)">
-            <circle fill="url(#gradient-moon)" cx="0" cy="0" r="21.5"></circle>
-            <g transform="translate(-8 -7.5)">
-                <ellipse transform="rotate(-30)" fill="url(#gradient-crater)" stroke="#e0e0e0" stroke-width="0.2" cx="0" cy="0" rx="4" ry="3"></ellipse>
-            </g>
-            <g transform="translate(11 5)">
-                <ellipse fill="url(#gradient-crater)" stroke="#e0e0e0" stroke-width="0.2" cx="0" cy="0" rx="3.85" ry="4"></ellipse>
-            </g>
-            <g transform="translate(-6 12)">
-                <ellipse transform="rotate(-10)" fill="url(#gradient-crater)" stroke="#e0e0e0" stroke-width="0.2" cx="0" cy="0" rx="2" ry="1.75"></ellipse>
-            </g>
-        </g>
-    </svg>
+        </svg>
 
     <script src="script.js"></script>
 </body>
