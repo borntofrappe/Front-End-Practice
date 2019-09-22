@@ -131,7 +131,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Flashcard Loader](https://codepen.io/borntofrappe/pen/dybJxMv)|Recreate [this design](https://codepen.io/borntofrappe/full/yxExMw) with SVG syntax and a progress element.|6th September 2019|
 |[SVG Stamp](https://codepen.io/borntofrappe/pen/OJLQqwp)|Create a stamp inspired by [this design](https://dribbble.com/shots/5888593-Damavand) with SVG syntax and specifically pattern and mask elements.|8-9th September 2019|
 |[Small & Scalable Vector Graphic](https://codepen.io/borntofrappe/pen/LYPdNvg)|Starting from the **SVG Stamp** project create a small, but scalable illustration in a 100x150 pixel container.|9th September 2019|
-|[SVG Toggle]()|Inspired by [this design](https://dribbble.com/shots/5321869-Playing-with-InVision-Studio) practice with SVG syntax, filter and pattern elements.|21st September 2019|
+|[SVG Toggle](https://codepen.io/borntofrappe/pen/aboPapm)|Practice with SVG syntax to recreate [this inspiring toggle](https://dribbble.com/shots/5321869-Playing-with-InVision-Studio).|21st-22nd September 2019|
 
 ### UI UX
 

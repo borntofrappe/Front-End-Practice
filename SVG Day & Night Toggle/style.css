@@ -38,7 +38,9 @@ label input + svg .light {
 }
 label input + svg .translate,
 label input + svg .rotate,
-label input + svg .background {
+label input + svg .background,
+label input + svg .astronaut,
+label input + svg .surfer {
   transition: transform 0.75s cubic-bezier(0.68, 0.25, 0.265, 1);
 }
 /* make the .light element fully transparent to have the .dark variant see through */
