@@ -1,3 +1,4 @@
+// change the background of the page according to the value of the checkbox
 const input = document.querySelector('input[type="checkbox"]');
 function handleInput() {
   const { checked } = this;
