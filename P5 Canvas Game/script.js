@@ -12,6 +12,8 @@ const PROJECTILE_WIDTH = 5;
 const PROJECTILE_HEIGHT = 12;
 const PROJECTILE_SPEED = 5;
 
+const TARGET_SIZE = 25;
+
 // tank class
 class Tank {
   constructor() {
@@ -66,15 +68,56 @@ class Projectile {
   move() {
     this.y -= this.speed;
   }
+
+  // through the collides function check if the projectile overlaps with the shape positioned at the input coordinates
+  collides(target) {
+    const { x: xTarget, y: yTarget, size: sizeTarget } = target;
+    const { x, y, width, height } = this;
+    if (x - width / 2 > xTarget && x + width / 2 < xTarget + sizeTarget) {
+      if (y - height / 2 > yTarget && y + height / 2 < yTarget + sizeTarget) {
+        return true;
+      }
+    }
+    return false;
+  }
+}
+
+// target class, used to create elements in the top fourth of the canvas
+class Target {
+  constructor(x, y) {
+    // horizontally spanning the width of the canvas
+    this.x = x;
+    this.y = y;
+    this.size = TARGET_SIZE;
+  }
+
+  // through the display function describe a square
+  // for a more compelling game consider drawing a more complex shape
+  display() {
+    rectMode(CORNER);
+    fill('#323230');
+    noStroke();
+    rect(this.x, this.y, this.size, this.size);
+  }
 }
 
 // initialize the tank
 const tank = new Tank();
 // set up an array for the projectiles
 const projectiles = [];
+// set up an array for the targets
+let targets = [];
 
 function setup() {
   createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+  //   add a series of targets to the matching array
+  targets = Array(5)
+    .fill()
+    .map(() => {
+      const x = random(0, CANVAS_WIDTH - TARGET_SIZE);
+      const y = random(0, CANVAS_HEIGHT / 4);
+      return new Target(x, y);
+    });
 }
 
 // in the draw function detail the projectiles and tank above a solid background
@@ -84,14 +127,33 @@ function draw() {
   strokeWeight(6);
   line(0, TANK_Y + TANK_HEIGHT, CANVAS_WIDTH, TANK_Y + TANK_HEIGHT);
 
-  // display each instance of the projectile class stored in the array
+  // display each instance of the target class
+  for (const target of targets) {
+    target.display();
+  }
+
+  // display each instance of the projectile class
   for (const projectile of projectiles) {
     projectile.display();
     projectile.move();
     // if the instance reaches the top of the canvas remove the matching item from the array
     if (projectile.y <= 0) {
-      const index = projectiles.findIndex(shot => shot === projectile);
+      const index = projectiles.findIndex(match => match === projectile);
       projectiles.splice(index, 1);
+    }
+
+    // loop through the targets and if an overlap with the projectile occurs remove the target from the matching array
+    for (const target of targets) {
+      if (projectile.collides(target)) {
+        const index = targets.findIndex(match => match === target);
+        targets.splice(index, 1);
+
+        // add a new target
+        // it'd be better to add targets with a delay
+        const x = random(0, CANVAS_WIDTH - TARGET_SIZE);
+        const y = random(0, CANVAS_HEIGHT / 4);
+        targets.push(new Target(x, y));
+      }
     }
   }
 
