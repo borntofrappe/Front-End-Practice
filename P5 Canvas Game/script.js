@@ -10,7 +10,7 @@ const PROJECTILE_WIDTH = 5;
 const PROJECTILE_HEIGHT = 12;
 const PROJECTILE_SPEED = 5;
 
-const TARGET_SIZE = 40;
+const TARGET_SIZE = 30;
 
 const PADDING = 10;
 const PADDING_TANK = 12;
@@ -200,7 +200,7 @@ function draw() {
   tank.display();
 
   // following a key press on the appropriate keys move the tank in the prescribed direction
-  if (keyIsDown(LEFT_ARROW)) {
+  if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
     tank.move('left');
 
     // add a class of active on the #left button to have the button fully opaque
@@ -213,7 +213,7 @@ function draw() {
       }
     })
 
-  } else if (keyIsDown(RIGHT_ARROW)) {
+  } else if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
     tank.move('right');
 
     // add a class of active on the #right button to have the button fully opaque
@@ -235,7 +235,7 @@ function draw() {
 
 // following a press on the up key call the function to fire a projectile
 function keyPressed() {
-  if (keyCode === UP_ARROW) {
+  if (keyCode === UP_ARROW || keyIsDown(87)) {
     fireProjectile();
     // add a class of active on the #fire button to have the button fully opaque
     buttons.forEach(button => {
@@ -266,7 +266,7 @@ function fireProjectile() {
 // function to add a target
 // add an instance of the target class in the aptly named array
 function addTarget() {
-  const x = random(0, CANVAS_WIDTH - TARGET_SIZE);
+  const x = random(TANK_WIDTH / 2, CANVAS_WIDTH - TARGET_SIZE - TANK_WIDTH / 2);
   const y = random(0, CANVAS_HEIGHT / 4);
   targets.push(new Target(x, y));
 }

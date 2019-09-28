@@ -34,6 +34,11 @@ body {
     /* by default decrease the opacity */
     opacity: 0.5;
     transition: opacity 0.15s ease-in-out;
+    /* remove the outline
+    keyboard users are meant to use the arrow or awd keys
+    click/touch interactions are highlighted by a change in opacity
+    */
+    outline: none;
 }
 /* change the opacity when the buttons are clicked and a class of .active is applied (included in the script to have the buttons fully opaque following a keypress) */
 .controls button:active,

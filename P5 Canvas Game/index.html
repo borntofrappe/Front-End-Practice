@@ -26,6 +26,9 @@
 
         <!-- in the controls re-use the blocky arrow changing the rotation to identify the left and right arrow keys -->
         <div class="controls">
+            <!-- specify a negative tab index to avoid keyboard focus
+            the game is played through the arrow or AWD keys
+            -->
             <button tabindex="-1" id="left">
                 <svg style="transform: rotate(-90deg);" viewBox="0 0 100 100" width="30" height="30">
                     <use href="#arrow"></use>
