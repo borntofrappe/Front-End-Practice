@@ -2,23 +2,23 @@
 const CANVAS_WIDTH = 650;
 const CANVAS_HEIGHT = 400;
 
-const TANK_X = CANVAS_WIDTH / 2;
-const TANK_Y = CANVAS_HEIGHT - 30;
 const TANK_WIDTH = 70;
-const TANK_HEIGHT = 14;
+const TANK_HEIGHT = 30;
 const TANK_SPEED = 5;
 
 const PROJECTILE_WIDTH = 5;
 const PROJECTILE_HEIGHT = 12;
 const PROJECTILE_SPEED = 5;
 
-const TARGET_SIZE = 25;
+const TARGET_SIZE = 40;
+
+const PADDING = 10;
+const PADDING_TANK = 12;
 
 // tank class
 class Tank {
   constructor() {
-    this.x = TANK_X;
-    this.y = TANK_Y;
+    this.x = 0;
     this.width = TANK_WIDTH;
     this.height = TANK_HEIGHT;
     this.speed = TANK_SPEED;
@@ -30,11 +30,28 @@ class Tank {
     rectMode(CENTER);
     fill('#323230');
     noStroke();
-    rect(x, y, width, height);
-    // the appendages are hard coded above the rectangle
-    rect(x, y - (height / 2 + 2), width * 0.8, 4);
-    rect(x, y - (height / 2 + 2 + 2 + 5), width * 0.2, 10);
-    rect(x, y - (height / 2 + 2 + 2 + 5 + 5 + 2), width * 0.08, 4);
+    // instead of a rectangle, use multiple vetices to draw the tank
+    // using the width and height as a frame of reference
+    beginShape();
+    translate(CANVAS_WIDTH / 2, CANVAS_HEIGHT - PADDING_TANK);
+    translate(this.x, -5);
+    vertex(-this.width / 2, 0);
+    vertex(this.width / 2, 0);
+    vertex(this.width / 2, -this.height/ 2.5);
+    vertex(this.width / 2.5, -this.height / 2.5);
+    vertex(this.width / 2.5, -this.height / 2);
+    vertex(this.width / 8, -this.height / 2);
+    vertex(this.width / 8, -this.height / 1.25);
+    vertex(this.width / 30, -this.height / 1.25);
+    vertex(this.width / 30, -this.height);
+    vertex(-this.width / 30, -this.height);
+    vertex(-this.width / 30, -this.height / 1.25);
+    vertex(-this.width / 8, -this.height / 1.25);
+    vertex(-this.width / 8, -this.height / 2);
+    vertex(-this.width / 2.5, -this.height / 2);
+    vertex(-this.width / 2.5, -this.height / 2.5);
+    vertex(-this.width / 2, -this.height / 2.5);
+    endShape();
   }
 
   // through the move function change the x coordinate of the shape, using the input direction
@@ -42,7 +59,7 @@ class Tank {
     const d = direction === 'right' ? 1 : -1;
     const dx = this.x + d * this.speed;
     // limit the x coordinate to the canvas plus minus the size of the tank
-    this.x = max(this.width / 2, min(dx, width - this.width / 2));
+    this.x = constrain(dx, -CANVAS_WIDTH / 2 + this.width / 2, CANVAS_WIDTH / 2 - this.width / 2);
   }
 }
 
@@ -108,6 +125,8 @@ const projectiles = [];
 // set up an array for the targets
 let targets = [];
 
+let button;
+
 function setup() {
   createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   //   add a series of targets to the matching array
@@ -118,6 +137,7 @@ function setup() {
       const y = random(0, CANVAS_HEIGHT / 4);
       return new Target(x, y);
     });
+
 }
 
 // in the draw function detail the projectiles and tank above a solid background
@@ -125,7 +145,7 @@ function draw() {
   background('#F1DA4E');
   stroke('#323230');
   strokeWeight(6);
-  line(0, TANK_Y + TANK_HEIGHT, CANVAS_WIDTH, TANK_Y + TANK_HEIGHT);
+  line(0, CANVAS_HEIGHT - PADDING, CANVAS_WIDTH, CANVAS_HEIGHT - PADDING);
 
   // display each instance of the target class
   for (const target of targets) {
@@ -171,7 +191,7 @@ function draw() {
 // folowing a press on the up key add an instance of the projectile class to the defined array
 function keyPressed() {
   if (keyCode === UP_ARROW) {
-    const { x, y } = tank;
-    projectiles.push(new Projectile(x, y));
+    const { x } = tank;
+    projectiles.push(new Projectile(x + CANVAS_WIDTH / 2, CANVAS_HEIGHT - PADDING_TANK));
   }
 }
