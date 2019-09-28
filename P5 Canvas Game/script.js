@@ -91,13 +91,13 @@ class Projectile {
   }
 
   // through the collides function check if the projectile overlaps with the shape positioned at the input coordinates
+  // since the x and y coordinates of both the target and the projectile describe their center, compute the distance between these values
+  // if the distance is less than half the target's size, the two overlap
   collides(target) {
-    const { x: xTarget, y: yTarget, size: sizeTarget } = target;
-    const { x, y, width, height } = this;
-    if (x - width / 2 > xTarget && x + width / 2 < xTarget + sizeTarget) {
-      if (y - height / 2 > yTarget && y + height / 2 < yTarget + sizeTarget) {
-        return true;
-      }
+    const { x: xTarget, y: yTarget } = target;
+    const { x, y } = this;
+    if(dist(xTarget, yTarget, x, y) <= TARGET_SIZE / 2) {
+      return true;
     }
     return false;
   }
@@ -105,20 +105,26 @@ class Projectile {
 
 // target class, used to create elements in the top fourth of the canvas
 class Target {
-  constructor(x, y) {
+  constructor(x, y, shape) {
     // horizontally spanning the width of the canvas
     this.x = x;
     this.y = y;
     this.size = TARGET_SIZE;
+    this.shape = shape;
   }
 
-  // through the display function describe a square
-  // for a more compelling game consider drawing a more complex shape
+  // through the display function describe a target with one of three possible shapes
   display() {
-    rectMode(CORNER);
     fill('#323230');
     noStroke();
-    rect(this.x, this.y, this.size, this.size);
+    if(this.shape === 'rect') {
+      rectMode(CENTER);
+      rect(this.x, this.y, this.size, this.size);
+    } else if(this.shape === 'circle') {
+      circle(this.x, this.y, this.size);
+    } else {
+      triangle(this.x - this.size / 2, this.y + this.size / 2, this.x + this.size / 2, this.y + this.size / 2, this.x, this.y - this.size / 2);
+    }
   }
 }
 
@@ -275,7 +281,10 @@ function fireProjectile() {
 // function to add a target
 // add an instance of the target class in the aptly named array
 function addTarget() {
-  const x = random(TANK_WIDTH / 2, CANVAS_WIDTH - TARGET_SIZE - TANK_WIDTH / 2);
-  const y = random(0, CANVAS_HEIGHT / 4);
-  targets.push(new Target(x, y));
+  const x = random(TANK_WIDTH / 2 + TARGET_SIZE / 2, CANVAS_WIDTH - TARGET_SIZE / 2 - TANK_WIDTH / 2);
+  const y = random(TARGET_SIZE / 2, CANVAS_HEIGHT / 4);
+  // specify a shape between three possible values
+  let odds = random(0, 3);
+  let shape = odds > 2 ? 'rect' : odds > 1 ? 'circle' : 'triangle';
+  targets.push(new Target(x, y, shape));
 }
