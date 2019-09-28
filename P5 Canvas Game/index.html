@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
+        <!-- define a blocky arrow pointing upwards -->
         <svg viewBox="0 0 100 100" style="display: none;">
             <defs>
                 <rect id="square" x="-10" y="-10" width="20" height="20" fill="currentColor"></rect>
@@ -23,25 +24,28 @@
             </defs>
         </svg>
 
+        <!-- in the controls re-use the blocky arrow changing the rotation to identify the left and right arrow keys -->
         <div class="controls">
-            <button>
+            <button id="left">
                 <svg style="transform: rotate(-90deg);" viewBox="0 0 100 100" width="30" height="30">
                     <use href="#arrow"></use>
                 </svg>
             </button>
-            <button>
+            <button id="fire">
                 <svg viewBox="0 0 100 100" width="30" height="30">
                     <use href="#arrow"></use>
                 </svg>
             </button>
-            <button>
+            <button id="right">
                 <svg style="transform: rotate(90deg);" viewBox="0 0 100 100" width="30" height="30">
                     <use href="#arrow"></use>
                 </svg>
             </button>
         </div>
-        <!-- import p5 -->
+
+        <!-- import p5 and the dom addon -->
         <script src="https://unpkg.com/p5@0.9.0/lib/p5.min.js"></script>
+        <script src="https://unpkg.com/p5@0.9.0/lib/addons/p5.dom.js"></script>
         <script src="script.js"></script>
     </body>
 </html>

@@ -7,27 +7,40 @@ body {
     min-height: 100vh;
     justify-content: center;
     display: flex;
+    /* display the canvas before the buttons (the canvas is injected through the script at the bottom of the body) */
     flex-direction: column-reverse;
     align-items: center;
     background: hsl(60, 2%, 5%);
 }
 
+/* display the buttons in a row, clearly separated from the canvas above */
 .controls {
     display: flex;
     align-items: center;
     margin-top: 3rem;
 }
+
+/* style the buttons with the same colors used in the canvas */
 .controls button {
-    background: none;
-    color: #f1da4e;
-    width: 62px;
-    height: 62px;
-    clip-path: polygon(8px 8px, 8px 0px, 54px 0px, 54px 8px, 62px 8px, 62px 54px, 54px 54px, 54px 62px, 8px 62px, 8px 54px, 0px 54px, 0px 8px);
-    border: 8px solid currentColor;
+    color: #323230;
+    background: hsl(52, 85%, 63%);
+    width: 60px;
+    height: 60px;
     padding: 8px;
+    border: 6px solid hsl(52, 85%, 63%);
+    /* clip the corners to repeat the blocky pattern used throughout the application */
+    clip-path: polygon(6px 6px, 6px 0px, 54px 0px, 54px 6px, 62px 6px, 62px 54px, 54px 54px, 54px 62px, 6px 62px, 6px 54px, 0px 54px, 0px 6px);
     margin: 0 1rem;
+    /* by default decrease the opacity */
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in-out;
 }
-.controls button:nth-last-of-type(2) {
+/* change the opacity when the buttons are clicked */
+.controls button:active {
+    opacity: 1;
+}
+/* elevate the fire button */
+.controls button#fire {
     margin-bottom: 3rem;
 }
 .controls button svg {

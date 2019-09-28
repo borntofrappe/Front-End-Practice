@@ -125,7 +125,8 @@ const projectiles = [];
 // set up an array for the targets
 let targets = [];
 
-let button;
+// variable describing the direction of the tank (for the left and right buttons)
+let direction;
 
 function setup() {
   createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -138,8 +139,35 @@ function setup() {
       return new Target(x, y);
     });
 
-}
+    // following a click on the #fire button fire a projectile
+    const buttonFire = select('#fire');
+    buttonFire.mousePressed(() => fireProjectile());
 
+    // following a click, or touch, on the #left and #right buttons update the direction with the matching direction
+    const buttonLeft = select('#left');
+    buttonLeft.mousePressed(() => {
+      direction = 'left';
+    });
+    buttonLeft.touchStarted(() => {
+      direction = 'left';
+    });
+
+    const buttonRight = select('#right');
+    buttonRight.mousePressed(() => {
+      direction = 'right';
+    });
+    buttonRight.touchStarted(() => {
+      direction = 'right';
+    });
+}
+// reset the direction as the mouse is released, or the touch ends
+// the idea is to move the tank as long as the direction holds a truthy value
+function mouseReleased() {
+  direction = null;
+}
+function touchEnded() {
+  direction = null;
+}
 // in the draw function detail the projectiles and tank above a solid background
 function draw() {
   background('#F1DA4E');
@@ -186,12 +214,24 @@ function draw() {
   } else if (keyIsDown(RIGHT_ARROW)) {
     tank.move('right');
   }
-}
 
-// folowing a press on the up key add an instance of the projectile class to the defined array
-function keyPressed() {
-  if (keyCode === UP_ARROW) {
-    const { x } = tank;
-    projectiles.push(new Projectile(x + CANVAS_WIDTH / 2, CANVAS_HEIGHT - PADDING_TANK));
+  // if direction holds a truthy value move the tank in the matching direction
+  if(direction) {
+    tank.move(direction);
   }
 }
+
+
+// following a press on the up key call the function to fire a projectile
+function keyPressed() {
+  if (keyCode === UP_ARROW) {
+    fireProjectile();
+  }
+}
+
+// add an instance of the projectile class to the defined array
+function fireProjectile() {
+  const { x } = tank;
+  projectiles.push(new Projectile(x + CANVAS_WIDTH / 2, CANVAS_HEIGHT - PADDING_TANK));
+}
+
