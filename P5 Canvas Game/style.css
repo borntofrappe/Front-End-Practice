@@ -33,10 +33,11 @@ body {
     margin: 0 1rem;
     /* by default decrease the opacity */
     opacity: 0.5;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.15s ease-in-out;
 }
-/* change the opacity when the buttons are clicked */
-.controls button:active {
+/* change the opacity when the buttons are clicked and a class of .active is applied (included in the script to have the buttons fully opaque following a keypress) */
+.controls button:active,
+.controls button.active {
     opacity: 1;
 }
 /* elevate the fire button */

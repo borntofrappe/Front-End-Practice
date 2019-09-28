@@ -125,62 +125,56 @@ const projectiles = [];
 // set up an array for the targets
 let targets = [];
 
-// variable describing the direction of the tank (for the left and right buttons)
+// would-be describing the direction of the tank (included for the buttons included in the DOM)
 let direction;
+// array describing the buttons
+let buttons = [];
 
 function setup() {
   createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   //   add a series of targets to the matching array
-  targets = Array(5)
-    .fill()
-    .map(() => {
-      const x = random(0, CANVAS_WIDTH - TARGET_SIZE);
-      const y = random(0, CANVAS_HEIGHT / 4);
-      return new Target(x, y);
-    });
+  for(let i = 0; i < 5; i += 1) {
+    addTarget();
+  }
 
-    // following a click on the #fire button fire a projectile
-    const buttonFire = select('#fire');
-    buttonFire.mousePressed(() => fireProjectile());
+    // store all the button elements in the defined array
+    buttons = selectAll('button');
 
-    // following a click, or touch, on the #left and #right buttons update the direction with the matching direction
-    const buttonLeft = select('#left');
-    buttonLeft.mousePressed(() => {
-      direction = 'left';
-    });
-    buttonLeft.touchStarted(() => {
-      direction = 'left';
-    });
-
-    const buttonRight = select('#right');
-    buttonRight.mousePressed(() => {
-      direction = 'right';
-    });
-    buttonRight.touchStarted(() => {
-      direction = 'right';
+    // loop through the buttons and attach the necessary event listeners
+    buttons.forEach(button => {
+      const id = button.elt.id;
+      // for the fire button call the function to fire a projectile
+      if(id === 'fire') {
+        button.mousePressed(() => fireProjectile());
+      } else {
+        // for the left and right button, update direction with the connected identifier
+        // this is picked up in the draw function and allows to move the tank until direction is set back to falsy
+        button.mousePressed(() => { direction = id; })
+        button.touchStarted(() => { direction = id; })
+      }
     });
 }
 // reset the direction as the mouse is released, or the touch ends
-// the idea is to move the tank as long as the direction holds a truthy value
 function mouseReleased() {
   direction = null;
 }
 function touchEnded() {
   direction = null;
 }
-// in the draw function detail the projectiles and tank above a solid background
+
 function draw() {
+  // background
   background('#F1DA4E');
   stroke('#323230');
   strokeWeight(6);
   line(0, CANVAS_HEIGHT - PADDING, CANVAS_WIDTH, CANVAS_HEIGHT - PADDING);
 
-  // display each instance of the target class
+  // targets
   for (const target of targets) {
     target.display();
   }
 
-  // display each instance of the projectile class
+  // projectiles
   for (const projectile of projectiles) {
     projectile.display();
     projectile.move();
@@ -190,29 +184,47 @@ function draw() {
       projectiles.splice(index, 1);
     }
 
-    // loop through the targets and if an overlap with the projectile occurs remove the target from the matching array
+    // loop through the targets and if the projectile collides with the target remove it from the matching array
     for (const target of targets) {
       if (projectile.collides(target)) {
         const index = targets.findIndex(match => match === target);
         targets.splice(index, 1);
 
         // add a new target
-        // it'd be better to add targets with a delay
-        const x = random(0, CANVAS_WIDTH - TARGET_SIZE);
-        const y = random(0, CANVAS_HEIGHT / 4);
-        targets.push(new Target(x, y));
+        addTarget();
       }
     }
   }
 
-  // display the instance of the tank
+  // tank
   tank.display();
 
-  // following the appropriate keys move the tank in the prescribed direction
+  // following a key press on the appropriate keys move the tank in the prescribed direction
   if (keyIsDown(LEFT_ARROW)) {
     tank.move('left');
+
+    // add a class of active on the #left button to have the button fully opaque
+    buttons.forEach(button => {
+      const id = button.elt.id;
+      if(id === 'left') {
+        button.elt.className = 'active';
+      } else {
+        button.elt.className = '';
+      }
+    })
+
   } else if (keyIsDown(RIGHT_ARROW)) {
     tank.move('right');
+
+    // add a class of active on the #right button to have the button fully opaque
+    buttons.forEach(button => {
+      const id = button.elt.id;
+      if(id === 'right') {
+    button.elt.className = 'active';
+      } else {
+    button.elt.className = '';
+      }
+    })
   }
 
   // if direction holds a truthy value move the tank in the matching direction
@@ -221,17 +233,40 @@ function draw() {
   }
 }
 
-
 // following a press on the up key call the function to fire a projectile
 function keyPressed() {
   if (keyCode === UP_ARROW) {
     fireProjectile();
+    // add a class of active on the #fire button to have the button fully opaque
+    buttons.forEach(button => {
+      const id = button.elt.id;
+      if(id === 'fire') {
+        button.elt.className = 'active';
+      } else {
+        button.elt.className = '';
+      }
+    })
   }
 }
 
+// reset the opacity of the buttons as the keys are no longer pressed
+function keyReleased() {
+  buttons.forEach(button => {
+    button.elt.className = '';
+  })
+}
+
+// function to fire a projectile
 // add an instance of the projectile class to the defined array
 function fireProjectile() {
   const { x } = tank;
   projectiles.push(new Projectile(x + CANVAS_WIDTH / 2, CANVAS_HEIGHT - PADDING_TANK));
 }
 
+// function to add a target
+// add an instance of the target class in the aptly named array
+function addTarget() {
+  const x = random(0, CANVAS_WIDTH - TARGET_SIZE);
+  const y = random(0, CANVAS_HEIGHT / 4);
+  targets.push(new Target(x, y));
+}
