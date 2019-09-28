@@ -37,7 +37,7 @@ class Tank {
     translate(this.x, -5);
     vertex(-this.width / 2, 0);
     vertex(this.width / 2, 0);
-    vertex(this.width / 2, -this.height/ 2.5);
+    vertex(this.width / 2, -this.height / 2.5);
     vertex(this.width / 2.5, -this.height / 2.5);
     vertex(this.width / 2.5, -this.height / 2);
     vertex(this.width / 8, -this.height / 2);
@@ -59,7 +59,11 @@ class Tank {
     const d = direction === 'right' ? 1 : -1;
     const dx = this.x + d * this.speed;
     // limit the x coordinate to the canvas plus minus the size of the tank
-    this.x = constrain(dx, -CANVAS_WIDTH / 2 + this.width / 2, CANVAS_WIDTH / 2 - this.width / 2);
+    this.x = constrain(
+      dx,
+      -CANVAS_WIDTH / 2 + this.width / 2,
+      CANVAS_WIDTH / 2 - this.width / 2
+    );
   }
 }
 
@@ -123,7 +127,7 @@ const tank = new Tank();
 // set up an array for the projectiles
 const projectiles = [];
 // set up an array for the targets
-let targets = [];
+const targets = [];
 
 // would-be describing the direction of the tank (included for the buttons included in the DOM)
 let direction;
@@ -133,26 +137,30 @@ let buttons = [];
 function setup() {
   createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   //   add a series of targets to the matching array
-  for(let i = 0; i < 5; i += 1) {
+  for (let i = 0; i < 5; i += 1) {
     addTarget();
   }
 
-    // store all the button elements in the defined array
-    buttons = selectAll('button');
+  // store all the button elements in the defined array
+  buttons = selectAll('button');
 
-    // loop through the buttons and attach the necessary event listeners
-    buttons.forEach(button => {
-      const id = button.elt.id;
-      // for the fire button call the function to fire a projectile
-      if(id === 'fire') {
-        button.mousePressed(() => fireProjectile());
-      } else {
-        // for the left and right button, update direction with the connected identifier
-        // this is picked up in the draw function and allows to move the tank until direction is set back to falsy
-        button.mousePressed(() => { direction = id; })
-        button.touchStarted(() => { direction = id; })
-      }
-    });
+  // loop through the buttons and attach the necessary event listeners
+  buttons.forEach(button => {
+    const { id } = button.elt;
+    // for the fire button call the function to fire a projectile
+    if (id === 'fire') {
+      button.mousePressed(() => fireProjectile());
+    } else {
+      // for the left and right button, update direction with the connected identifier
+      // this is picked up in the draw function and allows to move the tank until direction is set back to falsy
+      button.mousePressed(() => {
+        direction = id;
+      });
+      button.touchStarted(() => {
+        direction = id;
+      });
+    }
+  });
 }
 // reset the direction as the mouse is released, or the touch ends
 function mouseReleased() {
@@ -205,30 +213,29 @@ function draw() {
 
     // add a class of active on the #left button to have the button fully opaque
     buttons.forEach(button => {
-      const id = button.elt.id;
-      if(id === 'left') {
+      const { id } = button.elt;
+      if (id === 'left') {
         button.elt.className = 'active';
       } else {
         button.elt.className = '';
       }
-    })
-
+    });
   } else if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
     tank.move('right');
 
     // add a class of active on the #right button to have the button fully opaque
     buttons.forEach(button => {
-      const id = button.elt.id;
-      if(id === 'right') {
-    button.elt.className = 'active';
+      const { id } = button.elt;
+      if (id === 'right') {
+        button.elt.className = 'active';
       } else {
-    button.elt.className = '';
+        button.elt.className = '';
       }
-    })
+    });
   }
 
   // if direction holds a truthy value move the tank in the matching direction
-  if(direction) {
+  if (direction) {
     tank.move(direction);
   }
 }
@@ -239,13 +246,13 @@ function keyPressed() {
     fireProjectile();
     // add a class of active on the #fire button to have the button fully opaque
     buttons.forEach(button => {
-      const id = button.elt.id;
-      if(id === 'fire') {
+      const { id } = button.elt;
+      if (id === 'fire') {
         button.elt.className = 'active';
       } else {
         button.elt.className = '';
       }
-    })
+    });
   }
 }
 
@@ -253,14 +260,16 @@ function keyPressed() {
 function keyReleased() {
   buttons.forEach(button => {
     button.elt.className = '';
-  })
+  });
 }
 
 // function to fire a projectile
 // add an instance of the projectile class to the defined array
 function fireProjectile() {
   const { x } = tank;
-  projectiles.push(new Projectile(x + CANVAS_WIDTH / 2, CANVAS_HEIGHT - PADDING_TANK));
+  projectiles.push(
+    new Projectile(x + CANVAS_WIDTH / 2, CANVAS_HEIGHT - PADDING_TANK)
+  );
 }
 
 // function to add a target
