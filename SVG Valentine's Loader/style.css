@@ -19,19 +19,20 @@ body {
 }
 
 .arrow {
-    animation: translateVertically 5s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    animation: translateVertically 5s (0.19, 1, 0.22, 1) infinite;
 }
+/* use opposite timing function as the arrow moves into view and out of sight */
 @keyframes translateVertically {
     0% {
         transform: translateY(-100px);
     }
     40% {
         transform: translateY(0px);
-        animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+        animation-timing-function: (0.19, 1, 0.22, 1);
     }
     60% {
         transform: translateY(0px);
-        animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+        animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
     }
     100% {
         transform: translateY(100px);

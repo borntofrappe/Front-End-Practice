@@ -132,6 +132,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Stamp](https://codepen.io/borntofrappe/pen/OJLQqwp)|Create a stamp inspired by [this design](https://dribbble.com/shots/5888593-Damavand) with SVG syntax and specifically pattern and mask elements.|8-9th September 2019|
 |[Small & Scalable Vector Graphic](https://codepen.io/borntofrappe/pen/LYPdNvg)|Starting from the **SVG Stamp** project create a small, but scalable illustration in a 100x150 pixel container.|9th September 2019|
 |[SVG Toggle](https://codepen.io/borntofrappe/pen/aboPapm)|Practice with SVG syntax to recreate [this inspiring toggle](https://dribbble.com/shots/5321869-Playing-with-InVision-Studio).|21st-22nd September 2019|
+|[SVG Valentine's Loader](https://codepen.io/borntofrappe/pen/RwbXawa)|Create a loading screen for a hypothetical Valentine's themed application, inspired by [this design](https://dribbble.com/shots/6019167-Valentine-s-Day).|1st October 2019|
 
 ### UI UX
 
@@ -188,4 +189,5 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[CPC 5 Lines](https://codepen.io/borntofrappe/pen/xxKzgqY)|Inspired by [this design](https://dribbble.com/shots/6488478-Guitar-letter-G) and with 5 lines of HTML, CSS and JavaScript, create a series of posters alternating in color.|12th September 2019|
 |[Merit Badges](https://codepen.io/borntofrappe/pen/zYOmJMR)|Inspired by [these vector graphics](https://css-tricks.com/web-development-merit-badges/) create a template for badges awarded to arbitrary achievements.|18th September 2019|
 |[P5.js Canvas Game](https://codepen.io/borntofrappe/pen/BaBeNoV)|Practice with object-oriented programming while creating a basic shooting game. Using P5.js and the canvas element.|27th-28th September 2019|
-|[P5.js Valentine's Arrow]()|Create a game with p5.js and a canvas element allowing to shoot arrows toward heart-shaped targets.|01st October 2019|
+<!-- Project postponed to the 2nd of October 2019
+|[P5.js Valentine's Arrow]()|Create a game with p5.js and a canvas element allowing to shoot arrows toward heart-shaped targets.|1st October 2019| -->
