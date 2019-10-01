@@ -9,3 +9,31 @@ body {
     display: grid;
     place-items: center;
 }
+.clouds {
+    animation: translateHorizontally 10s cubic-bezier(0.445, 0.3, 0.55, 0.7) infinite;
+}
+@keyframes translateHorizontally {
+    to {
+        transform: translateX(100px);
+    }
+}
+
+.arrow {
+    animation: translateVertically 5s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+}
+@keyframes translateVertically {
+    0% {
+        transform: translateY(-100px);
+    }
+    40% {
+        transform: translateY(0px);
+        animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    60% {
+        transform: translateY(0px);
+        animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    }
+    100% {
+        transform: translateY(100px);
+    }
+}
