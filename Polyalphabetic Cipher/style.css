@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-height: 100vh;
+    background: hsl(0, 0%, 5%);
+    /* center the table in the viewport */
+    display: grid;
+    place-items: center;
+    font-family: "Overpass Mono", monospace;
+}
+/* guarantee that the columns have the same width */
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+table td {
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    color: hsl(0, 0%, 85%);
+}
+
+/* keyframe animation allowing to show the cells */
+@keyframes highlight {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
