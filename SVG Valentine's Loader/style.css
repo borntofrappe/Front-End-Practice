@@ -19,7 +19,7 @@ body {
 }
 
 .arrow {
-    animation: translateVertically 5s (0.19, 1, 0.22, 1) infinite;
+    animation: translateVertically 5s cubic-bezier(0.19, 1, 0.22, 1) infinite;
 }
 /* use opposite timing function as the arrow moves into view and out of sight */
 @keyframes translateVertically {
@@ -28,7 +28,7 @@ body {
     }
     40% {
         transform: translateY(0px);
-        animation-timing-function: (0.19, 1, 0.22, 1);
+        animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
     }
     60% {
         transform: translateY(0px);

@@ -189,5 +189,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[CPC 5 Lines](https://codepen.io/borntofrappe/pen/xxKzgqY)|Inspired by [this design](https://dribbble.com/shots/6488478-Guitar-letter-G) and with 5 lines of HTML, CSS and JavaScript, create a series of posters alternating in color.|12th September 2019|
 |[Merit Badges](https://codepen.io/borntofrappe/pen/zYOmJMR)|Inspired by [these vector graphics](https://css-tricks.com/web-development-merit-badges/) create a template for badges awarded to arbitrary achievements.|18th September 2019|
 |[P5.js Canvas Game](https://codepen.io/borntofrappe/pen/BaBeNoV)|Practice with object-oriented programming while creating a basic shooting game. Using P5.js and the canvas element.|27th-28th September 2019|
-<!-- Project postponed to the 2nd of October 2019
-|[P5.js Valentine's Arrow]()|Create a game with p5.js and a canvas element allowing to shoot arrows toward heart-shaped targets.|1st October 2019| -->
+|[Polyalphabetic Cipher]()|Use a table element and a couple of JavaScript loops to show the alphabets used in a polyalphabetic cipher.|06th October 2019|
