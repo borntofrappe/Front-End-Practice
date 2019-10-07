@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-height: 100vh;
+    background: url('data:image/svg+xml;utf8,<svg opacity="0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><g fill="none" stroke-width="1" stroke="hsl(0, 0%, 30%)" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(30 20)"><rect transform="rotate(35)" x="-5" y="-5" width="10" height="10"></rect></g><g transform="translate(50 45)"><circle cx="0" cy="0" r="6"></circle></g><g transform="translate(30 70)"><path transform="rotate(-20)" d="M 0 -6 l -8 12 h 16 z"></path></g><g transform="translate(70 20)"><path transform="rotate(80)" d="M 0 -8 l -8 16 h 16 z"></path></g><g transform="translate(75 65)"><rect transform="rotate(135)" x="-7" y="-7" width="14" height="14"></rect></g></g></svg>'),
+        hsl(0, 0%, 95%);
+    background-size: 10%;
+    /* center the canvas in the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+canvas {
+    width: 80%;
+    height: 80%;
+    max-width: 750px;
+}
