@@ -5,8 +5,11 @@
 }
 body {
     min-height: 100vh;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background: hsl(225, 60%, 15%);
 }
 
 canvas {

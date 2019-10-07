@@ -1,6 +1,6 @@
 # Matter JS Plinko
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/QWWwOWO)
 
 ## Goal
 
