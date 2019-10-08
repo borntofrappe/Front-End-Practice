@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Nova+Mono&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-height: 100vh;
+    background: hsl(0, 0%, 95%);
+    display: grid;
+    place-items: center;
+    font-family: "Nova Mono", monospace;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+main h1 {
+    text-align: right;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+main canvas {
+    height: 80%;
+    max-height: 500px;
+}
