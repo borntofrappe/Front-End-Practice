@@ -34,12 +34,12 @@ const randomBetween = (min, max) =>
   Math.floor(Math.random() * (max - min)) + min;
 
 // function fabricating a plinko, as a circle included atop the canvas
-// accept as input the color of the circle
 const makePlinko = () => {
   const x = randomBetween(width / 4, (width * 3) / 4);
   const y = randomBetween(0, height / 2) * -1;
   const r = 8;
-  const fillStyle = `hsl(${randomBetween(0, 360)}, 85%, 55%)`;
+  // add a color picked at random around the color wheel
+  const fillStyle = `hsl(${randomBetween(0, 360)}, 90%, 60%)`;
 
   return Bodies.circle(x, y, r, {
     restitution: 0.8,
@@ -179,14 +179,17 @@ function handleCollision(event) {
     const { label: labelA } = bodyA;
     const { label: labelB } = bodyB;
 
-    if (labelA === 'plinko') {
-      const { fillStyle } = bodyA.render;
-      bodyB.render.fillStyle = fillStyle;
+    // ! change the color only if one of the two body is a plinko
+    if(labelA !== labelB) {
+      if (labelA === 'plinko') {
+        const { fillStyle } = bodyA.render;
+        bodyB.render.fillStyle = fillStyle;
+      } if (labelB === 'plinko') {
+        const { fillStyle } = bodyB.render;
+        bodyA.render.fillStyle = fillStyle;
+      }
     }
-    if (labelB === 'plinko') {
-      const { fillStyle } = bodyB.render;
-      bodyA.render.fillStyle = fillStyle;
-    }
+
   });
 }
 Events.on(engine, 'collisionStart', handleCollision);
