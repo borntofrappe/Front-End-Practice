@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/* center the shape in the viewport */
+body {
+    min-height: 100vh;
+    /* use variations of the background's color for the zdog drawing */
+    background: hsl(215, 95%, 15%);
+    display: grid;
+    place-items: center;
+}
