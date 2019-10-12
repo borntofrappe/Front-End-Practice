@@ -1,7 +1,7 @@
 # Zdog Chicken
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/Baajmzy)
 
 ## Goal
 
-Use the pseudo-3d engine to create the graphic of an anemometer with a cuts-y mascot
+Use the pseudo-3d engine to draw an anemometer with a cuts-y mascot.
