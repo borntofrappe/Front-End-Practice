@@ -193,3 +193,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Matter JS Bouncing Shapes](https://codepen.io/borntofrappe/pen/YzzzBeK)|Experiment with the physics engine to add and animate a series of shapes.|06th October 2019|
 |[Matter JS Plinko](https://codepen.io/borntofrappe/pen/QWWwOWO)|Practice with array methods and the physics engine to recreate the basic structure behind a plinko game.|07th October 2019|
 |[Matter JS Pool](https://codepen.io/borntofrappe/pen/mddJEam)|Create the basic structure of a game of pool, or billiard, to practice with constraints.|08th-09th October 2019|
+|[Zdog Chicken]()|Use the pseudo-3d engine to create the graphic of an anemometer with a cuts-y mascot.|12th October 2019|
