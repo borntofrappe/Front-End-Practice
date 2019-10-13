@@ -18,6 +18,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+/* have the svg expand to cover the size allocated by the main container */
 main {
     width: 90vw;
     max-width: 500px;
@@ -30,6 +31,8 @@ main svg {
     height: auto;
     display: block;
 }
+
+/* prominently feature the bottom below the main container */
 button {
     margin: 2rem 3rem;
     background: hsl(15, 60%, 50%);
@@ -45,6 +48,7 @@ button {
     letter-spacing: 0.01rem;
 }
 
+/* increase the vertical space in the details and list elements */
 details {
     line-height: 1.75;
 }
@@ -53,7 +57,8 @@ summary {
     font-weight: 700;
     font-size: 1.5rem;
 }
-ol {
+ul {
+    list-style-type: square;
     line-height: 2.5;
     list-style-position: inside;
 }

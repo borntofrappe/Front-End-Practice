@@ -1,6 +1,8 @@
+// variable describing the duration of the building process
+const duration = 10;
 // variables describing the grid
-const columns = 5;
-const rows = 5;
+const columns = 8;
+const rows = 8;
 // variables describing the cells
 const h = 100;
 const v = 100;
@@ -42,7 +44,6 @@ maze.innerHTML = `
             <path id="cell" d="M 0 0 h ${h} v ${v}"></path>
             <path id="cell-up" d="M ${h} 0 v ${v}"></path>
             <path id="cell-right" d="M 0 0 h ${h}"></path>
-            <path id="mark" d="M 0 0 l ${h} ${v} m 0 -${v} l -${h} ${v}"></path>
         </defs>
         <g transform="translate(${stroke / 2} ${stroke / 2})">
             <path d="M 0 0 v ${height} h ${width}"></path>
@@ -69,7 +70,9 @@ maze.innerHTML = `
                 <g transform="translate(0 ${height - v}) scale(1 -1)">
                   <g class="mark">
                     <g transform="scale(1 -1)">
-                      <use href="#mark"></use>
+                        <svg viewBox="0 0 100 100" width=${h} height=${v}>
+                            <use href="#chicken"></use>
+                        </svg>
                     </g>
                   </g>
                 </g>
@@ -148,7 +151,7 @@ function buildMaze() {
     if (i >= length) {
       clearInterval(intervalID);
     }
-  }, 500);
+  }, duration * 1000 / (columns * rows));
 }
 
 // switch the boolean and call the functions to update the grid and mark

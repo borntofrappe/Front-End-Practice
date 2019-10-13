@@ -133,7 +133,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Small & Scalable Vector Graphic](https://codepen.io/borntofrappe/pen/LYPdNvg)|Starting from the **SVG Stamp** project create a small, but scalable illustration in a 100x150 pixel container.|9th September 2019|
 |[SVG Toggle](https://codepen.io/borntofrappe/pen/aboPapm)|Practice with SVG syntax to recreate [this inspiring toggle](https://dribbble.com/shots/5321869-Playing-with-InVision-Studio).|21st-22nd September 2019|
 |[SVG Valentine's Loader](https://codepen.io/borntofrappe/pen/RwbXawa)|Create a loading screen for a hypothetical Valentine's themed application, inspired by [this design](https://dribbble.com/shots/6019167-Valentine-s-Day).|1st October 2019|
-|[SVG Maze - Binary Tree]()|Create a maze using the binary tree algorithm, SVG syntax and JavaScript.|13th October 2019|
+|[SVG Maze - Binary Tree](https://codepen.io/borntofrappe/pen/NWWxoJK)|Create a maze using the binary tree algorithm, SVG syntax and JavaScript.|13th October 2019|
 
 ### UI UX
 
