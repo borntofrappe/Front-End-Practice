@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>SVG Maze - Binary Tree</title>
+    </head>
+    <body>
+        <div class="app">
+            <!-- include the svg in this wrapping container -->
+            <main class="maze"></main>
+            <!-- button allowing to build/reset the maze design -->
+            <button>Build</button>
+
+            <!-- brief explanation of the algorithm's instructions -->
+            <details open>
+                <summary>How does the algorithm works?</summary>
+                <ol>
+                    <li>Visit every cell</li>
+                    <li>Remove the gate north or east</li>
+                    <li>Do not create any exit</li>
+                </ol>
+            </details>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
