@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css?family=Chakra+Petch:700|Open+Sans:600&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: hsl(45, 35%, 95%);
+    color: hsl(15, 60%, 50%);
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+/* display the maze, button and details in a column */
+.app {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.app > * + * {
+    margin-top: 1.5rem;
+}
+/* have the svg expand to cover the size allocated by the main container */
+main {
+    width: 90vw;
+    max-width: 500px;
+    background: hsl(15, 60%, 50%);
+    color: hsl(45, 35%, 95%);
+    padding: 1rem;
+}
+main svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* prominently feature the bottom below the main container */
+button {
+    margin-bottom: 2.5rem;
+    background: hsl(15, 60%, 50%);
+    border: none;
+    border-bottom: 5px solid hsl(10, 80%, 30%);
+    color: #e8f0fb;
+    font-weight: 700;
+    text-shadow: 0px 3px 3px hsla(10, 80%, 30%, 0.5);
+    padding: 0.75rem 1rem;
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01rem;
+}
+
+/* increase the vertical space in the details and list elements */
+details {
+    color: hsl(15, 70%, 10%);
+    line-height: 1.75;
+    max-width: 500px;
+}
+summary {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+ul {
+    list-style-type: square;
+    line-height: 2.5;
+    list-style-position: inside;
+}
+section {
+    color: hsl(15, 70%, 10%);
+    max-width: 450px;
+    line-height: 2;
+}
+section h2 {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+section h3 {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+section ul {
+    padding-left: 1.5rem;
+}
