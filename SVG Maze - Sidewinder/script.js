@@ -63,9 +63,9 @@ maze.innerHTML = `
                             <use href="#cell" class="cell"></use>
                         </g>
                         `
-                          )}
+                          ).join('')}
                     </g>`
-                  )}
+                  ).join('')}
                 </g>
                 <g transform="translate(0 ${height - v}) scale(1 -1)">
                   <g class="mark">
