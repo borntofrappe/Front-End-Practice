@@ -10,7 +10,7 @@ Currently, I divide the projects in the following sub-categories:
 
 - [JS](#js);
 
-- [React](#js); <!-- smaller scale react projects; for larger application I prefer using a separate repository -->
+- [JS Frameworks](#js-frameworks); <!-- smaller scale react projects; for larger application I prefer using a separate repository -->
 
 - [SVG](#svg);
 
@@ -73,18 +73,16 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[JS Canvas Clock](https://codepen.io/borntofrappe/pen/RmXayo)|Draw a few shapes to highlight the current number of hours, minutes and seconds.|7th June 2019|
 |[JS Animation F1 Gap](https://codepen.io/borntofrappe/pen/dBbYwz)|Use the Web Animation API animate two icons representing F1 vehicles to highlight their hypothetical gap.|9th June 2019|
 
-### React
+### JS Frameworks
 
 |Title|Goal|Date|
 |---|---|---|
 |[React Like Button](https://codepen.io/borntofrappe/pen/pXOMZK)|Experiment with React Hooks to create a like button progressively increasing in size and color.|6th July 2019|
-
-### Svelte
-
-|Title|Goal|Date|
-|---|---|---|
 |[Svelte's today's todos](https://codepen.io/borntofrappe/pen/GRKvbzY)|Create another todo app to get acquainted with the svelte framework.|1st September 2019|
-
+|[Matter JS Bouncing Shapes](https://codepen.io/borntofrappe/pen/YzzzBeK)|Experiment with the physics engine to add and animate a series of shapes.|06th October 2019|
+|[Matter JS Plinko](https://codepen.io/borntofrappe/pen/QWWwOWO)|Practice with array methods and the physics engine to recreate the basic structure behind a plinko game.|07th October 2019|
+|[Matter JS Pool](https://codepen.io/borntofrappe/pen/mddJEam)|Create the basic structure of a game of pool, or billiard, to practice with constraints.|08th-09th October 2019|
+|Matter JS Newton's Cradle|Create Newton's cradle with the physics engine, constraints and a magnet.|14th October 2019|
 
 ### SVG
 
@@ -192,7 +190,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Merit Badges](https://codepen.io/borntofrappe/pen/zYOmJMR)|Inspired by [these vector graphics](https://css-tricks.com/web-development-merit-badges/) create a template for badges awarded to arbitrary achievements.|18th September 2019|
 |[P5.js Canvas Game](https://codepen.io/borntofrappe/pen/BaBeNoV)|Practice with object-oriented programming while creating a basic shooting game. Using P5.js and the canvas element.|27th-28th September 2019|
 |Polyalphabetic Cipher|Use a table element and a couple of JavaScript loops to show the alphabets used in a polyalphabetic cipher.|06th October 2019|
-|[Matter JS Bouncing Shapes](https://codepen.io/borntofrappe/pen/YzzzBeK)|Experiment with the physics engine to add and animate a series of shapes.|06th October 2019|
-|[Matter JS Plinko](https://codepen.io/borntofrappe/pen/QWWwOWO)|Practice with array methods and the physics engine to recreate the basic structure behind a plinko game.|07th October 2019|
-|[Matter JS Pool](https://codepen.io/borntofrappe/pen/mddJEam)|Create the basic structure of a game of pool, or billiard, to practice with constraints.|08th-09th October 2019|
 |[Zdog Chicken](https://codepen.io/borntofrappe/pen/Baajmzy)|Use the pseudo-3d engine to draw an anemometer with a cuts-y mascot.|12th October 2019|
