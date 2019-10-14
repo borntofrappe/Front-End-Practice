@@ -50,6 +50,7 @@ button {
 
 /* increase the vertical space in the details and list elements */
 details {
+    color: hsl(15, 70%, 10%);
     line-height: 1.75;
 }
 summary {

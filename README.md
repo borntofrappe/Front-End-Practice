@@ -24,7 +24,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 
 |Title|Goal|Date|
 |---|---|---|
-|[D3 Table](https://codepen.io/borntofrappe/pen/ZZaaOe)|Practice with D3 and a table layout to replicate the leaderboard from the F1 Chinese grand prix.|15th April 2019|
+|[D3 Table](https://codepen.io/borntofrappe/pen/ZZaaOe)|Practice with D3 and a table layout to replicate the leader board from the F1 Chinese grand prix.|15th April 2019|
 |[D3 Telemetry](https://codepen.io/borntofrappe/pen/JVzZBo)|Visualize key metrics for an F1 driver in a dashboard, through text elements and partial dounut charts.|29th April 2019|
 |[D3 Colorful Donut](https://codepen.io/borntofrappe/pen/yWJWVV)|Practice with a donut visualization inspired by [this design](https://dribbble.com/shots/5902025-Shopin-Marketing-Website-Design-Part-2).|12th May 2019|
 |[D3 Dashboard](https://codepen.io/borntofrappe/pen/bywXzO)|Create a dashboard inspired by [this specific design](https://dribbble.com/shots/6235860-eCommerce-Analytics-pt-2) to practice with D3, SVG and the table element.|13th May 2019|
@@ -33,7 +33,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Election Map](https://codepen.io/borntofrappe/pen/WBPwPw)|Practice with the data visualization library and CSS layout properties to highlight the results of the recent European elections.|2nd-3rd June 2019|
 |[D3 Animated Visualization](https://codepen.io/borntofrappe/pen/WBqRRB)|Practice with D3 to show different facets of a dataset in a single visualization, at the check of a checkbox.|6th June 2019|
 |[D3 Quadrant Chart](https://codepen.io/borntofrappe/pen/QXNvjx)|Create a visualization sorting arbitrary data in four quadrants.|16th-17th June 2019|
-|[D3 Line Column Sankey](https://codepen.io/borntofrappe/pen/zVwGaP)|Practice with the data visualization library to highlight data in a line chart, row chart and a sankey diagram.|22nd-23rd June 2019|
+|[D3 Line Column Sankey](https://codepen.io/borntofrappe/pen/zVwGaP)|Practice with the data visualization library to highlight data in a line chart, row chart and a Sankey diagram.|22nd-23rd June 2019|
 |[D3 Histogram and Density Plot](https://codepen.io/borntofrappe/pen/dBeKga)|Hihglight the length of the petals of a subspecies of irises through two different visualizations.|2nd July 2019|
 |[D3 Scatter Plot and Brush](https://codepen.io/borntofrappe/pen/XLYPWQ)|Highlight the length and the width of the petals for a few subspecies of the iris flower in an interactive scatter plot.|3rd July 2019|
 |[D3 Ridgeline Plots](https://codepen.io/borntofrappe/pen/rEZpGo)|Highlight the length for three subspecies of the iris flower displaying histogram and density plots in the same visualization.|5th July 2019|
@@ -105,7 +105,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Thermometer](https://codepen.io/borntofrappe/pen/LKGWgp)|Draw a thermometer and leveraging the anime.js library animate its appearance.|14th June 2019|
 |[SVG Progress](https://codepen.io/borntofrappe/pen/gNLKBw)|Practice with SVG and anime.js to create a progress bar and animate its appearance in color and shape.|19th-20th June 2019|
 |[SVG Icons Practice](https://codepen.io/borntofrappe/pen/ydgxGO)|Practice with SVG syntax, HSL colors and a few lines of JavaScript to include SVG icons where such icons are made available.|20th June 2019|
-|[SVG Timeline Animation](https://codepen.io/borntofrappe/pen/zVzWOE)|Replicate the animation of a spelling bee logo as displayed on [Hasan Minhaj Youtube channel](https://youtu.be/7ms7gxdzBos?t=665).|24th June 2019|
+|[SVG Timeline Animation](https://codepen.io/borntofrappe/pen/zVzWOE)|Replicate the animation of a spelling bee logo as displayed on [Patriot Act's Youtube channel](https://youtu.be/7ms7gxdzBos?t=665).|24th June 2019|
 |[SVG Sprites](https://codepen.io/borntofrappe/pen/EBvRvK)|Create an SVG which allows to display different images according to the coordinates given to the viewBox attribute.|25th June 2019|
 |[SVG Write Off Animation](https://codepen.io/borntofrappe/pen/VJQBZe)|Draw a pencil and animate the graphic to continuously include and remove a stroke.|30th June 2019|
 |[SVG Code Snippet](https://codepen.io/borntofrappe/pen/OevZVw)|Display a code snippet replicating the Github interface and using SVG elements.|1st July 2019|
@@ -133,7 +133,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Small & Scalable Vector Graphic](https://codepen.io/borntofrappe/pen/LYPdNvg)|Starting from the **SVG Stamp** project create a small, but scalable illustration in a 100x150 pixel container.|9th September 2019|
 |[SVG Toggle](https://codepen.io/borntofrappe/pen/aboPapm)|Practice with SVG syntax to recreate [this inspiring toggle](https://dribbble.com/shots/5321869-Playing-with-InVision-Studio).|21st-22nd September 2019|
 |[SVG Valentine's Loader](https://codepen.io/borntofrappe/pen/RwbXawa)|Create a loading screen for a hypothetical Valentine's themed application, inspired by [this design](https://dribbble.com/shots/6019167-Valentine-s-Day).|1st October 2019|
-|[SVG Maze - Binary Tree](https://codepen.io/borntofrappe/pen/NWWxoJK)|Create a maze using the binary tree algorithm, SVG syntax and JavaScript.|13th October 2019|
+|[SVG Maze - Binary Tree](https://codepen.io/borntofrappe/pen/NWWxoJK)|Create a maze using the binary tree algorithm, SVG syntax and JavaScript.|13th-14th October 2019|
 
 ### UI UX
 

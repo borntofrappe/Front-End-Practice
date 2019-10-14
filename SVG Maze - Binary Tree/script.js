@@ -114,35 +114,39 @@ function buildMaze() {
 
   // at an interval
   intervalID = setInterval(() => {
-    /* update the position of the mark */
-    mark.setAttribute('transform', `translate(${x} ${y})`);
-
-    // for every cell on the right edge, clear the maze upwards
-    if (i > 0 && (i + 1) % columns === 0) {
-      // as long as the cell is not the last one
-      if (i !== length - 1) {
-        cells[i].setAttribute('href', '#cell-up');
-      }
-
-      // move the mark to the new row
-      // ! remember the y-axis is flipped
-      x = 0;
-      y += v;
-    } else {
-      // move the mark rightwards
-      x += h;
-      // for every cell on the top edge, clear the maze rightwards
-      if (i >= length - columns) {
-        cells[i].setAttribute('href', '#cell-right');
+    // BUILDING THE MAZE
+    // pick a gate north or east
+    const isNorth = Math.random() > 0.5;
+    // ! only if the cell is not the last one
+    if (i !== length - 1) {
+      // change the href attribute for the respective cell according to the random value
+      if (isNorth) {
+        // ! if the cell is on the first row clear the cell rightwards (visually the first, in the node list the last)
+        if (i >= length - columns) {
+          cells[i].setAttribute('href', '#cell-right');
+        } else {
+          cells[i].setAttribute('href', '#cell-up');
+        }
       } else {
-        // for every cell which is not on the right or top edge clear a gate at random from the chosen 2 sides
-        const clearUpwards = Math.random() > 0.5;
-        if (clearUpwards) {
+        // if the cell is on the last column clear the cell upwards
+        if (i > 0 && (i + 1) % columns === 0) {
           cells[i].setAttribute('href', '#cell-up');
         } else {
           cells[i].setAttribute('href', '#cell-right');
         }
       }
+    }
+
+    // MOVE THE MARK
+    mark.setAttribute('transform', `translate(${x} ${y})`);
+    // increase the x coordinate
+    x += h;
+
+    // when reaching the end of the row, reset the x coordinate and update the y value
+    // ! technically the variables are updated for the last cell as well, but the use element is not translated
+    if (i > 0 && i !== length - 1 && (i + 1) % columns === 0) {
+      x = 0;
+      y += v;
     }
 
     // increment the counter variable to target the following cell
@@ -151,7 +155,7 @@ function buildMaze() {
     if (i >= length) {
       clearInterval(intervalID);
     }
-  }, duration * 1000 / (columns * rows));
+  }, (duration * 1000) / (columns * rows));
 }
 
 // switch the boolean and call the functions to update the grid and mark
