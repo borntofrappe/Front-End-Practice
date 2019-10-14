@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/* center the label in the viewport */
+body {
+    background: hsl(45, 35%, 95%);
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+canvas {
+    max-width: 800px;
+    width: 90vw;
+}
