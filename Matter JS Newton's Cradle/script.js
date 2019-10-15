@@ -1,13 +1,13 @@
+// include the necessary plugin
 Matter.use('matter-attractors');
 
-// necessary modules
+// extract the necessary modules
 const {
   Engine,
   Render,
   World,
   Bodies,
   Body,
-  Constraint,
   Mouse,
   MouseConstraint,
   Composites,
@@ -51,20 +51,21 @@ bodies.forEach((body, index, { length }) => {
   } else {
     body.collisionFilter.category = 0x0002;
   }
-  // body.slop = 0;
+  // change the properties of the spheres to have the collision be more impact-ful
   body.friction = 0;
   body.frictionAir = 0;
   body.restitution = 1;
   body.render.fillStyle = 'hsl(0, 0%, 5%)';
 });
 
+// loop through the constraint and change the appearance to match the spheres
 const { constraints } = cradle;
 constraints.forEach(constraint => {
   constraint.render.lineWidth = 2;
   constraint.render.strokeStyle = 'hsl(0, 0%, 5%)';
 });
 
-// move the first body to the left to trigger the first motion
+// move the first body to the left to trigger Newton's cradle
 Body.setVelocity(bodies[0], {
   x: -5,
   y: 0,
@@ -86,12 +87,15 @@ const mouseConstraint = MouseConstraint.create(engine, {
 });
 World.add(world, mouseConstraint);
 
-const magnet = Bodies.rectangle(width / 2, height / 2, 50, 50, {
+// describe a magnet
+const magnet = Bodies.circle(width / 2, height / 2, 30, {
   isStatic: true,
   render: {
-    fillStyle: 'red',
+    fillStyle: 'hsl(0, 75%, 35%)',
   },
+  // isSensor to avoid a collision with the cradle
   isSensor: true,
+  // attractor to have the spheres move _away_ from the position of the body
   plugin: {
     attractors: [
       function(bodyA, bodyB) {
@@ -104,11 +108,14 @@ const magnet = Bodies.rectangle(width / 2, height / 2, 50, 50, {
   },
 });
 
+// target the button and form element
 const button = document.querySelector('button');
 const form = document.querySelector('form');
 
+// following a click on the button add/remove the magnet from the world
 function toggleMagnet() {
   const hasMagnet = world.bodies.length > 0;
+  // toggle also the appearance of the form and the text of the button itself
   form.classList.toggle('hidden');
   if (hasMagnet) {
     this.textContent = 'Add magnet';
@@ -118,16 +125,20 @@ function toggleMagnet() {
     World.add(world, magnet);
   }
 }
-function moveMagnet(e) {
+button.addEventListener('click', toggleMagnet);
+
+// following an input event extract the x and y value and update the position of the magnet
+function moveMagnet() {
   const { value: x } = this.x;
   const { value: y } = this.y;
+
   Body.setPosition(magnet, {
     x: (width * x) / 100,
     y: (height * y) / 100,
   });
 }
-button.addEventListener('click', toggleMagnet);
 form.addEventListener('input', moveMagnet);
+form.addEventListener('submit', e => e.preventDefault());
 
 // run the engine
 Engine.run(engine);

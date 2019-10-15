@@ -1,7 +1,7 @@
 # Matter JS Newton's Cradle
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/qBBNOxY)
 
 ## Goal
 
-Create Newton's cradle with the physics engine, constraints and a magnet.
+Use the physics engine to recreate Newton's cradle with spheres, constraints, and a magnet.

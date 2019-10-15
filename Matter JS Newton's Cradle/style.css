@@ -52,14 +52,19 @@ button:before {
     transition: transform 0.25s ease-out;
     z-index: -5;
 }
-button:hover,
-button:focus {
+button:hover {
     color: hsl(0, 0%, 95%);
 }
-button:hover:before,
-button:focus:before {
+button:hover:before {
     transform: translateY(0%);
 }
+
+/* when the button and input elements are focused increase the outline */
+button:focus,
+input:focus {
+    outline: 2px solid hsl(45, 35%, 5%);
+}
+
 /* display the form's contents in another column */
 form {
     display: flex;
@@ -79,7 +84,6 @@ input {
     font-size: 1rem;
     background: none;
     border: 1px solid hsl(45, 35%, 5%);
-    border-radius: 4px;
     padding: 0.5rem;
     padding-right: 0;
     color: inherit;
