@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Matter JS Newton's Cradle</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- the canvas is injected at the bottom of the body, after the following markup
+    include a button to toggle the magnet and two input elements to change its coordinates in the canvas
+    -->
+        <section class="controls">
+            <button id="toggle">Add magnet</button>
+            <form class="controls--coordinates hidden">
+                <h2>Change Coordinates (%)</h2>
+                <label for="x">
+                    x
+                    <input type="number" id="x" min="0" max="100" value="50" />
+                </label>
+                <label for="y">
+                    y
+                    <input type="number" id="y" min="0" max="100" value="50" />
+                </label>
+            </form>
+        </section>
+
+        <!-- import the attractor plugin _after_ matter js -->
+        <script src="https://unpkg.com/matter-js@0.14.2/build/matter.min.js"></script>
+        <script src="https://unpkg.com/matter-attractors@0.1.6/build/matter-attractors.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

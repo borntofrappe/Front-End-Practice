@@ -82,7 +82,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Matter JS Bouncing Shapes](https://codepen.io/borntofrappe/pen/YzzzBeK)|Experiment with the physics engine to add and animate a series of shapes.|06th October 2019|
 |[Matter JS Plinko](https://codepen.io/borntofrappe/pen/QWWwOWO)|Practice with array methods and the physics engine to recreate the basic structure behind a plinko game.|07th October 2019|
 |[Matter JS Pool](https://codepen.io/borntofrappe/pen/mddJEam)|Create the basic structure of a game of pool, or billiard, to practice with constraints.|08th-09th October 2019|
-|Matter JS Newton's Cradle|Create Newton's cradle with the physics engine, constraints and a magnet.|14th October 2019|
+|[Matter JS Newton's Cradle](https://codepen.io/borntofrappe/pen/qBBNOxY)|Use the physics engine to recreate Newton's cradle with spheres, constraints, and a magnet.|14th-15th October 2019|
 
 ### SVG
 

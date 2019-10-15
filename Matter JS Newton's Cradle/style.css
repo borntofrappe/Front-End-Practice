@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+/* display the body's contents in a reversed column
+this to have the canvas precede the .controls
+*/
+body {
+    background: hsl(0, 0%, 95%);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    font-family: "IBM Plex Mono", monospace;
+}
+canvas {
+    max-width: 650px;
+    width: 90vw;
+    border: 0.25rem solid hsl(45, 35%, 5%);
+    margin-bottom: 1rem;
+}
+/* display the button and the form in a column */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* add a pseudo element behind the button to transition a dark background from the bottom */
+button {
+    font-family: inherit;
+    color: inherit;
+    font-size: 1rem;
+    letter-spacing: 0.01rem;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: 1px solid hsl(45, 35%, 5%);
+    position: relative;
+    overflow-y: hidden;
+    transition: color 0.25s ease-out;
+    z-index: 5;
+}
+button:before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    background: hsl(45, 35%, 5%);
+    transition: transform 0.25s ease-out;
+    z-index: -5;
+}
+button:hover {
+    color: hsl(0, 0%, 95%);
+}
+button:hover:before {
+    transform: translateY(0%);
+}
+
+/* when the button and input elements are focused increase the outline */
+button:focus,
+input:focus {
+    outline: 2px solid hsl(45, 35%, 5%);
+}
+
+/* display the form's contents in another column */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.15s ease-out;
+}
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+label {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+input {
+    font-size: 1rem;
+    background: none;
+    border: 1px solid hsl(45, 35%, 5%);
+    padding: 0.5rem;
+    padding-right: 0;
+    color: inherit;
+    font-family: inherit;
+    text-align: right;
+}
+
+/* if grid is supported display the labels side by side */
+@supports (display: grid) {
+    form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 0.5rem;
+        justify-items: center;
+    }
+    form h2 {
+        grid-column: span 2;
+    }
+}
+
+/* utility class to hide the form (when the magnet is not included in the canvas) */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
