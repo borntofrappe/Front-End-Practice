@@ -8,7 +8,22 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
+        <div class="controls">
+            <button id="toggle">Add magnet</button>
+            <form class="controls--coordinates hidden">
+                <h2>Change Coordinates (%)</h2>
+                <label for="x">
+                    x
+                    <input type="number" id="x" min="0" max="100" value="50" />
+                </label>
+                <label for="y">
+                    y
+                    <input type="number" id="y" min="0" max="100" value="50" />
+                </label>
+            </form>
+        </div>
         <script src="https://unpkg.com/matter-js@0.14.2/build/matter.min.js"></script>
+        <script src="https://unpkg.com/matter-attractors@0.1.6/build/matter-attractors.min.js"></script>
         <script src="script.js"></script>
     </body>
 </html>

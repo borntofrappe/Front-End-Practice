@@ -1,16 +1,28 @@
 * {
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
 }
 /* center the label in the viewport */
 body {
-    background: hsl(45, 35%, 95%);
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
+    background: hsl(0, 0%, 95%);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
 }
 canvas {
-    max-width: 800px;
+    margin-bottom: 1rem;
+    max-width: 700px;
     width: 90vw;
+    border: 0.25rem solid hsl(45, 35%, 5%);
+}
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.controls--coordinates {
+    transition: all 0.15s ease-out;
+}
+.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
