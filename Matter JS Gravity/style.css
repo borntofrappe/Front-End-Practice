@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,800&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-height: 100vh;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="142.5"><g transform="translate(25 23.75)" opacity="0.1" stroke="hsl(0, 0%, 50%)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(50 47.5) rotate(60)"><g transform="translate(-50 -47.5)"><path fill="none" d="M65 5a30 30 0 010 60"/><path fill="currentColor" d="M45 65l14-14v28z"/><g><path fill="none" d="M35 90a30 30 0 010-60"/><path fill="currentColor" d="M55 30L41 44V16z"/></g></g></g></g></svg>'),
+        #fbfbfb;
+    background-size: 10%;
+    color: hsl(0, 0%, 11%);
+    font-family: "Poppins", sans-serif;
+    /* center the contents horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+/* display the controls in a row, pushing the buttons on either side */
+.controls {
+    width: 90vw;
+    max-width: 500px;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h2 {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 1.75rem;
+}
+button {
+    font-weight: 800;
+    text-align: center;
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.25rem;
+    background: none;
+    border: none;
+    outline: none;
+}
+button svg {
+    display: block;
+    width: 4.5em;
+    height: auto;
+}
+/* when the button is focused underline the span element */
+button:focus span {
+    text-decoration: underline;
+}
+/* when the button is hovered or being focused on, rotate the nested svg
+! only as the hover/focus occurs
+*/
+button:hover svg,
+button:focus svg {
+    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform: rotate(1turn);
+}
+/* rotate the first svg in the opposite direction */
+button:first-of-type:hover svg,
+button:first-of-type:focus svg {
+    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform: rotate(-1turn);
+}
+/* add a transition to the canvas to rotate the element smoothly */
+canvas {
+    width: 90vw;
+    max-width: 500px;
+    display: block;
+    transition: transform 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
