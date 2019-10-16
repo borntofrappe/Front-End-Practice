@@ -7,6 +7,8 @@ const engine = Engine.create();
 const width = 500;
 const height = 500;
 const size = 50;
+const w = 30;
+const padding = 10;
 
 // renderer
 const render = Render.create({
@@ -33,13 +35,20 @@ const borderRight = line(width, height / 2, size, height);
 const borderBottom = line(width / 2, height, width, size);
 const borderLeft = line(0, height / 2, size, height);
 
+const d = size * 1.5 + w / 2 + padding;
+const gate1 = line(width / 5, height - d, width / 2.5, w);
+const gate2 = line(width - size * 2, height / 5, w, height / 2.5);
+const gate3 = line(width - width / 6, height - d, width / 3, w);
+const gate4 = line(width / 4, d, width / 2, w);
+const gate5 = line(d, height / 1.5, w, height / 4);
+
 // goal post
 // the idea is to position the shape at random in the corners of the canvas
 const coordinates = [
-  [size, size],
-  [width - size, size],
-  [width - size, height - size],
-  [size, height - size],
+  [size + padding / 2, size + padding / 2],
+  [width - (size + padding / 2), size + padding / 2],
+  [width - (size + padding / 2), height - (size + padding / 2)],
+  [size + padding / 2, height - (size + padding / 2)],
 ];
 const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -49,15 +58,27 @@ const goal = Bodies.rectangle(...randomItem(coordinates), size, size, {
   },
   // is sensor to prevent a collision
   isSensor: true,
+  // label matching the shape subject to gravity
   label: 'match',
 });
 
 const grid = Body.create({
-  parts: [borderTop, borderRight, borderBottom, borderLeft, goal],
+  parts: [
+    borderTop,
+    borderRight,
+    borderBottom,
+    borderLeft,
+    gate1,
+    gate2,
+    gate3,
+    gate4,
+    gate5,
+    goal,
+  ],
   isStatic: true,
 });
 
-// player subject to the canvas's gravity
+// shape subject to the canvas's gravity
 const player = Bodies.circle(width / 2, height / 2, size / 2, {
   render: {
     fillStyle: 'hsl(120, 65%, 60%)',
@@ -77,7 +98,7 @@ Render.run(render);
 
 // variable keeping track of the rotation (number of times the canvas is meant to rotate clockwise and counter-clockwise)
 let rotation = 0;
-// possble gravity values
+// possible gravity values
 // the idea is to have the rotation affect the canvas element, while the world updates its gravity with the four values
 let index = 0;
 const gravity = [[0, 1], [1, 0], [0, -1], [-1, 0]];
@@ -115,6 +136,7 @@ function handleCollision(e) {
     const { label: labelA } = pair.bodyA;
     const { label: labelB } = pair.bodyB;
     if (labelA === labelB) {
+      // momentarily change the color of the goal post before changing the coordinates of the goal post and the player's shape
       goal.render.fillStyle = 'hsl(120, 65%, 60%)';
       const timeout = setTimeout(() => {
         goal.render.fillStyle = 'hsl(0, 60%, 55%)';

@@ -1,7 +1,7 @@
 # Matter JS Gravity
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/mddEvEW)
 
 ## Goal
 
-Create a physics-based game in which a shape is subject to gravity and responds to a collision with a goal post.
+Use the physics engine to create a gravity-based game, where a shape is meant to reach a goal by means of rotating the wrapping container.
