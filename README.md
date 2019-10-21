@@ -134,6 +134,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Valentine's Loader](https://codepen.io/borntofrappe/pen/RwbXawa)|Create a loading screen for a hypothetical Valentine's themed application, inspired by [this design](https://dribbble.com/shots/6019167-Valentine-s-Day).|1st October 2019|
 |[SVG Maze - Binary Tree](https://codepen.io/borntofrappe/pen/NWWxoJK)|Create a maze using a binary tree algorithm, SVG syntax and JavaScript.|13th-14th October 2019|
 |[SVG Maze - Sidewinder](https://codepen.io/borntofrappe/pen/xxxVLwM)|Create a maze using a sidewinder algorithm, SVG syntax and JavaScript.|14th October 2019|
+|[SVG Maze - Aldous Broder](https://codepen.io/borntofrappe/pen/GRRNPgw)|Create a maze using the Aldous Broder algorithm, SVG syntax and JavaScript.|20th October 2019|
 
 ### UI UX
 
