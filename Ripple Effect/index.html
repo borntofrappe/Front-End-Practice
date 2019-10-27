@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Ripple Effect - Blowfish</title>
+    </head>
+    <body>
+        <!-- graphic describing the blowfish -->
+        <svg id="fish" viewBox="0 0 100 100" width="100" height="100">
+            <defs>
+                <!-- linear gradient for the body and lateral fins -->
+                <linearGradient id="gradient-fish" x1="0.5" x2="0.5" y1="0" y2="1">
+                    <stop stop-color="#8E562E" offset="0.5"></stop>
+                    <stop stop-color="#F7D7C4" offset="0.5"></stop>
+                </linearGradient>
+            </defs>
+            <g transform="translate(50 50)">
+                <!-- circle included as the outline of the colored shape -->
+                <circle fill="#000000" r="42"></circle>
+
+                <!-- group describing the quills, positioned all around the center -->
+                <g id="quills" stroke="none" fill="currentColor">
+                    <path transform="rotate(15) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(45) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(75) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(105) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(135) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(165) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(195) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(225) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(255) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(285) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(315) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                    <path transform="rotate(345) translate(0 42)" d="M -2.5 0 h 5 l -2.5 8 z"></path>
+                </g>
+
+                <!-- lateral fins
+                repeat the choice made with the circle elements, to have a dark outline with a larger shape
+                -->
+                <path transform="translate(39 0)" d="M -5 0 v -4 q 5 -2 10 -8 a 16 16 0 0 1 0 24 q -5 -6 -10 -8 z"></path>
+                <path transform="scale(-1 1) translate(39 0)" d="M -5 0 v -4 q 5 -2 10 -8 a 16 16 0 0 1 0 24 q -5 -6 -10 -8 z"></path>
+                <g fill="url(#gradient-fish)">
+                    <path transform="translate(39 0) scale(0.6)" d="M -5 0 v -4 q 5 -2 10 -8 a 16 16 0 0 1 0 24 q -5 -6 -10 -8 z"></path>
+                    <path transform="scale(-1 1) translate(39 0) scale(0.6)" d="M -5 0 v -4 q 5 -2 10 -8 a 16 16 0 0 1 0 24 q -5 -6 -10 -8 z"></path>
+                </g>
+
+                <!-- with a smaller scale than the #000 circle draw the blowfish after its emoji 🐡 -->
+                <g transform="scale(0.88)" stroke="none">
+                    <circle r="42" fill="url(#gradient-fish)"></circle>
+                    <g fill="#000000" transform="translate(0 -16)">
+                        <rect transform="translate(-15 0)" x="-5" y="-9" width="10" height="18" rx="5"></rect>
+                        <rect transform="translate(15 0)" x="-5" y="-9" width="10" height="18" rx="5"></rect>
+                    </g>
+                    <g fill="#BB9167">
+                        <circle cx="-26" cy="11" r="4"></circle>
+                        <circle cx="0" cy="11" r="4"></circle>
+                        <circle cx="26" cy="11" r="4"></circle>
+                        <circle cx="0" cy="33" r="4"></circle>
+                        <circle cx="-13" cy="22" r="6"></circle>
+                        <circle cx="13" cy="22" r="6"></circle>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </body>
+</html>

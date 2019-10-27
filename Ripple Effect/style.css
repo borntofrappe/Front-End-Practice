@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-height: 100vh;
+    /* center the graphic in the viewport */
+    display: grid;
+    place-items: center;
+    /* include a series of bubbles in the background */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="a"><stop stop-color="hsl(200, 75%, 95%)" offset=".4"/><stop stop-color="hsl(200, 75%, 92%)" offset="1"/></radialGradient></defs><g stroke="hsl(200, 75%, 88%)" fill="url(%23a)"><circle r="10" cx="25" cy="25"/><circle r="8" cx="65" cy="40"/><circle r="5" cx="40" cy="75"/><circle r="4" cx="20" cy="60"/><circle r="2" cx="45" cy="50"/><circle r="10" cx="75" cy="75"/></g></svg>'),
+        hsl(200, 75%, 95%);
+    background-size: 100px;
+}
+
+svg {
+    display: block;
+    width: 300px;
+    height: auto;
+}
+
+/* animate the graphic describing the fish and the group nesting the quills to full size */
+svg,
+svg #quills {
+    transform: scale(0.8);
+    animation: balloon 0.5s 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+    /* animation: balloon 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate; */
+}
+@keyframes balloon {
+    40% {
+        transform: scale(1);
+    }
+}
