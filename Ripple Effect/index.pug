@@ -1,0 +1,147 @@
+svg(
+  id="aquarium"
+  viewBox="0 0 100 100"
+  width="500"
+  height="500"
+)
+  defs
+    linearGradient(
+      id="gradient-fish"
+      x1="0.5"
+      x2="0.5"
+      y1="0"
+      y2="1"
+    )
+      stop(
+        stop-color="#8E562E"
+        offset="0.5"
+      )
+      stop(
+        stop-color="#F7D7C4"
+        offset="0.5"
+      )
+  - let fish = [1, 6, 12, 18, 24]
+  - let length = 3
+  - for (let i = 0; i < fish.length; i+= 1)
+    - for(let j = 0; j < fish[i]; j += 1)
+      g(
+        transform="translate(50 50)"
+      )
+        g(
+          transform=`rotate(${360 / fish[i] * j}) translate(0 ${i * 10}) rotate(${360 / fish[i] * j * -1})`
+        )
+          g(
+            transform="scale(0.75)"
+            style=`animation: balloon 0.7s ${0.35 * i + 1}s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;`
+            )
+            g(
+              style=`animation: jump 1s ${0.4 * i + 1}s cubic-bezier(0.19, 1, 0.22, 1), hover 7s ${0.2 * i + 2}s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate;`
+            )
+              //- graphic describing the blowfish
+              svg(
+                class="fish"
+                viewBox="0 0 100 100"
+                x="-5"
+                y="-5"
+                width="10"
+                height="10"
+              )
+                g(transform="translate(50 50)")
+                  circle(
+                    fill="#000000"
+                    r="42"
+                  )
+                  g(
+                    id="quills"
+                    stroke="none"
+                    fill="#000000"
+                    transform="scale(0.4)"
+                    style=`animation: balloon 0.65s ${0.35 * i + 1}s  cubic-bezier(0.19, 1, 0.22, 1) forwards;`
+                  )
+                    - let quills = 20
+                    - for(let quill = 0; quill < quills; quill++)
+                      path(
+                        transform=`rotate(${360 / quills * quill}) translate(0 42)`
+                        d="M -2.5 0 h 5 l -2.5 8 z"
+                      )
+
+                  path(
+                    transform="translate(39 0)"
+                    d="M -5 0 v -4 q 5 -2 10 -8 a 16 16 0 0 1 0 24 q -5 -6 -10 -8 z"
+                  )
+                  path(
+                    transform="scale(-1 1) translate(39 0)"
+                    d="M -5 0 v -4 q 5 -2 10 -8 a 16 16 0 0 1 0 24 q -5 -6 -10 -8 z"
+                  )
+                  g(
+                    fill="url(#gradient-fish)"
+                  )
+                    path(
+                      transform="translate(39 0) scale(0.6)"
+                      d="M -5 0 v -4 q 5 -2 10 -8 a 16 16 0 0 1 0 24 q -5 -6 -10 -8 z"
+                    )
+                    path(
+                      transform="scale(-1 1) translate(39 0) scale(0.6)"
+                      d="M -5 0 v -4 q 5 -2 10 -8 a 16 16 0 0 1 0 24 q -5 -6 -10 -8 z"
+                    )
+                  g(
+                    transform="scale(0.88)"
+                    stroke="none"
+                  )
+                    circle(
+                      r="42"
+                      fill="url(#gradient-fish)"
+                    )
+                    g(
+                      fill="#000000"
+                      transform="translate(0 -16)"
+                    )
+                      rect(
+                        transform="translate(-15 0)"
+                        x="-5" 
+                        y="-9" 
+                        width="10" 
+                        height="18" 
+                        rx="5"
+                      )
+                      rect(
+                        transform="translate(15 0)"
+                        x="-5" 
+                        y="-9" 
+                        width="10" 
+                        height="18" 
+                        rx="5"
+                      )
+                    g(
+                      fill="#BB9167"
+                    )
+                      circle(
+                        cx="-26"
+                        cy="11"
+                        r="4"
+                      )
+                      circle(
+                        cx="0"
+                        cy="11"
+                        r="4"
+                      )
+                      circle(
+                        cx="26"
+                        cy="11"
+                        r="4"
+                      )
+                      circle(
+                        cx="0"
+                        cy="33"
+                        r="4"
+                      )
+                      circle(
+                        cx="-13"
+                        cy="22"
+                        r="6"
+                      )
+                      circle(
+                        cx="13"
+                        cy="22"
+                        r="6"
+                      )

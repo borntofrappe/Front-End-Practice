@@ -1,6 +1,6 @@
 # Ripple Effect
 
-## [Live Demo](https://codepen.io/borntofrappe/pen/XWWgQBJ)
+## [Live Demo](https://codepen.io/borntofrappe/full/XWWgQBJ)
 
 ## Goal
 
