@@ -56,17 +56,57 @@
                 <clipPath id="clip-horizon">
                     <rect x="0" y="480" width="1000" height="320"></rect>
                 </clipPath>
+                <symbol id="cloud">
+                    <circle cx="30" cy="30" r="30" fill="hsl(0, 0%, 100%)"></circle>
+                    <circle cx="60" cy="30" r="30" fill="hsl(0, 0%, 100%)"></circle>
+                    <circle cx="90" cy="30" r="30" fill="hsl(0, 0%, 100%)"></circle>
+                    <circle cx="45" cy="60" r="30" fill="hsl(0, 0%, 100%)"></circle>
+                    <circle cx="75" cy="60" r="30" fill="hsl(0, 0%, 100%)"></circle>
+                    <circle cx="105" cy="60" r="30" fill="hsl(0, 0%, 100%)"></circle>
+                </symbol>
             </defs>
             <!-- sky -->
-            <rect x="0" y="0" width="1000" height="480" fill="hsl(202, 100%, 60%)" stroke="none"></rect>
+            <rect x="0" y="0" width="1000" height="480" fill="hsl(30, 100%, 85%)" stroke="none"></rect>
+
+            <g class="cloud">
+                <use id="cloud-1" transform="translate(50 180)" href="#cloud"></use>
+                <use href="#cloud-1" transform="translate(1000 0)"></use>
+                <use href="#cloud-1" transform="translate(-1000 0)"></use>
+            </g>
+            <g class="cloud">
+                <use id="cloud-2" transform="translate(400 70)" href="#cloud"></use>
+                <use href="#cloud-2" transform="translate(1000 0)"></use>
+                <use href="#cloud-2" transform="translate(-1000 0)"></use>
+            </g>
+            <g class="cloud">
+                <use id="cloud-3" transform="translate(820 150)" href="#cloud"></use>
+                <use href="#cloud-3" transform="translate(1000 0)"></use>
+                <use href="#cloud-3" transform="translate(-1000 0)"></use>
+            </g>
+            <g class="cloud">
+                <use id="cloud-4" transform="translate(180 20)" href="#cloud"></use>
+                <use href="#cloud-4" transform="translate(1000 0)"></use>
+                <use href="#cloud-4" transform="translate(-1000 0)"></use>
+            </g>
+            <g class="cloud">
+                <use id="cloud-5" transform="translate(550 240)" href="#cloud"></use>
+                <use href="#cloud-5" transform="translate(1000 0)"></use>
+                <use href="#cloud-5" transform="translate(-1000 0)"></use>
+            </g>
+            <g class="cloud">
+                <use id="cloud-6" transform="translate(650 40)" href="#cloud"></use>
+                <use href="#cloud-6" transform="translate(1000 0)"></use>
+                <use href="#cloud-6" transform="translate(-1000 0)"></use>
+            </g>
+
             <!-- horizon line -->
             <path d="M 0 480 h 1000" stroke="hsl(0, 0%, 20%)" stroke-width="15" fill="none"></path>
             <!-- ground -->
-            <rect x="0" y="480" width="1000" height="320" fill="hsl(121, 53%, 50%)" stroke="none"></rect>
+            <rect x="0" y="480" width="1000" height="320" fill="hsl(41, 92%, 59%)" stroke="none"></rect>
 
             <!-- road animated in the script -->
             <g clip-path="url(#clip-horizon)">
-                <path id="road" stroke="hsl(243, 65%, 35%)" stroke-width="30" fill="hsl(300, 0%, 46%)" id="road" d="M 150 815 q 100 -175 200 -350 h 300 q 100 175 200 350 z"></path>
+                <path id="road" stroke="hsl(37, 100%, 13%)" stroke-width="30" fill="hsl(300, 0%, 46%)" id="road" d="M 150 815 q 100 -175 200 -350 h 300 q 100 175 200 350 z"></path>
                 <path id="line" stroke="hsl(0, 0%, 100%)" stroke-width="8" stroke-dasharray="50" fill="none" d="M 500 800 q 0 -200 0 -320"></path>
             </g>
         </svg>
@@ -78,7 +118,7 @@
             <svg viewBox="0 0 100 100" width="40" height="40">
                 <use href="#tortoise"></use>
             </svg>
-            <input id="speed" type="range" min="0" max="20" value="5" />
+            <input id="speed" type="range" min="0" max="25" value="10" />
             <svg viewBox="0 0 100 100" width="40" height="40">
                 <use href="#hare"></use>
             </svg>
@@ -89,7 +129,7 @@
             <svg style="transform: scaleX(-1)" viewBox="0 0 100 100" width="40" height="40">
                 <use href="#road-sign"></use>
             </svg>
-            <input id="bend" type="range" min="-150" max="150" value="0" />
+            <input id="bend" type="range" min="-150" max="150" value="50" />
             <svg viewBox="0 0 100 100" width="40" height="40">
                 <use href="#road-sign"></use>
             </svg>

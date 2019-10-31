@@ -10,10 +10,13 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: hsl(0, 0%, 95%);
-    background-repeat: no-repeat;
-    background-position: 100% 100%;
+    background: hsl(30, 100%, 95%);
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 105"><g fill="hsl(0, 0%, 100%)"><g transform="translate(7.5 7.5)"><circle cx="30" cy="30" r="30"/><circle cx="60" cy="30" r="30"/><circle cx="90" cy="30" r="30"/><circle cx="45" cy="60" r="30"/><circle cx="75" cy="60" r="30"/><circle cx="105" cy="60" r="30"/></g></g></svg>'),
+        hsl(30, 100%, 95%);
+    background-size: 200px;
+    background-position: -100px -100px;
 }
+
 body > * + * {
     margin-top: 1.5rem;
 }

@@ -1,6 +1,6 @@
 # SVG Pretend Movement
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/XWWzxPb)
 
 ## Goal
 
@@ -18,9 +18,7 @@ The input elements of type range are inspired by the design offered by the Mozil
 
 The screen itself is an SVG element, and the road is made of nothing but `<path>` elements with a single curve command. For the rest of the page however, a few graphics are necessary:
 
--   for the screen: the clouds and the mountains. As these move in the background, there should be enough variety to avoid having the nagging feeling of seeing the same cloud move across the screen.
-
--   for the input element modifying the speed of the animation: a turtoise and a hare;
+-   for the input element modifying the speed of the animation: a tortoise and a hare;
 
 -   for the input element altering the direction and intensity of the bend: a road sign pointing in the respective direction.
 
