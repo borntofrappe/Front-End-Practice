@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>SVG Pretend Movement</title>
+    </head>
+    <body>
+        <!-- graphics used in the project
+        ! apart from the road sign, the symbol elements can be improved
+        -->
+        <svg style="display: none;" viewBox="0 0 100 100" width="40" height="40">
+            <symbol id="road-sign">
+                <g transform="translate(50 50)">
+                    <g fill="hsl(0, 0%, 100%)" stroke="#DB3947" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+                        <path d="M -45 38 h 90 l -45 -76 z"></path>
+                    </g>
+                    <g>
+                        <path fill="none" stroke="hsl(0, 0%, 20%)" stroke-width="10" d="M -14 30 q 0 -25 24 -25"></path>
+                        <path fill="hsl(0, 0%, 20%)" stroke="none" d="M 10 0 l 5 5 -5 5"></path>
+                    </g>
+                </g>
+            </symbol>
+
+            <symbol id="tortoise">
+                <g transform="translate(50 50)">
+                    <g fill="hsl(0, 0%, 20%)" stroke="hsl(0, 0%, 20%)" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+                        <path transform="translate(-20 -30) rotate(-20)" d="M 0 0 a 24 24 0 0 1 24 24 c -12 7 -36 7 -48 0 a 24 24 0 0 1 24 -24"></path>
+                        <path d="M -35 15 q 40 0 60 -26 a 8 8 0 0 1 16 0 q 0 10 -15 4 q -10 15 -15 30 q 5 0 6 6 q -2.5 2 -5 0 q -2.5 -1 -3 -5 q -20 0 -40 -2 q 0 8 -5 8 q 0 -8 5 -8 h -4 a 3.5 3.5 0 0 1 0 -7"></path>
+                    </g>
+                    <circle cx="38" cy="-12" r="2" fill="hsl(0, 0%, 100%)" stroke="none"></circle>
+                </g>
+            </symbol>
+
+            <symbol id="hare">
+                <g transform="translate(50 50)">
+                    <g fill="hsl(0, 0%, 20%)" stroke="hsl(0, 0%, 20%)" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+                        <path d="M -40 -12 a 15 15 0 0 1 15 -15 q 15 0 30 20 q 14 10 28 0 q -25 -18 -20 -30 l 20 30 l -10 -30 l 10 30 a 10 10 0 0 1 10 10 q 0 7 -7 7 q -5 0 -5 -5 q -30 20 -60 30 q 20 -5 30 -30"></path>
+                        <path d="M -40 -12 l -3 3 l 3 3 q 5 13 15 13 q 10 2 25 20 q 6 5 15 5 q -6 0 -15 -10 v -25"></path>
+                    </g>
+                    <g fill="none" stroke="hsl(0, 0%, 100%)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+                        <path d="M -10 -7 q 20 10 20 30"></path>
+                        <path d="M 35.5 -12 l -20 -30"></path>
+                    </g>
+                    <circle fill="hsl(0, 0%, 100%)" stroke="none" cx="40" cy="3" r="2"></circle>
+                </g>
+            </symbol>
+        </svg>
+
+        <!-- svg describing the road scene -->
+        <svg id="screen" viewBox="0 0 1000 800" width="500" height="400">
+            <defs>
+                <!-- clip to cut out the path elements below the horizon line -->
+                <clipPath id="clip-horizon">
+                    <rect x="0" y="480" width="1000" height="320"></rect>
+                </clipPath>
+            </defs>
+            <!-- sky -->
+            <rect x="0" y="0" width="1000" height="480" fill="hsl(202, 100%, 60%)" stroke="none"></rect>
+            <!-- horizon line -->
+            <path d="M 0 480 h 1000" stroke="hsl(0, 0%, 20%)" stroke-width="15" fill="none"></path>
+            <!-- ground -->
+            <rect x="0" y="480" width="1000" height="320" fill="hsl(121, 53%, 50%)" stroke="none"></rect>
+
+            <!-- road animated in the script -->
+            <g clip-path="url(#clip-horizon)">
+                <path id="road" stroke="hsl(243, 65%, 35%)" stroke-width="30" fill="hsl(300, 0%, 46%)" id="road" d="M 150 815 q 100 -175 200 -350 h 300 q 100 175 200 350 z"></path>
+                <path id="line" stroke="hsl(0, 0%, 100%)" stroke-width="8" stroke-dasharray="50" fill="none" d="M 500 800 q 0 -200 0 -320"></path>
+            </g>
+        </svg>
+
+        <!-- input elements of type range
+        include two icons on either side of the label
+        -->
+        <label>
+            <svg viewBox="0 0 100 100" width="40" height="40">
+                <use href="#tortoise"></use>
+            </svg>
+            <input id="speed" type="range" min="0" max="20" value="5" />
+            <svg viewBox="0 0 100 100" width="40" height="40">
+                <use href="#hare"></use>
+            </svg>
+        </label>
+
+        <label>
+            <!-- flip the graphic to point the road sign leftwards -->
+            <svg style="transform: scaleX(-1)" viewBox="0 0 100 100" width="40" height="40">
+                <use href="#road-sign"></use>
+            </svg>
+            <input id="bend" type="range" min="-150" max="150" value="0" />
+            <svg viewBox="0 0 100 100" width="40" height="40">
+                <use href="#road-sign"></use>
+            </svg>
+        </label>
+
+        <script src="script.js"></script>
+    </body>
+</html>
