@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <g transform="translate(10 50)" fill="currentColor">
+        <circle id="options--circle" cx="0" cy="0" r="10" />
+        <use href="#options--circle" transform="translate(40 0)" />
+        <use href="#options--circle" transform="translate(80 0)" />
+    </g>
+</svg>
