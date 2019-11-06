@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>SVG Dodecagon</title>
+    </head>
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="500" height="500">
+            <defs>
+                <!-- define the square repeated throughout the project to create the dodecagon -->
+                <rect id="square" x="0" y="0" width="25" height="25" />
+
+                <!-- mask cutting out the slices of the initial square to fabricate a regular triangle -->
+                <mask id="mask--triangle">
+                    <use href="#square" fill="#000" />
+                    <use href="#square" fill="#fff" transform="rotate(30)" />
+                    <use href="#square" fill="#000" transform="translate(0 25) rotate(-30)" />
+                </mask>
+                <!-- triangle using the mask on the inital square -->
+                <use id="triangle" href="#square" mask="url(#mask--triangle)" />
+            </defs>
+            <!-- center the shapes in the svg container -->
+            <g transform="translate(50 50)">
+                <!-- include 6 squares around the triangles -->
+                <g fill="hsl(220, 70%, 40%)">
+                    <!-- to rotate the blocks around the center define an additional group
+                    by applying a rotation on this group, the squares are then translated where needed
+                    -->
+                    <g id="block">
+                        <g transform="translate(0 25)">
+                            <use href="#square" transform="rotate(-30)" />
+                        </g>
+                    </g>
+                    <use href="#block" transform="rotate(60)" />
+                    <use href="#block" transform="rotate(120)" />
+                    <use href="#block" transform="rotate(180)" />
+                    <use href="#block" transform="rotate(240)" />
+                    <use href="#block" transform="rotate(300)" />
+                </g>
+                <!-- include 6 triangles around the center -->
+                <g fill="hsl(180, 85%, 50%)">
+                    <g id="slice">
+                        <!-- to have the rotation occur from the bottom left corner of the shape use a series of group elements to move the transform origin -->
+                        <!-- bottom left corner -->
+                        <g transform="translate(0 25)">
+                            <!-- rotate this group -->
+                            <g id="rotate" transform="rotate(0)">
+                                <!-- reposition the origin to have the shape drawn from (0, 0) -->
+                                <g transform="translate(0 -25)">
+                                    <use href="#triangle" />
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <use href="#slice" transform="rotate(60)" />
+                    <use href="#slice" transform="rotate(120)" />
+                    <use href="#slice" transform="rotate(180)" />
+                    <use href="#slice" transform="rotate(240)" />
+                    <use href="#slice" transform="rotate(300)" />
+                </g>
+            </g>
+        </svg>
+    </body>
+</html>
