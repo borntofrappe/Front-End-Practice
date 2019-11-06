@@ -1,0 +1,60 @@
+svg(
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 100 100"
+  width="500"
+  height="500"
+)
+  defs
+    //- square repeated throughout the project
+    rect(
+      id="square"
+      x="0"
+      y="0"
+      width="25"
+      height="25"
+    )
+    //- mask using multiple copies of the square to fabricate a regular triangle
+    mask(id="mask--triangle")
+      use(
+        href="#square"
+        fill="#000"
+      )
+      use(
+        href="#square"
+        fill="#fff"
+        transform="rotate(30)"
+      )
+      use(
+        href="#square"
+        fill="#000"
+        transform="translate(0 25) rotate(-30)"
+      )
+    //- shape using the mask to carve out the triangle from the square
+    use(
+      id="triangle"
+      href="#square"
+      mask="url(#mask--triangle)"
+    )
+  g(transform="translate(50 50)")
+    // squares around the triangles
+    g(fill="hsl(220, 70%, 40%)")
+      - for (let i = 0; i < 6; i+= 1)
+        g(transform=`rotate(${60 * i})`)
+          g(transform="translate(0 25)")
+            use(
+              fill="hsl(220, 70%, 40%)"
+              href="#square"
+              transform="rotate(-30)"
+            )
+    // triangles around the center
+    //- rotate the .rotate group to animate the triangles from the bottom left of the masked shape
+    g(fill="hsl(180, 85%, 50%)")
+      - for (let i = 0; i < 6; i+= 1)
+        g(transform=`rotate(${60 * i})`)
+          g(transform="translate(0 25)")
+            g(
+              class="rotate"
+              transform="rotate(0)"
+            )
+              g(transform="translate(0 -25)")
+                use(href="#triangle")
