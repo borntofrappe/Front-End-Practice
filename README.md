@@ -197,4 +197,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |Polyalphabetic Cipher|Use a table element and a couple of JavaScript loops to show the alphabets used in a polyalphabetic cipher.|06th October 2019|
 |[Zdog Chicken](https://codepen.io/borntofrappe/pen/Baajmzy)|Use the pseudo-3d engine to draw an anemometer with a cuts-y mascot.|12th October 2019|
 |[Ripple Effect](https://codepen.io/borntofrappe/pen/XWWgQBJ)|Tinker with Pug and SVG syntax to create an entertaining animation.|27th October 2019|
-|[Zdog Dice]()|Use the pseudo-3d engine to draw a dice endlessly rolling around its center.|6th November 2019|
+|[Zdog Dice](https://codepen.io/borntofrappe/pen/WNNJxwM)|Use the pseudo-3d engine to draw a dice endlessly rolling around its center.|6th November 2019|
