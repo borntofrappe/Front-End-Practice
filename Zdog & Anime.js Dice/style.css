@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/* center the canvas in the viewport */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: hsl(250, 50%, 20%);
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    background: hsl(250, 50%, 100%);
+    font-weight: bold;
+    color: inherit;
+}
