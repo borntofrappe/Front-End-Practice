@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <g transform="translate(50 50)">
+        <g stroke="hsl(35, 100%, 60%)" stroke-width="10" fill="hsl(35, 100%, 60%)">
+            <path id="svg--line" d="M 0 0 v 35 a 5 5 0 0 1 0 10 5 5 0 0 1 0 -10 v -70 a 5 5 0 0 1 0 -10 5 5 0 0 1 0 10" />
+            <use href="#svg--line" transform="rotate(45)" />
+            <use href="#svg--line" transform="rotate(90)" />
+            <use href="#svg--line" transform="rotate(135)" />
+        </g>
+    </g>
+</svg>

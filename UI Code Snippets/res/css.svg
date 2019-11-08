@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <defs>
+        <path id="css--base" d="M 0 0 l 5 80 45 20 45 -20 5 -80 z" />
+        <path id="css--symbol" d="M 0 0 l 100 0 l -5 80 l -45 20 l -45 -20 l -1 -16 l 20 0 l 0.5 8 l 25 10 l 25 -10 1.5 -20 -72.75 0 -1 -16 73.75 0 1 -16 -75.75 0 z" />
+    </defs>
+    <g transform="translate(50 50) scale(0.85 1)">
+        <g transform="translate(-50 -50)">
+            <use href="#css--base" fill="hsl(210, 90%, 60%)" />
+            <g transform="translate(50 50) scale(0.65)">
+                <g transform="translate(-50 -50)">
+                    <use href="#css--symbol" fill="hsl(0, 0%, 100%)" stroke="none" />
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

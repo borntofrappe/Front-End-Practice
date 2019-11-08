@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <defs>
+        <rect id="js--square" x="0" y="0" width="100" height="100" />
+        <symbol id="js--symbol">
+            <g transform="translate(5 5)">
+                <g transform="translate(20 40)">
+                    <g stroke-width="10" fill="none" stroke-linecap="square">
+                        <path d="M 25 0 v 29 a 11 11 0 0 1 -22 0" />
+                        <g transform="translate(50 0)">
+                            <path d="M 8 0 h -8 a 10 10 0 0 0 0 20 10 10 0 0 1 0 20 h -10" />
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <use href="#js--square" fill="hsl(50, 90%, 60%)" />
+    <use href="#js--symbol" stroke="hsl(0, 0%, 20%)" />
+</svg>
