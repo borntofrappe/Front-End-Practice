@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>UI Code Snippets</title>
+    </head>
+    <body>
+        <!-- icons describing the language being used -->
+        <svg style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <symbol id="icon--html">
+                <defs>
+                    <path id="html--base" d="M 0 0 l 5 80 45 20 45 -20 5 -80 z" />
+                    <path id="html--symbol" d="M 0 0 l 100 0 l -1.25 20 -75.75 0 1 16 73.75 0 l -2.75 44 l -45 20 l -45 -20 l -1 -16 l 20 0 l 0.5 8 l 25 10 l 25 -10 1.5 -20 -72.75 0 z" />
+                </defs>
+                <g transform="translate(50 50) scale(0.85 1)">
+                    <g transform="translate(-50 -50)">
+                        <use href="#html--base" fill="hsl(10, 90%, 60%)" />
+                        <g transform="translate(50 50) scale(0.7)">
+                            <g transform="translate(-50 -50)">
+                                <use href="#html--symbol" fill="hsl(0, 0%, 100%)" stroke="none" />
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </symbol>
+
+            <symbol id="icon--css">
+                <defs>
+                    <path id="css--base" d="M 0 0 l 5 80 45 20 45 -20 5 -80 z" />
+                    <path id="css--symbol" d="M 0 0 l 100 0 l -5 80 l -45 20 l -45 -20 l -1 -16 l 20 0 l 0.5 8 l 25 10 l 25 -10 1.5 -20 -72.75 0 -1 -16 73.75 0 1 -16 -75.75 0 z" />
+                </defs>
+                <g transform="translate(50 50) scale(0.85 1)">
+                    <g transform="translate(-50 -50)">
+                        <use href="#css--base" fill="hsl(210, 90%, 60%)" />
+                        <g transform="translate(50 50) scale(0.7)">
+                            <g transform="translate(-50 -50)">
+                                <use href="#css--symbol" fill="hsl(0, 0%, 100%)" stroke="none" />
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </symbol>
+
+            <symbol id="icon--svg">
+                <g transform="translate(50 50)">
+                    <g stroke="hsl(35, 100%, 60%)" stroke-width="10" fill="hsl(35, 100%, 60%)">
+                        <path id="svg--line" d="M 0 0 v 35 a 5 5 0 0 1 0 10 5 5 0 0 1 0 -10 v -70 a 5 5 0 0 1 0 -10 5 5 0 0 1 0 10" />
+                        <use href="#svg--line" transform="rotate(45)" />
+                        <use href="#svg--line" transform="rotate(90)" />
+                        <use href="#svg--line" transform="rotate(135)" />
+                    </g>
+                </g>
+            </symbol>
+
+            <symbol id="icon--js">
+                <defs>
+                    <rect id="js--square" x="0" y="0" width="100" height="100" />
+                    <symbol id="js--symbol">
+                        <g transform="translate(5 5)">
+                            <g transform="translate(20 40)">
+                                <g stroke-width="10" fill="none" stroke-linecap="square">
+                                    <path d="M 25 0 v 29 a 11 11 0 0 1 -22 0" />
+                                    <g transform="translate(50 0)">
+                                        <path d="M 8 0 h -8 a 10 10 0 0 0 0 20 10 10 0 0 1 0 20 h -10" />
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </symbol>
+                </defs>
+                <use href="#js--square" fill="hsl(50, 90%, 60%)" />
+                <use href="#js--symbol" stroke="hsl(0, 0%, 20%)" />
+            </symbol>
+        </svg>
+
+        <!-- root container for the snippets -->
+        <div id="root"></div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

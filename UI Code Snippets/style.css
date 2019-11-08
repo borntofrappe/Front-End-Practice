@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    /* display the snippets in a column */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('data:image/svg+xml;utf8,<svg opacity="0.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g transform="translate(7.5 7.5)"><g stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(0 2.5)"><path opacity=".8" id="a" d="M 0 0 h 85"/><use opacity=".9" y="20" href="%23a" stroke-dasharray="10 25 25 20"/><use opacity=".7" y="40" href="%23a" stroke-dasharray="45 25 20"/><use opacity=".9" y="60" href="%23a" stroke-dasharray="20 25 40"/><use y="80" href="%23a" stroke-dasharray="5 20 35 20"/></g></g></g></svg>'),
+        hsl(0, 0%, 100%);
+    background-size: 50px;
+}
+/* for each .snippet container initialize a custom counter */
+.snippet {
+    counter-set: number;
+    max-width: 650px;
+    width: 90vw;
+    border-radius: 10px;
+    background: hsl(0, 0%, 5%);
+    color: hsl(0, 0%, 95%);
+    padding: 1rem;
+    margin: 1rem 0; /* separate the containers */
+}
+/* wrap the code instead of allowing horizontal scroll
+debatable
+*/
+.snippet pre {
+    white-space: pre-wrap;
+}
+
+.snippet svg {
+    display: block;
+    width: 20px;
+    height: auto;
+}
+/* make the code elements into block containers */
+.snippet pre code {
+    display: block;
+    font-family: "Fira Code", monospace;
+    font-size: 0.85rem;
+    padding: 0.1rem;
+    line-height: 2;
+    /* increment the counter for each element */
+    counter-increment: number;
+}
+/* show the counter before the actual line of code */
+.snippet pre code:before {
+    content: counter(number) ".";
+    float: left;
+    margin-right: 0.5rem;
+    font-family: inherit;
+    color: hsl(0, 0%, 40%);
+}
+/* when hovering on the code elements show a semitransparent white background */
+.snippet pre code:hover {
+    background: hsl(0, 0%, 95%, 0.1);
+}
