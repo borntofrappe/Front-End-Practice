@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=PT+Sans&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-height: 100vh;
+    background: url('data:image/svg+xml;utf8,<svg opacity="0.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="outline:2px solid"><path d="M73.232 59.09A12.5 12.5 0 0190.91 76.768c-8.839 8.839-17.678 0-26.517 8.839m-3.535 3.535l-3.536 3.536" stroke="hsl(0, 0%, 100%)" stroke-width="5" fill="none"/><g stroke="hsl(0, 0%, 100%)" stroke-width="10" stroke-linecap="square" fill="none" transform="rotate(45 29.268 30.303) scale(.5)"><path d="M65 25a20 20 0 00-40 0c0 20 40 20 40 40a20 20 0 01-40 0M45 0v5m0 80v5"/></g><g transform="rotate(45 -35.355 50) scale(.5)"><path d="M35 100h30V80l15-15V40H20v25l15 15z" fill="hsl(0, 0%, 100%)"/><g stroke="hsl(0, 0%, 100%)" stroke-width="10" fill="none" transform="translate(50 62.5)"><path id="a" transform="translate(0 -44)" d="M0 0v-18.5"/><use href="%23a" transform="rotate(42.5)"/><use href="%23a" transform="rotate(-42.5)"/></g></g><g fill="hsl(0, 0%, 100%)" transform="rotate(135 50 35.355) scale(.5)"><path d="M0 50l19-11v22z"/><path d="M18 47h60v6H18z"/><path d="M70 50l9-9h21l-9 9 9 9H79z"/></g></svg>'),
+        hsl(0, 0%, 10%);
+    background-size: 100px;
+    background-position: -25px -25px;
+    font-family: "PT Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

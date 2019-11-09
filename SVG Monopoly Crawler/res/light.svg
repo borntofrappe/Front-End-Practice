@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <g stroke="none" fill="currentColor">
+        <path d="M 35 100 h 30 v -20 l 15 -15 v -25 h -60 v 25 l 15 15 z"/>
+    </g>
+    <g transform="translate(50 62.5)">
+        <g stroke="currentColor" stroke-width="10" fill="none">
+            <path id="light--flash" transform="translate(0 -44)" d="M 0 0 v -18.5" />
+            <use href="#light--flash" transform="rotate(42.5)" />
+            <use href="#light--flash" transform="rotate(-42.5)" />
+        </g>
+    </g>
+</svg>
