@@ -12,8 +12,61 @@ body {
     background-size: 100px;
     background-position: -25px -25px;
     font-family: "PT Sans", sans-serif;
+    /* center the container in the viewport */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+/* by default show the elements in a column */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    background: hsl(250, 50%, 100%);
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: inherit;
+}
+/* when the button is disabled remark the occurrence with a different cursor */
+button:disabled {
+    cursor: not-allowed;
+}
+
+/* with enough width and support for grid properties display the elements in the following structure
+
+    | svg   canvas
+    | svg   button
+
+    where the canvas is aligned to the bottom of the respective cell, to visually link the element to the button underneath
+*/
+@media (min-width: 600px) {
+    @supports (display: grid) {
+        .container {
+            display: grid;
+            align-items: initial;
+            gap: 1rem;
+            grid-template-areas: "svg canvas" "svg button";
+        }
+        svg {
+            grid-area: svg;
+        }
+        canvas {
+            grid-area: canvas;
+            align-self: end;
+        }
+        button {
+            grid-area: button;
+            justify-self: center;
+            align-self: center;
+        }
+    }
 }
