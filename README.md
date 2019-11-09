@@ -137,6 +137,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Maze - Aldous Broder](https://codepen.io/borntofrappe/pen/GRRNPgw)|Create a maze using the Aldous Broder algorithm, SVG syntax and JavaScript.|20th October 2019|
 |[SVG Pretend Movement](https://codepen.io/borntofrappe/pen/XWWzxPb)|Animate a series of SVG elements to fake vertical and horizontal movement.|31st October 2019|
 |[SVG Dodecagon](https://codepen.io/borntofrappe/pen/JjjLxrx)|Experiment with SVG syntax to recreate the shape and animation showcased in [this tweet](https://twitter.com/MagicPi2/status/1191799284481572866).|6th November 2019|
+|[SVG Monopoly Crawler]()|Couple SVG syntax with the pseudo-3d engine _Zdog_ and the animation library _anime.js_ to explore a monopoly board one step at a time.|9th November 2019|
 
 ### UI UX
 
