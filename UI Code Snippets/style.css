@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Nunito+Sans:400,600&display=swap");
 
 * {
     box-sizing: border-box;
@@ -11,52 +11,36 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: url('data:image/svg+xml;utf8,<svg opacity="0.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g transform="translate(7.5 7.5)"><g stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(0 2.5)"><path opacity=".8" id="a" d="M 0 0 h 85"/><use opacity=".9" y="20" href="%23a" stroke-dasharray="10 25 25 20"/><use opacity=".7" y="40" href="%23a" stroke-dasharray="45 25 20"/><use opacity=".9" y="60" href="%23a" stroke-dasharray="20 25 40"/><use y="80" href="%23a" stroke-dasharray="5 20 35 20"/></g></g></g></svg>'),
+    background: url('data:image/svg+xml;utf8,<svg opacity="0.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="outline:2px solid"><g stroke="hsl(0, 0%, 0%)" stroke-width="20" stroke-linecap="round" fill="none"><path id="a" d="M-30 40l40-20"/><use href="%23a" x="100"/><use href="%23a" x="45" y="10" stroke-dasharray="30 30"/><use href="%23a" x="80" y="-30" stroke-dasharray="30 30"/><use href="%23a" x="80" y="70" stroke-dasharray="30 30"/><use href="%23a" x="50" y="50" stroke-dasharray="40 20"/><use href="%23a" x="115" y="30" stroke-dasharray="10 40"/><use href="%23a" x="15" y="30" stroke-dasharray="10 40"/></g></svg>'),
         hsl(0, 0%, 100%);
     background-size: 50px;
+    font-family: "Nunito Sans", sans-serif;
 }
-/* for each .snippet container initialize a custom counter */
 .snippet {
-    counter-set: number;
-    max-width: 650px;
+    max-width: 500px;
     width: 90vw;
     border-radius: 10px;
-    background: hsl(0, 0%, 5%);
+    background: hsl(210, 14%, 11%);
     color: hsl(0, 0%, 95%);
     padding: 1rem;
-    margin: 1rem 0; /* separate the containers */
+    margin: 1rem 0;
 }
-/* wrap the code instead of allowing horizontal scroll
-debatable
-*/
-.snippet pre {
-    white-space: pre-wrap;
-}
-
+/* display the svg icon and span element side by side */
 .snippet svg {
-    display: block;
+    display: inline-block;
     width: 20px;
     height: auto;
 }
-/* make the code elements into block containers */
-.snippet pre code {
-    display: block;
-    font-family: "Fira Code", monospace;
-    font-size: 0.85rem;
-    padding: 0.1rem;
-    line-height: 2;
-    /* increment the counter for each element */
-    counter-increment: number;
+.snippet > span {
+    font-weight: 600;
+    font-size: 1rem;
 }
-/* show the counter before the actual line of code */
-.snippet pre code:before {
-    content: counter(number) ".";
-    float: left;
-    margin-right: 0.5rem;
-    font-family: inherit;
-    color: hsl(0, 0%, 40%);
+
+.snippet pre {
+    margin: 0.5rem 0;
+    white-space: pre-wrap;
+    line-height: 1.5;
 }
-/* when hovering on the code elements show a semitransparent white background */
-.snippet pre code:hover {
-    background: hsl(0, 0%, 95%, 0.1);
+.snippet code {
+    font-family: "Fira Mono", monospace;
 }

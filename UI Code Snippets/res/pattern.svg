@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <g transform="translate(0 0)">
+        <g stroke="hsl(0, 0%, 0%)" stroke-width="20" stroke-linecap="round" fill="none">
+            <path id="line" d="M -30 40 l 40 -20" />
+            <use href="#line" x="100" />
+            <use href="#line" x="45" y="10" stroke-dasharray="30 30" />
+            <use href="#line" x="80" y="-30" stroke-dasharray="30 30" />
+            <use href="#line" x="80" y="70" stroke-dasharray="30 30" />
+            <use href="#line" x="50" y="50" stroke-dasharray="40 20" />
+            <use href="#line" x="115" y="30" stroke-dasharray="10 40" />
+            <use href="#line" x="15" y="30" stroke-dasharray="10 40" />
+        </g>
+    </g>
+</svg>
