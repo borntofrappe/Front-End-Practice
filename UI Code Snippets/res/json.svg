@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <g transform="translate(5 5)">
+        <g stroke="hsl(40, 90%, 60%)" stroke-width="10" fill="none">
+            <path id="json--parens" d="M 27.5 0 a 20 20 0 0 0 -20 20 v 12.5 a 12.5 12.5 0 0 1 -12.5 12.5 12.5 12.5 0 0 1 12.5 12.5 v 10 a 20 20 0 0 0 20 20" />
+            <use href="#json--parens" transform="translate(90 0) scale(-1 1)" />
+        </g>
+    </g>
+    <g transform="translate(50 50)">
+        <g fill="hsl(40, 90%, 60%)">
+            <circle id="json--dot" r="4" />
+            <use href="#json--dot" x="-16" />
+            <use href="#json--dot" x="16" />
+        </g>
+    </g>
+</svg>
