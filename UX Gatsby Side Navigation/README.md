@@ -1,6 +1,6 @@
 # UX Gatsby Side Navigation
 
-## [Live Demo]()
+## [Live Demo](https://codepen.io/borntofrappe/full/LYYBqEj)
 
 ## Goal
 
