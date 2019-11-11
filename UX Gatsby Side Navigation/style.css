@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  /* include a height greater than the viewport to allow for vertical scroll */
+  min-height: 150vh;
+  color: hsl(0, 0%, 20%);
+  background: url('data:image/svg+xml;utf8,<svg opacity="0.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g stroke="hsl(280, 80%, 50%)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="hsl(280, 80%, 50%)" transform="translate(50 50)"><path id="a" d="M-5 0a5 5 0 015 5 5 5 0 015-5 5 5 0 01-5-5 5 5 0 01-5 5"/><use href="%23a" transform="matrix(.75 0 0 .75 10 30)"/><use href="%23a" transform="matrix(.8 0 0 .8 -30 20)"/><use href="%23a" transform="matrix(.5 0 0 .5 5 -38)"/><use href="%23a" transform="matrix(.6 0 0 .6 35 -30)"/><use href="%23a" transform="matrix(.65 0 0 .65 40 10)"/><use href="%23a" transform="matrix(.55 0 0 .55 -30 -25)"/></g></svg>'),
+    hsl(0, 0%, 100%);
+  background-size: 70px;
+  font-family: "Roboto", sans-serif;
+}
