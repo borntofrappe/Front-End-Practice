@@ -14,3 +14,121 @@ body {
   background-size: 70px;
   font-family: "Roboto", sans-serif;
 }
+/* by default, hide the label nesting the input element */
+label {
+  display: none;
+}
+/* fix the position of the nav to the left of the page */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* fix the height to consider the full viewport */
+  height: 100vh;
+  overflow-y: auto;
+  background: hsl(0, 0%, 100%);
+  box-shadow: 1px 0 5px hsla(0, 0%, 0%, 0.15);
+  /* display the headings and anchor links in  a column */
+  display: flex;
+  flex-direction: column;
+}
+/* add padding to the nested elements to highlight a larger surface area for the anchor links */
+h2,
+a {
+  padding: 1rem 2rem;
+}
+h2 {
+  color: hsl(0, 0%, 50%);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  margin-top: 1.5rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 0.9rem;
+  padding: 1rem 2rem;
+  position: relative;
+}
+a:hover {
+  background: hsla(278, 40%, 49%, 0.05);
+}
+a:focus {
+  outline-color: hsl(270, 50%, 40%);
+}
+
+/* with a pseudo element show a circle next to each hovered/focused link */
+a:before {
+  content: "";
+  background: hsl(270, 50%, 40%);
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+a:hover:before,
+a:focus:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* for viewports thinner than 750px translate the navigation out of sight and show the label describing the checkbox */
+@media (max-width: 750px) {
+  nav {
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform: translateX(-100%);
+  }
+
+  /* show the label in the bottom center */
+  label {
+    display: initial;
+    position: fixed;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    margin: 1rem;
+  }
+  /* absolute position the checkbox on top of the svg */
+  label input {
+    position: absolute;
+    /* same width and height of the svg icon */
+    width: 4em;
+    height: 4em;
+    opacity: 0;
+  }
+  label svg {
+    width: 4em;
+    height: 4em;
+    display: block;
+    /* the color is picked up by the fill of the circle */
+    color: hsl(270, 50%, 40%);
+  }
+
+  /* reduce the opacity of the icon, to highlight when the input element is selected/hovered upon */
+  label input + svg {
+    opacity: 0.7;
+    transition: opacity 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  label input:focus + svg,
+  label input:hover + svg {
+    opacity: 1;
+  }
+
+  label input + svg #bracket {
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  /* as the checkbox is checked, the navigation and input element are given a class of .active
+    translate the navigation to show the links, the path element to create the x sign out of the two brackets <>
+    */
+  nav.active,
+  label input.active + svg #bracket {
+    transform: translateX(0);
+  }
+}

@@ -7,5 +7,39 @@
     <link rel="stylesheet" href="style.css" />
     <title>Gatsby Side Navigation</title>
   </head>
-  <body></body>
+  <body>
+    <!-- checkbox allowing to toggle the navigation bar -->
+    <label>
+      <input type="checkbox" />
+      <svg viewBox="0 0 100 100" width="50" height="50">
+        <g transform="translate(50 50)">
+          <circle fill="currentColor" r="50" />
+          <path
+            transform="translate(22 0)"
+            id="bracket"
+            fill="none"
+            stroke="hsl(0, 0%, 100%)"
+            stroke-width="6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M -12 -12 l 12 12 -12 12"
+          />
+          <use href="#bracket" transform="scale(-1 1)" />
+        </g>
+      </svg>
+    </label>
+
+    <!-- in the nav describe a few useful links -->
+    <nav>
+      <h2>Inspiration</h2>
+      <a href="https://www.gatsbyjs.org/docs/">Gatsby Docs</a>
+      <a href="https://youtu.be/are7ZZgA86I">Sara Soueidan's talk</a>
+      <a href="https://www.swyx.io/writing/learn-in-public/">Swyx's post</a>
+      <h2>Contact</h2>
+      <a href="https://codepen.io/borntofrappe">Codepen</a>
+      <a href="https://twitter.com/borntofrappe">Twitter</a>
+    </nav>
+
+    <script src="script.js"></script>
+  </body>
 </html>
