@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <defs>
+        <circle id="moon--circle" r="50" />
+        <mask id="moon--mask">
+            <use href="#moon--circle" fill="hsl(0, 0%, 100%)" />
+            <use x="35" href="#moon--circle" fill="hsl(0, 0%, 0%)" />
+        </mask>
+    </defs>
+    <g transform="translate(50 50)">
+        <g transform="rotate(-20)">
+            <g mask="url(#moon--mask)">
+                <use href="#moon--circle" />
+            </g>
+        </g>
+    </g>
+</svg>
