@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>SVG Android Lollipop</title>
+</head>
+
+<body>
+
+    <!-- svg describing a lollipop with a series of stripes "radiating" from the center -->
+    <svg viewBox="0 0 100 100" width="200" height="200">
+        <defs>
+            <path id="stripe" d="M 0 0 a 42 42 0 0 0 -16 -50 h 32 a 42 42 0 0 1 -16 50" />
+            <circle id="circle" r="50" />
+            <!-- clip to show the stripes only within the boundaries of the lollipop -->
+            <clipPath id="clip--circle">
+                <use href="#circle" />
+            </clipPath>
+        </defs>
+        <g transform="translate(50 50)">
+            <use href="#circle" fill="hsl(15, 95%, 90%)" />
+            <g fill="currentColor" clip-path="url(#clip--circle)">
+                <use href="#stripe" transform="rotate(0)" />
+                <use href="#stripe" transform="rotate(60)" />
+                <use href="#stripe" transform="rotate(120)" />
+                <use href="#stripe" transform="rotate(180)" />
+                <use href="#stripe" transform="rotate(240)" />
+                <use href="#stripe" transform="rotate(300)" />
+            </g>
+            <!-- overlay fabricating a makeshift shadow for the center of the lollipop -->
+            <g opacity="0.04" transform="scale(0.75)">
+                <use href="#circle" fill="hsl(0, 0%, 0%)" />
+            </g>
+        </g>
+    </svg>
+</body>
+
+</html>
