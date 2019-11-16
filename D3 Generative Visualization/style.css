@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900|PT+Sans+Caption&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -7,4 +9,22 @@ body {
     min-height: 100vh;
     background: url("data:image/svg+xml,%3Csvg opacity='0.15' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpath id='a' d='M-10 0A10 10 0 000-10 10 10 0 0010 0 10 10 0 000 10 10 10 0 00-10 0'/%3E%3C/defs%3E%3Cuse href='%23a' transform='matrix(.4 0 0 .4 25 25)'/%3E%3Cuse href='%23a' transform='matrix(.7 0 0 .7 75 25)'/%3E%3Cuse href='%23a' transform='matrix(.35 0 0 .35 75 75)'/%3E%3Cuse href='%23a' transform='matrix(.6 0 0 .6 25 75)'/%3E%3C/svg%3E"), hsl(0, 0%, 95%);
     background-size: 100px;
+    font-family: 'PT Sans Caption', sans-serif;
+}
+h1 {
+    font-family: 'Montserrat', sans-serif;
+}
+a {
+    color: hotpink;
+    text-decoration: none;
+    font-weight: bold;
+}
+#root {
+    background: hsl(0, 0%, 100%);
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+#root > * + * {
+    margin-top: 1rem;
 }
