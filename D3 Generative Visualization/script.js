@@ -1,10 +1,10 @@
-// DATA CODE
-const watchThis =
-  'https://www.learnwithjason.dev/generative-data-visualization-design-and-planning';
+const watchThis = 'https://www.learnwithjason.dev/generative-data-visualization-design-and-planning';
 const followThem = {
   jason: 'https://twitter.com/jlengstorf',
   shirley: 'https://twitter.com/sxywu',
 };
+
+/* setting up the project with a random dataset */
 
 // to build a random dataset, start with an array of hard coded values
 const adjective = [
@@ -48,10 +48,11 @@ const animal = [
   'panther',
 ];
 
-// array describing the ordinal categories
+// array describing three ordinal values
 const levels = ['beginner', 'intermediate', 'advanced'];
 
-// array describing the topics and most importantly the color values
+// array describing categorical values and most importantly their color values
+// ! this is a task better solved by a color scale
 const topics = [
   {
     name: 'romance',
@@ -59,7 +60,7 @@ const topics = [
   },
   {
     name: 'comedy',
-    color: 'hsl(90, 80%, 60%)',
+    color: 'hsl(90, 80%, 50%)',
   },
   {
     name: 'tragedy',
@@ -99,8 +100,10 @@ const data = Array(datapoints)
   .fill()
   .map(() => randomMetrics());
 
-// D3 CODE
-//  SCALES
+
+/* d3 code */
+
+/* SCALES */
 // create three linear scales for the views, shares and twitter following
 // mapping to a range of [x, 1] to later scale the appropriate group elements
 const range = [0.4, 1];
@@ -120,7 +123,8 @@ const scaleTwitter = d3
   .domain(d3.extent(data, ({ twitter }) => twitter))
   .range(range);
 
-//  ACTUAL ELEMENTS
+/* DOM ELEMENTS */
+// following a couple of html element, include the elements for the data points
 // add a heading and a container in the #root node
 const root = d3.select('#root');
 root
@@ -136,13 +140,15 @@ root
     }">Jason Lengstorf</a> and <a href="${followThem.shirley}">Shirley Wu</a>.`
   );
 
+// include the data points in a wrapping flex container
 const container = root
   .append('div')
   .style('display', 'flex')
   .style('flex-wrap', 'wrap')
   .style('justify-content', 'center');
 
-// for each data point add an article detail the vector graphic atop a heading describing the title
+// include the datapoints in an article element
+// this allows to have the svg atop a heading describing the title of the data point
 const articles = container
   .selectAll('article')
   .data(data)
@@ -154,6 +160,11 @@ const articles = container
   .style('margin', '1rem')
   .style('max-width', '180px');
 
+/* the following replicates this illustration with d3
+https://codepen.io/borntofrappe/pen/abbQgOp
+
+it is a rather tedious process which can be definitely improved with a framework
+*/
 const svg = articles
   .append('svg')
   .attr('viewBox', '0 0 200 200')
@@ -168,30 +179,44 @@ const groupStars = groupCenter
   .attr('stroke', 'hsl(160, 80%, 60%)')
   .attr('stroke-width', '2');
 
+// include one, three, five stars according to the level
+// this is a bit hacky, and there must be a better way to include 1-2-3 stars according to the level
 const stars = groupStars
   .selectAll('g.stars')
   .data(d => levels.slice(0, levels.findIndex(level => level === d.level) + 1))
   .enter()
   .append('g')
-  .attr('class', 'stars')
-  .attr('transform', (d, i) => `translate(0 ${i * 12})`);
+  .attr('class', 'stars');
 
 stars
   .append('path')
   .attr(
     'd',
     'M -10 0 a 10 10 0 0 0 10 -10 10 10 0 0 0 10 10 10 10 0 0 0 -10 10 10 10 0 0 0 -10 -10'
-  );
+  )
+  .attr('transform', (d, i) => `translate(${i * 25} ${i * 15})`);
+
+stars
+.append('path')
+  .attr(
+    'd',
+    'M -10 0 a 10 10 0 0 0 10 -10 10 10 0 0 0 10 10 10 10 0 0 0 -10 10 10 10 0 0 0 -10 -10'
+  )
+  .attr('transform', (d, i) => `scale(-1 1) translate(${i * 25} ${i * 15})`);
+
 
 const groupHalo = groupCenter
   .append('g')
   .attr('transform', 'translate(0 65)')
   .attr('fill', 'hsl(50, 95%, 60%)');
 
+// scale the halo according to the shares
 const groupShares = groupHalo
   .append('g')
   .attr('transform', ({ shares }) => `scale(${scaleShares(shares)})`);
 
+// ! the reference for use element is repeated across svg elements
+// in this project I decided to change the id to be unique to the title being used, but it might be best to make due without <use> elements
 groupShares
   .append('ellipse')
   .attr('id', ({ title }) => `ellipse-${title.replace(' ', '-')}`)
@@ -209,6 +234,7 @@ const groupBucket = groupCenter
   .append('g')
   .attr('transform', 'translate(0 150)');
 
+// scale the bucket according to the views
 const groupViews = groupBucket
   .append('g')
   .attr('transform', ({ views }) => `scale(${scaleViews(views)})`);
@@ -224,6 +250,7 @@ groupViews
   .attr('stroke-width', '3')
   .attr('stroke-linejoin', 'round');
 
+// color the jam according to the topic's color
 groupViews
   .append('path')
   .attr(
@@ -232,6 +259,8 @@ groupViews
   )
   .attr('fill', d => d.topic.color);
 
+// ! the reference for use element is repeated across svg elements
+// in this project I decided to change the id to be unique to the title being used, but it might be best to make due without <use> elements
 groupViews
   .append('circle')
   .attr('id', ({ title }) => `eye-${title.replace(' ', '-')}`)
@@ -245,11 +274,15 @@ groupViews
   .attr('href', ({ title }) => `#eye-${title.replace(' ', '-')}`)
   .attr('transform', 'scale(-1 1)');
 
+// hide the mustache when the data point has the corresponding boolean set to false
+// ! ideally you wouldn't add the group altogether
 const groupMustache = groupViews
   .append('g')
   .attr('opacity', d => (d.isTeaching ? 1 : 0))
   .attr('class', 'mustache');
 
+// ! the reference for use element is repeated across svg elements
+// in this project I decided to change the id to be unique to the title being used, but it might be best to make due without <use> elements
 groupMustache
   .append('path')
   .attr('id', ({ title }) => `mustache-${title.replace(' ', '-')}`)
@@ -277,11 +310,14 @@ const groupWings = groupCenter
   .append('g')
   .attr('transform', 'translate(0 145)');
 
+// ! the reference for use element is repeated across svg elements
+// in this project I decided to change the id to be unique to the title being used, but it might be best to make due without <use> elements
 const groupWing = groupWings
   .append('g')
   .attr('id', ({ title }) => `wing-${title.replace(' ', '-')}`)
   .attr('transform', 'translate(52 0) rotate(10)');
 
+// scale the group nesting the path element according to the tweets
 const groupTwitter = groupWing
   .append('g')
   .attr('transform', ({ twitter }) => `scale(${scaleTwitter(twitter)})`);
