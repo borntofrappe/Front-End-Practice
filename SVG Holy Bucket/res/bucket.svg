@@ -1,58 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
     <g transform="translate(100 10)">
         <g fill="hsl(0, 0%, 100%)" stroke="hsl(160, 80%, 60%)" stroke-width="2">
-            <path id="star"
+            <path d="M -10 0 a 10 10 0 0 0 10 -10 10 10 0 0 0 10 10 10 10 0 0 0 -10 10 10 10 0 0 0 -10 -10" />
+            <path transform="translate(30 12)"
                 d="M -10 0 a 10 10 0 0 0 10 -10 10 10 0 0 0 10 10 10 10 0 0 0 -10 10 10 10 0 0 0 -10 -10" />
-                <use href="#star" x="30" y="12" />
-                <use href="#star" x="-30" y="12" />
-                <use href="#star" x="60" y="30" />
-                <use href="#star" x="-60" y="30" />
+            <path transform="translate(-30 12)"
+                d="M -10 0 a 10 10 0 0 0 10 -10 10 10 0 0 0 10 10 10 10 0 0 0 -10 10 10 10 0 0 0 -10 -10" />
+            <path transform="translate(60 30)"
+                d="M -10 0 a 10 10 0 0 0 10 -10 10 10 0 0 0 10 10 10 10 0 0 0 -10 10 10 10 0 0 0 -10 -10" />
+            <path transform="translate(-60 30)"
+                    d="M -10 0 a 10 10 0 0 0 10 -10 10 10 0 0 0 10 10 10 10 0 0 0 -10 10 10 10 0 0 0 -10 -10" />
         </g>
-
     </g>
 
     <!-- #blessed -->
     <g transform="translate(100 65)">
-            <g fill="hsl(50, 95%, 60%)">
-                <ellipse id="ellipse" cx="0" cy="-4" rx="50" ry="15" />
-            </g>
-            <g fill="hsl(0, 0%, 100%)" transform="scale(0.7 0.6)">
-                <use href="#ellipse" />
-            </g>
+        <ellipse fill="hsl(50, 95%, 60%)" cx="0" cy="-4" rx="50" ry="15" />
+        <ellipse transform="scale(0.7 0.6)" fill="hsl(0, 0%, 100%)" cx="0" cy="-4" rx="50" ry="15" />
     </g>
 
     <g transform="translate(100 150)">
-        <g fill="hsl(0, 0%, 100%)" stroke="hsl(0, 0%, 25%)" stroke-width="3" stroke-linejoin="round">
-            <path
-                d="M -50 -55 l 10 95 a 100 100 0 0 0 80 0 l 10 -95 a 120 120 0 0 0 -100 0 110 110 0 0 0 100 0" />
+        <path d="M -50 -55 l 10 95 a 100 100 0 0 0 80 0 l 10 -95 a 120 120 0 0 0 -100 0 110 110 0 0 0 100 0"
+            fill="hsl(0, 0%, 100%)" stroke="hsl(0, 0%, 25%)" stroke-width="3" stroke-linejoin="round" />
+
+        <path d="M -47 -55 a 108 108 0 0 0 94 0 q -9.9 -5 -18.8 0 t -18.8 0 t -18.8 0 t -18.8 0 t -18.8 0"
+            fill="hsl(0, 80%, 60%)" />
+
+        <g transform="translate(0 -20)" fill="hsl(0, 0%, 25%)">
+            <circle cx="15" r="5" />
+            <circle cx="-15" r="5" />
         </g>
 
-        <g fill="hsl(0, 80%, 60%)">
-            <path
-                d="M -47 -55 a 108 108 0 0 0 94 0 q -9.9 -5 -18.8 0 t -18.8 0 t -18.8 0 t -18.8 0 t -18.8 0" />
-        </g>
+        <path d="M 0 0 c 14 -9 14 10 18 9 q -14 5 -20 -9 c -14 -9 -14 10 -18 9 q 14 5 20 -9"
+            fill="hsl(0, 0%, 25%)" stroke="hsl(0, 0%, 25%)" stroke-width="2" stroke-linejoin="round"
+            stroke-linecap="round" />
 
-        <circle fill="hsl(0, 0%, 25%)" id="eye" cx="15" cy="-20" r="5" />
-        <use href="#eye" transform="scale(-1 1)" />
-
-        <g id="mustache" fill="hsl(0, 0%, 25%)" stroke="hsl(0, 0%, 25%)" stroke-width="2"
-            stroke-linejoin="round" stroke-linecap="round">
-            <path d="M 0 0 c 14 -9 14 10 18 9 q -14 5 -20 -9" />
-        </g>
-        <use href="#mustache" transform="scale(-1 1)" />
-
-        <g fill="none" stroke="hsl(0, 0%, 25%)" stroke-width="3" stroke-linecap="round">
-            <path d="M -48 -20 a 48 48 0 0 0 96 0" />
-        </g>
+        <path d="M -48 -20 a 48 48 0 0 0 96 0" fill="none" stroke="hsl(0, 0%, 25%)" stroke-width="3"
+            stroke-linecap="round" />
     </g>
 
     <g transform="translate(100 145)">
-        <g id="wing" transform="translate(52 0) rotate(10)">
-            <g fill="hsl(0, 0%, 100%)" stroke="hsl(200, 80%, 55%)" stroke-width="3" stroke-linejoin="round"
-                stroke-linecap="round">
+        <g fill="hsl(0, 0%, 100%)" stroke="hsl(200, 80%, 55%)" stroke-width="3" stroke-linejoin="round"
+            stroke-linecap="round">
+            <g transform="translate(52 0) rotate(10)">
                 <path d="M 0 0 v -20 q 0 -25 35 -25 q 0 20 -20 20 h 10 q 0 15 -15 15 h 5 q 0 10 -15 10" />
             </g>
+
+            <g transform="scale(-1 1)">
+                <g transform="translate(52 0) rotate(10)">
+                    <path d="M 0 0 v -20 q 0 -25 35 -25 q 0 20 -20 20 h 10 q 0 15 -15 15 h 5 q 0 10 -15 10" />
+                </g>
+            </g>
         </g>
-        <use href="#wing" transform="scale(-1 1)" />
     </g>
 </svg>
