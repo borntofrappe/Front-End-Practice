@@ -1,4 +1,5 @@
-const watchThis = 'https://www.learnwithjason.dev/generative-data-visualization-design-and-planning';
+const watchThis =
+  'https://www.learnwithjason.dev/generative-data-visualization-design-and-planning';
 const followThem = {
   jason: 'https://twitter.com/jlengstorf',
   shirley: 'https://twitter.com/sxywu',
@@ -100,7 +101,6 @@ const data = Array(datapoints)
   .fill()
   .map(() => randomMetrics());
 
-
 /* d3 code */
 
 /* SCALES */
@@ -197,36 +197,32 @@ stars
   .attr('transform', (d, i) => `translate(${i * 25} ${i * 15})`);
 
 stars
-.append('path')
+  .append('path')
   .attr(
     'd',
     'M -10 0 a 10 10 0 0 0 10 -10 10 10 0 0 0 10 10 10 10 0 0 0 -10 10 10 10 0 0 0 -10 -10'
   )
   .attr('transform', (d, i) => `scale(-1 1) translate(${i * 25} ${i * 15})`);
 
-
-const groupHalo = groupCenter
-  .append('g')
-  .attr('transform', 'translate(0 65)')
-  .attr('fill', 'hsl(50, 95%, 60%)');
+const groupHalo = groupCenter.append('g').attr('transform', 'translate(0 65)');
 
 // scale the halo according to the shares
 const groupShares = groupHalo
   .append('g')
   .attr('transform', ({ shares }) => `scale(${scaleShares(shares)})`);
 
-// ! the reference for use element is repeated across svg elements
-// in this project I decided to change the id to be unique to the title being used, but it might be best to make due without <use> elements
 groupShares
   .append('ellipse')
-  .attr('id', ({ title }) => `ellipse-${title.replace(' ', '-')}`)
   .attr('cy', '-4')
   .attr('rx', '50')
-  .attr('ry', '15');
+  .attr('ry', '15')
+  .attr('fill', 'hsl(50, 95%, 60%)');
 
 groupShares
-  .append('use')
-  .attr('href', ({ title }) => `#ellipse-${title.replace(' ', '-')}`)
+  .append('ellipse')
+  .attr('cy', '-4')
+  .attr('rx', '50')
+  .attr('ry', '15')
   .attr('fill', 'hsl(0, 0%, 100%)')
   .attr('transform', 'scale(0.7 0.6)');
 
@@ -259,20 +255,20 @@ groupViews
   )
   .attr('fill', d => d.topic.color);
 
-// ! the reference for use element is repeated across svg elements
-// in this project I decided to change the id to be unique to the title being used, but it might be best to make due without <use> elements
-groupViews
+const groupEyes = groupViews
+  .append('g')
+  .attr('transform', 'translate(0 -20)')
+  .attr('fill', 'hsl(0, 0%, 25%)');
+
+groupEyes
   .append('circle')
-  .attr('id', ({ title }) => `eye-${title.replace(' ', '-')}`)
-  .attr('fill', 'hsl(0, 0%, 25%)')
   .attr('cx', '15')
-  .attr('cy', '-20')
   .attr('r', '5');
 
-groupViews
-  .append('use')
-  .attr('href', ({ title }) => `#eye-${title.replace(' ', '-')}`)
-  .attr('transform', 'scale(-1 1)');
+groupEyes
+  .append('circle')
+  .attr('cx', '-15')
+  .attr('r', '5');
 
 // hide the mustache when the data point has the corresponding boolean set to false
 // ! ideally you wouldn't add the group altogether
@@ -281,22 +277,17 @@ const groupMustache = groupViews
   .attr('opacity', d => (d.isTeaching ? 1 : 0))
   .attr('class', 'mustache');
 
-// ! the reference for use element is repeated across svg elements
-// in this project I decided to change the id to be unique to the title being used, but it might be best to make due without <use> elements
 groupMustache
   .append('path')
-  .attr('id', ({ title }) => `mustache-${title.replace(' ', '-')}`)
-  .attr('d', 'M 0 0 c 14 -9 14 10 18 9 q -14 5 -20 -9')
+  .attr(
+    'd',
+    'M 0 0 c 14 -9 14 10 18 9 q -14 5 -20 -9 c -14 -9 -14 10 -18 9 q 14 5 20 -9'
+  )
   .attr('fill', 'hsl(0, 0%, 25%)')
   .attr('stroke', 'hsl(0, 0%, 25%)')
   .attr('stroke-width', '2')
   .attr('stroke-linejoin', 'round')
   .attr('stroke-linecap', 'round');
-
-groupMustache
-  .append('use')
-  .attr('href', ({ title }) => `#mustache-${title.replace(' ', '-')}`)
-  .attr('transform', 'scale(-1 1)');
 
 groupViews
   .append('path')
@@ -308,36 +299,42 @@ groupViews
 
 const groupWings = groupCenter
   .append('g')
-  .attr('transform', 'translate(0 145)');
-
-// ! the reference for use element is repeated across svg elements
-// in this project I decided to change the id to be unique to the title being used, but it might be best to make due without <use> elements
-const groupWing = groupWings
-  .append('g')
-  .attr('id', ({ title }) => `wing-${title.replace(' ', '-')}`)
-  .attr('transform', 'translate(52 0) rotate(10)');
-
-// scale the group nesting the path element according to the tweets
-const groupTwitter = groupWing
-  .append('g')
-  .attr('transform', ({ twitter }) => `scale(${scaleTwitter(twitter)})`);
-
-groupTwitter
-  .append('path')
-  .attr(
-    'd',
-    'M 0 0 v -20 q 0 -25 35 -25 q 0 20 -20 20 h 10 q 0 15 -15 15 h 5 q 0 10 -15 10'
-  )
+  .attr('transform', 'translate(0 145)')
   .attr('fill', 'hsl(0, 0%, 100%)')
   .attr('stroke', 'hsl(200, 80%, 55%)')
   .attr('stroke-width', '3')
   .attr('stroke-linejoin', 'round')
   .attr('stroke-linecap', 'round');
 
-groupWings
-  .append('use')
-  .attr('href', ({ title }) => `#wing-${title.replace(' ', '-')}`)
-  .attr('transform', 'scale(-1 1)');
+// scale the group nesting the path element according to the tweets
+const groupWingsRight = groupWings
+  .append('g')
+  .attr(
+    'transform',
+    ({ twitter }) =>
+      `translate(52 0) rotate(10) scale(${scaleTwitter(twitter)})`
+  );
+const groupWingsLeft = groupWings
+  .append('g')
+  .attr(
+    'transform',
+    ({ twitter }) =>
+      `scale(-1 1) translate(52 0) rotate(10) scale(${scaleTwitter(twitter)})`
+  );
+
+groupWingsRight
+  .append('path')
+  .attr(
+    'd',
+    'M 0 0 v -20 q 0 -25 35 -25 q 0 20 -20 20 h 10 q 0 15 -15 15 h 5 q 0 10 -15 10'
+  );
+
+groupWingsLeft
+  .append('path')
+  .attr(
+    'd',
+    'M 0 0 v -20 q 0 -25 35 -25 q 0 20 -20 20 h 10 q 0 15 -15 15 h 5 q 0 10 -15 10'
+  );
 
 articles
   .append('h2')
