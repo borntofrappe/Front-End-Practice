@@ -141,6 +141,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Monopoly Crawler](https://codepen.io/borntofrappe/pen/RwwJmRq)|Couple SVG syntax with the pseudo-3d engine _Zdog_ and the animation library _anime.js_ to explore a monopoly board one step at a time.|9th November 2019|
 |[SVG Android Lollipop](https://codepen.io/borntofrappe/pen/KKKGjvM)|Practice with SVG syntax to create the assets displayed in one of Android's "hidden games".|14th November 2019|
 |[SVG Holy Bucket](https://codepen.io/borntofrappe/pen/abbQgOp)|Create an illustration inspired by [this video on generative data visualizations](https://www.learnwithjason.dev/generative-data-visualization-design-and-planning).|16th November 2019|
+|[SVG CodePen Map]()|Animate SVG elements with anime.js.|18th November 2019|
 
 ### UI UX
 
