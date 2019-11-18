@@ -1,10 +1,10 @@
 # SVG CodePen Map
 
-<!-- [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/yLLZBPR)
 
 ## Goal
 
-Recreate and animate graphic shown on one of the topic in the topics section @codepen.
+Recreate and animate the graphic shown in the [topics section for maps](https://codepen.io/topic/map/picks), with SVG syntax and anime.js.
 
 ## Notes
 
