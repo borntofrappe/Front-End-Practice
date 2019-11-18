@@ -1,7 +1,13 @@
-// animate the prescribed nodes in sequence
+// identify the button to restart the animation
+const button = document.querySelector('button');
 
+// animate the prescribed nodes in sequence
 const timeline = anime.timeline({
     easing: 'linear',
+    // as the animation begin remove the button by adding the prescribed class
+    begin: () => button.classList.add('hidden'),
+    // as the animation is completed, show the button
+    complete: () => button.classList.remove('hidden')
 });
 
 // show the x character
@@ -27,3 +33,6 @@ timeline.add({
     easing: 'easeOutBounce',
     duration: 400,
 })
+
+// as the button gets clicked restart the timeline animation
+button.addEventListener('click', () => timeline.restart());
