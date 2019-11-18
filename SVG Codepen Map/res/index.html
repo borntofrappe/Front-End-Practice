@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>SVG CodePen Map - Static</title>
+    </head>
+    <body>
+        <svg viewBox="0 0 100 100">
+            <rect width="100" height="100" rx="2" fill="#242539" />
+            <g fill="none" stroke="#4DC498" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- x marks the spot -->
+                <g transform="translate(20 35)">
+                    <path d="M -3 -3 l 6 6 m -6 0 l 6 -6" />
+                </g>
+                <!-- follow the trail interrupted -->
+                <g transform="translate(20 35)">
+                    <g stroke-dasharray="3 6" stroke-dashoffset="2">
+                        <path d="M 0 0 v 25 h 15 l 10 -15 h 10 v 20 h 25" />
+                    </g>
+                </g>
+                <!-- touch down -->
+                <g transform="translate(80 65)">
+                    <path d="M 0 0 q 6 -6 6 -10 a 6 6 0 0 0 -12 0 q 0 4 6 10" />
+                    <circle cy="-10" r="2" stroke="none" fill="#4DC498" />
+                </g>
+            </g>
+        </svg>
+    </body>
+</html>
