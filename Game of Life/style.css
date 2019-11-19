@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:900&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/* center in the viewport */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: hsl(300, 90%, 3%);
+    color: hsl(300, 90%, 100%);
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 5.5rem;
+    text-transform: uppercase;
+    font-weight: 900;
+}
