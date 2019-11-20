@@ -142,6 +142,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Android Lollipop](https://codepen.io/borntofrappe/pen/KKKGjvM)|Practice with SVG syntax to create the assets displayed in one of Android's "hidden games".|14th November 2019|
 |[SVG Holy Bucket](https://codepen.io/borntofrappe/pen/abbQgOp)|Create an illustration inspired by [this video on generative data visualizations](https://www.learnwithjason.dev/generative-data-visualization-design-and-planning).|16th November 2019|
 |[SVG CodePen Map](https://codepen.io/borntofrappe/full/yLLZBPR)|Recreate and animate the graphic shown in the [topics section for maps](https://codepen.io/topic/map/picks), with SVG syntax and anime.js.|18th November 2019|
+|[SVG Life's Wheel]()|Inspired by the semi-popular board game create a spin-able wheel with SVG syntax.|19th-20th November 2019|
 
 ### UI UX
 
@@ -206,4 +207,3 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Ripple Effect](https://codepen.io/borntofrappe/pen/XWWgQBJ)|Tinker with Pug and SVG syntax to create an entertaining animation.|27th October 2019|
 |[Zdog Dice](https://codepen.io/borntofrappe/pen/WNNJxwM)|Use the pseudo-3d engine to draw a dice endlessly rolling around its center.|6th November 2019|
 |[Zdog & Anime.js Dice](https://codepen.io/borntofrappe/pen/PooeQvG)|Update the Zdog Dice project to roll the dice with the animation library and following user input.|7th November 2019|
-|[Game of Life]()|Create an entry for the weekly #codepenchallenge, starting with a heading and Splitting.js.|19th November 2019|
