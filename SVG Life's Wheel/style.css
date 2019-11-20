@@ -5,16 +5,17 @@
     padding: 0;
     margin: 0;
 }
-/* center in the viewport */
 body {
     min-height: 100vh;
+    font-family: "Source Sans Pro", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: hsl(0, 0%, 100%);
-    background: hsl(300, 90%, 3%);
-    font-family: "Source Sans Pro", sans-serif;
+    background: url("data:image/svg+xml,%3Csvg opacity='0.08' xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100' width='350' height='350'%3E%3Cpath id='sign' d='M -25 25 a 25 25 0 0 1 -25 -25 25 25 0 0 1 50 0 25 25 0 0 0 50 0 25 25 0 0 0 -25 -25' fill='none' stroke='white' stroke-width='5' /%3E%3Cuse href='%23sign' x='50' y='50' /%3E%3Cuse href='%23sign' x='50' y='-50' /%3E%3Cuse href='%23sign' x='-50' y='50' /%3E%3Cuse href='%23sign' x='-50' y='-50' /%3E%3C/svg%3E"),
+        hsl(300, 90%, 3%);
+    background-size: 50px;
 }
 
 body > * + * {
@@ -29,6 +30,8 @@ h1 {
     margin: 2rem 1rem;
     position: relative;
 }
+
+/* add a short instruction with a pseudo element */
 h1:after {
     font-size: 1.25rem;
     position: absolute;
@@ -40,19 +43,16 @@ h1:after {
     font-weight: 700;
 }
 
+/* remove the default properties from the button */
 button {
     background: none;
     border: none;
     color: inherit;
+    /* uh, apparently this works to change the color of the nested svg */
     transition: color 0.25s ease-in-out;
 }
-button #mark {
-    opacity: 0;
-    transition: opacity 0.25s ease-in-out;
-}
-button:focus #mark {
-    opacity: 1;
-}
+
+/* replicate the blue outline with a light glow on the svg and by showing the marker on the selected slice */
 button:focus {
     outline: none;
 }
@@ -62,6 +62,17 @@ button svg {
 button:focus svg {
     filter: drop-shadow(0 0 5px hsla(0, 0%, 100%, 0.2));
 }
-button.not-allowed {
+button #mark {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+button:focus #mark {
+    opacity: 1;
+}
+
+/* utility class changing the cursor
+added to the button while the transition is ongoing
+*/
+.not-allowed {
     cursor: not-allowed;
 }

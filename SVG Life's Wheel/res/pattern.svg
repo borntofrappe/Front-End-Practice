@@ -1,0 +1,7 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="-50 -50 100 100" width="350" height="350">
+    <path id="sign" transform="rotate(0)" d="M -25 25 a 25 25 0 0 1 -25 -25 25 25 0 0 1 50 0 25 25 0 0 0 50 0 25 25 0 0 0 -25 -25" fill="none" stroke="currentColor" stroke-width="5" />
+    <use href="#sign" x="50" y="50" />
+    <use href="#sign" x="50" y="-50" />
+    <use href="#sign" x="-50" y="50" />
+    <use href="#sign" x="-50" y="-50" />
+</svg>

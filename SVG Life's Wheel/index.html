@@ -16,20 +16,25 @@
         <h1>Life</h1>
 
         <button aria-label="Spin the wheel">
-            <svg aria-hidden="true" viewBox="-50 -50 100 100" width="350" height="350">
+            <!-- instead of rotating the shapes to the center of the viewbox, move the x and y describing the top left corner of the graphic -->
+            <svg aria-hidden="true" viewBox="-50 -50 100 100" width="300" height="300">
+                <!-- to create the slice, the idea is to overlap two semicircles, one of which is rotated an arbitrary number of degrees (36 currently) -->
                 <defs>
                     <path id="semicircle" d="M -50 0 a 50 50 0 0 1 100 0" />
                     <path id="line" stroke-width="2" d="M -50 0 h 50" />
                     <mask id="mask--slice">
                         <use href="#semicircle" fill="hsl(0, 0%, 100%)" />
                         <use transform="rotate(36)" href="#semicircle" fill="hsl(0, 0%, 0%)" />
+
+                        <!-- two lines and a circle are included to further crop the visible area of the slice -->
                         <use href="#line" stroke="hsl(0, 0%, 0%)" />
                         <use href="#line" stroke="hsl(0, 0%, 0%)" transform="rotate(36)" />
                         <circle r="22" fill="hsl(0, 0%, 0%)" />
                     </mask>
-                    <use id="slice" href="#semicircle" mask="url(#mask--slice)" transform="scale(1)" />
+                    <use id="slice" href="#semicircle" mask="url(#mask--slice)" />
                 </defs>
 
+                <!-- include the slices around the center -->
                 <g>
                     <use href="#slice" fill="hsl(0, 90%, 60%)" />
                     <use href="#slice" fill="hsl(36, 90%, 60%)" transform="rotate(36)" />
@@ -43,18 +48,21 @@
                     <use href="#slice" fill="hsl(324, 90%, 60%)" transform="rotate(324)" />
                 </g>
 
+                <!-- "spin-able" wheel, made up of a circle and lines describing the thingamabob identifying a slice -->
                 <g id="wheel" transform="rotate(0)">
                     <g fill="none" stroke="hsl(0, 0%, 100%)" stroke-width="4">
                         <use href="#line" />
                         <use href="#line" transform="rotate(36)" />
                         <use href="#slice" />
                     </g>
+                    <!-- add an identifier to the mark to show the arrow only as the button gets focus -->
                     <g id="mark" fill="hsl(0, 0%, 100%)" stroke="none">
                         <path d="M -49 0 v 5 l 5 -5 l -5 -5 z" transform="rotate(18)" />
                     </g>
                 </g>
 
                 <circle r="20" fill="hsl(0, 0%, 100%)" />
+                <!-- currentColor is picked up from the button -->
                 <circle r="15" fill="currentColor" />
             </svg>
         </button>
