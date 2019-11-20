@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Atma:700|Source+Sans+Pro:900&display=swap");
 
 * {
     box-sizing: border-box;
@@ -12,9 +12,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: hsl(0, 0%, 100%);
     background: hsl(300, 90%, 3%);
-    color: hsl(300, 90%, 100%);
     font-family: "Source Sans Pro", sans-serif;
+}
+
+body > * + * {
+    margin-top: 2rem;
 }
 
 h1 {
@@ -22,4 +26,42 @@ h1 {
     font-size: 5.5rem;
     text-transform: uppercase;
     font-weight: 900;
+    margin: 2rem 1rem;
+    position: relative;
+}
+h1:after {
+    font-size: 1.25rem;
+    position: absolute;
+    bottom: 0%;
+    left: 100%;
+    transform: translateY(50%) rotate(20deg);
+    content: "give it a spin!";
+    font-family: "Atma", cursive;
+    font-weight: 700;
+}
+
+button {
+    background: none;
+    border: none;
+    color: inherit;
+    transition: color 0.25s ease-in-out;
+}
+button #mark {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+button:focus #mark {
+    opacity: 1;
+}
+button:focus {
+    outline: none;
+}
+button svg {
+    transition: filter 0.25s ease-in-out;
+}
+button:focus svg {
+    filter: drop-shadow(0 0 5px hsla(0, 0%, 100%, 0.2));
+}
+button.not-allowed {
+    cursor: not-allowed;
 }

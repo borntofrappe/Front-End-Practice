@@ -5,13 +5,59 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="style.css" />
-        <title>Game of Life</title>
+        <title>Life's Wheel</title>
     </head>
     <body>
         <!-- markup
             heading, upgraded in the script with Splitting.js
+            button, nesting the graphic to make it interactive
+                svg, displaying different colors around a wheel
         -->
         <h1>Life</h1>
+
+        <button aria-label="Spin the wheel">
+            <svg aria-hidden="true" viewBox="-50 -50 100 100" width="350" height="350">
+                <defs>
+                    <path id="semicircle" d="M -50 0 a 50 50 0 0 1 100 0" />
+                    <path id="line" stroke-width="2" d="M -50 0 h 50" />
+                    <mask id="mask--slice">
+                        <use href="#semicircle" fill="hsl(0, 0%, 100%)" />
+                        <use transform="rotate(36)" href="#semicircle" fill="hsl(0, 0%, 0%)" />
+                        <use href="#line" stroke="hsl(0, 0%, 0%)" />
+                        <use href="#line" stroke="hsl(0, 0%, 0%)" transform="rotate(36)" />
+                        <circle r="22" fill="hsl(0, 0%, 0%)" />
+                    </mask>
+                    <use id="slice" href="#semicircle" mask="url(#mask--slice)" transform="scale(1)" />
+                </defs>
+
+                <g>
+                    <use href="#slice" fill="hsl(0, 90%, 60%)" />
+                    <use href="#slice" fill="hsl(36, 90%, 60%)" transform="rotate(36)" />
+                    <use href="#slice" fill="hsl(72, 90%, 60%)" transform="rotate(72)" />
+                    <use href="#slice" fill="hsl(108, 90%, 60%)" transform="rotate(108)" />
+                    <use href="#slice" fill="hsl(144, 90%, 60%)" transform="rotate(144)" />
+                    <use href="#slice" fill="hsl(180, 90%, 60%)" transform="rotate(180)" />
+                    <use href="#slice" fill="hsl(216, 90%, 60%)" transform="rotate(216)" />
+                    <use href="#slice" fill="hsl(252, 90%, 60%)" transform="rotate(252)" />
+                    <use href="#slice" fill="hsl(288, 90%, 60%)" transform="rotate(288)" />
+                    <use href="#slice" fill="hsl(324, 90%, 60%)" transform="rotate(324)" />
+                </g>
+
+                <g id="wheel" transform="rotate(0)">
+                    <g fill="none" stroke="hsl(0, 0%, 100%)" stroke-width="4">
+                        <use href="#line" />
+                        <use href="#line" transform="rotate(36)" />
+                        <use href="#slice" />
+                    </g>
+                    <g id="mark" fill="hsl(0, 0%, 100%)" stroke="none">
+                        <path d="M -49 0 v 5 l 5 -5 l -5 -5 z" transform="rotate(18)" />
+                    </g>
+                </g>
+
+                <circle r="20" fill="hsl(0, 0%, 100%)" />
+                <circle r="15" fill="currentColor" />
+            </svg>
+        </button>
 
         <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
         <script src="script.js"></script>
