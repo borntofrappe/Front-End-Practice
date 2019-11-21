@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title SVG Faux Conic Gradient
+        link(rel="stylesheet", href="style.css")
+    body
+        - // experimenting with different values
+        - let slices = 100
+        - let gap = 0
+        - let innerRadius = 0
+        - // crispEdges is a better fit to have the stroke of the slices blend in with each other
+        svg(shape-rendering=`${gap === 0 ? 'crispEdges' : 'auto'}` viewBox="-50 -50 100 100" width="300" height="300")
+            defs
+                path(id="semicircle" stroke="none" d="M -50 0 a 50 50 0 0 1 100 0")
+                path(id="line" stroke-width=`${gap}` d="M -50 0 h 50")
+                mask(id="mask--slice")
+                    use(href="#semicircle" fill="hsl(0, 0%, 100%)")
+                    use(transform=`rotate(${360 / slices}) scale(1.1)` href="#semicircle" fill="hsl(0, 0%, 0%)")
+                    use(href="#line" stroke="hsl(0, 0%, 0%)")
+                    use(href="#line" stroke="hsl(0, 0%, 0%)" transform=`rotate(${360 / slices})`)
+                    circle(r=`${innerRadius}` fill="hsl(0, 0%, 0%)")
+                use(id="slice" href="#semicircle" mask="url(#mask--slice)")
+            g
+                - for (let i = 0; i < slices; i+= 1)
+                    use(href="#slice" stroke="none" fill=`hsl(${360 / slices * i}, 90%, 60%)` transform=`rotate(${360 / slices * i})`)

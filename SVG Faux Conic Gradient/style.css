@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/* center in the viewport */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*   the background repeats one of the shapes created through the demo itself */
+    background: url('data:image/svg+xml,%3Csvg opacity="0.1" xmlns="http://www.w3.org/2000/svg" shape-rendering="auto" viewBox="-50 -50 100 100" width="300" height="300"%3E%3Cdefs%3E%3Cpath id="semicircle" stroke="none" d="M -50 0 a 50 50 0 0 1 100 0"%3E%3C/path%3E%3Cpath id="line" stroke-width="2" d="M -50 0 h 50"%3E%3C/path%3E%3Cmask id="mask--slice"%3E%3Cuse href="%23semicircle" fill="hsl(0, 0%25, 100%25)"%3E%3C/use%3E%3Cuse transform="rotate(36) scale(1.1)" href="%23semicircle" fill="hsl(0, 0%25, 0%25)"%3E%3C/use%3E%3Cuse href="%23line" stroke="hsl(0, 0%25, 0%25)"%3E%3C/use%3E%3Cuse href="%23line" stroke="hsl(0, 0%25, 0%25)" transform="rotate(36)"%3E%3C/use%3E%3Ccircle r="40" fill="hsl(0, 0%25, 0%25)"%3E%3C/circle%3E%3C/mask%3E%3Cuse id="slice" href="%23semicircle" mask="url(%23mask--slice)"%3E%3C/use%3E%3C/defs%3E%3Cg id="wheel" transform="scale(0.5)"%3E%3Cuse href="%23slice" stroke="none" fill="hsl(0, 90%25, 60%25)" transform="rotate(0)"%3E%3C/use%3E%3Cuse href="%23slice" stroke="none" fill="hsl(36, 90%25, 60%25)" transform="rotate(36)"%3E%3C/use%3E%3Cuse href="%23slice" stroke="none" fill="hsl(72, 90%25, 60%25)" transform="rotate(72)"%3E%3C/use%3E%3Cuse href="%23slice" stroke="none" fill="hsl(108, 90%25, 60%25)" transform="rotate(108)"%3E%3C/use%3E%3Cuse href="%23slice" stroke="none" fill="hsl(144, 90%25, 60%25)" transform="rotate(144)"%3E%3C/use%3E%3Cuse href="%23slice" stroke="none" fill="hsl(180, 90%25, 60%25)" transform="rotate(180)"%3E%3C/use%3E%3Cuse href="%23slice" stroke="none" fill="hsl(216, 90%25, 60%25)" transform="rotate(216)"%3E%3C/use%3E%3Cuse href="%23slice" stroke="none" fill="hsl(252, 90%25, 60%25)" transform="rotate(252)"%3E%3C/use%3E%3Cuse href="%23slice" stroke="none" fill="hsl(288, 90%25, 60%25)" transform="rotate(288)"%3E%3C/use%3E%3Cuse href="%23slice" stroke="none" fill="hsl(324, 90%25, 60%25)" transform="rotate(324)"%3E%3C/use%3E%3C/g%3E%3Cuse href="%23wheel" x="50" y="50"%3E%3C/use%3E%3Cuse href="%23wheel" x="-50" y="50"%3E%3C/use%3E%3Cuse href="%23wheel" x="50" y="-50"%3E%3C/use%3E%3Cuse href="%23wheel" x="-50" y="-50"%3E%3C/use%3E%3C/svg%3E'),
+        hsl(0, 0%, 0%);
+    background-size: 50px;
+}
+
+svg {
+    max-width: 300px;
+    width: 90vw;
+    height: auto;
+}
