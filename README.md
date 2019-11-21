@@ -143,6 +143,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Holy Bucket](https://codepen.io/borntofrappe/pen/abbQgOp)|Create an illustration inspired by [this video on generative data visualizations](https://www.learnwithjason.dev/generative-data-visualization-design-and-planning).|16th November 2019|
 |[SVG CodePen Map](https://codepen.io/borntofrappe/full/yLLZBPR)|Recreate and animate the graphic shown in the [topics section for maps](https://codepen.io/topic/map/picks), with SVG syntax and anime.js.|18th November 2019|
 |[SVG Life's Wheel](https://codepen.io/borntofrappe/pen/eYYxLPe)|Inspired by the semi-popular board game create a spin-able wheel with SVG syntax.|19th-20th November 2019|
+|[SVG Faux Conic Gradient](https://codepen.io/borntofrappe/pen/vYYMENR)|Use SVG syntax to fake a conic gradient by repeating a series of slices around the center.|21st November 2019|
 
 ### UI UX
 
