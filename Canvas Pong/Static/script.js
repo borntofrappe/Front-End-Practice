@@ -31,7 +31,7 @@ const ball = {
 
 // DRAWING
 // paddles
-context.fillStyle = 'hsl(180, 80%, 50%)';
+context.fillStyle = 'hsl(150, 80%, 50%)';
 context.fillRect(paddleLeft.x, paddleLeft.y, PADDLE_WIDTH, PADDLE_HEIGHT);
 context.fillRect(paddleRight.x, paddleRight.y, PADDLE_WIDTH, PADDLE_HEIGHT);
 
