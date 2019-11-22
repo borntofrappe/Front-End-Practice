@@ -73,6 +73,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[JS Custom Tooltip Component](https://codepen.io/borntofrappe/pen/QRzNqE)|Practice with the Web Component API to create anchor link elements equipped with a tooltip.|31st May 2019|
 |[JS Canvas Clock](https://codepen.io/borntofrappe/pen/RmXayo)|Draw a few shapes to highlight the current number of hours, minutes and seconds.|7th June 2019|
 |[JS Animation F1 Gap](https://codepen.io/borntofrappe/pen/dBbYwz)|Use the Web Animation API animate two icons representing F1 vehicles to highlight their hypothetical gap.|9th June 2019|
+|[Canvas Pong]()|Dive into the Canvas API by creating an endless game of pong in which the paddles are moved automatically.|22nd November|
 
 ### JS Frameworks
 
