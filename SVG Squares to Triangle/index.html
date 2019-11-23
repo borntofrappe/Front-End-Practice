@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>SVG Triangle</title>
+    </head>
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="200" height="200">
+            <defs>
+                <!-- square repeated throughout the project -->
+                <rect id="square" width="50" height="50" />
+                <mask id="mask--triangle">
+                    <use href="#square" fill="hsl(0, 0%, 100%)" transform="rotate(30)" />
+                    <use href="#square" fill="hsl(0, 0%, 0%)" transform="translate(0 50) rotate(-30)" />
+                </mask>
+                <use id="triangle" href="#square" mask="url(#mask--triangle)" />
+            </defs>
+            <use fill="hsl(0, 0%, 100%)" href="#triangle" />
+            <path d="M 0 0 h 50 v 50 h -50 z" stroke="hsl(0, 0%, 100%)" stroke-width="2" fill="none" stroke-dasharray="200" stroke-dashoffset="200" />
+        </svg>
+
+        <div class="details hidden">
+            <p></p>
+            <button>Pause</button>
+        </div>
+
+        <script src="https://unpkg.com/animejs@3.1.0/lib/anime.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
