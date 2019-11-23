@@ -1,6 +1,6 @@
 # SVG Squares to Triangle
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/pen/NWWVWMY)
 
 ## Goal
 

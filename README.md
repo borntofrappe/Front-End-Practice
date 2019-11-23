@@ -145,7 +145,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG CodePen Map](https://codepen.io/borntofrappe/full/yLLZBPR)|Recreate and animate the graphic shown in the [topics section for maps](https://codepen.io/topic/map/picks), with SVG syntax and anime.js.|18th November 2019|
 |[SVG Life's Wheel](https://codepen.io/borntofrappe/pen/eYYxLPe)|Inspired by the semi-popular board game create a spin-able wheel with SVG syntax.|19th-20th November 2019|
 |[SVG Faux Conic Gradient](https://codepen.io/borntofrappe/pen/vYYMENR)|Use SVG syntax to fake a conic gradient by repeating a series of slices around the center.|21st November 2019|
-|[SVG Squares to Triangle]()|Explain how to draw a triangle by using a square and a mask element, with SVG syntax and anime.js.|23rd November 2019|
+|[SVG Squares to Triangle](https://codepen.io/borntofrappe/pen/NWWVWMY)|Explain how to draw a triangle by using a square and a mask element, with SVG syntax and anime.js.|23rd November 2019|
 
 ### UI UX
 
