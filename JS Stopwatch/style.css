@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Nunito", sans-serif;
+    background: hsl(0, 0%, 95%);
+}
+.container {
+    margin: 1rem auto;
+    max-width: 350px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container > * + *,
+.stopwatch > * + *,
+article > * + * {
+    margin-top: 1.5rem;
+}
+.stopwatch {
+    margin: 1rem auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+.controls {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.controls button {
+    padding: 0.5rem;
+    background: none;
+    border: 1px solid currentColor;
+    width: 0;
+    flex-grow: 1;
+}
+.controls button + button {
+    border-left: none;
+}
+.controls button:first-of-type {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.controls button:last-of-type {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+article {
+    line-height: 1.5;
+    counter-set: custom-counter;
+    counter-increment: custom-counter;
+    background: hsl(0, 0%, 100%);
+    box-shadow: 0 1px 10px -5px hsla(0, 0%, 0%, 0.2);
+    padding: 1rem;
+}
+article:before {
+    content: "#" counter(custom-counter);
+}
+
+code {
+    font-family: monospace;
+    font-size: 0.9rem;
+    background: hsl(0, 0%, 20%);
+    color: hsl(0, 0%, 100%);
+    padding: 0.1rem 0.25rem;
+}

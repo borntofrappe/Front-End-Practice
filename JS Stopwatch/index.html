@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>JS Stopwatch</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Stopwatch</h1>
+            <p><strong>Goal</strong>: try to describe how a stopwatch can be developed in vanilla JavaScript</p>
+
+            <article class="stopwatch stopwatch--interval">
+                <p>Incrementing a counter variable with <code>setInterval</code></p>
+                <h1><span id="minutes">00</span>:<span id="seconds">00</span>.<span id="milliseconds">000</span></h1>
+                <section class="controls">
+                    <button class="btn">Start</button>
+                    <button class="btn">Pause</button>
+                    <button class="btn">Stop</button>
+                </section>
+
+                <p><strong>Issue</strong>: <code>setInterval</code> alone is not able to update the counter variable with the necessary frequency</p>
+            </article>
+
+            <article class="stopwatch stopwatch--date">
+                <p>Using the <code>Date</code> object in conjunction with <code>setInterval</code></p>
+                <h1><span id="minutes">00</span>:<span id="seconds">00</span>.<span id="milliseconds">000</span></h1>
+                <section class="controls">
+                    <button class="btn">Start</button>
+                    <button class="btn">Pause</button>
+                    <button class="btn">Stop</button>
+                </section>
+            </article>
+
+            <article class="stopwatch stopwatch--animation">
+                <p>Using the <code>Date</code> object alongside <code>requestAnimationFrame</code></p>
+                <h1><span id="minutes">00</span>:<span id="seconds">00</span>.<span id="milliseconds">000</span></h1>
+                <section class="controls">
+                    <button class="btn">Start</button>
+                    <button class="btn">Pause</button>
+                    <button class="btn">Stop</button>
+                </section>
+            </article>
+        </div>
+    </body>
+</html>
