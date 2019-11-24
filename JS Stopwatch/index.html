@@ -9,36 +9,38 @@
     </head>
     <body>
         <div class="container">
-            <h1>Stopwatch</h1>
-            <p><strong>Goal</strong>: try to describe how a stopwatch can be developed in vanilla JavaScript</p>
+            <h1>Stopwatch(es)</h1>
+            <p><strong>Goal</strong>: describe how to develop (or not) a stopwatch with vanilla JavaScript</p>
 
             <article class="stopwatch stopwatch--counter">
-                <p>Incrementing a counter variable with <code>setInterval</code></p>
+                <p>Incrementing a counter variable with <code>setInterval</code>:</p>
                 <h1><span id="minutes">00</span>:<span id="seconds">00</span>.<span id="milliseconds">000</span></h1>
                 <section class="controls">
                     <button class="controls__start">Start</button>
                     <button class="controls__stop">Stop</button>
                 </section>
 
-                <p><strong>Issue</strong>: <code>setInterval</code> alone is not able to update the counter variable with the necessary frequency</p>
+                <p><strong>Issue</strong>: <code>setInterval</code> alone is not able to update the counter variable with the necessary frequency<./p></p>
             </article>
 
             <article class="stopwatch stopwatch--interval">
-                <p>Using the <code>Date</code> object in conjunction with <code>setInterval</code></p>
+                <p>Using the <code>Date</code> object in conjunction with <code>setInterval</code>:</p>
                 <h1><span id="minutes">00</span>:<span id="seconds">00</span>.<span id="milliseconds">000</span></h1>
                 <section class="controls">
                     <button class="controls__start">Start</button>
                     <button class="controls__stop">Stop</button>
                 </section>
+                <p>Regardless of the interval's frequency, comparing two date objects provides the actual lapse.</p>
             </article>
 
-            <article class="stopwatch stopwatch--animation">
-                <p>Using the <code>Date</code> object alongside <code>requestAnimationFrame</code></p>
+            <article class="stopwatch stopwatch--request">
+                <p>Using the <code>Date</code> object alongside <code>requestAnimationFrame</code>:</p>
                 <h1><span id="minutes">00</span>:<span id="seconds">00</span>.<span id="milliseconds">000</span></h1>
                 <section class="controls">
                     <button class="controls__start">Start</button>
                     <button class="controls__stop">Stop</button>
                 </section>
+                <p>Just an experiment, to see how it'd work with a different function.</p>
             </article>
         </div>
 

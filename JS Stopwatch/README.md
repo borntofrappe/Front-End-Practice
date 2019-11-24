@@ -1,6 +1,6 @@
 # JS Stopwatch
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/ExxzXKr)
 
 ## Goal
 

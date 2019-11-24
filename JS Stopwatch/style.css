@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono|Source+Sans+Pro:400,700&display=swap");
 
 * {
     box-sizing: border-box;
@@ -9,8 +9,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Nunito", sans-serif;
     background: hsl(0, 0%, 95%);
+    font-family: "Source Sans Pro", sans-serif;
 }
 .container {
     margin: 1rem auto;
@@ -69,9 +69,7 @@ article:before {
 }
 
 code {
-    font-family: monospace;
-    font-size: 0.9rem;
-    background: hsl(0, 0%, 20%);
-    color: hsl(0, 0%, 100%);
-    padding: 0.1rem 0.25rem;
+    font-family: "Fira Mono", monospace;
+    font-size: 1rem;
+    border-bottom: 2px dotted hsl(0, 0%, 5%);
 }
