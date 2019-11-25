@@ -74,7 +74,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[JS Canvas Clock](https://codepen.io/borntofrappe/pen/RmXayo)|Draw a few shapes to highlight the current number of hours, minutes and seconds.|7th June 2019|
 |[JS Animation F1 Gap](https://codepen.io/borntofrappe/pen/dBbYwz)|Use the Web Animation API animate two icons representing F1 vehicles to highlight their hypothetical gap.|9th June 2019|
 |[Canvas Pong](https://codepen.io/borntofrappe/pen/QWWPBrV)|Dive into the Canvas API by creating an endless game of pong in which the paddles are moved automatically.|22nd November|
-|[Canvas Telescope]()|Draw a starry sky and animate a clip to create an interactive telescope following a mouse cursor.|23rd-24th November|
+|[Canvas Clip](https://codepen.io/borntofrappe/pen/wvvLwLG)|Experiment with the Canvas API and specifically the possibility to clip parts of a canvas to show a subset of existing elements.|23rd-25th November|
 
 ### JS Frameworks
 

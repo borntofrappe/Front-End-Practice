@@ -1,6 +1,6 @@
 # Canvas Clip
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/wvvLwLG)
 
 ## Goal
 
