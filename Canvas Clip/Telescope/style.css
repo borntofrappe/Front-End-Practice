@@ -1,3 +1,4 @@
+/* absolute position to have the two elements overlap */
 canvas {
     display: block;
     position: absolute;
