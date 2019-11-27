@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
 }
+/* center in the viewport */
 body {
     min-height: 100vh;
     display: flex;
@@ -12,9 +13,12 @@ body {
     background: hsl(240, 61%, 8%);
 }
 svg {
+    display: block;
     width: 350px;
     height: auto;
 }
+
+/* CSS animation picked up by the slices */
 @keyframes scale {
     to {
         transform: scale(1);

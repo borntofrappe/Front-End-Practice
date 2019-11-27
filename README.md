@@ -148,7 +148,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Life's Wheel](https://codepen.io/borntofrappe/pen/eYYxLPe)|Inspired by the semi-popular board game create a spin-able wheel with SVG syntax.|19th-20th November 2019|
 |[SVG Faux Conic Gradient](https://codepen.io/borntofrappe/pen/vYYMENR)|Use SVG syntax to fake a conic gradient by repeating a series of slices around the center.|21st November 2019|
 |[SVG Squares to Triangle](https://codepen.io/borntofrappe/pen/NWWVWMY)|Explain how to draw a triangle by using a square and a mask element, with SVG syntax and anime.js.|23rd November 2019|
-|[SVG Colorful Loader]()|Taking inspiration from [this design](https://codepen.io/borntofrappe/pen/vYYMENR) create a flexible loader with SVG syntax and dat.gui.js.|27th November 2019|
+|[SVG Colorful Loader](https://codepen.io/borntofrappe/pen/mddNRpy)|Taking inspiration from [this design](https://codepen.io/borntofrappe/pen/vYYMENR) create a flexible loader with SVG syntax and dat.gui.js.|27th November 2019|
 
 ### UI UX
 
