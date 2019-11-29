@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+:root {
+    --animation-duration: 5s;
+}
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: hsl(0, 0%, 90%);
+    color: hsl(0, 0%, 10%);
+}
+svg {
+    display: block;
+    width: 60vmin;
+    height: auto;
+}
+
+#rotate {
+    animation: rotate var(--animation-duration) linear infinite;
+}
+
+#offset {
+    animation: removeOffset var(--animation-duration) cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(-1turn);
+    }
+}
+
+@keyframes removeOffset {
+    50% {
+        stroke-dashoffset: 0;
+    }
+}
