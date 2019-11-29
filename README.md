@@ -149,6 +149,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Faux Conic Gradient](https://codepen.io/borntofrappe/pen/vYYMENR)|Use SVG syntax to fake a conic gradient by repeating a series of slices around the center.|21st November 2019|
 |[SVG Squares to Triangle](https://codepen.io/borntofrappe/pen/NWWVWMY)|Explain how to draw a triangle by using a square and a mask element, with SVG syntax and anime.js.|23rd November 2019|
 |[SVG Colorful Loader](https://codepen.io/borntofrappe/pen/mddNRpy)|Taking inspiration from [this design](https://codepen.io/borntofrappe/pen/vYYMENR) create a flexible loader with SVG syntax and dat.gui.js.|27th November 2019|
+|[SVG Transform Origin](https://codepen.io/borntofrappe/pen/MWWNxRV)|Replicate the graphic highlighted in [this inspiring tweet](https://twitter.com/MagicPi2/status/1200131882203197440), moving the origin of the transform property through several group elements.|28th November 2019|
 
 ### UI UX
 
