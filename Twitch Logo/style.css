@@ -1,20 +1,70 @@
-/* center in the viewport */
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
+/* colors used throughout the project */
+:root {
+    --background: #18181b;
+    --div: #ffffff;
+    --accent: #9147ff;
+}
+/* center in the viewport */
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #18181b;
+    background: var(--background);
 }
 div {
-    width: 100px;
-    height: 100px;
-    --theme-color: #9147ff;
-    background: #ffffff;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    filter: drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
+        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
+        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent)
+        drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent);
+    transition: all 0.2s ease-in-out;
+}
+div:before,
+div:after {
+    z-index: -5;
+    background: var(--div);
+}
+/* div:before {
+    content: "";
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    top: 100%;
+    left: 25%;
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+} */
+
+div:after,
+div:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+}
+div:after {
+    clip-path: polygon(10% 10%, 90% 10%, 90% 60%, 70% 80%, 50% 80%, 30% 100%, 30% 80%, 10% 80%);
+}
+div:before {
+    background: var(--accent);
+    transform: scale(1.2);
+    clip-path: polygon(10% 10%, 90% 10%, 90% 60%, 70% 80%, 50% 80%, 30% 100%, 30% 80%, 10% 80%);
+}
+
+div:hover {
+    transform: translate(10px, -10px);
+    filter: drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
+        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
+        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
+        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent));
 }
