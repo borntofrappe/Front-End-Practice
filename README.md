@@ -214,4 +214,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Ripple Effect](https://codepen.io/borntofrappe/pen/XWWgQBJ)|Tinker with Pug and SVG syntax to create an entertaining animation.|27th October 2019|
 |[Zdog Dice](https://codepen.io/borntofrappe/pen/WNNJxwM)|Use the pseudo-3d engine to draw a dice endlessly rolling around its center.|6th November 2019|
 |[Zdog & Anime.js Dice](https://codepen.io/borntofrappe/pen/PooeQvG)|Update the Zdog Dice project to roll the dice with the animation library and following user input.|7th November 2019|
-|[Twitch Logo]()|Recreate Twitch's logo with a single div, `clip-path` and `filter` properties.|30th November 2019|
+|[CSS Twitch's Logo](https://codepen.io/borntofrappe/pen/qBEWeLE)|Recreate Twitch's logo with a single div and a few CSS properties.|30th November - 1st December 2019|

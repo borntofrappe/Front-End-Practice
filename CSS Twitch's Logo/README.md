@@ -1,10 +1,10 @@
 # Twitch's Logo
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/qBEWeLE)
 
 ## Goal
 
-Recreate Twitch's logo with a single div, `clip-path` and pseudo elements.
+Recreate Twitch's logo with a single div and a few CSS properties.
 
 ## Lessons learned
 
