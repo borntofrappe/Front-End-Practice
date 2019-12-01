@@ -19,29 +19,17 @@ body {
     background: var(--background);
 }
 div {
+    /* square */
     width: 150px;
     height: 150px;
+    /* position relative to absolute position the pseudo elements */
     position: relative;
+    /* uh. didn't know shadows with the filter property could be actually stacked */
     filter: drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
         drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
-        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent)
-        drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent) drop-shadow(-1px 1px transparent);
-    transition: all 0.2s ease-in-out;
+        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
+        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent));
 }
-div:before,
-div:after {
-    z-index: -5;
-    background: var(--div);
-}
-/* div:before {
-    content: "";
-    position: absolute;
-    width: 25%;
-    height: 25%;
-    top: 100%;
-    left: 25%;
-    clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
-} */
 
 div:after,
 div:before {
@@ -52,19 +40,26 @@ div:before {
     top: 0%;
     left: 0%;
 }
-div:after {
-    clip-path: polygon(10% 10%, 90% 10%, 90% 60%, 70% 80%, 50% 80%, 30% 100%, 30% 80%, 10% 80%);
-}
 div:before {
+    clip-path: polygon(7.5% 0%, 92.5% 0%, 92.5% 62.5%, 70% 82.5%, 50% 82.5%, 30% 100%, 30% 82.5%, 7.5% 82.5%);
     background: var(--accent);
-    transform: scale(1.2);
-    clip-path: polygon(10% 10%, 90% 10%, 90% 60%, 70% 80%, 50% 80%, 30% 100%, 30% 80%, 10% 80%);
+    transform: scale(1.25);
 }
 
-div:hover {
-    transform: translate(10px, -10px);
-    filter: drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
-        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
-        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent))
-        drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent)) drop-shadow(-1px 1px var(--accent));
+div:after {
+    background: var(--div);
+    clip-path: polygon(7.5% 0%, 40% 0%, 40% 50%, 50% 50%, 50% 20%, 40% 20%, 40% 0%, 65% 0%, 65% 50%, 75% 50%, 75% 20%, 65% 20%, 65% 0%, 92.5% 0%, 92.5% 62.5%, 70% 82.5%, 50% 82.5%, 30% 100%, 30% 82.5%, 7.5% 82.5%);
+    animation: blink 4s ease-in-out infinite;
+}
+
+@keyframes blink {
+    45%,
+    55% {
+        clip-path: polygon(7.5% 0%, 40% 0%, 40% 35%, 50% 35%, 50% 35%, 40% 35%, 40% 0%, 65% 0%, 65% 35%, 75% 35%, 75% 35%, 65% 35%, 65% 0%, 92.5% 0%, 92.5% 62.5%, 70% 82.5%, 50% 82.5%, 30% 100%, 30% 82.5%, 7.5% 82.5%);
+    }
+    40%,
+    50%,
+    60% {
+        clip-path: polygon(7.5% 0%, 40% 0%, 40% 50%, 50% 50%, 50% 20%, 40% 20%, 40% 0%, 65% 0%, 65% 50%, 75% 50%, 75% 20%, 65% 20%, 65% 0%, 92.5% 0%, 92.5% 62.5%, 70% 82.5%, 50% 82.5%, 30% 100%, 30% 82.5%, 7.5% 82.5%);
+    }
 }
