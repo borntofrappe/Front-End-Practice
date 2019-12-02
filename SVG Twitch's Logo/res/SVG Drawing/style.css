@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/* colors used throughout the project */
+:root {
+    --background: #18181b;
+    --div: #ffffff;
+    --accent: #9147ff;
+}
+/* center in the viewport */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--background);
+}
+
+svg {
+    max-width: 400px;
+    width: 90vw;
+    height: auto;
+    display: block;
+}
+
+svg .eyes {
+    animation: blink 4s ease-in-out infinite;
+}
+
+@keyframes blink {
+    45%,
+    55% {
+        transform: scaleY(0);
+    }
+    40%,
+    50%,
+    60% {
+        transform: scaleY(1);
+    }
+}
