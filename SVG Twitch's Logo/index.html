@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>SVG Twitch's Logo</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <svg viewBox="-50 -50 100 100" width="200" height="200">
+            <mask id="mask">
+                <circle r="50" fill="hsl(0, 0%, 100%)" />
+                <!--
+                    move this group horizontally in the [-8, 8] range
+                    vertically [-4, 4]
+
+                    by default nudge the eyes to the right
+                -->
+                <g id="eyesight" transform="translate(4 0)">
+                    <g fill="hsl(0, 0%, 0%)">
+                        <g transform="translate(0 -4)">
+                            <!-- scale this group to have rectangles scale from their vertical center -->
+                            <g id="eyes">
+                                <rect x="-6" y="-6" width="4" height="12" />
+                                <rect x="2" y="-6" width="4" height="12" />
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </mask>
+            <!-- circle used as a background -->
+            <circle r="50" fill="hsl(240, 6%, 5%)" />
+            <g stroke="none">
+                <!-- path describing the outline of twitch's logo
+                they share a similar syntax, but the first one "protrudes" to the bottom left to create the fake shadow
+                -->
+                <path fill="currentColor" d="M -20 -20 h 40 v 30 l -15 15 h -10 l -10 10 v -10 h -10 v -40" />
+                <!-- white outline using the mask to have the theme color visible through the shape -->
+                <g mask="url(#mask)">
+                    <path fill="hsl(0, 0%, 100%)" transform="scale(0.75)" d="M -20 -20 h 40 v 30 l -10 10 h -10 l -10 10 v -10 h -10" />
+                </g>
+            </g>
+        </svg>
+        <script src="script.js"></script>
+    </body>
+</html>
