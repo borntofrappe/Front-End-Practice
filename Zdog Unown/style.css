@@ -9,4 +9,5 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: hsl(300, 70%, 10%);
 }
