@@ -10,11 +10,12 @@ body {
     color: hsl(0, 0%, 15%);
     font-family: "Space Mono", monospace;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* svg background describing a line in morse code */
     background: url('data:image/svg+xml,%3Csvg opacity="0.25" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -5 140 10"%3E%3Cdefs%3E%3Cpath id="dot" transform="translate(0 0)" d="M 2.5 0 h 0" /%3E%3Cpath id="dash" transform="translate(0 0)" d="M 1.25 0 h 2.5" /%3E%3C/defs%3E%3Cg fill="none" stroke="%23000000" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"%3E%3Cuse x="0" href="%23dash" /%3E%3Cuse x="5" href="%23dot" /%3E%3Cuse x="10" href="%23dash" /%3E%3Cuse x="15" href="%23dot" /%3E%3Cuse x="25" href="%23dot" /%3E%3Cuse x="30" href="%23dot" /%3E%3Cuse x="35" href="%23dot" /%3E%3Cuse x="45" href="%23dash" /%3E%3Cuse x="50" href="%23dot" /%3E%3Cuse x="55" href="%23dot" /%3E%3Cuse x="65" href="%23dot" /%3E%3Cuse x="75" href="%23dot" /%3E%3Cuse x="80" href="%23dash" /%3E%3Cuse x="85" href="%23dash" /%3E%3Cuse x="90" href="%23dot" /%3E%3Cuse x="100" href="%23dot" /%3E%3Cuse x="110" href="%23dash" /%3E%3Cuse x="115" href="%23dot" /%3E%3C/g%3E%3C/svg%3E'),
         hsl(40, 30%, 90%);
-    flex-direction: column;
     background-size: 300px;
-    align-items: center;
 }
 
 table {
@@ -40,9 +41,10 @@ table td {
 }
 table td > svg {
     display: block;
-    height: 20px;
+    height: 1.5rem;
     width: auto;
 }
+
 table button {
     color: inherit;
     width: 30px;
@@ -59,6 +61,8 @@ table button svg {
     height: 100%;
     pointer-events: none;
 }
+
+/* substitute the default outline with a semitransparent shadow */
 table button:focus {
     outline: none;
 }
@@ -78,6 +82,7 @@ table button:focus:before {
     opacity: 0.4;
 }
 
+/* animation for the path elements */
 @keyframes removeOffset {
     to {
         stroke-dashoffset: 0;
