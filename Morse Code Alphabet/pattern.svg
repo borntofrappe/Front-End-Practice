@@ -1,0 +1,33 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="-10 -5 140 10">
+    <defs>
+        <path id="dot" transform="translate(0 0)" d="M 2.5 0 h 0" />
+        <path id="dash" transform="translate(0 0)" d="M 1.25 0 h 2.5" />
+
+    </defs>
+    <g fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+        <use x="0" href="#dash" />
+        <use x="5" href="#dot" />
+        <use x="10" href="#dash" />
+        <use x="15" href="#dot" />
+
+        <use x="25" href="#dot" />
+        <use x="30" href="#dot" />
+        <use x="35" href="#dot" />
+
+        <use x="45" href="#dash" />
+        <use x="50" href="#dot" />
+        <use x="55" href="#dot" />
+
+        <use x="65" href="#dot" />
+
+        <use x="75" href="#dot" />
+        <use x="80" href="#dash" />
+        <use x="85" href="#dash" />
+        <use x="90" href="#dot" />
+
+        <use x="100" href="#dot" />
+
+        <use x="110" href="#dash" />
+        <use x="115" href="#dot" />
+    </g>
+</svg>

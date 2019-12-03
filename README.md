@@ -216,3 +216,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Zdog Dice](https://codepen.io/borntofrappe/pen/WNNJxwM)|Use the pseudo-3d engine to draw a dice endlessly rolling around its center.|6th November 2019|
 |[Zdog & Anime.js Dice](https://codepen.io/borntofrappe/pen/PooeQvG)|Update the Zdog Dice project to roll the dice with the animation library and following user input.|7th November 2019|
 |[CSS Twitch's Logo](https://codepen.io/borntofrappe/pen/qBEWeLE)|Recreate Twitch's logo with a single div and a few CSS properties.|30th November - 1st December 2019|
+|[Morse Code Alphabet](https://codepen.io/borntofrappe/pen/bGNNRQb)|Display information connected to the morse alphabet with an interactive table element.|1st-4th December 2019|
