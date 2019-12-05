@@ -13,3 +13,9 @@ body {
         hsl(45, 80%, 30%);
     background-size: 100px;
 }
+svg {
+    display: block;
+    width: 90vw;
+    max-width: 600px;
+    height: auto;
+}
