@@ -3,11 +3,11 @@
     padding: 0;
     margin: 0;
 }
-/* center the canvas in the viewport */
+/* center the svg in the viewport */
 body {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: hsl(300, 70%, 10%);
+    background: hsl(45, 80%, 30%);
 }

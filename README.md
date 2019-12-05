@@ -215,4 +215,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Zdog Dice](https://codepen.io/borntofrappe/pen/WNNJxwM)|Use the pseudo-3d engine to draw a dice endlessly rolling around its center.|6th November 2019|
 |[Zdog & Anime.js Dice](https://codepen.io/borntofrappe/pen/PooeQvG)|Update the Zdog Dice project to roll the dice with the animation library and following user input.|7th November 2019|
 |[CSS Twitch's Logo](https://codepen.io/borntofrappe/pen/qBEWeLE)|Recreate Twitch's logo with a single div and a few CSS properties.|30th November - 1st December 2019|
-|[Zdog Unown]()|Create the pokemon-based alphabet through the pseudo 3D engine.|2nd December|
+|[Pokemon Alphabet]()|Recreate the alphabet based on the 26+ version of the popular pokemon unown, with SVG and Zdog.|2nd-5th December|
