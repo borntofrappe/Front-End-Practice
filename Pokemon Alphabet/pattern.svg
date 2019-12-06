@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" width="120" height="60">
+    <g fill="none" stroke="currentColor" stroke-width="2">
+        <g id="vertical-lines">
+            <path id="vertical-line" d="M 0 0 v 30" />
+            <use href="#vertical-line" x="40" />
+            <use href="#vertical-line" x="80" />
+            <use href="#vertical-line" x="120" />
+        </g>
+        <use href="#vertical-lines" x="20" y="30" />
+
+        <path id="horizontal-line" d="M 0 0 h 120" />
+        <use href="#horizontal-line" y="30" />
+        <use href="#horizontal-line" y="60" />
+    </g>
+</svg>

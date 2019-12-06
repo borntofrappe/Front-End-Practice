@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/* center the canvas in the viewport */
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' width='120' height='60'%3E%3Cg fill='none' stroke='hsl(0, 0%25, 0%25)' opacity='0.15' stroke-width='2'%3E%3Cg id='vertical-lines'%3E%3Cpath id='vertical-line' d='M 0 0 v 30' /%3E%3Cuse href='%23vertical-line' x='40' /%3E%3Cuse href='%23vertical-line' x='80' /%3E%3Cuse href='%23vertical-line' x='120' /%3E%3C/g%3E%3Cuse href='%23vertical-lines' x='20' y='30' /%3E%3Cpath id='horizontal-line' d='M 0 0 h 120' /%3E%3Cuse href='%23horizontal-line' y='30' /%3E%3Cuse href='%23horizontal-line' y='60' /%3E%3C/g%3E%3C/svg%3E"),
+        hsl(45, 80%, 30%);
+    background-size: 100px;
+}
