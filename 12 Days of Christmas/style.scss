@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css?family=Major+Mono+Display|Neuton&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-height: 100vh;
+    color: hsl(0, 0%, 100%);
+    background: hsl(0, 85%, 45%);
+    font-family: "Neuton", serif;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' opacity='0.1' viewBox='-100 -100 200 200' width='100' height='100'%3E%3Cg id='snowflake'%3E%3Cg opacity='0.5' fill='hsl(0, 0%25, 100%25)'%3E%3Ccircle cx='-35' cy='-25' r='3.5' /%3E%3Ccircle cx='30' cy='-40' r='2' /%3E%3Ccircle cx='-15' cy='35' r='2.5' /%3E%3Ccircle cx='25' cy='10' r='2' /%3E%3Crect transform='rotate(45)' x='-10' y='-10' width='20' height='20'/%3E%3Cpath d='M -20 0 a 12 12 0 0 1 -12 -12 12 12 0 0 1 -12 12 12 12 0 0 1 12 12 12 12 0 0 1 12 -12' /%3E%3Cpath transform='rotate(90)' d='M -20 0 a 12 12 0 0 1 -12 -12 12 12 0 0 1 -12 12 12 12 0 0 1 12 12 12 12 0 0 1 12 -12' /%3E%3Cpath transform='rotate(180)' d='M -20 0 a 12 12 0 0 1 -12 -12 12 12 0 0 1 -12 12 12 12 0 0 1 12 12 12 12 0 0 1 12 -12' /%3E%3Cpath transform='rotate(270)' d='M -20 0 a 12 12 0 0 1 -12 -12 12 12 0 0 1 -12 12 12 12 0 0 1 12 12 12 12 0 0 1 12 -12' /%3E%3C/g%3E%3Cg fill='none' stroke-width='2' stroke='hsl(0, 0%25, 100%25)'%3E%3Cpath d='M -30 0 h 60 m -30 -30 v 60' /%3E%3Cpath transform='rotate(45)' d='M -30 0 h 60 m -30 -30 v 60' /%3E%3C/g%3E%3C/g%3E%3Cuse href='%23snowflake' x='100' y='100' /%3E%3Cuse href='%23snowflake' x='100' y='-100' /%3E%3Cuse href='%23snowflake' x='-100' y='100' /%3E%3Cuse href='%23snowflake' x='-100' y='-100' /%3E%3C/svg%3E"),
+        linear-gradient(to bottom left, hsl(0, 85%, 45%), hsl(0, 90%, 35%));
+    background-size: 120px, 100%;
+    /* center the elements horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* display the cursor-svg in the top left corner */
+svg {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    width: 30px;
+    height: auto;
+    display: block;
+}
+/* animate the cursor-svg to fade out after the path element has been animated enough times to be annoying */
+svg {
+    animation: fadeOut 0.5s 10s forwards;
+
+    #offset {
+        animation: removeOffset 2s 5 ease-in-out;
+    }
+}
+@keyframes removeOffset {
+    37.5% {
+        stroke-dashoffset: 0;
+    }
+    75% {
+        stroke-dashoffset: var(--offset);
+    }
+}
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+/* replace the default list-style with a custom counter */
+ol {
+    list-style: none;
+    counter-reset: days-counter;
+    font-size: 2rem;
+    position: relative;
+}
+/* increment the custom counter */
+ol li {
+    counter-increment: days-counter;
+    /* center the content in the viewport */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-shadow: 0 1px 5px hsla(0, 0%, 0%, 0.8);
+    /* position relative to absolute position the pseudo element behind the text */
+    z-index: 5;
+}
+/* display the custom counter with the :before pseudo element, in the very center of the list item */
+ol li:before {
+    content: counter(days-counter);
+    z-index: -5;
+    position: absolute;
+    opacity: 0.5;
+    font-size: 15vh;
+    font-family: "Major Mono Display", monospace;
+    transform: translate(-50%, 0%);
+}
+/* added bonus, a more christmas-y selection */
+ol li::selection {
+    color: hsl(0, 0%, 100%);
+    background: hsl(130, 50%, 35%);
+}
+/* position the custom counter to the left/right for odd/even list items */
+ol li:nth-child(odd):before {
+    left: 0%;
+}
+ol li:nth-child(even):before {
+    left: 100%;
+}
+
+/* add position sticky and position each subsequent list item 7.5vh from the previous */
+ol li {
+    position: sticky;
+}
+/* ! have the list items occupy enough vertical space to cover (viewport - vertical offset)
+otherwise the elements would collapse to the top once the page reaches the last item
+*/
+@for $counter from 1 through 12 {
+    ol li:nth-child(#{$counter}) {
+        top: #{($counter - 1) * 7.5vh};
+        height: #{100vh - ($counter - 1) * 7.5vh};
+    }
+}
