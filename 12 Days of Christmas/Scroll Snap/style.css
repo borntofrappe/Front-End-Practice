@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Major+Mono+Display|Neuton&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-height: 100vh;
+    color: hsl(0, 0%, 100%);
+    background: hsl(0, 85%, 45%);
+    font-family: "Neuton", serif;
+}
+/* replace the default list-style with a custom counter */
+ol {
+    list-style: none;
+    counter-reset: days-counter;
+    font-size: 3rem;
+    /* to allow for scroll, fix the height of the container */
+    scroll-snap-type: y proximity;
+    overflow-y: scroll;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+/* increment the custom counter and add a snapping point on each list item */
+ol li {
+    counter-increment: days-counter;
+    scroll-snap-align: start;
+    background: linear-gradient(to bottom left, hsl(0, 85%, 45%), hsl(0, 90%, 35%));
+    height: 100vh;
+    /* center the content in the viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 1px 5px hsla(0, 0%, 0%, 0.8);
+    /* position relative to absolute position the pseudo element behind the text */
+    position: relative;
+    z-index: 5;
+}
+/* display the custom counter with the :before pseudo element, in the very center of the list item */
+ol li:before {
+    z-index: -5;
+    content: counter(days-counter);
+    opacity: 0.15;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50vh;
+    font-family: "Major Mono Display", monospace;
+}
+/* added bonus, a more christmas-y selection */
+ol li::selection {
+    color: hsl(0, 0%, 100%);
+    background: hsl(130, 50%, 35%);
+}
