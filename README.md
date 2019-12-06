@@ -131,7 +131,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Racing Loader](https://codepen.io/borntofrappe/pen/qBWqJYK)|Replicate [this design](https://dribbble.com/shots/3395665-F1-Aerodynamics) and animate the stroke's dashes to create a loading screen.|21st August 2019|
 |[SVG Pokemon Masters Loader](https://codepen.io/borntofrappe/pen/JjPJzBM)|Create a loading screen inspired by the mobile game Pokemon Masters.|29th August 2019|
 |[SVG React Rally Logo](https://codepen.io/borntofrappe/pen/KKPZWQK)|Recreate and animate the logo from [the Youtube channel of the React Rally conference](https://www.youtube.com/channel/UCXBhQ05nu3L1abBUGeQ0ahw).|5th September 2019|
-|[SVG Flashcard Loader](https://codepen.io/borntofrappe/pen/dybJxMv)|Recreate [this design](https://codepen.io/borntofrappe/full/yxExMw) with SVG syntax and a progress element.|6th September 2019|
+|[SVG Flashcard Loader](https://codepen.io/borntofrappe/pen/dybJxMv)|Recreate [this design](https://codepen.io/borntofrappe/pen/yxExMw) with SVG syntax and a progress element.|6th September 2019|
 |[SVG Stamp](https://codepen.io/borntofrappe/pen/OJLQqwp)|Create a stamp inspired by [this design](https://dribbble.com/shots/5888593-Damavand) with SVG syntax and specifically pattern and mask elements.|8-9th September 2019|
 |[Small & Scalable Vector Graphic](https://codepen.io/borntofrappe/pen/LYPdNvg)|Starting from the **SVG Stamp** project create a small, but scalable illustration in a 100x150 pixel container.|9th September 2019|
 |[SVG Toggle](https://codepen.io/borntofrappe/pen/aboPapm)|Practice with SVG syntax to recreate [this inspiring toggle](https://dribbble.com/shots/5321869-Playing-with-InVision-Studio).|21st-22nd September 2019|
@@ -144,7 +144,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Monopoly Crawler](https://codepen.io/borntofrappe/pen/RwwJmRq)|Couple SVG syntax with the pseudo-3d engine _Zdog_ and the animation library _anime.js_ to explore a monopoly board one step at a time.|9th November 2019|
 |[SVG Android Lollipop](https://codepen.io/borntofrappe/pen/KKKGjvM)|Practice with SVG syntax to create the assets displayed in one of Android's "hidden games".|14th November 2019|
 |[SVG Holy Bucket](https://codepen.io/borntofrappe/pen/abbQgOp)|Create an illustration inspired by [this video on generative data visualizations](https://www.learnwithjason.dev/generative-data-visualization-design-and-planning).|16th November 2019|
-|[SVG CodePen Map](https://codepen.io/borntofrappe/full/yLLZBPR)|Recreate and animate the graphic shown in the [topics section for maps](https://codepen.io/topic/map/picks), with SVG syntax and anime.js.|18th November 2019|
+|[SVG CodePen Map](https://codepen.io/borntofrappe/pen/yLLZBPR)|Recreate and animate the graphic shown in the [topics section for maps](https://codepen.io/topic/map/picks), with SVG syntax and anime.js.|18th November 2019|
 |[SVG Life's Wheel](https://codepen.io/borntofrappe/pen/eYYxLPe)|Inspired by the semi-popular board game create a spin-able wheel with SVG syntax.|19th-20th November 2019|
 |[SVG Faux Conic Gradient](https://codepen.io/borntofrappe/pen/vYYMENR)|Use SVG syntax to fake a conic gradient by repeating a series of slices around the center.|21st November 2019|
 |[SVG Squares to Triangle](https://codepen.io/borntofrappe/pen/NWWVWMY)|Explain how to draw a triangle by using a square and a mask element, with SVG syntax and anime.js.|23rd November 2019|
@@ -215,4 +215,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Zdog Dice](https://codepen.io/borntofrappe/pen/WNNJxwM)|Use the pseudo-3d engine to draw a dice endlessly rolling around its center.|6th November 2019|
 |[Zdog & Anime.js Dice](https://codepen.io/borntofrappe/pen/PooeQvG)|Update the Zdog Dice project to roll the dice with the animation library and following user input.|7th November 2019|
 |[CSS Twitch's Logo](https://codepen.io/borntofrappe/pen/qBEWeLE)|Recreate Twitch's logo with a single div and a few CSS properties.|30th November - 1st December 2019|
-|[Pokemon Alphabet]()|Recreate the alphabet based on the 26+ version of the popular pokemon unown, with SVG and Zdog.|2nd-5th December|
+|[Pokemon Alphabet](https://codepen.io/borntofrappe/pen/ExajrPO)|Recreate the alphabet based on the 26+ version of the popular pokemon unown with SVG syntax and a touch of Zdog.|2nd-5th December|

@@ -1,4 +1,4 @@
-const { Illustration, Ellipse, Shape, Group, TAU } = Zdog;
+const { Illustration, Ellipse, Shape, Group } = Zdog;
 
 const element = document.querySelector('canvas');
 
@@ -17,6 +17,7 @@ new Ellipse({
     stroke: 30,
     color: '#fff',
 });
+
 new Ellipse({
     addTo: letter,
     diameter: 70,
@@ -29,7 +30,6 @@ new Ellipse({
     stroke: 15,
     color: 'hsl(0, 0%, 15%)',
 });
-
 
 const leg = new Shape({
     addTo: letter,
@@ -45,7 +45,6 @@ const leg = new Shape({
     ],
     closed: false,
 });
-
 leg.copy({
     scale: { x: -1}
 })
@@ -73,7 +72,6 @@ new Shape({
 });
 
 
-// animate the shape to bobble up and down
 let counter = 1;
 function animate() {
     counter = counter >= 6.28 ? 0 : counter + 0.05;
