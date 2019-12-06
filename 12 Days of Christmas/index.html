@@ -10,7 +10,6 @@
     <body>
         <!-- my beloved css sent to me
             a custom counter
-            a pseudo element
             position sticky
             nth-child selector
             and an entry for this week's cpc
@@ -29,5 +28,14 @@
             <li>Eleven pipers piping</li>
             <li>Twelve drummers drumming</li>
         </ol>
+
+        <!-- svg describing a cursor to suggest scrolling -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 32" width="44" height="64">
+            <g fill="none" stroke-width="2" stroke="currentColor">
+                <!-- describe the offset through a custom property to animate the path to that value (its opposite since it's more entertaining) -->
+                <path style="--offset: -5;" id="offset" d="M 10 8 v 5" stroke-linecap="round" stroke-dasharray="5" stroke-dashoffset="5" />
+                <rect width="20" height="30" rx="10" />
+            </g>
+        </svg>
     </body>
 </html>
