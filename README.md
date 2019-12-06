@@ -218,4 +218,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[CSS Twitch's Logo](https://codepen.io/borntofrappe/pen/qBEWeLE)|Recreate Twitch's logo with a single div and a few CSS properties.|30th November - 1st December 2019|
 |[Morse Code Alphabet](https://codepen.io/borntofrappe/pen/bGNNRQb)|Display information connected to the morse alphabet with an interactive table element.|1st-3rd December 2019|
 |[Pokemon Alphabet](https://codepen.io/borntofrappe/pen/ExajrPO)|Recreate the alphabet based on the 26+ version of the popular pokemon unown with SVG syntax and a touch of Zdog.|2nd-5th December|
-|[12 Days of Christmas]()|Practice with CSS selectors and property-value pairs to create an entry for the weekly codepen challenge.|6th December|
+|[12 Days of Christmas](https://codepen.io/borntofrappe/pen/NWPGvjW)|Practice with CSS selectors and property-value pairs to create an entry for the weekly #codepenchallenge.|6th December|
