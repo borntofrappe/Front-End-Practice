@@ -1,6 +1,6 @@
 # SVG Regular Polygons
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/BayoGMq)
 
 ## Goal
 
