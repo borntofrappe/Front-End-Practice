@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-height: 100vh;
+    background: hsl(0, 0%, 100%);
+}
+form {
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    width: 80vw;
+}
+form > * + * {
+    margin-top: 1rem;
+}
+svg {
+    margin: 0 auto 1rem;
+    display: block;
+    width: 50%;
+    height: 50%;
+}
