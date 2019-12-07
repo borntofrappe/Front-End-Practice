@@ -3,23 +3,34 @@
     padding: 0;
     margin: 0;
 }
+/* display the graphic and input of type range in the center of the viewport */
 body {
-    min-height: 100vh;
-    background: hsl(0, 0%, 100%);
-}
-form {
-    margin: 2rem auto;
     display: flex;
     flex-direction: column;
-    max-width: 500px;
-    width: 80vw;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: hsl(0, 0%, 90%);
+}
+form {
+    padding: 3rem 4rem;
+    background: hsl(0, 0%, 100%);
+    box-shadow: 0 0 5px -2px hsla(0, 0%, 0%, 0.5);
 }
 form > * + * {
     margin-top: 1rem;
 }
-svg {
-    margin: 0 auto 1rem;
+form svg {
     display: block;
-    width: 50%;
-    height: 50%;
+    width: 200px;
+    height: 200px;
+}
+form h1 {
+    font-family: monospace;
+    font-size: 1.25rem;
+    font-weight: normal;
+    text-align: center;
+}
+form input[type="range"] {
+    width: 100%;
 }
