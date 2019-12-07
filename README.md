@@ -151,6 +151,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Colorful Loader](https://codepen.io/borntofrappe/pen/mddNRpy)|Taking inspiration from [this design](https://codepen.io/borntofrappe/pen/vYYMENR) create a flexible loader with SVG syntax and dat.gui.js.|27th November 2019|
 |[SVG Transform Origin](https://codepen.io/borntofrappe/pen/MWWNxRV)|Replicate the graphic highlighted in [this inspiring tweet](https://twitter.com/MagicPi2/status/1200131882203197440), moving the origin of the transform property through several group elements.|28th November 2019|
 |[SVG Twitch's Logo](https://codepen.io/borntofrappe/pen/YzPzvMY)|Improve [this CSS-only project](https://codepen.io/borntofrappe/full/qBEWeLE) using SVG syntax and enough JavaScript to make it interactive.|2nd December 2019|
+|[SVG Regular Polygons]()|Draw a series of regular polygons using a single path, group elements and recursion.|7th December 2019|
 
 ### UI UX
 
