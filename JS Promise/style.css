@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300i,800,800i&display=swap");
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /* center in the viewport */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: hsl(0, 0%, 100%);
+    font-family: "Open Sans", sans-serif;
+}
+
+/* the button's colors is picked up by the svg to color the smiling face */
+button {
+    margin: 1.5rem 0 4rem;
+    --box-shadow-width: 0.25px;
+    font-family: inherit;
+    font-style: italic;
+    position: relative;
+    font-weight: 300;
+    color: hsl(185, 40%, 30%);
+    border: none;
+    box-shadow: 0 0 0 var(--box-shadow-width) currentColor;
+    background: linear-gradient(to bottom, hsl(0, 0%, 100%), hsl(200, 90%, 90%));
+    /* substitute the default outline with a different color for te border */
+    outline: none;
+}
+button:focus {
+    --box-shadow-width: 1px;
+}
+button svg {
+    width: 200px;
+    height: auto;
+    display: block;
+}
+/* add a striped bar to the left of the button */
+button:before {
+    position: absolute;
+    content: "";
+    right: 100%;
+    top: 50%;
+    height: 100%;
+    width: 2.5em;
+    background: repeating-linear-gradient(45deg, hsl(185, 40%, 30%) 0px, hsl(185, 40%, 30%) 20px, hsl(0, 0%, 100%) 20px, hsl(0, 0%, 100%) 22px, hsl(0, 50%, 40%) 22px, hsl(0, 50%, 40%) 47px, hsl(0, 0%, 100%) 47px, hsl(0, 0%, 100%) 49px);
+    transform: translate(-0.5em, -50%);
+}
+/* push the text describing the button to the bottom center of the vector graphic */
+button span {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0.5em);
+    font-size: 2em;
+    white-space: nowrap;
+}
+
+/* when the button is getting clicked/pressed, change the color values to have the smiling face be white and the background maroon  */
+button:active {
+    background: linear-gradient(to bottom, hsl(0, 55%, 40%), hsl(0, 50%, 35%));
+    color: hsl(0, 0%, 100%);
+}
+/* specificity: be sure to color the span element to avoid having the text be colored white (and blending in with the background) */
+button:active span {
+    color: hsl(0, 50%, 40%);
+}
