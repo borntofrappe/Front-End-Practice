@@ -76,6 +76,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Canvas Pong](https://codepen.io/borntofrappe/pen/QWWPBrV)|Dive into the Canvas API by creating an endless game of pong in which the paddles are moved automatically.|22nd November|
 |[JS Stopwatch](https://codepen.io/borntofrappe/pen/ExxzXKr)|Create a stopwatch using vanilla JavaScript, `setInterval` or `requestAnimationFrame`.|24th November|
 |[Canvas Clip](https://codepen.io/borntofrappe/pen/wvvLwLG)|Experiment with the Canvas API and specifically the possibility to clip parts of a canvas to show a subset of existing elements.|23rd-25th November|
+|[JS Promise]()|Practice with JavaScript, promises and web components to create a time-sensitive button.|8th December|
 
 ### JS Frameworks
 
