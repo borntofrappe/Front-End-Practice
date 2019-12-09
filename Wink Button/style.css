@@ -79,10 +79,10 @@ body {
 /* absolute position the error messages in the root container
 the idea is to use the top properties to add successive elements below previous ones
  */
-.notifications {
+.rejections {
     position: relative;
 }
-.notification {
+.rejection {
     position: absolute;
     transform: translateX(-50%);
     max-width: 500px;
@@ -97,7 +97,7 @@ the idea is to use the top properties to add successive elements below previous 
     align-items: center;
     justify-content: space-evenly;
 }
-.notification button {
+.rejection button {
     position: absolute;
     top: 0;
     right: 0;
@@ -107,7 +107,7 @@ the idea is to use the top properties to add successive elements below previous 
     width: 42px;
     height: 42px;
 }
-.notification button svg {
+.rejection button svg {
     display: block;
     width: 100%;
     height: 100%;

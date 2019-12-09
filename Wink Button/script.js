@@ -1,5 +1,7 @@
 const button = document.querySelector('button');
-const notifications = document.querySelector('.notifications');
+const buttonAudio = button.querySelector('audio');
+const rejections = document.querySelector('.rejections');
+const rejectionAudio = rejections.querySelector('audio');
 
 // create a promise which always produces a rejection
 const sendWinkPromise = () => new Promise((resolve, reject) => {
@@ -15,14 +17,22 @@ const removeElement = (element) => {
 }
 
 // function adding an error message in the .notifications container
-const addNotification  = () => {
-    const { length } = notifications.querySelectorAll('.notification');
-    const notification = document.createElement('article');
-    notification.style.top = `${20 * length}px`;
-    notification.addEventListener('click', (e) => e.target.tagName === 'BUTTON' && removeElement(notification));
-    notification.classList.add('notification');
+const addRejection  = () => {
+    const { length } = rejections.querySelectorAll('.rejection');
+    rejectionAudio.play();
 
-    notification.innerHTML = `
+    const rejection = document.createElement('article');
+
+    rejection.style.top = `${20 * length}px`;
+    rejection.addEventListener('click', (e) => {
+      if(e.target.tagName === 'BUTTON') {
+        buttonAudio.play();
+        removeElement(rejection);
+      }
+    });
+    rejection.classList.add('rejection');
+
+    rejection.innerHTML = `
         <svg viewBox="-50 -50 100 100" width="40" height="40">
             <g stroke-linecap="round" stroke-linejoin="round" >
                 <path stroke="hsl(45, 75%, 50%)" stroke-width="10" fill="hsl(45, 75%, 50%)" d="M -45 40 l 45 -80 45 80 z"/>
@@ -40,16 +50,18 @@ const addNotification  = () => {
         </button>
     `;
 
-    notifications.appendChild(notification);
+    rejections.appendChild(rejection);
 }
 
 // following a click on the button handle the promise and specifically the .catch statement, as to show the error message
-const sendWink = () => {
+function sendWink() {
+    buttonAudio.play();
+
     sendWinkPromise()
         .then(() => {
             console.log('This should never actually happen');
         })
-        .catch(err => addNotification());
+        .catch(err => addRejection());
 }
 
 button.addEventListener('click', sendWink);
