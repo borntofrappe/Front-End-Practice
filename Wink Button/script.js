@@ -25,7 +25,7 @@ const addNotification  = () => {
     notification.innerHTML = `
         <svg viewBox="-50 -50 100 100" width="40" height="40">
             <g stroke-linecap="round" stroke-linejoin="round" >
-                <path stroke="goldenrod" stroke-width="10" fill="goldenrod" d="M -45 40 l 45 -80 45 80 z"/>
+                <path stroke="hsl(45, 75%, 50%)" stroke-width="10" fill="hsl(45, 75%, 50%)" d="M -45 40 l 45 -80 45 80 z"/>
                 <path stroke="currentColor" stroke-width="12" fill="none" d="M 0 -18 v 30 m 0 16 v 0"/>
             </g>
         </svg>

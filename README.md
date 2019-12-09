@@ -76,7 +76,6 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Canvas Pong](https://codepen.io/borntofrappe/pen/QWWPBrV)|Dive into the Canvas API by creating an endless game of pong in which the paddles are moved automatically.|22nd November|
 |[JS Stopwatch](https://codepen.io/borntofrappe/pen/ExxzXKr)|Create a stopwatch using vanilla JavaScript, `setInterval` or `requestAnimationFrame`.|24th November|
 |[Canvas Clip](https://codepen.io/borntofrappe/pen/wvvLwLG)|Experiment with the Canvas API and specifically the possibility to clip parts of a canvas to show a subset of existing elements.|23rd-25th November|
-|[JS Promise]()|Practice with JavaScript, promises and web components to create a time-sensitive button.|8th December|
 
 ### JS Frameworks
 
@@ -221,3 +220,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Morse Code Alphabet](https://codepen.io/borntofrappe/pen/bGNNRQb)|Display information connected to the morse alphabet with an interactive table element.|1st-3rd December 2019|
 |[Pokemon Alphabet](https://codepen.io/borntofrappe/pen/ExajrPO)|Recreate the alphabet based on the 26+ version of the popular pokemon unown with SVG syntax and a touch of Zdog.|2nd-5th December|
 |[12 Days of Christmas](https://codepen.io/borntofrappe/pen/NWPGvjW)|Practice with CSS selectors and property-value pairs to create an entry for the weekly #codepenchallenge.|6th December|
+|[Wink Button](https://codepen.io/borntofrappe/pen/QWwyjvB)|Practice with JavaScript and promises to create a button which always prompts an error message.|8th December|

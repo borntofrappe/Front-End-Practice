@@ -1,0 +1,13 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="-50 -50 100 100" width="40" height="40">
+    <defs>
+        <mask id="mask">
+            <path stroke="hsl(0, 0%, 100%)" stroke-width="10" fill="hsl(0, 0%, 100%)" d="M -45 40 l 45 -80 45 80 z"/>
+            <path stroke="hsl(0, 0%, 0%)" stroke-width="12" stroke-linecap="round" fill="none" d="M 0 -19 v 28"/>
+            <circle fill="hsl(0, 0%, 0%)" r="6" cy="28" />
+
+        </mask>
+    </defs>
+    <g stroke-linecap="round" stroke-linejoin="round" >
+        <path mask="url(#mask)" stroke="hsl(0, 0%, 20%)" stroke-width="10" fill="hsl(0, 0%, 20%)" d="M -45 40 l 45 -80 45 80 z"/>
+    </g>
+</svg>
