@@ -1,10 +1,10 @@
-# JS Promise
+# JS Promise Rejection
 
 <!-- ## [Live Demo]() -->
 
 ## Goal
 
-Practice with JavaScript, promises and web components to create a time-sensitive button.
+Practice with JavaScript and promises to create a button which always prompts an error message.
 
 ## Notes
 
