@@ -3,18 +3,22 @@
     padding: 0;
     margin: 0;
 }
+/* center in the viewport */
 body {
     min-height: 100vh;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 body > svg {
-    color: hsl(0, 0%, 20%);
     display: block;
     width: 80vw;
     max-width: 500px;
     height: auto;
 }
+
+/* animate the group describing the bicycle along a prescribed path */
 #bicycle {
     offset-path: path("M 0 0 l 200 -200 a 50 50 0 0 1 50 0 l 100 100 a 50 50 0 0 0 50 0 l 125 -125");
     offset-distance: 0%;

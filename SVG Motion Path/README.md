@@ -1,6 +1,6 @@
 # SVG Motion Path
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/KKwMpKw)
 
 ## Goal
 

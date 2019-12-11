@@ -9,8 +9,12 @@
     </head>
 
     <body>
+        <!-- be warned: messy syntax -->
         <svg viewBox="0 0 700 500" width="700" height="500">
             <defs>
+                <!-- group element describing the bicycle
+                the icon was actually designed for a different project :P
+                -->
                 <g id="bicycle">
                     <svg viewBox="0 0 100 60" x="-75" y="-45" width="150" height="90">
                         <g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -29,6 +33,7 @@
                     </svg>
                 </g>
 
+                <!-- rectangles clipping the visible area for the bike icon -->
                 <clipPath id="clip--blue" clipUnits="userSpaceOnUse">
                     <rect transform="rotate(-45)" x="-75" width="300" y="-50" height="100" />
                 </clipPath>
@@ -36,17 +41,20 @@
                     <rect transform="rotate(45)" x="-50" width="220" y="-370" height="140" />
                 </clipPath>
                 <clipPath id="clip--yellow">
-                    <rect transform="rotate(-45)" x="225" width="220" y="167.5" height="100" />
+                    <rect transform="rotate(-45)" x="217.5" width="217.5" y="167.5" height="100" />
                 </clipPath>
             </defs>
             <g transform="translate(75 400)">
+                <!-- path element describing the path picked up by CSS -->
                 <!-- <path id="motion-path" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5" d="M 0 0 l 200 -200 a 50 50 0 0 1 50 0 l 100 100 a 50 50 0 0 0 50 0 l 125 -125" /> -->
-                <!-- <path transform="translate(37.5 22.5)" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5" d="M 0 0 l 162.5 -162.5 a 50 50 0 0 1 50 0 l 100 100 a 50 50 0 0 0 50 0 l 125 -125" /> -->
+
+                <!-- include four variants of the bike group, with a different color and a clip hiding the variant past a defined threshold  -->
                 <use href="#bicycle" stroke="#34a853" />
                 <use clip-path="url(#clip--yellow)" href="#bicycle" stroke="#fabb05" />
                 <use clip-path="url(#clip--red)" href="#bicycle" stroke="#ea4335" />
                 <use clip-path="url(#clip--blue)" href="#bicycle" stroke="#4285f4" />
 
+                <!-- colored rectangles included below the bicycle, and very loosely matching the clipPath elements -->
                 <g transform="translate(37.5 22.5) rotate(-45)">
                     <rect fill="#4285f4" rx="10" width="262.5" height="50" />
                     <g transform="translate(262.5 0)">

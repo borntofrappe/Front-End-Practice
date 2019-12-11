@@ -152,7 +152,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Transform Origin](https://codepen.io/borntofrappe/pen/MWWNxRV)|Replicate the graphic highlighted in [this inspiring tweet](https://twitter.com/MagicPi2/status/1200131882203197440), moving the origin of the transform property through several group elements.|28th November 2019|
 |[SVG Twitch's Logo](https://codepen.io/borntofrappe/pen/YzPzvMY)|Improve [this CSS-only project](https://codepen.io/borntofrappe/pen/qBEWeLE) using SVG syntax and enough JavaScript to make it interactive.|2nd December 2019|
 |[SVG Regular Polygons](https://codepen.io/borntofrappe/pen/BayoGMq)|Draw a series of regular polygons using a single path, group elements and recursion.|7th December 2019|
-|[SVG Motion Path]()|Experiment moving a shape along a predefined path.|11th December 2019|
+|[SVG Motion Path](https://codepen.io/borntofrappe/pen/KKwMpKw)|Experiment moving a shape along a predefined path.|11th December 2019|
 
 ### UI UX
 
