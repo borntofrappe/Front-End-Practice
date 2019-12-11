@@ -10,11 +10,10 @@
 
     <body>
         <svg viewBox="0 0 700 500" width="700" height="500">
-            <g transform="translate(75 400)">
-                <path id="motion-path" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5" d="M 0 0 l 150 -150 a 50 50 0 0 1 50 0 l 100 100 a 50 50 0 0 0 50 0 l 175 -175" />
+            <defs>
                 <g id="bicycle">
                     <svg viewBox="0 0 100 60" x="-75" y="-45" width="150" height="90">
-                        <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                        <g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="21" cy="39" r="19" />
                             <circle cx="21" cy="39" r="7" />
 
@@ -28,6 +27,41 @@
                             <circle cx="79" cy="39" r="7" />
                         </g>
                     </svg>
+                </g>
+
+                <clipPath id="clip--blue" clipUnits="userSpaceOnUse">
+                    <rect transform="rotate(-45)" x="-75" width="300" y="-50" height="100" />
+                </clipPath>
+                <clipPath id="clip--red">
+                    <rect transform="rotate(45)" x="-50" width="220" y="-370" height="140" />
+                </clipPath>
+                <clipPath id="clip--yellow">
+                    <rect transform="rotate(-45)" x="225" width="220" y="167.5" height="100" />
+                </clipPath>
+            </defs>
+            <g transform="translate(75 400)">
+                <!-- <path id="motion-path" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5" d="M 0 0 l 200 -200 a 50 50 0 0 1 50 0 l 100 100 a 50 50 0 0 0 50 0 l 125 -125" /> -->
+                <!-- <path transform="translate(37.5 22.5)" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5" d="M 0 0 l 162.5 -162.5 a 50 50 0 0 1 50 0 l 100 100 a 50 50 0 0 0 50 0 l 125 -125" /> -->
+                <use href="#bicycle" stroke="#34a853" />
+                <use clip-path="url(#clip--yellow)" href="#bicycle" stroke="#fabb05" />
+                <use clip-path="url(#clip--red)" href="#bicycle" stroke="#ea4335" />
+                <use clip-path="url(#clip--blue)" href="#bicycle" stroke="#4285f4" />
+
+                <g transform="translate(37.5 22.5) rotate(-45)">
+                    <rect fill="#4285f4" rx="10" width="262.5" height="50" />
+                    <g transform="translate(262.5 0)">
+                        <g transform="rotate(90)">
+                            <rect fill="#ea4335" rx="10" width="262.5" height="50" />
+                            <g transform="translate(212.5 50)">
+                                <g transform="rotate(-90)">
+                                    <rect fill="#fabb05" rx="10" width="212.5" height="50" />
+                                    <g transform="translate(212.5 50)">
+                                        <path fill="#34a853" stroke="#34a853" stroke-width="10" stroke-linejoin="round" stroke-linecap="round" d="M 0 0 v 50 l 80 -75 -80 -75 z" />
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
                 </g>
             </g>
         </svg>

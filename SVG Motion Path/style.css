@@ -16,9 +16,9 @@ body > svg {
     height: auto;
 }
 #bicycle {
-    offset-path: path("M 0 0 l 150 -150 a 50 50 0 0 1 50 0 l 100 100 a 50 50 0 0 0 50 0 l 175 -175");
+    offset-path: path("M 0 0 l 200 -200 a 50 50 0 0 1 50 0 l 100 100 a 50 50 0 0 0 50 0 l 125 -125");
     offset-distance: 0%;
-    animation: offsetDistance 4s ease-in-out 2 alternate;
+    animation: offsetDistance 4s cubic-bezier(0.645, 0.045, 0.355, 1) infinite alternate;
 }
 @keyframes offsetDistance {
     to {
