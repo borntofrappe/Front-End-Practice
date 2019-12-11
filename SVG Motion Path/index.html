@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>SVG Motion Path</title>
+    </head>
+
+    <body>
+        <svg viewBox="0 0 700 500" width="700" height="500">
+            <g transform="translate(75 400)">
+                <path id="motion-path" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5" d="M 0 0 l 150 -150 a 50 50 0 0 1 50 0 l 100 100 a 50 50 0 0 0 50 0 l 175 -175" />
+                <g id="bicycle">
+                    <svg viewBox="0 0 100 60" x="-75" y="-45" width="150" height="90">
+                        <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="21" cy="39" r="19" />
+                            <circle cx="21" cy="39" r="7" />
+
+                            <circle cx="48" cy="39" r="6" />
+
+                            <path d="M 40 39 h -19 l 15 -25 h 29 l 15 25 m -13.2 -22 l -14 15" />
+                            <path d="M 44 32 l -12 -27 h -6 h 10 q 5 0 5 2" />
+                            <path d="M 65 13 l -5 -12 h -2 h 15 a 6 6 0 0 1 0 12" />
+
+                            <circle cx="79" cy="39" r="19" />
+                            <circle cx="79" cy="39" r="7" />
+                        </g>
+                    </svg>
+                </g>
+            </g>
+        </svg>
+    </body>
+</html>
