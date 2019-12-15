@@ -178,6 +178,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[UI Tweet Component](https://codepen.io/borntofrappe/pen/gOOvbQp)|Create a reusable component loosely based on the UI provided by Twitter when describing an individual message.|3rd November 2019|
 |[UI Code Snippets](https://codepen.io/borntofrappe/pen/PooaQGv)|Create the basic structure for a component ultimately displaying the syntax of a chosen language.|8th-10th November 2019|
 |[UX Gatsby Side Navigation](https://codepen.io/borntofrappe/pen/LYYBqEj)|Replicate the gist of the navigation shown on [Gatsby's own website](https://www.gatsbyjs.org/docs/) with SVG syntax and an input of type checkbox.|11th November 2019|
+|[UX Checkbox Hack]()|Using nested and sibling selectors create an interactive toggle allowing to play and pause an animation.|15th December 2019|
 
 ### Miscellaneous
 
