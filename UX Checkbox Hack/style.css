@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/* center in the viewport */
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 16' width='50' height='16'%3E%3Cpath id='wave' stroke='hsl(0, 95%25, 10%25)' fill='none' d='M 0 8 q 12.5 -10 25 0 t 25 0' /%3E%3C/svg%3E"), hsl(0, 95%, 2%);
+    background-size: 30px;
+}
+label {
+    position: relative;
+}
+label svg {
+    width: 150px;
+    height: 150px;
+    display: block;
+}
+/* absolute position the input on top of the svg */
+label input {
+    opacity: 0;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    width: 100%;
+    height: 20%;
+    transform: translate(-50%, 0%);
+}
+
+label input + svg {
+    color: hsl(0, 0%, 50%);
+    transition: color 0.2s ease-in-out;
+}
+/* remove the default outline (invisible since the input is hidden) update the color of the svg */
+label input:focus + svg {
+    color: hsl(345, 90%, 45%);
+}
+label input:checked + svg #play {
+    transform: scale(0);
+}
+label input:checked + svg #pause {
+    transform: scale(1);
+}
+
+label input + svg #waves {
+    animation: waving 1s linear infinite;
+    animation-play-state: paused;
+}
+label input:checked + svg #waves {
+    animation-play-state: running;
+}
+label input + svg #top {
+    animation: shake 0.5s linear infinite;
+    animation-play-state: paused;
+}
+label input:checked + svg #top {
+    animation-play-state: running;
+}
+@keyframes waving {
+    25% {
+        transform: translate(-12.5px, -0.5px);
+    }
+    75% {
+        transform: translate(-37.5px, 0.5px);
+    }
+    100% {
+        transform: translate(-50px, 0px);
+    }
+}
+@keyframes shake {
+    33% {
+        transform: translate(0px, -2px) rotate(2deg);
+    }
+    67% {
+        transform: translate(0px, -2px) rotate(-2deg);
+    }
+}
