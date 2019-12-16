@@ -88,6 +88,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Matter JS Pool](https://codepen.io/borntofrappe/pen/mddJEam)|Create the basic structure of a game of pool, or billiard, to practice with constraints.|08th-09th October 2019|
 |[Matter JS Newton's Cradle](https://codepen.io/borntofrappe/pen/qBBNOxY)|Use the physics engine to recreate Newton's cradle with spheres, constraints, and a magnet.|14th-15th October 2019|
 |[Matter JS Gravity](https://codepen.io/borntofrappe/pen/mddEvEW)|Use the physics engine to create a gravity-based game, where a shape is meant to reach a goal by means of rotating the wrapping container.|16th October 2019|
+|[Vue Email Address](https://codepen.io/borntofrappe/pen/LYEbzae)|Create a form allowing to check for a valid email address.|17th December 2019|
 
 ### SVG
 
