@@ -6,11 +6,14 @@
 /* center in the viewport */
 body {
     min-height: 100vh;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* wavy background */
     background: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 16' width='50' height='16'%3E%3Cpath id='wave' stroke='hsl(0, 95%25, 10%25)' fill='none' d='M 0 8 q 12.5 -10 25 0 t 25 0' /%3E%3C/svg%3E"), hsl(0, 95%, 2%);
     background-size: 30px;
 }
+
 label {
     position: relative;
 }
@@ -23,21 +26,22 @@ label svg {
 label input {
     opacity: 0;
     position: absolute;
-    bottom: 0%;
-    left: 50%;
+    top: 0%;
+    left: 0%;
     width: 100%;
-    height: 20%;
-    transform: translate(-50%, 0%);
+    height: 100%;
 }
 
 label input + svg {
-    color: hsl(0, 0%, 50%);
+    color: hsl(0, 0%, 30%);
     transition: color 0.2s ease-in-out;
 }
-/* remove the default outline (invisible since the input is hidden) update the color of the svg */
+/* instead of the default outline (invisible since the input is hidden) update the color of the svg */
 label input:focus + svg {
     color: hsl(345, 90%, 45%);
 }
+
+/* show the triangle/square according to the state of the checkbox */
 label input:checked + svg #play {
     transform: scale(0);
 }
@@ -45,21 +49,24 @@ label input:checked + svg #pause {
     transform: scale(1);
 }
 
-label input + svg #waves {
-    animation: waving 1s linear infinite;
+/* set up the animations for the waves and the top of the blender
+! paused by default
+*/
+label input + svg .waves {
+    animation: translateWaves 1s linear infinite;
     animation-play-state: paused;
-}
-label input:checked + svg #waves {
-    animation-play-state: running;
 }
 label input + svg #top {
-    animation: shake 0.5s linear infinite;
+    animation: shakeTop 0.5s linear infinite;
     animation-play-state: paused;
 }
+/* when the input is checked start (or re-start) the animation */
+label input:checked + svg .waves,
 label input:checked + svg #top {
     animation-play-state: running;
 }
-@keyframes waving {
+/* the path making up the waves repeats after 50px, meaning translating the shape to 50px and back to 0 gives the illusion of translating on a loop */
+@keyframes translateWaves {
     25% {
         transform: translate(-12.5px, -0.5px);
     }
@@ -70,7 +77,7 @@ label input:checked + svg #top {
         transform: translate(-50px, 0px);
     }
 }
-@keyframes shake {
+@keyframes shakeTop {
     33% {
         transform: translate(0px, -2px) rotate(2deg);
     }
