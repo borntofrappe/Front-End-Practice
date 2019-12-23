@@ -155,7 +155,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Regular Polygons](https://codepen.io/borntofrappe/pen/BayoGMq)|Draw a series of regular polygons using a single path, group elements and recursion.|7th December 2019|
 |[SVG Motion Path](https://codepen.io/borntofrappe/pen/KKwMpKw)|Experiment moving a shape along a predefined path.|11th December 2019|
 |[SVG Line Drawing - Star Wars](https://codepen.io/borntofrappe/pen/KKwmvmN)|Recreate the Star Wars title with SVG syntax and anime.js.|22nd December 2019|
-|[SVG Line Drawing - GraphQL](https://codepen.io/borntofrappe/pen/KKwmvmN)|Replicate and animate the [GraphQL logo](http://graphql.org/) with SVG syntax and anime.js.|23rd December 2019|
+|[SVG Line Drawing - GraphQL](https://codepen.io/borntofrappe/pen/mdymQBx)|Replicate and animate the [GraphQL logo](http://graphql.org/) with SVG syntax, anime.js and dat.gui.|23rd December 2019|
 
 ### UI UX
 
