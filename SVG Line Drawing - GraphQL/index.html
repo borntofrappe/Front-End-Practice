@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="style.css" />
+        <title>SVG Line Drawing - GraphQL</title>
+    </head>
+    <body>
+        <svg viewBox="0 0 80 85">
+            <defs>
+                <circle id="circle" r="6" fill="currentColor" stroke="none" />
+            </defs>
+            <g transform="translate(10 60)" fill="none" stroke="currentColor" stroke-width="2.5">
+                <g class="triangle">
+                    <path d="M 0 0 h 60" />
+                    <g transform="translate(60 0) rotate(-120)">
+                        <path d="M 0 0 h 60" />
+                        <g transform="translate(60 0) rotate(-120)">
+                            <path d="M 0 0 h 60" />
+                        </g>
+                    </g>
+                </g>
+                <g class="hexagon">
+                    <g transform="rotate(30)">
+                        <path d="M 0 0 h 34.5" />
+                        <use href="#circle" />
+                        <g transform="translate(34.5 0) rotate(-60)">
+                            <path d="M 0 0 h 34.5" />
+                            <use href="#circle" />
+                            <g transform="translate(34.5 0) rotate(-60)">
+                                <path d="M 0 0 h 34.5" />
+                                <use href="#circle" />
+                                <g transform="translate(34.5 0) rotate(-60)">
+                                    <path d="M 0 0 h 34.5" />
+                                    <use href="#circle" />
+                                    <g transform="translate(34.5 0) rotate(-60)">
+                                        <path d="M 0 0 h 34.5" />
+                                        <use href="#circle" />
+                                        <g transform="translate(34.5 0) rotate(-60)">
+                                            <path d="M 0 0 h 34.5" />
+                                            <use href="#circle" />
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+
+        <script src="https://unpkg.com/animejs@3.1.0/lib/anime.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
