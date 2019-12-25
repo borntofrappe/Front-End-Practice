@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
+}
+svg {
+  margin: auto;
+  width: 200px;
+  height: auto;
+  display: block;
+}
