@@ -8,6 +8,27 @@
     <title>SVG Hourglass Loader</title>
   </head>
   <body>
-    <svg viewBox="0 0 70 100" width="70" height="100"></svg>
+    <svg viewBox="0 0 70 100" width="70" height="100">
+      <defs>
+        <path id="hourglass" d="M 5 5 h 60 q 0 22.5 -28 45 28 22.5 28 45 h -60 q 0 -22.5 28 -45 -28 -22.5 -28 -45z" />
+        <clipPath id="clip--hourglass">
+          <use href="#hourglass" />
+        </clipPath>
+      </defs>
+      <g clip-path="url(#clip--hourglass)">
+        <rect id="sand" width="70" height="50" fill="hsl(210, 40%, 20%)" stroke="none" />
+      </g>
+      <g stroke="hsl(240, 15%, 5%)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <use href="#hourglass" />
+        <path d="M 5 5 v 90" />
+        <path d="M 65 5 v 90" />
+      </g>
+      <g fill="hsl(240, 15%, 5%)" stroke="none">
+        <rect width="70" height="5" />
+        <rect width="70" height="5" y="95" />
+        <circle r="5" cx="5" cy="50" />
+        <circle r="5" cx="65" cy="50" />
+      </g>
+    </svg>
   </body>
 </html>

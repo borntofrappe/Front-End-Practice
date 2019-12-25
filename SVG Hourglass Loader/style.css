@@ -5,13 +5,32 @@
 }
 body {
   min-height: 100vh;
-  background: hsl(0, 0%, 0%);
-  color: hsl(0, 0%, 100%);
   display: flex;
 }
 svg {
   margin: auto;
-  width: 200px;
+  width: 150px;
   height: auto;
   display: block;
+}
+svg {
+  animation: rotateSVG 5.5s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+@keyframes rotateSVG {
+  91% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+#sand {
+  animation: translateRectangle 5.5s ease-in-out infinite;
+}
+@keyframes translateRectangle {
+  91%,
+  100% {
+    transform: translateY(50px);
+  }
 }
