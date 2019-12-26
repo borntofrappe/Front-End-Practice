@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
 }
+/* center in the viewport */
 body {
   min-height: 100vh;
   display: flex;
@@ -13,23 +14,27 @@ svg {
   height: auto;
   display: block;
 }
+/* animate the svg to rotate from the center */
 svg {
-  animation: rotateSVG 5.5s ease-in-out infinite;
+  animation: rotateHourglass 10s ease-in-out infinite;
   transform-origin: 50% 50%;
 }
-@keyframes rotateSVG {
-  91% {
+/* animate the rectangle describing the sand toward the bottom */
+#sand {
+  animation: moveSand 10s ease-in-out infinite;
+}
+/* by repeating the animation from the original values, the idea is to give the illusion of a constant rotation clockwise */
+@keyframes rotateHourglass {
+  /* 95% to fill the hourglass, 5% to rotate the shape around its center  */
+  95% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(180deg);
   }
 }
-#sand {
-  animation: translateRectangle 5.5s ease-in-out infinite;
-}
-@keyframes translateRectangle {
-  91%,
+@keyframes moveSand {
+  95%,
   100% {
     transform: translateY(50px);
   }

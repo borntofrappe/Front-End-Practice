@@ -1,6 +1,6 @@
 # SVG Hourglass Loader
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/MWYoQQX)
 
 ## Goal
 
