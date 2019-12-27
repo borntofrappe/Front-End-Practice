@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css?family=Mountains+of+Christmas:700|Roboto+Mono:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' opacity='0.15' viewBox='-50 -50 100 100'%3E%3Cg stroke='%2300B0E3' stroke-width='2' fill='none'%3E%3Cpath d='M -20 -20 l 40 40 m -40 0 l 40 -40' /%3E%3C/g%3E%3C/svg%3E"), hsl(220, 90%, 10%);
+  background-size: 20px, 100%;
+  color: hsl(0, 0%, 95%);
+  font-family: "Roboto Mono", monospace;
+}
+/* limit the width of the #root container */
+#root {
+  max-width: 1000px;
+  width: 90vw;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+/* limit the width of the svg, so to have the text of the accompanying div wrap around it */
+#root svg {
+  max-width: 550px;
+  width: 100%;
+}
+/* increase the spacing between the elements and in the line-height of the paragraphs to have the div expand vertically */
+#root div > * + * {
+  margin-top: 1rem;
+}
+#root div h1 {
+  font-family: "Mountains of Christmas", cursive;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  color: hsl(55, 100%, 50%);
+  text-shadow: -1px 1px hsl(160, 90%, 20%), -2px 2px hsl(160, 90%, 20%), -3px 3px hsl(160, 90%, 20%), -4px 4px hsl(160, 90%, 20%), -5px 5px hsl(160, 90%, 20%);
+}
+#root div p {
+  line-height: 1.75;
+}
+#root div a {
+  color: inherit;
+  font-family: inherit;
+  font-style: italic;
+  text-decoration: none;
+  border-bottom: 2px dotted currentColor;
+  padding: 0.1rem;
+}
+#root div strong:before {
+  content: "#";
+  color: hsl(160, 90%, 20%);
+}
+#root div code {
+  font-family: inherit;
+  padding: 0.1rem 0.25rem;
+  background: hsl(160, 90%, 20%);
+  border-radius: 5px;
+  margin: 0 0.1rem;
+}
