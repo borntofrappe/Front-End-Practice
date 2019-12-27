@@ -158,6 +158,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Line Drawing - Star Wars](https://codepen.io/borntofrappe/pen/KKwmvmN)|Recreate the Star Wars title with SVG syntax and anime.js.|22nd December 2019|
 |[SVG Line Drawing - GraphQL](https://codepen.io/borntofrappe/pen/mdymQBx)|Replicate and animate the [GraphQL logo](http://graphql.org/) with SVG syntax, anime.js and dat.gui.|23rd December 2019|
 |[SVG Hourglass Loader](https://codepen.io/borntofrappe/pen/MWYoQQX)|Create an infinite loader with SVG syntax and CSS animations, with the appearance of an hourglass.|25th December 2019|
+|[SVG Mask & Transform]()|Create and animate a mask to temporarily hide a portion of an SVG drawing.|27th December 2019|
 
 ### UI UX
 
