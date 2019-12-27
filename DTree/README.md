@@ -1,11 +1,11 @@
 # DTree
 
-<!-- # [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/XWJaNYP)
 
 ## Goal
 
-Practice with hierarchical visualizations starting from a series of nested elements.
+Practice with d3-hierarchy to create a tree diagram.
 
 ## Notes
 
-This project is actually meant to be part of the [CodePen challenge](https://codepen.io/challenges/2019/december/4) for the fourth week of December. Starting from [this template](https://codepen.io/team/codepen/pen/rNaWyWQ), the goal is to first create a JSON object describing the root-to-leaves structures, and then highlight the data with a series of visualizations afforded by the d3-hierarchy module.
+This project was born as an entry for the weekly [#codepenchallenge](https://codepen.io/challenges/2019/december/4). On top of the tree diagram, I was able to also tinker with the `shape-outside` property to create a more intriguing layout.
