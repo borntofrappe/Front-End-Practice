@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Lato", sans-serif;
+  /* this is potentially heavy on performance, but the idea is to animate the color, with a more red hue, and the background, with a darker value */
+  color: hsl(60, 80%, 60%);
+  background: hsl(0, 0%, 20%);
+  animation: color 60s infinite cubic-bezier(0.2, 0.9, 0.8, 0.1);
+}
+@keyframes color {
+  50% {
+    color: hsl(0, 100%, 55%);
+    background: hsl(0, 0%, 5%);
+  }
+}
+
+svg {
+  margin: auto;
+  width: 350px;
+  height: auto;
+  color: inherit;
+  text-transform: uppercase;
+}
+/* rotate the group(s) describing the masking shapes
+bezier to have the animation stay longer in the central values
+https://cubic-bezier.com/#.2,.9,.8,.1
+*/
+svg .moon {
+  animation: rotate 60s infinite cubic-bezier(0.2, 0.9, 0.8, 0.1);
+}
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>SVG Mask & Transform</title>
+  </head>
+  <body>
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <!-- circle describing the sun
+        using a path to have a reference for the textPath element
+        -->
+        <path id="sun" d="M 0 -30 a 30 30 0 0 1 0 60 30 30 0 0 1 0 -60" />
+        <!-- mask completely hiding a portion of the sun with a smaller circle -->
+        <mask id="mask--sun">
+          <!-- rectangle to show everything, but the hsl(0, 0%, 0%) colored shapes -->
+          <rect width="100" height="100" fill="hsl(0, 0%, 100%)" />
+          <!-- move the transform-origin to the top center of the SVG -->
+          <g transform="translate(50 0)">
+            <!-- rotate to have the shape above the actual drawing -->
+            <g transform="rotate(-180)">
+              <!-- rotate this group to have the mask re-position itself atop the drawing -->
+              <g transform="rotate(0)" class="moon">
+                <!-- smaller scale to have a visible ring outside the sun -->
+                <use transform="translate(0 50) scale(0.95)" href="#sun" fill="hsl(0, 0%, 0%)" />
+              </g>
+            </g>
+          </g>
+        </mask>
+        <!-- mask for the text around the circle
+        fundamentally the same mask as the one declared for the sun, but with a semi-transparent mask
+        -->
+        <!-- ! use a gradient to have the text more evident the further from the center  -->
+        <radialGradient id="gradient--moon">
+          <stop stop-color="hsl(0, 0%, 5%)" offset="0" />
+          <stop stop-color="hsl(0, 0%, 50%)" offset="1" />
+        </radialGradient>
+        <mask id="mask--text">
+          <rect width="100" height="100" fill="hsl(0, 0%, 100%)" />
+          <g transform="translate(50 0) rotate(-180)">
+            <g transform="rotate(0)" class="moon">
+              <use transform="translate(0 50) scale(1.5)" href="#sun" fill="url(#gradient--moon)" />
+            </g>
+          </g>
+        </mask>
+      </defs>
+
+      <!-- sun + mask -->
+      <g mask="url(#mask--sun)">
+        <g transform="translate(50 50)">
+          <use href="#sun" fill="currentColor" />
+        </g>
+      </g>
+      <!-- text+mask
+      include a textPath element using the sun's outline as a reference
+      -->
+      <g mask="url(#mask--text)">
+        <g transform="translate(50 50)">
+          <!-- it seems the textLength property has different influence across browsers
+          luckily repeating its value over nested elements seems to work still
+
+          go figure
+          -->
+          <!-- this works on firefox -->
+          <text transform="scale(1.1)" fill="currentColor" font-size="8" textLength="185">
+            <!-- this works on chrome -->
+            <textPath href="#sun" textLength="185">
+              <!-- this works on edge -->
+              <tspan textLength="185">
+                Annular Eclipse 26th Dec 2019
+              </tspan>
+            </textPath>
+          </text>
+        </g>
+      </g>
+    </svg>
+  </body>
+</html>
