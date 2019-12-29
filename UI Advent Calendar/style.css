@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css?family=Overpass+Mono:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(180, 50%, 5%);
+  color: hsl(0, 0%, 100%);
+  display: grid;
+  place-items: center;
+  font-family: "Overpass Mono", monospace;
+  font-weight: 700;
+}
+form {
+  width: 100%;
+  height: 100vh;
+  background: url("pic.jpg");
+  background-size: cover;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  justify-items: center;
+  align-items: center;
+  counter-reset: days-counter;
+}
+label {
+  width: 4.5rem;
+  height: 4.5rem;
+  text-align: center;
+  font-size: 2.5rem;
+  position: relative;
+  padding: 0.5rem;
+  counter-increment: days-counter;
+  perspective: 400px;
+}
+label div,
+label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+label input {
+  opacity: 0;
+}
+label div {
+  text-align: center;
+  background: hsl(0, 0%, 100%);
+  color: hsl(180, 50%, 5%);
+  border: 4px dashed;
+  border-color: transparent transparent transparent currentColor;
+  transition: transform 0.4s ease-in-out;
+  transform-origin: 0% 50%;
+}
+label input:focus + div {
+  border-color: currentColor;
+  box-shadow: 0 0 10px hsla(180, 50%, 5%, 0.25);
+}
+label input:checked + div {
+  transform: rotateY(-120deg);
+  box-shadow: 0 0 10px hsla(180, 50%, 5%, 0.25);
+}
+label div:before {
+  content: counter(days-counter);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1.5rem;
+  transform: translate(-50%, -50%);
+}
