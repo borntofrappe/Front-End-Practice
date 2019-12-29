@@ -1,0 +1,57 @@
+:root {
+  /* custom properties dictating the animation */
+  --animation-duration: 1s;
+  --animation-timing-function: step-start;
+}
+
+body {
+  background: black;
+  /* center in the viewport */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  /* center the tree structure */
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  /* reduce the space between the emojis */
+  line-height: 0.8;
+  letter-spacing: -2rem;
+  list-style: none;
+  font-size: 4rem;
+}
+
+li {
+  /* display the list items side by side */
+  display: inline;
+}
+
+/* for every list item but the first add a sparkles emoji */
+li + li {
+  position: relative;
+}
+li + li:before {
+  content: "✨";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  font-size: 1.5rem;
+  /* set up the animation */
+  animation: flicker var(--animation-duration) var(--animation-timing-function) infinite;
+}
+@keyframes flicker {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* remove the animation with the appropriate media query */
+@media (prefers-reduced-motion: reduce) {
+  li + li:before {
+    animation: none;
+  }
+}
