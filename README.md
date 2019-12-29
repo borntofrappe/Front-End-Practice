@@ -229,3 +229,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Pokemon Alphabet](https://codepen.io/borntofrappe/pen/ExajrPO)|Recreate the alphabet based on the 26+ version of the popular pokemon unown with SVG syntax and a touch of Zdog.|2nd-5th December|
 |[12 Days of Christmas](https://codepen.io/borntofrappe/pen/NWPGvjW)|Practice with CSS selectors and property-value pairs to create an entry for the weekly #codepenchallenge.|6th December|
 |[Wink Button](https://codepen.io/borntofrappe/pen/QWwyjvB)|Practice with JavaScript and promises to create a button which always prompts an error message.|8th December|
+|[Tree Emoji](https://codepen.io/borntofrappe/pen/vYEJbPE)|Display and animate a series of emojis in a tree-like structure.|29th December|
