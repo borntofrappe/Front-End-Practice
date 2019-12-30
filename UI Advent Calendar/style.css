@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Ultra&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -7,77 +9,92 @@ body {
   min-height: 100vh;
   background: hsl(180, 50%, 5%);
   color: hsl(0, 0%, 100%);
-  display: grid;
-  place-items: center;
-  font-weight: 700;
+  font-family: "Ultra", serif;
 }
 form {
+  /* stretch the form to cover the available viewport */
   width: 100%;
   height: 100vh;
+  display: grid;
+  /* build a 4*6 grid */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  /* center the labels in the allotted space */
+  justify-items: center;
+  align-items: center;
   background: url("data:image/svg+xml,%3Csvg opacity='0.5' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Ccircle id='circle' r='1' fill='hsl(0, 0%25, 100%25)' /%3E%3C/defs%3E%3Cuse href='%23circle' x='30' y='25' /%3E%3Cuse href='%23circle' transform='translate(80 20) scale(1.25)' /%3E%3Cuse href='%23circle' transform='translate(20 85) scale(2)' /%3E%3Cuse href='%23circle' transform='translate(70 70) scale(1.5)' /%3E%3Cuse href='%23circle' transform='translate(55 45) scale(2.5)' /%3E%3C/svg%3E"),
     url("https://images.pexels.com/photos/1708601/pexels-photo-1708601.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"), hsl(180, 50%, 5%);
   background-size: 50px, cover, 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  justify-items: center;
-  align-items: center;
-  counter-reset: days-counter;
 }
 label {
-  width: 4.5rem;
-  height: 4.5rem;
-  text-align: center;
+  /* add a perspective for the 3d rotation */
+  perspective: 500px;
   position: relative;
-  padding: 0.5rem;
-  counter-increment: days-counter;
-  perspective: 400px;
   border: 6px solid hsl(8, 30%, 65%);
-  display: grid;
-  place-items: center;
   backdrop-filter: blur(5px);
-  border-radius: 5px;
 }
+/* absolute each emoji in the center of the label */
 label span {
-  display: block;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -5;
 }
-label div,
-label input {
+/* absolute position the input of type checkbox atop the label */
+label input[type="checkbox"] {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
-label input {
   opacity: 0;
 }
-label div {
-  font-size: 2.5rem;
+/* for the window specify a fixed width and height
+position relative to absolute position the two faces
+*/
+label .window {
+  border-radius: inherit;
+  transform-style: preserve-3d;
+  position: relative;
+  padding: 0.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   background: hsl(31, 51%, 90%);
   color: hsl(240, 6%, 15%);
-  transition: transform 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  font-size: 2rem;
+  /* set up a dashed border which is then colored as the matching input is focused */
   border: 4px dashed hsl(8, 30%, 40%);
   border-color: transparent;
-
+  /* transition the window using the left side as a hinge */
+  transition: transform 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   transform-origin: 0% 50%;
 }
-label input:focus + div,
-label input:active + div {
+/* when the checkbox is being focused, highlight the window through the dashed border */
+label input:focus + .window,
+label input:active + .window {
   border-color: currentColor;
 }
+/* when the checkbox is toggled, rotate the div to show the span underneath */
 label input:checked + div {
-  transform: rotateY(-100deg);
+  transform: rotateY(-150deg);
 }
-label div:before {
-  background: hsl(31, 51%, 90%);
-  backface-visibility: hidden;
-  padding: 0;
-  margin: 0;
-  content: counter(days-counter);
+
+/* center the content of the two sides in the available space */
+label .window .side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+/* hide the back side by rotating the shape 180 degrees */
+label .window .side--back {
+  text-transform: uppercase;
+  transform: rotateY(180deg);
 }

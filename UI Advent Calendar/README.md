@@ -1,10 +1,10 @@
 # UI Advent Calendar
 
-<!-- [Live Demo]() -->
+[Live Demo](https://codepen.io/borntofrappe/full/OJPjKdY)
 
 ## Goal
 
-Create an advent calendar on top of an image and with a grid of checkboxes.
+Experiment with a grid layout to create an advent calendar.
 
 ## Notes
 
