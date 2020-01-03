@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Montserrat:800&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* layers:
+  svg pattern describing rounded boxes
+  svg pattern describing ticks
+  linear gradient
+  solid hue
+  */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpattern id='pattern-box' viewBox='-2.5 -2.5 10 10' width='0.1' height='0.1'%3E%3Crect rx='1' width='5' height='5' fill='none' stroke='hsl(210, 80%25, 75%25)' stroke-width='0.5' /%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23pattern-box)' /%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpattern id='pattern-tick' viewBox='-3.5 -3.5 10 10' width='0.1' height='0.1'%3E%3Cpath d='M 0 0 l 1.5 1.5 2.5 -3' fill='none' stroke='hsl(210, 80%25, 75%25)' stroke-width='0.6' /%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23pattern-tick)' /%3E%3C/svg%3E"),
+    linear-gradient(to bottom, hsl(0, 0%, 100%) 60%, hsl(205, 100%, 90%) 60%), hsl(205, 100%, 90%);
+  font-family: "Lato", sans-serif;
+  background-size: 300px, 300px, 100%;
+  background-repeat: no-repeat;
+  background-position: 25% 20%, 75% 80%, 0%;
+}
+article {
+  max-width: 500px;
+  width: 90vw;
+  color: hsl(220, 10%, 5%);
+  line-height: 1.75;
+  padding: 1rem;
+  /* increase the padding at the bottom to visually make space for the svg pattern */
+  padding-bottom: 1.75rem;
+  background: hsl(0, 0%, 100%);
+  /* filter to add shadow below the svg pattern as well */
+  filter: drop-shadow(0 5px 5px hsl(0, 0%, 80%));
+  position: relative;
+}
+/* absolute position the svg pattern at the bottom of the article */
+article:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 9px;
+  background-repeat: repeat-x;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 2.5'%3E%3Cpath fill='hsl(0, 0%25, 100%25)' d='M 0 0 c 2.5 0 2.5 2.5 5 2.5 c 2.5 0 2.5 -2.5 5 -2.5' /%3E%3C/svg%3E");
+}
+/* spacing between subsequent elements */
+article > * + * {
+  margin-top: 1.25rem;
+}
+h1 {
+  font-family: "Montserrat", sans-serif;
+  color: hsl(210, 80%, 50%);
+  padding: 0.75rem 0;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;
+  border-bottom: 2px dashed hsl(0, 0%, 90%);
+}
+/* style the blockquote to provide a more subtle, italic message */
+blockquote {
+  padding: 0.25rem;
+  padding-left: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  font-style: italic;
+  background: hsl(205, 100%, 97%);
+  color: hsl(220, 10%, 15%);
+  border-left: 2px solid hsl(210, 80%, 50%);
+}
+button {
+  font-size: 0.9rem;
+  color: hsl(0, 0%, 100%);
+  background: hsl(210, 80%, 50%);
+  font-family: inherit;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  border: none;
+}

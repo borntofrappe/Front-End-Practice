@@ -159,7 +159,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Line Drawing - GraphQL](https://codepen.io/borntofrappe/pen/mdymQBx)|Replicate and animate the [GraphQL logo](http://graphql.org/) with SVG syntax, anime.js and dat.gui.|23rd December 2019|
 |[SVG Hourglass Loader](https://codepen.io/borntofrappe/pen/MWYoQQX)|Create an infinite loader with SVG syntax and CSS animations, with the appearance of an hourglass.|25th December 2019|
 |[SVG Mask & Transform](https://codepen.io/borntofrappe/pen/QWwMGBM)|Create and animate a mask to temporarily hide a portion of an SVG drawing.|27th December 2019|
-|[SVG Repeating Border]()|Use SVG syntax to create a border with a repeating pattern.|03rd January 2020|
+|[SVG Repeating Patterns]()|Use SVG syntax to create several patterns out of basic shapes.|03rd January 2020|
 
 ### UI UX
 
