@@ -1,6 +1,6 @@
 # SVG Repeating Patterns
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/GRgOByZ)
 
 ## Goal
 
