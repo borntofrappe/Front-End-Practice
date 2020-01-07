@@ -160,6 +160,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Hourglass Loader](https://codepen.io/borntofrappe/pen/MWYoQQX)|Create an infinite loader with SVG syntax and CSS animations, with the appearance of an hourglass.|25th December 2019|
 |[SVG Mask & Transform](https://codepen.io/borntofrappe/pen/QWwMGBM)|Create and animate a mask to temporarily hide a portion of an SVG drawing.|27th December 2019|
 |[SVG Repeating Patterns](https://codepen.io/borntofrappe/pen/GRgOByZ)|Use SVG syntax to create several patterns out of basic shapes.|03rd January 2020|
+|[SVG Background]()|Highlight how SVG can create an intriguing pattern by repeating a basic shape.|06th January 2020|
 
 ### UI UX
 
