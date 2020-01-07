@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">
+  <g fill="none" stroke="hsl(0, 0%, 0%)" stroke-width="2">
+    <path id="pattern" d="M -50 40 l 50 -30 50 30 m 0 -50 l -50 -30 -50 30" />
+    <use href="#pattern" transform="rotate(90)" />
+    <use href="#pattern" transform="rotate(180)" />
+    <use href="#pattern" transform="rotate(270)" />
+  </g>
+</svg>

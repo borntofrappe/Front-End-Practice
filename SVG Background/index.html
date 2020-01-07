@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SVG Background</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <path id="pattern" d="M -50 40 l 50 -25 50 25 m 0 -50 l -50 -25 -50 25" />
+        <use href="#pattern" transform="rotate(90)" />
+        <use href="#pattern" transform="rotate(180)" />
+        <use href="#pattern" transform="rotate(270)" />
+      </g>
+    </svg>
+    <script src="script.js"></script>
+  </body>
+</html>
