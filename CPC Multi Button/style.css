@@ -1,0 +1,97 @@
+:root {
+  --gradient-start: hsl(240, 100%, 70%);
+  --gradient-end: hsl(280, 85%, 60%);
+  --accent: hsl(260, 92.5%, 65%);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  color: hsl(0, 0%, 20%);
+  background: linear-gradient(to bottom right, var(--gradient-start), var(--gradient-end));
+}
+
+body > * + * {
+  margin-bottom: 0.75rem;
+}
+
+button {
+  width: 80px;
+  height: 80px;
+  display: block;
+  color: var(--accent);
+  filter: drop-shadow(0 0 8px hsla(0, 0%, 0%, 0.2));
+  border: none;
+  background: none;
+  outline: none;
+  border-radius: 50%;
+  transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+button:focus,
+button:hover {
+  transition-duration: 0.4s;
+  box-shadow: 0 0 0 0.3rem hsla(0, 0%, 100%, 0.3);
+}
+
+button:active,
+button.active {
+  transition-duration: 2s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  box-shadow: 0 0 0 2rem hsla(0, 0%, 100%, 0);
+  transform: rotate(45deg);
+}
+button svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+button + nav {
+  transform-origin: 50% 100%;
+  transition: all 0.2s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: scale(0);
+}
+button.active + nav {
+  transition-duration: 0.4s;
+  transition-delay: 0s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform: scale(1);
+}
+nav a {
+  color: hsl(0, 0%, 50%);
+  opacity: 0.4;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+nav a:focus,
+nav a:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+/*
+#shapes {
+  animation: popout 1.5s cubic-bezier(0.77, 0, 0.175, 1) both;
+}
+@keyframes popout {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+} */
