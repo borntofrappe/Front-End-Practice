@@ -8,12 +8,6 @@ Recreate [this design](https://dribbble.com/shots/3118647-3D-Touch-Action-Change
 
 ## Notes
 
-This project is meant to be an entry for the weekly codepen challenge. Its name is subject to change as I find a better way to describe the contents packed in the project:
+This project is meant to be an entry for the weekly #codepenchallenge. Its name is subject to change as I find a better way to describe the contents packed in the project.
 
-- svg
-
-- css custom properties
-
-- anime.js
-
-- accessibility
+In the **res** folder you find the assets created for the projects.
