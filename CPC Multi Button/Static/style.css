@@ -1,0 +1,31 @@
+:root {
+  --gradient-start: hsl(240, 100%, 70%);
+  --gradient-end: hsl(280, 85%, 60%);
+  --accent: hsl(260, 92.5%, 65%);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, var(--gradient-start), var(--gradient-end));
+}
+
+body > * + * {
+  margin-top: 1rem;
+  margin-block-start: 1rem;
+}
+
+svg {
+  color: var(--accent);
+  display: block;
+  filter: drop-shadow(0 0 8px hsla(0, 0%, 0%, 0.2));
+}
