@@ -4,7 +4,7 @@
 
 ## Goal
 
-Recreate [this design](https://dribbble.com/shots/3118647-3D-Touch-Action-Change) with SVG syntax.
+Recreate [this design](https://dribbble.com/shots/3118647-3D-Touch-Action-Change) with SVG syntax and CSS transitions.
 
 ## Notes
 

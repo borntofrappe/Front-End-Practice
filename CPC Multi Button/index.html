@@ -8,7 +8,12 @@
     <title>CPC Multi Button - CSS Interaction</title>
   </head>
   <body>
+    <!-- markup
+    button, used as a toggle
+    nav, navigation opened/closed following a long press on the button itself
+    -->
     <button>
+      <!-- svg describing a plus sign -->
       <svg viewBox="-50 -50 100 100" width="100" height="100">
         <circle r="50" fill="hsl(0, 0%, 100%)" />
         <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
@@ -18,6 +23,7 @@
     </button>
 
     <nav>
+      <!-- rounded rectangle describing the different sections of the page through individual icons -->
       <svg viewBox="0 0 250 100" width="250" height="100">
         <g fill="hsl(0, 0%, 100%)">
           <rect width="250" height="85" rx="42.5" />
@@ -27,9 +33,11 @@
             </g>
           </g>
 
-          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <g transform="translate(0 42.5)">
+              <!-- wrap each icon in an anchor link element to make it select-able -->
               <a href="#">
+                <!-- ! setting currentColor before the anchor link elements won't work as the anchor link would introduce its default color  -->
                 <g stroke="currentColor" transform="translate(55 0) scale(1.1)">
                   <circle r="4" cy="1" />
                   <path d="M -12.5 -5.5 l 5 0 4 -4 7 0 4 4 5 0 0 15 h -25z" />
