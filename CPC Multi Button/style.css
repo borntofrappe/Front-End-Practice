@@ -5,6 +5,9 @@
   --gradient-end: hsl(280, 85%, 60%);
   --accent: hsl(260, 92.5%, 65%);
   --delay: 2s;
+  --easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  --easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+  --easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 * {
@@ -46,10 +49,10 @@ button {
   /* transition the rotation of the button with a considerable duration
   use a timing function which snaps toward the end
   */
-  transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 0.2s var(--easeInOutCubic);
 }
 /* in favor of the default outline use a pseudo element to add a semitransparent border around the button */
-button:before {
+button:after {
   z-index: -5;
   content: "";
   position: absolute;
@@ -60,29 +63,61 @@ button:before {
   background: hsla(0, 0%, 100%, 0.3);
   border-radius: inherit;
   transform: scale(1);
-  transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 0.2s var(--easeInOutCubic);
 }
-button:focus:before,
-button:hover:before {
+button:focus:after,
+button:hover:after {
   transform: scale(1.1);
 }
+/* with a second pseudo element, show momentarily a set of particles
+! only following the active state
+*/
+button:before {
+  z-index: -5;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100' width='100' height='100'%3E%3Cg fill='none' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg stroke='hsl(240, 95%25, 85%25)'%3E%3Ccircle cx='-30' r='5' /%3E%3Ccircle cx='20' cy='35' r='4' /%3E%3Ccircle cx='40' cy='15' r='1' /%3E%3Ccircle cx='-10' cy='-30' r='1' /%3E%3Crect transform='translate(38 -10) rotate(-15)' width='8' height='8' /%3E%3Crect transform='translate(-35 -30) rotate(10)' width='7' height='7' /%3E%3C/g%3E%3Cg stroke='hsl(30, 90%25, 70%25)'%3E%3Cpath transform='translate(-10 35) rotate(12)' d='M -4 4 l 8 0 -4 -7 z' /%3E%3Cpath transform='translate(-35 25) rotate(50)' d='M -4 0 h 8 m -4 -4 v 8' /%3E%3Cpath transform='translate(25 -30) rotate(50)' d='M -4 0 h 8 m -4 -4 v 8' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100%;
+  transform: scale(1);
+  opacity: 1;
+  /* to have the transition only one way, be sure to describe it as the active state is enabled */
+  transition: none;
+}
+
 /* as the button is pressed, rotate the button
 ! apply the rotation also through a class, which is added after the transition has had a change to complete
 */
 button:active,
 button.active {
-  transform: rotate(45deg) scale(1);
-  transition: all var(--delay) cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  transform: rotate(45deg);
+  transition: all var(--delay) var(--easeInCirc);
 }
 
 /* always as the button is being pressed, increase the area of the pseudo element
 ! use a similar timing function
 */
-button:active:before,
-button.active:before {
+button:active:after,
+button.active:after {
   transform: scale(2);
   opacity: 0;
-  transition: all var(--delay) cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  transition: all var(--delay) var(--easeInCirc);
+}
+/* finally and momentarily show the particles described by the before pseudo element
+! use a different timing function for the opacity than for the transform
+opacity should change slowly at first, while transform should initially move fast
+*/
+button:active:before,
+button.active:before {
+  transition-property: transform, opacity;
+  transition-duration: 0.5s;
+  transition-delay: var(--delay);
+  transition-timing-function: var(--easeOutCirc), var(--easeInCirc);
+  transform: scale(2.5);
+  opacity: 0;
 }
 
 button svg {
@@ -95,12 +130,13 @@ button svg {
 remove it from reach with visibility hidden
 */
 button + nav {
+  z-index: 5;
   filter: drop-shadow(0 2px 8px hsla(0, 0%, 0%, 0.2));
   /* transition the navigation when the class of .active is applied on the button
   scale from the bottom
   */
   transform-origin: 50% 100%;
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.3s var(--easeOutCirc);
   /* to apply the delay only as the class active is removed be sure to remove it
   when the class is actually added
   */
@@ -121,7 +157,7 @@ reset opacity and color on hover/focus
 nav a {
   color: hsl(0, 0%, 50%);
   opacity: 0.4;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s var(--easeInOutCubic);
   outline: none;
 }
 nav a:focus,
