@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25 -25 50 50" width="50" height="50">
+  <g stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <g fill="none">
+      <path d="M -10 8 v -18 a 2 2 0 0 1 2 -2 h 13"/>
+    </g>
+    <g fill="currentColor">
+      <path d="M -2 -6 h 9 l 4.5 4.5 v 12 a 2 2 0 0 1 -2 2 h -11.5 a 2 2 0 0 1 -2 -2 v -14.5 a 2 2 0 0 1 2 -2"/>
+    </g>
+  </g>
+</svg>
