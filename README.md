@@ -233,4 +233,4 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[12 Days of Christmas](https://codepen.io/borntofrappe/pen/NWPGvjW)|Practice with CSS selectors and property-value pairs to create an entry for the weekly #codepenchallenge.|6th December 2019|
 |[Wink Button](https://codepen.io/borntofrappe/pen/QWwyjvB)|Practice with JavaScript and promises to create a button which always prompts an error message.|8th December 2019|
 |[Tree Emoji](https://codepen.io/borntofrappe/pen/vYEJbPE)|Display and animate a series of emojis in a tree-like structure.|29th December 2019|
-|[CPC Multi Button]()|Recreate [this design](https://dribbble.com/shots/3118647-3D-Touch-Action-Change) with SVG syntax.|11-12th January 2020|
+|[CPC Multi Buttons](https://codepen.io/borntofrappe/pen/jOEKERG)|Experiment with SVG syntax and CSS transitions to create a button allowing to open up three more options.|11-12th January 2020|
