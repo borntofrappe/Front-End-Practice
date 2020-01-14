@@ -161,7 +161,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Mask & Transform](https://codepen.io/borntofrappe/pen/QWwMGBM)|Create and animate a mask to temporarily hide a portion of an SVG drawing.|27th December 2019|
 |[SVG Repeating Patterns](https://codepen.io/borntofrappe/pen/GRgOByZ)|Use SVG syntax to create several patterns out of basic shapes.|03rd January 2020|
 |[SVG Background](https://codepen.io/borntofrappe/pen/wvByeVg)|Highlight how SVG can create an intriguing pattern by repeating a basic shape.|06th January 2020|
-|[SVG Heart Monitor Loader]()|Experiment with SVG syntax, CSS properties and a touch of JavaScript to create an intriguing loading screen.|14th January 2020|
+|[SVG Heart Monitor](https://codepen.io/borntofrappe/pen/GRgBvxa)|Experiment with SVG syntax, CSS properties and a touch of JavaScript to create an intriguing animation.|14th January 2020|
 
 ### UI UX
 

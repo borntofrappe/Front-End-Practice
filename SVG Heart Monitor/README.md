@@ -1,6 +1,6 @@
-# SVG Heart Monitor Loader
+# SVG Heart Monitor
 
-<!-- [Live Demo]() -->
+[Live Demo](https://codepen.io/borntofrappe/full/GRgBvxa)
 
 ## Goal
 
