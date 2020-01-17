@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100" >
+  <defs>
+    <path id="point" d="M -2 0 q 1 -3 2 -3 q 1 0 2 3z" fill="currentColor" />
+    <circle id="direction" r="4" fill="currentColor" />
+    <clipPath id="needle--clip">
+      <rect y="-50" width="50" height="100" />
+    </clipPath>
+  </defs>
+  <g stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <circle r="26" fill="none" />
+    <g id="half--point">
+      <use href="#point" transform="rotate(0) translate(0 -26)" />
+      <use href="#point" transform="rotate(45) translate(0 -26)" />
+      <use href="#point" transform="rotate(90) translate(0 -26)" />
+      <use href="#point" transform="rotate(135) translate(0 -26)" />
+    </g>
+    <use href="#half--point" transform="scale(-1 -1)" />
+    <g id="needle">
+      <path d="M 0 -30 L -22.5 22.5 0 11.25 22.5 22.5 z" fill="currentColor" clip-path="url(#needle--clip)" />
+      <path d="M 0 -30 L -22.5 22.5 0 11.25 22.5 22.5 z" fill="none" />
+    </g>
+  </g>
+  <use href="#direction" x="46" />
+  <use href="#direction" x="-46" />
+  <use href="#direction" y="46" />
+  <use href="#direction" y="-46" />
+</svg>
