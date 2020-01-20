@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa:400,700&display=swap");
+
+*,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' width='100' height='100'%3E%3Crect id='cell' fill='hsl(0, 0%25, 100%25)' opacity='0.3' width='5' height='5' /%3E%3Cuse href='%23cell' x='5' y='5' /%3E%3C/svg%3E"), url("./bg.jpeg");
+  background-size: 20px, cover;
+  font-family: "Lato", sans-serif;
+  perspective: 500px;
+}
+
+nav {
+  margin: 0 auto;
+  max-width: 750px;
+  width: 90vw;
+  border-radius: 0 0 15px 15px;
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0 2px 10px -2px hsla(0, 0%, 0%, 0.5);
+
+  display: flex;
+  align-items: center;
+  color: hsl(0, 90%, 30%);
+  overflow: hidden;
+}
+a {
+  font-weight: 700;
+  padding: 1.5rem;
+  flex-grow: 1;
+  color: inherit;
+  height: 100%;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  position: relative;
+  transition: transform 0.5s ease-in-out;
+}
+a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 300%;
+  top: 0;
+  left: 0;
+  transform: translate(0%, -100%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' width='100' height='100'%3E%3Crect id='cell' fill='hsl(0, 0%25, 100%25)' opacity='0.3' width='5' height='5' /%3E%3Cuse href='%23cell' x='5' y='5' /%3E%3C/svg%3E"), hsl(0, 90%, 30%);
+  background-size: 15px;
+}
+a:last-of-type {
+  border-bottom-right-radius: inherit;
+}
+a span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translate(0%, -400%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.25rem solid currentColor;
+}
+a:hover,
+a:focus {
+  transform: translateY(400%);
+}
+
+svg {
+  width: 100px;
+  height: auto;
+  display: block;
+  position: absolute;
+  top: 70%;
+  right: 30%;
+  color: hsl(0, 90%, 30%);
+  opacity: 0.5;
+  animation: moveAround 15s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  svg {
+    animation: none;
+  }
+}
+@keyframes moveAround {
+  0% {
+    transform: translate(0%, 0%) rotateZ(0turn) rotateY(0turn);
+  }
+  50% {
+    transform: translate(100%, 50%) rotateY(1turn);
+  }
+  to {
+    transform: translate(0%, 0%) rotateZ(1turn) rotateY(0turn);
+  }
+}
