@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa:400,700&display=swap");
+
+*,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* include a semitransparent grid above the selected background image */
+body {
+  min-height: 100vh;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' width='100' height='100'%3E%3Crect id='cell' fill='hsl(0, 0%25, 100%25)' opacity='0.3' width='5' height='5' /%3E%3Cuse href='%23cell' x='5' y='5' /%3E%3C/svg%3E"),
+    url("https://images.pexels.com/photos/1670977/pexels-photo-1670977.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: 20px, cover;
+  font-family: "Lato", sans-serif;
+  perspective: 500px;
+}
+
+nav {
+  margin: 0 auto;
+  max-width: 600px;
+  width: 90vw;
+  border-radius: 0 0 15px 15px;
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0 2px 10px -2px hsla(0, 0%, 0%, 0.5);
+  /* display the anchor links in a row */
+  display: flex;
+  color: hsl(0, 90%, 35%);
+  /* hide the elements positioned outside the navigation bar bar */
+  overflow: hidden;
+}
+a {
+  flex-grow: 1;
+  font-weight: 700;
+  padding: 1.5rem;
+  color: inherit;
+  height: 100%;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  position: relative;
+  /* remove the default outline
+  the span elements are introduced instead
+  */
+  outline: none;
+  transition: transform 0.45s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+/* with a pseudo element describe a silly pattern between the anchor link and the nested span */
+a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 400%;
+  top: 0;
+  left: 0;
+  transform: translate(0%, -100%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' width='100' height='100'%3E%3Crect id='cell' fill='hsl(0, 90%25, 35%25)' opacity='0.3' width='5' height='5' /%3E%3Cuse href='%23cell' x='5' y='5' /%3E%3C/svg%3E");
+  background-size: 15px;
+}
+/* position the span above the pseudo element of the anchor link  */
+a span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translate(0%, -500%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(0, 90%, 35%);
+  color: hsl(0, 0%, 100%);
+}
+/* translate the anchor link to show the hidden span element instead, on hover/focus */
+a:hover,
+a:focus {
+  transform: translateY(500%);
+}
+
+/* bonus, animate the drawing of a space invader, preference pending */
+svg {
+  width: 100px;
+  height: auto;
+  display: block;
+  position: absolute;
+  top: 70%;
+  right: 30%;
+  color: hsl(0, 90%, 35%);
+  opacity: 0.5;
+  animation: moveAround 15s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  svg {
+    animation: none;
+  }
+}
+@keyframes moveAround {
+  0% {
+    transform: translate(0%, 0%) rotateZ(-0.2turn) rotateY(0turn);
+  }
+  50% {
+    transform: translate(100%, 50%) rotateZ(0turn) rotateY(1turn);
+  }
+  to {
+    transform: translate(0%, 0%) rotateZ(-0.2turn) rotateY(0turn);
+  }
+}

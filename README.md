@@ -189,7 +189,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[UX Gatsby Side Navigation](https://codepen.io/borntofrappe/pen/LYYBqEj)|Replicate the gist of the navigation shown on [Gatsby's own website](https://www.gatsbyjs.org/docs/) with SVG syntax and an input of type checkbox.|11th November 2019|
 |[UX Checkbox Hack](https://codepen.io/borntofrappe/pen/abzmrQy)|Using nested and sibling selectors create an interactive toggle allowing to play and pause an animation.|15th December 2019|
 |[UI Advent Calendar](https://codepen.io/borntofrappe/pen/OJPjKdY)|Experiment with a grid layout to create an advent calendar.|29-30th December 2019|
-|[UI Sonic Channel]()|Replicate the background and navigation bar of the [Sonic 2020 website](http://sonic.sega.jp/SonicChannel/sonic2020/).|20th January 2020|
+|[UI Scrolling Navigation](https://codepen.io/borntofrappe/pen/gObQZVd)|Create a navigation in which the text of each anchor link is re-introduced on focus and and hover.|20th January 2020|
 
 ### Miscellaneous
 
