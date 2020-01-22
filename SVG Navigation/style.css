@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css?family=Chango&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 30' opacity='0.2' width='80' height='60'%3E%3Cpath d='M 0 15 q 10 -7 20 0 t 20 0' fill='none' stroke='hsl(0, 0%25, 100%25)' stroke-linecap='round' stroke-width='2' /%3E%3C/svg%3E"), #fb1f34;
+  color: hsl(0, 0%, 100%);
+  background-position-x: 50%;
+  background-size: 50px;
+  /* center the navigation in the viewport */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* position the hamburger button in the top right corner */
+button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0.5rem;
+}
+button:focus {
+  outline-color: currentColor;
+}
+/* when the button is toggled to .open, update the group elements to toggle between the hamburger and x symbol */
+button svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(5px 5px hsl(0, 0%, 20%));
+}
+button .translate {
+  transition: transform 0.25s ease-in-out;
+  transition-delay: 0.25s;
+}
+button .rotate {
+  transition: transform 0.25s ease-in-out;
+  transition-delay: 0s;
+}
+button.open .translate {
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+button.open .rotate {
+  transform: rotate(0);
+  transition-delay: 0.25s;
+}
+/* expand the nav to consider the entire height/width, whichever's smaller */
+nav {
+  width: 100vmin;
+  visibility: hidden;
+}
+nav svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+nav svg text {
+  text-shadow: 0px 0.2rem hsl(0, 0%, 20%);
+  font-family: "Chango", cursive;
+  fill: currentColor;
+  font-size: 2.255rem;
+  letter-spacing: 0px;
+  transition-property: letter-spacing, text-shadow;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+/* on hover/focus update the style of the text */
+nav svg a {
+  color: inherit;
+  outline: none;
+}
+nav svg a:hover text,
+nav svg a:focus text {
+  letter-spacing: 5px;
+  text-shadow: 0px 0.5rem hsl(0, 0%, 20%);
+}
