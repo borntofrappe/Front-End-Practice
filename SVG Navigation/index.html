@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>SVG Navigation</title>
+  </head>
+  <body>
+    <!-- beloved hamburger button -->
+    <button aria-label="Toggle Navigation">
+      <svg viewBox="-50 -40 100 80" width="50" height="40">
+        <defs>
+          <path id="line" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" d="M -40 0 h 80" />
+        </defs>
+        <g>
+          <g class="translate" transform="translate(0 -30)">
+            <g class="rotate" transform="rotate(-45)">
+              <use transform="rotate(45)" href="#line" />
+            </g>
+          </g>
+
+          <g class="rotate" transform="rotate(45)">
+            <use transform="rotate(-45)" href="#line" />
+          </g>
+
+          <g class="translate" transform="translate(0 30)">
+            <g class="rotate" transform="rotate(-45)">
+              <use transform="rotate(45)" href="#line" />
+            </g>
+          </g>
+        </g>
+      </svg>
+    </button>
+
+    <!-- navigation wrapping text elements within anchor elements -->
+    <nav>
+      <svg viewBox="0 0 500 400" width="500" height="400">
+        <defs>
+          <path id="path" d="M -150 60 q 50 -20 100 0 t 100 0 100 0 100 0 100 0 100 0 100 0 100 0" fill="none" />
+        </defs>
+        <g transform="translate(0 0)">
+          <a href="#home">
+            <text>
+              <textPath text-anchor="middle" href="#path" startOffset="0%">
+                Home
+              </textPath>
+            </text>
+          </a>
+        </g>
+        <g transform="translate(0 100)">
+          <a href="#about">
+            <text>
+              <textPath text-anchor="middle" href="#path" startOffset="100%">
+                About
+              </textPath>
+            </text>
+          </a>
+        </g>
+        <g transform="translate(0 200)">
+          <a href="#contact">
+            <text>
+              <textPath text-anchor="middle" href="#path" startOffset="0%">
+                Contact
+              </textPath>
+            </text>
+          </a>
+        </g>
+        <g transform="translate(0 300)">
+          <a href="#dance">
+            <text>
+              <textPath text-anchor="middle" href="#path" startOffset="100%">
+                Dance
+              </textPath>
+            </text>
+          </a>
+        </g>
+      </svg>
+    </nav>
+
+    <script src="https://unpkg.com/animejs@3.1.0/lib/anime.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
