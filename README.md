@@ -162,6 +162,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[SVG Repeating Patterns](https://codepen.io/borntofrappe/pen/GRgOByZ)|Use SVG syntax to create several patterns out of basic shapes.|03rd January 2020|
 |[SVG Background](https://codepen.io/borntofrappe/pen/wvByeVg)|Highlight how SVG can create an intriguing pattern by repeating a basic shape.|06th January 2020|
 |[SVG Heart Monitor](https://codepen.io/borntofrappe/pen/GRgBvxa)|Experiment with SVG syntax, CSS properties and a touch of JavaScript to create an intriguing animation.|14th January 2020|
+|[SVG Navigation]()|Create a navigation menu with SVG syntax, the textPath element and the startOffset attribute.|17th-22nd January 2020|
 
 ### UI UX
 
@@ -189,7 +190,6 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[UX Gatsby Side Navigation](https://codepen.io/borntofrappe/pen/LYYBqEj)|Replicate the gist of the navigation shown on [Gatsby's own website](https://www.gatsbyjs.org/docs/) with SVG syntax and an input of type checkbox.|11th November 2019|
 |[UX Checkbox Hack](https://codepen.io/borntofrappe/pen/abzmrQy)|Using nested and sibling selectors create an interactive toggle allowing to play and pause an animation.|15th December 2019|
 |[UI Advent Calendar](https://codepen.io/borntofrappe/pen/OJPjKdY)|Experiment with a grid layout to create an advent calendar.|29-30th December 2019|
-|[UI Full Navigation]()|Display anchor link over the entirety of the viewport.|17th January 2020|
 
 ### Miscellaneous
 
