@@ -191,6 +191,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[UX Checkbox Hack](https://codepen.io/borntofrappe/pen/abzmrQy)|Using nested and sibling selectors create an interactive toggle allowing to play and pause an animation.|15th December 2019|
 |[UI Advent Calendar](https://codepen.io/borntofrappe/pen/OJPjKdY)|Experiment with a grid layout to create an advent calendar.|29-30th December 2019|
 |[UI Scrolling Navigation](https://codepen.io/borntofrappe/pen/gObQZVd)|Create a navigation in which the text of each anchor link is re-introduced on focus and and hover.|20th January 2020|
+|[UI Material Buttons]()|Practice with custom properties, clip-path, pseudo elements to create a series of buttons inspired by the material UI.|23rd January 2020|
 
 ### Miscellaneous
 
