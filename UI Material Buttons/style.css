@@ -1,71 +1,86 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap");
 
 *,
-*:before {
+*:before,
+*:after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
+/* display the buttons in the center of the viewport, one above the other */
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   color: hsl(0, 0%, 5%);
   background: hsl(0, 0%, 98%);
-  background-repeat: no-repeat;
-  background-position: 100% 100%;
   font-family: "Roboto", sans-serif;
 }
+/* separate the buttons from the preceding elements */
 body > * + * {
   margin-block-start: 2.5rem;
 }
-
+/* each button has the following properties
+- top, left, size for the active state
+- background, color, border for the color palette
+*/
 button {
   --top: 50%;
   --left: 50%;
   --size: 100%;
   --background: hsl(265, 100%, 48%);
   --color: hsl(265, 100%, 100%);
+  /* :p */
   --border: none;
-  background: none;
-  border: none;
-  color: inherit;
   color: var(--color);
   background: var(--background);
+  border: 1px solid var(--border);
+
   font-family: inherit;
-  padding: 0.5rem 1.25rem;
+  padding: 0.6rem 1.25rem;
   font-size: 0.9rem;
   border-radius: 5px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 2px;
   letter-spacing: 1px;
-  position: relative;
+  /* overflow and position matching the pseudo elements */
   overflow: hidden;
-  box-shadow: drop-shadow(0 1px 1px hsla(0, 0%, 0%, 0.4));
-  transition: box-shadow 0.2s ease-in-out;
-  text-align: center;
-  line-height: 1.5;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
+  position: relative;
+  /* remove the default outline
+! substituted with the pseudo elements
+*/
+  outline: none;
 }
+/* if existing, separate the inline icon from the text which follows */
 button svg {
   width: 1em;
   height: auto;
   display: inline-block;
   margin-inline-end: 0.2rem;
 }
-button:focus,
-button:hover {
-  outline: none;
-  box-shadow: drop-shadow(0 1px 2px hsla(0, 0%, 0%, 0.4));
-}
-button:after {
-  pointer-events: none;
+
+/* with a pseudo element add a semitransparent layer with the same color of the text */
+button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
   border-radius: inherit;
+  opacity: 0;
+}
+button:focus:before,
+button:hover:before {
+  opacity: 0.1;
+}
+
+/* with another pseudo element add a semitransparent layer clipped to be a circle */
+button:after {
   content: "";
   position: absolute;
   top: var(--top);
@@ -76,26 +91,16 @@ button:after {
   background: currentColor;
   clip-path: circle(0%);
   opacity: 0.3;
+  border-radius: inherit;
 }
+/*
+! add the transition only as the active state is "enabled"
+! add a negative delay for the clip to already start from a small circle
+! add a delay for the opacity to follow the clip-path
+*/
 button:active:after {
+  clip-path: circle(100%);
   opacity: 0;
   transition: clip-path 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), opacity 0.4s ease-in-out;
   transition-delay: -0.1s, 0.5s;
-  clip-path: circle(100%);
-}
-button:focus:before,
-button:hover:before {
-  opacity: 0.1;
-}
-button:before {
-  pointer-events: none;
-  border-radius: inherit;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: currentColor;
-  opacity: 0;
 }
