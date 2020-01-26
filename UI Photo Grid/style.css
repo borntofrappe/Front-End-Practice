@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap");
+
+*,
+*:before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #141516;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  font-family: "Roboto", sans-serif;
+}
+
+.grid {
+  max-width: 800px;
+  width: 90vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 100px);
+  grid-auto-rows: 100px;
+  grid-auto-flow: dense;
+  justify-content: center;
+  align-content: center;
+}
+
+.grid a {
+  position: relative;
+  overflow: hidden;
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+.grid a:focus {
+  outline: none;
+}
+
+.grid img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.6);
+  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transform: scale(1);
+}
+
+.grid a:focus img,
+.grid a:hover img {
+  transform: scale(1.1);
+  filter: brightness(1);
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsla(0, 0%, 0%, 0.6);
+  backdrop-filter: blur(5px);
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+.modal.show {
+  transition-delay: 0.2s;
+  opacity: 1;
+  visibility: visible;
+}
+.modal img {
+  height: 90vh;
+  width: 80vw;
+  max-width: 700px;
+  object-fit: contain;
+}
+.modal button {
+  color: inherit;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  outline-color: currentColor;
+  opacity: 0.5;
+  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.modal button:hover,
+.modal button:focus {
+  opacity: 1;
+}
+.modal button svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
