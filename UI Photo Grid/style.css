@@ -1,88 +1,101 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap");
 
-*,
-*:before {
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+/* center the grid in the viewport */
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  color: #fff;
-  background: #141516;
-  background-repeat: no-repeat;
-  background-position: 100% 100%;
-  font-family: "Roboto", sans-serif;
+  align-items: center;
+  color: hsl(0, 0%, 100%);
+  background: hsl(210, 5%, 7%);
 }
 
-.grid {
+main {
   max-width: 800px;
   width: 90vw;
+  /* display the anchor links in a grid */
   display: grid;
-  grid-template-columns: repeat(auto-fit, 100px);
-  grid-auto-rows: 100px;
-  grid-auto-flow: dense;
+  grid-template-columns: repeat(auto-fit, 150px);
+  grid-auto-rows: 150px;
+  /* center the content horizontally & vertically */
   justify-content: center;
   align-content: center;
+  grid-auto-flow: dense;
 }
-
-.grid a {
-  position: relative;
+/* remove overflow to give the impression of a zoom when scaling the image up */
+main a {
   overflow: hidden;
-  grid-row: span 2;
+}
+/* update the size of a few selected cells */
+main a:nth-of-type(2) {
   grid-column: span 2;
 }
-
-.grid a:focus {
+main a:nth-of-type(5) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+main a:nth-of-type(7) {
+  grid-row: span 2;
+}
+/* the default overflow is substituted by the scale/brightness of the nested images */
+main a:focus {
   outline: none;
 }
-
-.grid img {
-  display: block;
+main img {
   object-fit: cover;
+  display: block;
   width: 100%;
   height: 100%;
+  /* transition the scale and brightness of the image when hover/focus-ing on the anchor link */
   filter: brightness(0.6);
   transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   transform: scale(1);
 }
-
-.grid a:focus img,
-.grid a:hover img {
+main a:focus img,
+main a:hover img {
   transform: scale(1.1);
   filter: brightness(1);
 }
-.modal {
+
+/* stretch the overlay to cover the available viewport */
+div {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  /* center te image horizontally & vertically */
   display: flex;
   justify-content: center;
   align-items: center;
   background: hsla(0, 0%, 0%, 0.6);
   backdrop-filter: blur(5px);
+  /* transition the opacity and visibility when the class of .overlay is added on the div container */
   transition: all 0.5s ease-in-out;
   opacity: 0;
   visibility: hidden;
 }
-.modal.show {
+/* slight delay as the class is added and the overlay is meant to be shown */
+div.overlay {
   transition-delay: 0.2s;
   opacity: 1;
   visibility: visible;
 }
-.modal img {
+/* size the image according to both the width and height of the viewport */
+div img {
   height: 90vh;
-  width: 80vw;
+  width: 85vw;
   max-width: 700px;
   object-fit: contain;
 }
-.modal button {
+/* absolute position the button in the top right corner of the overlay */
+div button {
   color: inherit;
   position: absolute;
   top: 1rem;
@@ -93,14 +106,15 @@ body {
   border: none;
   padding: 0.25rem;
   outline-color: currentColor;
+  /* transition the opacity on hover/focus */
   opacity: 0.5;
   transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
-.modal button:hover,
-.modal button:focus {
+div button:hover,
+div button:focus {
   opacity: 1;
 }
-.modal button svg {
+div button svg {
   width: 100%;
   height: 100%;
   display: block;
