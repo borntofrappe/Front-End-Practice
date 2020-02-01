@@ -1,6 +1,5 @@
-// CANVAS
-// function creating an array of cells
-const gridMaze = (columns, rows) => {
+const binaryTree = (columns, rows) => {
+  // build a an array of objects for the individual cells
   const grid = Array(rows)
     .fill()
     .map((r, row) =>
@@ -20,15 +19,11 @@ const gridMaze = (columns, rows) => {
         }))
     );
 
-  // return the grid in a 1D array
-  return grid.reduce((acc, curr) => [...acc, ...curr], []);
-};
+  // flatten the grid in a 1D array
+  const maze = grid.reduce((acc, curr) => [...acc, ...curr], []);
 
-
-// binary tree algorithm: for each cell remove the gate to the east **or** south
-const binaryTree = (columns, rows) => {
-  const maze = gridMaze(columns, rows);
-
+  // binary tree algorithm
+// for each cell remove the gate to the east **or** south
   maze.forEach(cell => {
       const isSouth = Math.random() > 0.5;
       if (isSouth) {
@@ -60,6 +55,7 @@ const binaryTree = (columns, rows) => {
   return maze;
 }
 
+// CANVAS
 // identify the canvas and absolute position the element with respect to the body
 const canvas = document.querySelector('canvas');
 canvas.style.position = 'absolute';
@@ -142,6 +138,7 @@ const svg = document.querySelector('svg');
 // function drawing a maze in the SVG element
 function drawSVG() {
   // SETUP
+  // modify the viewBox according to a couple of arbitrary values
   const columns = 7;
   const rows = 7;
 
@@ -153,9 +150,9 @@ function drawSVG() {
   const h = width / columns;
   const v = height / rows;
   const strokeWidth = 4;
+
   // ACTUAL DRAWING
   // for each cell draw a path element for the corresponding side
-
   svg.setAttribute('viewBox', `${-strokeWidth / 2} ${-strokeWidth / 2} ${width + strokeWidth} ${height + strokeWidth}`)
   svg.innerHTML = `
     <g fill="none" stroke="currentColor" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round">
@@ -171,8 +168,6 @@ function drawSVG() {
       `).join("")}
     </g>
   `;
-
-
 }
 
 // draw the mazes immediately and following a resize event

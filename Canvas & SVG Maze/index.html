@@ -4,18 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Canvas Maze Background</title>
+    <title>Mazes</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- the width and height are set through the script, alongside the actual drawing -->
-    <canvas></canvas>
+    <!-- the width and height are set through the script, alongside the actual drawing
+    by default set both to 0 to show the SVG which follows in the very center
+    -->
+    <canvas width="0" height="0"></canvas>
 
-    <!-- in the center of the viewport add another maze like structure, this time with an svg element -->
+    <!-- the markup of the svg is also updated in the script, but draw a square by default -->
     <svg width="50" height="50" viewBox="-5 -5 110 110">
       <g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
         <path d="M 0 0 l 100 0 0 100 -100 0z" />
-        <g id="maze"></g>
       </g>
     </svg>
 

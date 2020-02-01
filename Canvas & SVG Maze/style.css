@@ -3,24 +3,26 @@
   padding: 0;
   margin: 0;
 }
+/* center the svg in the viewport */
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
   color: hsl(215, 85%, 15%);
   background: linear-gradient(to bottom left, hsl(215, 55%, 90%), hsl(215, 55%, 95%));
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
+/* include padding around the maze drawing */
 svg {
   display: block;
   width: 50vmin;
+  padding: 2rem;
   max-width: 12rem;
   height: auto;
   background: hsl(215, 90%, 50%);
   box-shadow: 0 0 5px -4px hsl(215, 85%, 15%);
   color: hsl(215, 55%, 95%);
   z-index: 5;
-  padding: 2rem;
 }

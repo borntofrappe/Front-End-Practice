@@ -78,7 +78,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[JS Stopwatch](https://codepen.io/borntofrappe/pen/ExxzXKr)|Create a stopwatch using vanilla JavaScript, `setInterval` or `requestAnimationFrame`.|24th November|
 |[Canvas Clip](https://codepen.io/borntofrappe/pen/wvvLwLG)|Experiment with the Canvas API and specifically the possibility to clip parts of a canvas to show a subset of existing elements.|23rd-25th November|
 |[A Header A Maze]()|Create an entry for the codepenchallenge building a maze with the canvas API.|30th January - 2nd February 2020|
-|[Canvas Maze Background]()|Draw a maze in the background with a canvas element and a basic algorithm.|2nd February 2020|
+|[Canvas & SVG Maze](https://codepen.io/borntofrappe/pen/mdyNdpB)|Draw a couple of mazes with the Canvas API and SVG syntax.|2nd February 2020|
 
 ### JS Frameworks
 
