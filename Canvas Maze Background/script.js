@@ -1,10 +1,13 @@
-// function creating an array of cells, each with a gates property describing which side of the cell to actually draw
-const buildMaze = (columns = 8, rows = 8) => {
+// CANVAS
+// function creating an array of cells
+const gridMaze = (columns, rows) => {
   const grid = Array(rows)
     .fill()
     .map((r, row) =>
       Array(columns)
         .fill()
+        // each cell is given a column and width property, as well as a _gates_ field
+        // gates dictates which side of the cell to actually draw
         .map((c, column) => ({
           column,
           row,
@@ -17,48 +20,53 @@ const buildMaze = (columns = 8, rows = 8) => {
         }))
     );
 
-  // binary tree algorithm: for each cell remove the gate to the east **or** south
-  grid.forEach((r, rIndex) => {
-    r.forEach((cell, cIndex) => {
+  // return the grid in a 1D array
+  return grid.reduce((acc, curr) => [...acc, ...curr], []);
+};
+
+
+// binary tree algorithm: for each cell remove the gate to the east **or** south
+const binaryTree = (columns, rows) => {
+  const maze = gridMaze(columns, rows);
+
+  maze.forEach(cell => {
       const isSouth = Math.random() > 0.5;
       if (isSouth) {
-        const neighborSouth = rIndex < rows - 1;
+        const neighborSouth = maze.find(({column, row}) => column === cell.column && row === cell.row + 1);
         if (neighborSouth) {
           cell.gates.south = false;
-          grid[rIndex + 1][cIndex].gates.north = false;
+          neighborSouth.gates.north = false;
         } else {
-          const neighborEast = cIndex < columns - 1;
+          const neighborEast = maze.find(({column, row}) => column === cell.column + 1 && row === cell.row);
           if (neighborEast) {
             cell.gates.east = false;
-            grid[rIndex][cIndex + 1].gates.west = false;
+            neighborEast.gates.west = false;
           }
         }
       } else {
-        const neighborEast = cIndex < columns - 1;
+        const neighborEast = maze.find(({column, row}) => column === cell.column + 1 && row === cell.row);
         if (neighborEast) {
           cell.gates.east = false;
-          grid[rIndex][cIndex + 1].gates.west = false;
+          neighborEast.gates.west = false;
         } else {
-          const neighborSouth = rIndex < rows - 1;
+          const neighborSouth = maze.find(({column, row}) => column === cell.column && row === cell.row + 1);
           if (neighborSouth) {
             cell.gates.south = false;
-            grid[rIndex + 1][cIndex].gates.north = false;
+            neighborSouth.gates.north = false;
           }
         }
       }
     });
-  });
-
-  // return the maze in a 1D array
-  // the position is not based on the index in the array, but on the column and row properties
-  return grid.reduce((acc, curr) => [...acc, ...curr], []);
+  return maze;
 }
 
+// identify the canvas and absolute position the element with respect to the body
 const canvas = document.querySelector('canvas');
 canvas.style.position = 'absolute';
 
-// function drawing the maze in the background
-const drawMaze = () => {
+// function drawing the maze in the canvas element
+const drawCanvas = () => {
+  // SETUP
   // stretch the canvas to cover the width and height of the window
   const {innerWidth: width, innerHeight: height} = window;
   canvas.width = width;
@@ -69,25 +77,38 @@ const drawMaze = () => {
   const cells = 20;
   const size = Math.floor(Math.min(width, height) / cells);
 
+  // add one more column and row and slightly offset the element to crop out the contours
   const columns = Math.floor(width / size) + 1;
   const rows = Math.floor(height / size) + 1;
 
-  // move the canvas to crop out the outside borders
-  canvas.style.left = `${-cells / 2}px`;
-  canvas.style.top = `${-cells / 2}px`;
+  // build a maze using the binary tree algorithm
+  const maze = binaryTree(columns, rows);
+
+  // remove the top and left contours to have a more symmetric look
+  maze.forEach(cell => {
+    if(cell.column === 0) {
+      cell.gates.west = 0;
+    }
+    if(cell.row === 0) {
+      cell.gates.north = 0;
+    }
+  })
+
+  // ACTUAL DRAWING
+  const context = canvas.getContext("2d");
 
   // update the size of the stroke to avoid covering too much of the viewport
-  const lineWidth = size > 15  ? 10: 4;
+  const lineWidth = size > 15  ? 8: 4;
 
-  const context = canvas.getContext("2d");
-  const maze = buildMaze(columns, rows);
+  // draw each cell with a series of lines
   maze.forEach(({ column, row, gates}) => {
     context.save();
     // translate according to the width/height property
     context.translate(size * column, size * row);
 
     context.lineWidth = lineWidth;
-    context.lineCap = 'square';
+    context.lineCap = 'round';
+    context.lineJoin = 'round';
     context.strokeStyle = 'hsl(215, 85%, 15%)'
 
     // draw the necessary line(s)
@@ -114,8 +135,50 @@ const drawMaze = () => {
   })
 }
 
-drawMaze();
 
-// redraw the maze as the window is resized or clicked
-window.addEventListener('resize', () => drawMaze())
-window.addEventListener('click', () => drawMaze())
+
+// SVG
+const svg = document.querySelector('svg');
+// function drawing a maze in the SVG element
+function drawSVG() {
+  // SETUP
+  const columns = 7;
+  const rows = 7;
+
+  const maze = binaryTree(columns, rows);
+
+  const width = 100;
+  const height = 100;
+
+  const h = width / columns;
+  const v = height / rows;
+  const strokeWidth = 4;
+  // ACTUAL DRAWING
+  // for each cell draw a path element for the corresponding side
+
+  svg.setAttribute('viewBox', `${-strokeWidth / 2} ${-strokeWidth / 2} ${width + strokeWidth} ${height + strokeWidth}`)
+  svg.innerHTML = `
+    <g fill="none" stroke="currentColor" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 0 0 h ${width} v ${height} h ${-width}z" />
+
+      ${maze.map(({column, row, gates}) => `
+        <g transform="translate(${column * h} ${row * v})">
+          ${gates.north ? `<path d="M 0 0 h ${h}" />` : ''}
+          ${gates.west ? `<path d="M ${h} 0 v ${v}" />` : ''}
+          ${gates.south ? `<path d="M 0 ${v} h ${h}" />` : ''}
+          ${gates.east ? `<path d="M 0 0 v ${v}" />` : ''}
+        </g>
+      `).join("")}
+    </g>
+  `;
+
+
+}
+
+// draw the mazes immediately and following a resize event
+drawCanvas();
+drawSVG();
+window.addEventListener('resize', () => {
+  drawCanvas();
+  drawSVG();
+});

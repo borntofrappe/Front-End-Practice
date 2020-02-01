@@ -11,6 +11,14 @@
     <!-- the width and height are set through the script, alongside the actual drawing -->
     <canvas></canvas>
 
+    <!-- in the center of the viewport add another maze like structure, this time with an svg element -->
+    <svg width="50" height="50" viewBox="-5 -5 110 110">
+      <g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 0 0 l 100 0 0 100 -100 0z" />
+        <g id="maze"></g>
+      </g>
+    </svg>
+
     <script src="script.js"></script>
   </body>
 </html>
