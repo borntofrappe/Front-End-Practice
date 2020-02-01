@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  color: hsl(215, 85%, 15%);
+  background: linear-gradient(to bottom left, hsl(215, 55%, 90%), hsl(215, 55%, 95%));
+  position: relative;
+}
