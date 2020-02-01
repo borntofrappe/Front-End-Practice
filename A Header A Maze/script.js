@@ -58,11 +58,12 @@ const buildMaze = (columns = 8, rows = 8) => {
 }
 
 const drawMaze = () => {
-  const {innerWidth} = window;
-  const size = 15;
-  const columns = Math.floor(innerWidth / size);
-  const rows = 15;
   const canvas = document.querySelector('canvas');
+  const {width, height} = canvas.parentElement.getBoundingClientRect();
+  const rows = 10;
+  const size = Math.floor(height / rows);
+  const columns = Math.floor(width / size);
+
   canvas.width = size * columns;
   canvas.height = size * rows;
 
