@@ -61,7 +61,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Meteorite Landings](https://codepen.io/borntofrappe/pen/VwZqZOY)|For a [take-home project](https://learn.freecodecamp.org/coding-interview-prep/take-home-projects/map-data-across-the-globe) in the curriculum @freecodecamp, highlight the sites for a series of meteorite landings.|20th-21st September 2019|
 |[D3 Generative Visualization](https://codepen.io/borntofrappe/pen/eYYQwvz)|Develop a visualization inspired by [this video](https://www.learnwithjason.dev/generative-data-visualization-design-and-planning) and using [this illustration](https://codepen.io/borntofrappe/pen/abbQgOp).|16th November 2019|
 |[DTree](https://codepen.io/borntofrappe/pen/XWJaNYP)|Practice with d3-hierarchy to create a tree diagram.|26th-27th December 2019|
-|[D3 Line Marker]()|Create a line chart with and highlight the connections with the marker element.|3rd February 2019|
+|[D3 Line Marker](https://codepen.io/borntofrappe/pen/RwPbbpz)|Create a line chart with and highlight the connections with the marker element.|3rd February 2019|
 
 
 ### JS

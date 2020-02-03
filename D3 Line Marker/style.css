@@ -16,6 +16,7 @@ body {
   color: hsl(200, 10%, 20%);
   font-family: "Open Sans", sans-serif;
 }
+
 #root {
   padding: 1.5rem;
   background: hsl(0, 0%, 100%);
@@ -24,6 +25,7 @@ body {
   max-width: 550px;
   width: 80vw;
 }
+
 h1 {
   font-family: "Acme", sans-serif;
   letter-spacing: 1px;
@@ -38,6 +40,7 @@ svg {
   height: auto;
   display: block;
 }
+
 svg text {
   font-family: "Acme", sans-serif;
   font-size: 1.3rem;

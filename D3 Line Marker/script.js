@@ -611,8 +611,8 @@ const dataCountries = dataMountains
     return acc;
   }, {});
 
+// to plot the data, consider a 2D array describing the country and number of moutain peaks in an array
 const data = Object.entries(dataCountries).sort((a, b) => b[1] - a[1]);
-console.log(data);
 
 // D3
 const margin = {
@@ -626,16 +626,20 @@ const width = 800 - (margin.left + margin.right);
 const height = 500 - (margin.top + margin.bottom);
 
 // SCALES and LAYOUT
-const yScale = d3
-  .scaleLinear()
-  .domain([0, d3.max(data, d => d[1])])
-  .range([height, 0]);
-
+// horizontally consider a band for each country name
 const xScale = d3
   .scaleBand()
   .domain(data.map(d => d[0]))
   .range([0, width]);
 
+// vertically consider the number of peaks
+// ! start the scale at 0
+const yScale = d3
+  .scaleLinear()
+  .domain([0, d3.max(data, d => d[1])])
+  .range([height, 0]);
+
+// line function
 const line = d3
   .line()
   .x(d => xScale(d[0]))
@@ -653,8 +657,7 @@ root
   .append('p')
   .text("Every mountain exceeding 7.000m in height is located in East, Central, or South Asia.");
 
-
-
+// add a marker element in a <defs> block describing a flag
 const svg = root
   .append('svg')
   .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`)
@@ -667,6 +670,7 @@ const marker = defs
   .attr('id', 'marker--flag')
   .attr("viewBox", "0 0 73 95")
   .attr("markerHeight", "10")
+  // refX and refY to position the marker at the bottom of the flag (pole)
   .attr("refX", "10")
   .attr("refY", "95");
 
@@ -681,6 +685,7 @@ const group = svg
   .append('g')
   .attr('transform', `translate(${margin.left} ${margin.top})`);
 
+// line chart
 group
   .append('path')
   .attr("fill", "none")
@@ -688,10 +693,12 @@ group
   .attr("stroke-width", "10")
   .attr("stroke-linecap", "round")
   .attr('d', line(data))
+  // add the markers at the beginning, end and every inflection of the line chart
   .attr('marker-start', 'url(#marker--flag)')
   .attr('marker-end', 'url(#marker--flag)')
   .attr('marker-mid', 'url(#marker--flag)');
 
+// add a text label below each flag, with the name of the corresponding country
 const groups = group
   .selectAll('g')
   .data(data)
