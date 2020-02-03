@@ -61,6 +61,8 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Meteorite Landings](https://codepen.io/borntofrappe/pen/VwZqZOY)|For a [take-home project](https://learn.freecodecamp.org/coding-interview-prep/take-home-projects/map-data-across-the-globe) in the curriculum @freecodecamp, highlight the sites for a series of meteorite landings.|20th-21st September 2019|
 |[D3 Generative Visualization](https://codepen.io/borntofrappe/pen/eYYQwvz)|Develop a visualization inspired by [this video](https://www.learnwithjason.dev/generative-data-visualization-design-and-planning) and using [this illustration](https://codepen.io/borntofrappe/pen/abbQgOp).|16th November 2019|
 |[DTree](https://codepen.io/borntofrappe/pen/XWJaNYP)|Practice with d3-hierarchy to create a tree diagram.|26th-27th December 2019|
+|[D3 Line Marker]()|Create a line chart with and highlight the connections with the marker element.|3rd February 2019|
+
 
 ### JS
 
@@ -77,7 +79,6 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[Canvas Pong](https://codepen.io/borntofrappe/pen/QWWPBrV)|Dive into the Canvas API by creating an endless game of pong in which the paddles are moved automatically.|22nd November|
 |[JS Stopwatch](https://codepen.io/borntofrappe/pen/ExxzXKr)|Create a stopwatch using vanilla JavaScript, `setInterval` or `requestAnimationFrame`.|24th November|
 |[Canvas Clip](https://codepen.io/borntofrappe/pen/wvvLwLG)|Experiment with the Canvas API and specifically the possibility to clip parts of a canvas to show a subset of existing elements.|23rd-25th November|
-|[A Header A Maze]()|Create an entry for the codepenchallenge building a maze with the canvas API.|30th January - 2nd February 2020|
 |[Canvas & SVG Maze](https://codepen.io/borntofrappe/pen/mdyNdpB)|Draw a couple of mazes with the Canvas API and SVG syntax.|2nd February 2020|
 
 ### JS Frameworks
