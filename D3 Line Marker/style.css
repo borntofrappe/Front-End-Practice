@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Acme|Open+Sans&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -5,8 +7,38 @@
 }
 body {
   min-height: 100vh;
-  display: grid;
-  place-items: center;
-  background: hsl(0, 0%, 97%);
-  color: hsl(200, 10%, 33%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 73 95' opacity='0.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(36.5 47.5) scale(0.4)'%3E%3Cg transform='translate(-36.5 -47.5)'%3E%3Cg fill='none' stroke='hsl(0, 0%25, 30%25)' stroke-width='10'%3E%3Cpath d='M 10 95 v -75 h 25 l 8 8 h 25 v 35 h -25 l -8 -8 h -25 m 0 -42 l -3 -3 3 -3 3 3 -3 3z' /%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A"),
+    hsl(0, 0%, 97%);
+  background-size: 50px;
+  color: hsl(200, 10%, 20%);
+  font-family: "Open Sans", sans-serif;
+}
+#root {
+  padding: 1.5rem;
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0 0 10px -8px hsl(200, 10%, 20%);
+  line-height: 2;
+  max-width: 550px;
+  width: 80vw;
+}
+h1 {
+  font-family: "Acme", sans-serif;
+  letter-spacing: 1px;
+  font-size: 2.8rem;
+}
+p {
+  font-size: 0.95rem;
+}
+
+svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+svg text {
+  font-family: "Acme", sans-serif;
+  font-size: 1.3rem;
 }

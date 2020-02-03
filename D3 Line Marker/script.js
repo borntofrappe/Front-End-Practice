@@ -1,7 +1,7 @@
-// data describing the highest mountains on earth, by name, elevation and country(ies)
+// DATA
+// highest mountains on earth, by name, elevation and country(ies)
 // https://en.wikipedia.org/wiki/List_of_highest_mountains_on_Earth
-
-const data = [
+const dataMountains = [
   {
     name: 'Mount Everest',
     elevation: '8,848',
@@ -598,3 +598,109 @@ const data = [
     country: ['Pakistan'],
   },
 ];
+
+// count the number of countries using the `country` field
+const dataCountries = dataMountains
+  .reduce((acc, curr) => [...acc, ...curr.country], [])
+  .reduce((acc, curr) => {
+    if (acc[curr]) {
+      acc[curr] += 1;
+    } else {
+      acc[curr] = 1;
+    }
+    return acc;
+  }, {});
+
+const data = Object.entries(dataCountries).sort((a, b) => b[1] - a[1]);
+console.log(data);
+
+// D3
+const margin = {
+  top: 80,
+  right: 20,
+  bottom: 80,
+  left: 20,
+};
+
+const width = 800 - (margin.left + margin.right);
+const height = 500 - (margin.top + margin.bottom);
+
+// SCALES and LAYOUT
+const yScale = d3
+  .scaleLinear()
+  .domain([0, d3.max(data, d => d[1])])
+  .range([height, 0]);
+
+const xScale = d3
+  .scaleBand()
+  .domain(data.map(d => d[0]))
+  .range([0, width]);
+
+const line = d3
+  .line()
+  .x(d => xScale(d[0]))
+  .y(d => yScale(d[1]))
+  .curve(d3.curveCatmullRom);
+
+// ACTUAL ELEMENTS
+const root = d3.select('#root');
+
+root
+  .append('h1')
+  .text("Mountain Peaks");
+
+root
+  .append('p')
+  .text("Every mountain exceeding 7.000m in height is located in East, Central, or South Asia.");
+
+
+
+const svg = root
+  .append('svg')
+  .attr('viewBox', `0 0 ${width + (margin.left + margin.right)} ${height + (margin.top + margin.bottom)}`)
+
+const defs = svg
+  .append('defs');
+
+const marker = defs
+  .append('marker')
+  .attr('id', 'marker--flag')
+  .attr("viewBox", "0 0 73 95")
+  .attr("markerHeight", "10")
+  .attr("refX", "10")
+  .attr("refY", "95");
+
+marker
+  .append('path')
+  .attr("fill", "none")
+  .attr("stroke", "currentColor")
+  .attr("stroke-width", "10")
+  .attr("d", "M 10 95 v -75 h 25 l 8 8 h 25 v 35 h -25 l -8 -8 h -25 m 0 -42 l -3 -3 3 -3 3 3 -3 3z");
+
+const group = svg
+  .append('g')
+  .attr('transform', `translate(${margin.left} ${margin.top})`);
+
+group
+  .append('path')
+  .attr("fill", "none")
+  .attr("stroke", "currentColor")
+  .attr("stroke-width", "10")
+  .attr("stroke-linecap", "round")
+  .attr('d', line(data))
+  .attr('marker-start', 'url(#marker--flag)')
+  .attr('marker-end', 'url(#marker--flag)')
+  .attr('marker-mid', 'url(#marker--flag)');
+
+const groups = group
+  .selectAll('g')
+  .data(data)
+  .enter()
+  .append('g')
+  .attr('transform', d => `translate(${xScale(d[0])} ${yScale(d[1]) + 50})`);
+
+groups
+  .append('text')
+  .text(d => d[0])
+  .attr('text-anchor', 'middle')
+  .attr('transform', 'rotate(45)');
