@@ -1,6 +1,6 @@
-// data describing the top 25 jumpers
+// data describing the top 25 marks
 // https://en.wikipedia.org/wiki/Long_jump#All-time_top_25_long_jumpers
-const data = {
+const marks = {
   men: [
     '8.95',
     '8.90',
@@ -59,15 +59,22 @@ const data = {
   ],
 };
 
-
 const root = d3.select('#root');
 root.append('h1').text('Long Jump Records');
 
-Object.entries(data).forEach(([gender, marks]) => {
-  const marksObject = marks.reduce((acc, curr) => {
+Object.entries(marks).forEach(([gender, records]) => {
+  // DATA MASSAGING
+  /* the idea is to encase the last digit of each mark in a separate cell
+  build an object describing a such a construct
+  {
+    85: [1, 5, 6],
+    84: [0],
+  }
+  */
+  const dataStem = records.reduce((acc, curr) => {
     const key = parseFloat(curr.slice(0, -1));
     const value = parseInt(curr[curr.length - 1], 10);
-    if(acc[key]) {
+    if (acc[key]) {
       acc[key].push(value);
     } else {
       acc[key] = [value];
@@ -75,35 +82,32 @@ Object.entries(data).forEach(([gender, marks]) => {
     return acc;
   }, {});
 
-  const marksArray = Object.entries(marksObject).sort((a, b) => b[0] - a[0]);
+  // to add a row for each data retrieve the property-value pairs in a 2D array
+  const data = Object.entries(dataStem).sort((a, b) => b[0] - a[0]);
 
-  const table = root
-    .append('table');
+  // HTML elements
+  const table = root.append('table');
 
-  const headRow = table
-    .append('thead')
-    .append('tr');
+  const headRow = table.append('thead').append('tr');
 
-  headRow
-    .append('td');
+  headRow.append('td');
 
   headRow
     .append('td')
     .text(gender)
     .style('text-transform', 'capitalize')
+    // stretch the second and last cell to cover the entirety of the table's columns
+    .attr('colspan', d3.max(data, d => d[1].length));
 
-    .attr('colspan', d3.max(marksArray, d => d[1].length));
-
+  // for each stem-leaf section add a row, displaying the first digits in a cell, separated from the last one
   const bodyRows = table
     .append('tbody')
     .selectAll('tr')
-    .data(marksArray)
+    .data(data)
     .enter()
     .append('tr');
 
-  bodyRows
-    .append('td')
-    .text(d => d[0]);
+  bodyRows.append('td').text(d => d[0]);
 
   bodyRows
     .selectAll('td.value')
@@ -112,12 +116,4 @@ Object.entries(data).forEach(([gender, marks]) => {
     .append('td')
     .attr('class', 'value')
     .text(d => d);
-
 });
-
-
-
-
-
-
-

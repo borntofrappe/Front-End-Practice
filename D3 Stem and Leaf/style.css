@@ -6,8 +6,8 @@
   margin: 0;
 }
 body {
-  background: hsl(207, 46%, 5%);
-  color: #eeeeee;
+  background: hsl(208, 45%, 5%);
+  color: hsl(0, 0%, 95%);
   font-family: "Lato", sans-serif;
 }
 #root {
@@ -24,23 +24,26 @@ h1 {
   font-weight: 700;
 }
 table {
-  background: hsl(207, 46%, 8%);
-  box-shadow: 0 0 1rem -0.6rem hsl(207, 46%, 2%);
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
   line-height: 2.5;
+  background: hsl(208, 45%, 8%);
+  box-shadow: 0 0 1rem -0.6rem hsl(208, 45%, 2%);
 }
+
 table thead {
-  border-block-end: 0.1rem solid #b33939;
+  border-bottom: 0.1rem solid hsl(0, 52%, 50%);
 }
 table tbody td {
   text-align: center;
-  text-shadow: 0 0 1rem hsl(207, 46%, 2%);
+  text-shadow: 0 0 1rem hsl(208, 45%, 2%);
 }
 table tbody td:nth-of-type(1) {
-  border-inline-end: 0.1rem solid #b33939;
+  border-right: 0.1rem solid hsl(0, 52%, 50%);
 }
-table td.value {
-  font-weight: 700;
+
+h1::selection,
+table td::selection {
+  background: hsl(208, 45%, 5%);
 }

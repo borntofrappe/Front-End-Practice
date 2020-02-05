@@ -62,7 +62,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[D3 Generative Visualization](https://codepen.io/borntofrappe/pen/eYYQwvz)|Develop a visualization inspired by [this video](https://www.learnwithjason.dev/generative-data-visualization-design-and-planning) and using [this illustration](https://codepen.io/borntofrappe/pen/abbQgOp).|16th November 2019|
 |[DTree](https://codepen.io/borntofrappe/pen/XWJaNYP)|Practice with d3-hierarchy to create a tree diagram.|26th-27th December 2019|
 |[D3 Line Marker](https://codepen.io/borntofrappe/pen/RwPbbpz)|Create a line chart with and highlight the connections with the marker element.|3rd February 2019|
-|[D3 Stem and Leaf]()|Display arbitrary information in a stem and leaf display.|4th February 2019|
+|[D3 Stem and Leaf](https://codepen.io/borntofrappe/pen/VwLwaoJ)|Arrange arbitrary information in a stem and leaf display.|4th-5th February 2019|
 
 
 ### JS

@@ -1,10 +1,10 @@
 # D3 Stem and Leaf
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/VwLwaoJ)
 
 ## Goal
 
-Display arbitrary information in a stem and leaf display.
+Arrange arbitrary information in a stem and leaf display.
 
 ## Links
 
