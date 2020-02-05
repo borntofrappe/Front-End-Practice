@@ -85,13 +85,13 @@ Object.entries(data).forEach(([gender, marks]) => {
     .append('tr');
 
   headRow
-    .append('td')
-    .text(gender)
-    .style('text-transform', 'capitalize')
-    .style('text-align', 'center');
+    .append('td');
 
   headRow
     .append('td')
+    .text(gender)
+    .style('text-transform', 'capitalize')
+
     .attr('colspan', d3.max(marksArray, d => d[1].length));
 
   const bodyRows = table

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Baumans|Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700|Sarpanch:700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -6,40 +6,41 @@
   margin: 0;
 }
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  background: hsl(0, 0%, 95%);
-  color: hsl(0, 15%, 10%);
-  font-family: "Source Sans Pro", sans-serif;
+  background: hsl(207, 46%, 5%);
+  color: #eeeeee;
+  font-family: "Lato", sans-serif;
+}
+#root {
+  margin: 1rem auto;
+  width: 90vw;
+  max-width: 550px;
+}
+#root > * + * {
+  margin-top: 1rem;
 }
 h1 {
-  font-family: "Baumans", cursive;
+  font-family: "Sarpanch", sans-serif;
   letter-spacing: 1px;
+  font-weight: 700;
 }
 table {
-  background: hsl(0, 0%, 100%);
-  padding: 1rem;
-  box-shadow: 0 0 1rem -0.6rem hsla(0, 15%, 10%, 0.5);
-  border-radius: 10px;
-  width: 90vw;
-  margin: 1rem auto;
+  background: hsl(207, 46%, 8%);
+  box-shadow: 0 0 1rem -0.6rem hsl(207, 46%, 2%);
+  width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
-  line-height: 2;
+  line-height: 2.5;
 }
 table thead {
-  border-bottom: 1px solid hsl(0, 15%, 10%);
+  border-block-end: 0.1rem solid #b33939;
 }
 table tbody td {
   text-align: center;
-  font-size: 1.1rem;
+  text-shadow: 0 0 1rem hsl(207, 46%, 2%);
 }
 table tbody td:nth-of-type(1) {
-  border-right: 1px solid currentColor;
+  border-inline-end: 0.1rem solid #b33939;
 }
 table td.value {
-  font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
 }
