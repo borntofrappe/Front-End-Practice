@@ -6,6 +6,9 @@
   margin: 0;
 }
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
   background: hsl(0, 0%, 95%);
   color: hsl(0, 15%, 10%);
@@ -14,4 +17,29 @@ body {
 h1 {
   font-family: "Baumans", cursive;
   letter-spacing: 1px;
+}
+table {
+  background: hsl(0, 0%, 100%);
+  padding: 1rem;
+  box-shadow: 0 0 1rem -0.6rem hsla(0, 15%, 10%, 0.5);
+  border-radius: 10px;
+  width: 90vw;
+  margin: 1rem auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+  line-height: 2;
+}
+table thead {
+  border-bottom: 1px solid hsl(0, 15%, 10%);
+}
+table tbody td {
+  text-align: center;
+  font-size: 1.1rem;
+}
+table tbody td:nth-of-type(1) {
+  border-right: 1px solid currentColor;
+}
+table td.value {
+  font-size: 1rem;
+  font-weight: bold;
 }
