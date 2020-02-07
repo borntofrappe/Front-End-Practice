@@ -81,6 +81,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 |[JS Stopwatch](https://codepen.io/borntofrappe/pen/ExxzXKr)|Create a stopwatch using vanilla JavaScript, `setInterval` or `requestAnimationFrame`.|24th November|
 |[Canvas Clip](https://codepen.io/borntofrappe/pen/wvvLwLG)|Experiment with the Canvas API and specifically the possibility to clip parts of a canvas to show a subset of existing elements.|23rd-25th November|
 |[Canvas & SVG Maze](https://codepen.io/borntofrappe/pen/mdyNdpB)|Draw a couple of mazes with the Canvas API and SVG syntax.|2nd February 2020|
+|[Binary Search Algorithm]()|Replicate the binary search algorithm and animate the same with the anime.js library.|07th-08th February 2020|
 
 ### JS Frameworks
 
