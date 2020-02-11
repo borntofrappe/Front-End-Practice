@@ -1,4 +1,4 @@
-const size = 5;
+const size = 10;
 const grid = Array(size ** 2)
   .fill('')
   .map((value, i) => ({
@@ -12,9 +12,9 @@ const grid = Array(size ** 2)
     },
   }));
 
+
 for (let i = 0; i < grid.length; i += 1) {
   const cell = grid[i];
-
   const { row, column } = cell;
   const neighbors = [];
   if (row > 0) {
@@ -38,3 +38,38 @@ for (let i = 0; i < grid.length; i += 1) {
     }
   }
 }
+
+
+const width = 500;
+const height = 500;
+const h = width / size;
+const v = height / size;
+const strokeWidth = 5;
+
+const markup = `
+<svg viewBox="${-strokeWidth / 2} ${-strokeWidth / 2} ${width + strokeWidth} ${height + strokeWidth}" width="${width}" height="${height}">
+  <defs>
+    <path id="north" d="M 0 0 h ${h}" />
+    <path id="east" d="M ${h} 0 v ${v}" />
+    <path id="south" d="M 0 ${v} h ${h}" />
+    <path id="west" d="M 0 0 v ${v}" />
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="${strokeWidth}" stroke-linecap="square">
+  ${grid.map(cell => {
+    const {column, row, walls} = cell;
+    const x = column * h;
+    const y = row * v;
+    const directions = Object
+      .entries(walls)
+      .reduce((acc, curr) => (curr[1] ? [...acc, curr[0]] : [...acc]), []);
+    return `
+      <g transform="translate(${x} ${y})">
+        ${directions.map(direction => `<use href="#${direction}"/>`).join("")}
+      </g>
+    `
+  }).join("")}
+  </g>
+</svg>
+`;
+
+document.body.innerHTML = markup;
