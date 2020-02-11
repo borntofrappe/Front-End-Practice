@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Maitree:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Maitree:500,700&display=swap");
 
 /* enough to center the SVG in the viewport */
 * {
@@ -10,8 +10,8 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background: #f8f8ed;
-  color: #212325;
+  background: hsl(60, 44%, 95%);
+  color: hsl(210, 6%, 14%);
   font-family: "Maitree", serif;
 }
 body > * + * {
@@ -19,12 +19,19 @@ body > * + * {
 }
 header {
   padding: 0.5rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100' width='100' height='100'%3E%3Cg id='direction' transform='rotate(20)'%3E%3Cg stroke='hsl(210, 6%25, 30%25)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath fill='hsl(210, 6%25, 30%25)' d='M 0 0 l 15 -15 -15 -31 z' /%3E%3Cpath fill='none' d='M 0 0 l -15 -15 15 -31 z' /%3E%3C/g%3E%3C/g%3E%3Cuse href='%23direction' transform='rotate(90)' /%3E%3Cuse href='%23direction' transform='rotate(180)' /%3E%3Cuse href='%23direction' transform='rotate(270)' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: 100% 0%;
 }
 h1 {
   font-size: 1.5rem;
   text-transform: capitalize;
+  font-weight: 700;
 }
-
+p {
+  font-weight: 500;
+}
 /* override the presentational attributes to size the svg according to the viewport */
 svg {
   width: 90vw;

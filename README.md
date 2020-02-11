@@ -81,7 +81,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 | [Canvas Clip](https://codepen.io/borntofrappe/pen/wvvLwLG)                | Experiment with the Canvas API and specifically the possibility to clip parts of a canvas to show a subset of existing elements. | 23rd-25th November      |
 | [Canvas & SVG Maze](https://codepen.io/borntofrappe/pen/mdyNdpB)          | Draw a couple of mazes with the Canvas API and SVG syntax.                                                                       | 2nd February 2020       |
 | [Binary Search Algorithm](https://codepen.io/borntofrappe/pen/QWbwdQM)    | Search for a specific number using a binary search algorithm.                                                                    | 07th February 2020      |
-| [Binary Tree]()                                                           | Use the binary tree algorithm to draw a maze and a data viz.                                                                     | 10th-11th February 2020 |
+| [Binary Tree](https://codepen.io/borntofrappe/pen/OJVyMNR)                | Use the binary tree algorithm to draw a maze and a data viz.                                                                     | 10th-11th February 2020 |
 
 ### JS Frameworks
 
