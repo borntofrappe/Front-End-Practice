@@ -1,4 +1,4 @@
-const size = 10;
+const size = 5;
 const grid = Array(size ** 2)
   .fill('')
   .map((value, i) => ({
@@ -29,6 +29,8 @@ for (let i = 0; i < grid.length; i += 1) {
 
   if (neighbor) {
     const [r, c] = neighbor;
+    // d3.stratify
+    grid[i].parent = `${r} ${c}`;
     if (r < row) {
       grid[i].walls.north = false;
       grid[r * size + c].walls.south = false;
@@ -42,6 +44,8 @@ for (let i = 0; i < grid.length; i += 1) {
 
 const width = 500;
 const height = 500;
+
+// SVG
 const h = width / size;
 const v = height / size;
 const strokeWidth = 5;
@@ -73,3 +77,62 @@ const markup = `
 `;
 
 document.body.innerHTML = markup;
+
+
+// D3
+
+const root = d3
+  .stratify()
+  .id(({row, column}) => `${row} ${column}`)
+  .parentId(({parent}) => parent)
+  (grid);
+
+const tree = d3
+  .tree()
+  .size([width, height])
+  (root);
+
+const links = tree.links();
+const descendants = tree.descendants();
+
+const margin = 20;
+
+const viz = d3
+  .select('body')
+  .append('svg')
+  .attr('viewBox', `0 0 ${width + margin *2} ${height + margin *2}`)
+  .append('g')
+  .attr('transform', `translate(${margin} ${margin})`);
+
+const linkVertical = d3.linkVertical()
+.x(d => d.x)
+.y(d => d.y);
+viz
+  .selectAll('path')
+  .data(links)
+  .enter()
+  .append('path')
+  .attr('fill', 'none')
+  .attr('stroke', 'currentColor')
+  .attr('stroke-width', '1')
+  .attr('stroke-linecap', 'round')
+  .attr('d', linkVertical)
+
+const nodes = viz
+  .selectAll('g.node')
+  .data(descendants)
+  .enter()
+  .append('g')
+  .attr('class', 'node')
+  .attr('transform', ({x, y}) => `translate(${x}, ${y})`);
+
+nodes
+  .append('circle')
+  .attr('r', '2');
+
+nodes
+  .append('text')
+  .attr('text-anchor', 'middle')
+  .attr('dominant-baseline', 'middle')
+  .text(({id}) => id)
+  .attr('font-size', '25');

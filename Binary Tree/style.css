@@ -1,5 +1,25 @@
+/* enough to center the SVG in the viewport */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: hsl(35, 95%, 95%);
+  color: hsl(0, 0%, 5%);
+}
+/* override the presentational attributes to size the svg according to the viewport */
+svg {
+  width: 90vw;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin: 1rem;
+}
+
+svg:nth-child(2) {
+  max-width: 500px;
 }
