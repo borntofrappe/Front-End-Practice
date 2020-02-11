@@ -76,11 +76,10 @@ const markup = `
 </svg>
 `;
 
-document.body.innerHTML = markup;
+document.body.innerHTML += markup;
 
 
 // D3
-
 const root = d3
   .stratify()
   .id(({row, column}) => `${row} ${column}`)
@@ -107,6 +106,7 @@ const viz = d3
 const linkVertical = d3.linkVertical()
 .x(d => d.x)
 .y(d => d.y);
+
 viz
   .selectAll('path')
   .data(links)
@@ -114,7 +114,7 @@ viz
   .append('path')
   .attr('fill', 'none')
   .attr('stroke', 'currentColor')
-  .attr('stroke-width', '1')
+  .attr('stroke-width', '1.5')
   .attr('stroke-linecap', 'round')
   .attr('d', linkVertical)
 
@@ -128,11 +128,14 @@ const nodes = viz
 
 nodes
   .append('circle')
-  .attr('r', '2');
+  .attr('r', '3');
 
 nodes
   .append('text')
   .attr('text-anchor', 'middle')
   .attr('dominant-baseline', 'middle')
   .text(({id}) => id)
-  .attr('font-size', '25');
+  .attr('fill', 'currentColor')
+  .attr('font-size', '20')
+  .attr('letter-spacing', '2')
+  .attr('font-weight', 'bold');

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Maitree:400,700&display=swap");
+
 /* enough to center the SVG in the viewport */
 * {
   box-sizing: border-box;
@@ -8,18 +10,28 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background: hsl(35, 95%, 95%);
-  color: hsl(0, 0%, 5%);
+  background: #f8f8ed;
+  color: #212325;
+  font-family: "Maitree", serif;
 }
+body > * + * {
+  margin-top: 1.5rem;
+}
+header {
+  padding: 0.5rem;
+}
+h1 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
 /* override the presentational attributes to size the svg according to the viewport */
 svg {
   width: 90vw;
-  max-width: 300px;
+  max-width: 250px;
   height: auto;
   display: block;
-  margin: 1rem;
 }
-
-svg:nth-child(2) {
+svg:nth-of-type(2) {
   max-width: 500px;
 }
