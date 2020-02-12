@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css?family=Cousine&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: hsl(0, 0%, 10%);
+  color: hsl(30, 15%, 90%);
+  font-family: "Cousine", monospace;
+}
+body > * + * {
+  margin-top: 1.5rem;
+}
+
+button {
+  display: block;
+  color: inherit;
+  font-family: inherit;
+  color: inherit;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  background: hsl(128, 40%, 45%);
+  border: 4px solid hsl(128, 40%, 45%);
+  outline: none;
+}
+button:focus {
+  border-color: currentColor;
+  box-shadow: 0 0 10px hsl(128, 40%, 45%);
+}
