@@ -93,7 +93,6 @@ const tree = d3
 
 const links = tree.links();
 const descendants = tree.descendants();
-
 const margin = 20;
 
 const viz = d3
