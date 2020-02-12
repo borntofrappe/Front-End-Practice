@@ -33,20 +33,11 @@ const physics = {
   force: 0,
   gravity: 0,
   angle: 0,
-}
-const directions = [
-  [0, 1],
-  [0, -1],
-  [1, 0],
-  [-1, 0],
-];
-const angles = [
-  0,
-  Math.PI,
-  Math.PI / 2 * 3,
-  Math.PI / 2
-]
+};
+const directions = [[0, 1], [0, -1], [1, 0], [-1, 0]];
+const angles = [0, Math.PI, (Math.PI / 2) * 3, Math.PI / 2];
 
+// draw
 function draw() {
   context.clearRect(-width / 2, -height / 2, width, height);
 
@@ -71,7 +62,7 @@ function draw() {
   context.restore();
 }
 
-
+// animation loop
 function animate() {
   draw();
   const { gravity, force, direction } = physics;
@@ -80,12 +71,12 @@ function animate() {
   ball.y += (gravity - force) * dY;
 
   physics.gravity += 0.2;
-  if(force >= 0) {
+  if (force >= 0) {
     physics.force -= 0.2;
   }
 
   const d = Math.sqrt(ball.x ** 2 + ball.y ** 2);
-  if(d < radius - ball.r) {
+  if (d < radius - ball.r) {
     requestAnimationFrame(animate);
   } else {
     cancelAnimationFrame(animate);
@@ -94,6 +85,7 @@ function animate() {
   }
 }
 
+// reset
 function start() {
   ball.x = 0;
   ball.y = 0;
@@ -102,24 +94,28 @@ function start() {
 
   animate();
   button.style.visibility = 'hidden';
-
 }
 
+// jump
 function jump() {
   physics.gravity = 0;
   physics.force += 6;
 
   const changeDirection = Math.random() < 0.25;
-  if(changeDirection) {
+  if (changeDirection) {
     const index = Math.floor(Math.random() * directions.length);
     physics.direction = directions[index];
     physics.angle = angles[index];
   }
 }
 
-
+// immediately draw the canvas
 draw();
+
+// start when clicking the button
 button.addEventListener('click', () => start());
+
+// jump when clicking the window/pressing the space bar
 window.addEventListener('click', () => jump());
 window.addEventListener('keydown', ({ keyCode }) => {
   if (keyCode === 32) {
