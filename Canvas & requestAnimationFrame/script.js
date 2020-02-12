@@ -32,6 +32,7 @@ const physics = {
   direction: [0, 1],
   force: 0,
   gravity: 0,
+  angle: 0,
 }
 const directions = [
   [0, 1],
@@ -39,9 +40,12 @@ const directions = [
   [1, 0],
   [-1, 0],
 ];
-function randomItem(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+const angles = [
+  0,
+  Math.PI,
+  Math.PI / 2 * 3,
+  Math.PI / 2
+]
 
 function draw() {
   context.clearRect(-width / 2, -height / 2, width, height);
@@ -58,7 +62,7 @@ function draw() {
   context.closePath();
 
   context.save();
-  context.rotate(0);
+  context.rotate(physics.angle);
   context.strokeStyle = 'hsl(128, 40%, 45%)';
   context.beginPath();
   context.arc(0, 0, radius, Math.PI / 4, (Math.PI / 4) * 3);
@@ -107,7 +111,9 @@ function jump() {
 
   const changeDirection = Math.random() < 0.25;
   if(changeDirection) {
-    physics.direction = randomItem(directions);
+    const index = Math.floor(Math.random() * directions.length);
+    physics.direction = directions[index];
+    physics.angle = angles[index];
   }
 }
 

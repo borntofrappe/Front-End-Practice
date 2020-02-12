@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100" width="100" height="100">
+  <circle r="20" id="circle" />
+  <g id="circles">
+    <use href="#circle" y="30" opacity="0.3" />
+    <use href="#circle" y="-30" opacity="0.3" />
+  </g>
+  <use href="#circles" transform="rotate(90)" />
+</svg>
