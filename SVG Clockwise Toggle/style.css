@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: hsl(280, 40%, 10%);
+  background: hsl(240, 45%, 95%);
+}
+
+label {
+  position: relative;
+  --duration: 2s;
+  /* the svg is scaled in em units relative to this font size */
+  font-size: 6rem;
+}
+label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+label > svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+  color: inherit;
+  border: 0.1em solid currentColor;
+  transition: color 0.25s ease-in-out;
+  border-radius: 50%;
+}
+label input:hover + svg,
+label input:focus + svg,
+label input:active + svg {
+  color: hsl(0, 80%, 55%);
+}
+
+/* rotate the selected group elements when the input is checked */
+label input + svg .rotate {
+  transition: transform 2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: transform var(--duration) cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+label input:checked + svg .rotate {
+  transform: rotate(180deg);
+}
+
+/* flip the selected group elements around the x axis
+change the scale abruptly to modify the coordinate system and have the rotation continue clockwise
+*/
+label input + svg .flip {
+  transition: transform 2s step-end;
+  transition: transform var(--duration) step-end;
+}
+label input:checked + svg .flip {
+  transform: scale(-1, 1);
+}
