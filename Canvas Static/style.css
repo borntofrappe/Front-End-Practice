@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,41 +7,41 @@
 }
 body {
   min-height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "IBM Plex Mono", monospace;
-  background: #312d3a;
+  background: hsl(0, 0%, 5%);
   color: hsl(0, 0%, 100%);
 }
+/* canvas and section side by side */
 div {
-  padding: 1rem;
+  padding: 0.75rem;
   display: flex;
-  background: #110f16;
+  background: hsl(0, 0%, 10%);
+  box-shadow: 0 0 5px -2px #000000;
 }
-
+/* on smaller screen, reposition the canvas atop the section */
 @media screen and (max-width: 500px) {
   div {
     flex-direction: column;
   }
 }
-div > * {
-  background: #08070c;
-  padding: 1rem;
+
+canvas,
+form {
+  background: hsl(0, 0%, 15%);
   margin: 0.5rem;
 }
+/* for the form, push the content at the bottom of the column */
 form {
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
 }
-form section {
-  background: repeating-linear-gradient(-45deg, #000 0 2px, transparent 0 5px);
-  flex-grow: 1;
-  width: 100%;
-}
-form > * + * {
-  margin-top: 0.5rem;
-}
+
 form label {
   width: 2rem;
   height: 2rem;
@@ -53,16 +53,29 @@ form label input {
   height: 100%;
   opacity: 0;
 }
-form label input:checked + svg {
-  color: yellowgreen;
-}
+
+/* when the input is checked modify the color of the SVG */
 form label input + svg {
-  color: tomato;
+  color: hsl(9, 100%, 64%);
   width: 100%;
   height: auto;
   display: block;
 }
+form label input:checked + svg {
+  color: hsl(80, 61%, 50%);
+}
+
+/* when the input is being focused, highlight the SVG */
+form label input:focus + svg,
+form label input:active + svg {
+  filter: drop-shadow(0 0 2px hsl(0, 0%, 100%));
+}
+form label input:focus + svg .outline,
+form label input:active + svg .outline {
+  opacity: 1;
+}
 
 form output {
   text-transform: capitalize;
+  margin-top: 0.5rem;
 }

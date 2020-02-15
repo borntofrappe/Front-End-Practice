@@ -7,34 +7,34 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- include the canvas next to the controlling form -->
     <div>
       <canvas width="280" height="200"></canvas>
-      <!--
-        this is actually quite spiffy
-        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
-        oninput="this.status.value=this.isOn.checked?'On':'Off'"
-       -->
       <form>
-        <section></section>
+        <!-- add an SVG to replace the visual of the input of type checkbox
+          be sure to add a way to know when the input is being focused on
+          -->
         <label>
-          <input type="checkbox" id="isOn" name="isOn" />
+          <input type="checkbox" id="onOff" name="onOff" />
           <svg viewBox="-50 -50 100 100" width="25" height="25">
             <defs>
               <pattern id="dots" viewBox="-10 -10 20 20" width="0.1" height="0.1">
-                <circle r="2" />
-                <circle r="2" cx="10" cy="10" />
-                <circle r="2" cx="10" cy="-10" />
-                <circle r="2" cx="-10" cy="10" />
-                <circle r="2" cx="-10" cy="-10" />
+                <circle r="3" id="circle" />
+                <use href="#circle" x="10" y="10" />
+                <use href="#circle" x="10" y="-10" />
+                <use href="#circle" x="-10" y="10" />
+                <use href="#circle" x="-10" y="-10" />
               </pattern>
             </defs>
             <g stroke="none">
-              <circle r="50" fill="currentColor" />
-              <circle r="50" fill="url(#dots)" />
+              <circle class="outline" opacity="0" r="50" fill="hsl(0, 0%, 100%)" />
+              <circle r="45" fill="currentColor" />
+              <circle r="45" fill="url(#dots)" />
             </g>
           </svg>
         </label>
-        <output name="status" for="isOn">Off</output>
+        <!-- output highlighting the status of the checkbox -->
+        <output name="status" for="onOff">Off</output>
       </form>
     </div>
     <script src="script.js"></script>
