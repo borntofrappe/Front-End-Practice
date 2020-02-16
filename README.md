@@ -201,6 +201,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 | [UI Scrolling Navigation](https://codepen.io/borntofrappe/pen/gObQZVd)     | Create a navigation in which the text of each anchor link is re-introduced on focus and and hover.                                                                                                   | 20th January 2020                |
 | [UI Material Buttons](https://codepen.io/borntofrappe/pen/wvBNZxP)         | Practice with custom properties, clip-path, pseudo elements to create a series of buttons inspired by the material UI.                                                                               | 23rd January 2020                |
 | [UI Photo Gallery](https://codepen.io/borntofrappe/pen/abzMeMr)            | Experiment with CSS grid and the object-fit property to present a series of pictures in an interactive grid.                                                                                         | 26th January 2020                |
+| [UI This Month's Calendar]()                                               | Use JavaScript and a grid or table layout to display the days of the current month.                                                                                                                  | 16th February 2020               |
 
 ### Miscellaneous
 
