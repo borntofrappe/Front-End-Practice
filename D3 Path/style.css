@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab:700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='hsl(0, 0%25, 20%25)' viewBox='-50 -50 100 100' width='75' height='75'%3E%3Cg id='circles'%3E%3Cg id='circles-1'%3E%3Ccircle r='0.5' id='circle' /%3E%3Cuse href='%23circle' x='10' y='-20' /%3E%3Cuse href='%23circle' x='0' y='40' /%3E%3C/g%3E%3Cg id='circles-2'%3E%3Cuse href='%23circles-1' transform='scale(0.9) rotate(80) translate(10 5)' /%3E%3C/g%3E%3Cg id='circles-3'%3E%3Cuse href='%23circles-2' transform='scale(1.1) translate(5 -10) rotate(170)' /%3E%3C/g%3E%3C/g%3E%3Cuse href='%23circles' transform='scale(0.8) rotate(270) translate(5 5)' /%3E%3C/svg%3E"),
+    hsl(15, 97%, 50%);
+  color: hsl(0, 25%, 5%);
+  font-family: "Josefin Sans", sans-serif;
+}
+main {
+  max-width: 500px;
+  width: 90vw;
+  line-height: 1.5;
+}
+h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  font-family: "Josefin Slab", serif;
+}
+p {
+  font-size: 1.1rem;
+}
+a {
+  color: inherit;
+}
+svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
