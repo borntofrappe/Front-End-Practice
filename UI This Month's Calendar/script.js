@@ -20,8 +20,11 @@ date.setDate(date.getDate() - 1)
 // 0-31
 const days = date.getDate();
 
-// markup
-const root = document.querySelector('#root');
-root.innerHTML = Array(days).fill("").map((v, i) => `<div style="grid-column: ${i === 0 ? day : 'initial'}">
-  <h2>${weekDays[(day + i) % weekDays.length]}</h2>
-</div>`).join("");
+// find if the CSS supports grid
+const supportsGrid = getComputedStyle(document.body).getPropertyValue('--supports-grid');
+if(supportsGrid) {
+  const calendar = document.querySelector('div');
+  calendar.innerHTML = Array(days).fill("").map((v, i) => `
+    <p style="grid-column: ${i === 0 ? day : 'initial'}">${i + 1}</p>`).join("");
+
+}
