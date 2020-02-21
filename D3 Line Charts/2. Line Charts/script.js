@@ -100,7 +100,7 @@ const yScale = d3
   .range([height, 0])
   .nice();
 
-// horizontally map the values according to their index and with an point scale
+// horizontally map the values according to their index and with a point scale
 // not ordinal as that one would require a discrete range
 const xScale = d3
   .scalePoint()
@@ -109,7 +109,6 @@ const xScale = d3
 
 
 // line function
-// ! be sure to parse the string describing the year to a date object
 const line = d3
   .line()
   .x((d, i) => xScale(i))

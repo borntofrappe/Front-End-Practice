@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono|Work+Sans&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fira Code", monospace;
+  background: hsl(0, 0%, 96%);
+  color: hsl(0, 0%, 20%);
+  font-family: "Work Sans", sans-serif;
+}
+article {
+  padding: 1.5rem;
+  box-shadow: 0 0 5px -2px hsla(0, 0%, 15%, 0.2);
+  background: hsl(0, 0%, 100%);
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90vw;
+}
+article > * + * {
+  margin-top: 1rem;
+}
+h1 {
+  font-family: "Ubuntu Mono", monospace;
+}
+svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+svg text {
+  font-family: inherit;
+  font-family: "Ubuntu Mono", monospace;
+}

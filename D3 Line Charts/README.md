@@ -27,3 +27,18 @@ It seems `d3.least` and `d3.greatest` are not included in the latest release of 
 ## 2. Line Charts
 
 The goal of this visualization is to highlight and compare two different line charts.
+
+Topics covered:
+
+- linearScale
+- pointScale
+- line
+- area
+- mask
+- data massaging with array methods
+
+## 3. Line Charts +
+
+This is more as a proof of concept to take the logic developed in #2 and test if the code works with more than two sets of data.
+
+Data retrieved from Google Trends, considering three of the four seasons. I skipped autumn since [it has a lackluster search history](https://trends.google.com/trends/explore?date=2016-01-01%202020-02-21&q=spring,summer,autumn,winter).
