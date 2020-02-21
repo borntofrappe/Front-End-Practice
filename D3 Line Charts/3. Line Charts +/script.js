@@ -139,7 +139,7 @@ const container = d3
 
 container
   .append('p')
-  .html(`Google trends for the ${seasons.length} seasons: ${seasons.map((season, i) => `<strong style="color: ${colorScheme[i]}">${season}</strong>`).join(", ")}`)
+  .html(`Google trends for the ${seasons.length} seasons: ${seasons.map((season, i) => `<strong style="color: ${colorScheme[i]}">${season}</strong>`).join(", ")}.`)
 
 container
   .append('p')

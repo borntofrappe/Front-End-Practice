@@ -1,6 +1,6 @@
 # D3 Line Charts
 
-## [Live Demo]()
+## [Live Demo](https://codepen.io/borntofrappe/full/MWwboGL)
 
 ## Goal
 
@@ -35,10 +35,17 @@ Topics covered:
 - line
 - area
 - mask
-- data massaging with array methods
 
 ## 3. Line Charts +
 
-This is more as a proof of concept to take the logic developed in #2 and test if the code works with more than two sets of data.
+This visualization begun more as a proof of concept to take the logic developed in #2 and test if the code works with more than two sets of data. Eventually, it became its own project, and it improved a lot from the concepts laid down in the previous folders.
 
-Data retrieved from Google Trends, considering three of the four seasons. I skipped autumn since [it has a lackluster search history](https://trends.google.com/trends/explore?date=2016-01-01%202020-02-21&q=spring,summer,autumn,winter).
+Topics covered:
+
+- linearScale
+- timeScale
+- line
+- area
+- mask
+- use
+- data massaging
