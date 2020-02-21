@@ -23,3 +23,7 @@ It seems `d3.least` and `d3.greatest` are not included in the latest release of 
 ```js
 <script src="https://unpkg.com/d3-array@2.4.0/dist/d3-array.min.js"></script>
 ```
+
+## 2. Line Charts
+
+The goal of this visualization is to highlight and compare two different line charts.
