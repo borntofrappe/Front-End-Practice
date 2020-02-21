@@ -12,13 +12,13 @@ body {
   align-items: center;
   justify-content: center;
   font-family: "Fira Code", monospace;
-  background: hsl(0, 0%, 96%);
+  background: hsl(193, 69%, 2%);
   color: hsl(0, 0%, 20%);
   font-family: "Work Sans", sans-serif;
 }
 article {
   padding: 1.5rem;
-  box-shadow: 0 0 5px -2px hsla(0, 0%, 15%, 0.2);
+  box-shadow: 0 2px 10px -6px hsla(200, 75%, 2%, 0.5);
   background: hsl(0, 0%, 100%);
   border-radius: 10px;
   max-width: 600px;
@@ -29,6 +29,9 @@ article > * + * {
 }
 h1 {
   font-family: "Ubuntu Mono", monospace;
+}
+a {
+  color: inherit;
 }
 svg {
   width: 100%;
