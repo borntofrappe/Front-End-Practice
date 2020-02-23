@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -8,32 +8,40 @@
 body {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: hsl(0, 0%, 95%);
-  color: hsl(0, 0%, 20%);
+  background: hsl(200, 90%, 45%);
+  font-family: "Lato", sans-serif;
 }
+body > * + * {
+  margin-top: 1rem;
+}
+/* svg */
 svg {
   display: block;
-  width: 200px;
+  width: 90vw;
+  max-width: 250px;
   height: auto;
   margin: 1rem;
+  color: hsl(210, 100%, 15%);
 }
 
+/* when the .hide class is added to the svg scale the elements to show the closed eye */
 svg.hide .eyelid,
 svg.hide .brows {
   transform: scaleY(-1);
 }
-
 svg.hide .eyeball {
   transform: scale(0);
 }
 
+/* for browsers supporting the d property transition the properties to have the eyes close/open */
 @supports (d: path("")) {
   svg .eyelid,
   svg .brows path,
   svg .eyeball {
-    transition: all 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, d 0.5s ease-in-out;
   }
   svg.hide .eyelid,
   svg.hide .brows,
@@ -55,5 +63,55 @@ svg.hide .eyeball {
   }
   svg.hide .brows path:last-of-type {
     d: path("M 16 12 q 5 0 8 8");
+  }
+}
+
+/* form */
+form {
+  padding: 1rem 1.5rem;
+  background: hsl(0, 0%, 100%);
+  color: hsl(210, 100%, 15%);
+  max-width: 300px;
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+}
+form > * + * {
+  margin-top: 0.5rem;
+}
+form label {
+  display: block;
+  font-weight: 700;
+}
+form input {
+  padding: 0.5rem;
+  border: 2px solid currentColor;
+  background: none;
+  font-size: 1rem;
+  font-family: inherit;
+  color: inherit;
+  outline: none;
+}
+form button {
+  background: hsl(210, 100%, 15%);
+  border: none;
+  color: hsl(0, 0%, 100%);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-family: inherit;
+  padding: 0.5rem 1rem;
+}
+
+@supports (display: grid) {
+  form {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  form label {
+    grid-column: 1/-1;
+  }
+  form input {
+    border-right: none;
+    width: 100%;
   }
 }

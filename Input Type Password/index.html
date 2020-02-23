@@ -5,60 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
-    <title>Show Password</title>
+    <title>Input Type Password</title>
   </head>
   <body>
+    <svg class="hide" viewBox="-32.5 -30 140 60" width="140" height="60">
+      <g id="eye">
+        <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+          <!-- scaleY(-1) -->
+          <g class="brows">
+            <path d="M -16 -12 q -5 0 -8 -8" />
+            <path d="M 0 -16 v -8" />
+            <path d="M 16 -12 q 5 0 8 -8" />
+          </g>
+          <!-- d attribute
+            M -30 0 c 15 20 45 20 60 0
+           -->
+          <path class="eyelid" d="M -30 0 c 15 -20 45 -20 60 0" />
+          <path d="M -30 0 c 15 20 45 20 60 0" />
+          <!-- transform origin -->
+          <g transform="translate(0 12)">
+            <!-- scaleY(0) -->
+            <g class="eyeball">
+              <circle r="12" cy="-12" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <use href="#eye" x="75" />
+    </svg>
+
     <form>
       <label for="password">
         Password
       </label>
-      <input type="password" id="password" />
+      <input type="password" id="password" value="secret" />
       <button>Show</button>
     </form>
-    <svg class="hide" viewBox="-32.5 -32.5 65 65" width="100" height="100">
-      <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
-        <!-- scaleY(-1) -->
-        <g class="brows">
-          <path d="M -16 -12 q -5 0 -8 -8" />
-          <path d="M 0 -16 v -8" />
-          <path d="M 16 -12 q 5 0 8 -8" />
-        </g>
-        <!-- d attribute
-          M -30 0 c 15 20 45 20 60 0
-         -->
-        <path class="eyelid" d="M -30 0 c 15 -20 45 -20 60 0" />
-        <path d="M -30 0 c 15 20 45 20 60 0" />
-        <!-- transform origin -->
-        <g transform="translate(0 12)">
-          <!-- scaleY(0) -->
-          <g class="eyeball">
-            <circle r="12" cy="-12" />
-          </g>
-        </g>
-      </g>
-    </svg>
-    <svg class="hide" viewBox="-32.5 -32.5 65 65" width="100" height="100">
-      <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
-        <!-- scaleY(-1) -->
-        <g class="brows">
-          <path d="M -16 -12 q -5 0 -8 -8" />
-          <path d="M 0 -16 v -8" />
-          <path d="M 16 -12 q 5 0 8 -8" />
-        </g>
-        <!-- d attribute
-          M -30 0 c 15 20 45 20 60 0
-         -->
-        <path class="eyelid" d="M -30 0 c 15 -20 45 -20 60 0" />
-        <path d="M -30 0 c 15 20 45 20 60 0" />
-        <!-- transform origin -->
-        <g transform="translate(0 12)">
-          <!-- scaleY(0) -->
-          <g class="eyeball">
-            <circle r="12" cy="-12" />
-          </g>
-        </g>
-      </g>
-    </svg>
 
     <script src="script.js"></script>
   </body>
