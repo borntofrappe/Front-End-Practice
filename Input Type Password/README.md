@@ -21,3 +21,7 @@ The following SVG element is included in the background to create a repeating pa
   <use href="#dot" x="-5" y="-5" />
 </svg>
 ```
+
+## Update
+
+It seems FireFox doen's like the `<use>` element, so I resolved to go back and simply repeat the SVG syntax for the eye.

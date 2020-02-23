@@ -8,8 +8,9 @@
     <title>Input Type Password</title>
   </head>
   <body>
+    <!-- eyes -->
     <svg class="hide" viewBox="-32.5 -30 140 60" width="140" height="60">
-      <g id="eye">
+      <g>
         <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
           <!-- scaleY(-1) -->
           <g class="brows">
@@ -31,7 +32,23 @@
           </g>
         </g>
       </g>
-      <use href="#eye" x="75" />
+      <!--  -->
+      <g transform="translate(75 0)">
+        <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+          <g class="brows">
+            <path d="M -16 -12 q -5 0 -8 -8" />
+            <path d="M 0 -16 v -8" />
+            <path d="M 16 -12 q 5 0 8 -8" />
+          </g>
+          <path class="eyelid" d="M -30 0 c 15 -20 45 -20 60 0" />
+          <path d="M -30 0 c 15 20 45 20 60 0" />
+          <g transform="translate(0 12)">
+            <g class="eyeball">
+              <circle r="12" cy="-12" />
+            </g>
+          </g>
+        </g>
+      </g>
     </svg>
 
     <form>
