@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 20%);
+}
+svg {
+  display: block;
+  width: 200px;
+  height: auto;
+  margin: 1rem;
+}
+
+svg.hide .eyelid,
+svg.hide .brows {
+  transform: scaleY(-1);
+}
+
+svg.hide .eyeball {
+  transform: scale(0);
+}
+
+@supports (d: path("")) {
+  svg .eyelid,
+  svg .brows path,
+  svg .eyeball {
+    transition: all 0.5s ease-in-out;
+  }
+  svg.hide .eyelid,
+  svg.hide .brows,
+  svg.hide .eyeball {
+    transform: initial;
+  }
+
+  svg.hide .eyelid {
+    d: path("M -30 0 c 15 20 45 20 60 0");
+  }
+  svg.hide .eyeball {
+    transform: scaleY(0);
+  }
+  svg.hide .brows path:first-of-type {
+    d: path("M -16 12 q -5 0 -8 8");
+  }
+  svg.hide .brows path:nth-of-type(2) {
+    d: path("M 0 16 v 8");
+  }
+  svg.hide .brows path:last-of-type {
+    d: path("M 16 12 q 5 0 8 8");
+  }
+}
