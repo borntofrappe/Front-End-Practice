@@ -11,11 +11,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: hsl(200, 90%, 45%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='hsl(0, 0%25, 20%25)' opacity='0.1' width='20' height='20' viewBox='-5 -5 10 10'%3E%3Ccircle id='dot' r='1' /%3E%3Cuse href='%23dot' x='5' y='5' /%3E%3Cuse href='%23dot' x='-5' y='5' /%3E%3Cuse href='%23dot' x='5' y='-5' /%3E%3Cuse href='%23dot' x='-5' y='-5' /%3E%3C/svg%3E"),
+    hsl(0, 0%, 95%);
   font-family: "Lato", sans-serif;
+  background-size: 10px;
 }
 body > * + * {
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 /* svg */
 svg {
@@ -24,7 +26,7 @@ svg {
   max-width: 250px;
   height: auto;
   margin: 1rem;
-  color: hsl(210, 100%, 15%);
+  color: hsl(0, 0%, 10%);
 }
 
 /* when the .hide class is added to the svg scale the elements to show the closed eye */
@@ -67,14 +69,16 @@ svg.hide .eyeball {
 }
 
 /* form */
+/* display the elements in a column */
 form {
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 2rem;
   background: hsl(0, 0%, 100%);
-  color: hsl(210, 100%, 15%);
+  color: hsl(0, 0%, 10%);
   max-width: 300px;
   width: 95vw;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 1px 10px -8px currentColor;
 }
 form > * + * {
   margin-top: 0.5rem;
@@ -93,7 +97,7 @@ form input {
   outline: none;
 }
 form button {
-  background: hsl(210, 100%, 15%);
+  background: hsl(0, 0%, 10%);
   border: none;
   color: hsl(0, 0%, 100%);
   font-size: 0.9rem;
@@ -102,6 +106,10 @@ form button {
   padding: 0.5rem 1rem;
 }
 
+/* for browsers supporting grid properties create the following layout
+label label
+input button
+*/
 @supports (display: grid) {
   form {
     display: grid;
