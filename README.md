@@ -86,6 +86,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 | [Binary Tree](https://codepen.io/borntofrappe/pen/OJVyMNR)                    | Use the binary tree algorithm to draw a maze and a data viz.                                                                     | 10th-11th February 2020 |
 | [Canvas & requestAnimationFrame](https://codepen.io/borntofrappe/pen/eYNpQyW) | Create a game with the canvas element, requestAnimationFrame and basic physics.                                                  | 12th February 2020      |
 | [Canvas Static](https://codepen.io/borntofrappe/pen/jOPqMyV)                  | Use the Canvas API to recreate the static texture for a television set without connection.                                       | 15th February 2020      |
+| [Zdog Connect Four]()                                                         | Map an array to a series of shapes with the Zdog library.                                                                        | 1st March 2020          |
 
 ### JS Frameworks
 
