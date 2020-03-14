@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  /* center in the viewport */
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+
+  /* the color is picked up through the currentColor value */
+  color: hsl(0, 0%, 90%);
+  background: hsl(0, 0%, 5%);
+
+  --main-animation-duration: 4s;
+  --main-animation-delay: 0.25s;
+  --support-animation-duration: 0.3s;
+  --support-animation-delay: var(--main-animation-duration);
+
+  --ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* animate the scale of the SVG
+this to have the icon move slightly away, before coming back alongside the animation of the path
+*/
+svg {
+  display: block;
+  width: 100vmin;
+  max-width: 10rem;
+  height: auto;
+  animation: scale-back 5s 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: scale-back var(--main-animation-duration) var(--main-animation-delay) var(--ease-out-back);
+}
+
+/* hide the stroke of the circle & path element */
+circle,
+path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+/* the circle and path element differ in most of the animation properties
+the timing function is to have the circle start slowly and end abruptly, almost as if launching the animation of the path
+this last one starts fast and ends slow
+*/
+circle {
+  animation: remove-offset forwards 5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  animation: remove-offset forwards var(--main-animation-duration) var(--ease-in-cubic);
+}
+path {
+  animation: remove-offset forwards 0.3s 5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: remove-offset forwards var(--support-animation-duration) var(--support-animation-delay) var(--ease-out-cubic);
+}
+
+@keyframes scale-back {
+  95% {
+    transform: scale(0.7);
+  }
+}
+@keyframes remove-offset {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
