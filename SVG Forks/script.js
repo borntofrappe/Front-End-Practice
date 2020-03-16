@@ -11,7 +11,6 @@ let y = 0;
 const dx = 5;
 const dy = 10;
 
-
 // buttons to add a fork/show the entire tree structure
 // createElement
 const buttonFork = document.createElement('button');
@@ -20,10 +19,8 @@ buttonFork.textContent = 'Fork';
 const buttonViewbox = document.createElement('button');
 buttonViewbox.textContent = 'Zoom out';
 
-
 document.body.appendChild(buttonFork);
 document.body.appendChild(buttonViewbox);
-
 
 // createElementNS for SVG elements
 const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -84,7 +81,7 @@ function addFork() {
   y += 1;
 
   // hide the other path
-  if(goesEast) {
+  if (goesEast) {
     x -= 1;
 
     pSW.setAttribute('opacity', 0);
@@ -100,8 +97,14 @@ function addFork() {
     pSE.setAttribute('class', 'else');
   }
 
-  const groupTranslate = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-  groupTranslate.setAttribute('transform', `translate(${goesEast ? dx : dx * -1} ${dy})`);
+  const groupTranslate = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'g'
+  );
+  groupTranslate.setAttribute(
+    'transform',
+    `translate(${goesEast ? dx : dx * -1} ${dy})`
+  );
 
   groupLast.appendChild(groupTranslate);
 
@@ -124,8 +127,8 @@ function addFork() {
     duration,
     easing,
     // necessary for the if statement checking equality
-    complete: () => svg.setAttribute('viewBox', viewBox)
-  })
+    complete: () => svg.setAttribute('viewBox', viewBox),
+  });
 
   anime({
     targets: p,
@@ -133,7 +136,7 @@ function addFork() {
     duration: durationCircle,
     delay: duration,
     easing: easingCircle,
-  })
+  });
 }
 buttonFork.addEventListener('click', addFork);
 
@@ -141,31 +144,28 @@ buttonFork.addEventListener('click', addFork);
 // when panning out show the .else paths with a staggered animation
 function toggleViewbox() {
   let viewBox = svg.getAttribute('viewBox');
-  if(viewBox === `${-5 - x * dx} ${-5 + y * dy} 10 10`) {
+  if (viewBox === `${-5 - x * dx} ${-5 + y * dy} 10 10`) {
     viewBox = `-10 -5 20 ${10 * (y + 1)}`;
     buttonViewbox.textContent = 'Zoom in';
 
-  anime({
-    targets: '.else',
-    opacity: (el, i, l) => 0.9 - 0.5 / l * (l - i),
-    duration,
-    delay: (el, i, l) => 500 / l * i,
-    easing,
-  })
-
+    anime({
+      targets: '.else',
+      opacity: (el, i, l) => 0.9 - (0.5 / l) * (l - i),
+      duration,
+      delay: (el, i, l) => (500 / l) * i,
+      easing,
+    });
   } else {
     viewBox = `${-5 - x * dx} ${-5 + y * dy} 10 10`;
     buttonViewbox.textContent = 'Zoom out';
 
-
-  anime({
-    targets: '.else',
-    opacity: 0,
-    duration,
-    easing,
-  })
+    anime({
+      targets: '.else',
+      opacity: 0,
+      duration,
+      easing,
+    });
   }
-
 
   anime({
     targets: svg,
@@ -173,8 +173,8 @@ function toggleViewbox() {
     duration,
     easing,
     // necessary for the if statement checking equality
-    complete: () => svg.setAttribute('viewBox', viewBox)
-  })
+    complete: () => svg.setAttribute('viewBox', viewBox),
+  });
 }
 
 buttonViewbox.addEventListener('click', toggleViewbox);

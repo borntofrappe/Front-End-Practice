@@ -175,7 +175,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 | [SVG Navigation](https://codepen.io/borntofrappe/pen/JjoxRwG)                  | Create a navigation menu with SVG syntax, the textPath element and the startOffset attribute.                                                                                                           | 17th-22nd January 2020     |
 | [SVG Clockwise Toggle](https://codepen.io/borntofrappe/pen/ExjPzXq)            | Wrap two icons in a series of group elements to continuously rotate the shapes clockwise.                                                                                                               | 14th February 2020         |
 | [SVG Loading Animation](https://codepen.io/borntofrappe/pen/YzXamYQ)           | Experiment with SVG syntax, stroke-dash properties and the pathLength attribute.                                                                                                                        | 14th March 2020            |
-| [SVG If Statements]()                                                          | Animate a series of path element with boolean logic.                                                                                                                                                    | 14th-15th March 2020       |
+| [SVG Forks](https://codepen.io/borntofrappe/pen/zYGjMJM)                       | Animate a series of path element with boolean logic.                                                                                                                                                    | 14th-16th March 2020       |
 
 ### UI UX
 
