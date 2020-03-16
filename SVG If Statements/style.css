@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap");
+
 *,
 *:before,
 *:after {
@@ -8,15 +10,58 @@
 
 body {
   background: hsl(0, 0%, 95%);
-  color: hsl(0, 0%, 5%);
+  color: hsl(220, 90%, 5%);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  font-family: "Source Code Pro", monospace;
+}
+
+body > * + * {
+  margin-top: 1.25rem;
+}
+
+button {
+  color: inherit;
+  padding: 0.4rem 1rem;
+  background: none;
+  border: none;
+  outline: 0.2rem solid hsl(220, 90%, 5%);
+  box-shadow: 0 2px 5px -2px hsla(0, 0%, 5%, 0.5);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  transition: color 0.25s ease-in-out;
+}
+button:before {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: hsl(220, 90%, 5%);
+  z-index: -5;
+  transform: translateY(100%);
+  transition: transform 0.25s ease-in-out;
+}
+button:hover {
+  transform: translateY(-0.1rem);
+}
+button:focus {
+  color: hsl(0, 0%, 95%);
+}
+button:focus:before {
+  transform: translateY(0);
 }
 svg {
   width: 100vmin;
-  max-width: 40rem;
+  max-width: 25rem;
   height: auto;
   display: block;
+  border: 0.25rem solid currentColor;
+  border-radius: 0.2rem;
 }
