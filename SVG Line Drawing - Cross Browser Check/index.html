@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Cross Browser Check</title>
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100" width="250" height="250">
+      <g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+        <!-- pathLength to hide/show the stroke with values in the [0-1] range
+        for browser supporting the feature at least
+        -->
+        <path d="M 0 -46 a 46 46 0 0 0 0 92 46 46 0 0 0 0 -92" stroke-width="8" pathLength="1" />
+        <path d="M -20 -0 l 15 15 25 -25" stroke-width="10" pathLength="1" />
+      </g>
+    </svg>
+    <script src="script.js"></script>
+  </body>
+</html>
