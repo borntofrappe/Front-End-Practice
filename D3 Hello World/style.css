@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background: hsl(220, 45%, 8%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='-10 -10 44 44'%3E%3Cg fill='%23D8DAE3' fill-opacity='0.05'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
+  color: hsl(213, 80%, 60%);
+  /* center the in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nova Mono", monospace;
+}
+/* size the svg to cover a sizeable portion of the viewport */
+.world svg {
+  max-width: 30rem;
+  width: 90vw;
+  height: auto;
+}
