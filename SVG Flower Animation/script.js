@@ -22,7 +22,7 @@ timeline.add({
 timeline.add({
   targets: '#bee',
   opacity: [0, 1],
-}, '-=1000');
+}, '-=750');
 
 
 anime({
