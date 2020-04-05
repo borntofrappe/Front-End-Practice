@@ -1,6 +1,6 @@
-# JS Template
+# JS Template Literals
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/PoqrdWz)
 
 ## Goal
 

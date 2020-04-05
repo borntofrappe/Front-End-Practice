@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: hsl(216, 12%, 92%);
+  color: hsl(0, 0%, 10%);
+  font-family: "Lato", sans-serif;
+}
+#root {
+  max-width: 45rem;
+  width: 90vw;
+  padding: 1.5rem 2rem;
+  margin: 1rem auto;
+  background: hsl(0, 0%, 100%);
+  min-height: 100vh;
+  box-shadow: 0 5px 10px -2px hsla(0, 0%, 0%, 0.1);
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 2.25rem;
+  margin-bottom: 0.25rem;
+}
+a {
+  color: currentColor;
+  font-weight: 700;
+  outline-color: hsl(0, 0%, 28%);
+}
+
+article {
+  margin: 1.5rem 0 2rem;
+}
+article h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+article h2:before,
+article h2:after {
+  content: "";
+  height: 2px;
+  background: hsl(216, 12%, 92%);
+}
+article h2:after {
+  flex-grow: 1;
+  margin-left: 0.75rem;
+}
+article h2:before {
+  flex-basis: 1rem;
+  margin-right: 0.75rem;
+}
+article > p:first-of-type {
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+article > p:nth-of-type(2),
+article details p {
+  border-radius: 5px;
+  padding: 0.25rem 0.75rem;
+  line-height: 1.75;
+  background: hsl(216, 12%, 95%);
+}
+
+article details summary {
+  margin: 0.75rem 0 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  outline-color: hsl(0, 0%, 28%);
+}
+strong {
+  color: hsl(0, 0%, 7%);
+  font-weight: 700;
+}
