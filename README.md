@@ -87,7 +87,6 @@ There are overlaps, but the category is meant to describe the core feature of th
 | [Binary Tree](https://codepen.io/borntofrappe/pen/OJVyMNR)                    | Use the binary tree algorithm to draw a maze and a data viz.                                                                                              | 10th-11th February 2020 |
 | [Canvas & requestAnimationFrame](https://codepen.io/borntofrappe/pen/eYNpQyW) | Create a game with the canvas element, requestAnimationFrame and basic physics.                                                                           | 12th February 2020      |
 | [Canvas Static](https://codepen.io/borntofrappe/pen/jOPqMyV)                  | Use the Canvas API to recreate the static texture for a television set without connection.                                                                | 15th February 2020      |
-| [Zdog Connect Four]()                                                         | Map an array to a series of shapes with the Zdog library.                                                                                                 | 1st March 2020          |
 | [JS Template Literals](https://codepen.io/borntofrappe/pen/PoqrdWz)           | Use template literals to replicate [these exercises](https://developers.google.com/tech-writing/one/just-enough-grammar#exercise_1) on technical writing. | 5th April 2020          |
 
 ### JS Frameworks
@@ -210,7 +209,6 @@ There are overlaps, but the category is meant to describe the core feature of th
 | [UI Scrolling Navigation](https://codepen.io/borntofrappe/pen/gObQZVd)     | Create a navigation in which the text of each anchor link is re-introduced on focus and and hover.                                                                                                   | 20th January 2020                |
 | [UI Material Buttons](https://codepen.io/borntofrappe/pen/wvBNZxP)         | Practice with custom properties, clip-path, pseudo elements to create a series of buttons inspired by the material UI.                                                                               | 23rd January 2020                |
 | [UI Photo Gallery](https://codepen.io/borntofrappe/pen/abzMeMr)            | Experiment with CSS grid and the object-fit property to present a series of pictures in an interactive grid.                                                                                         | 26th January 2020                |
-| [UI This Month's Calendar]()                                               | Use JavaScript and a grid or table layout to display the days of the current month.                                                                                                                  | 16th February 2020               |
 
 ### Miscellaneous
 
