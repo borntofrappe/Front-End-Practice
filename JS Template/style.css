@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@355;580;730&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 5%);
+  font-family: "Inter", sans-serif;
+  font-weight: 355;
+}
+h1 {
+  font-weight: 730;
+  font-size: 1.25rem;
+}
+strong {
+  font-weight: 580;
+}
+
+#root {
+  max-width: 35rem;
+  width: 90vw;
+  margin: 1rem auto;
+}
