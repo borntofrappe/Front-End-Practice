@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Roboto Condensed", sans-serif;
+  color: hsl(220, 80%, 85%);
+  background: hsl(220, 100%, 5%);
+}
+main {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background: hsl(210, 98%, 15%);
+}
+main > * + * {
+  margin-left: 1.25rem;
+}
+svg {
+  width: 100px;
+  height: auto;
+}
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.5;
+}
+p {
+  font-size: 1.4rem;
+}
+
+/* animation properties */
+svg .reduce-opacity use {
+  animation: reduce-opacity 1s infinite ease-in-out;
+}
+svg .reduce-opacity use:nth-of-type(1) {
+  animation-delay: 0s;
+}
+svg .reduce-opacity use:nth-of-type(2) {
+  animation-delay: 0.125s;
+}
+svg .reduce-opacity use:nth-of-type(3) {
+  animation-delay: 0.25s;
+}
+svg .reduce-opacity use:nth-of-type(4) {
+  animation-delay: 0.375s;
+}
+svg .reduce-opacity use:nth-of-type(5) {
+  animation-delay: 0.5s;
+}
+svg .reduce-opacity use:nth-of-type(6) {
+  animation-delay: 0.625s;
+}
+svg .reduce-opacity use:nth-of-type(7) {
+  animation-delay: 0.75s;
+}
+svg .reduce-opacity use:nth-of-type(8) {
+  animation-delay: 0.875s;
+}
+svg .transform-rotateY {
+  animation: transform-rotateY 4s infinite cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+@keyframes reduce-opacity {
+  50% {
+    opacity: 0.2;
+  }
+}
+@keyframes transform-rotateY {
+  to {
+    transform: rotateY(1turn);
+  }
+}
