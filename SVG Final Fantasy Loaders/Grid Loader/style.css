@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(240, 50%, 2%);
+}
+
+svg {
+  width: 150px;
+  height: auto;
+  transform: rotate(45deg);
+  color: hsl(2020, 95%, 48%);
+}
+
+svg use {
+  animation: scale-back 1s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
+}
+
+@keyframes scale-back {
+  50% {
+    transform: scale(0.5);
+    opacity: 0.6;
+    animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+  }
+}
