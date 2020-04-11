@@ -179,6 +179,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 | [SVG Forks](https://codepen.io/borntofrappe/pen/zYGjMJM)                              | Animate a series of path element with boolean logic.                                                                                                                                                    | 14th-16th March 2020       |
 | [SVG Line Drawing - Cross Browser Check](https://codepen.io/borntofrappe/pen/YzXgrbo) | Animate `stroke-dash` properties accounting for browsers not supporting the pathLength attribute.                                                                                                       | 31st March 2020            |
 | [SVG Flower Animation](https://codepen.io/borntofrappe/pen/qBdzaZG)                   | Animate the icon of a flower and a bee with anime.js.                                                                                                                                                   | 04th April 2020            |
+| [SVG Final Fantasy Loaders](https://codepen.io/borntofrappe/full/pen)                 | Animate SVG syntax with CSS to create a couple of loading components.                                                                                                                                   | 10th-11th April 2020       |
 
 ### UI UX
 
