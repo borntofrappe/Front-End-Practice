@@ -7,4 +7,10 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
+  color: hsl(208, 50%, 25%);
+}
+svg {
+  width: 250px;
+  height: auto;
+  display: block;
 }
