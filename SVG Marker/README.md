@@ -1,16 +1,14 @@
 # SVG Marker
 
-<!-- ## [Live Demo]() -->
+## [Live Demo](https://codepen.io/borntofrappe/full/wvKKzzE)
 
 ## Goal
 
-Define marker elements at the beginning and end of path elements.
+Define marker elements for the beginning, joints and end of path elements.
 
 ## Notes
 
-In the **Marker** folder you find a proof of concept for the marker elements added on the path element edges. The idea is to ultimately use the marker elements in a data visualization plotting Google trends for the python language.
-
-For future reference regarding the `<marker>` elements:
+For future reference regarding `<marker>` elements:
 
 I consider the `viewBox` to be one of the essential attributes. It describes the coordinate system of the elements nested in the element, and it allows you to make due without the `refX` and `refY` attribute if you play your cards right.
 
