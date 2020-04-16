@@ -4,7 +4,7 @@
 
 ## Goal
 
-Highlight if the page is connected to the world wide web.
+Highlight if the current page is connected to the world wide web.
 
 ## Links
 

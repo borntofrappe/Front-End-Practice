@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@275;360&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 360;
+  color: hsl(0, 0%, 10%);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+main {
+  max-width: 35rem;
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  grid-gap: 0.75rem 1rem;
+  align-items: center;
+}
+main h1 {
+  font-weight: 275;
+}
+main svg {
+  max-width: 150px;
+  display: block;
+  width: 100%;
+  height: auto;
+  justify-self: center;
+}
+
+/* for the transition */
+main .message {
+  display: grid;
+  overflow: hidden;
+}
+main .message--offline,
+.message--online {
+  grid-row: 1;
+  grid-column: 1/-1;
+}
+main .message--online {
+  transform: translateY(-100%);
+  visibility: hidden;
+}
+main .message--offline,
+main .message--online {
+  transition: transform 0.75s cubic-bezier(0.65, 0, 0.35, 1);
+}
+main .stroke-dash {
+  transition: stroke-dashoffset 0.75s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+main:not(.online) .stroke-dash {
+  stroke-dashoffset: 0;
+}
+main.online .message--online {
+  transform: translateY(0%);
+  visibility: visible;
+}
+main.online .message--offline {
+  transform: translateY(100%);
+  visibility: hidden;
+}
+
+@media screen and (max-width: 40rem) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
