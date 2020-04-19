@@ -181,6 +181,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 | [SVG Flower Animation](https://codepen.io/borntofrappe/pen/qBdzaZG)                   | Animate the icon of a flower and a bee with anime.js.                                                                                                                                                   | 04th April 2020            |
 | [SVG Final Fantasy Loaders](https://codepen.io/borntofrappe/pen/mdeyYQV)              | Animate SVG syntax with CSS to create a couple of loading components.                                                                                                                                   | 10th-11th April 2020       |
 | [SVG Marker](https://codepen.io/borntofrappe/pen/wvKKzzE)                             | Define marker elements for the beginning, joints and end of path elements.                                                                                                                              | 14th April 2020            |
+| [SVG Resting Animation]()                                                             | Animate a series of SVG elements in an infinite loop.                                                                                                                                                   | 19th April 2020            |
 
 ### UI UX
 
