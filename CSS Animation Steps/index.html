@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animation Steps</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+        <h1>Saving data.</h1>
+        <p>Do not turn the system off.</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -10 150 80" width="150" height="80">
+            <defs>
+                <path id="pencil" d="M 0 0 h 6.5 l 28 -28 -13 -13 -28 28 v 13 z" />
+                <mask id="mask-pencil">
+                    <rect fill="hsl(0, 0%, 100%)" stroke="none" width="100" height="70" />
+                    <g class="translate">
+                        <g fill="hsl(0, 0%, 0%)" stroke="none">
+                            <use transform="translate(31.5 45)" href="#pencil" />
+                        </g>
+                    </g>
+                </mask>
+                <rect id="dot" x="-2" y="-2" width="4" height="4" />
+                <g id="dots">
+                    <g transform="translate(25 45)">
+                        <use transform="translate(-10 0)" href="#dot" />
+                        <use href="#dot" />
+                        <use transform="translate(10 0)" href="#dot" />
+                    </g>
+                </g>
+                <mask id="mask-dots">
+                    <g>
+                        <rect fill="hsl(0, 0%, 100%)" stroke="none" width="100" height="70" />
+                    </g>
+                    <g class="translate">
+                        <use fill="hsl(0, 0%, 0%)" stroke="none" x="10" href="#dots" />
+                    </g>
+                </mask>
+            </defs>
+            <g mask="url(#mask-pencil)">
+                <g transform="translate(25 45)">
+                    <rect fill="none" stroke="currentColor" stroke-width="4" x="-20" y="-20" width="40" height="40" />
+                </g>
+                <g mask="url(#mask-dots)">
+                    <use fill="currentColor" stroke="none" href="#dots" />
+                </g>
+            </g>
+            <g class="translate">
+                <g transform="translate(31.5 45)">
+                    <use fill="none" stroke="currentColor" stroke-width="4" href="#pencil" />
+                    <path fill="none" stroke="currentColor" stroke-width="4" d="M 11.5 -5 l -13 -13" />
+                    <path fill="currentColor" stroke="none" d="M 0 0 h 1.5 l -7.5 -7.5 v 7.5z" />
+                </g>
+            </g>
+        </svg>
+        
+    <script src="script.js"></script>
+  </body>
+</html>
