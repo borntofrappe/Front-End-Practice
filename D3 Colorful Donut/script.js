@@ -39,14 +39,15 @@ const data = [
 ];
 
 // retrieve the svg in which to plot the viz
-const svg = d3
-  .select('svg');
+const svg = d3.select('svg');
 
 // identify the dimensions of the viewBox to establish the svg canvas
 const viewBox = svg.attr('viewBox');
 const regexViewBox = /\d+ \d+ (\d+) (\d+)/;
 // ! .match() returns string values
-const [, viewBoxWidth, viewBoxHeight] = viewBox.match(regexViewBox).map(item => Number.parseInt(item, 10));
+const [, viewBoxWidth, viewBoxHeight] = viewBox
+  .match(regexViewBox)
+  .map(item => Number.parseInt(item, 10));
 
 // with the margin convention include a group element translated within the svg canvas
 const margin = {
@@ -69,7 +70,6 @@ const group = svg
   .append('g')
   .attr('transform', `translate(${margin.left} ${margin.top})`);
 
-
 // DEFAULT CIRCLE
 // circle used as a background for the colored donut chart
 // add a group to center the circle in the canvas (this to rotate the circle from the center)
@@ -87,12 +87,7 @@ groupDefault
   .attr('fill', 'none')
   .attr('stroke', 'hsla(0, 0%, 0%, 0.08')
   .attr('stroke-width', strokeWidth)
-  .attr('stroke-linecap', 'round')
-  // hide the stroke of the circle using the radius
-  // this to compute the circumference of the shape
-  .attr('stroke-dasharray', radius * 3.14 * 2)
-  .attr('stroke-dashoffset', radius * 3.14 * 2);
-
+  .attr('stroke-linecap', 'round');
 
 // COLORED CIRCLES
 // pie function to compute the arcs
@@ -134,37 +129,30 @@ const groupsArcs = groupArcs
 // include the arcs specifying the stroke with the same width of the circle element
 groupsArcs
   .append('path')
+  .attr('class', 'arc')
   .attr('d', arc)
   .attr('fill', 'none')
   .attr('stroke', d => d.data.color)
   .attr('stroke-width', strokeWidth * 0.8)
   .attr('stroke-linecap', 'round')
-  .attr('stroke-linejoin', 'round')
-  // hide the segments by applying a stroke-dasharray/stroke-dashoffset equal to the circle circumference
-  // ! the length of the element varies, and it considered afterwords
-  // for certain the paths are less than the circumference of the entire circle
-  .attr('stroke-dasharray', radius * 3.14 * 2)
-  .attr('stroke-dashoffset', radius * 3.14 * 2);
+  .attr('stroke-linejoin', 'round');
 
-// include line elements visually connecting the text labels with the arcs
+// include lines visually connecting the text labels with the arcs
 groupsArcs
-  .append('line')
-  .attr('x1', 0)
-  .attr('x2', (d) => {
+  .append('path')
+  .attr('class', 'line')
+  .attr('d', d => {
     const [x] = arc.centroid(d);
-    return x > 0 ? '25' : '-25';
+    const h = x > 0 ? 20 : -20;
+    return `M 0 0 H ${h}`;
   })
-  .attr('y1', 0)
-  .attr('y2', 0)
   .attr('stroke', ({ data: d }) => d.color)
   .attr('stroke-width', 1.5)
-  .attr('transform', (d) => {
+  .attr('transform', d => {
     const [x, y] = arc.centroid(d);
     const offset = x > 0 ? 20 : -20;
     return `translate(${x + offset} ${y})`;
-  })
-  .attr('stroke-dasharray', 25)
-  .attr('stroke-dashoffset', 25);
+  });
 
 // include text elements associated with the arcs
 groupsArcs
@@ -172,24 +160,59 @@ groupsArcs
   .attr('x', 0)
   .attr('y', 0)
   .attr('font-size', 8)
-  .attr('text-anchor', (d) => {
+  .attr('text-anchor', d => {
     const [x] = arc.centroid(d);
     return x > 0 ? 'start' : 'end';
   })
-  .attr('transform', (d) => {
+  .attr('transform', d => {
     const [x, y] = arc.centroid(d);
     const offset = x > 0 ? 50 : -50;
     return `translate(${x + offset} ${y})`;
   })
-  .html(({ data: d }) => `
-    <tspan x="0">${d.name}:</tspan><tspan x="0" dy="10" font-size="6">${d.percentage}% / ${d.value}M</tspan>
-  `)
+  .html(
+    ({ data: d }) => `
+    <tspan x="0">${d.name}:</tspan><tspan x="0" dy="10" font-size="6">${
+      d.percentage
+    }% / ${d.value}M</tspan>
+  `
+  );
+
+// TRANSITIONS
+// initial state
+// hide the strokes and text elements
+groupDefault
+  .select('circle')
+  .attr('stroke-dasharray', function() {
+    return this.getTotalLength();
+  })
+  .attr('stroke-dashoffset', function() {
+    return this.getTotalLength();
+  });
+
+groupArcs
+  .selectAll('path.arc')
+  .attr('stroke-dasharray', function() {
+    return this.getTotalLength();
+  })
+  .attr('stroke-dashoffset', function() {
+    return this.getTotalLength();
+  });
+
+groupArcs
+  .selectAll('path.line')
+  .attr('stroke-dasharray', function() {
+    return this.getTotalLength();
+  })
+  .attr('stroke-dashoffset', function() {
+    return this.getTotalLength();
+  });
+
+groupArcs
+  .selectAll('text')
   .style('opacity', 0)
   .style('visibility', 'hidden');
 
-
-// TRANSITIONS
-// once the elements are set up
+// actual transition
 // draw the stroke of the larger circle element
 groupDefault
   .select('circle')
@@ -201,28 +224,19 @@ groupDefault
   // once the transition is complete
   // draw the smaller strokes one after the other
   .on('end', () => {
-    // immediately set the stroke-dasharray and stroke-dashoffset properties to match the length of the path elements
-    // using vanilla JavaScript
-    const paths = document.querySelectorAll('svg g g path');
-    paths.forEach((path) => {
-      const length = path.getTotalLength();
-      path.setAttribute('stroke-dasharray', length);
-      path.setAttribute('stroke-dashoffset', length);
-    });
-
     const duration = 1000;
-    // transition the path elements to stroke-dashoffset 0
-    d3
-      .selectAll('svg g g path')
+    // transition the arcs to stroke-dashoffset 0
+    groupArcs
+      .selectAll('path.arc')
       .transition()
       .ease(d3.easeLinear)
       .delay((d, i) => i * duration)
       .duration(duration)
       .attr('stroke-dashoffset', 0);
 
-    // transition the line elements elements to stroke-dashoffset 0
-    d3
-      .selectAll('svg g g line')
+    // transition the lines to stroke-dashoffset 0
+    groupArcs
+      .selectAll('path.line')
       .transition()
       .ease(d3.easeLinear)
       .delay((d, i) => i * duration + duration / 2.5)
@@ -230,8 +244,8 @@ groupDefault
       .attr('stroke-dashoffset', 0);
 
     // transition the text elements to opacity 1 and visibility visible
-    d3
-      .selectAll('svg g g text')
+    groupArcs
+      .selectAll('text')
       .transition()
       .ease(d3.easeLinear)
       .delay((d, i) => i * duration + duration / 2)
