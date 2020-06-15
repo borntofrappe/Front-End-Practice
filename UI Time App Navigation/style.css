@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 95%);
+}
+nav {
+  display: flex;
+}
+button {
+  padding: 0.2rem 1.75rem;
+  position: relative;
+}
+svg {
+  display: block;
+  width: 3em;
+  height: auto;
+}
+span {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
