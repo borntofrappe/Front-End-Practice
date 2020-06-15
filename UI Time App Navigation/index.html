@@ -8,21 +8,86 @@
   </head>
   <body>
     <nav>
-      <button>
+      <button class="active">
         <span>Alarm</span>
-        <svg width="3em" height="3em" viewBox="-50 -50 100 100"></svg>
+        <svg width="3em" height="3em" viewBox="-50 -50 100 100">
+          <g fill="none" stroke="currentColor" stroke-width="7">
+            <circle r="30" />
+            <g stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 0 -12 v 12 l 10 10" />
+              <g class="jiggle">
+                <g transform="translate(0 -36)">
+                  <path d="M 25 0 l 10 10" />
+                  <path transform="scale(-1 1)" d="M 25 0 l 10 10" />
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
       </button>
       <button>
         <span>Clock</span>
-        <svg width="3em" height="3em" viewBox="-50 -50 100 100"></svg>
+        <svg width="3em" height="3em" viewBox="-50 -50 100 100">
+          <g fill="none" stroke="currentColor" stroke-width="7">
+            <circle r="30" />
+            <g stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 0 0 v -12" />
+              <g transform="rotate(135)">
+                <g class="rotate">
+                  <path d="M 0 0 v -14" />
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
       </button>
       <button>
         <span>Timer</span>
-        <svg width="3em" height="3em" viewBox="-50 -50 100 100"></svg>
+        <svg width="3em" height="3em" viewBox="-50 -50 100 100">
+          <defs>
+            <clipPath id="clip-timer">
+              <path d="M -25 -30 h 50 l -50 60 h 50 z" />
+            </clipPath>
+          </defs>
+          <g class="half-rotate">
+            <g
+              fill="none"
+              stroke="currentColor"
+              stroke-width="7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M -25 -30 h 50 l -50 60 h 50 z" />
+            </g>
+            <g fill="currentColor" stroke="none" clip-path="url(#clip-timer)">
+              <g class="fall">
+                <rect x="-50" y="0" width="100" height="50" />
+              </g>
+            </g>
+          </g>
+        </svg>
       </button>
       <button>
         <span>Stopwatch</span>
-        <svg width="3em" height="3em" viewBox="-50 -50 100 100"></svg>
+        <svg width="3em" height="3em" viewBox="-50 -50 100 100">
+          <g fill="none" stroke="currentColor" stroke-width="7">
+            <circle r="30" />
+            <g stroke-linecap="round" stroke-linejoin="round">
+              <g transform="rotate(45) translate(0 -32)">
+                <path d="M 0 0 v -6" />
+              </g>
+              <g transform="translate(0 -42)">
+                <g class="push">
+                  <path d="M -7 0 h 14" />
+                </g>
+              </g>
+
+              <g class="rotate">
+                <path d="M 0 0 v -12" />
+              </g>
+            </g>
+          </g>
+        </svg>
       </button>
     </nav>
 
