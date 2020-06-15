@@ -13,9 +13,11 @@ body {
   background: hsl(0, 0%, 10%);
   color: hsl(0, 0%, 95%);
 }
+
 nav {
   display: flex;
 }
+
 button {
   padding: 0.25rem 1.75rem;
   background: none;
@@ -24,16 +26,21 @@ button {
   outline: none;
   position: relative;
 }
+
 svg {
   display: block;
   width: 4em;
   height: auto;
 }
-span {
+
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
   position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
+  white-space: nowrap;
 }
 
 button:not(.active) {
@@ -70,8 +77,23 @@ button.active .jiggle {
   animation: jiggle 0.2s 0.3s 4 cubic-bezier(0.4, 0, 0.6, 1);
 }
 
+@keyframes jiggle {
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+
 button.active .rotate {
   animation: rotate 0.8s 0.3s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 button.active .half-rotate {
@@ -81,18 +103,6 @@ button.active .fall {
   animation: fall 0.5s 1s cubic-bezier(0.4, 0, 0.6, 1) forwards;
 }
 
-button.active .push {
-  animation: push 0.2s 0.1s cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-@keyframes jiggle {
-  25% {
-    transform: rotate(-8deg);
-  }
-  75% {
-    transform: rotate(8deg);
-  }
-}
 @keyframes half-rotate {
   100% {
     transform: rotate(180deg);
@@ -104,11 +114,10 @@ button.active .push {
   }
 }
 
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
+button.active .push {
+  animation: push 0.2s 0.1s cubic-bezier(0.4, 0, 0.6, 1);
 }
+
 @keyframes push {
   50% {
     transform: translateY(5px);

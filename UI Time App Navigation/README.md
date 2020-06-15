@@ -1,4 +1,4 @@
-# UI Time App Navigation
+# [UI Time App Navigation](https://codepen.io/borntofrappe/full/WNrGjzQ)
 
 Create a navigation for a hypothetical mobile application centered around time. The idea is to have the navigation provide a connection to different pages, features of the application:
 
