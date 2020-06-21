@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>SVG Animated Logo</title>
+  </head>
+  <body>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="-75 0 250 82.5"
+      width="500"
+      height="165"
+    >
+      <defs>
+        <path
+          id="path-foreground"
+          d="M 0 65 a 200 200 0 0 1 150 -65 160 160 0 0 0 -125 65"
+        />
+        <path id="path-background" d="M 60 65 l -60 -45 h 22.5 l 60 45 z" />
+
+        <!-- mask for the logo -->
+        <mask id="mask-path">
+          <rect width="150" height="100" fill="hsl(0, 0%, 100%)" />
+          <g fill="hsl(0, 0%, 0%)">
+            <use transform="translate(-3.5 -3.5)" href="#path-foreground" />
+            <use transform="translate(3 3)" href="#path-foreground" />
+          </g>
+        </mask>
+
+        <!-- mask(s) purely for the animation -->
+        <mask id="mask-path-foreground">
+          <rect width="150" height="100" fill="hsl(0, 0%, 100%)" />
+          <g fill="hsl(0, 0%, 0%)">
+            <g transform="translate(150 0)">
+              <circle transform="scale(0)" r="175" />
+            </g>
+          </g>
+        </mask>
+
+        <mask id="mask-path-background">
+          <rect width="150" height="100" fill="hsl(0, 0%, 100%)" />
+          <g fill="hsl(0, 0%, 0%)">
+            <circle transform="scale(0)" r="125" />
+          </g>
+        </mask>
+      </defs>
+
+      <g fill="currentColor" stroke="none">
+        <g mask="url(#mask-path-background)">
+          <g mask="url(#mask-path)">
+            <use href="#path-background" />
+          </g>
+        </g>
+        <g mask="url(#mask-path-foreground)">
+          <use href="#path-foreground" />
+        </g>
+        <g transform="translate(0 82.5)">
+          <text
+            textLength="82.5"
+            style="text-transform: uppercase; font-size: 0.8rem;"
+          >
+            starlink
+          </text>
+        </g>
+      </g>
+    </svg>
+
+    <script src="https://unpkg.com/animejs@3.2.0/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
