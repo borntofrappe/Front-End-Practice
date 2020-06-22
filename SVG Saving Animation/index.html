@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG Saving Animation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200">
+      <defs>
+        <path
+          id="pencil"
+          d="M -22 -18 l 10 12 v 42 h -20 v -42z m 10 18 h -20"
+        />
+        <mask id="mask">
+          <rect
+            x="-50"
+            y="-50"
+            width="100"
+            height="100"
+            fill="hsl(0, 0%, 100%)"
+          />
+          <use href="#pencil" fill="hsl(0, 0%, 0%)" />
+        </mask>
+      </defs>
+      <g id="saving">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <g mask="url(#mask)">
+            <circle r="46" stroke-width="8" />
+            <g stroke-width="5" class="strokes">
+              <path d="M -20 -20 h 40" />
+              <path d="M -20 0 h 40" />
+              <path d="M -20 20 h 40" />
+            </g>
+          </g>
+
+          <g stroke-width="5">
+            <use href="#pencil" />
+          </g>
+        </g>
+      </g>
+
+      <g transform="scale(0)" id="saved">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle r="46" stroke-width="8" />
+          <path d="M -20 -0 l 15 15 25 -25" stroke-width="10" />
+        </g>
+      </g>
+    </svg>
+
+    <script src="https://unpkg.com/animejs@3.2.0/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
