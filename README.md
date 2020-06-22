@@ -182,7 +182,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 | [SVG Final Fantasy Loaders](https://codepen.io/borntofrappe/pen/mdeyYQV)              | Animate SVG syntax with CSS to create a couple of loading components.                                                                                                                                   | 10th-11th April 2020       |
 | [SVG Marker](https://codepen.io/borntofrappe/pen/wvKKzzE)                             | Define marker elements for the beginning, joints and end of path elements.                                                                                                                              | 14th April 2020            |
 | [SVG Animated Logo](https://codepen.io/borntofrappe/pen/xxZqLjN)                      | Recreate starlink.com logo with SVG syntax and anime.js                                                                                                                                                 | 21st June 2020             |
-| [SVG Saving Animation]()                                                              | Recreate the micro-interaction introduced by a pokemon game to save one's own progress.                                                                                                                 | 22nd June 2020             |
+| [SVG Saving Animation](https://codepen.io/borntofrappe/pen/rNxmORz)                   | Recreate the animation which plays out in the pokemon games sword and shield, when a trainer saves its progress.                                                                                        | 22nd June 2020             |
 
 ### UI UX
 
