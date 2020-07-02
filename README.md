@@ -183,7 +183,7 @@ There are overlaps, but the category is meant to describe the core feature of th
 | [SVG Marker](https://codepen.io/borntofrappe/pen/wvKKzzE)                             | Define marker elements for the beginning, joints and end of path elements.                                                                                                                              | 14th April 2020            |
 | [SVG Animated Logo](https://codepen.io/borntofrappe/pen/xxZqLjN)                      | Recreate starlink.com logo with SVG syntax and anime.js                                                                                                                                                 | 21st June 2020             |
 | [SVG Saving Animation](https://codepen.io/borntofrappe/pen/rNxmORz)                   | Recreate the animation which plays out in the pokemon games sword and shield, when a trainer saves its progress.                                                                                        | 22nd June 2020             |
-| [SVG Google Photos]()                                                                 | Draw the logos for google photos, and animate the change between the two.                                                                                                                               | 02nd July 2020             |
+| [SVG Google Photos](https://codepen.io/borntofrappe/pen/ZEQvJrz)                      | Draw the logos for google photos, and animate the change between the two.                                                                                                                               | 02nd July 2020             |
 
 ### UI UX
 
