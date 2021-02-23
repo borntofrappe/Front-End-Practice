@@ -6,44 +6,114 @@
 
 body {
   padding: 1rem;
+  background: hsl(0, 0%, 98%);
+  color: hsl(120, 30%, 3%);
 }
 
 hr {
-  /* overflow is set to hidden at least on chrome */
+  /* the user agent stylesheet sets overflow to hidden (at least on chrome) */
   overflow: visible;
   position: relative;
   height: 1.25rem;
-  border-left: 0.15rem solid currentColor;
-  border-right: 0.15rem solid currentColor;
+  border-left: 0.25rem solid currentColor;
+  border-right: 0.25rem solid currentColor;
 }
 
-hr:first-of-type::before {
-  z-index: 10;
-  content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 110"%3E%3Cg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M 15 100 a 5 5 0 0 0 -10 0 9 9 0 0 0 18 0 v -90 a 8 8 0 0 1 16 0 q 0 19 -16 28 q -20 10 -20 28 a 20 20 0 0 0 40 0 14 14 0 0 0 -28 0" /%3E%3C/g%3E%3C/svg%3E');
-  position: absolute;
-  left: 0.25rem;
-  top: 0%;
-  width: calc(1.25rem * 4 * 46 / 110);
-  height: calc(1.25rem * 4);
-}
-
+/* spaces */
 hr:nth-of-type(5n) {
   height: 2rem;
   border-left: none;
   border-right: none;
 }
 
+/* beginning of the sheet */
 hr:nth-of-type(1),
 hr:nth-of-type(2),
 hr:nth-of-type(3),
 hr:nth-of-type(4),
 hr:nth-of-type(5) {
-  border-left-width: 0.25rem;
+  border-left-width: 0.5rem;
 }
 
+/* end of the sheet */
 hr:nth-last-of-type(2),
 hr:nth-last-of-type(3),
 hr:nth-last-of-type(4),
 hr:nth-last-of-type(5) {
-  border-right: 0.5rem double currentColor;
+  border-right: 1rem double currentColor;
+}
+
+/* clef key */
+hr:first-of-type::before {
+  z-index: 10;
+  content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 105"%3E%3Cg fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M 6 96 a 7 7 0 0 0 14 0 v -80 a 14 14 0 0 1 28 0 c 0 25 -46 25 -46 50 a 20 20 0 0 0 40 0 15 15 0 0 0 -30 0" /%3E%3C/g%3E%3C/svg%3E');
+  position: absolute;
+  left: 0.25rem;
+  top: 0%;
+  width: calc(1.25rem * 4 * 50 / 105);
+  height: calc(1.25rem * 4);
+}
+
+/* note */
+hr:nth-of-type(5n + 1)::after,
+hr:nth-of-type(10n + 1)::after,
+hr:nth-of-type(5n + 2)::after,
+hr:nth-of-type(10n + 2)::after,
+hr:nth-of-type(5n + 3)::after,
+hr:nth-of-type(10n + 3)::after,
+hr:nth-of-type(5n + 4)::after,
+hr:nth-of-type(10n + 4)::after,
+hr:nth-last-of-type(1)::after {
+  content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 50"%3E%3Cg fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M 18 2 v 40" /%3E%3C/g%3E%3Cellipse transform="translate(20 42)" cx="-10" fill="currentColor" rx="10" ry="8" /%3E%3C/svg%3E');
+  position: absolute;
+  width: calc(1.25rem * 2 * 50 / 105);
+  height: calc(1.25rem * 2);
+  z-index: 10;
+}
+
+/* offset note at different intervals (and knowing that a rule is 1.25rem tall) */
+hr:nth-of-type(5n + 1)::after {
+  top: 1.25rem;
+  left: 10%;
+}
+
+hr:nth-of-type(10n + 1)::after {
+  top: 2.5rem;
+  left: 20%;
+}
+
+hr:nth-of-type(5n + 2)::after {
+  top: calc(1.25rem / 2 * -1);
+  left: 30%;
+}
+
+hr:nth-of-type(10n + 2)::after {
+  top: calc(1.25rem / 2);
+  left: 40%;
+}
+
+hr:nth-of-type(5n + 3)::after {
+  top: calc(1.25rem / 2);
+  left: 50%;
+}
+
+hr:nth-of-type(10n + 3)::after {
+  top: calc(1.25rem / 2 * -1);
+  left: 60%;
+}
+
+hr:nth-of-type(5n + 4)::after {
+  top: calc(1.25rem * 2 * -1);
+  left: 70%;
+}
+
+hr:nth-of-type(10n + 4)::after {
+  top: calc(1.25rem * 2.5 * -1);
+  left: 80%;
+}
+
+hr:nth-last-of-type(1)::after {
+  top: calc(1.25rem * 4 * -1);
+  left: 80%;
+  transform: scale(-1);
 }
